@@ -1,0 +1,3 @@
+[submodule "tools/remote-coding-agent"]
+	path = tools/remote-coding-agent
+	url = https://github.com/dynamous-community/remote-coding-agent
