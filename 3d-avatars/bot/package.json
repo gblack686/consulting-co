@@ -1,0 +1,26 @@
+{
+  "name": "3d-avatar-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for creating 3D avatars with Ready Player Me",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "verify": "node verify-setup.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "3d-avatar",
+    "ready-player-me"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.66.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

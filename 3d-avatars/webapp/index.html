@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Avatar Creator</title>
+
+  <!-- Telegram Web App SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--tg-theme-bg-color, #ffffff);
+      color: var(--tg-theme-text-color, #000000);
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: var(--tg-theme-secondary-bg-color, #f0f0f0);
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--tg-theme-hint-color, #ccc);
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: var(--tg-theme-hint-color, #999);
+    }
+
+    .loading-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--tg-theme-hint-color, #e0e0e0);
+      border-top-color: var(--tg-theme-button-color, #3390ec);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .iframe-container {
+      flex: 1;
+      position: relative;
+      background: #1a1a1a;
+    }
+
+    #rpm-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .status-bar {
+      background: var(--tg-theme-secondary-bg-color, #f0f0f0);
+      padding: 12px 16px;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid var(--tg-theme-hint-color, #ccc);
+    }
+
+    .status-bar.success {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .status-bar.error {
+      background: #f44336;
+      color: white;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Button styling for Telegram theme */
+    .info-button {
+      background: var(--tg-theme-button-color, #3390ec);
+      color: var(--tg-theme-button-text-color, #ffffff);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .info-button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🎨 Create Your 3D Avatar</h1>
+      <p>Powered by Ready Player Me</p>
+    </div>
+
+    <!-- Loading Screen (shown initially) -->
+    <div id="loading" class="loading-screen">
+      <div class="loading-spinner"></div>
+      <p>Loading avatar creator...</p>
+      <p style="margin-top: 10px; font-size: 12px; color: var(--tg-theme-hint-color, #999);">
+        This may take a few moments
+      </p>
+    </div>
+
+    <!-- Ready Player Me iframe -->
+    <div class="iframe-container hidden" id="iframe-container">
+      <iframe
+        id="rpm-frame"
+        allow="camera *; microphone *; clipboard-write"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar" id="status">
+      Customize your avatar and complete the creation process
+    </div>
+  </div>
+
+  <script>
+    // Initialize Telegram Web App
+    const tg = window.Telegram.WebApp;
+
+    // Expand to full height
+    tg.expand();
+
+    // Enable closing confirmation
+    tg.enableClosingConfirmation();
+
+    // Apply Telegram theme
+    document.body.style.background = tg.themeParams.bg_color || '#ffffff';
+
+    // Configuration
+    const RPM_SUBDOMAIN = 'demo'; // Use 'demo' for testing, replace with your subdomain later
+    const RPM_URL = `https://${RPM_SUBDOMAIN}.readyplayer.me/avatar?frameApi`;
+
+    // Elements
+    const loadingEl = document.getElementById('loading');
+    const iframeContainer = document.getElementById('iframe-container');
+    const iframe = document.getElementById('rpm-frame');
+    const statusEl = document.getElementById('status');
+
+    // Set iframe source
+    iframe.src = RPM_URL;
+
+    // Track if avatar is created
+    let avatarCreated = false;
+
+    // Handle iframe load
+    iframe.addEventListener('load', () => {
+      console.log('✅ Ready Player Me iframe loaded');
+
+      // Hide loading, show iframe
+      setTimeout(() => {
+        loadingEl.classList.add('hidden');
+        iframeContainer.classList.remove('hidden');
+      }, 500);
+    });
+
+    // Listen for messages from Ready Player Me iframe
+    window.addEventListener('message', (event) => {
+      const json = parseMessage(event);
+
+      if (!json) return;
+
+      console.log('📨 Received message from RPM:', json);
+
+      // Handle different event types
+      switch (json.eventName) {
+        case 'v1.frame.ready':
+          updateStatus('Ready! Start customizing your avatar');
+          break;
+
+        case 'v1.avatar.exported':
+          handleAvatarExported(json.data);
+          break;
+
+        case 'v1.user.set':
+          console.log('User set:', json.data);
+          break;
+
+        default:
+          console.log('Unknown event:', json.eventName);
+      }
+    });
+
+    // Parse message from iframe
+    function parseMessage(event) {
+      try {
+        return JSON.parse(event.data);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    // Handle avatar export (when user completes creation)
+    function handleAvatarExported(data) {
+      console.log('🎉 Avatar exported!', data);
+
+      avatarCreated = true;
+      const avatarUrl = data.url;
+
+      // Update status
+      updateStatus('✨ Avatar created successfully!', 'success');
+
+      // Send data back to Telegram bot
+      tg.sendData(JSON.stringify({
+        avatarUrl: avatarUrl,
+        userId: tg.initDataUnsafe?.user?.id,
+        timestamp: new Date().toISOString()
+      }));
+
+      // Show success message briefly, then close
+      setTimeout(() => {
+        updateStatus('Sending to Telegram...', 'success');
+
+        // Close the web app after a short delay
+        setTimeout(() => {
+          tg.close();
+        }, 1000);
+      }, 1500);
+    }
+
+    // Update status bar
+    function updateStatus(message, type = '') {
+      statusEl.textContent = message;
+      statusEl.className = 'status-bar';
+
+      if (type) {
+        statusEl.classList.add(type);
+      }
+    }
+
+    // Handle Telegram back button
+    tg.BackButton.onClick(() => {
+      if (avatarCreated) {
+        tg.close();
+      } else {
+        if (confirm('Are you sure you want to leave? Your avatar progress will be lost.')) {
+          tg.close();
+        }
+      }
+    });
+
+    // Show back button
+    tg.BackButton.show();
+
+    // Log Telegram user info (for debugging)
+    if (tg.initDataUnsafe?.user) {
+      console.log('👤 Telegram User:', tg.initDataUnsafe.user);
+    }
+
+    // Handle errors
+    window.addEventListener('error', (event) => {
+      console.error('❌ Error:', event.error);
+      updateStatus('An error occurred. Please try again.', 'error');
+    });
+
+    // Prevent accidental navigation
+    window.addEventListener('beforeunload', (event) => {
+      if (!avatarCreated && !loadingEl.classList.contains('hidden')) {
+        event.preventDefault();
+        event.returnValue = '';
+      }
+    });
+  </script>
+</body>
+</html>
