@@ -1,95 +1,32 @@
-# Environment and Secrets
-.env
+# Secrets and credentials
+*.secret
+*.env
+*.env.local
 .env.*
-*.pem
-*.key
-.lightsail-default-key
-.temp-lightsail-key
-secrets_list.json
+client_secret.json
+credentials.json
 
-# IDE and Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Claude session data (may contain API keys)
+.claude/data/sessions/
 
-# OS Files
-.DS_Store
-Thumbs.db
-desktop.ini
+# Keys and tokens
+**/api-keys/
+**/*_key.json
+**/*_token.txt
 
-# Node.js
+# Obsidian workspace (user-specific)
+.obsidian/workspace*
+
+# Node modules
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 package-lock.json
 
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+*.pyc
+.venv/
 venv/
-env/
-ENV/
 
-# Logs
-logs/
-*.log
-nul
-
-# Temporary Files
-*.tmp
-*.temp
-.temp-*
-manifest_debug.txt
-
-# Downloaded/Generated Content
-transcript_*.txt
-*_transcript.txt
-*.vtt
-indydevdan/
-
-# MCP and Claude
-.mcp.json
-.claude/context/
-
-# Project Specific - Archive/Reference
-archive/
-claude-repos/
-
-# Build outputs
-dist/
-build/
-*.tsbuildinfo
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Backup files
-*.bak
-*.backup
-*~
-
-# Large generated files
-C:UsersgblacOneDriveDesktopconsulting-co.claudecontextobservabilityFINAL_SUMMARY.txt
+# OS
+.DS_Store
+Thumbs.db
