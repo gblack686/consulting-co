@@ -311,12 +311,27 @@
           "scene_description": "Intelligent marketing system with predictive modeling driving personalized campaigns and pipeline optimization"
         }
       ]
+    },
+    {
+      "id": "claude_code",
+      "company_name": "Claude Code Projects (Future Development)",
+      "role": "Lead Claude Code Engineer",
+      "location": "AWS & Google Cloud",
+      "period": {
+        "start": "2026-Q1",
+        "end": "2026-Q2"
+      },
+      "description": "Advanced Claude Code agents with multi-modal capabilities, voice integration, and autonomous cloud operations",
+      "category": "future_claude_code_agents",
+      "projects_file": "claude-code-projects.json",
+      "projects": 5
     }
   ],
   "project_summary": {
-    "total_projects": 10,
+    "total_projects": 15,
     "revstar_projects": 3,
     "gbautomation_projects": 7,
+    "claude_code_projects": 5,
     "categories": [
       "data_engineering",
       "ai_mlops",
