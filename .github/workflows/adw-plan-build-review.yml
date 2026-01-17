@@ -39,51 +39,44 @@ jobs:
 
             Task: ${{ github.event.inputs.task }}
 
-            IMPORTANT: You MUST create a plan file at specs/adw-plan.md
+            Explore the codebase to understand the structure, then create a detailed implementation plan.
 
-            Create a detailed implementation plan with:
+            Your plan must include:
             1. Objective and requirements
-            2. Files to create/modify
+            2. Files to create/modify (with specific paths)
             3. Technical approach
             4. Step-by-step tasks
             5. Acceptance criteria
 
-            Use the Write tool to save your plan to: specs/adw-plan.md
-
-            This is critical - the build phase depends on this file existing.
+            After exploring, use the Write tool to save your plan to: specs/adw-plan.md
           claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
-          additional_permissions: "write"
 
-      - name: Extract plan file path
-        id: extract
+      - name: Check what files were created
         run: |
-          echo "plan_file=specs/adw-plan.md" >> $GITHUB_OUTPUT
-
-      - name: Verify plan file exists
-        run: |
-          if [ -f "specs/adw-plan.md" ]; then
-            echo "Plan file created successfully"
-            cat specs/adw-plan.md
-          else
-            echo "ERROR: Plan file was not created!"
-            echo "Listing specs directory:"
-            ls -la specs/ || echo "specs directory doesn't exist"
-            exit 1
-          fi
+          echo "=== Checking specs directory ==="
+          ls -la specs/ || echo "specs directory doesn't exist"
+          echo ""
+          echo "=== Checking for any new .md files ==="
+          find . -name "*.md" -mmin -5 -type f 2>/dev/null || echo "No recent .md files"
+          echo ""
+          echo "=== Git status ==="
+          git status --short
 
       - name: Upload plan artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: plan-phase
-          path: specs/adw-plan.md
+          path: specs/
           retention-days: 1
+          if-no-files-found: warn
 
-      - name: Commit plan file
+      - name: Commit any changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add specs/adw-plan.md || true
-          git commit -m "ADW Plan: ${{ github.event.inputs.task }}" || echo "No changes to commit"
+          git add -A
+          git diff --staged --quiet || git commit -m "ADW Plan: ${{ github.event.inputs.task }}"
           git push || echo "Nothing to push"
 
   # ============================================
