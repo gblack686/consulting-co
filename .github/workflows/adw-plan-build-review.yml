@@ -52,8 +52,7 @@ jobs:
 
             This is critical - the build phase depends on this file existing.
           claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
-          allowed_tools: "Read,Glob,Grep,Write,Bash"
-          working_directory: ${{ github.event.inputs.working_directory }}
+          additional_permissions: "write"
 
       - name: Extract plan file path
         id: extract
@@ -130,8 +129,7 @@ jobs:
 
             After implementation, list all files you created or modified.
           claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
-          allowed_tools: "Read,Glob,Grep,Write,Edit,Bash"
-          working_directory: ${{ github.event.inputs.working_directory }}
+          additional_permissions: "write,edit,bash"
 
       - name: Commit build changes
         run: |
@@ -202,8 +200,7 @@ jobs:
 
             End with verdict: PASS or FAIL
           claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
-          allowed_tools: "Read,Glob,Grep,Write,Bash"
-          working_directory: ${{ github.event.inputs.working_directory }}
+          additional_permissions: "write,bash"
 
       - name: Commit review
         run: |
