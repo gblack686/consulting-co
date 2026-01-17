@@ -30,37 +30,40 @@ jobs:
       - name: Ensure specs directory exists
         run: mkdir -p specs
 
-      - name: Run Plan Phase
-        id: plan
-        uses: anthropics/claude-code-action@v1
-        with:
-          prompt: |
-            You are the PLAN phase of an ADW workflow.
+      - name: Install Claude CLI
+        run: |
+          curl -fsSL https://claude.ai/install.sh | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-            Task: ${{ github.event.inputs.task }}
+      - name: Run Plan Phase with Claude CLI
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
+        run: |
+          ~/.local/bin/claude --print "You are the PLAN phase of an ADW workflow.
 
-            Explore the codebase to understand the structure, then create a detailed implementation plan.
+          Task: ${{ github.event.inputs.task }}
 
-            Your plan must include:
-            1. Objective and requirements
-            2. Files to create/modify (with specific paths)
-            3. Technical approach
-            4. Step-by-step tasks
-            5. Acceptance criteria
+          Create a detailed implementation plan with:
+          1. Objective and requirements
+          2. Files to create/modify (with specific paths)
+          3. Technical approach
+          4. Step-by-step tasks
+          5. Acceptance criteria
 
-            After exploring, use the Write tool to save your plan to: specs/adw-plan.md
-          claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
+          Save your plan to specs/adw-plan.md using the Write tool." --allowedTools "Read,Glob,Grep,Write" --yes
 
       - name: Check what files were created
         run: |
           echo "=== Checking specs directory ==="
           ls -la specs/ || echo "specs directory doesn't exist"
           echo ""
-          echo "=== Checking for any new .md files ==="
-          find . -name "*.md" -mmin -5 -type f 2>/dev/null || echo "No recent .md files"
-          echo ""
           echo "=== Git status ==="
           git status --short
+          echo ""
+          if [ -f "specs/adw-plan.md" ]; then
+            echo "=== Plan file contents ==="
+            cat specs/adw-plan.md
+          fi
 
       - name: Upload plan artifact
         uses: actions/upload-artifact@v4
