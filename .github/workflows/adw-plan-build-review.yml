@@ -1,0 +1,240 @@
+name: ADW Plan-Build-Review
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'Task description for the ADW'
+        required: true
+        default: 'Add a /status endpoint that returns service uptime'
+      working_directory:
+        description: 'Working directory for the task'
+        required: false
+        default: '.'
+
+jobs:
+  # ============================================
+  # Phase 1: PLAN (Context Window 1)
+  # ============================================
+  plan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    outputs:
+      plan_file: ${{ steps.extract.outputs.plan_file }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Plan Phase
+        id: plan
+        uses: anthropics/claude-code-action@v1
+        with:
+          prompt: |
+            You are the PLAN phase of an ADW workflow.
+
+            Task: ${{ github.event.inputs.task }}
+
+            Create a detailed implementation plan with:
+            1. Objective and requirements
+            2. Files to create/modify
+            3. Technical approach
+            4. Step-by-step tasks
+            5. Acceptance criteria
+
+            Save your plan to: specs/adw-plan.md
+
+            After saving, output ONLY the file path on the last line.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
+          allowed_tools: "Read,Glob,Grep,Write,Bash"
+          working_directory: ${{ github.event.inputs.working_directory }}
+
+      - name: Extract plan file path
+        id: extract
+        run: |
+          echo "plan_file=specs/adw-plan.md" >> $GITHUB_OUTPUT
+
+      - name: Upload plan artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: plan-phase
+          path: specs/adw-plan.md
+          retention-days: 1
+
+      - name: Commit plan file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add specs/adw-plan.md || true
+          git commit -m "ADW Plan: ${{ github.event.inputs.task }}" || echo "No changes to commit"
+          git push || echo "Nothing to push"
+
+  # ============================================
+  # Phase 2: BUILD (Context Window 2)
+  # ============================================
+  build:
+    needs: plan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Pull latest changes
+        run: git pull origin ${{ github.ref_name }} || true
+
+      - name: Download plan artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: plan-phase
+          path: specs/
+
+      - name: Run Build Phase
+        uses: anthropics/claude-code-action@v1
+        with:
+          prompt: |
+            You are the BUILD phase of an ADW workflow.
+
+            Original task: ${{ github.event.inputs.task }}
+            Plan file: specs/adw-plan.md
+
+            Instructions:
+            1. Read the plan file thoroughly
+            2. Implement each step from the plan
+            3. Follow existing codebase patterns
+            4. Write production-quality code
+            5. Run any available linters/formatters
+
+            After implementation, list all files you created or modified.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
+          allowed_tools: "Read,Glob,Grep,Write,Edit,Bash"
+          working_directory: ${{ github.event.inputs.working_directory }}
+
+      - name: Commit build changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "ADW Build: ${{ github.event.inputs.task }}" || echo "No changes to commit"
+          git push || echo "Nothing to push"
+
+      - name: Upload build state
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-phase
+          path: |
+            .
+            !.git
+          retention-days: 1
+
+  # ============================================
+  # Phase 3: REVIEW (Context Window 3)
+  # ============================================
+  review:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Pull latest changes
+        run: git pull origin ${{ github.ref_name }} || true
+
+      - name: Get git diff
+        id: diff
+        run: |
+          echo "Getting diff from last 2 commits..."
+          git log --oneline -3
+          git diff HEAD~2..HEAD > /tmp/changes.diff || git diff HEAD~1..HEAD > /tmp/changes.diff || echo "No diff available" > /tmp/changes.diff
+          echo "Diff size: $(wc -l < /tmp/changes.diff) lines"
+
+      - name: Run Review Phase
+        uses: anthropics/claude-code-action@v1
+        with:
+          prompt: |
+            You are the REVIEW phase of an ADW workflow.
+
+            Original task: ${{ github.event.inputs.task }}
+            Plan file: specs/adw-plan.md
+
+            Your review must:
+            1. Read the plan file
+            2. Run `git diff HEAD~2..HEAD` or `git log` to see changes
+            3. Verify implementation matches the plan
+            4. Look for bugs, security issues, code quality problems
+
+            Produce a risk-tiered report:
+            - BLOCKERS: Must fix before merge
+            - HIGH RISK: Should fix, potential bugs
+            - MEDIUM RISK: Code quality issues
+            - LOW RISK: Minor suggestions
+
+            Save report to: specs/adw-review.md
+
+            End with verdict: PASS or FAIL
+          claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
+          allowed_tools: "Read,Glob,Grep,Write,Bash"
+          working_directory: ${{ github.event.inputs.working_directory }}
+
+      - name: Commit review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add specs/adw-review.md || true
+          git commit -m "ADW Review: ${{ github.event.inputs.task }}" || echo "No changes to commit"
+          git push || echo "Nothing to push"
+
+      - name: Upload review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-phase
+          path: specs/adw-review.md
+          retention-days: 1
+
+  # ============================================
+  # Summary Job
+  # ============================================
+  summary:
+    needs: [plan, build, review]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Generate Summary
+        run: |
+          echo "## ADW Workflow Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Task:** ${{ github.event.inputs.task }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Phase Results" >> $GITHUB_STEP_SUMMARY
+          echo "| Phase | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Plan | ${{ needs.plan.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Review | ${{ needs.review.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "- Plan: \`specs/adw-plan.md\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Review: \`specs/adw-review.md\`" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f "artifacts/review-phase/adw-review.md" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Review Summary" >> $GITHUB_STEP_SUMMARY
+            cat artifacts/review-phase/adw-review.md >> $GITHUB_STEP_SUMMARY
+          fi
