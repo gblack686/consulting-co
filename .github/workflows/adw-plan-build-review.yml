@@ -27,6 +27,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Ensure specs directory exists
+        run: mkdir -p specs
+
       - name: Run Plan Phase
         id: plan
         uses: anthropics/claude-code-action@v1
@@ -36,6 +39,8 @@ jobs:
 
             Task: ${{ github.event.inputs.task }}
 
+            IMPORTANT: You MUST create a plan file at specs/adw-plan.md
+
             Create a detailed implementation plan with:
             1. Objective and requirements
             2. Files to create/modify
@@ -43,9 +48,9 @@ jobs:
             4. Step-by-step tasks
             5. Acceptance criteria
 
-            Save your plan to: specs/adw-plan.md
+            Use the Write tool to save your plan to: specs/adw-plan.md
 
-            After saving, output ONLY the file path on the last line.
+            This is critical - the build phase depends on this file existing.
           claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
           allowed_tools: "Read,Glob,Grep,Write,Bash"
           working_directory: ${{ github.event.inputs.working_directory }}
@@ -54,6 +59,18 @@ jobs:
         id: extract
         run: |
           echo "plan_file=specs/adw-plan.md" >> $GITHUB_OUTPUT
+
+      - name: Verify plan file exists
+        run: |
+          if [ -f "specs/adw-plan.md" ]; then
+            echo "Plan file created successfully"
+            cat specs/adw-plan.md
+          else
+            echo "ERROR: Plan file was not created!"
+            echo "Listing specs directory:"
+            ls -la specs/ || echo "specs directory doesn't exist"
+            exit 1
+          fi
 
       - name: Upload plan artifact
         uses: actions/upload-artifact@v4
