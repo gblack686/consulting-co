@@ -24,7 +24,4 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           prompt: ${{ github.event.inputs.prompt }}
-          claude_access_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
-          claude_refresh_token: ${{ secrets.CLAUDE_REFRESH_TOKEN }}
-          claude_expires_at: ${{ secrets.CLAUDE_EXPIRES_AT }}
-          timeout_minutes: "5"
+          claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
