@@ -39,7 +39,7 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
         run: |
-          ~/.local/bin/claude --print "You are the PLAN phase of an ADW workflow.
+          ~/.local/bin/claude -p "You are the PLAN phase of an ADW workflow.
 
           Task: ${{ github.event.inputs.task }}
 
@@ -50,7 +50,7 @@ jobs:
           4. Step-by-step tasks
           5. Acceptance criteria
 
-          Save your plan to specs/adw-plan.md using the Write tool." --allowedTools "Read,Glob,Grep,Write" --yes
+          Save your plan to specs/adw-plan.md using the Write tool." --allowedTools "Read,Glob,Grep,Write" --dangerously-skip-permissions
 
       - name: Check what files were created
         run: |
