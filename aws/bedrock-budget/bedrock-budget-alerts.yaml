@@ -1,0 +1,195 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  AWS Budget alerts for Bedrock spending - alerts every $1, blocks after $5/day.
+  Includes SNS notifications and automatic IAM policy to deny Bedrock access.
+
+Parameters:
+  EmailAddress:
+    Type: String
+    Description: Email address to receive budget alerts
+    AllowedPattern: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+    ConstraintDescription: Must be a valid email address
+
+  DailyBudgetLimit:
+    Type: Number
+    Default: 5
+    Description: Daily budget limit in USD (Bedrock blocked after this amount)
+
+Resources:
+  # SNS Topic for Budget Alerts
+  BedrockBudgetAlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: bedrock-budget-alerts
+      DisplayName: Bedrock Budget Alerts
+
+  # Email Subscription
+  BedrockBudgetEmailSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      TopicArn: !Ref BedrockBudgetAlertTopic
+      Protocol: email
+      Endpoint: !Ref EmailAddress
+
+  # SNS Topic Policy to allow AWS Budgets to publish
+  BedrockBudgetTopicPolicy:
+    Type: AWS::SNS::TopicPolicy
+    Properties:
+      Topics:
+        - !Ref BedrockBudgetAlertTopic
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowBudgetsPublish
+            Effect: Allow
+            Principal:
+              Service: budgets.amazonaws.com
+            Action: sns:Publish
+            Resource: !Ref BedrockBudgetAlertTopic
+
+  # IAM Policy to Deny Bedrock Access (applied when budget exceeded)
+  BedrockDenyPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: bedrock-budget-exceeded-deny
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyBedrockWhenBudgetExceeded
+            Effect: Deny
+            Action:
+              - bedrock:*
+              - bedrock-runtime:*
+              - bedrock-agent:*
+              - bedrock-agent-runtime:*
+            Resource: '*'
+      # Attach to all users/roles that use Bedrock
+      # You may need to customize this for your specific IAM setup
+      Users: []
+      Roles: []
+      Groups: []
+
+  # IAM Role for Budget Actions
+  BudgetActionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: bedrock-budget-action-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: budgets.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: BudgetActionPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - iam:AttachUserPolicy
+                  - iam:AttachRolePolicy
+                  - iam:AttachGroupPolicy
+                  - iam:DetachUserPolicy
+                  - iam:DetachRolePolicy
+                  - iam:DetachGroupPolicy
+                Resource: '*'
+
+  # Daily Budget for Bedrock with alerts at $1, $2, $3, $4, $5
+  BedrockDailyBudget:
+    Type: AWS::Budgets::Budget
+    Properties:
+      Budget:
+        BudgetName: bedrock-daily-budget
+        BudgetType: COST
+        TimeUnit: DAILY
+        BudgetLimit:
+          Amount: !Ref DailyBudgetLimit
+          Unit: USD
+        CostFilters:
+          Service:
+            - Amazon Bedrock
+        CostTypes:
+          IncludeTax: true
+          IncludeSubscription: true
+          UseBlended: false
+          IncludeRefund: false
+          IncludeCredit: false
+          IncludeUpfront: true
+          IncludeRecurring: true
+          IncludeOtherSubscription: true
+          IncludeSupport: true
+          IncludeDiscount: true
+          UseAmortized: false
+      NotificationsWithSubscribers:
+        # Alert at $1 (20% of $5)
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 20
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: SNS
+              Address: !Ref BedrockBudgetAlertTopic
+        # Alert at $2 (40% of $5)
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 40
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: SNS
+              Address: !Ref BedrockBudgetAlertTopic
+        # Alert at $3 (60% of $5)
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 60
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: SNS
+              Address: !Ref BedrockBudgetAlertTopic
+        # Alert at $4 (80% of $5)
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 80
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: SNS
+              Address: !Ref BedrockBudgetAlertTopic
+        # Alert at $5 (100% - LIMIT REACHED)
+        - Notification:
+            NotificationType: ACTUAL
+            ComparisonOperator: GREATER_THAN
+            Threshold: 100
+            ThresholdType: PERCENTAGE
+          Subscribers:
+            - SubscriptionType: SNS
+              Address: !Ref BedrockBudgetAlertTopic
+
+Outputs:
+  SNSTopicArn:
+    Description: ARN of the SNS topic for budget alerts
+    Value: !Ref BedrockBudgetAlertTopic
+    Export:
+      Name: BedrockBudgetAlertTopicArn
+
+  BudgetName:
+    Description: Name of the Bedrock daily budget
+    Value: !Ref BedrockDailyBudget
+
+  DenyPolicyArn:
+    Description: ARN of the IAM deny policy for Bedrock
+    Value: !Ref BedrockDenyPolicy
+
+  Instructions:
+    Description: Post-deployment instructions
+    Value: |
+      1. Confirm your email subscription (check inbox)
+      2. To enable automatic blocking at $5, create a Budget Action via AWS Console:
+         - Go to AWS Budgets > bedrock-daily-budget > Actions
+         - Add action: Apply IAM policy when threshold exceeded
+         - Select the bedrock-budget-exceeded-deny policy
+         - Attach to users/roles that use Bedrock
