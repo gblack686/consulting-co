@@ -14,20 +14,18 @@ All models accessed via OpenRouter (`OPENROUTER_API_KEY`).
 | Role | Model | OpenRouter ID | Price (per M tokens) |
 |------|-------|--------------|----------------------|
 | Brain | DeepSeek V3 | `openrouter/deepseek/deepseek-chat-v3` | $0.27 in / $1.10 out |
-| Muscle / Coder | GLM-4-32B | `openrouter/thudm/glm-4-32b` | ~$0.07 in / $0.14 out |
-| Subagent default | GLM-4-32B | `openrouter/thudm/glm-4-32b` | same |
-| Fallback | Gemini Flash | `openrouter/google/gemini-2.0-flash-001` | $0.10 in / $0.40 out |
-
-> Note: Verify `openrouter/thudm/glm-4-32b` slug at openrouter.ai/models — Zhipu AI model IDs may vary.
+| Muscle / Coder | GLM-4.7 | `z-ai/glm-4.7-20251222` | $0.06 in / $0.40 out |
+| Subagent default | GLM-4.7 | `z-ai/glm-4.7-20251222` | same |
+| Fallback | GLM-4.7-Flash | `z-ai/glm-4.7-flash-20260119` | free |
 
 ### openclaw.json snippet
 ```json5
 model: {
   primary: "openrouter/deepseek/deepseek-chat-v3",
-  fallbacks: ["openrouter/thudm/glm-4-32b"],
+  fallbacks: ["z-ai/glm-4.7-20251222"],
 },
 subagents: {
-  model: "openrouter/thudm/glm-4-32b",
+  model: "z-ai/glm-4.7-20251222",
 },
 ```
 
