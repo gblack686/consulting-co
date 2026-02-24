@@ -189,7 +189,9 @@ Read `references/tac-pattern-library.md` for TAC pattern selection.
 6. Output: `specs/{domain}-plan.md`
 
 #### BUILD Phase
-Generate all files using templates in `templates/expert/`:
+Generate all files using templates in `templates/expert/`. Always include the universal `setup-openclaw` skill from `templates/skills/setup-openclaw/SKILL.md` — every client workspace needs it. Customize the secrets list based on their tool inventory.
+
+
 
 1. `_index.md` — from `templates/expert/_index.md.tmpl`
 2. `expertise.md` — from `templates/expert/expertise.md.tmpl` (7 parts)
