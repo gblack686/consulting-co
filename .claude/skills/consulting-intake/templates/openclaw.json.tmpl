@@ -1,0 +1,126 @@
+// OpenClaw Configuration Template (JSON5)
+// Fill {placeholders} from session_output
+// Select pattern from references/multi-agent-patterns.md
+//
+// Pattern A: Single agent → one entry in agents.list
+// Pattern B: Multi-agent by domain → one entry per domain
+// Pattern C: Multi-agent by context → home/work split
+// Pattern D: Orchestrator + workers → main + sub-agent config
+//
+// MODEL TIERS — select one, see references/model-tiers.md for full details
+//
+// CHEAP   brain: openrouter/deepseek/deepseek-chat-v3
+//         coder: openrouter/thudm/glm-4-32b
+//         est:   ~$2-15/mo
+//
+// MID     brain: openrouter/google/gemini-2.0-flash-001
+//         coder: openrouter/deepseek/deepseek-chat-v3
+//         est:   ~$20-60/mo
+//
+// PRO     brain: openrouter/google/gemini-2.5-pro-preview  (orchestrator)
+//         reason:openrouter/deepseek/deepseek-r1           (analysis domains)
+//         coder: openrouter/deepseek/deepseek-chat-v3      (build domains)
+//         est:   ~$50-200/mo  — intelligent routing, no Claude tax
+//
+// Browse all models: https://openrouter.ai/models
+
+{
+  // --- Gateway ---
+  gateway: {
+    port: 18789,
+    reload: { mode: "hybrid", debounceMs: 300 },
+  },
+
+  // --- Model Provider: OpenRouter ---
+  // Single API key gives access to 300+ models. Switch models without new keys.
+  // Set OPENROUTER_API_KEY in env below. No models.providers config needed.
+  models: {
+    mode: "merge", // keep built-in providers active alongside OpenRouter
+  },
+
+  // --- Environment ---
+  env: {
+    OPENROUTER_API_KEY: "{openrouter_api_key}", // https://openrouter.ai/keys
+    {env_vars}
+  },
+
+  // --- Agents ---
+  agents: {
+    defaults: {
+      model: {
+        // Use openrouter/{author}/{slug} format — see header for examples
+        primary: "{default_model}",
+        fallbacks: [{fallback_models}],
+      },
+      heartbeat: {
+        every: "{heartbeat_interval}",
+        target: "{heartbeat_target}",
+      },
+      subagents: {
+        model: "{subagent_model}",
+        archiveAfterMinutes: 60,
+        maxSpawnDepth: 2,
+        maxChildrenPerAgent: 5,
+        maxConcurrent: 8,
+      },
+    },
+
+    list: [
+      // --- Main Agent (always present) ---
+      {
+        id: "main",
+        default: true,
+        name: "{agent_name}",
+        workspace: "~/.openclaw/workspace-main",
+        agentDir: "~/.openclaw/agents/main/agent",
+        model: "{main_model}",
+        identity: { name: "{agent_name}" },
+        subagents: {
+          allowAgents: [{domain_agent_ids}],
+        },
+      },
+
+      // --- Domain Agents (one per domain, Pattern B) ---
+      // {domain_agent_entries}
+    ],
+  },
+
+  // --- Bindings (multi-agent routing) ---
+  bindings: [
+    // {binding_entries}
+  ],
+
+  // --- Channels ---
+  channels: {
+    {channel_type}: {
+      dmPolicy: "allowlist",
+      allowFrom: [{allowed_numbers}],
+      {channel_specific_config}
+    },
+  },
+
+  // --- Sessions ---
+  session: {
+    dmScope: "per-channel-peer",
+    reset: {
+      mode: "{session_reset_mode}",
+      atHour: {session_reset_hour},
+      idleMinutes: {session_idle_minutes},
+    },
+  },
+
+  // --- Skills ---
+  skills: {
+    entries: {
+      {skills_entries}
+    },
+    load: {
+      watch: true,
+    },
+  },
+
+  // --- Cron ---
+  cron: {
+    enabled: true,
+  },
+}

@@ -1,0 +1,48 @@
+# YouTube Video Archiver Configuration
+# Update this file with your favorite YouTube channels
+# For detailed documentation, see references/config_template.md
+
+# Global chunking settings (optional - defaults will be used if omitted)
+chunk_size: 1000          # Approximate tokens per chunk
+chunk_overlap: 200        # Characters to overlap between chunks
+
+# List of YouTube channels to archive
+channels:
+  # IndyDevDan - Agentic Engineering content
+  - name: "IndyDevDan"
+    channel_id: "UC_x36zCEGilGpB1m-V4gmjg"
+    date_range:
+      start: "2024-05-01"
+      end: "2025-11-19"
+
+  # DesignCode - UI/UX Design & Development
+  - name: "DesignCode"
+    channel_id: "UCTIhfOopxukTIRkbXJ3kN-g"
+    fetch_latest: 50
+
+  # Cole Medin - AI Engineering & Agent Development
+  - name: "ColeMedin"
+    channel_id: "UCMwVTLZIRRUyyVrkjDpn4pA"
+    fetch_latest: 1
+
+  # Macro Optics - Macro trading, markets, crypto analysis
+  - name: "MacroOptics"
+    channel_id: "UCawf5b_4TDL5PNHlwRA_zNg"
+    fetch_latest: 3
+
+# INSTRUCTIONS:
+#
+# 1. Replace the example channels above with YOUR favorite YouTube channels
+#
+# 2. To find your channel ID:
+#    - Go to the channel's page: https://www.youtube.com/channel/CHANNEL_ID
+#    - The ID is the part after /channel/
+#
+# 3. Set environment variables in .env file with your API keys:
+#    - YOUTUBE_API_KEY: https://console.cloud.google.com/
+#    - ANTHROPIC_API_KEY: https://console.anthropic.com/
+#    - OPENAI_API_KEY: https://platform.openai.com/
+#    - SUPABASE_URL & SUPABASE_ANON_KEY: https://supabase.com/dashboard
+#
+# 4. Run the archiver:
+#    python scripts/main_workflow.py --config config.yaml
