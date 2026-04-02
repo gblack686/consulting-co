@@ -1,0 +1,26 @@
+name: Scheduled Hello World
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Every 5 min (temporary for testing — will remove)
+  workflow_dispatch:  # Manual trigger for testing
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Hello World
+        uses: anthropics/claude-code-action@v1
+        with:
+          prompt: |
+            Say "Hello from scheduled GitHub Actions! The time is $(date -u). This is a test of the consulting-co scheduled workflow system."
+            Then list the files in .claude/skills/consulting-admin/workflows/ to prove you have repo access.
+          claude_code_oauth_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
