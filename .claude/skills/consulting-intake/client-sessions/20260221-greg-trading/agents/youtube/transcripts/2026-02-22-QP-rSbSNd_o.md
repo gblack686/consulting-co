@@ -1,0 +1,941 @@
+# WARNING: The Next Few Days Will Be Critical For Markets!
+
+**Video ID**: QP-rSbSNd_o
+**Channel**: Kyle Doops Trading Show
+**Date Extracted**: 2026-02-22
+**URL**: https://www.youtube.com/watch?v=QP-rSbSNd_o
+**Streamed Live**: Feb 17, 2026
+**Duration**: 30:10
+**Views**: 15,478
+
+## Description
+
+The next couple days will be vital for markets. If bulls can defend the lows there is a chance of reaccumulation. But with that being said, there is a looming bearish signal moments away from confirming. Kyledoops shares how you can navigate the risks of the current conditions & position correctly.
+
+_____________________
+
+FEATURED ON THIS SHOW
+
+BLOFIN - Get VIP1 + Up to a $1,000 Bonus + a Chance to WIN 9,400 USDT!
+Sign up: https://bit.ly/blofin_welcome
+How To Claim Your New User Bonus: https://www.youtube.com/watch?v=GK-8gEL8LVw
+
+NORD VPN - Be Unhackable! Keep Your Crypto & Identity Safe!
+Get Up to 74% Off + 4 Extra Months FREE!
+EXCLUSIVE Offer: https://nordvpn.com/kyledoops
+
+BITFUNDED - Purchase Any Challenge to Unlock Access to Bigger Trading Funds!
+Sign up: https://bit.ly/join-bitfunded-kyle
+
+_____________________
+
+START TRADING SMARTER!
+
+WHALE ROOM - Master the Strategies of Top 1% Traders! Learn to Trade Like a Whale!
+Beat the Herd. Join the Whales: https://bit.ly/Whale_Room_Kyle
+
+WHALE TRADES - The Only Data That Matters. All In One Place! 100% FREE!
+https://www.whaletrades.io/
+
+_____________________
+
+TRADE WHERE KYLE TRADES!
+
+BYBIT - Grab a $50 Sign-Up Bonus + Earn up to $30,000 in Deposit Bonuses!
+Sign up: https://bit.ly/bybit-kyledoops
+
+BTCC - Get a HUGE 10% Deposit Bonus Up to $10,000 & Trade with Your Bonus!!!
+No KYC! Sign up: https://bit.ly/btcc_welcome_deposit_bonus
+
+PIONEX - Sign Up and Trade to Unlock a $100 Bonus and Earn up to 1,000 USDT!
+Join Now: https://bit.ly/Pionex_KyleDoops
+
+GRVT - Trade with Speed and Privacy!
+Earn 10% interest on your total trading account balance!
+Join now: https://bit.ly/grvt-kyle
+
+_____________________
+
+FOLLOW KYLE!
+
+X: https://x.com/kyledoops
+Instagram: https://bit.ly/kyle-insta
+
+_____________________
+
+Crypto Banter abide by the following code of conduct:
+https://www.cryptobanter.com/our-ethics/
+
+We take our code of ethics very seriously and have engaged @zachxbt to monitor our progress. If you feel we're not living up to it and have hard evidence please mail ZachXBT directly at reportcb@protonmail.com
+
+BEWARE OF SCAMMERS IN OUR COMMENTS AND COMMUNITY CHANNELS
+
+___________________________________________
+
+Crypto Banter is a live-streaming channel that brings you the hottest crypto news, market updates, and fundamentals of digital assets. Join the fastest-growing crypto trading community to get notified on the most profitable trades and the latest crypto market updates & news!!
+
+Disclaimer:
+Crypto Banter is a social podcast for entertainment purposes only.
+All opinions expressed by the hosts, guests, and callers should not be construed as financial advice. Views expressed by guests and hosts do not reflect the views of the station. Listeners are encouraged to do their own research.
+
+#CryptoMarket #BitcoinPrice #CryptoTrading #Kyle
+
+___________________________________________
+
+Timestamps:
+00:00 Critical Few Days for Crypto Ahead
+01:01 Stock Market Update - QQQ, NASDAQ, S&P 500, AAPL, AMZN, TSLA, GOOGL, NVDA, META, MSFT, COIN, MSTR, HOOD, BMNR, HODL
+12:27 Crypto Market Update Today - BTC Sentiment, Fear and Greed, Liquidations, Daily Exchange Volume
+15:39 Bitcoin Analysis Today - BTC Bottom
+23:00 USDT Dominance Analysis - USDT.D
+23:54 PIPPIN Analysis Today
+27:22 Energy Sector Analysis - BCO
+28:35 Short Term Bitcoin Analysis
+
+## Transcript
+
+[00:01] The next couple days will be pretty
+[00:03] important for not only Bitcoin but the
+[00:05] rest of the markets as we are starting
+[00:06] to see the cracks emerge specifically
+[00:09] within the stock market. And uh
+[00:11] interestingly enough if you have a look
+[00:12] at this this is the stock market uh
+[00:14] bubbles view which just shows how
+[00:15] bullish or bearish certain stocks are in
+[00:18] the top 100 stocks within the stock
+[00:20] market. And then if you compare that to
+[00:22] crypto unbelievably crypto is actually
+[00:24] holding up better than the stock market
+[00:25] right now which is pretty unreal right.
+[00:28] So uh going to be a couple of important
+[00:30] days ahead of us, a couple of important
+[00:31] weeks ahead of us. There is some uh
+[00:34] important information which is coming
+[00:35] out later on today. We have US FOMC
+[00:38] meeting minutes which is going to be
+[00:39] coming out. Um and then we'll see how
+[00:41] that affects things within the market.
+[00:42] Maybe it brings a bit more volatility
+[00:44] because it is very very very sideways
+[00:47] and rangebound out there specifically
+[00:49] for Bitcoin. Remember, we looked at the
+[00:51] breakdown of this um symmetrical
+[00:53] triangle which we started to leave the
+[00:55] triangle towards the downside. But since
+[00:58] then, there hasn't been any
+[00:59] follow-through, right? We're pretty much
+[01:00] back into the Monday range. You can have
+[01:02] a look at that Monday low, Monday high.
+[01:04] We're back in that trading range. So,
+[01:06] what's next? What is going to happen
+[01:07] next? We'll talk about that. Uh let's
+[01:09] first go into the equity, stocks, all
+[01:11] things uh within those markets. I want
+[01:13] to give you a reminder of what we
+[01:14] discussed yesterday, which is just very
+[01:17] quickly having a look at the IGV shares,
+[01:19] which is the uh tech software sector ETF
+[01:22] in blue coming down. Uh I want to
+[01:24] mention it because we started to see
+[01:26] QQQ, which is NASDAQ, take out those
+[01:28] lows. It didn't get followthrough.
+[01:30] Again, very similar to Bitcoin, right?
+[01:32] No followrough. It broke down, but no
+[01:34] followthrough. But will will that follow
+[01:36] through potentially be coming sometime
+[01:38] soon? Well, according to this chart,
+[01:40] they trade very very very similarly. And
+[01:42] of course there's a divergence taking
+[01:44] place right now with the blue uh being
+[01:46] the IGV the software sector selling off
+[01:49] aggressively and NASDAQ not yet
+[01:51] following through. But there it is in
+[01:53] terms of what we're looking at. We're
+[01:54] looking at the yellow line as a vitally
+[01:57] important area that you wanted to see
+[01:58] defended and um you pretty much came
+[02:01] through that level over there taking out
+[02:03] that low. So will we get follow through
+[02:05] and if so how far down will price go?
+[02:07] Well, in terms of what this is starting
+[02:09] to look like structurally, it definitely
+[02:11] looks heavier than not. It looks more
+[02:13] likely that this is going to be a lower
+[02:15] high and in the future, we're going to
+[02:17] view this as probably a bearish order
+[02:18] block that's going to have led to that
+[02:20] uh downward price momentum. How far down
+[02:23] could this take the NASDAQ or QQQ? Well,
+[02:26] the level that I've marked out from
+[02:28] current prices is going to be 13.82%.
+[02:31] So, remember not to count your chickens
+[02:33] before they hatch. you probably do want
+[02:35] to see some sort of a close below those
+[02:37] loads which is below the yellow line
+[02:38] which we haven't yet got. You wicked
+[02:40] there, you wick down below it. Um so it
+[02:43] means you traded there temporarily but
+[02:45] you haven't got any full confirmation
+[02:46] any closes that occur over there. We
+[02:48] have to bail out of the theory that this
+[02:51] is going to be an ascending triangle
+[02:53] with high lows and start to rather view
+[02:55] this as well ultimately it's getting
+[02:57] heavy and it needs to put in a deeper
+[02:59] correction coming back into some of
+[03:01] those technical support levels um which
+[03:04] uh were developed from the end of last
+[03:07] year 200 guess it's yeah 2024 it was
+[03:11] right 2024 going into 20 um 25 January
+[03:15] that's going to be where that technical
+[03:17] support will be on QQQ. So, I'm still
+[03:19] waiting for that. Dow Jones is still
+[03:21] holding up the best of the lot. It
+[03:23] hasn't taken out the red line yet. It's
+[03:24] still above the yellow box as a SR flip
+[03:26] level. That's pretty important. And then
+[03:29] we have the S&P 500, which is definitely
+[03:31] starting to struggle. It's below the
+[03:33] level that we wanted to see held as
+[03:35] support. So, therefore, considered risk
+[03:37] off, at least in my books. Risk on if
+[03:39] you can get back above that six uh
+[03:41] 6,940, which is your yellow box.
+[03:44] Otherwise, this is heavy and any bounce
+[03:46] that occurs over here has a much higher
+[03:49] probability of failing. And then similar
+[03:51] to QQQ being NASDAQ, um you would expect
+[03:54] that thing to draw down quite
+[03:56] significantly. So um there's Bitcoin
+[03:58] relative to the tech stocks over the um
+[04:02] or at least the software stocks, excuse
+[04:03] me, which is again in the blue over
+[04:06] here. Software has come down
+[04:07] aggressively. And that's comparing
+[04:09] Bitcoin um in the dark blue to the US
+[04:13] software stocks in the light pink over
+[04:15] there. And pretty much they've been
+[04:17] trading almost exact. So maybe if you
+[04:19] want a little bit of a leading
+[04:20] indicators what to what may come next
+[04:22] just go and have a look at these
+[04:24] software stocks. That's one thing to
+[04:25] consider. Now if the stock market does
+[04:28] generally draw down well we can look to
+[04:30] the big hitters. The Magnificent 7. So
+[04:33] this is MAGS right is going to be the
+[04:35] ticker. Um, you can see the RSI has come
+[04:37] down quite a lot, right? RSI is in the
+[04:40] most oversold position since the April
+[04:42] lows, which was these lows down here
+[04:44] that we got that V-shaped recovery and
+[04:46] aggressively rallied towards the upside.
+[04:47] You've also come into the 200 day moving
+[04:49] average there. So, you're getting um a
+[04:52] little bit of a bounce and then
+[04:54] underneath that we have key horizontal
+[04:56] support coming in. So, it may pull back
+[04:58] a little bit more. Of course, we can
+[04:59] look at each of these things
+[05:01] independently. Maybe we'll do a very
+[05:03] very very quick run through. We had uh
+[05:05] also while we go through that run
+[05:07] through we had Birkshshire Haway so
+[05:09] Warren Buffett's Birkshshire Hathaway
+[05:11] announcing that actually sold 77% of its
+[05:15] Amazon stake in Q4 of 2025 that was
+[05:18] worth $1.7 billion and um you know that
+[05:22] could be part of the reason why it came
+[05:24] down so much. So if you have a look at
+[05:25] that, that's Amazon huge, huge, huge
+[05:28] profit taking over there. And look at
+[05:30] that chart coming down aggressively.
+[05:31] Part of the magnificent seven getting
+[05:34] close to support, right? Getting very,
+[05:35] very, very close to support. What I'll
+[05:37] do is I'll switch over onto the daily
+[05:38] view just to give you um some
+[05:40] perspective. This is going to be be a
+[05:42] really big SR flip level. I think you
+[05:45] can probably throw in a bit of a trend
+[05:46] line over there that's going to add um
+[05:48] just some additional confluence
+[05:49] connecting those pivot points in terms
+[05:51] of the major lows. So, if this continues
+[05:53] with follow through, you're looking at
+[05:55] Amazon possibly finding support at
+[05:57] around that like $175 to $190 level.
+[06:01] Keep an eye out on that. Uh, quick look
+[06:03] at Apple. Again, we we expecting that
+[06:05] maybe this is the complacency bounce and
+[06:07] you're going to draw down deeper towards
+[06:09] where our original uh profit taking
+[06:11] areas were um into the yellow box over
+[06:13] there. And then, of course, we have
+[06:14] Tesla over there struggling at the range
+[06:16] high. We have Google over there um also
+[06:19] now coming down trading into the yellow
+[06:21] zone. The yellow zone is what I outlined
+[06:23] to Whail. If we get into that zone, um
+[06:25] that's a great area to at least shave a
+[06:27] bit of profits. So, for those of you
+[06:29] that are not in Whail, um if you're not
+[06:31] in Well, you're missing out, right? The
+[06:33] guys are absolutely um smashing it over
+[06:35] there. Huge, huge, huge profits. You'll
+[06:37] notice a lot of the trades that we're
+[06:38] taking in Whim, by the way. Um you can
+[06:40] see over here, gold shorts, gold longs,
+[06:42] a lot of them are within the traditional
+[06:45] market sector, which is providing um a
+[06:47] lot more edge and predictability on the
+[06:49] low time frame trade. So, if you do want
+[06:51] to join, there's a link in the
+[06:52] description below. But getting back into
+[06:54] that, what I was saying to the whale
+[06:55] room members in the live session
+[06:56] yesterday is you probably want to take
+[06:58] about 8% profit over here because 8%
+[07:00] profit means that you can leave your
+[07:02] stop loss in exactly the same place. Why
+[07:05] would you want to do that? You don't
+[07:06] want to move your stop to break even
+[07:07] over there because there's a high
+[07:08] probability or bounce over here and that
+[07:10] means that you're going to be exited
+[07:12] from the full position. So, in order to
+[07:14] move into a risk-free position, you
+[07:16] could rather opt for just shaving, you
+[07:18] know, 8 to 10% of this trade off over
+[07:20] here. That would cover um any of the
+[07:23] bounces over here, meaning you won't
+[07:25] draw down. You you've locked in some of
+[07:26] those profits and then leave your stop
+[07:29] in the original place. If price happens
+[07:31] to make it up here, um you know what?
+[07:33] You you nothing ventured, nothing
+[07:35] gained. You didn't lose anything in that
+[07:37] position uh because you already shaved
+[07:39] off 8 to 10% profits over there. For any
+[07:42] of you in that trade, that's the Google
+[07:44] short trade that we took. Consider doing
+[07:46] that. Right, a little bit of free alpha
+[07:47] for you over there. Right, moving into
+[07:49] Nvidia. Let's have a quick look at
+[07:51] Nvidia. Still rangebound, still chopping
+[07:53] about. If you do, however, have um let's
+[07:56] pull that chart back into view. If you
+[07:58] do, however, find support in the purple
+[08:01] zone over here, which is going to be
+[08:02] down to like 57 on the MAGs index over
+[08:05] there, that probably brings invidia back
+[08:07] down to about 150. So that would be uh
+[08:10] your correction zone. We already covered
+[08:12] Amazon over there and then Meta, right?
+[08:14] Interesting when you have a look at Meta
+[08:16] over here, starting to put in lower
+[08:17] highs. You haven't yet created new swing
+[08:19] lows, but if you start to take out um
+[08:21] you know below 600 and more specifically
+[08:24] $577. Uh this thing can come down quite
+[08:27] a lot. So that's Meta Platforms that
+[08:28] could come down as much as to $390.
+[08:32] Just to give some perspective on that.
+[08:34] Um you know, don't be too surprised if
+[08:36] you see these types of corrections. That
+[08:38] would be a 40% correction on Meta. And
+[08:41] again, I'm not calling it. I'm just
+[08:43] saying this is risk that's on the table.
+[08:45] If QQQ draws down that 13 14% which we
+[08:48] said is possible, 40% is on the cards
+[08:51] for something like Meta over there. And
+[08:53] then we go to Microsoft. Um, you know,
+[08:56] already putting in a big correction. You
+[08:58] haven't yet taken out that major swing
+[08:59] low 344. I wouldn't step in front of the
+[09:02] sell off over here. I'd rather wait for
+[09:04] strength um if you happen to be trading
+[09:06] Microsoft. But I think it's great to
+[09:08] look at the Magnificent 7 in isolation,
+[09:11] each of them individually, because that
+[09:12] will give us a bit of a clue and
+[09:14] indication what may happen with the
+[09:15] broader index. And if we know what
+[09:17] happens with the broader index, well
+[09:18] then we have a bit of an indication what
+[09:20] may happen with the total S&P 500 and
+[09:24] will you get um a rollover? Let's
+[09:26] actually have a look if this does
+[09:28] actually roll over from here. Um you
+[09:30] know, where could you be looking at for
+[09:31] that major support? Well, a little bit
+[09:33] less than QQQ. QQQ NASDAQ does trade
+[09:37] more aggressively 10% right it would be
+[09:39] a 10% draw down coming into that next
+[09:41] key horizontal support probably you come
+[09:44] through a little bit deeper than that
+[09:45] and then you'll be looking for that
+[09:46] deviation back above uh the yellow box
+[09:49] which will pull to the left hand or to
+[09:51] the right hand side for you guys to see
+[09:52] over there so uh that is what we're
+[09:55] looking at over there quick look at um
+[09:58] cryptoland or at least crypto stocks
+[09:59] over here Coinbase is getting
+[10:01] relentlessly sold over here um I saw
+[10:04] some rumors is that you know they may
+[10:07] stop the base project which which which
+[10:10] Coinbase is involved in and a lot of
+[10:12] those projects are moving onto Salana.
+[10:15] So of course that's not a good sign
+[10:17] while you also have um you know Brian
+[10:19] Armstrong of Coinbase selling his stock
+[10:21] on the sides over there absolutely
+[10:23] dumping the stock coming down
+[10:24] aggressively. So, it doesn't really
+[10:25] instill much confidence in Coinbase or
+[10:28] Coinbase stock. And consequently, your
+[10:30] next major support is um pretty much
+[10:32] actually below this line because given
+[10:34] how aggressive the selling pressure is
+[10:35] over here, um although this is key
+[10:37] technical support, you don't expect it
+[10:39] to stop on the dot over there and
+[10:42] reverse. In reality, it probably goes
+[10:44] through that level. So, maybe chops
+[10:45] about over there, then goes through and
+[10:47] then you're going to be looking for a
+[10:49] little bit of a slowdown phase or
+[10:50] deviation within that general area,
+[10:52] which is pretty brutal selling. If we
+[10:54] look at Micro Strategy over here, pretty
+[10:56] similar, consolidating under that 137,
+[10:59] which was our uh take-profit zone.
+[11:01] Remember, we covered 75% of the short
+[11:03] trade, and we've left the rest on the
+[11:05] table for a moon bag, which is probably
+[11:07] going to go down to $50 over there. So,
+[11:09] still holding on to that uh circle,
+[11:12] lower lows, lower highs. Of course, the
+[11:14] selling pressure has slowed down a bit
+[11:16] there. And then we have Robin Hood,
+[11:18] which we haven't looked at for a while.
+[11:19] Um, I believe we did cover some of the
+[11:21] short trade over here, but I think it's
+[11:23] good to go to meet that 65 target,
+[11:25] possibly even go through that,
+[11:27] especially if we have NASDAQ coming down
+[11:29] um aggressively and then Bitine uh is is
+[11:33] pretty much getting hit very hard. I
+[11:34] think it's going to fill this little gap
+[11:36] over here. Um, which means Bitine, you
+[11:38] know, back down into the 78, which is
+[11:41] percentage- wise, that's brutal, right?
+[11:43] That's another over 50% 50 to 65% sell
+[11:47] off over there. So a lot of these um you
+[11:50] know DAT companies are getting
+[11:52] absolutely rinsed. The DAT companies are
+[11:53] companies that raise funds like Micro
+[11:56] Strategy to try and buy XY Z coin most
+[11:59] notably Ethereum and Salana. So um a lot
+[12:03] going on over there. All right, let's
+[12:05] move on into um Cryptoland. Again, quick
+[12:08] reminder for those of you that do want
+[12:09] to join into Well, uh there is spots
+[12:12] that are available currently if you use
+[12:14] the link that's in the description
+[12:15] below, guys. Also, smash the like button
+[12:17] there. help me out. Um, you can join,
+[12:19] right? The link is over there for any of
+[12:20] you that want to get into whail room. A
+[12:22] whole lot of alpha, a lot of traders.
+[12:24] It's not just me, right? We have four
+[12:26] other coaches over there to assist you
+[12:28] with your day-to-day trading. All right,
+[12:30] moving on onto the whale trades platform
+[12:31] over here. Long to short ratio
+[12:34] relatively balanced. Hence, price is
+[12:35] just moving stable and sideways. Uh,
+[12:37] fear and greed at 8% over there. Funding
+[12:40] rate coming into panic. It can remain in
+[12:42] that environment for quite a long period
+[12:44] of time. So, do not forget that. You can
+[12:46] always just go back to um the prior bare
+[12:49] markets, right? Go back to the pri bare
+[12:50] markets. You can see you spend a lot of
+[12:52] time there. Purples, purples, purples,
+[12:55] right? That is your panic environment.
+[12:56] Panic, panic, panic, panic, panic all
+[12:58] the way down for the full bare market.
+[13:00] So don't confuse this with a being a buy
+[13:02] signal. Yes, we usually sell the greed
+[13:05] and buy the panic, but it needs context,
+[13:08] right? So we're not contextually in that
+[13:10] environment yet where I think it's a
+[13:11] wise idea to step in. we might have one
+[13:13] more leg down and then that could be the
+[13:15] time uh to get in. So the 24-hour
+[13:18] liquidations have tapered off a little
+[13:20] bit now below 200 million. Again, most
+[13:22] of those are still the longs that are
+[13:24] getting liquidated. The buy the the buy
+[13:25] the dip rows are still there and until
+[13:28] they're completely completely gone. um
+[13:30] expect that selling pressure will
+[13:32] probably persist. Uh as well as the
+[13:34] daily 7-day exchange moving averages
+[13:37] coming down just reinforcing that
+[13:40] there's not much um you know attention
+[13:42] on this market right now. And uh we can
+[13:44] see that because if we go to the funding
+[13:47] rate heat map this shows are people
+[13:49] still um you know long on leverage and
+[13:52] yes there are a few there's a few people
+[13:54] that are long on leverage. You can see
+[13:55] over here if we go that way. Uh the
+[13:57] leverage traders are long on things like
+[13:59] Pippen. They are long on things. I don't
+[14:02] know how this is how this is even
+[14:04] possible. Is that correct? Uh they are
+[14:06] long. Is that I need like a ruler for
+[14:08] this or something. I need like a long
+[14:09] ruler to just double check this. But
+[14:11] they're long on ton. They're long on X
+[14:14] A. They're not even long on gold. X AU,
+[14:17] right? Not not long. Okay, that is
+[14:19] actually X A. So they are long on there
+[14:21] on silver. Not long on gold. uh they are
+[14:25] had been long on on a but that was a
+[14:27] long period of of time ago. So really
+[14:28] all that there is is is X A Pippen and X
+[14:33] AU. So Metals and Pippen the memecoin.
+[14:37] Let's go back to Pippen over here. Let's
+[14:38] go back to Pippen and see what is going
+[14:40] on with this thing. Um where is Pippen?
+[14:42] Let's move on to the uh the daily time
+[14:45] frame and see if this just pops up over
+[14:47] here. Um I think it had a bit of a sell
+[14:50] off over here. Let's find it quickly.
+[14:51] So, what's going on with Pippen? Up 11%.
+[14:54] Go on to the yearly chart. Big move up.
+[14:57] Huge [snorts] sell off, right? So, it's
+[14:58] come down quite aggressively if you look
+[14:59] at that daily view. Brutal from 63 cents
+[15:03] down to 43 cents. Um, pretty pretty
+[15:06] brutal over there. So, beyond that, the
+[15:08] point is that the leverage has been
+[15:10] completely wiped. So, most of the
+[15:12] leverage is out the market at the
+[15:14] moment. There's just those last few
+[15:16] stragglers. If we look at the
+[15:17] liquidation levels and the um uh you
+[15:20] know difference between the longs and
+[15:22] shorts over here on the deltas uh
+[15:24] Bitcoin slightly negative, ETH slightly
+[15:27] negative, Salana is mostly flat, SUI is
+[15:29] flat, um Sonic is slightly positive and
+[15:32] AA is slightly negative. So very very
+[15:34] very mixed signals over there and we're
+[15:36] starting to form a big trading range.
+[15:38] Liquidity is stronger below price than
+[15:40] it is above. We got most that liquidity
+[15:42] $66,400
+[15:44] 67 million and then on the top side we
+[15:47] only have 61 million at $71,000. So what
+[15:51] does this mean? Well, we are at a
+[15:53] critical support level. As you can see,
+[15:55] as per the yellow box over here, these
+[15:57] were the previous all-time highs. This
+[15:59] is a cluster of resistance. You're
+[16:00] probably going to continue to chop about
+[16:02] and consolidate into this level. We're
+[16:04] below the macro 50% level, which is not
+[16:06] a good sign. Whenever you've lost that
+[16:08] midpoint, price does tend to go on and
+[16:11] correct um you know a whole lot further.
+[16:14] It can go back. It can go down as far as
+[16:15] another 50% which would take you to
+[16:17] $34,000.
+[16:19] Now, where would be a wise opportunity
+[16:22] to consider that the bottom is in and
+[16:24] it's time to go risk on? Remember each
+[16:26] and every passing week time is um you
+[16:29] know time is your friend if you're a
+[16:30] bear right now because we have the stop
+[16:33] and reversal indicator as well as the 21
+[16:35] EMA which is coming down aggressively
+[16:37] which becomes our validation zone to get
+[16:39] bullish um once again and uh
+[16:43] invalidation on the bearish side meaning
+[16:45] if you can trade back above those levels
+[16:47] well you can start to potentially flip
+[16:50] on the long side once again. And the
+[16:52] beauty is that this is coming down quite
+[16:53] aggressively now, which means that um
+[16:56] you know our confirmation of getting
+[16:58] long again will occur at a lower and
+[17:00] lower price, which means if you're in a
+[17:02] cash position, you're going to be buying
+[17:03] more and more Bitcoin when that time
+[17:05] eventually comes. So at this current
+[17:08] pace or rate, you know, if uh price uh
+[17:12] doesn't start to bounce anytime soon and
+[17:14] we continue to hover around here, that
+[17:16] level is going to drop down to like
+[17:17] under $80,000. As of right now, it's
+[17:20] still $86,000.
+[17:22] So, you can vote on the poll. When do
+[17:25] you think Bitcoin will trade back above
+[17:26] $80,000 again? Do you think within 2
+[17:29] weeks? So, in other words, you're
+[17:30] looking for a short squeeze over there.
+[17:32] Do you think in 2 to 8 weeks? That's 21%
+[17:35] of you. Look how equally split this is.
+[17:36] This is the most equal poll I've
+[17:38] probably ever seen. 21, 21, 20, and 38.
+[17:41] 2 to 4 months from now says 20% of you.
+[17:44] So basically, we got 60ish% of you that
+[17:47] believe within the next four months,
+[17:48] we're definitely getting a short
+[17:49] squeeze. And then 38% of you believe
+[17:52] four months from now, and 80K is not
+[17:54] safe. We're not even going to 80K. So, I
+[17:57] think you could easily short squeeze
+[17:59] into the 80K zone. Just look at it from
+[18:01] a percentage perspective. Um, it's
+[18:03] really not that far for Bitcoin to to
+[18:06] put in an 18% move. Um, it sounds like a
+[18:09] lot as a percentage move, but
+[18:11] structurally it's not that much
+[18:12] considering how far prices come towards
+[18:14] the downside. Right now, you're still
+[18:17] below all those moving averages. Um, you
+[18:20] know, time shifts. It's like a pendulum,
+[18:23] right? When when you're looking at
+[18:25] timing within the market, it's like a
+[18:26] pendulum. So, the way that I'd phrase it
+[18:29] is the longer that we hang around here,
+[18:31] the more likely it is that you're going
+[18:33] to break down because you're going to
+[18:34] start to create a bare flag, right? a
+[18:37] massive, massive, massive bare flag the
+[18:38] longer you hang out below $70,000. But I
+[18:42] just said time can be like a pendulum
+[18:44] because that's relevant for about
+[18:46] another 2 weeks or so. If you start to
+[18:49] base out around here for longer than 2
+[18:51] weeks, well then the pendulum swings
+[18:53] from the bearish side to the bullish
+[18:55] side in the in the sense that even
+[18:57] though you're still below that level,
+[18:58] well, it might actually start to look
+[19:00] like reaccumulation where you will be
+[19:02] going in for that short squeeze higher.
+[19:05] So, that's why you got to watch a show
+[19:06] every day. If you don't follow me on X,
+[19:08] go and follow me on X over there. Um,
+[19:10] and make sure that you you stay up to
+[19:12] date. Turn the bell notification on
+[19:14] because things change, right? That's why
+[19:16] you can't leave and come back or you're
+[19:18] not going to have context to to how
+[19:20] things are shifting within the market.
+[19:22] So, uh the timing is going to be
+[19:24] important for the next couple of days.
+[19:28] Um, most specifically two weeks, we give
+[19:30] the edge to the bears. But if they still
+[19:33] holding out and bears haven't broken
+[19:35] price down in the next two weeks, then
+[19:37] maybe things are going to shift back
+[19:38] into the bulls court where we can say
+[19:40] this is minor reaccumulation and we're
+[19:42] looking for that move higher into major
+[19:44] resistance over here at 85 to 90K. But
+[19:46] for now, you still rejecting off the 9
+[19:49] and the 18 EMA, the 9 EMA more
+[19:51] specifically. Price hasn't managed to
+[19:53] get back through that level and you have
+[19:55] that bare moon that's in play. Um and in
+[19:58] terms of you know just structurally
+[19:59] looking at these closes over here uh you
+[20:02] are closing marginally lower which means
+[20:05] if you come back into this high
+[20:07] probability that you're going to start
+[20:08] to break and then we have to look to the
+[20:10] low 50s. So what is my positioning just
+[20:12] in case there's any confusion out there
+[20:14] my positioning is still mostly cash.
+[20:16] When I say mostly I'm talking like you
+[20:19] know well over 95% in USDT and um stable
+[20:24] coins. And basically I'm just waiting.
+[20:26] I'm just in a waiting uh uh environment
+[20:29] over here. The riskto-reward to short it
+[20:31] down into next support is not really
+[20:32] worth it in my opinion. Um but the risk
+[20:35] to reward to long it right now is not in
+[20:37] alignment with the timing aspect and I
+[20:39] think it's too risky. So, yep. It's a
+[20:41] boring game, but it pays, right? It
+[20:43] pays. I'm making more Bitcoin each and
+[20:45] every day while I've waited on the
+[20:47] sidelines and prices come down over 50%
+[20:50] since the highs. So looking at the um
+[20:53] hourly chart over here, much of the much
+[20:56] of the same of what we covered
+[20:57] yesterday. Uh we swept the Monday low.
+[20:59] We spoke about how you could
+[21:00] theoretically be looking for a long
+[21:02] trade to hedge right towards the upside
+[21:04] in the event that price does um of
+[21:07] course break up, right? Because we said
+[21:09] when you get to these symmetrical
+[21:10] triangles, you can look for both the
+[21:11] long and the short. And you can be
+[21:13] pretty much well hedged with stops move
+[21:15] to break even on both of those. And then
+[21:17] basically all you do is you let the
+[21:19] market decide when that volatility
+[21:21] expansion wants to come into play. So
+[21:22] I'm going to very quickly remind you
+[21:24] because I think I saved it over here was
+[21:26] the short position, right? So the short
+[21:28] position would already be in the money.
+[21:30] So you could eliminate the risk by
+[21:32] moving the stops to break even over
+[21:34] there on the short trade. And if the
+[21:36] short trade plays out, well, you're
+[21:37] looking at TP1 at $65,000, TP2 coming at
+[21:41] $60,000, and then you're leaving a moon
+[21:43] bag down for like $50,000, which would
+[21:46] be the full breakdown. And
+[21:48] alternatively, if you were looking for
+[21:49] the long trade, which I told you that
+[21:52] the high probability trade would have
+[21:53] probably been the short trade, well, you
+[21:55] would you would have gone long over
+[21:57] here, reclaim of the Monday low, stops
+[21:59] below there. Um, and you're basically
+[22:01] trading for most of your take profits
+[22:03] into 71,400. So, this is uh more
+[22:06] speaking to the low time frame traders.
+[22:08] If you're a high time frame trader,
+[22:09] don't even don't even uh worry. Just
+[22:11] check out on that part of what I just
+[22:13] said. Focus on everything else I said
+[22:15] before this. That's only for the low
+[22:17] time frame traders. So, your point of
+[22:19] control, just to label it, 68,000. I'll
+[22:21] actually put a price label so you can
+[22:23] screenshot it for yourself at home if
+[22:25] you want to. Um there it is. That's the
+[22:27] level. It's kind of in the mid-range as
+[22:29] well between the Monday high and low.
+[22:31] That's going to be a pretty big
+[22:33] important resistance area coming in just
+[22:35] below a smidge like $70 below um
+[22:38] $69,000. So it's $68,930.
+[22:42] All righty. Um so chop it is Chop City
+[22:46] price continues to to uh chop about if
+[22:49] you're a low time frame trader um and
+[22:51] you want to earn some extra rewards. By
+[22:53] the way guys, you can get up to $9,400
+[22:56] on Blofen. No KYC required, right?
+[22:58] Blofen doesn't have any KYC. Um, and
+[23:01] they have five block security, which
+[23:02] means your funds are safe. So, if you
+[23:04] want to join in on that incentive, um,
+[23:07] for anyone that is still around, there
+[23:09] is a video that will show you exactly
+[23:11] exactly exactly how to claim your bonus.
+[23:14] Right, just go through over there. It
+[23:15] will show you what to do, where to
+[23:16] click, and how to get those $9,400
+[23:19] bonuses. All right, keeping a close,
+[23:22] keen eye out on the USDT dominance. We
+[23:24] still, just like Bitcoin, chopping
+[23:26] about, still riding this 50 EMA. I'm
+[23:29] keeping an eye on that. that is on the
+[23:30] 4hour time frame. Your hourly has
+[23:33] recrossed bullish with a golden cross 50
+[23:35] cross above the 200. Um you know we'll
+[23:38] see if this is going to maintain as an
+[23:39] uptrend. If it is then prices are going
+[23:42] to come down. I would expect it's going
+[23:44] to have a lot to do um the next little
+[23:46] bit of volatility is probably going to
+[23:47] come off of that that FOMC meeting um
+[23:51] later on today. So of course we can have
+[23:53] a look at altcoins. We already did a
+[23:56] couple of them yesterday. I'm just going
+[23:57] to actually scroll through to see is
+[24:00] there anything of interest. Um, you
+[24:02] know, one of the things we can look at
+[24:03] is Pippen because Pippen, I guess, is
+[24:05] the one of the only places that that
+[24:07] there are leverage longs on the table.
+[24:09] So, let's go see what's going on with
+[24:10] this Pippen chart. All right. So, I'm
+[24:14] going to need to clean this chart up a
+[24:15] little bit because we have a lot of
+[24:16] different um prior range levels and
+[24:19] things going on over here. Let's just
+[24:20] clean that up. Um, all right. So, since
+[24:23] this move up, you can't really trade
+[24:25] this in my opinion. you are going to get
+[24:27] hurt 385% up followed by currently
+[24:30] already 43% down. Ultimately, I think
+[24:33] it's going to rug and it's going to come
+[24:35] all the way down here. It's just can you
+[24:37] time that as a trade and truthfully I
+[24:40] don't think that you can because it's
+[24:42] highly highly highly manipulated. But I
+[24:44] know some of you were requesting Pippen.
+[24:47] Um that's all that I can comment. You
+[24:49] got a little bit of a trend line
+[24:50] developing over here. Um TA doesn't
+[24:52] really work too well on manipulated
+[24:53] charts. Okay. Um, all righty. What else?
+[24:58] Okay, guys, let me check your comment
+[25:00] section over here. Just see what's going
+[25:01] on over here. Uh, in terms of the
+[25:05] trades, you know, I know some of you
+[25:07] say, "What's the trade of the day?" Most
+[25:09] of that is going to be within the equity
+[25:11] market, and a lot of those trades have
+[25:12] already been executed on. So, trade of
+[25:16] the day in the crypto market, honestly,
+[25:19] there's not much. There's not much. I
+[25:20] think you could probably look out for
+[25:21] another short trade. So that short trade
+[25:24] would would stops would already be moved
+[25:26] to break even. The opposite would be
+[25:28] well maybe sweep the Monday low, run it
+[25:31] back above the Monday high, sweep the
+[25:33] Monday high and then you come down. That
+[25:35] would be like a double trap, right? So
+[25:37] you create the the um the shakeout trap
+[25:39] towards the downside. So shaking out the
+[25:42] longs, then immediately run it towards
+[25:44] the upside, shake out the shorts, and
+[25:46] then you put in the real move. So, you
+[25:48] could probably look for another short
+[25:49] trade if if if um you know, you're
+[25:52] paying attention and you're watching for
+[25:53] the sweep of that Monday high. What I've
+[25:55] noticed as well is more recently the
+[25:58] Monday range trades, which the idea is
+[26:00] you you longing off the Monday low,
+[26:02] shorting off the Monday high based on
+[26:03] the deviation of that range. Most of
+[26:06] this has actually been happening really
+[26:07] really late in the week. So, what's been
+[26:09] happening is let's say for example, um
+[26:11] you put in the real breakdown move, you
+[26:14] expect that you're only going to sweep
+[26:15] this on like Thursday or Friday and then
+[26:17] the breakdown takes place. Okay.
+[26:20] All right. What did I vote on the poll?
+[26:23] Look, it's a bit of guesswork when it
+[26:24] comes to these polls. It's more just
+[26:27] like don't overthink it. I I voted on
+[26:30] the poll that um within two to four
+[26:33] months, definitely within two to four
+[26:35] months, I think that you'll have some
+[26:37] sort of a short squeeze. It could be
+[26:38] even sooner. It could even be now within
+[26:40] the next two to eight weeks. But I'll
+[26:42] re-evaluate based on the timing aspect.
+[26:44] So, um, if price two weeks from now
+[26:47] still hasn't broken down, I think that
+[26:49] is going to begin to shift where you
+[26:50] really have to start to look for that
+[26:51] that short squeeze. And I I just want to
+[26:53] be clear, you know, that short squeeze
+[26:55] could happen right now. It's not to say
+[26:56] that it can't. I just think in terms of
+[26:59] probabilities, I'm just going to be
+[27:01] looking at this and if it's still
+[27:02] trading here um you know into March,
+[27:05] chances are that you're going to go for
+[27:07] that short squeeze. Okay. Uh there's a
+[27:09] difference between you know analysis and
+[27:12] trying to predict where things may go
+[27:14] and actually taking the technical trade.
+[27:16] So in terms of the technical trade, I
+[27:19] don't really think there's too much
+[27:20] that's high probability on the table.
+[27:22] Let's quickly go back into um
+[27:25] traditional markets because I forgot to
+[27:27] have a look at the energy sector which
+[27:29] is pulling back marginally. Still like
+[27:32] insanely bullish that move up over
+[27:33] there. But having a look at the uh the
+[27:36] oil trade, it's still potentially on. So
+[27:40] I'm still following the same strategy.
+[27:41] I'm willing to take a loss on this um
+[27:44] just to have a bit of exposure but
+[27:46] scaling in into the into the triangled
+[27:48] area. So buying smaller at the top, a
+[27:50] little bit larger on the bottom. um if
+[27:52] it does start to take out these lows,
+[27:53] I'll just I'll just exit that position.
+[27:55] uh because it may be a scenario where if
+[27:57] the stock market pulls back kind of like
+[27:59] uh everyone goes risk off even within
+[28:01] oil and you get a bit a bigger pullback
+[28:03] and there's a lot of geopolitical things
+[28:05] going on like um you know the tweets are
+[28:08] doing the rounds that you know Iran was
+[28:10] firing missiles then it turned out that
+[28:12] it's just a routine um you know drill
+[28:15] that they have in the same area all the
+[28:17] time but people are like eating up that
+[28:19] news and of course that's creating a lot
+[28:21] of volatility over here. Okay.
+[28:24] All righty. Um, what else? What else,
+[28:27] guys? Let's see. Let's see what else.
+[28:29] So, yeah, bit of a boring market today,
+[28:31] but we'll see. Usually, you need to pay
+[28:33] the most amount of attention when it is
+[28:35] the most boring. And I want to actually
+[28:36] go back into that. So, here it is as
+[28:38] well. This ties into the timing aspect
+[28:41] of what I was saying. So, usually, um,
+[28:44] low volume over there means that it's
+[28:46] very easy for the move to continue in
+[28:49] the trend direction. But if price
+[28:52] continues to hang out over here and that
+[28:54] volume is also gone, same thing.
+[28:56] Eventually that can start to look like
+[28:58] silent reaccumulation taking place and
+[29:00] there's a possible deviation, but it's
+[29:03] too soon to tell. So overall, I don't
+[29:05] want to confuse anyone. Overall, still
+[29:06] more bearish than bullish, right? To be
+[29:08] clear, more bearish than bullish. If
+[29:10] price squeezed up over here to 80K, it
+[29:12] wouldn't surprise me. Um, even if I knew
+[29:15] it was coming, it would be a very
+[29:17] difficult thing to trade. Uh, uh,
+[29:19] because the probabilities are not very
+[29:20] high. So, right now, still more bearish
+[29:23] than bullish. Okay. Uh, for the oil bot,
+[29:27] do you copy it? You can, of course, if
+[29:29] you want to copy it, you can copy it or
+[29:30] you can just set it up yourself in the
+[29:32] settings. So, that is on uh, Pinex. If
+[29:35] you just go to the link below and you
+[29:37] click that, um, there is Pinex. It
+[29:40] should, you might have to go back to
+[29:41] yesterday's video. You can just add this
+[29:43] below where it says copy the bots. We'll
+[29:45] just add that link below. That's for in
+[29:47] check in in about like 30 minutes from
+[29:49] now um after this live session and you
+[29:52] should have that. Other than that guys,
+[29:53] that's it from me. I do appreciate all
+[29:55] of you. Thank you so much for joining
+[29:56] today. Um and I'll see you on the next
+[29:58] one. Have a good day and cheers.
+[30:02] [music]

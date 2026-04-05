@@ -1,0 +1,40 @@
+{
+  agents: {
+    defaults: {
+      // Main model with fallback chain (different providers for resilience)
+      model: {
+        primary: "anthropic/claude-opus-4-5",
+        fallbacks: [
+          "openai/gpt-5.2",
+          "deepseek/deepseek-reasoner",
+          "google/gemini-3-flash"
+        ]
+      },
+      // Define model aliases for /model command
+      models: {
+        "anthropic/claude-opus-4-5": { alias: "opus" },
+        "anthropic/claude-sonnet-4-5": { alias: "sonnet" },
+        "google/gemini-3-flash": { alias: "flash" },
+        "deepseek/deepseek-chat": { alias: "ds" }
+      },
+      // Cheap model for background heartbeats
+      heartbeat: {
+        every: "30m",
+        model: "google/gemini-2.5-flash-lite",
+        target: "last"
+      },
+      // Sub-agents use cost-effective model
+      subagents: {
+        model: "deepseek/deepseek-reasoner",
+        maxConcurrent: 1,
+        archiveAfterMinutes: 60
+      },
+      // Vision tasks
+      imageModel: {
+        primary: "google/gemini-3-flash",
+        fallbacks: ["openai/gpt-5.2"]
+      },
+      contextTokens: 200000
+    }
+  }
+}

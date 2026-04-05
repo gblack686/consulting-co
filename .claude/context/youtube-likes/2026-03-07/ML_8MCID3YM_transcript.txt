@@ -1,0 +1,764 @@
+[0:00] Right now, your open claw is operating
+[0:02] at probably 1% of what it can actually
+[0:05] do. And in today's video guide, I'm
+[0:08] going to be showing you how to make your
+[0:10] open claw 10,000 times stronger than it
+[0:14] is today. And I know that that might
+[0:16] sound overkill, but by the end of this
+[0:20] video, you're going to be able to
+[0:21] connect your open claw to anything.
+[0:23] You're going to be able to scrape
+[0:25] everything and you're going to be able
+[0:26] to automate flawlessly whatever you so
+[0:30] want to. And I've also made it a point
+[0:33] to create seven different workflows that
+[0:36] you can use for your open claw. I
+[0:38] basically built them with business
+[0:40] owners, creators, or anyone willing to
+[0:42] sell more service to make more money or
+[0:45] to simply grow their brand. So, if that
+[0:48] sounds interesting to you, then let's
+[0:50] dig right into it. All right. So here we
+[0:54] see our little miro here. You know that
+[0:56] I love my miros. It takes forever to
+[0:59] create. I'm not like the other creators
+[1:01] that simply tell their open claw to
+[1:03] create an Excaliraw file for them which
+[1:05] they then slap into Excaliraw and then
+[1:08] they read on top of that. No, no, no,
+[1:10] no. We create our things from scratch so
+[1:13] that we can be real. Cool. So I just
+[1:16] want to start here by saying that out of
+[1:18] the box, right, OpenClaw is great. You
+[1:21] have it as your personal assistant. It
+[1:22] does things for you, but it kind of
+[1:24] feels a little bit like Jim Carrey. It's
+[1:27] a little bit off. It could be so much
+[1:29] more because what is the point of Open
+[1:31] Claw if everything that you're doing
+[1:33] could basically be done with Cloud Code.
+[1:35] So, let's make it 10,000 times stronger
+[1:39] than it is today so that you can start
+[1:41] making more money and feel a little bit
+[1:43] more like Sam Alman. So, let's just jump
+[1:45] into it, right? Open Claw, right? It can
+[1:47] do automations for you. It can do
+[1:48] scraping. It can do browser automation
+[1:51] and you can do reasoning between steps.
+[1:53] You can have workflows, chron jobs that
+[1:56] run automatically on a schedule. This is
+[1:58] all great and you can do the same for
+[2:00] cloud code as well, right? It can cook.
+[2:02] But there's a catch here. Like out of
+[2:04] the gate, if you're doing this with
+[2:06] cloud code or if you're doing this with
+[2:08] openclaw, it is not going to be able to
+[2:11] do that on a large large scale. And
+[2:14] that's because, well, one, your token
+[2:17] cost is going to be humongous. Secondly,
+[2:20] it's just not built to be a scraper.
+[2:23] Like, if you were to do this through a
+[2:25] browser relay with the extension, for
+[2:28] example, kind of like if you were to use
+[2:30] the cloud extension, it is slow. It
+[2:32] takes forever and it eats up tokens if
+[2:35] you decide to do it that way. So, I've
+[2:37] teased you enough. Let's solve that
+[2:40] issue, right? We're going to be all
+[2:42] happy. And that's the video I got for
+[2:44] you today. So in the description below,
+[2:47] I have linked a GitHub repository and
+[2:50] I've also linked my website where you
+[2:52] can do a search where you can give your
+[2:54] open call access to 10,000
+[2:57] different APIs. I think I think there's
+[2:59] actually 15,000 or or 20,000 APIs. You
+[3:02] can give your open call access to these
+[3:04] APIs right now today just by clicking in
+[3:07] that link. And in there, you can send it
+[3:09] to your cloud code and you're going to
+[3:10] be able to make power of 10,000
+[3:13] different scrapers, skills, actions,
+[3:16] MCPs that you're going to be able to
+[3:18] leverage into workflows. And if you
+[3:20] don't know what an API is, an API or
+[3:22] application programming interface. It's
+[3:24] a set of rules or protocols that enable
+[3:26] software applications to communicate
+[3:27] with each other and exchange data
+[3:29] features and functionality. That is the
+[3:30] scientific terms. Basically, your open
+[3:32] claw can connect to a service or
+[3:35] something that does something for you
+[3:37] that you want. So, for instance, you can
+[3:38] connect to my solution called so
+[3:41] scripted where you can get
+[3:42] transcriptions from any sort of video.
+[3:44] Now, the APIs I'm going to provide you
+[3:46] today are actually going to be able to
+[3:47] do this as well. So, I'm kind of being
+[3:49] stupid for giving you this, but hey,
+[3:51] let's make your open claw 10,000 times
+[3:54] stronger so that you can sell your
+[3:56] services, so that you can sell workflow
+[3:58] automation as a service. for example,
+[4:00] you can automate your business more, you
+[4:02] can get more clients, you can grow your
+[4:04] personal brand, and hopefully like I
+[4:06] cannot cover everything inside of this
+[4:08] video, but the idea is for you to get
+[4:10] inspired, search through the database,
+[4:12] find what you can connect to, and then
+[4:14] make your wildest dreams come true with
+[4:16] whatever API you want to use. So, what
+[4:20] we're going to use here is something
+[4:21] called Appify. If you're not aware what
+[4:24] Ampify is, Appify is basically a
+[4:27] solution where people and also their
+[4:29] platform has built custom scrapers,
+[4:31] custom skills, custom MCPs so that you
+[4:34] can integrate that with whatever
+[4:36] solution or programming that you're
+[4:37] doing to basically get information that
+[4:40] you've never had access to before and
+[4:42] especially if you want that at a large
+[4:44] scale. So you can get that for instance
+[4:47] if you were to do let's say 100
+[4:50] different businesses scraping that from
+[4:52] Google maps using openclaw or claw code
+[4:55] well you would get like a 100 businesses
+[4:57] perhaps and that would take it quite a
+[4:58] while it would cost you tokens and so on
+[5:00] and so forth. If you were to use appy
+[5:03] well you would be able to get let's say
+[5:05] a thousand businesses and it would take
+[5:07] you two seconds to do that depending on
+[5:09] right don't quote me on that it could
+[5:11] take longer. So let's jump into the
+[5:13] GitHub. All right. So, inside of this
+[5:17] GitHub, you're going to be able to
+[5:19] basically find whatever sort of API that
+[5:22] you want. And you can even send this
+[5:24] list to your Open Claw and have it go
+[5:27] through it to find APIs that are viable
+[5:31] with your Open Claw. And all you have to
+[5:33] do really is just say, "Hey, open or
+[5:36] whatever. Hey, please look at this
+[5:39] GitHub and find me APIs to automate X,
+[5:44] right? Automate whatever you want. And
+[5:46] you can do multi-step workflows as well.
+[5:48] I have also published this on my website
+[5:51] if that's easier. Maybe you want to find
+[5:53] something for Facebook. You're going to
+[5:55] be able to find different APIs for that.
+[5:57] I have, however, not implemented all of
+[6:00] the different ones. And the the search
+[6:02] function is not 100% reliable as well.
+[6:05] But if we do lead for example, you will
+[6:08] be able to find lead scrapers. You will
+[6:10] be able to use whatever. On top of that,
+[6:12] you could also just go directly to
+[6:14] ampify which I've also linked to in
+[6:16] description below. So with that in mind,
+[6:19] let's now jump into how you can connect
+[6:22] these APIs to your open claw so that you
+[6:25] can do this in mass, right? So once you
+[6:28] go into Appify and you click the link in
+[6:31] the description and you log in, you want
+[6:33] to go into your settings and click on
+[6:35] API and integrations. Here you will be
+[6:38] able to find your API token. We're going
+[6:40] to copy that and I'm going to show you
+[6:42] how to connect it to your VPS and also
+[6:44] your local server since we're doing
+[6:47] multiple setups right now. So, inside of
+[6:50] Hostinger, which you're probably using
+[6:51] because you probably watched my video or
+[6:53] someone else's video on the setup,
+[6:55] you're basically just going to go into
+[6:57] your Docker manager. You're going to go
+[6:58] into projects, and we can click that.
+[7:02] And you're going to go into manage. And
+[7:04] inside of manage, you're going to go
+[7:05] down to environment. And here, you're
+[7:07] going to click on plus environment. And
+[7:09] you're going to basically make appy
+[7:12] API_key.
+[7:14] And then you're going to paste your API
+[7:16] key in that and save and deploy that to
+[7:20] your server. Now, whenever you're
+[7:22] referencing or talking to OpenClaw,
+[7:25] you're going to be able to say, "Hey, I
+[7:27] just added my Ampify API key. Let's
+[7:29] connect and use whatever service or
+[7:31] scraper that you connected to. All
+[7:33] right. So, if you want to connect it to
+[7:35] your local setup, now you can log into
+[7:39] your local setup you or or whatever. I'm
+[7:42] right now on the screen of my MacBook
+[7:44] Pro, so I cannot I'm not going to do
+[7:46] this right now. But all you have to do
+[7:48] is just say, "Hey, Open Claw, please add
+[7:52] my Amplify API key to my Env document."
+[7:56] Here it is. And then you just paste your
+[7:59] API key if you're alone on your server.
+[8:02] Now, if you're not alone, you want to go
+[8:04] into your local and you want to go into
+[8:06] your OpenClaw folders and find your ENV
+[8:09] file where you will be able to add your
+[8:11] credentials. And you just do the same
+[8:12] thing as you did on Hostinger, but in a
+[8:16] written file basically. And once that's
+[8:19] done, well, you've got your Appify API
+[8:23] key installed. After that, I recommend
+[8:26] you go through whatever services you
+[8:29] want to do. So in for instance, we're
+[8:31] going to go through Instagram scraping,
+[8:33] Google map scraping, Instagram scraping,
+[8:35] Tik Tok, Reddit, leads finding, website
+[8:38] crawling, Facebook ads library, and a
+[8:40] little bit more. So if you want to use a
+[8:43] service through the MCP, here's how I
+[8:46] recommend you do. You basically go into
+[8:48] any sort of ampify scraper or MCP or
+[8:51] anything that you want to use and you
+[8:52] click on API and you go to MCP
+[8:55] configurator. Now, what this is going to
+[8:58] allow you to do is you're going to be
+[8:59] able to add or remove actors that you
+[9:02] basically have in your account. So, you
+[9:03] select everything that you kind of want
+[9:04] to connect and then you can select all
+[9:07] of whatever, right? Let's connect all of
+[9:09] these for example. And then you want to
+[9:11] scroll down. You want to have basically
+[9:14] select all of these things so you can
+[9:16] have all of these functions available
+[9:18] for your MCP. And now what you want to
+[9:21] do is you want to go to the JSON config
+[9:23] here. You take this file right here. You
+[9:27] can add your API token as well. And then
+[9:29] you copy this over. And now you can go
+[9:32] into your uh Open Claw. Make sure you
+[9:35] are on Opus 4.6 before you do this
+[9:38] because now you're going to change your
+[9:40] config file through your settings or
+[9:43] through your Open Callbot, right? So you
+[9:47] take that text, you add your API token
+[9:50] or you can just say that it's it's in
+[9:52] your ENV file and you send that to to
+[9:55] OpenClaw and tell it set up this MCP
+[9:58] server and it's going to do that for
+[9:59] you. And now you're going to have access
+[10:02] to all of these options right here. That
+[10:05] is basically how you do that. There's
+[10:07] both ways you can do you can also do it
+[10:09] manually. If you go into your gateway
+[10:11] inside of your uh your hosting or inside
+[10:14] of your local, you can also add it
+[10:16] directly to the raw config files there.
+[10:18] But I recommend because there's so going
+[10:21] to be so many comments and errors where
+[10:23] they're break their setups. Just simply
+[10:25] add it into your OpenClaw setup and let
+[10:28] let openclaw handle it. But make sure
+[10:30] you're on 4.6 so it's actually good.
+[10:32] Awesome. So now guys, finally, let's
+[10:36] jump into the workflows that I've got
+[10:39] for you today. And keep in mind that all
+[10:42] of these workflows are going to have
+[10:44] additional steps, setup points, and
+[10:47] you're going to have access to to this
+[10:48] this whole miro in the description
+[10:51] below. I am currently working on setting
+[10:53] up these workflows. So you can basically
+[10:55] just copy and paste my whole setup
+[10:57] inside of my school group. And if you
+[11:00] want to join the school, just click
+[11:01] below and check that out. Awesome. Let's
+[11:04] jump into it. So workflow number one is
+[11:07] Google Maps Outbound. And it works very
+[11:10] simply like this. You're going to use
+[11:11] the Google Maps scraper from Ampify. And
+[11:14] what is going to happen is that you're
+[11:16] going to do an automatic trigger every
+[11:18] week, every day, up to you, where it's
+[11:20] going to basically search you uh by
+[11:23] niche and by city, and it's going to
+[11:25] pull the business name, website, phone
+[11:28] address, Google rating, and reviews. And
+[11:31] what you're going to be able to do here
+[11:33] is you're going to be able to add the
+[11:34] well, it's also going to be a able to
+[11:36] get you the email as well. And if they
+[11:38] don't get the email, then you just use
+[11:41] something like well the lead finder
+[11:44] plugin which you can find inside of aify
+[11:45] as well. It's going to get added to
+[11:47] Google Sheets. So you can basically have
+[11:50] all the results land there. We're going
+[11:52] to structure this ready name, contact,
+[11:54] site, rating, and so on. And then what
+[11:57] is going to happen through this
+[11:58] automation is you're going to use a
+[12:00] browser relay or built with and it's
+[12:02] going to visit each website and then
+[12:04] check what their tech stack is. What
+[12:06] tools are they using or what tools are
+[12:08] they missing? And then you're going to
+[12:10] be able to basically be use open claw to
+[12:12] find the gaps and write pitches to these
+[12:16] companies. Now here is where you would
+[12:18] sell your automation, a chatbot, a
+[12:21] service. you find whatever they're
+[12:22] missing and help them implement that and
+[12:25] you can then use the the hype of AI
+[12:29] agents in your favor to sell them well
+[12:32] obviously a good service as well and
+[12:34] yeah so it's going to find the tech gaps
+[12:36] write a person who likes outreach for
+[12:38] each lead based on what they're missing
+[12:40] and then send that outreach on your
+[12:42] behalf now you can do this in many ways
+[12:44] but one of them is just connect it to a
+[12:47] dedicated email box however then you
+[12:50] also need to set verification. You need
+[12:52] to set up your DKIM. You need to set up
+[12:54] a lot of things to make sure that your
+[12:56] email is actually warmed up. So before
+[12:59] you do that, I would recommend you
+[13:01] checking out something like SAP mail to
+[13:03] get a warmed up domain already running
+[13:06] so that you can send emails through
+[13:07] that. You could also potentially use a
+[13:09] service like Instantly, which also has
+[13:11] an API key where you can use that to
+[13:14] send emails. Be careful. Don't send more
+[13:16] than 20 emails per day. If you're going
+[13:18] to send cold outreach through your own
+[13:20] inbox, I recommend doing less than 10.
+[13:22] Cool. So, what is going to happen here?
+[13:24] And how can you make it even stronger,
+[13:26] right? You can make it a lot stronger by
+[13:29] adding something like the Northstar
+[13:31] framework, which I've linked inside of
+[13:33] the document as well. I think I'm going
+[13:35] to make a dedicated video on this, but
+[13:36] this is basically a whole document about
+[13:39] you, your history, your businesses, your
+[13:41] ICP, how you talk, your audience, your
+[13:44] their pain points, everything. And I'm
+[13:47] am going to launch a automated way for
+[13:49] you to collect all of this data and make
+[13:51] that process 100 times easier inside of
+[13:54] the school group. So, hey, check that
+[13:56] out if you want. Right now, it's $9.
+[13:58] It's going to go up in price the moment
+[13:59] I start adding more modules to it.
+[14:01] Anyway, I don't want to plug too much.
+[14:02] You do as you want, but the Nora
+[14:04] framework you can download for free in
+[14:06] the description below. And you're going
+[14:08] to dump everything about you, your
+[14:10] voice, everything. And for your open
+[14:12] claw, before sending emails, make sure
+[14:14] you give it a lot of context on what is
+[14:17] a good email, how can you send that? And
+[14:20] I'm going to be making a document about
+[14:22] this as well, but this is for another
+[14:24] time and another video. For now, we have
+[14:27] more workflows to go through. So, let's
+[14:29] jump into the next one. It's a B2B leads
+[14:32] outbind workflow. And this workflow is
+[14:34] actually one that I've used before for
+[14:37] my business whenever I wanted to run
+[14:38] cold email. But now with OpenClaw, you
+[14:40] can make it a lot more powerful. And
+[14:42] actually any sort of workflow that we're
+[14:44] running here today, you can run that
+[14:46] with cloud code as well. So here we want
+[14:49] to use the leadinder appy API basically.
+[14:54] And it starts with the leadinder. which
+[14:55] is going to search by keyword, industry,
+[14:57] and location and return email, LinkedIn,
+[15:00] company details, and job title for you.
+[15:04] And obviously, you should connect more
+[15:06] than one source here as well to make
+[15:09] sure that you can get even more data
+[15:11] because some of this data might just be
+[15:13] outdated or something like that or it
+[15:15] has been already emailed a ton of times.
+[15:18] But this is a different offer because
+[15:20] you're going to set up an offer which is
+[15:22] going to help you sell AI agents or sell
+[15:24] AI services or a automation workflows,
+[15:27] find pain points in in boring businesses
+[15:30] and come in and fix that for them.
+[15:32] Right? This is the way to make money
+[15:35] with AI right now. Unless you want to
+[15:37] set up a SAS service, which everybody's
+[15:39] going to be able to create in one prompt
+[15:41] anyway later down the line. Cool. It's
+[15:43] going to add that to Google Sheets and
+[15:45] the leads are basically saved and
+[15:47] organized where you have a clean list
+[15:48] ready for OpenClaw to work through.
+[15:50] OpenClaw is going to research the lead.
+[15:52] It's going to look up each company
+[15:54] before writing anything and understand
+[15:56] their stage, their size and situation.
+[15:58] You can use the tech as well. You can
+[16:00] research their profile to find stuff
+[16:02] that you can personalize your pitch
+[16:04] with. and it's going to write a custom
+[16:06] pitch where it's you're going to be able
+[16:08] to sell your agency services,
+[16:09] automations, chat bots, workflows,
+[16:12] website mockups, whatever fits. Right
+[16:14] now, there's an opportunity where you
+[16:16] can basically make a website mockup
+[16:19] in050 or $1, which just a mockup. You
+[16:22] can be like, "Hey, I noticed that you
+[16:23] don't have a website or your website is
+[16:25] looking kind of bad. Here is a new
+[16:27] website mockup for you and if you want
+[16:30] to build it out more, just let me know."
+[16:31] these things like a lot of people have
+[16:34] not are not even aware that you can make
+[16:37] websites right now in one shot
+[16:39] especially old and boring businesses and
+[16:41] the best part is if they have images if
+[16:44] they have content on their website
+[16:45] already you can basically use all of
+[16:48] that to spin up a completely new website
+[16:50] that is beautiful with images because
+[16:54] they already have it but their website
+[16:56] is is old and and boring and bad but the
+[16:58] one that you make good fast and sexy
+[17:01] send that outreach email or LinkedIn DM
+[17:03] sent specific to them. No mass blast at
+[17:06] all. So that is that system and
+[17:08] workflow. And as said, I'm working on
+[17:10] these workflows to share with the
+[17:12] community so that I can teach everybody
+[17:14] how to sell their services and
+[17:15] everything. But everything is so new and
+[17:17] I need to make videos. I need to educate
+[17:19] my school. I need to take care of my
+[17:21] life, my agency. I still run a a pretty
+[17:24] big agency as well. So I'm really sorry
+[17:26] if I cannot add more. I really wish I
+[17:28] could, but for now, this is going to
+[17:30] have to do. I hope you you don't mind.
+[17:32] Cool. Let's jump into workflow number
+[17:34] three. And and I just want to say make
+[17:35] sure you stick around until workflow
+[17:37] number six because that one is pretty
+[17:39] freaking crazy. So workflow number
+[17:41] three, we're going to use the Instagram
+[17:42] scraper. You're going to basically
+[17:43] scrape Instagram. Pulls last 30 posts
+[17:46] from any creator captions, hooks,
+[17:48] formats, likes, and comments. And then
+[17:50] you're going to find hooks, concepts
+[17:51] extracted. It's going to extract the
+[17:53] from your favorite creators so that you
+[17:55] can basically collect their high
+[17:58] engagement posts. what hook styles
+[18:01] works, what topic, and what format. Add
+[18:03] that to your OpenCloud database. And if
+[18:06] you watched my setup video, which I'm
+[18:08] going to link up in the top here, then
+[18:10] you know that you're going to have QMD
+[18:12] so that you can search through all of
+[18:14] your knowledge files with ease. And
+[18:17] yeah, that gets it to your knowledge
+[18:18] base. Everything is stored in
+[18:20] OpenCloud's memory. And it builds over
+[18:21] time as you have more creators come on
+[18:24] or or as you send creators, right? It's
+[18:27] going to write your o your your script
+[18:29] and at first this script is going to be
+[18:31] horrible. What you're going to do is
+[18:32] you're going to take that script. You're
+[18:34] going to add it to Capka on your phone
+[18:36] and you're going to use the teleprompter
+[18:38] feature and you're going to be able to
+[18:39] read off of this script. Make sure you
+[18:42] add some some improvisation. You you
+[18:44] switch your camera angle and you're add
+[18:47] whatever images you have to to the
+[18:49] actual final edit. And you're going to
+[18:52] be able to create new awesome videos.
+[18:54] And whenever you do that process, you're
+[18:57] going to be like, I was saying this
+[18:59] thing that didn't really work for me. I
+[19:01] don't really feel like that's that's how
+[19:02] I want to work or that's not something
+[19:03] that I would say. So, let's never say
+[19:05] that again. Open Clause saves that and
+[19:07] now you never say that again. And also,
+[19:09] hey, you can do the same process with
+[19:11] cloud code as well. So, new content
+[19:14] ready to film, script ready, send
+[19:16] creator URLs. Oh, yeah, and this is also
+[19:18] a nice thing that I added here is that
+[19:20] you can send a creator URL from whenever
+[19:22] you're scrolling. Let's say you're
+[19:23] you're in bed, you're you're almost
+[19:25] falling asleep and you're you're
+[19:26] scrolling through Instagram and you find
+[19:28] this awesome video. You're like, "Wow,
+[19:30] this concept is so good and I could
+[19:32] definitely do something like this for my
+[19:33] audience." You basically click on share,
+[19:35] share that to your discord channel
+[19:37] because you set it up using my method so
+[19:39] that you can send that to your video
+[19:41] channel which is going to transcribe
+[19:44] that video for you. Save that to your
+[19:46] knowledge base and for this video so
+[19:49] that you can check it out tomorrow with
+[19:50] a new finished script that you can
+[19:52] record just like that. And that is
+[19:55] something that I'm working and doing
+[19:56] this right now. Awesome. So workflow
+[19:59] number four, it's for Tik Tok. It's the
+[20:01] same stuff. You can find it inside of
+[20:03] the mirror. It's the same thing as
+[20:04] Instagram, just Tik Tok. So, we're going
+[20:06] to skip this one ahead. All right.
+[20:08] Workflow number five is Twitter and X.
+[20:10] So, it basically is find viral tweets
+[20:13] turn into real scripts, right? So,
+[20:17] you're going to basically scrape Twitter
+[20:19] based on keyword or account. And it's
+[20:21] going to pull the tweets by the keyword,
+[20:23] account, hashtag, sorted by likes, and
+[20:25] engagement. This is amazing. This is
+[20:27] exactly what we want because we want the
+[20:29] top tweets sorted by likes so we can
+[20:32] find what is gaining momentum right now
+[20:35] for our keywords or industries. Right?
+[20:37] For me that would be open call, AI,
+[20:39] e-commerce, SEO, these type of things,
+[20:42] right? And then openclaw is going to
+[20:43] basically pick the best angles for those
+[20:47] those and basically kind of fill in the
+[20:49] gap. So we want to use what I like to
+[20:51] call complex reasoning. This means that
+[20:54] open claw is going to save this to a
+[20:55] database and then use complex reasoning
+[20:58] with itself to understand okay this is
+[21:00] what open claw can do or this is what I
+[21:03] can do and this is what my humans
+[21:05] business can do. I'm going to use
+[21:07] complex reasoning, a reason here on how
+[21:10] we can spin this this whole methodology
+[21:13] of of what it has been scraping from
+[21:15] Twitter into a spin that works for you,
+[21:17] right? And you're going to fine-tune
+[21:19] that over time as you keep talking to
+[21:21] open call and you're going to select the
+[21:23] tweets with the strongest short form
+[21:24] video potential, cut the rest. Real
+[21:26] script is written and you're going to
+[21:28] yeah rewrite each tweet as a real hook.
+[21:30] Insight CTA one viral tweet means
+[21:32] multiple content pieces. This is
+[21:35] amazing. It's a really, really good
+[21:36] workflow if you can get it working,
+[21:38] which I said I am going to share these
+[21:40] inside of my school group and you can
+[21:41] lock in your price at $9 per month right
+[21:44] now. That is going to go up to 49 the
+[21:47] moment I I release more stuff. So, keep
+[21:49] that in mind. Okay, the holy grail, one
+[21:52] of the holy grails of this video,
+[21:54] workflow number six, which I think is
+[21:57] going to make a lot of people a lot of
+[21:59] money if they do it right. It's a little
+[22:02] bit hard to do, but you have to know SEO
+[22:04] for it. But basically, you have a Google
+[22:07] trend scraper where you can build sites,
+[22:09] affiliate offers, and niche content for
+[22:12] based on what's trending, right? So,
+[22:13] you're going to use the Google Trend
+[22:14] Scraper through Appify. And so, it does
+[22:18] a daily scan of Google Trends, and it
+[22:20] will basically find spot topics spiking
+[22:23] before they go mainstream. And basically
+[22:26] you're going to get an early signal
+[22:28] which is going to give you an early
+[22:30] mover's advantage. Right? You can read.
+[22:32] So I'm not going to read it too well. So
+[22:34] rising trend identified. This means a
+[22:36] topic is growing fast but not yet
+[22:38] saturated. Right? And the window is
+[22:40] before everybody's rushing in. And it's
+[22:42] going to find you some pretty crazy
+[22:43] things. And what you're going to be able
+[22:45] to do is then ask it, hey, can you go
+[22:47] out and find me affiliate offers around
+[22:49] this topic or around this new thing? Or
+[22:52] you can say, "Hey, go to Amazon and
+[22:55] research me products in this space that
+[22:57] would fit to this topic." Or go out,
+[23:00] find me what I can create a service for
+[23:03] within this space, right? Have OpenClaw
+[23:06] identify gaps in the market that do not
+[23:08] exist based on rising trends and then go
+[23:12] out and build that using claude code and
+[23:14] open claw together. And openclaw is
+[23:17] basically going to research and plan.
+[23:19] And I I say research and plan here. It's
+[23:21] a little bit vague, but you we want to
+[23:23] do a a competitor analysis. And you can
+[23:26] do this very easily with Open Claw and
+[23:28] web scraping, which we're going to talk
+[23:31] about later in the workflow. It's going
+[23:32] to check the monetization potential,
+[23:34] competition level, best approach, site,
+[23:36] affiliate or content, right? Or whatever
+[23:38] service as well. Cloud code is going to
+[23:41] build the site. I don't want you to
+[23:43] build these sites using OpenClaw because
+[23:45] you might if you're on a cloud cloud
+[23:47] code plan then you might as well use
+[23:48] cloud code. If you are very budget
+[23:52] conscious then I recommend that you use
+[23:54] Kimmy 2K to build out your MVPs and then
+[23:57] you can start using exp more expensive
+[23:59] models to basically build it out and
+[24:01] refine it. Right? So it's going to spin
+[24:03] up a niche site affiliate page targeting
+[24:05] the trend and can it can even build
+[24:07] multiple in parallel. But the things you
+[24:10] got to keep in mind, you got to buy your
+[24:12] domain name. You also got to buy well
+[24:14] hosting through Versol if you build it
+[24:17] through cloud code. But there are
+[24:18] multiple ways that you can do. Not all
+[24:20] trends require an affiliate offer or a
+[24:22] niche site or whatever. And actually I
+[24:25] did share in my school group just now I
+[24:28] how I ranked two websites on Google in
+[24:31] 24 hours using cloud code. And I I've
+[24:33] gotten over 300 clicks so far to my
+[24:35] websites. I'm going to leave that case
+[24:37] study in the description. below as well.
+[24:39] So you can take part and just check that
+[24:41] out and and yeah, see how you like it
+[24:43] basically. So yeah, if you know SEO, go
+[24:45] for a niche site. You can build out
+[24:46] these niche sites so fast right now. If
+[24:49] not, you can also do par something
+[24:51] called parasite SEO. Parasite SEO means
+[24:54] that you're basically using the
+[24:55] authority of other big websites to
+[24:58] launch an offer on. This requires a
+[25:00] little bit of money in beforehand, but
+[25:02] you can do something called social media
+[25:05] parasite SEO, which is that you go on
+[25:08] all the big social media website,
+[25:11] Facebook, Instagram, Twitter, LinkedIn,
+[25:14] dig.com, reddit.com, and you basically
+[25:17] start talking about these emerging
+[25:19] topics before everybody else is doing it
+[25:22] so that you can start ranking for those
+[25:24] keywords with your offer, your service,
+[25:26] or whatever, selling that thing There
+[25:29] are a million ways that you can leverage
+[25:31] this workflow right here. Boy, I'm gonna
+[25:35] make it short and we're going to talk
+[25:37] more about inside of the school. So,
+[25:39] publish early equals ranked early. Be a
+[25:42] first mover. You can capture the traffic
+[25:44] surge when that becomes more mainstream.
+[25:47] And with OpenClaw, you're going to be
+[25:48] able to capture it the day it happens,
+[25:52] the moment it happens. Right? Cool.
+[25:55] That's workflow number six, right?
+[25:57] Workflow number seven is very
+[25:58] interesting, but this is more for people
+[26:00] that are already established. And it
+[26:02] goes like this. You're going to use the
+[26:04] FB ads scraper. It's going to find all
+[26:07] the running ads from your competitors,
+[26:09] Facebook pages, videos, images, copy
+[26:10] formats, everything. It's going to save
+[26:12] that into your knowledge base locally.
+[26:15] It's going to save that into your
+[26:17] knowledge base and you're going to have
+[26:18] your competitor's full ad history in one
+[26:20] play place. What is live, what ran
+[26:23] before, how long it ran. Whenever
+[26:25] something updates, it's going to be be
+[26:27] able to capture that from the knowledge
+[26:29] the the scraper again and yeah, save it
+[26:32] to the knowledge base. Once you have it
+[26:34] saved, it's going to be organized by
+[26:35] format, hook, type, offer, image,
+[26:38] whatever. It can also openclaw can also
+[26:40] read what is on the image so that you
+[26:42] can then replicate that, extract those
+[26:44] elements and create something using nano
+[26:46] banana. And I am going to create a video
+[26:49] on how we can do unlimited Facebook ads
+[26:52] using openclaw and also cloud code. So
+[26:55] if you want to check that out, make sure
+[26:57] you subscribe. A lot of stuff is coming.
+[26:59] I have a thousand ideas, but I just need
+[27:01] find time to organize everything and
+[27:02] actually record it. Open claw is finding
+[27:05] what's working and longest running ad
+[27:08] equals winning ads. Extract the hook
+[27:09] structure, offer framing, and CTI
+[27:11] pattern. Apply that to your ads and
+[27:13] that's basically ad frameworks ready to
+[27:15] use. Now you can also implement your ads
+[27:17] manager and then start updating these
+[27:19] things automatically. Well, I am going
+[27:22] to get to that. I am also going to be
+[27:24] publishing how to do these things as
+[27:26] well. So that means you're going to have
+[27:28] proven ad structures adapted to your
+[27:30] campaigns feed into Nam Banana or your
+[27:32] ad workflow. Start mass publishing
+[27:35] testing capture all of the data from
+[27:37] your ads manager have your open claw
+[27:39] plug code regurgitate or not regurgitate
+[27:41] basically think about how is that going
+[27:44] every single day and then find you the
+[27:46] winners. All right. Now, if you want to
+[27:49] have access to the workflows I'm going
+[27:51] to be creating in the next coming days,
+[27:53] in next coming months for both cloud
+[27:55] code and also openclaw, you can right
+[27:58] now join the operator vault for $9 per
+[28:02] month. It is the price is going to go up
+[28:04] to $49 and then eventually $99 whenever
+[28:07] I have my next modules created. I am
+[28:11] working on them right now. You can lock
+[28:12] in your lifetime price right now or you
+[28:16] can wait if you feel like. Inside of the
+[28:18] group, you're going to have direct
+[28:19] access to me. You can ask any questions.
+[28:21] You're going to have coaching and
+[28:23] basically we're going to do
+[28:24] troubleshooting for whatever. You also
+[28:26] have access to my case studies and also
+[28:28] the written guides for everything that
+[28:30] I'm doing before I record the videos.
+[28:32] Cool. Guys, thank you so much for
+[28:33] watching. I appreciate you. Your time
+[28:35] really means a lot to me. And the goal
+[28:37] is never to be a guru in these videos.
+[28:40] like I am building and I'm sharing with
+[28:41] you guys. And if you guys find that
+[28:43] helpful, just subscribe, like the video,
+[28:46] leave a comment. It means the world to
+[28:47] me. You don't have to give me money, but
+[28:49] you can give me money if you want. Um,
+[28:51] that's up to you. Cool. Have a beautiful
+[28:53] one. Take care guys.

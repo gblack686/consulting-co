@@ -1,0 +1,17 @@
+{
+  "efctPj6bjCY": {
+    "title": "My 4-Layer Agentic Browser Automation Stack (Skill, Subagent, Prompt, ????)",
+    "github_links": [
+      "https://github.com/disler/bowser",
+      "https://github.com/microsoft/playwright-cli"
+    ]
+  },
+  "RpUTF_U4kiw": {
+    "title": "Claude Code Multi-Agent Orchestration with Opus 4.6, Tmux and Agent Sandboxes",
+    "github_links": [
+      "https://github.com/disler/claude-code-hooks-multi-agent-observability",
+      "https://github.com/disler/agent-sandbox-skill",
+      "https://github.com/tmux/tmux/wiki/Getting-Started"
+    ]
+  }
+}

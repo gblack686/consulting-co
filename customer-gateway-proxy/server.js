@@ -378,6 +378,7 @@ wss.on('connection', (clientWs, req) => {
                 level: phase === 'end' ? 'SUCCESS' : 'info',
                 agentId,
                 agentName,
+                eventType: phase === 'start' ? 'lifecycle_start' : 'lifecycle_end',
               },
             });
             return;
@@ -386,7 +387,7 @@ wss.on('connection', (clientWs, req) => {
           // Generic agent event — log it
           toClient({
             type: 'agent_log',
-            data: { message: `${agentName}:${stream || 'unknown'}`, level: 'info', agentId, agentName },
+            data: { message: `${agentName}:${stream || 'unknown'}`, level: 'info', agentId, agentName, eventType: stream || 'generic' },
           });
           return;
         }
@@ -431,6 +432,7 @@ wss.on('connection', (clientWs, req) => {
             message: msg.event,
             content: msg.event,
             level: 'info',
+            eventType: 'system',
           },
         });
         return;
@@ -553,7 +555,7 @@ wss.on('connection', (clientWs, req) => {
           // Echo back as agent_log
           toClient({
             type: 'agent_log',
-            data: { message: `You: ${(msg.content || '').slice(0, 80)}`, level: 'info' },
+            data: { message: `You: ${(msg.content || '').slice(0, 80)}`, level: 'info', eventType: 'user_message' },
           });
           break;
         }

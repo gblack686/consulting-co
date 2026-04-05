@@ -1,0 +1,18 @@
+Video ID: XpxDwVt3OFw
+Title: My 3-Step Claude Skill for Perfect UX Design (I Found the Fastest Way to Get Great App UX)
+Channel: Sean Kochel
+Source: Kome.ai transcript preview (partial - first ~60% of video)
+
+=== TRANSCRIPT (PARTIAL) ===
+
+The biggest issue with vibe coding is that people tend to get very empty feeling solutions to their problems. So sad, right? Like you've got this idea swirling around in your brain of this awesome dope thing you want to build, but when it comes to putting pen to paper, you get this wet bag of a user experience. Like you aren't even excited about it. And if you aren't excited about it, there ain't nobody else going to get excited about it. Half the time you use these tools, you get something that blows you away and it becomes very difficult to replicate that success. So, it ends up feeling more like a roulette wheel at a casino than something you can actually do reliably every time. I've been there myself, which is why I was stoked to see this new release from Google Stitch. So, after messing around with it for a few hours, I came up with a pretty cool system to take that idea that's just rattling around in your brain and turn it into something that people would actually swipe their credit card for. So, let me show it to you.
+
+And so, the reason that I like this process is because we can give a high-level idea of what it is that we're trying to build and get really distinctly different approaches to how we would actually build those things out. And so in this first example, I'm giving it a very basic generic prompt saying, "Hey, I want to merge agent first interactions with a social media content creation and repurposing tool." And so it gave me not three different UI approaches, but three entirely different UX approaches. So if we wanted to build this type of app, there are a lot of different approaches that we could take to how we actually intend to solve that problem. So in one case maybe it's some sort of canvas like this while in another case maybe it's a pure chat driven interface.
+
+So that being said let me show you how we can go from idea to getting screens that actually look something like this. So when we're inside of Google Stitch there's this new option in this drop down here for ID8. And so the reason that this is different from the other functionality inside of Google Stitch is it doesn't just take a prompt and generate you some screens. Instead, it's more of a brainstorming buddy that gives you multiple approaches to solve a design problem.
+
+[Note: The full transcript was truncated by the Kome.ai free tier. The video continues through the remaining timestamps:
+- 8:15 - Running the Claude Skill workflow
+- 11:49 - Step 3: Building the prototype prompt by prompt
+- 14:03 - Final result walkthrough
+- 16:26 - Before vs After comparison]

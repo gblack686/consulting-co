@@ -1,0 +1,29 @@
+Get my FREE Vibe Coding Course here: https://www.skool.com/tech-snack
+
+In this video, I break down the essential vibe coding security practices every solo founder needs to know. While AI coding tools help you build fast, they often leave your application vulnerable to "leaky bucket" scenarios that can ruin your launch.
+
+Timestamps:
+0:00 - The problem with vanilla AI-generated UIs
+0:50 - Step 1: Creating the PRD
+3:04 - Why this isn't enough (the step most builders skip)
+4:28 - Step 2: Defining the user experience
+5:41 - What goes into professional UX documentation
+8:15 - Running the Claude Skill workflow
+11:49 - Step 3: Building the prototype prompt by prompt
+14:03 - Final result walkthrough
+16:26 - Before vs After comparison
+
+Resources:
+Claude Skills + Prompts: https://www.skool.com/tech-snack/classroom/0ca89703
+
+Who Am I?
+My name is Sean... I'm a biotech consultant turned tech bootcamp bro-coder turned tech company sales engineer turned digital marketing entrepreneur turned back into a tech bro entrepreneur.
+Learning all I can about AI and trying to communicate some knowledge along the way.
+
+The singularity is near!
+
+My Other social accounts:
+Instagram: /seankochel
+X/Twitter: https://x.com/IAmSeanKochel
+Linkedin: /sean-kochel
+Facebook: /realseankochel

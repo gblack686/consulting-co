@@ -1,0 +1,46 @@
+Tell your agents to use this: https://here.now/r/matthewberman
+
+A Practical Guide to OpenClaw 👇🏼
+https://bit.ly/475yvNX
+
+Download The 25 OpenClaw Use Cases eBook 👇🏼
+https://bit.ly/4aBQwo1
+
+Download Humanities Last Prompt Engineering Guide 👇🏼
+https://bit.ly/4kFhajz
+
+Join My Newsletter for Regular AI Updates 👇🏼
+https://forwardfuture.ai
+
+Discover The Best AI Tools👇🏼
+https://tools.forwardfuture.ai
+
+My Links 🔗
+👉🏻 X: https://x.com/matthewberman
+👉🏻 Forward Future X: https://x.com/forwardfuture
+👉🏻 Instagram: https://www.instagram.com/matthewberman_ai
+👉🏻 TikTok: https://www.tiktok.com/@matthewberman_ai
+👉🏻 Spotify: https://open.spotify.com/show/6dBxDwxtHl1hpqHhfoXmy8
+
+Media/Sponsorship Inquiries ✅ 
+https://bit.ly/44TC45V
+
+Chapters
+0:00 Intro
+0:32 Threaded Chats
+3:17 Voice Memos
+4:43 Agent-Native Hosting (Sponsor)
+6:49 Model Routing
+11:18 Subagents & Delegation
+14:02 Prompt Optimizations
+17:22 Cron Jobs
+19:15 Security Best Practices
+24:03 Logging & Debugging
+25:43 Self Updating
+26:28 API vs Subscription
+27:52 Documentation/Backup
+31:19 Testing
+33:11 Building
+
+Links:
+https://x.com/MatthewBerman/status/2030423565355676100

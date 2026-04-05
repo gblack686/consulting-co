@@ -1,0 +1,49 @@
+# OpenClaw SKILL.md Template
+# Fill {placeholders} from domain workflow spec
+# CRITICAL: metadata MUST be single-line JSON
+# Follows TAC prompt structure: Purpose → Variables → Instructions → Workflow → Report
+
+---
+name: {skill_name}
+description: "{domain_category}: {Skill_Display_Name} - {one_line_purpose}"
+metadata: {"openclaw": {"requires": {"env": [{required_env_vars}]}}}
+---
+
+# {Skill_Display_Name}
+
+## Purpose
+
+{skill_purpose_sentence}
+
+## Variables
+
+{variables_block_or_remove_if_none}
+
+## Instructions
+
+- IMPORTANT: {critical_guardrail_1}
+- {constraint_or_rule_2}
+- {error_scenario}: {what_to_do}
+- Delivery: {delivery_channel} via {delivery_mode}
+
+## Relevant Files
+
+- {file_or_pattern_1} — {why_needed}
+- {file_or_pattern_2} — {why_needed}
+
+## Workflow
+
+### Phase 1: {phase_1_name}
+{phase_1_steps}
+
+### Phase 2: {phase_2_name}
+{phase_2_steps}
+
+### Phase 3: {phase_3_name}
+{phase_3_steps}
+
+## Report
+
+```
+{output_format}
+```

@@ -1,0 +1,273 @@
+# Transcript: 100 hours of OpenClaw lessons in 35 minutes
+# Channel: Alex Finn
+# Video ID: _kZCoW-Qxnc
+# URL: https://www.youtube.com/watch?v=_kZCoW-Qxnc
+# Segments: 133
+# Source: English (auto-generated)
+
+[0:00] This is the video you've been waiting for. I'm about to take you through the greatest technology release of the last 50 years. Open Claw has taken the entire world by storm. And for good reason. It is a 24/7 super intelligent AI employee that does work for you around the clock,
+
+[0:17] even when you sleep. The challenge is it can be super complicated. And because of that, 99% of people aren't getting the full power out of this technology. If you use it the right way, you can completely change your workflows in life. If you use it the wrong way, it's
+
+[0:33] just another chat GPTbot. In this video, I will cover every single aspect of OpenClaw. From how to install it to how it works to security to use cases that will change your life. Whether you're an OpenClaw pro or have never touched a computer in your entire life, you're
+
+[0:49] going to get something out of this video. So, let's lock in and get into it. So, as I said in the intro, we are going to cover everything in Open Claw. So, if you are an OpenClaw pro, I highly encourage you to skip around in the chapters down below. There's going to be something relevant to you, no matter
+
+[1:04] what your skill level is. I have been using this nonstop for the past month. I have invested literally tens of thousands of dollars into it. I know absolutely everything there is to know about this tool, so feel free to skip around, but let's start off with what is OpenClaw. OpenClaw is a 247
+
+[1:22] AI employee that is just constantly running on your computer finding valuable things to do and doing them for you. The best part is it can literally do anything a human being can do. I'm not joking about that. It can go on your computer. It can control your browser. It can vibe code apps like you see here
+
+[1:39] right now. You can see on my screen I have seven different open claws actively doing work for me in this office space. And it actually vibecoded this entire setup that you see here by itself. I mean quite literally anything you do on your computer, it can do itself. It can scroll Twitter for you. It can watch
+
+[1:56] YouTube videos. Anything you can think of. I have it generating AI images for me for my thumbnails. It's amazing. Some things going on behind the scenes that are incredible are it's it's self-improving. It remembers everything about you. So all your conversations, everything you say, every detail about
+
+[2:11] your life, your goals, your ambitions, your careers, your personal relationships, it remembers that and then improves itself based on that information. For instance, if I tell it I really enjoy using codecs to vibe code, it will just remember that forever. And every time it vibe codes, it will use codecs for that. If I tell
+
+[2:27] it I'm running everything on a Mac Studio, all the apps it builds will be specifically for Macs. If I tell it I live in California, it'll start making recommendations for me for events in California. Every time you communicate with your OpenClaw, it gets better, smarter, and more custom, which there is
+
+[2:44] no other AI tool on planet Earth that has ever done this before. It's proactive. It does work while you sleep. Let me give you an example. So, I have my SAS creator buddy and it is actually actively working on this software for me. It saw on Twitter that Elon Musk is
+
+[2:59] giving away a million dollars to the top article on X. So what it did was it saw that on X. It was like, "Okay, we should build some sort of article writing functionality." And it built out a ton of this article writing functionality. You see here, it shipped it and I've gained over $10,000 of recurring revenue
+
+[3:16] based on that. All of this while I slept. I woke up in the morning, it had the code ready, I reviewed it, then shipped it myself once it looks good. That is the power of having a proactive employee. It learns about you. It studies things on the web. It builds things out and creates economic value
+
+[3:31] for you even when you're away from your computer. There has never been another technology that can do that. And lastly, before we go into installation, I'm going to walk through step by step how to set this up. It is open source. What does that mean? It's open source. That means you can download the code and do whatever you want with it. It is
+
+[3:48] completely free and open source, which allows it to be completely customizable. So if it does something you don't want it to do, if it forgets something, if you want to add your own functionality to open claw and how it works, you can do that. So for instance, I was having a conversation with my openclaw the other
+
+[4:03] day and it forgot a detail about me that really bothered me. So I said, "Hey, you forgot this about me. How can we make sure you don't forget anything about me again?" It actually went and built out an entirely new memory system for itself so it remembers everything even better.
+
+[4:19] It is completely customizable and it can even customize itself. That is unbelievable. That is why OpenClaw in my opinion is the most powerful technology I've ever used in my life and I think it is mandatory for people to learn. So the question becomes, how do you install it?
+
+[4:34] Do you need to buy a Mac Mini like you see everyone doing on Twitter? Can you put it on a VPS like every other creator is telling you to do? The answer to that is no. There are ways to set this up completely for free. You don't need to buy Mac minis. You shouldn't be putting this on a VPS. So there are two ways to think about installation. You can have
+
+[4:51] it local on your desk on a device or on a VPS, a virtual private server which is in the cloud and on the web. I highly recommend doing this locally. I think doing this on a VPS is a massive critical mistake. Local is easier to set up. It is secure by default. If you do
+
+[5:07] this on a VPS, you have to do a ton of technical work to make it secure. Also, I'm going to go through security in a later chapter as well, so stick around for that. but it is not secure on a VPS and you have to do a lot of work to make it secure. Local has great integration with everything else you're doing in your life and on your devices. It's
+
+[5:23] incredibly usable. It's just awesome to be able to go on a computer and watch it work as it does things. It's a lot easier than watching like a terminal on a cloud in a web browser somewhere. That makes it incredibly difficult to work with. And it's just also powerful. All
+
+[5:38] these things combined make it a very powerful tool when you're running it locally. If you run it on a VPS, you're getting like 20% of the power. You're just not getting the most out of this. And if you're going to use a life-changing technology like OpenClaw, you want to get the most power out of
+
+[5:53] it. You don't want some hamstrung version of this technology. By the way, I'm not even joking. This is happening in real time. My OpenClaw Henry just texted me on my device. I don't think you'll be able to see this, but he just I'll bring this up on my computer. Look at this. He just texted me that he built out a new tool for me. It's an approvals
+
+[6:09] terminal. I was literally filming this video and he is, "Hey, by the way, I built this out for you. An entire approvals terminal where I'll be able to look at any tweets it generates, any YouTube scripts, any thumbnails, any AI images, and give it approval to post straight from a terminal." That's amazing. That was just out of nowhere.
+
+[6:26] And yes, it will text you through Telegram or iMessage or anything you're using. But anyway, back to the video. I just thought that was incredible. Now that we determined VPS is not the way to go, local is the only way to go. The question becomes, do I need to run out and buy a Mac Mini? Do I have to do what
+
+[6:41] you did, Alex, and buy $20,000 worth of Mac Studios, and you're about to spend another 20,000 on two more? No, you do not need to do that. In fact, I highly encourage you not to do that. You can easily run this on any device you already have. If you have a old dusty laptop in your closet, you can pull that
+
+[6:58] out. If you have a $50 Raspberry Pi you've been tinkering around with, you can use that as well. You don't need any sort of complex hardware for this. So take what you already have, install OpenClaw on it, which I'll show you how to do in a second. And then what you can do is as you're using it, as you come up
+
+[7:14] with more workflows for it, if you decide, okay, to do this workflow, I need more powerful hardware, then you can upgrade. Then you can upgrade to a Mac Mini. And then you're using the Mac Mini, like, oh man, I could really use local models for this one specific workflow. Then you upgrade to the Mac
+
+[7:31] Studio. You don't need to rush into $10,000 hardware. You don't even need to rush into $600 hardware. You can start simple and free and then work your way up from there. That's what I did. So, choose a local device. If you're going to run out and buy a new device for it, I think the Mac Mini is the best choice
+
+[7:46] by far. It is the best value in computing for $600. For $600, you're getting an actually incredible computing device. I never owned a Mac Mini before. I bought it for OpenClaw right when I started using it. And I thought to myself as I was using it, man, if I ever
+
+[8:01] need a new computer again, I'm just getting the cheapest Mac Mini. It did everything I needed it to do. It's truly an awesome device, but that's besides the point. You don't need it, but if you need a new computer, Mac Mini is mwah. So, you got your new device set up. You got it plugged in. You got it up and running. Here is how you install
+
+[8:17] OpenClaw. This is super simple. I don't get the people that have been saying, "Oh, installation's tough. Use a VPS." No, no, no, no. This is super simple. Watch this. You go to openclaw.ai. I'll put a link down below for you. You scroll down like 3 in. You see this quick start section here that has one
+
+[8:33] single line command. You hit copy. I hope I didn't lose you at this point. I hope that's not too complicated for you. If you are on Mac, you open up your terminal. If you're on Windows, you open up your command line. Paste in that line from the website and you hit enter and
+
+[8:50] it's installed. All the people saying, "Oh, you need a VPS. It's too complicated to install it locally." Was that too tough? Do you need to pay some guy $5,000 to do that for you? Who are the people paying people to set this up for them? This is so simple. If you don't have enough confidence in yourself to do what I just showed you, then you
+
+[9:06] need to examine your entire life. You put that in, you hit enter, it's installed. Once you have it installed, it will take you through onboarding, which again is super simple. The people go online saying, "Oh, onboarding's so tough. I don't know how to do anything." Look yourself in the mirror. Do you think this is going to be tough? Here we
+
+[9:21] go. You hit yes on I understand this is powerful and risky. You hit quick start. Then you have a couple options. First, we have our model O provider. You have many things you can do here. We range from expensive and powerful like Anthropic to very cheap but still pretty
+
+[9:38] powerful like Miniax. Then you have things in between like OpenAI. If you already have an existing subscription like an Anthropic subscription, like an OpenAI subscription, you can just go in and plug it in and use it. If you don't have any existing subscriptions, you can sign up for a brand new one like Miniax.
+
+[9:55] Miniax is dirt cheap. You can pay like $10 a month and be able to use OpenClaw with it, and it's still a pretty good model to use with it. So, you can do that as well. Now, again, the most powerful option here is going to be Opus 4.6. Opus 4.6 is just built for these
+
+[10:11] types of activities. It is the smartest model and it is also the most personable model. It has the most riz. It's the warmest. It's the most fun to talk to. it has the most motion. The issue is is you're going to be paying like $200 a month for that subscription. Now, the first question I get whenever I talk
+
+[10:27] about Anthropic is, "Oh, am I going to get banned for this?" Does Anthropic want you using their subscription with OpenClaw? No, they do not. Out of all the AI companies in the world, Anthropic is the one that is most against using OpenClaw with their subscription. I will
+
+[10:42] just say this, I've heard of people getting banned from their Anthropic subscription for doing that. I'll also say this. I've never met any of them. Everyone's like, "Oh, yeah. I've heard of someone who got banned, but I've never talked to someone who's actually got banned." So, I don't know if this is just a rumor going around or what it is. I'd say this. I'm not going to tell you
+
+[10:59] to break terms of service with Anthropic. Wink wink. But you're free to do what you want. So, if you want to use your Anthropic subscription, wink wink, you would choose Anthropic here and hit enter. Then, it gives you the instructions to getting your Anthropic
+
+[11:14] authorization token. You literally copy this, open up a new terminal, paste it in. That will ask you to log into Anthropic. You do that. That's going to give you a token, which is a really long string of letters and numbers. Here's where most people mess up with this.
+
+[11:30] Copy that. Don't just paste it into OpenClaw. Paste it into a notepad. So, Apple Notes or Notepad. Then, make sure the formatting is correct. And what I mean by that, make sure there's no line breaks or anything that's splitting up the token. Make sure it's all just one line. Then you can copy it from there
+
+[11:45] once it's on one line and paste it back here into OpenClaw and then you'll be good to go and it'll work. Open AAI has actually been the opposite of anthropic. They've been like, "Yeah, go ahead. We don't care. Use it with OpenClaw." So, you can do that as well. Downside being is their model just doesn't feel quite
+
+[12:00] as warm as Anthropic. It's not quite as fun to talk to, but it's still a very powerful model. And if you already have a Chad GBT subscription, you're good to go. And then, as I mentioned, if you want to go cheap, Miniax is a great model to save tons of money. Will it be as warm? Will it have quite as much RZ?
+
+[12:18] No. But for the money and value you're getting, it might be the best bang for the buck. Right after this menu, when you select your AI model, it's going to ask you to set up your messaging service. The coolest part about OpenClaw is you don't interface with it through a
+
+[12:34] website. You don't interface with it through a app that you barely ever use. You interface through it with apps you already use today. iMessage, Telegram, Discord. This is the most fun part about Open Clause. You can just text it anywhere you are. So, you're going to be
+
+[12:50] able to choose which app you want to use. I highly recommend Telegram. I think Telegram is the best way to do it. Telegram has a bunch of really cool options like threading and chunking. So, it actually comes in the text like you're talking to an AI, which is awesome. Telegram, I think, is the best
+
+[13:05] way to do this. So, download Telegram. It's free. It's easy to use. It's easy to set up. And it will walk you through step by step, really, really simple, how to set it up from there. Then you'll be good to go, and you got OpenC Claw set up, and you didn't need a tech genius to do it for you. You didn't need to spend $5,000 on setup. You're good to go. You
+
+[13:21] did it yourself for free. So, now that you're all set up, you've hatched your Open Claw, you your assistant is born. First of all, congratulations. Pat yourself on the back. You did something that only the top 1% of humanity is doing right now, which is hatching an open claw and using the most powerful
+
+[13:37] technology of all time. You did it. You are most of the way there to escaping the permanent underclass. Now you just need to use it. Once you use it, you've escaped the permanent underclass. What I'm going to do is show you the first two basic things you need to do with OpenClaw. Then I'm going to right after
+
+[13:52] that go over some advanced concepts and the mindset you need to get the most out of OpenClaw. That will be after these first two use cases I'll give to you and then we'll go into some more advanced things after that. Again, feel free to work with me. Pause down below. Do things side by side with the video. Skip
+
+[14:09] around to different chapters, whatever you want. This is free form. And if you're feeling extra spicy, you can even hand this video over in your OpenClaw and I'll watch it for you. So, let's talk about the two first things you need to do now that you're in OpenClaw. So, after setup, it'll give you a link to this gateway dashboard. This is the
+
+[14:25] website you can use to communicate with your open claw. This is complimentary to your Telegram or Discord setup. You can use either or. They're both exactly the same thing. The first thing you need to do though is introduce yourself to your open claw. Let's play pretend for a
+
+[14:41] second. You have your own business. You hired a new employee. What's the first thing you would do? You would tell them about yourself, the company, what your the goals and missions are of the company, everything like that. You want to do the exact same thing with your open claw. So, open up your gateway dashboard. Go to the chat down here. And
+
+[14:58] you want to braindump everything about you. You want to brain dump who you are in your background. So, for instance, I'd say I'm Alex Finn. I'm a software engineer. I studied computer science. I was a developer for years and then I managed a team of tech consultants at a big tech company. And now I create
+
+[15:14] content about AI, build out software, and do a whole bunch of other things. I'd brain dump that all in. Then I'd go through my personal preferences. I'd say, I want you to be proactive. I want you to be autonomous. You don't need permission for everything. Just get things done. Advance our goals and
+
+[15:30] missions as much as you can. You're giving your personal preferences for how you want to work with your employee. And then lastly, you want to brain dump your goals and ambitions. This is probably the most important part of all this. What are you trying to achieve in your life? For me, my goals and ambitions
+
+[15:46] were I want to create a 247 autonomous company that creates value. And then I want to be able to create content around every single cool thing I do with it. That's my goal and ambition because if I can do those two things, one, I can make money without putting as much work in.
+
+[16:01] And two, I can keep advancing my YouTube and my Twitter feeds and all that because I'll be creating content around everything I do. So, I'm putting in all my goals and ambitions. I also said I want to make a million dollars in a year through my SAS and through my different products. And I put that all in. And now me and my open claw are on the same
+
+[16:18] exact page. And everything we do together will be in an effort to get closer to those goals and ambitions. So you want to do the exact same thing. If you don't know what your goals and ambitions are, you can just put in, I want to start my own online business and make my first dollar. Something like
+
+[16:35] that. Just put that in so your open claw is aware of your goals and ambitions. And the best part is it's going to remember all of this. It will be saved to memory and every conversation you have moving forward that will be included in context. So you brain dump those in. Your open claw knows absolutely everything about you. Now
+
+[16:52] you're ready to cook. You've been introduced to your open claw. You're best friends now. Your best pals. You have a digital BFF. That's amazing. Now we can start getting to work and get productive. The first thing I have everyone set up when they're in OpenClaw is a morning brief, a custom
+
+[17:08] personalized morning brief. This is a report your OpenClaw will send you autonomously every single morning that gives you all the information you need to know about that day. My openclaw Henry sent me this this morning. It is Valentine's Day today and it actually started with good morning and happy
+
+[17:24] Valentine's Day. Very nice touch by Henry. But it gave me an entire morning brief. Gave me the weather. It gave me all the news about my interest. So knows I'm super into vibe coding. I love Claude Code. I love Codeex. It gave me all the new trends in vibe coding. It spent all night researching the news,
+
+[17:39] reading the news for me, figuring out what was relevant. It gave me a bunch of ideas for videos I can film today. So, I wake up, maybe I don't have any ideas for videos. I can go, oh, Henry gave me a few right here, and I can choose one of them and film much easier. And the best part is actually writing me the scripts and sending it to my Discord.
+
+[17:55] But that's an advanced workflow we'll go through a little bit later. It's also going through my tasks and to-do list. So, it's connected to my Things three, which is the to-do list app I use, and it's able to tell me what tasks I have on there and even what tasks I assign to Henry on there. So, I wake up, I know exactly what I need to start tackling
+
+[18:11] that day. And then it gave me recommendations for tasks I need to do right away. So, choosing a video angle, going through our approval queue, which is a bunch of tweets and content that came up for me, and I just need to approve it. And then that's a nice little touch there, telling me to enjoy it cuz it's Valentine's Day. you need to have your own custom morning brief like
+
+[18:27] this. And this is super easy to set up. So here's a little bit about how this works. Your open claw at any time can just schedule things to do in the future. So it uses what's called cron jobs, which is basically just scheduled tasks to do things in the future. So if I say, "Hey, bills me a morning brief
+
+[18:44] every morning at 6:00 a.m." It will schedule in perpetuity forever 6:00 a.m. every day for it to do something. So this is how we do it. We'd say, I put this down in the description below. Please schedule a brief for me every day at 8 a.m. Send it to my telegram in the morning brief. I want number one, the
+
+[19:00] weather wherever you are. Number two, the top news stories in AI. This could be any interest you have that you want news on. Number three, any task I have in my to-do list on things. Three, this can be whatever to-do list app you're currently using. And number four, task
+
+[19:16] you can complete for me today that brings me closer to my goals. This is probably the most important one because what this allows your open claw to do is think for itself. What can I do to complete tasks for my boss? And this will open up doors you've never thought
+
+[19:32] of before. You're going to be doing this as much as possible. And I'm going to talk about this a little bit later in the video. It's called reverse prompting. It's instead of us telling what OpenC claw to do, we're letting open claw think for itself to figure out what to do. Much more on that coming up.
+
+[19:48] You're going to hit enter on this and you're going to be good to go. By the way, if you've learned anything so far, we've covered a ton. Make sure to leave a like down below. Make sure to subscribe and turn on notifications cuz all I do is create incredible videos about OpenClaw. And also, if you want
+
+[20:03] live boot camps, every Friday I do a live boot camp on OpenClaw where you can hang out with me, ask me questions, see live demos. I do it all in the vibe coding academy. Link for that is down below. We have, at the time of filming, 600 people in the Vibe Coding Academy
+
+[20:19] joining these live boot camps every Friday. So, I hope to see you there. So, feel free to customize this prompt any way you want with anything you want in your morning brief. Make this custom to you and you're not locked into this. You can at a later point go back and say, "Hey, tweak my morning brief with this, tweak it with that." Again, this is
+
+[20:35] constantly self-improving this open claw. Next, I want to talk about mission control. Now that we have our morning brief set up, the next big thing you're going to want to do as one of your first use cases is build a mission control. What's a mission control? It is a custom dashboard for you and your open claw to
+
+[20:52] build the tools you need to be productive and get closer to your goals. This is what my mission control looks like here. I've been building this out for weeks now. As you can see in the lefth hand side, there are tons of different custom tools me and my openclaw built out together. This was all vibecoded by my openclaw Henry. I
+
+[21:09] didn't write any of this code myself. I didn't even vibe code this myself. I said, "Henry, go and build a mission control for me." And it vibe coded it for itself. That's not vibe coding. I call this vibe orchestration. We're vibe orchestrating our open claw. So, you want to build this out, too. You want to have your OpenClaw build you out a
+
+[21:25] mission control where it can build any of the custom tools it needs. things like to-do lists, things like places to track all your sub aents like I have here. Things like an approvals queue where it can write you content and you can just approve it and it sends it out. All these are custom tools you can build
+
+[21:40] out. The number one request I get is, "Hey, can you open source your mission control?" Yes, I will do that eventually, but I do not recommend that as the way to setting up your mission control. Your mission control should be completely custom to you, your goals, your ambitions, and your open claw. So
+
+[21:55] what you want to do is now that we have our morning brief set up. Go to your open claw and say this. I put this prompt down below. Feel free to copy and paste it. I want you to set up a mission control. This is a custom place for us to build out any tools we need to be more productive. Please build this using Nex.js and host it locally. That will
+
+[22:12] cause your open claw to go vibe code mission control for you which will just be a custom dashboard. And then from there you'll be able to go and say hey let's build a to-do list together, right? Let's build a visualization of you working. Anything you need, it can then go and vibe code it inside your
+
+[22:28] mission control. You don't need coding experience for this. It can just do it for you. And now as you're working, the mindset becomes, okay, what can we build out to make this workflow simpler? What can we build out to make this easier for us? Anytime you have your open claw do something, you can say, hey, how would
+
+[22:45] we do this with a custom tool in our mission control? Again, that's reverse prompting, which is probably the most important concept in AI. Instead of telling your bot what you want it to build, you're saying based on what you know about us and what we do, what should we build? You're asking your bot
+
+[23:02] questions. Just reverse prompt as much as you can, and it will start building out these custom tools for you in your mission control. The next advanced concept I want to talk about will save you money and improve your workflows, and that's the concept of brains and muscles with your open claw. The way I
+
+[23:18] like to think about it is whatever model you chose during setup is your brain. It's the one that orchestrates and decides what to do. And then you can use other models as muscles. These are going to be the models that actually do work and create things. So Opus 46 currently is the best brain in the world. It is
+
+[23:34] the best to talk to. It is the best decision maker. I like using Opus as the brain. Again, it's very expensive. So I like to use other models as muscles. So for instance, for coding, I like to use codeex for the muscle because that's very cheap but still very powerful. For finding the latest news, I like to use
+
+[23:51] XAI. So whether that's the X API or the Gro API because XAI is very good at figuring out what's trending at the moment because it's hooked into social media. For searching the web, I like to use the Brave API. The Brave API is a very good and cheap API for searching
+
+[24:07] the web and finding current information. And so that's the muscle I use for searching the web. You want to set up these brains and muscles. You already have the brain set up. So all you need to do now is go to your open claw and say, "Hey, for coding moving forward, please use the codec cli." Then it will
+
+[24:23] ask you for your open AAI API key. You give it to it. You got that muscle set up. Then you say, "Hey, for finding tweets, I want you to use the X API." It'll ask you for your API key. Boom, you're set up. You have that muscle set up. Now, moving forward, your brain, which is opus, can save tokens because
+
+[24:40] it's not doing everything itself. It's instead spinning up other muscles and other models to do that work for it. So, you're not only saving money on tokens, but you are also using the best models for the best jobs out there, which is huge. It makes your workflow more
+
+[24:55] efficient. Now, where we start getting a little bit more advanced is when it comes to local models. The endgame in my mind is when we start using local models for each one of these muscles. I spent over the last few weeks $20,000 on Mac
+
+[25:11] Studios. Why did I do that? I wanted the most powerful computers humanly possible that will allow me to run local models. What are local models? Those are AI models that are not run on the internet, in the cloud, in servers. They are instead run on your computer. And that
+
+[25:28] has many benefits. that allows you to have a unlimited token so you can just do whatever you want locally and b gives you your own personalized local intelligence. I believe this is the future. So what I started doing is I started using local models for some of these muscles. So for instance coding I
+
+[25:45] now use MiniAX 2.5 completely locally. Now all coding is done completely free for me locally on my computer. Now does this mean you need to go out and spend $10,000 on a Mac Studio? No. But as you get more advanced and as you set up more of these workflows, you can start to
+
+[26:01] think about as you go along. Okay, maybe I can replace this workflow with a local model or this one and then you can slowly upgrade your hardware from there. So local models is definitely a concept you want to consider. I strongly believe in the near future we will have super
+
+[26:17] intelligent local models that we can run on our computers where we don't have to spend a penny on tokens anymore. It all happens locally. I started preparing for that future by buying a Mac Studio. You can run local models on Mac minis. They won't be as powerful, but at least you
+
+[26:32] can get them running and you can get used to a future where you have local intelligence running on your computers. On top of that, they're just super fun to play with, super interesting to use. You learn a lot more about the technology. You get a lot more familiar with AI. So, I can't recommend it
+
+[26:48] enough. Start doing research into local models. Start spitting them up. you'll have a lot of fun and you'll get a more advanced workflow out of it. I also want to get into some more advanced concepts here, which is the open claw mindset. How you want to think about open claw overall. Number one is I see a lot of
+
+[27:04] people making mistakes when it comes to using their open claw. I see them doing things that break their open claw and it never works again. I see them communicating with it in a way that's just inefficient. Here's the mindset you need to have with openclaw. One is it is a super intelligent human being employee. you are the manager of this
+
+[27:21] human being employee. I see a lot of people going in and they're like, "Oh, I want to change the way OpenClaw works here. I wanted to do this instead." And they go in and they mess with the config files and they change things around. That's the stupidest thing you can do. That's how you break your open claw. If you want your open claw to behave
+
+[27:37] differently, you don't go in and change config files. You say, "Hey, open claw, I want you to do this differently, or I'd like you to do this." You give it goals and objectives. You don't tell it how to do things. You tell it what the end state you want is and it goes and figures out how to get to that end
+
+[27:53] state. So if for instance it has the concept of heartbeats, what are heartbeats? Heartbeats are every half hour it goes and it checks to see if it has any tasks it needs to do automatically. Say you want to speed up heartbeats. You want it to be every 5 minutes instead because you have a really advanced workflow you're doing.
+
+[28:08] What I'm seeing a lot of people doing is they're going in the config file and they're manually changing the heartbeat. No, you want to give it a goal and it will figure out the best way to do that. So you say, "Hey, Open Claw, I want you to change your heartbeat to every 5 minutes." It will go and figure out the right way to edit its own stuff. You
+
+[28:24] give the endstate goal, it figures out the way. Stop thinking about how it should do things. It's a super intelligent employee. It will figure out the best way to do things. Next, reverse prompting is your friend. This is the most important recommendation I can give. Reverse prompting because this is
+
+[28:39] a super intelligent human employee. You want to lean on it as much as possible for decision-making. You don't want to make all the decisions yourself. You want to say, "Hey, what's the best way to do this?" Or, "Based on what you know about me, what would you do here?" Or, "Based on our goals and ambitions, what would you build out in our mission
+
+[28:56] control?" You're constantly asking questions rather than telling it what to do. The more questions you ask your open claw, the better the results will be. I'll tell you this, the more reverse prompts you can do on a daily basis, the more powerful your open claw will be.
+
+[29:11] So, reverse prompt, reverse prompt, reverse prompt. Write that down on a post-it note. Put it on your monitor. Reverse prompt as much as humanly possible and you'll get way more power out of open cloth. And here's an important one as well. Anytime it messes up, anytime it has a task it can't do, ask it to figure it out and build a
+
+[29:28] solution. So, for instance, I said, I want you to be able to send me tweets and then wait for my approval to send the tweets out. When I asked to do that, it didn't have an approvals queue. So, it went out and built its own approvals queue for me inside my mission control. anything it can't do, just have it build
+
+[29:45] it out. It is a self-improving bot. Anytime it messes up, so maybe it forgets something or it does something the wrong way, say, "Hey, pause right there, Open Claw. Build a new skill that solves this problem." So, for instance, I wanted to write my newsletters. Link to my newsletters down below. I wanted to send me drafts every single Wednesday
+
+[30:02] night, and it wrote me a couple newsletters, and they both stunk. So, I said, "Hey, let's pause here. Read through all my past newsletters, then build a newsletter skill that helps you write better newsletters." It went, it built this new skill, and now it's self-improved. Anytime it can't do something, or anytime it does something
+
+[30:18] poorly, say, "Hey, pause. Figure it out. Build a skill to do this better, build a tool in our mission control to do this better." And moving forward, it will be better and give you way better results. Remember, it is self-improving. And keep that in mind anytime you do something. So, I went through the basics. I went
+
+[30:33] through some more advanced things. I went through a couple use cases for you here. Let's go through another advanced workflow for you here. I think Discord is incredible for advanced workflows. You can set up multiple channels inside Discord to have bots in and do different
+
+[30:48] things with them. So, for instance, I have an alerts channel where every two hours Henry goes and finds me trending tweets on X about my favorite subjects. I then have a research channel where Henry will go take the trending tweets and then do more investigative work on
+
+[31:03] those stories. Then I have a scripts channel where then it then takes those stories and writes me YouTube scripts based on those stories. As you can see, I have this huge workflow where every channel Henry's doing something different in and I can just go in and have a record of all the work he did. Highly recommend taking advantage of
+
+[31:19] Discord. I don't see Discord as a replacement for Telegram. I see Discord as a supplement for Telegram. So go in, say, "Hey, say OpenClaw, I want you to build me out an advanced Discord workflow. What do you think would be channels we could have in there that would make our workflow even better?"
+
+[31:35] Boom. A little reverse prompt for you right there. And then you go in and it will build out the Discord setup for you. Easy peasy. And now you have this advanced workflow going. Lastly, I want to talk about security. This is one of the biggest questions I get. Is Open Claw secure? Is it dangerous? Well, let me be blunt with you right here. Is it
+
+[31:52] secure? If you use it the right way, yes. If you don't use it the right way, no. It's not secure. and it can do damage, but the fact that it's so powerful makes it insecure. Just is what it is. If it wasn't so dangerous, it wouldn't be nearly as powerful. So, here are a few rules you need to keep in mind. There are no final list of every
+
+[32:08] single tiny security thing you can do because everyone uses their bot differently. So, here are the three highle things you need to keep in mind. One is your open claw has control over everything on your computer. Anything on your computer, your open claw is exposed
+
+[32:24] to. That means if you have passwords on your computer, if you have API keys on your computer, that means your open claw has access to it. So your open claw has basically admin access to your entire digital life. If you're logged in to X on your computer, it has access to your
+
+[32:40] entire Twitter account. If you're logged into your Gmail on your computer, it has access to all your emails and can email anyone out. It is admin on everything on your computer. So that means if you don't want your open claw to have access to something, don't be logged into it on your computer. That also means you don't
+
+[32:56] want to expose your open claw to the world. What does that mean? If you expose your open claw to the world, so say put it in a group chat with your friends or allow it to reply to tweets on X, that means it can get prompt injected. And if it gets prompt injected, that means it can expose
+
+[33:12] anything it has access to like your passwords and API keys. So, I highly recommend against putting your open claw on group chats. I highly recommend against allowing anyone to have access to your open claw because if they have access to your open claw, they have access to all your passwords and API
+
+[33:28] keys and email accounts and Twitter accounts and all that. So, keep it personal, keep it private. Do not allow anyone to talk to it, expose itself to it, anything like that. I don't have it reading my tweet replies. I don't have it reading my emails. I will eventually get to the point where I put up the guard rails around it to make it safe,
+
+[33:45] but right now I just have it doing personal work on my computer. And the last security tip I will give is think deeply about what your claw will do with every prompt you give it. Before you give it a prompt, think will this expose it to the world? Will this make it do something risky? Will it allow it to get
+
+[34:02] prompt injected in some sort of way? If you think deeply about every prompt you give it, you will be able to stop it from doing stupid and bad things. Right? So three is think deeply with every command you give what your claw is going to do. And you can even take it a step
+
+[34:17] further and say, "Hey, before you do anything, open claw, give me a step-by-step plan on what you plan on doing here." If you keep these three things in mind, there's basically nothing you'll be able to do where bad things will happen. It's all about personal responsibility. As they said in
+
+[34:32] Spider-Man, with great power comes great responsibility. If you're using Open Claw, you have great great power. So, make sure you have great great responsibility with it. There are hundreds of more advanced use cases. If you want more looks into those, check out my channel. I have so many videos about OpenClaw. Let me know down in the
+
+[34:48] replies below. What do you want to see more of on the channel about OpenClaw? Do you want more videos on mission control? Do you want more videos on local models? Do you want more videos on more advanced use cases, security? Let me know. All my videos are based on
+
+[35:03] feedback and requests. So, I listen closely to every single comment. Again, if you want to ask me questions directly, feel free to join the live Open Claw boot camps, which are every single Friday. If you join Vibe Coding Academy now, you get all the past recordings to the boot camps. That link's down below. Super critical you
+
+[35:19] turn on notifications, too, so you learn about these advanced workflows the moment I come up with them. I hope this was helpful. So much more coming out on Open Claw soon. Enjoy the power, enjoy the technology. This is the most amazing time to be alive ever.
+

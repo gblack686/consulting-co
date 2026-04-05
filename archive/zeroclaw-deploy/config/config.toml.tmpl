@@ -1,0 +1,47 @@
+# ZeroClaw Configuration
+# Client: ${CLIENT_NAME}
+
+default_provider = "openrouter"
+default_model = "${DEFAULT_MODEL}"
+default_temperature = 0.7
+api_key = "${OPENROUTER_API_KEY}"
+api_url = "https://openrouter.ai/api/v1"
+
+[gateway]
+port = 18789
+host = "0.0.0.0"
+allow_public_bind = true
+require_pairing = false
+paired_tokens = ["${GATEWAY_TOKEN}"]
+
+[agent]
+max_tool_iterations = 20
+max_history_messages = 50
+compact_context = false
+
+[browser]
+enabled = true
+backend = "agent_browser"
+native_headless = true
+
+[autonomy]
+level = "full"
+workspace_only = false
+block_high_risk_commands = false
+require_approval_for_medium_risk = false
+max_actions_per_hour = 100
+max_cost_per_day_cents = 1000
+allowed_commands = ["git", "npm", "cargo", "ls", "cat", "grep", "find", "echo", "pwd", "wc", "head", "tail", "date", "curl", "node", "python3", "agent-browser", "aws"]
+forbidden_paths = []
+auto_approve = ["file_read", "memory_recall", "shell", "file_write", "browser"]
+always_ask = []
+allowed_roots = []
+shell_env_passthrough = []
+non_cli_excluded_tools = []
+
+[web_fetch]
+enabled = true
+
+[web_search]
+enabled = true
+provider = "duckduckgo"

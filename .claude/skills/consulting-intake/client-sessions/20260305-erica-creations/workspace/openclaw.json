@@ -1,0 +1,207 @@
+// OpenClaw Configuration — Cruz Creations
+// Agent: Luna 🌙
+// Pattern B: Multi-agent by domain (workshop, newsletter, social-media, morning-brief)
+// Models: Cheap tier (brain=gemini-2.0-flash-001, muscle=deepseek-chat-v3)
+// Channel: WhatsApp (via Meta Business API or Twilio sandbox)
+// Updated: 2026-03-05 — initial build from intake session
+
+{
+  // --- Gateway ---
+  gateway: {
+    port: 18789,
+    reload: { mode: "hybrid", debounceMs: 300 },
+    controlUi: { allowInsecureAuth: true },
+    auth: { mode: "token" },
+    tailscale: { mode: "off", resetOnExit: false },
+  },
+
+  // --- Logging ---
+  logging: { redactSensitive: "tools" },
+
+  // --- Models: OpenRouter (cheap tier) ---
+  models: { mode: "merge" },
+
+  // --- Environment ---
+  env: {
+    OPENROUTER_API_KEY: "set via: openclaw secrets set OPENROUTER_API_KEY <key>",
+    // GMAIL_CLIENT_ID: "set via: openclaw secrets set GMAIL_CLIENT_ID <id>"
+    // GMAIL_CLIENT_SECRET: "set via: openclaw secrets set GMAIL_CLIENT_SECRET <secret>"
+    // SHOPIFY_API_KEY: "set via: openclaw secrets set SHOPIFY_API_KEY <key>"
+    // SHOPIFY_API_SECRET: "set via: openclaw secrets set SHOPIFY_API_SECRET <secret>"
+    // WHATSAPP_API_TOKEN: "set via: openclaw secrets set WHATSAPP_API_TOKEN <token>"
+    // CLASSBENTO_EMAIL: "set via: openclaw secrets set CLASSBENTO_EMAIL artbycruzcreations@gmail.com"
+    // CLASSBENTO_PASSWORD: "set via: openclaw secrets set CLASSBENTO_PASSWORD <password>"
+  },
+
+  // --- Agents ---
+  agents: {
+    defaults: {
+      model: {
+        primary: "openrouter/google/gemini-2.0-flash-001",
+        fallbacks: ["openrouter/deepseek/deepseek-chat-v3"],
+      },
+      heartbeat: {
+        every: "15m",
+        target: "main",
+        ackMaxChars: 300,
+      },
+      subagents: {
+        model: "openrouter/deepseek/deepseek-chat-v3",
+        archiveAfterMinutes: 60,
+        maxSpawnDepth: 2,
+        maxChildrenPerAgent: 4,
+        maxConcurrent: 5,
+      },
+      contextPruning: {
+        mode: "cache-ttl",
+        ttl: "1h",
+        keepLastAssistants: 3,
+        softTrimRatio: 0.3,
+        minPrunableToolChars: 50000,
+      },
+      compaction: {
+        mode: "safeguard",
+        memoryFlush: { enabled: true, softThresholdTokens: 6000 },
+      },
+    },
+
+    list: [
+      {
+        id: "main",
+        default: true,
+        name: "Luna",
+        workspace: "~/.openclaw/workspace-main",
+        agentDir: "~/.openclaw/agents/main/agent",
+        model: "openrouter/google/gemini-2.0-flash-001",
+        identity: { name: "Luna", emoji: "🌙" },
+        subagents: {
+          allowAgents: ["workshop-assistant", "newsletter-email", "social-media", "morning-brief"],
+        },
+      },
+      {
+        id: "workshop-assistant",
+        name: "Workshop Assistant",
+        workspace: "~/.openclaw/workspace-workshop",
+        agentDir: "~/.openclaw/agents/workshop-assistant/agent",
+        model: "openrouter/deepseek/deepseek-chat-v3",
+        identity: { name: "Workshop Assistant", emoji: "🏺" },
+      },
+      {
+        id: "newsletter-email",
+        name: "Email Manager",
+        workspace: "~/.openclaw/workspace-newsletter",
+        agentDir: "~/.openclaw/agents/newsletter-email/agent",
+        model: "openrouter/deepseek/deepseek-chat-v3",
+        identity: { name: "Email Manager", emoji: "📬" },
+      },
+      {
+        id: "social-media",
+        name: "Content Studio",
+        workspace: "~/.openclaw/workspace-social",
+        agentDir: "~/.openclaw/agents/social-media/agent",
+        model: "openrouter/google/gemini-2.0-flash-001",
+        identity: { name: "Content Studio", emoji: "📸" },
+      },
+      {
+        id: "morning-brief",
+        name: "Morning Brief",
+        workspace: "~/.openclaw/workspace-brief",
+        agentDir: "~/.openclaw/agents/morning-brief/agent",
+        model: "openrouter/deepseek/deepseek-chat-v3",
+        identity: { name: "Morning Brief", emoji: "☀️" },
+      },
+    ],
+  },
+
+  // --- Bindings ---
+  bindings: [
+    { from: "main", to: "workshop-assistant", on: ["workshop", "kiln", "pickup", "attendee", "pottery", "form", "QR"] },
+    { from: "main", to: "newsletter-email",   on: ["email", "newsletter", "draft email", "respond", "mailchimp", "FAQ"] },
+    { from: "main", to: "social-media",       on: ["post", "instagram", "tiktok", "caption", "content", "reel", "viral", "flyer"] },
+    { from: "main", to: "morning-brief",      on: ["morning brief", "daily summary", "today", "moon", "schedule"] },
+  ],
+
+  // --- Channels ---
+  channels: {
+    // WhatsApp via Meta Business API or Twilio sandbox
+    // Setup: https://developers.facebook.com/docs/whatsapp/cloud-api/get-started
+    // Or Twilio sandbox: https://www.twilio.com/docs/whatsapp/sandbox
+    whatsapp: {
+      enabled: true,
+      dmPolicy: "allowlist",
+      allowFrom: ["ERICA_WHATSAPP_NUMBER"],
+    },
+    // Telegram as fallback during WhatsApp setup
+    telegram: {
+      enabled: false,
+      dmPolicy: "allowlist",
+      allowFrom: ["ERICA_TELEGRAM_ID"],
+    },
+  },
+
+  // --- Sessions ---
+  session: {
+    dmScope: "per-channel-peer",
+    reset: { mode: "daily", atHour: 4 },
+    maintenance: { mode: "enforce", pruneAfter: "30d", maxEntries: 500 },
+  },
+
+  // --- Safety ---
+  tools: {
+    loopDetection: {
+      enabled: true,
+      historySize: 30,
+      warningThreshold: 10,
+      criticalThreshold: 20,
+      globalCircuitBreakerThreshold: 30,
+    },
+  },
+
+  // --- Commands ---
+  commands: { native: "auto", nativeSkills: "auto", restart: true },
+
+  // --- Plugins ---
+  plugins: {
+    entries: {
+      "damage-control": { enabled: true },
+      "whatsapp":       { enabled: true },  // enable once WhatsApp API set up
+      "telegram":       { enabled: false }, // fallback channel
+    },
+  },
+
+  // --- Skills ---
+  skills: {
+    entries: {
+      // Workshop domain
+      "workshop-cleanup":       { enabled: true },
+      "kiln-notification":      { enabled: true },
+      "classbento-monitor":     { enabled: true },
+
+      // Newsletter & Email domain
+      "draft-faq-reply":        { enabled: true },
+      "consumer-newsletter":    { enabled: true },
+      "artist-newsletter":      { enabled: true },
+
+      // Social Media domain
+      "content-calendar":       { enabled: true },
+      "draft-caption":          { enabled: true, user_invocable: true },
+      "analytics-summary":      { enabled: true },
+
+      // Morning Brief domain
+      "morning-brief":          { enabled: true },
+
+      // Utility
+      "setup-openclaw":         { enabled: true, user_invocable: true },
+      "pi-pi":                  { enabled: true, user_invocable: true },
+    },
+    load: { watch: true },
+  },
+
+  // --- Cron ---
+  cron: { enabled: true },
+
+  // Cron jobs to add after deploy:
+  // openclaw cron add "morning-brief"      "0 8 * * *"   (daily 8am PST)
+  // openclaw cron add "workshop-check"     "0 9 * * 1"   (weekly Monday 9am)
+  // openclaw cron add "newsletter-draft"   "0 10 1 * *"  (monthly 1st at 10am)
+}

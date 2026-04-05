@@ -1,0 +1,16 @@
+# {{PROJECT_NAME}} — Task Recipes
+# Usage: just -f <path-to-this-justfile> <recipe>
+
+set shell := ["bash", "-cu"]
+
+# List available commands
+default:
+    @just -f "{{justfile()}}" --list
+
+# ─── Core Recipes ─────────────────────────────────────────────────
+
+# TODO: Add your first recipe
+hello:
+    @echo "{{PROJECT_NAME}} is ready"
+
+# TODO: Add more recipes below

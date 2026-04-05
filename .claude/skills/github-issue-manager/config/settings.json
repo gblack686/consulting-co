@@ -1,0 +1,31 @@
+{
+  "enabled": true,
+  "default_repo": "gblack686/consulting-co",
+  "default_labels": ["claude-code-fix"],
+  "min_confidence": 0.7,
+  "fix_types_to_track": ["bug_fix", "security_fix", "edge_case_fix"],
+  "dry_run": false,
+  "log_file": "~/.claude/logs/github_issue_debug.log",
+  "fix_keywords": [
+    "fixed",
+    "bug",
+    "resolved",
+    "patched",
+    "corrected",
+    "repaired",
+    "security",
+    "vulnerability",
+    "edge case",
+    "error handling"
+  ],
+  "exclude_patterns": [
+    "test",
+    "example",
+    "documentation"
+  ],
+  "issue_template": {
+    "title_prefix": "[Claude Code Fix]",
+    "add_session_id": true,
+    "add_timestamp": true
+  }
+}

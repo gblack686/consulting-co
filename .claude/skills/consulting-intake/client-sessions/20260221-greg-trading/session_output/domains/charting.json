@@ -1,0 +1,40 @@
+{
+  "domain": "charting",
+  "display_name": "Charting Agent",
+  "description": "On-demand chart generation for any ticker or strategy. Includes price action charts, indicator overlays, equity curves, and portfolio snapshots. Greg wants a button — not automatic 15-minute generation.",
+  "tools": ["Hyper Liquid API (price data)", "charting library TBD (e.g., mplfinance, lightweight-charts, TradingView webhooks)"],
+  "frequency": "On-demand only (Greg-triggered or via trade proposal)",
+  "workflows": [
+    {
+      "name": "generate-chart",
+      "description": "Generate a chart for a specified ticker / timeframe on demand",
+      "trigger": "on-demand (Greg command or trade proposal CTA)",
+      "steps": [
+        "Receive chart request: ticker, timeframe, indicator list, date range",
+        "Fetch OHLCV data from Hyper Liquid API",
+        "Apply requested indicators (MA, RSI, MACD, volume, etc.)",
+        "Render chart as PNG/HTML",
+        "Send chart image to Greg via Telegram",
+        "Log chart request to memory"
+      ],
+      "output": "Chart image delivered via Telegram",
+      "approval_gate": "None — on-demand, triggered by Greg",
+      "blast_radius": "Low — read-only + image generation",
+      "user_invocable": true
+    },
+    {
+      "name": "generate-equity-curve",
+      "description": "Visualize backtest results as equity curve chart",
+      "trigger": "on-demand (called by back-tester after backtest completion)",
+      "steps": [
+        "Receive equity curve data from backtest output",
+        "Render equity curve with drawdown overlay",
+        "Send chart image to Greg via Telegram",
+        "Attach to backtest report in memory"
+      ],
+      "output": "Equity curve chart image + integration with backtest report",
+      "approval_gate": "None — automated post-backtest",
+      "blast_radius": "Low"
+    }
+  ]
+}

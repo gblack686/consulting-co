@@ -1,0 +1,32 @@
+{
+  "anthropic": {
+    "warn_percent": 50,
+    "critical_percent": 80,
+    "description": "Alert when Claude API usage exceeds thresholds"
+  },
+  "elevenlabs": {
+    "warn_percent": 60,
+    "critical_percent": 85,
+    "description": "Alert when character credits exceed thresholds"
+  },
+  "aws": {
+    "warn_amount_usd": 100,
+    "critical_amount_usd": 200,
+    "description": "Alert when monthly AWS costs exceed thresholds"
+  },
+  "openai": {
+    "warn_percent": 50,
+    "critical_percent": 80,
+    "description": "Alert when OpenAI API usage exceeds thresholds"
+  },
+  "supabase": {
+    "warn_percent": 70,
+    "critical_percent": 90,
+    "description": "Alert when Supabase storage exceeds thresholds"
+  },
+  "apify": {
+    "warn_percent": 50,
+    "critical_percent": 80,
+    "description": "Alert when Apify credits exceed thresholds"
+  }
+}

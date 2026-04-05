@@ -1,0 +1,483 @@
+# OpenClaw Deploy — justfile
+# One-command CDK deployment for consulting client OpenClaw instances
+#
+# Usage:
+#   just deploy client=greg-trading tier=mid
+#   just status
+#   just health
+#   just doctor
+#   just logs
+#   just ssh
+#   just destroy client=greg-trading
+
+set shell := ["bash", "-cu"]
+
+project_root := `git rev-parse --show-toplevel`
+deploy_dir := project_root + "/openclaw-deploy"
+
+# Current deployed instance defaults (update after first deploy)
+default_instance := ""
+default_ip := ""
+default_client := "greg-trading"
+
+# --- Deployment ---
+
+# Deploy an OpenClaw instance for a client
+deploy client tier="mid":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{deploy_dir}}"
+
+    # Get Anthropic key from AWS Secrets Manager
+    AKEY=$(aws secretsmanager get-secret-value \
+      --secret-id gbautomation/core/anthropic-api-key \
+      --query SecretString --output text 2>/dev/null)
+
+    if [ -z "$AKEY" ]; then
+      echo "ERROR: Could not retrieve Anthropic key from Secrets Manager"
+      exit 1
+    fi
+
+    echo "Deploying OpenClaw for client={{client}} tier={{tier}}"
+    npm install --silent
+    npx cdk deploy \
+      --context client={{client}} \
+      --context anthropicKey="$AKEY" \
+      --context modelTier={{tier}} \
+      --require-approval never
+
+    echo ""
+    echo "=== Deploy complete. Waiting 60s for bootstrap... ==="
+    sleep 60
+
+    # Get outputs
+    STACK="OpenClaw-{{client}}"
+    IP=$(aws cloudformation describe-stacks --stack-name "$STACK" \
+      --query "Stacks[0].Outputs[?OutputKey=='PublicIp'].OutputValue" --output text 2>/dev/null)
+    TOKEN=$(aws cloudformation describe-stacks --stack-name "$STACK" \
+      --query "Stacks[0].Outputs[?OutputKey=='GatewayToken'].OutputValue" --output text 2>/dev/null)
+    INSTANCE=$(aws cloudformation describe-stacks --stack-name "$STACK" \
+      --query "Stacks[0].Outputs[?OutputKey=='InstanceId'].OutputValue" --output text 2>/dev/null)
+
+    echo ""
+    echo "=== OpenClaw Deployed ==="
+    echo "IP:       $IP"
+    echo "Instance: $INSTANCE"
+    echo "Token:    $TOKEN"
+    echo "Health:   http://$IP:3050/health"
+    echo "Dashboard: http://$IP:3050/?token=$TOKEN"
+    echo "WS:       ws://$IP:3050?token=$TOKEN"
+    echo "SSM:      aws ssm start-session --target $INSTANCE"
+
+    # --- Deployment Report ---
+    REPORT_DIR="{{deploy_dir}}/reports"
+    mkdir -p "$REPORT_DIR"
+    TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+    REPORT="$REPORT_DIR/deploy-{{client}}-$TIMESTAMP.md"
+
+    # Health check
+    HEALTH=$(curl -s --max-time 10 "http://$IP:3050/health" 2>/dev/null || echo '{"status":"unreachable"}')
+    HEALTH_STATUS=$(echo "$HEALTH" | python3 -c "import sys,json; print(json.load(sys.stdin).get('status','unknown'))" 2>/dev/null || echo "unknown")
+
+    # Bootstrap log tail
+    SETUP_LOG=""
+    if [ -n "$INSTANCE" ]; then
+      CID=$(aws ssm send-command --instance-ids "$INSTANCE" \
+        --document-name "AWS-RunShellScript" \
+        --parameters '{"commands":["tail -20 /var/log/openclaw-setup.log 2>&1"]}' \
+        --output text --query "Command.CommandId" 2>/dev/null || true)
+      if [ -n "$CID" ]; then
+        sleep 8
+        SETUP_LOG=$(aws ssm get-command-invocation --command-id "$CID" \
+          --instance-id "$INSTANCE" \
+          --query "StandardOutputContent" --output text 2>/dev/null || echo "(could not retrieve)")
+      fi
+    fi
+
+    cat > "$REPORT" << REPORTEOF
+    # OpenClaw Deployment Report
+
+    **Client:** {{client}}
+    **Tier:** {{tier}}
+    **Timestamp:** $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    **Stack:** $STACK
+
+    ## Instance
+
+    | Field | Value |
+    |-------|-------|
+    | IP | $IP |
+    | Instance ID | $INSTANCE |
+    | Gateway Token | $TOKEN |
+    | Model Tier | {{tier}} |
+    | AMI | Ubuntu 22.04 LTS |
+    | Instance Type | t3.medium |
+
+    ## Endpoints
+
+    | Endpoint | URL |
+    |----------|-----|
+    | Health | http://$IP:3050/health |
+    | WebSocket | ws://$IP:3050?token=$TOKEN |
+    | SSH | ssh ubuntu@$IP |
+    | SSM | aws ssm start-session --target $INSTANCE |
+    | Dashboard | https://master.d1qefy5a1kauhs.amplifyapp.com/dashboard?token=$TOKEN |
+
+    ## Health Check
+
+    - **Status:** $HEALTH_STATUS
+    - **Raw:** \`$HEALTH\`
+
+    ## Amplify Integration
+
+    \`\`\`
+    VITE_OPENCLAW_WS_URL=ws://$IP:3050
+    \`\`\`
+
+    Run \`just update-frontend\` to set this on the Amplify app.
+
+    ## Bootstrap Log (last 20 lines)
+
+    \`\`\`
+    $SETUP_LOG
+    \`\`\`
+
+    ## Next Steps
+
+    1. \`just setup-log instance=$INSTANCE\` — watch full bootstrap progress
+    2. \`just health ip=$IP\` — verify proxy responds
+    3. \`just doctor instance=$INSTANCE\` — run openclaw doctor
+    4. \`just e2e ip=$IP\` — WebSocket round-trip test
+    5. \`just update-frontend\` — point Amplify at new IP
+    REPORTEOF
+
+    # Strip leading whitespace from heredoc (indented for justfile readability)
+    sed -i 's/^    //' "$REPORT"
+
+    echo ""
+    echo "=== Deployment report saved to: $REPORT ==="
+    cat "$REPORT"
+
+# Synthesize CloudFormation template (dry run)
+synth client="greg-trading" tier="mid":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{deploy_dir}}"
+    npm install --silent
+    npx cdk synth \
+      --context client={{client}} \
+      --context anthropicKey=PLACEHOLDER \
+      --context modelTier={{tier}} 2>&1 | head -80
+
+# Destroy an OpenClaw stack
+destroy client:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{deploy_dir}}"
+    echo "WARNING: Destroying OpenClaw-{{client}} stack"
+    npx cdk destroy "OpenClaw-{{client}}" \
+      --context client={{client}} \
+      --context anthropicKey=PLACEHOLDER \
+      --force
+
+# Bootstrap CDK (first time per account/region)
+bootstrap:
+    cd "{{deploy_dir}}" && npx cdk bootstrap
+
+# --- Instance Operations ---
+
+# Check proxy health
+health ip=default_ip:
+    @curl -s "http://{{ip}}:3050/health" | python3 -c "import sys,json; d=json.load(sys.stdin); print(f'Status: {d[\"status\"]}  Uptime: {d[\"uptime\"]:.0f}s  Connections: {d[\"connections\"]}')" 2>/dev/null || curl -s "http://{{ip}}:3050/health"
+
+# Run openclaw doctor via SSM
+doctor instance=default_instance:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters '{"commands":["sudo -u ubuntu bash -c \"export PATH=/home/ubuntu/.npm-global/bin:$PATH && openclaw doctor --non-interactive 2>&1\""]}' \
+      --output text --query "Command.CommandId")
+    sleep 8
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# Full status check
+status instance=default_instance ip=default_ip:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    echo "=== Health Check ==="
+    curl -s "http://{{ip}}:3050/health" 2>/dev/null || echo "Proxy unreachable"
+    echo ""
+    echo ""
+    echo "=== SSM Status ==="
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters '{"commands":[
+        "echo === Services ===",
+        "sudo -u ubuntu XDG_RUNTIME_DIR=/run/user/$(id -u ubuntu) systemctl --user status openclaw-gateway --no-pager 2>&1 | head -5",
+        "systemctl status gateway-proxy --no-pager 2>&1 | head -5",
+        "echo === Doctor ===",
+        "sudo -u ubuntu bash -c \"export PATH=/home/ubuntu/.npm-global/bin:$PATH && openclaw doctor --non-interactive 2>&1\" | tail -3",
+        "echo === Memory ===",
+        "free -h | head -2",
+        "echo === Disk ===",
+        "df -h / | tail -1"
+      ]}' --output text --query "Command.CommandId")
+    sleep 10
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# View OpenClaw gateway logs (user-level systemd)
+logs instance=default_instance lines="30":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters '{"commands":["sudo -u ubuntu XDG_RUNTIME_DIR=/run/user/$(id -u ubuntu) journalctl --user -u openclaw-gateway --no-pager -n {{lines}}"]}' \
+      --output text --query "Command.CommandId")
+    sleep 8
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# View proxy logs
+proxy-logs instance=default_instance lines="30":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters '{"commands":["journalctl -u gateway-proxy --no-pager -n {{lines}}"]}' \
+      --output text --query "Command.CommandId")
+    sleep 8
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# View bootstrap log (useful right after deploy)
+setup-log instance=default_instance:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters '{"commands":["tail -50 /var/log/openclaw-setup.log 2>&1"]}' \
+      --output text --query "Command.CommandId")
+    sleep 8
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# Open SSM session (interactive shell)
+ssh instance=default_instance:
+    aws ssm start-session --target {{instance}}
+
+# Restart services
+restart instance=default_instance:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters '{"commands":[
+        "sudo -u ubuntu XDG_RUNTIME_DIR=/run/user/$(id -u ubuntu) systemctl --user restart openclaw-gateway",
+        "sleep 3",
+        "systemctl restart gateway-proxy",
+        "echo Services restarted"
+      ]}' --output text --query "Command.CommandId")
+    sleep 10
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# Run a remote command via SSM
+run instance=default_instance cmd="openclaw --version":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters "{\"commands\":[\"sudo -u ubuntu bash -c 'export PATH=/home/ubuntu/.npm-global/bin:\$PATH && {{cmd}} 2>&1'\"]}" \
+      --output text --query "Command.CommandId")
+    sleep 8
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# --- Skill Deployment ---
+
+# Deploy a skill to the instance via S3
+deploy-skill skill instance=default_instance client=default_client:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    SKILL_DIR="{{deploy_dir}}/skills/{{skill}}"
+    if [ ! -f "$SKILL_DIR/SKILL.md" ]; then
+      echo "ERROR: $SKILL_DIR/SKILL.md not found"
+      exit 1
+    fi
+
+    BUCKET="openclaw-bundle-{{client}}-$(aws sts get-caller-identity --query Account --output text)"
+    echo "Uploading {{skill}} to S3..."
+    aws s3 cp "$SKILL_DIR/SKILL.md" "s3://$BUCKET/skills/{{skill}}/SKILL.md"
+
+    echo "Downloading on instance..."
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters "{\"commands\":[
+        \"mkdir -p /home/ubuntu/.openclaw/workspace/skills/{{skill}}\",
+        \"aws s3 cp s3://$BUCKET/skills/{{skill}}/SKILL.md /home/ubuntu/.openclaw/workspace/skills/{{skill}}/SKILL.md\",
+        \"chown -R ubuntu:ubuntu /home/ubuntu/.openclaw/workspace/skills/{{skill}}\",
+        \"echo Skill {{skill}} deployed\"
+      ]}" --output text --query "Command.CommandId")
+    sleep 8
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# List deployed skills
+skills instance=default_instance:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters '{"commands":["ls -la /home/ubuntu/.openclaw/workspace/skills/ 2>&1"]}' \
+      --output text --query "Command.CommandId")
+    sleep 8
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+# --- Dashboard ---
+
+# Build the consulting dashboard (outputs to dashboard/dist/)
+build-dashboard:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{deploy_dir}}/dashboard"
+    npm install --silent
+    npm run build
+    echo "Dashboard built: {{deploy_dir}}/dashboard/dist/"
+
+# Deploy dashboard update to a running instance (no full redeploy)
+update-dashboard instance=default_instance client=default_client ip=default_ip:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd "{{deploy_dir}}"
+
+    # Build dashboard
+    echo "Building dashboard..."
+    cd dashboard && npm install --silent && npm run build && cd ..
+
+    # Upload to S3
+    BUCKET="openclaw-bundle-{{client}}-$(aws sts get-caller-identity --query Account --output text)"
+    echo "Uploading dashboard to S3..."
+    aws s3 sync dashboard/dist/ "s3://$BUCKET/proxy/dashboard/" --delete
+
+    # Download on instance and restart proxy
+    echo "Deploying to instance..."
+    CID=$(aws ssm send-command --instance-ids {{instance}} \
+      --document-name "AWS-RunShellScript" \
+      --parameters "{\"commands\":[
+        \"aws s3 sync s3://$BUCKET/proxy/dashboard/ /opt/gateway-proxy/dashboard/ --delete\",
+        \"systemctl restart gateway-proxy\",
+        \"echo Dashboard deployed and proxy restarted\"
+      ]}" --output text --query "Command.CommandId")
+    sleep 10
+    aws ssm get-command-invocation --command-id "$CID" \
+      --instance-id {{instance}} \
+      --query "StandardOutputContent" --output text
+
+    echo ""
+    echo "Dashboard live at: http://{{ip}}:3050/"
+
+# --- Frontend Integration ---
+
+# Update Amplify frontend env var with new instance IP
+update-frontend client=default_client:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    STACK="OpenClaw-{{client}}"
+    IP=$(aws cloudformation describe-stacks --stack-name "$STACK" \
+      --query "Stacks[0].Outputs[?OutputKey=='PublicIp'].OutputValue" --output text 2>/dev/null)
+
+    if [ -z "$IP" ]; then
+      echo "ERROR: Could not get IP from stack $STACK"
+      exit 1
+    fi
+
+    # Find the Amplify app (gb-automation-landing)
+    APP_ID=$(aws amplify list-apps \
+      --query "apps[?name=='gb-automation-landing'].appId" --output text 2>/dev/null)
+
+    if [ -z "$APP_ID" ]; then
+      echo "ERROR: Could not find Amplify app 'gb-automation-landing'"
+      exit 1
+    fi
+
+    echo "Setting VITE_OPENCLAW_WS_URL=ws://$IP:3050 on Amplify app $APP_ID..."
+    aws amplify update-app --app-id "$APP_ID" \
+      --environment-variables "VITE_OPENCLAW_WS_URL=ws://$IP:3050"
+
+    echo "Triggering rebuild on master branch..."
+    aws amplify start-job --app-id "$APP_ID" --branch-name master --job-type RELEASE
+
+    echo "Done. Frontend will rebuild with new WebSocket URL."
+    echo "Dashboard: https://master.d1qefy5a1kauhs.amplifyapp.com/dashboard?token=<your-token>"
+
+# --- E2E Test ---
+
+# End-to-end WebSocket test (OpenClaw protocol handshake)
+e2e ip=default_ip token="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    # If no token given, try to get it from stack outputs
+    TOKEN="{{token}}"
+    if [ -z "$TOKEN" ]; then
+      TOKEN=$(aws cloudformation describe-stacks --stack-name "OpenClaw-{{default_client}}" \
+        --query "Stacks[0].Outputs[?OutputKey=='GatewayToken'].OutputValue" --output text 2>/dev/null || true)
+    fi
+
+    if [ -z "$TOKEN" ]; then
+      echo "ERROR: No token provided and could not retrieve from stack"
+      exit 1
+    fi
+
+    echo "Running E2E test against ws://{{ip}}:3050..."
+    node -e "
+    const WebSocket = require('ws');
+    const ws = new WebSocket('ws://{{ip}}:3050?token=$TOKEN');
+    let gotResponse = false;
+    ws.on('open', () => {
+      console.log('Connected. Sending test message...');
+      ws.send(JSON.stringify({type:'user_message',content:'Say hello in one sentence'}));
+    });
+    ws.on('message', (d) => {
+      const m = JSON.parse(d);
+      if (m.type === 'orchestrator_chat') {
+        console.log('Response:', m.data.content.slice(0, 200));
+        gotResponse = true;
+      }
+      if (m.type === 'chat_stream' && m.is_complete) {
+        console.log(gotResponse ? 'PASS' : 'FAIL: no response');
+        ws.close();
+      }
+    });
+    ws.on('error', (e) => { console.log('FAIL:', e.message); process.exit(1); });
+    setTimeout(() => { console.log(gotResponse ? 'PASS (timeout)' : 'FAIL: timeout'); ws.close(); process.exit(gotResponse ? 0 : 1); }, 30000);
+    "
+
+# --- Stack Info ---
+
+# Show CloudFormation outputs for a client stack
+outputs client=default_client:
+    @aws cloudformation describe-stacks \
+      --stack-name "OpenClaw-{{client}}" \
+      --query "Stacks[0].Outputs[*].[OutputKey,OutputValue]" \
+      --output table 2>/dev/null || echo "Stack OpenClaw-{{client}} not found"
+
+# List all OpenClaw stacks
+stacks:
+    @aws cloudformation list-stacks \
+      --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE \
+      --query "StackSummaries[?starts_with(StackName,'OpenClaw-')].[StackName,CreationTime,StackStatus]" \
+      --output table

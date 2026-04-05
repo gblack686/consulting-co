@@ -1,0 +1,6 @@
+{
+  "hook_event_name": "SubagentStop",
+  "agent_id": "agent-test-001",
+  "agent_type": "Explore",
+  "result": "Found 42 Python files"
+}

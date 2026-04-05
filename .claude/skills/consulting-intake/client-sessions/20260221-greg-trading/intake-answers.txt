@@ -1,0 +1,264 @@
+# Intake Answers - Greg Trading
+## Organized by Session Framework → OpenClaw File Mapping
+
+---
+
+## Phase 1: Identity & Soul (15 min)
+
+### For USER.md
+
+**Question 1: What should your agent call you?**
+- Name: Greg
+- Location: Los Angeles
+
+**Question 2: What timezone are you in, and what are your working hours?**
+- Timezone: Los Angeles (PST/PDT)
+- Working hours: (Not specified in transcript)
+
+**Question 3: What are you currently working on — your top 2-3 active projects?**
+- Trading bot project:
+  * Trade on Hyper Liquid
+  * Connect with Discord to view Discord messages and trade tips
+  * Scrape YouTube
+  * Do paper trading
+  * Include a bunch of different trading skills
+
+---
+
+### For SOUL.md — Core Truths
+
+**Question 4: When your agent does something for you, what does 'done well' feel like?**
+When an agent does something well, it:
+- Thinks about all the edge cases and includes them in the submission
+- Is proactive in thinking about what else might be helpful, including:
+  * Observability and validation
+  * Filtering
+  * Providing reports that are not a black box
+  * Especially visual validation
+
+**Question 5: How do you want your agent to handle uncertainty?**
+- Take its best guess for most things
+- If it's a critical architecture question, then things should be free (ask first)
+- If it's a quality and cost trade-off analysis, then maybe I'd want to approve it first
+- Other than that, I'd like the agent to just take liberties and use its best judgment for what might be best
+
+**What should it NEVER do without asking?**
+- Critical architecture questions
+- Quality and cost trade-off analyses (needs approval first)
+
+---
+
+### For SOUL.md — Vibe
+
+**Question 6: Do you want your agent to feel like a professional assistant, a casual friend, a sharp executive, or something else?**
+- Professional assistant
+
+---
+
+### For IDENTITY.md
+
+**Question 7: Let's name your agent. What feels right?**
+- Agent name: Sabah (like Sebastian)
+- Also mentioned: "The agent can be Sebastian"
+
+---
+
+### For MEMORY.md — Mission
+
+**Question 8: In one sentence, what are you trying to build with your life right now?**
+I'm trying to build an income stream based around trading markets:
+- Start with Hyper Liquid
+- Want it to be scouring the web for other opportunities, maybe like Cal down the road
+- Want it to be helping me gain an edge, as well as keeping me aligned with best practices in trading
+- Really, I just need a professional assistant to manage my trading, because I haven't been doing so well
+
+**Question 9: What do you want to be true in 90 days that isn't true today?**
+- Really want to be profitable in a trip with the trading strategy
+
+**Question 10: If your agent did one thing perfectly every night while you sleep, what would move the needle most?**
+The needle would move on:
+- Back testing strategies
+- Information pipelines
+- New data sets that could be helpful
+- Looking for opportunities
+- Taking maybe setting up trades on my behalf
+
+There's a lot I can do overnight, so I'll have to think about exactly what.
+
+---
+
+## Phase 2: Tools & Infrastructure (15 min)
+
+### For TOOLS.md
+
+**Question 11: What devices will your agent live on?**
+- Hardware: Lenovo laptop running Windows (physical laptop)
+
+**Question 12: Walk me through the apps you use every day**
+- Discord
+- Hyper Liquid API
+- GitHub
+- Telegram (probably)
+- Other things (will be more)
+
+**Question 13: Do you have any existing API keys or subscriptions?**
+- Will provide all the API keys
+- Probably Telegram, Discord, maybe iMessage
+- Need to change the Open Claw HTML to match our HTML for the consulting company
+
+---
+
+### For openclaw.json
+
+**Question 14: How do you want to communicate with your agent?**
+- Probably Telegram, Discord, maybe iMessage
+- Only I'll be interfacing with the agent
+- The agent has permission to send messages only to me, or only to specified chats and channels
+
+---
+
+### For model routing
+
+**Question 15: How do you think about cost vs. quality?**
+- Using glm47 and glm47 lite (just two models for now)
+- The brain model will be the big one (glm47)
+- The other agents can use lighter models (glm47 lite) if they're not using critical thinking
+
+---
+
+## Phase 3: Domain Discovery & Workflows (30 min)
+
+### Domain identification
+
+**Question 16: If you had to organize everything you do into 3-5 departments, what would they be?**
+
+1. **Discord & Scraping**
+   - Discord and scraping trades from that Discord channel
+   - News aggregator
+   - Data manager which helps with news
+   - Indicators and sets, like alerts that can trigger workflows based on volume spikes and stuff like that
+
+2. **Portfolio Manager**
+   - Watching and managing the trades
+   - Managing the Hyper Liquid accounts
+   - Assessing risk
+   - Always having stop-losses
+   - Adjusting take profit levels
+   - Learning from critical decisions
+   - Making sure we don't have major drawdowns
+   - Always have a stop-loss set
+
+3. **Back Tester / Quantitative Analyst**
+   - Back testing strategies
+   - Always optimizing to keep us on the edge
+
+4. **Charting Agent** (maybe)
+   - Creates charts for us to review
+   - Probably an on-demand generator (having charts generated every 15 minutes is probably overkill)
+   - Want a button that can create charts for me
+   - Trade proposals should include an option to generate charts
+
+---
+
+### Per domain (Questions 17-22)
+
+**Question 17: What's the most annoying recurring task in [domain]?**
+- Have some skills laid out already or some commands that we can use to start
+- Really there's just way too much for me to do manually
+- Need some help in every area
+
+**Question 18: Walk me through that task step by step**
+- (Not detailed in transcript - needs follow-up)
+
+**Question 19: What triggers this task?**
+- Some tasks triggered by volume spikes and data feeds
+- Daily YouTube scrape
+- Hourly (maybe)
+- Every 15 minutes: scrape the Discord channel for new trade opportunities
+- These are just some recurring triggers for now
+- Each domain will have its own set of daily triggers
+- That all needs help thinking of
+
+**Question 20: When this task is done, what does the output look like?**
+- Depends on the task
+- Really, everything should be automated for the most part, except the trade execution
+- For now, trade execution will need to be manual
+- In the future, we'll have it automated as well
+
+**Question 21: What decisions do YOU make during this task vs. what's mechanical?**
+- Trade execution: manual (for now)
+- Everything else: automated
+
+**Question 22: If this went wrong, what would happen? Who would notice?**
+- (Not detailed in transcript - needs follow-up)
+
+---
+
+### For HEARTBEAT.md
+
+**Question 23: What should your agent check on every 30 minutes when it's idle?**
+- I kind of already went over that (referring to triggers)
+- Periodic checks: volume spikes, data feeds, Discord channel (every 15 minutes)
+
+---
+
+### For morning brief (first cron job)
+
+**Question 24: What do you want to see first thing in the morning?**
+For the morning brief, we're going to want:
+- Market overview
+- Portfolio overview
+- Things like overall volume
+- Any news
+- Probably some sort of daily letter for me to read
+
+We'll revise that and improve it as we go along, but use your best judgment to start.
+
+---
+
+## Phase 4: Autonomy & Safety (10 min)
+
+### For AGENTS.md
+
+**Question 25: On a scale of 'ask me everything' to 'just get it done,' where do you want your agent?**
+- I really want the agent to just get it done
+
+**Question 26: Should your agent ever send messages on your behalf?**
+- The agent has permission to send messages only to me, or only to specified chats and channels
+- Only I'll be interfacing with the agent
+
+**Question 27: Who should be allowed to talk to your agent?**
+- Only I'll be interfacing with the agent
+
+**Question 28: How should sessions work — remember everything forever, or reset daily?**
+- I think I should remember everything forever, really
+- There will be scenarios where we want a clean session so that we don't have bias interfering with any trade decisions
+- Other than that, I think we want to use full memory, long-term memory
+
+---
+
+## Phase 5: Synthesis & Mission Statement (10 min)
+
+**Question 29: Draft mission statement**
+- (Not completed in transcript - needs synthesis)
+
+**Question 30: Does this feel right? What would you change?**
+- (Not completed in transcript - needs follow-up)
+
+---
+
+## Additional Timeline & Milestones
+
+**Timeline & Milestones:**
+- **90 days**: Really want to be profitable in a trip with the trading strategy
+- **2 weeks**: Should have a trading system validated, paper trading system, starting in week one
+- **Day 3**: Trade execution system ready
+- **30 days**: Discord and dashboard full system up and running
+- **As soon as possible**: Need to be paper trading as soon as possible and starting to trade with real money as soon as we have some validation and a good connection to data pipelines and data streaming in the market
+
+---
+
+## Notes
+- Question 22 is not really relevant (per transcript)
+- Some questions (17-19) will need follow-up
+- Need to think about exactly what can be done overnight (Question 10)

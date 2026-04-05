@@ -1,0 +1,28 @@
+# Global TAC Sync Manifest
+# Components listed here are safe to sync between project .claude/ and ~/.claude/
+# Only items listed here get pushed/pulled via sync-to-global / sync-from-global
+
+agents:
+  - tac
+  - tack
+  - bowser-qa-agent
+  - claude-bowser-agent
+  - playwright-bowser-agent
+  - youtube-transcript-agent
+  - hooks-expert-agent
+  - obsidian-kb-expert
+
+experts:
+  - tac
+  - hooks
+  - aws-org
+  - supabase
+  - openclaw
+
+skills:
+  - tac-scaffolding
+  - browser-automation
+  - tac-kb-query
+
+commands:
+  # None initially — most commands are project-specific

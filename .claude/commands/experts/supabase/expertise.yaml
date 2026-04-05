@@ -1,0 +1,417 @@
+# Supabase Vault Expert Knowledge Base
+# Secrets Management within Supabase
+# Last updated: 2026-02-03
+
+overview:
+  description: "Supabase Vault - Postgres extension for storing encrypted secrets and sensitive data"
+  status: "public alpha"
+  cost: "Included free with Supabase - no additional charges"
+  alternative_to:
+    - "AWS Secrets Manager ($0.40/secret/month + API costs)"
+    - "HashiCorp Vault (self-hosted complexity)"
+    - "AWS SSM Parameter Store (limited features)"
+  encryption: "Authenticated Encryption with Associated Data (AEAD) via libsodium"
+  key_storage: "Encryption key stored in Supabase backend, separate from data"
+
+# Schema Details
+schema:
+  table: "vault.secrets"
+  rls_enabled: false
+  columns:
+    - name: "id"
+      type: "uuid"
+      default: "gen_random_uuid()"
+      description: "Primary key"
+    - name: "name"
+      type: "text"
+      nullable: true
+      description: "Optional unique name for the secret"
+    - name: "description"
+      type: "text"
+      default: "''"
+      description: "Optional description"
+    - name: "secret"
+      type: "text"
+      description: "Encrypted secret value (stored encrypted on disk)"
+    - name: "key_id"
+      type: "uuid"
+      nullable: true
+      default: "(pgsodium.create_key()).id"
+      description: "Foreign key to pgsodium.key"
+    - name: "nonce"
+      type: "bytea"
+      nullable: true
+      default: "pgsodium.crypto_aead_det_noncegen()"
+      description: "Cryptographic nonce for encryption"
+    - name: "created_at"
+      type: "timestamp with time zone"
+      default: "CURRENT_TIMESTAMP"
+    - name: "updated_at"
+      type: "timestamp with time zone"
+      default: "CURRENT_TIMESTAMP"
+
+  view: "vault.decrypted_secrets"
+  view_description: "Automatically decrypts secrets on-the-fly at query time"
+  view_columns:
+    - "id"
+    - "name"
+    - "description"
+    - "secret (encrypted)"
+    - "decrypted_secret (plaintext)"
+    - "key_id"
+    - "nonce"
+    - "created_at"
+    - "updated_at"
+
+# Core Functions
+functions:
+  create_secret:
+    signature: "vault.create_secret(secret text, name text DEFAULT NULL, description text DEFAULT NULL)"
+    returns: "uuid"
+    description: "Creates a new encrypted secret"
+    example: |
+      SELECT vault.create_secret(
+        'sk-abc123...',           -- secret value
+        'OPENAI_API_KEY',         -- optional unique name
+        'OpenAI API key for chat' -- optional description
+      );
+
+  update_secret:
+    signature: "vault.update_secret(secret_id uuid, new_secret text, new_name text DEFAULT NULL, new_description text DEFAULT NULL)"
+    returns: "void"
+    description: "Updates an existing secret"
+    example: |
+      SELECT vault.update_secret(
+        '7095d222-efe5-4cd5-b5c6-5755b451e223',
+        'new_secret_value',
+        'NEW_KEY_NAME',
+        'Updated description'
+      );
+
+# Common Operations
+operations:
+  create:
+    method_1_function:
+      description: "Using vault.create_secret() function (recommended)"
+      sql: |
+        SELECT vault.create_secret(
+          'my-secret-value',
+          'SECRET_NAME',
+          'Description of what this secret is for'
+        );
+    method_2_insert:
+      description: "Direct INSERT (not recommended - logs secrets)"
+      sql: |
+        INSERT INTO vault.secrets (secret, name, description)
+        VALUES ('my-secret-value', 'SECRET_NAME', 'Description');
+      warning: "INSERT statements are logged by default - secrets may appear in logs"
+
+  read:
+    by_name:
+      sql: |
+        SELECT decrypted_secret
+        FROM vault.decrypted_secrets
+        WHERE name = 'SECRET_NAME';
+    list_all:
+      sql: |
+        SELECT name, description, created_at, updated_at
+        FROM vault.decrypted_secrets
+        ORDER BY created_at DESC;
+    with_decrypted_value:
+      sql: |
+        SELECT id, name, description, decrypted_secret
+        FROM vault.decrypted_secrets
+        WHERE name = 'SECRET_NAME';
+
+  update:
+    sql: |
+      SELECT vault.update_secret(
+        (SELECT id FROM vault.secrets WHERE name = 'SECRET_NAME'),
+        'new-secret-value',
+        'NEW_NAME',
+        'New description'
+      );
+
+  delete:
+    sql: |
+      DELETE FROM vault.secrets WHERE name = 'SECRET_NAME';
+
+# Helper Functions
+helper_functions:
+  get_secret:
+    description: "Recommended helper function for retrieving secrets"
+    sql: |
+      CREATE OR REPLACE FUNCTION public.get_secret(secret_name TEXT)
+      RETURNS TEXT AS $$
+      DECLARE
+        secret TEXT := '';
+      BEGIN
+        SELECT decrypted_secret INTO secret
+        FROM vault.decrypted_secrets
+        WHERE name = secret_name LIMIT 1;
+        RETURN secret;
+      END;
+      $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+      -- Restrict access
+      REVOKE ALL ON FUNCTION public.get_secret FROM public;
+      GRANT EXECUTE ON FUNCTION public.get_secret TO service_role;
+    usage: "SELECT public.get_secret('OPENAI_API_KEY');"
+
+  get_secret_or_default:
+    description: "Helper with fallback value"
+    sql: |
+      CREATE OR REPLACE FUNCTION public.get_secret_or_default(
+        secret_name TEXT,
+        default_value TEXT DEFAULT NULL
+      )
+      RETURNS TEXT AS $$
+      DECLARE
+        secret TEXT;
+      BEGIN
+        SELECT decrypted_secret INTO secret
+        FROM vault.decrypted_secrets
+        WHERE name = secret_name LIMIT 1;
+        RETURN COALESCE(secret, default_value);
+      END;
+      $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+# Use Cases
+use_cases:
+  api_keys:
+    description: "Store third-party API keys"
+    secrets:
+      - "OPENAI_API_KEY"
+      - "STRIPE_SECRET_KEY"
+      - "SENDGRID_API_KEY"
+      - "TWILIO_AUTH_TOKEN"
+    example: |
+      -- Store API key
+      SELECT vault.create_secret('sk-...', 'OPENAI_API_KEY', 'OpenAI for chat completions');
+
+      -- Use in Edge Function via database call
+      SELECT public.get_secret('OPENAI_API_KEY');
+
+  database_credentials:
+    description: "Store external database connection strings"
+    secrets:
+      - "EXTERNAL_DB_URL"
+      - "REDIS_URL"
+      - "MONGODB_URI"
+
+  webhook_secrets:
+    description: "Store webhook signing secrets"
+    secrets:
+      - "STRIPE_WEBHOOK_SECRET"
+      - "GITHUB_WEBHOOK_SECRET"
+
+  encryption_keys:
+    description: "Store application encryption keys"
+    secrets:
+      - "APP_ENCRYPTION_KEY"
+      - "JWT_SECRET"
+
+# Security Considerations
+security:
+  encryption_details:
+    algorithm: "Authenticated Encryption with Associated Data (AEAD)"
+    library: "libsodium (pgsodium extension)"
+    features:
+      - "Data encrypted at rest"
+      - "Data signed to prevent forgery"
+      - "Encryption key stored separately from data"
+      - "Backups and replication preserve encryption"
+
+  key_location:
+    description: "Encryption key is NOT stored in the database"
+    details: "Supabase manages the key in secured backend systems"
+    access: "Separate API endpoint available to retrieve key for external decryption"
+
+  access_control:
+    recommendations:
+      - "Restrict access to vault.secrets table"
+      - "Restrict access to vault.decrypted_secrets view"
+      - "Use SECURITY DEFINER functions to control access"
+      - "Grant access only to service_role, not anon or authenticated"
+    example: |
+      -- Revoke public access
+      REVOKE ALL ON vault.secrets FROM public;
+      REVOKE ALL ON vault.decrypted_secrets FROM public;
+
+      -- Grant only to service_role
+      GRANT SELECT ON vault.decrypted_secrets TO service_role;
+
+  logging_warning:
+    issue: "INSERT statements log secrets in plaintext"
+    solution: "Use Dashboard UI or disable statement logging"
+    disable_logging: |
+      -- Temporarily disable logging for vault operations
+      SET LOCAL log_statement = 'none';
+      SELECT vault.create_secret('secret-value', 'NAME');
+      RESET log_statement;
+
+# Integration Patterns
+integrations:
+  edge_functions:
+    description: "Use secrets in Supabase Edge Functions"
+    pattern: |
+      // Option 1: Environment variables (set in Supabase Dashboard)
+      const apiKey = Deno.env.get('OPENAI_API_KEY');
+
+      // Option 2: Fetch from Vault via database
+      const { data } = await supabase
+        .rpc('get_secret', { secret_name: 'OPENAI_API_KEY' });
+
+  postgres_functions:
+    description: "Use secrets in database functions"
+    example: |
+      CREATE OR REPLACE FUNCTION call_external_api()
+      RETURNS json AS $$
+      DECLARE
+        api_key TEXT;
+        response json;
+      BEGIN
+        -- Get secret from vault
+        SELECT decrypted_secret INTO api_key
+        FROM vault.decrypted_secrets
+        WHERE name = 'API_KEY';
+
+        -- Use in pg_net HTTP call
+        SELECT content INTO response
+        FROM net.http_get(
+          'https://api.example.com/data',
+          headers := jsonb_build_object(
+            'Authorization', 'Bearer ' || api_key
+          )
+        );
+
+        RETURN response;
+      END;
+      $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+  webhooks:
+    description: "Use secrets in database webhooks"
+    pattern: "Access via get_secret() function in webhook payload"
+
+  triggers:
+    description: "Use secrets in database triggers"
+    pattern: "Call get_secret() within trigger function"
+
+# Migration from AWS Secrets Manager
+migration_from_aws:
+  steps:
+    - step: 1
+      action: "Export secrets from AWS"
+      command: "aws secretsmanager list-secrets --query 'SecretList[*].Name'"
+    - step: 2
+      action: "Retrieve each secret value"
+      command: "aws secretsmanager get-secret-value --secret-id NAME --query SecretString"
+    - step: 3
+      action: "Store in Supabase Vault"
+      sql: "SELECT vault.create_secret('value', 'NAME', 'Migrated from AWS');"
+    - step: 4
+      action: "Update application code"
+      details: "Replace AWS SDK calls with Supabase vault queries"
+    - step: 5
+      action: "Test and validate"
+    - step: 6
+      action: "Delete from AWS Secrets Manager"
+
+  cost_savings:
+    aws_secrets_manager:
+      per_secret: "$0.40/month"
+      per_10k_calls: "$0.05"
+      example_100_secrets: "$40/month + API costs"
+    supabase_vault:
+      per_secret: "$0 (included)"
+      per_call: "$0 (included)"
+      example_100_secrets: "$0"
+
+# Troubleshooting
+troubleshooting:
+  common_issues:
+    - issue: "Secret not found"
+      cause: "Name doesn't exist or typo"
+      fix: "Check exact name: SELECT name FROM vault.decrypted_secrets;"
+
+    - issue: "Permission denied"
+      cause: "Role doesn't have access to vault schema"
+      fix: "Grant access or use service_role connection"
+
+    - issue: "Secrets visible in logs"
+      cause: "Using INSERT instead of vault.create_secret()"
+      fix: "Use vault.create_secret() function or disable logging"
+
+    - issue: "Cannot decrypt secrets"
+      cause: "pgsodium extension not enabled or key issue"
+      fix: "Vault is enabled by default; contact Supabase support"
+
+    - issue: "Duplicate key error"
+      cause: "Secret name must be unique"
+      fix: "Use different name or update existing secret"
+
+# Best Practices
+best_practices:
+  naming:
+    - "Use SCREAMING_SNAKE_CASE for secret names"
+    - "Prefix by service: STRIPE_SECRET_KEY, OPENAI_API_KEY"
+    - "Be descriptive but concise"
+
+  organization:
+    - "Add descriptions to all secrets"
+    - "Document secret purposes and usage"
+    - "Track secrets in code comments or documentation"
+
+  security:
+    - "Never expose vault queries to client-side code"
+    - "Use SECURITY DEFINER functions"
+    - "Restrict to service_role only"
+    - "Rotate secrets periodically"
+    - "Audit secret access"
+
+  development:
+    - "Use different secrets for dev/staging/prod"
+    - "Document secret rotation procedures"
+    - "Test secret retrieval in staging first"
+
+# CLI and Dashboard
+management:
+  dashboard:
+    path: "Project Settings > Vault"
+    features:
+      - "Add/edit/delete secrets via UI"
+      - "View secret metadata (not values)"
+      - "No SQL logging concerns"
+
+  sql_editor:
+    path: "SQL Editor in Supabase Dashboard"
+    features:
+      - "Run vault functions directly"
+      - "Query decrypted_secrets view"
+      - "Create helper functions"
+
+  mcp_tools:
+    execute_sql:
+      description: "Run vault operations via MCP"
+      examples:
+        - "mcp__supabase__execute_sql with vault.create_secret()"
+        - "mcp__supabase__execute_sql with SELECT from vault.decrypted_secrets"
+    apply_migration:
+      description: "Create helper functions via migration"
+      use_for: "DDL operations like CREATE FUNCTION"
+
+# Related Resources
+resources:
+  documentation:
+    - url: "https://supabase.com/docs/guides/database/vault"
+      title: "Supabase Vault Docs"
+    - url: "https://github.com/supabase/vault"
+      title: "Vault GitHub Repository"
+    - url: "https://supabase.com/blog/supabase-vault"
+      title: "Supabase Vault Blog Post"
+
+  related_features:
+    - "Column Encryption (TCE)"
+    - "Row Level Security (RLS)"
+    - "pgsodium extension"
+    - "pg_net for HTTP calls"

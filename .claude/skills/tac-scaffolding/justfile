@@ -1,0 +1,220 @@
+# TAC Scaffolding — Generate agents, experts, skills, commands, and justfiles
+# Usage: just -f .claude/skills/tac-scaffolding/justfile <recipe>
+# Works in both project (.claude/) and global (~/.claude/) contexts
+
+set shell := ["bash", "-cu"]
+
+# Pure just expression — derives claude_dir from justfile location
+# justfile is at <claude_dir>/skills/tac-scaffolding/justfile → parent x2 = claude_dir
+# Result is Windows-format (C:/Users/...) — fine for Python, bash recipes convert with cygpath
+_win_claude := replace(trim_end_match(trim_end_match(parent_directory(parent_directory(justfile_directory())), "/"), "\\"), "\\", "/")
+
+# Python helper — cygpath converts inline in each recipe since bash needs MINGW paths
+_helper_win := _win_claude + "/skills/tac-scaffolding/inventory.py"
+# Shorthand: each recipe calls _h to get MINGW-safe path
+# Usage: python "$(_h)" <cmd> --auto
+_h := "cygpath -u '" + _helper_win + "' 2>/dev/null || echo '" + _helper_win + "'"
+
+# List available commands
+default:
+    @just -f "{{justfile()}}" --list
+
+# ─── Scaffolding Recipes ──────────────────────────────────────────
+# Bash recipes convert _win_claude to MINGW path inline via cygpath
+
+# Create a new agent from template
+new-agent name model="opus" color="green":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd="$(cygpath -u '{{_win_claude}}' 2>/dev/null || echo '{{_win_claude}}')"
+    target="${cd}/agents/{{name}}.md"
+    templates="${cd}/skills/tac-scaffolding/templates"
+    if [ -f "$target" ]; then
+        echo "  Agent already exists: $target"
+        exit 1
+    fi
+    sed \
+        -e "s/{{{{AGENT_NAME}}}}/{{name}}/g" \
+        -e "s/{{{{MODEL}}}}/{{model}}/g" \
+        -e "s/{{{{COLOR}}}}/{{color}}/g" \
+        "${templates}/agent.md" > "$target"
+    echo "  Created agent: $target"
+    echo "  Next: edit the file to fill in Purpose, Instructions, Workflow, and Report sections"
+
+# Create a new expert domain (all 5 files)
+new-expert domain:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd="$(cygpath -u '{{_win_claude}}' 2>/dev/null || echo '{{_win_claude}}')"
+    dir="${cd}/commands/experts/{{domain}}"
+    templates="${cd}/skills/tac-scaffolding/templates"
+    if [ -d "$dir" ]; then
+        echo "  Expert domain already exists: $dir"
+        exit 1
+    fi
+    mkdir -p "$dir"
+    for tmpl in expertise.md question.md plan.md self-improve.md plan_build_improve.md; do
+        sed "s/{{{{DOMAIN}}}}/{{domain}}/g" "${templates}/expert_${tmpl}" > "$dir/$tmpl"
+    done
+    echo "  Created expert domain: $dir"
+    ls -1 "$dir"
+    echo ""
+    echo "  Next steps:"
+    echo "    1. Fill in expertise.md with domain knowledge"
+    echo "    2. Register commands in .claude/settings.json or CLAUDE.md"
+    echo "    3. (Optional) Create a matching agent in .claude/agents/{{domain}}.md"
+
+# Create a new skill with directory structure
+new-skill name:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd="$(cygpath -u '{{_win_claude}}' 2>/dev/null || echo '{{_win_claude}}')"
+    dir="${cd}/skills/{{name}}"
+    templates="${cd}/skills/tac-scaffolding/templates"
+    if [ -d "$dir" ]; then
+        echo "  Skill already exists: $dir"
+        exit 1
+    fi
+    mkdir -p "$dir"/{config,scripts,templates,references}
+    sed "s/{{{{SKILL_NAME}}}}/{{name}}/g" "${templates}/SKILL.md" > "$dir/SKILL.md"
+    echo "{}" > "$dir/config/settings.json"
+    echo "  Created skill: $dir"
+    find "$dir" -type f | sort
+    echo ""
+    echo "  Next steps:"
+    echo "    1. Edit SKILL.md with capabilities and workflow"
+    echo "    2. Add scripts under scripts/"
+    echo "    3. Add config to config/settings.json"
+
+# Create a new command (top-level or grouped)
+new-command name group="":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd="$(cygpath -u '{{_win_claude}}' 2>/dev/null || echo '{{_win_claude}}')"
+    if [ -z "{{group}}" ]; then
+        target="${cd}/commands/{{name}}.md"
+    else
+        mkdir -p "${cd}/commands/{{group}}"
+        target="${cd}/commands/{{group}}/{{name}}.md"
+    fi
+    if [ -f "$target" ]; then
+        echo "  Command already exists: $target"
+        exit 1
+    fi
+    templates="${cd}/skills/tac-scaffolding/templates"
+    group_val="{{group}}"
+    if [ -z "$group_val" ]; then
+        cmd_path="/{{name}}"
+    else
+        cmd_path="/{{group}}:{{name}}"
+    fi
+    sed \
+        -e "s/{{{{COMMAND_NAME}}}}/{{name}}/g" \
+        -e "s|{{{{COMMAND_PATH}}}}|${cmd_path}|g" \
+        "${templates}/command.md" > "$target"
+    echo "  Created command: $target"
+    echo "  Invoke with: ${cmd_path}"
+
+# Create a new justfile for a skill or project directory
+new-justfile dir name="justfile":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd="$(cygpath -u '{{_win_claude}}' 2>/dev/null || echo '{{_win_claude}}')"
+    templates="${cd}/skills/tac-scaffolding/templates"
+    if [ ! -d "{{dir}}" ]; then
+        echo "  Directory does not exist: {{dir}}"
+        exit 1
+    fi
+    target="{{dir}}/{{name}}"
+    if [ -f "$target" ]; then
+        echo "  Justfile already exists: $target"
+        exit 1
+    fi
+    dirname=$(basename "{{dir}}")
+    sed "s/{{{{PROJECT_NAME}}}}/${dirname}/g" "${templates}/justfile.tmpl" > "$target"
+    echo "  Created justfile: $target"
+    echo "  Run with: just -f \"$target\" --list"
+
+# ─── Bulk / Compound Recipes ──────────────────────────────────────
+
+# Create a full expert domain + matching agent + skill
+new-expert-full domain model="opus" color="blue":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    echo "  Creating full expert ecosystem for: {{domain}}"
+    echo ""
+    echo "--- Agent ---"
+    just -f "{{justfile()}}" new-agent "{{domain}}" "{{model}}" "{{color}}" || true
+    echo ""
+    echo "--- Expert ---"
+    just -f "{{justfile()}}" new-expert "{{domain}}" || true
+    echo ""
+    echo "--- Skill ---"
+    just -f "{{justfile()}}" new-skill "{{domain}}" || true
+    echo ""
+    echo "  Full expert ecosystem created for: {{domain}}"
+    echo "  Components:"
+    echo "    - Agent:  .claude/agents/{{domain}}.md"
+    echo "    - Expert: .claude/commands/experts/{{domain}}/"
+    echo "    - Skill:  .claude/skills/{{domain}}/"
+
+# Create everything for a new TAC component (agent + expert + skill + command + justfile)
+new-all name model="opus":
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cd="$(cygpath -u '{{_win_claude}}' 2>/dev/null || echo '{{_win_claude}}')"
+    echo "  Scaffolding complete TAC component: {{name}}"
+    echo ""
+    just -f "{{justfile()}}" new-expert-full "{{name}}" "{{model}}" || true
+    echo ""
+    echo "--- Command ---"
+    just -f "{{justfile()}}" new-command "{{name}}" || true
+    echo ""
+    echo "--- Justfile ---"
+    skill_dir="${cd}/skills/{{name}}"
+    if [ -d "$skill_dir" ]; then
+        just -f "{{justfile()}}" new-justfile "$skill_dir" || true
+    fi
+    echo ""
+    echo "  All components scaffolded for: {{name}}"
+
+# ─── Inventory / Status ──────────────────────────────────────────
+# Python recipes use --auto flag — inventory.py self-discovers paths from __file__
+
+# List all agents
+list-agents:
+    @python "$({{_h}})" list --auto agents
+
+# List all expert domains
+list-experts:
+    @python "$({{_h}})" list --auto experts
+
+# List all skills
+list-skills:
+    @python "$({{_h}})" list --auto skills
+
+# List all commands (top-level)
+list-commands:
+    @python "$({{_h}})" list --auto commands
+
+# Show full inventory of TAC components
+inventory:
+    @python "$({{_h}})" inventory --auto
+
+# Find components that have an agent but no expert (or vice versa)
+gaps:
+    @python "$({{_h}})" gaps --auto
+
+# ─── Sync Recipes ────────────────────────────────────────────────
+
+# Push global-safe components from current project to ~/.claude/
+sync-to-global:
+    @python "$({{_h}})" sync-to-global --auto
+
+# Pull global components into current project's .claude/
+sync-from-global:
+    @python "$({{_h}})" sync-from-global --auto
+
+# Show what would sync (dry-run)
+sync-diff:
+    @python "$({{_h}})" sync-diff --auto

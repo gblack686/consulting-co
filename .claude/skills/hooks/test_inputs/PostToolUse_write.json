@@ -1,0 +1,12 @@
+{
+  "hook_event_name": "PostToolUse",
+  "tool_name": "Write",
+  "tool_input": {
+    "file_path": "/home/user/project/config.py",
+    "content": "API_KEY = 'sk-ant-api03-fake-key-for-testing'\nDATABASE_URL = 'postgresql://user:pass@localhost/db'"
+  },
+  "tool_result": {
+    "is_error": false,
+    "content": "File written successfully"
+  }
+}

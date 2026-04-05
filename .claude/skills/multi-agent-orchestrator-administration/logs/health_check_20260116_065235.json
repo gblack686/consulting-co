@@ -1,0 +1,78 @@
+{
+  "timestamp": "2026-01-16T06:52:35.676657",
+  "total_checks": 6,
+  "passed": 5,
+  "failed": 1,
+  "overall_status": "UNHEALTHY",
+  "total_duration_ms": 331.9,
+  "backend_url": "http://127.0.0.1:9403",
+  "frontend_url": "http://127.0.0.1:5999",
+  "checks": [
+    {
+      "name": "Backend Health",
+      "passed": true,
+      "message": "Backend is healthy",
+      "duration_ms": 51.85,
+      "details": {
+        "status": "healthy",
+        "service": "orchestrator-3-stream",
+        "websocket_connections": 1
+      },
+      "timestamp": "2026-01-16T06:52:35.373757"
+    },
+    {
+      "name": "Database Connection",
+      "passed": false,
+      "message": "Database status: unknown",
+      "duration_ms": 31.15,
+      "details": {
+        "database_status": "unknown"
+      },
+      "timestamp": "2026-01-16T06:52:35.404906"
+    },
+    {
+      "name": "WebSocket Port",
+      "passed": true,
+      "message": "Port 9403 is accessible",
+      "duration_ms": 11.53,
+      "details": {
+        "port": 9403,
+        "host": "127.0.0.1"
+      },
+      "timestamp": "2026-01-16T06:52:35.416437"
+    },
+    {
+      "name": "List Agents Endpoint",
+      "passed": true,
+      "message": "Found 0 agents",
+      "duration_ms": 120.74,
+      "details": {
+        "agent_count": 0
+      },
+      "timestamp": "2026-01-16T06:52:35.537181"
+    },
+    {
+      "name": "Get Orchestrator Endpoint",
+      "passed": true,
+      "message": "Orchestrator found",
+      "duration_ms": 93.82,
+      "details": {
+        "session_id": "N/A",
+        "status": "success",
+        "working_dir": "N/A"
+      },
+      "timestamp": "2026-01-16T06:52:35.631002"
+    },
+    {
+      "name": "Frontend",
+      "passed": true,
+      "message": "Frontend is running",
+      "duration_ms": 22.8,
+      "details": {
+        "url": "http://127.0.0.1:5999",
+        "status": 200
+      },
+      "timestamp": "2026-01-16T06:52:35.673636"
+    }
+  ]
+}

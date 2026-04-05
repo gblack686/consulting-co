@@ -1,0 +1,113 @@
+# Graphiti/Neo4j Connection and Schema Configuration
+
+neo4j:
+  # Connection details (use environment variables for sensitive data)
+  uri: "bolt://localhost:7687"
+  user: "neo4j"
+  password: "${NEO4J_PASSWORD}"  # Read from environment
+
+  # Connection pool settings
+  pool:
+    max_connection_lifetime: 3600  # seconds
+    max_connection_pool_size: 50
+    connection_timeout: 30
+
+  # Database name (Neo4j 4.0+)
+  database: "neo4j"
+
+# Node and relationship schemas
+schema:
+  # Session node represents a Claude agent session
+  session_node:
+    label: "Session"
+    unique_key: ["id", "source_app"]  # Composite unique constraint
+    properties:
+      - id              # Session identifier
+      - source_app      # Source application name
+      - model_name      # Claude model used
+      - start_time      # Session start timestamp (ms)
+      - end_time        # Session end timestamp (ms)
+      - status          # active, completed, error
+      - total_tools     # Total tools executed (calculated)
+      - avg_tool_latency  # Average tool latency (calculated)
+      - session_duration_ms
+      - session_duration_sec
+      - subagent_count  # Number of spawned subagents
+      - subagent_depth  # Maximum depth of subagent tree
+      - entities_discovered
+      - performance_tier  # fast, medium, slow
+      - entity_discovery_rate
+      - tools_breakdown  # JSON string of tool counts
+      - metrics_updated_at
+      - last_event_time
+
+  # Tool node represents a tool execution
+  tool_node:
+    label: "Tool"
+    unique_key: ["id"]
+    properties:
+      - id           # Unique tool execution ID
+      - name         # Tool name (Read, Write, etc)
+      - input        # Tool input (JSON string)
+      - output       # Tool output (truncated)
+      - start_time   # Execution start timestamp
+      - end_time     # Execution end timestamp
+      - latency_ms   # Execution duration
+      - status       # running, completed, error
+
+  # Entity node represents discovered entities
+  entity_node:
+    label: "Entity"
+    unique_key: ["name", "type"]
+    properties:
+      - name         # Entity name (file, function, class, etc)
+      - type         # file, function, class, concept, technology
+      - description  # Brief description
+
+  # Relationships
+  relationships:
+    - type: "EXECUTED"
+      from: "Session"
+      to: "Tool"
+      properties:
+        - execution_order  # Order of execution in session
+
+    - type: "DISCOVERED"
+      from: "Tool"
+      to: "Entity"
+      properties:
+        - discovery_time
+
+    - type: "SPAWNED"
+      from: "Session"
+      to: "Session"
+      properties:
+        - spawn_time
+
+# Constraints and indexes
+constraints:
+  # Automatically create unique constraints
+  create_unique_constraints: true
+
+  # Automatically create indexes for common queries
+  create_indexes: true
+  indexes:
+    - label: "Session"
+      property: "start_time"
+    - label: "Session"
+      property: "source_app"
+    - label: "Tool"
+      property: "name"
+    - label: "Tool"
+      property: "latency_ms"
+    - label: "Entity"
+      property: "type"
+
+# Data retention
+retention:
+  # How long to keep session data (days)
+  # Set to 0 to keep forever
+  session_ttl_days: 90
+
+  # Automatically clean up old sessions
+  auto_cleanup: false

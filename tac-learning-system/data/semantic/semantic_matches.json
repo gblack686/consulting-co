@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "total_matches": 3,
+    "validated_matches": 0,
+    "high_confidence": 0,
+    "filtered_matches": 2
+  },
+  "matches": [
+    {
+      "source_type": "prompt",
+      "source_name": "List Built-in Tools",
+      "concept_name": "Core Four",
+      "similarity_score": 0.319,
+      "confidence": "medium",
+      "llm_validated": false,
+      "llm_explanation": ""
+    },
+    {
+      "source_type": "prompt",
+      "source_name": "Natural Language SQL Interface",
+      "concept_name": "Core Four",
+      "similarity_score": 0.308,
+      "confidence": "medium",
+      "llm_validated": false,
+      "llm_explanation": ""
+    }
+  ]
+}

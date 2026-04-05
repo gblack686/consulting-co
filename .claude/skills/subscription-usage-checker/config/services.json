@@ -1,0 +1,44 @@
+{
+  "anthropic": {
+    "enabled": true,
+    "api_key_source": "aws_secrets",
+    "secret_name": "gbautomation/core/anthropic-api-key",
+    "description": "Claude API usage and costs"
+  },
+  "elevenlabs": {
+    "enabled": true,
+    "api_key_source": "aws_secrets",
+    "secret_name": "revstar/shared/elevenlabs",
+    "description": "Voice AI character credits"
+  },
+  "aws": {
+    "enabled": true,
+    "profile": "default",
+    "region": "us-east-1",
+    "accounts": ["274487662938"],
+    "description": "AWS Cost Explorer billing"
+  },
+  "openai": {
+    "enabled": true,
+    "api_key_source": "aws_secrets",
+    "secret_name": "gbautomation/core/openai-api-key",
+    "description": "GPT API usage and costs"
+  },
+  "supabase": {
+    "enabled": true,
+    "access_token_source": "env",
+    "env_var": "SUPABASE_ACCESS_TOKEN",
+    "description": "Database and storage usage"
+  },
+  "gemini": {
+    "enabled": true,
+    "credentials_source": "gcloud",
+    "description": "Google Gemini API usage"
+  },
+  "apify": {
+    "enabled": true,
+    "api_key_source": "aws_secrets",
+    "secret_name": "gbautomation/core/apify-api-token",
+    "description": "Web scraping platform credits"
+  }
+}

@@ -1,0 +1,54 @@
+# AGENTS.md Template
+# Fill {placeholders} from session_output/autonomy.json
+
+## Identity & Context Loading
+
+On every session start:
+
+1. Read `SOUL.md` — this is who you are
+2. Read `USER.md` — this is who you're helping
+3. Read recent `memory/*.md` files for continuity (last 3 days)
+4. Read `MEMORY.md` **only in direct/private sessions** (never in group chats)
+5. Read `TOOLS.md` for current infrastructure state
+
+## Memory Architecture
+
+### Three Tiers
+
+1. **Daily Notes** (`memory/YYYY-MM-DD.md`): Raw session logs. Append-only. Auto-created.
+2. **Long-Term Memory** (`MEMORY.md`): Curated durable facts. Main sessions only. Evergreen (no temporal decay).
+3. **Operational** (`TOOLS.md`): Local infrastructure details. Updated when environment changes.
+
+### Memory Protocol
+
+- Before context compaction, persist any durable insights to `MEMORY.md`
+- Daily notes are searchable via vector search (BM25 + vector, 30-day half-life)
+- `MEMORY.md` entries are marked evergreen — no decay
+
+## Behavioral Boundaries
+
+### Safe Autonomously
+{safe_autonomous_actions}
+
+### Requires Asking
+{requires_asking_actions}
+
+### Never Do
+{never_do_actions}
+
+## Group Chat Protocol
+
+- Respond when directly asked or @mentioned
+- Use reactions for acknowledgment when a full reply isn't needed
+- Don't dominate the conversation
+- Keep `MEMORY.md` content out of group responses
+- Share only what's appropriate for the group context
+
+## Heartbeat System
+
+When idle heartbeat fires (every {heartbeat_interval}):
+
+1. Run tasks from `HEARTBEAT.md`
+2. If nothing to report, respond `HEARTBEAT_OK`
+3. During quiet hours ({quiet_hours}), always respond `HEARTBEAT_OK`
+4. Batch multiple checks into a single heartbeat response

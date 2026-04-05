@@ -1,0 +1,241 @@
+# AWS Organization & Lightsail Expert Knowledge Base
+# Cross-account IAM, Lightsail provisioning, least-privilege policies
+# Last updated: 2026-02-05
+
+overview:
+  description: "Manage AWS Organization sub-accounts, cross-account IAM policies, and Lightsail instances with least-privilege security"
+  primary_account:
+    id: "274487662938"
+    alias: "gblack686"
+    email: "gblack686@gmail.com"
+    role: "Management account (Organization root)"
+  organization_id: "o-e2ewew8nbn"
+
+# ============================================================
+# Sub-Accounts
+# ============================================================
+sub_accounts:
+  openclaw-prod:
+    id: "636143319914"
+    name: "openclaw-prod"
+    email: "gblack686+openclaw@gmail.com"
+    joined: "2026-02-02"
+    cross_account_role: "OrganizationAccountAccessRole"
+    iam_users:
+      claude-code:
+        purpose: "OpenClaw agent - Lightsail instance management"
+        credentials_secret: "openclaw/claude-code-credentials"
+        policies:
+          - LightsailAccess
+        restrictions:
+          - "No IAM self-modification"
+          - "No Bedrock (not needed)"
+          - "No S3 (not needed)"
+    lightsail_instances:
+      openclaw-4gb:
+        ip: "18.234.126.236"
+        specs: "2 vCPU, 4GB RAM, 80GB disk"
+        cost: "$24/month"
+        ssh_key: "~/.ssh/lightsail-default.pem"
+        ssh_user: "ubuntu"
+
+# ============================================================
+# Cross-Account Access Pattern
+# ============================================================
+cross_account_access:
+  why: "Root account cannot assume roles directly. Must create a temp IAM user."
+  role: "OrganizationAccountAccessRole"
+  note: "Auto-created by AWS Organizations when sub-account is created via organizations:CreateAccount"
+
+  workflow:
+    step_1: "Create temp IAM user in management account (274487662938)"
+    step_2: "Attach AdministratorAccess policy to temp user"
+    step_3: "Create access key for temp user"
+    step_4: "Use temp user credentials to assume OrganizationAccountAccessRole in target sub-account"
+    step_5: "Execute IAM operations in sub-account using assumed role session credentials"
+    step_6: "Delete temp user access key, detach policy, delete user"
+
+  critical_rules:
+    - "ALWAYS delete temp user immediately after use"
+    - "NEVER store temp user credentials"
+    - "NEVER leave temp user alive between sessions"
+    - "Assumed role sessions expire in 1 hour by default"
+
+# ============================================================
+# Least-Privilege Policy Templates
+# ============================================================
+policy_templates:
+  lightsail_basic:
+    name: "LightsailAccess"
+    description: "Create, manage, and delete Lightsail instances"
+    policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [{
+          "Effect": "Allow",
+          "Action": [
+            "lightsail:CreateInstances",
+            "lightsail:GetInstance",
+            "lightsail:GetInstances",
+            "lightsail:GetKeyPair",
+            "lightsail:CreateKeyPair",
+            "lightsail:OpenInstancePublicPorts",
+            "lightsail:CloseInstancePublicPorts",
+            "lightsail:DeleteInstance",
+            "lightsail:GetBundles",
+            "lightsail:GetBlueprints",
+            "lightsail:StartInstance",
+            "lightsail:StopInstance",
+            "lightsail:RebootInstance"
+          ],
+          "Resource": "*"
+        }]
+      }
+
+  lightsail_readonly:
+    name: "LightsailReadOnly"
+    description: "View Lightsail instances only"
+    policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [{
+          "Effect": "Allow",
+          "Action": [
+            "lightsail:GetInstance",
+            "lightsail:GetInstances",
+            "lightsail:GetBundles",
+            "lightsail:GetBlueprints",
+            "lightsail:GetKeyPair"
+          ],
+          "Resource": "*"
+        }]
+      }
+
+  lightsail_networking:
+    name: "LightsailNetworking"
+    description: "Manage Lightsail networking (static IPs, domains, load balancers)"
+    policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [{
+          "Effect": "Allow",
+          "Action": [
+            "lightsail:AllocateStaticIp",
+            "lightsail:AttachStaticIp",
+            "lightsail:DetachStaticIp",
+            "lightsail:ReleaseStaticIp",
+            "lightsail:GetStaticIp",
+            "lightsail:GetStaticIps",
+            "lightsail:CreateDomain",
+            "lightsail:GetDomain",
+            "lightsail:GetDomains",
+            "lightsail:CreateLoadBalancer",
+            "lightsail:GetLoadBalancer"
+          ],
+          "Resource": "*"
+        }]
+      }
+
+  secrets_readonly:
+    name: "SecretsReadOnly"
+    description: "Read secrets from Secrets Manager (no create/delete)"
+    policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [{
+          "Effect": "Allow",
+          "Action": [
+            "secretsmanager:GetSecretValue",
+            "secretsmanager:ListSecrets",
+            "secretsmanager:DescribeSecret"
+          ],
+          "Resource": "*"
+        }]
+      }
+
+  s3_bucket_scoped:
+    name: "S3BucketScoped"
+    description: "Access a specific S3 bucket only"
+    policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [{
+          "Effect": "Allow",
+          "Action": ["s3:GetObject", "s3:PutObject", "s3:ListBucket", "s3:DeleteObject"],
+          "Resource": [
+            "arn:aws:s3:::{BUCKET_NAME}",
+            "arn:aws:s3:::{BUCKET_NAME}/*"
+          ]
+        }]
+      }
+
+# ============================================================
+# Forbidden Actions (NEVER grant to sub-accounts)
+# ============================================================
+security_rules:
+  never_grant:
+    - "iam:*                     # No IAM self-modification"
+    - "organizations:*           # No org-level access"
+    - "sts:AssumeRole (to management account roles)"
+    - "aws-portal:*              # No billing access"
+    - "account:*                 # No account settings"
+    - "support:*                 # No support case creation"
+
+  always_apply:
+    - "Use inline policies (not managed) for sub-account users - easier to audit"
+    - "One policy per service - never combine unrelated services"
+    - "Name policies descriptively: {Service}{Scope} (e.g., LightsailAccess, S3ReadOnly)"
+    - "Review and prune permissions quarterly"
+    - "Store sub-account credentials in management account Secrets Manager"
+    - "Never store management/root credentials on sub-account instances"
+
+  sub_account_creation:
+    - "Always use email alias: gblack686+{purpose}@gmail.com"
+    - "Name format: {purpose}-{env} (e.g., openclaw-prod, eagle-demo)"
+    - "Start with zero IAM policies - add only what's needed"
+    - "Document every policy grant in expertise.yaml"
+
+# ============================================================
+# Lightsail Reference
+# ============================================================
+lightsail:
+  bundles:
+    nano_3_0:    { cpu: "2 vCPU", ram: "512MB",  disk: "20GB",  cost: "$3.50/mo" }
+    micro_3_0:   { cpu: "2 vCPU", ram: "1GB",    disk: "40GB",  cost: "$5/mo" }
+    small_3_0:   { cpu: "2 vCPU", ram: "2GB",    disk: "60GB",  cost: "$12/mo" }
+    medium_3_0:  { cpu: "2 vCPU", ram: "4GB",    disk: "80GB",  cost: "$24/mo" }
+    large_3_0:   { cpu: "2 vCPU", ram: "8GB",    disk: "160GB", cost: "$48/mo" }
+    xlarge_3_0:  { cpu: "4 vCPU", ram: "16GB",   disk: "320GB", cost: "$96/mo" }
+    2xlarge_3_0: { cpu: "8 vCPU", ram: "32GB",   disk: "640GB", cost: "$192/mo" }
+
+  recommended_blueprints:
+    ubuntu_24: "ubuntu_24_04"
+    amazon_linux: "amazon_linux_2023"
+    debian: "debian_12"
+
+  common_ports:
+    ssh: 22
+    http: 80
+    https: 443
+    openclaw_gateway: 18789
+    custom_app: "3025-3099"
+
+  ssh_key_management:
+    local_key: "~/.ssh/lightsail-default.pem"
+    secret: "openclaw/lightsail-ssh-key"
+    note: "Same key used across all Lightsail instances in this org"
+
+# ============================================================
+# Secrets Manager Layout
+# ============================================================
+secrets_layout:
+  pattern: "{org}/{service}/{detail}"
+  accounts:
+    "openclaw/claude-code-credentials": "Sub-account 636143319914 IAM user credentials"
+    "openclaw/lightsail-ssh-key": "SSH private key for all Lightsail instances"
+    "openclaw/github-pat": "GitHub PAT for gblack686-gbauto"
+    "openclaw/github-config": "GitHub org config for gblack686-openclaw"
+    "openclaw/anthropic-oauth-token": "Anthropic OAuth token for OpenClaw"
+  management:
+    "gbautomation/aws/cli-default": "Management account CLI credentials (274487662938)"
+    "gbautomation/google/workspace-god-token": "Google Workspace OAuth God Token for greg@gbautomation.xyz — Gmail, Drive, Calendar, Contacts. GCP project: gbautomation-workspace (1051027620387)"

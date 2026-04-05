@@ -1,0 +1,36 @@
+AI coding agents write a lot of code very quickly, and that's what makes them so powerful. But it creates a problem nobody talks about enough - reviewing all that code is exhausting. You end up skimming, missing things, or just trusting the output and hoping for the best. Neither option is great.
+
+What if the agent could test its own code - comprehensively? I built a single command that kicks off end-to-end testing on any codebase. It guides the coding agent on testing the entire app just as a user would use it. Frontend, backend, and database all validated automatically.
+
+By the time control passes back to you, the agent has already caught and fixed most of its own mistakes. That's what I'll show you in this video! Plus the command is open-source and you can use it now - grab it from the repo linked below.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bright Data - Give your AI agents reliable, real-time web access at scale (web scraping, search, CAPTCHA solving, and more):
+https://brdta.com/colemedin
+
+I also use Neon in this video - Serverless Postgres with instant database branching, autoscaling, and scale-to-zero:
+https://neon.plug.dev/tcbs3LL
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to dive even deeper into building reliable and repeatable systems for AI coding, check out the Dynamous Community and Agentic Coding Course:
+https://dynamous.ai/agentic-coding-course
+
+Here is the full end to end testing command (use with any coding agent)!
+https://github.com/coleam00/link-in-bio-page-builder/blob/main/.claude/skills/e2e-test/SKILL.md
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+0:00 Self-Healing AI Coding Workflow
+3:18 The 6-Step Automation Framework
+5:37 Testing User Journeys and UI
+8:33 The E2E Report
+9:26 Bright Data
+11:05 Live Demo and Validation
+15:00 Database Branching for Testing
+17:02 Using this with Feature Development
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Join me as I push the limits of what is possible with AI. I'll be uploading videos weekly - at least every Wednesday at 7:00 PM CDT!

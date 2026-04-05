@@ -1,0 +1,44 @@
+# Per-Agent AGENTS.md Template
+# Used for domain-specific agents (Pattern B)
+# Scoped to one domain — not the full orchestrator
+
+## Identity & Context Loading
+
+On every session start:
+
+1. Read `SOUL.md` — your {domain_name} persona and boundaries
+2. Read `USER.md` — {client_name}'s {domain_name}-relevant context
+3. Read recent `memory/*.md` files for {domain_name} continuity (last 3 days)
+4. Read `TOOLS.md` for {domain_name} infrastructure
+
+**Note**: You are the **{domain_name}** agent. You do NOT read the main agent's MEMORY.md. Your memory is domain-scoped.
+
+## Memory Architecture
+
+### Two Tiers (Domain-Scoped)
+
+1. **Daily Notes** (`memory/YYYY-MM-DD.md`): {domain_name} session logs. Append-only.
+2. **Operational** (`TOOLS.md`): {domain_name} tool configurations and API details.
+
+Cross-domain context comes from the main agent when it spawns you as a sub-agent.
+
+## Behavioral Boundaries
+
+### Safe Autonomously
+{domain_safe_autonomous}
+
+### Requires Asking {client_name}
+{domain_requires_asking}
+
+### Never Do
+{domain_never_do}
+
+### Out of Scope (Redirect to Main Agent)
+{out_of_scope_domains}
+
+## Heartbeat System
+
+When heartbeat fires:
+{domain_heartbeat_tasks}
+
+During quiet hours ({quiet_hours}), respond `HEARTBEAT_OK`.

@@ -1,0 +1,73 @@
+{
+  "domain": "discord-scraping",
+  "display_name": "Discord & Scraping",
+  "description": "Monitor and scrape Discord trade signal channels, aggregate market news, manage data feeds, and fire alerts on volume spikes and indicator conditions.",
+  "tools": ["Discord API", "YouTube Data API", "News APIs (TBD)", "Volume/indicator data feeds"],
+  "frequency": "every 15 minutes (Discord scrape) + daily (YouTube scrape) + event-driven (volume spikes)",
+  "workflows": [
+    {
+      "name": "scrape-discord",
+      "description": "Monitor Discord trade channels every 15 minutes for new trade tips and signals",
+      "trigger": "cron every 15m",
+      "steps": [
+        "Connect to Discord API",
+        "Fetch new messages from monitored channels since last check",
+        "Parse messages for trade signals (ticker, direction, entry, TP, SL)",
+        "Filter out noise (non-trade messages)",
+        "Structure signals as JSON: {ticker, direction, entry, tp, sl, source, timestamp}",
+        "Write signals to daily log file",
+        "If signal meets quality threshold: flag for morning brief / alert Greg via Telegram"
+      ],
+      "output": "Structured trade signal records in memory + Telegram notification for high-quality signals",
+      "approval_gate": "None — autonomous. Greg reviews signals each morning.",
+      "blast_radius": "Low — read-only from Discord, write to local memory only"
+    },
+    {
+      "name": "scrape-youtube",
+      "description": "Daily YouTube scrape for trading strategy content and market insights",
+      "trigger": "cron daily (overnight)",
+      "steps": [
+        "Query YouTube API for new videos from tracked trading channels",
+        "Download transcripts / descriptions for new videos",
+        "Summarize key insights (strategy ideas, risk tips, market analysis)",
+        "Store summaries in memory with tags",
+        "Include top 2-3 insights in morning brief"
+      ],
+      "output": "Summarized video insights stored in memory, surfaced in morning brief",
+      "approval_gate": "None — autonomous",
+      "blast_radius": "Low — read-only"
+    },
+    {
+      "name": "monitor-feeds",
+      "description": "Watch volume spikes and indicator alerts; trigger downstream workflows",
+      "trigger": "event-driven / heartbeat every 15m",
+      "steps": [
+        "Poll configured data feeds for volume anomalies",
+        "Check defined indicator conditions (e.g., RSI threshold, volume spike %)",
+        "If threshold crossed: log event with context",
+        "If significant: send Telegram alert to Greg with ticker + context",
+        "Optionally: queue a chart generation task for the triggered ticker"
+      ],
+      "output": "Telegram alert + event log entry",
+      "approval_gate": "Alert only — Greg decides whether to act",
+      "blast_radius": "Low — notification only, no trade execution"
+    },
+    {
+      "name": "morning-brief",
+      "description": "Daily morning summary of market, portfolio, signals, and news",
+      "trigger": "cron daily at 7:00 AM PST",
+      "steps": [
+        "Fetch overnight Discord signals (top quality signals flagged)",
+        "Pull Hyper Liquid portfolio overview (positions, P&L, margin)",
+        "Get overall market volume and key metrics",
+        "Gather overnight news digest (crypto/markets)",
+        "Compile YouTube insights from last 24h",
+        "Generate daily letter: market overview + portfolio status + top signals + action items",
+        "Send via Telegram to Greg"
+      ],
+      "output": "Daily brief delivered via Telegram",
+      "approval_gate": "None — autonomous delivery",
+      "blast_radius": "Low — read-only data, message to Greg only"
+    }
+  ]
+}

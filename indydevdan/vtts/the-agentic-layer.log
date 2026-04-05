@@ -1,0 +1,177 @@
+======================================================================
+ULTRA-FAST VTT PROCESSOR
+======================================================================
+
+Reading: vtts/the-agentic-layer.txt
+✓ Found 128 VTT URLs
+
+Downloading in parallel (max 10 concurrent)...
+----------------------------------------------------------------------
+  ✓ Chunk   1 (18 lines)
+  ✓ Chunk   3 (22 lines)
+  ✓ Chunk   9 (23 lines)
+  ✓ Chunk   6 (16 lines)
+  ✓ Chunk   8 (24 lines)
+  ✓ Chunk   5 (23 lines)
+  ✓ Chunk   2 (19 lines)
+  ✓ Chunk   4 (22 lines)
+  ✓ Chunk   7 (21 lines)
+  ✓ Chunk   0 (12 lines)
+  ✓ Chunk  10 (21 lines)
+  ✓ Chunk  11 (22 lines)
+  ✓ Chunk  13 (23 lines)
+  ✓ Chunk  12 (25 lines)
+  ✓ Chunk  16 (24 lines)
+  ✓ Chunk  19 (24 lines)
+  ✓ Chunk  18 (27 lines)
+  ✓ Chunk  15 (21 lines)
+  ✓ Chunk  17 (24 lines)
+  ✓ Chunk  14 (26 lines)
+  ✓ Chunk  20 (24 lines)
+  ✓ Chunk  21 (25 lines)
+  ✓ Chunk  22 (23 lines)
+  ✓ Chunk  24 (24 lines)
+  ✓ Chunk  23 (23 lines)
+  ✓ Chunk  29 (25 lines)
+  ✓ Chunk  26 (19 lines)
+  ✓ Chunk  25 (22 lines)
+  ✓ Chunk  28 (25 lines)
+  ✓ Chunk  27 (21 lines)
+  ✓ Chunk  30 (27 lines)
+  ✓ Chunk  31 (24 lines)
+  ✓ Chunk  33 (24 lines)
+  ✓ Chunk  32 (26 lines)
+  ✓ Chunk  34 (27 lines)
+  ✓ Chunk  35 (25 lines)
+  ✓ Chunk  36 (23 lines)
+  ✓ Chunk  38 (26 lines)
+  ✓ Chunk  37 (28 lines)
+  ✓ Chunk  39 (24 lines)
+  ✓ Chunk  40 (24 lines)
+  ✓ Chunk  41 (27 lines)
+  ✓ Chunk  43 (26 lines)
+  ✓ Chunk  42 (28 lines)
+  ✓ Chunk  44 (23 lines)
+  ✓ Chunk  45 (28 lines)
+  ✓ Chunk  46 (22 lines)
+  ✓ Chunk  47 (28 lines)
+  ✓ Chunk  48 (25 lines)
+  ✓ Chunk  49 (26 lines)
+  ✓ Chunk  50 (25 lines)
+  ✓ Chunk  51 (27 lines)
+  ✓ Chunk  52 (28 lines)
+  ✓ Chunk  54 (27 lines)
+  ✓ Chunk  53 (26 lines)
+  ✓ Chunk  57 (26 lines)
+  ✓ Chunk  56 (24 lines)
+  ✓ Chunk  55 (26 lines)
+  ✓ Chunk  58 (24 lines)
+  ✓ Chunk  59 (27 lines)
+  ✓ Chunk  60 (22 lines)
+  ✓ Chunk  61 (25 lines)
+  ✓ Chunk  62 (29 lines)
+  ✓ Chunk  67 (21 lines)
+  ✓ Chunk  63 (28 lines)
+  ✓ Chunk  68 (26 lines)
+  ✓ Chunk  69 (23 lines)
+  ✓ Chunk  64 (26 lines)
+  ✓ Chunk  70 (30 lines)
+  ✓ Chunk  65 (20 lines)
+  ✓ Chunk  66 (24 lines)
+  ✓ Chunk  80 (20 lines)
+  ✓ Chunk  79 (23 lines)
+  ✓ Chunk  71 (28 lines)
+  ✓ Chunk  81 (21 lines)
+  ✓ Chunk  77 (22 lines)
+  ✓ Chunk  72 (25 lines)
+  ✓ Chunk  75 (28 lines)
+  ✓ Chunk  74 (29 lines)
+  ✓ Chunk  78 (22 lines)
+  ✓ Chunk  73 (23 lines)
+  ✓ Chunk  76 (24 lines)
+  ✓ Chunk  82 (24 lines)
+  ✓ Chunk  85 (23 lines)
+  ✓ Chunk  83 (24 lines)
+  ✓ Chunk  87 (22 lines)
+  ✓ Chunk  89 (21 lines)
+  ✓ Chunk  88 (19 lines)
+  ✓ Chunk  84 (27 lines)
+  ✓ Chunk  91 (26 lines)
+  ✓ Chunk  90 (23 lines)
+  ✓ Chunk  86 (24 lines)
+  ✓ Chunk  99 (24 lines)
+  ✓ Chunk  95 (24 lines)
+  ✓ Chunk  96 (25 lines)
+  ✓ Chunk 100 (23 lines)
+  ✓ Chunk  98 (25 lines)
+  ✓ Chunk 101 (17 lines)
+  ✓ Chunk  97 (22 lines)
+  ✓ Chunk  94 (24 lines)
+  ✓ Chunk  92 (24 lines)
+  ✓ Chunk  93 (24 lines)
+  ✓ Chunk 102 (21 lines)
+  ✓ Chunk 103 (23 lines)
+  ✓ Chunk 105 (25 lines)
+  ✓ Chunk 104 (25 lines)
+  ✓ Chunk 108 (28 lines)
+  ✓ Chunk 106 (20 lines)
+  ✓ Chunk 107 (22 lines)
+  ✓ Chunk 109 (23 lines)
+  ✓ Chunk 110 (21 lines)
+  ✓ Chunk 113 (21 lines)
+  ✓ Chunk 112 (26 lines)
+  ✓ Chunk 116 (25 lines)
+  ✓ Chunk 117 (25 lines)
+  ✓ Chunk 118 (24 lines)
+  ✓ Chunk 124 (20 lines)
+  ✓ Chunk 123 (24 lines)
+  ✓ Chunk 125 (22 lines)
+  ✓ Chunk 121 (26 lines)
+  ✓ Chunk 122 (23 lines)
+  ✓ Chunk 119 (27 lines)
+  ✓ Chunk 120 (21 lines)
+  ✓ Chunk 115 (20 lines)
+  ✓ Chunk 126 (5 lines)
+  ✓ Chunk 114 (25 lines)
+  ✓ Chunk 111 (25 lines)
+  ✓ Chunk 999999 (100 lines)
+
+======================================================================
+✓ EXTRACTION COMPLETE!
+======================================================================
+
+📄 Output: vtts\the-agentic-layer_transcript.txt
+📊 Successful: 128
+📊 Failed: 0
+📊 Characters: 137,064
+📊 Words: 12,094
+📊 Lines: 3,110
+
+======================================================================
+Preview (first 500 characters):
+======================================================================
+Welcome to Tactical Agentic
+Coding, Lesson 8, your
+final lesson. Everything we've
+done so far has
+led us here. You
+have all the information
+you need to become
+an irreplaceable engineer in
+phase two of the
+generative AI age, the
+age of agents. In
+this lesson, we cement
+this lesson, we cement
+critical Agentic Coding ideas,
+tactics, and beliefs by
+revisiting the atoms that
+make up everything we'll
+do as Agentic Engineers
+moving forward. We understand
+that these tactics, they're
+not bound to the
+sof
+
+... (transcript continues)
+======================================================================

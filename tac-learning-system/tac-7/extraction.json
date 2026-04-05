@@ -1,0 +1,859 @@
+{
+  "commands": [
+    {
+      "name": "bug",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\bug.md",
+      "tac_source": "tac-7",
+      "title": "Bug Planning",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Metadata",
+        "Bug Description",
+        "Problem Statement",
+        "Solution Statement",
+        "Steps to Reproduce",
+        "Root Cause Analysis"
+      ],
+      "delegations": [
+        "test_basic_query",
+        "client",
+        "commands",
+        "test_",
+        "test_e2e",
+        "server",
+        "test_complex_query",
+        "e2e",
+        "conditional_docs"
+      ]
+    },
+    {
+      "name": "chore",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\chore.md",
+      "tac_source": "tac-7",
+      "title": "Chore Planning",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Metadata",
+        "Chore Description",
+        "Relevant Files",
+        "Step by Step Tasks",
+        "Validation Commands",
+        "Notes"
+      ],
+      "delegations": [
+        "server",
+        "conditional_docs",
+        "client",
+        "commands"
+      ]
+    },
+    {
+      "name": "classify_adw",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\classify_adw.md",
+      "tac_source": "tac-7",
+      "title": "ADW Workflow Extraction",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Valid ADW Commands",
+        "Response Format",
+        "Text to Analyze"
+      ],
+      "delegations": [
+        "adw_build_iso",
+        "adw_patch_iso",
+        "adw_document_iso",
+        "adw_review_iso",
+        "adw_plan",
+        "adw_plan_build_review_iso",
+        "adw",
+        "adw_sdlc_ZTE_iso",
+        "adw_sdlc_iso",
+        "adw_plan_build_test_iso"
+      ]
+    },
+    {
+      "name": "classify_issue",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\classify_issue.md",
+      "tac_source": "tac-7",
+      "title": "Github Issue Command Selection",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Command Mapping",
+        "Github Issue"
+      ],
+      "delegations": [
+        "feature",
+        "patch",
+        "chore",
+        "bug"
+      ]
+    },
+    {
+      "name": "cleanup_worktrees",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\cleanup_worktrees.md",
+      "tac_source": "tac-7",
+      "title": "Cleanup ADW Worktrees",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "commit",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\commit.md",
+      "tac_source": "tac-7",
+      "title": "Generate Git Commit",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "conditional_docs",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\conditional_docs.md",
+      "tac_source": "tac-7",
+      "title": "Conditional Documentation Guide",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Conditional Documentation"
+      ],
+      "delegations": [
+        "client",
+        "commands",
+        "README",
+        "feature",
+        "server",
+        "adw_",
+        "classify_adw",
+        "style",
+        "src"
+      ]
+    },
+    {
+      "name": "document",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\document.md",
+      "tac_source": "tac-7",
+      "title": "Document Feature",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Documentation Format",
+        "Overview",
+        "Screenshots",
+        "What Was Built",
+        "Technical Implementation",
+        "How to Use",
+        "Configuration",
+        "Testing"
+      ],
+      "delegations": [
+        "A",
+        "added",
+        "commands",
+        "feature",
+        "features",
+        "assets",
+        "main",
+        "conditional_docs",
+        "screenshot"
+      ]
+    },
+    {
+      "name": "feature",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\feature.md",
+      "tac_source": "tac-7",
+      "title": "Feature Planning",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Metadata",
+        "Feature Description",
+        "User Story",
+        "Problem Statement",
+        "Solution Statement",
+        "Relevant Files"
+      ],
+      "delegations": [
+        "test_basic_query",
+        "client",
+        "commands",
+        "test_",
+        "test_e2e",
+        "goal",
+        "server",
+        "value",
+        "test_complex_query",
+        "e2e"
+      ]
+    },
+    {
+      "name": "generate_branch_name",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\generate_branch_name.md",
+      "tac_source": "tac-7",
+      "title": "Generate Git Branch Name",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "feature"
+      ]
+    },
+    {
+      "name": "health_check",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\health_check.md",
+      "tac_source": "tac-7",
+      "title": "Health Check",
+      "description": null,
+      "sections": [],
+      "delegations": [
+        "adw_tests",
+        "health_check"
+      ]
+    },
+    {
+      "name": "implement",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\implement.md",
+      "tac_source": "tac-7",
+      "title": "Implement the following plan",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Plan",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "install",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\install.md",
+      "tac_source": "tac-7",
+      "title": "Install & Prime",
+      "description": null,
+      "sections": [
+        "Read",
+        "Read and Execute",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "copy_dot_env",
+        "commands",
+        "start",
+        "server",
+        "env",
+        "prime",
+        "reset_db",
+        "scripts",
+        "app"
+      ]
+    },
+    {
+      "name": "install_worktree",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\install_worktree.md",
+      "tac_source": "tac-7",
+      "title": "Install Worktree",
+      "description": null,
+      "sections": [
+        "Parameters",
+        "Read",
+        "Steps",
+        "Error Handling",
+        "Report"
+      ],
+      "delegations": [
+        "localhost",
+        "videos",
+        "client",
+        "server",
+        "reset_db",
+        "scripts",
+        "app",
+        "modified",
+        "playwright"
+      ]
+    },
+    {
+      "name": "in_loop_review",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\in_loop_review.md",
+      "tac_source": "tac-7",
+      "title": "In-Loop Review",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "localhost",
+        "commands",
+        "prepare_app",
+        "start"
+      ]
+    },
+    {
+      "name": "patch",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\patch.md",
+      "tac_source": "tac-7",
+      "title": "Patch Plan",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Metadata",
+        "Issue Summary",
+        "Files to Modify",
+        "Implementation Steps",
+        "Validation",
+        "Patch Scope"
+      ],
+      "delegations": [
+        "client",
+        "commands",
+        "server",
+        "patch",
+        "test",
+        "conditional_docs"
+      ]
+    },
+    {
+      "name": "prepare_app",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\prepare_app.md",
+      "tac_source": "tac-7",
+      "title": "Prepare Application",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Setup"
+      ],
+      "delegations": [
+        "localhost",
+        "null",
+        "start",
+        "stop_apps",
+        "reset_db",
+        "scripts",
+        "dev"
+      ]
+    },
+    {
+      "name": "prime",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\prime.md",
+      "tac_source": "tac-7",
+      "title": "Prime",
+      "description": null,
+      "sections": [
+        "Run",
+        "Read"
+      ],
+      "delegations": [
+        "commands",
+        "conditional_docs",
+        "README"
+      ]
+    },
+    {
+      "name": "pull_request",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\pull_request.md",
+      "tac_source": "tac-7",
+      "title": "Create Pull Request",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "main"
+      ]
+    },
+    {
+      "name": "resolve_failed_e2e_test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\resolve_failed_e2e_test.md",
+      "tac_source": "tac-7",
+      "title": "Resolve Failed E2E Test",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Test Failure Input",
+        "Report"
+      ],
+      "delegations": [
+        "commands",
+        "test_e2e"
+      ]
+    },
+    {
+      "name": "resolve_failed_test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\resolve_failed_test.md",
+      "tac_source": "tac-7",
+      "title": "Resolve Failed Test",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Test Failure Input",
+        "Report"
+      ],
+      "delegations": [
+        "main"
+      ]
+    },
+    {
+      "name": "review",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\review.md",
+      "tac_source": "tac-7",
+      "title": "Review",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Setup",
+        "Report"
+      ],
+      "delegations": [
+        "path",
+        "localhost",
+        "commands",
+        "test_",
+        "prepare_app",
+        "screenshot_showcasing_functionality",
+        "agents",
+        "review_img",
+        "main",
+        "claude"
+      ]
+    },
+    {
+      "name": "start",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\start.md",
+      "tac_source": "tac-7",
+      "title": "Start the application",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Workflow"
+      ],
+      "delegations": [
+        "localhost",
+        "null",
+        "start",
+        "scripts",
+        "dev"
+      ]
+    },
+    {
+      "name": "test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\test.md",
+      "tac_source": "tac-7",
+      "title": "Application Validation Test Suite",
+      "description": null,
+      "sections": [
+        "Purpose",
+        "Variables",
+        "Instructions",
+        "Test Execution Sequence",
+        "Report"
+      ],
+      "delegations": [
+        "server",
+        "client",
+        "failed"
+      ]
+    },
+    {
+      "name": "test_e2e",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\test_e2e.md",
+      "tac_source": "tac-7",
+      "title": "E2E Test Runner",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Setup",
+        "Screenshot Directory",
+        "Report"
+      ],
+      "delegations": [
+        "localhost",
+        "img",
+        "commands",
+        "prepare_app",
+        "agents",
+        "01_",
+        "02_",
+        "03_"
+      ]
+    },
+    {
+      "name": "tools",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\tools.md",
+      "tac_source": "tac-7",
+      "title": "List Built-in Tools",
+      "description": null,
+      "sections": [],
+      "delegations": []
+    },
+    {
+      "name": "track_agentic_kpis",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\track_agentic_kpis.md",
+      "tac_source": "tac-7",
+      "title": "Track Agentic KPIs",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "File Structure",
+        "Agentic KPIs",
+        "ADW KPIs",
+        "Report"
+      ],
+      "delegations": [
+        "agentic_kpis",
+        "Total",
+        "25",
+        "Removed",
+        "update",
+        "time",
+        "main",
+        "Time",
+        "Files",
+        "8"
+      ]
+    },
+    {
+      "name": "test_basic_query",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\e2e\\test_basic_query.md",
+      "tac_source": "tac-7",
+      "title": "E2E Test: Basic Query Execution",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "test_complex_query",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\e2e\\test_complex_query.md",
+      "tac_source": "tac-7",
+      "title": "E2E Test: Complex Query with Filtering",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "test_disable_input_debounce",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\e2e\\test_disable_input_debounce.md",
+      "tac_source": "tac-7",
+      "title": "E2E Test: Input Disabling and Debouncing",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": [
+        "Linux"
+      ]
+    },
+    {
+      "name": "test_export_functionality",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\e2e\\test_export_functionality.md",
+      "tac_source": "tac-7",
+      "title": "E2E Test: Export Functionality",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "test_random_query_generator",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\e2e\\test_random_query_generator.md",
+      "tac_source": "tac-7",
+      "title": "E2E Test: Random Query Generator",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "test_sql_injection",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\.claude\\commands\\e2e\\test_sql_injection.md",
+      "tac_source": "tac-7",
+      "title": "E2E Test: SQL Injection Protection",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    }
+  ],
+  "agents": [],
+  "adws": [
+    {
+      "name": "adw_build_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_build_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Build Iso - AI Developer Workflow for agentic building in isolated worktrees\n\nUsage: \n  uv run adw_build_iso.py <issue-number> <adw-id>\n\nWorkflow:\n1. Load state and validate worktree exists\n2. Fin",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_document_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_document_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Document Iso - AI Developer Workflow for documentation generation in isolated worktrees\n\nUsage:\n  uv run adw_document_iso.py <issue-number> <adw-id>\n\nWorkflow:\n1. Load state and validate worktree ",
+      "workflow_type": "document",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_patch_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_patch_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Patch Isolated - AI Developer Workflow for single-issue patches with worktree isolation\n\nUsage:\n  uv run adw_patch_iso.py <issue-number> [adw-id]\n\nWorkflow:\n1. Create/validate isolated worktree\n2.",
+      "workflow_type": "patch",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_build_document_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_plan_build_document_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Plan Build Document Iso - Compositional workflow for isolated planning, building, and documentation\n\nUsage: uv run adw_plan_build_document_iso.py <issue-number> [adw-id]\n\nThis script runs:\n1. adw_",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_build_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_plan_build_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Plan Build Iso - Compositional workflow for isolated planning and building\n\nUsage: uv run adw_plan_build_iso.py <issue-number> [adw-id]\n\nThis script runs:\n1. adw_plan_iso.py - Planning phase (isol",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_build_review_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_plan_build_review_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Plan Build Review Iso - Compositional workflow for isolated planning, building, and reviewing\n\nUsage: uv run adw_plan_build_review_iso.py <issue-number> [adw-id] [--skip-resolution]\n\nThis script r",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_build_test_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_plan_build_test_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Plan Build Test Iso - Compositional workflow for isolated planning, building, and testing\n\nUsage: uv run adw_plan_build_test_iso.py <issue-number> [adw-id] [--skip-e2e]\n\nThis script runs:\n1. adw_p",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_build_test_review_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_plan_build_test_review_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Plan Build Test Review Iso - Compositional workflow for isolated planning, building, testing, and reviewing\n\nUsage: uv run adw_plan_build_test_review_iso.py <issue-number> [adw-id] [--skip-e2e] [-",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_plan_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Plan Iso - AI Developer Workflow for agentic planning in isolated worktrees\n\nUsage:\n  uv run adw_plan_iso.py <issue-number> [adw-id]\n\nWorkflow:\n1. Fetch GitHub issue details\n2. Check/create worktr",
+      "workflow_type": "plan",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_review_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_review_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Review Iso - AI Developer Workflow for agentic review in isolated worktrees\n\nUsage:\n  uv run adw_review_iso.py <issue-number> <adw-id> [--skip-resolution]\n\nWorkflow:\n1. Load state and validate wor",
+      "workflow_type": "review",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_sdlc_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_sdlc_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW SDLC Iso - Complete Software Development Life Cycle workflow with isolation\n\nUsage: uv run adw_sdlc_iso.py <issue-number> [adw-id] [--skip-e2e] [--skip-resolution]\n\nThis script runs the complete A",
+      "workflow_type": "sdlc",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_sdlc_zte_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_sdlc_zte_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW SDLC ZTE Iso - Zero Touch Execution: Complete SDLC with automatic shipping\n\nUsage: uv run adw_sdlc_zte_iso.py <issue-number> [adw-id] [--skip-e2e] [--skip-resolution]\n\nThis script runs the complet",
+      "workflow_type": "sdlc",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_ship_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_ship_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Ship Iso - AI Developer Workflow for shipping (merging) to main\n\nUsage:\n  uv run adw_ship_iso.py <issue-number> <adw-id>\n\nWorkflow:\n1. Load state and validate worktree exists\n2. Validate ALL state",
+      "workflow_type": "ship",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_test_iso",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\adws\\adw_test_iso.py",
+      "tac_source": "tac-7",
+      "description": "ADW Test Iso - AI Developer Workflow for agentic testing in isolated worktrees\n\nUsage:\n  uv run adw_test_iso.py <issue-number> <adw-id> [--skip-e2e]\n\nWorkflow:\n1. Load state and validate worktree exis",
+      "workflow_type": "test",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    }
+  ],
+  "concepts": [
+    {
+      "name": "Natural Language SQL Interface",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\README.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "repository"
+    },
+    {
+      "name": "Features",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\README.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Prerequisites",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\README.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Setup",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\README.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Quick Start",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\README.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Manual Start (Alternative)",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\README.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Get started with Claude",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\ai_docs\\anthropic_quick_start.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "ai_doc"
+    },
+    {
+      "name": "Run a single prompt and exit (print mode)",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\ai_docs\\claude_code_sdk.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "ai_doc"
+    },
+    {
+      "name": "E2B - Secure Cloud Sandboxes for AI-Generated Code",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\ai_docs\\e2b.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "ai_doc"
+    },
+    {
+      "name": "Developer quickstart",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7\\ai_docs\\openai_quick_start.md",
+      "tac_source": "tac-7",
+      "description": null,
+      "category": "ai_doc"
+    }
+  ],
+  "metadata": {
+    "extracted_at": "2025-12-02T22:05:39.022787",
+    "repo_name": "tac-7",
+    "repo_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-7",
+    "summary": {
+      "total_commands": 33,
+      "total_agents": 0,
+      "total_adws": 14,
+      "total_concepts": 10
+    }
+  }
+}

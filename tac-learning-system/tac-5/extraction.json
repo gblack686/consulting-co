@@ -1,0 +1,478 @@
+{
+  "commands": [
+    {
+      "name": "bug",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\bug.md",
+      "tac_source": "tac-5",
+      "title": "Bug Planning",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Bug Description",
+        "Problem Statement",
+        "Solution Statement",
+        "Steps to Reproduce",
+        "Root Cause Analysis",
+        "Relevant Files"
+      ],
+      "delegations": [
+        "test_basic_query",
+        "client",
+        "commands",
+        "test_",
+        "test_e2e",
+        "server",
+        "test_complex_query",
+        "e2e",
+        "issue"
+      ]
+    },
+    {
+      "name": "chore",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\chore.md",
+      "tac_source": "tac-5",
+      "title": "Chore Planning",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Chore Description",
+        "Relevant Files",
+        "Step by Step Tasks",
+        "Validation Commands",
+        "Notes",
+        "Chore"
+      ],
+      "delegations": [
+        "server",
+        "issue"
+      ]
+    },
+    {
+      "name": "classify_adw",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\classify_adw.md",
+      "tac_source": "tac-5",
+      "title": "ADW Workflow Extraction",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Valid ADW Commands",
+        "Response Format",
+        "Text to Analyze"
+      ],
+      "delegations": [
+        "adw_plan",
+        "adw_plan_build",
+        "adw_plan_build_test",
+        "adw_test",
+        "adw_build"
+      ]
+    },
+    {
+      "name": "classify_issue",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\classify_issue.md",
+      "tac_source": "tac-5",
+      "title": "Github Issue Command Selection",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Command Mapping",
+        "Github Issue"
+      ],
+      "delegations": [
+        "feature",
+        "chore",
+        "bug"
+      ]
+    },
+    {
+      "name": "commit",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\commit.md",
+      "tac_source": "tac-5",
+      "title": "Generate Git Commit",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "feature",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\feature.md",
+      "tac_source": "tac-5",
+      "title": "Feature Planning",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Feature Description",
+        "User Story",
+        "Problem Statement",
+        "Solution Statement",
+        "Relevant Files",
+        "Implementation Plan"
+      ],
+      "delegations": [
+        "test_basic_query",
+        "client",
+        "commands",
+        "test_",
+        "test_e2e",
+        "goal",
+        "server",
+        "value",
+        "test_complex_query",
+        "e2e"
+      ]
+    },
+    {
+      "name": "find_plan_file",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\find_plan_file.md",
+      "tac_source": "tac-5",
+      "title": "Find Plan File",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Previous Step Output"
+      ],
+      "delegations": [
+        "issue"
+      ]
+    },
+    {
+      "name": "generate_branch_name",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\generate_branch_name.md",
+      "tac_source": "tac-5",
+      "title": "Generate Git Branch Name",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "feature"
+      ]
+    },
+    {
+      "name": "implement",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\implement.md",
+      "tac_source": "tac-5",
+      "title": "Implement the following plan",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Plan",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "install",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\install.md",
+      "tac_source": "tac-5",
+      "title": "Install & Prime",
+      "description": null,
+      "sections": [
+        "Read",
+        "Read and Execute",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "copy_dot_env",
+        "commands",
+        "start",
+        "server",
+        "env",
+        "prime",
+        "reset_db",
+        "scripts",
+        "app"
+      ]
+    },
+    {
+      "name": "prime",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\prime.md",
+      "tac_source": "tac-5",
+      "title": "Prime",
+      "description": null,
+      "sections": [
+        "Run",
+        "Read"
+      ],
+      "delegations": [
+        "README"
+      ]
+    },
+    {
+      "name": "pull_request",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\pull_request.md",
+      "tac_source": "tac-5",
+      "title": "Create Pull Request",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "main"
+      ]
+    },
+    {
+      "name": "resolve_failed_e2e_test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\resolve_failed_e2e_test.md",
+      "tac_source": "tac-5",
+      "title": "Resolve Failed E2E Test",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Test Failure Input",
+        "Report"
+      ],
+      "delegations": [
+        "commands",
+        "test_e2e"
+      ]
+    },
+    {
+      "name": "resolve_failed_test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\resolve_failed_test.md",
+      "tac_source": "tac-5",
+      "title": "Resolve Failed Test",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Test Failure Input",
+        "Report"
+      ],
+      "delegations": [
+        "main"
+      ]
+    },
+    {
+      "name": "start",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\start.md",
+      "tac_source": "tac-5",
+      "title": null,
+      "description": null,
+      "sections": [],
+      "delegations": [
+        "scripts",
+        "start"
+      ]
+    },
+    {
+      "name": "test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\test.md",
+      "tac_source": "tac-5",
+      "title": "Application Validation Test Suite",
+      "description": null,
+      "sections": [
+        "Purpose",
+        "Variables",
+        "Instructions",
+        "Test Execution Sequence",
+        "Report"
+      ],
+      "delegations": [
+        "server",
+        "client",
+        "failed"
+      ]
+    },
+    {
+      "name": "test_e2e",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\test_e2e.md",
+      "tac_source": "tac-5",
+      "title": "E2E Test Runner",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Setup",
+        "Screenshot Directory",
+        "Report"
+      ],
+      "delegations": [
+        "localhost",
+        "img",
+        "agents",
+        "reset_db",
+        "01_",
+        "02_",
+        "03_"
+      ]
+    },
+    {
+      "name": "tools",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\tools.md",
+      "tac_source": "tac-5",
+      "title": "List Built-in Tools",
+      "description": null,
+      "sections": [],
+      "delegations": []
+    },
+    {
+      "name": "test_basic_query",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\e2e\\test_basic_query.md",
+      "tac_source": "tac-5",
+      "title": "E2E Test: Basic Query Execution",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "test_complex_query",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\e2e\\test_complex_query.md",
+      "tac_source": "tac-5",
+      "title": "E2E Test: Complex Query with Filtering",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "test_sql_injection",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\.claude\\commands\\e2e\\test_sql_injection.md",
+      "tac_source": "tac-5",
+      "title": "E2E Test: SQL Injection Protection",
+      "description": null,
+      "sections": [
+        "User Story",
+        "Test Steps",
+        "Success Criteria"
+      ],
+      "delegations": []
+    }
+  ],
+  "agents": [],
+  "adws": [
+    {
+      "name": "adw_build",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\adws\\adw_build.py",
+      "tac_source": "tac-5",
+      "description": "ADW Build - AI Developer Workflow for agentic building\n\nUsage: \n  uv run adw_build.py <issue-number> <adw-id>\n\nWorkflow:\n1. Find existing plan (from state or by searching)\n2. Implement the solution ba",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\adws\\adw_plan.py",
+      "tac_source": "tac-5",
+      "description": "ADW Plan - AI Developer Workflow for agentic planning\n\nUsage:\n  uv run adw_plan.py <issue-number> [adw-id]\n\nWorkflow:\n1. Fetch GitHub issue details\n2. Classify issue type (/chore, /bug, /feature)\n3. C",
+      "workflow_type": "plan",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_build",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\adws\\adw_plan_build.py",
+      "tac_source": "tac-5",
+      "description": "ADW Plan & Build - AI Developer Workflow for agentic planning and building\n\nUsage: uv run adw_plan_build.py <issue-number> [adw-id]\n\nThis script runs:\n1. adw_plan.py - Planning phase\n2. adw_build.py -",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_plan_build_test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\adws\\adw_plan_build_test.py",
+      "tac_source": "tac-5",
+      "description": "ADW Plan, Build & Test - AI Developer Workflow for agentic planning, building and testing\n\nUsage: uv run adw_plan_build_test.py <issue-number> [adw-id]\n\nThis script runs the complete ADW pipeline:\n1. ",
+      "workflow_type": "build",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    },
+    {
+      "name": "adw_test",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\adws\\adw_test.py",
+      "tac_source": "tac-5",
+      "description": "ADW Test - AI Developer Workflow for agentic testing\n\nUsage: \n  uv run adw_test.py <issue-number> [adw-id] [--skip-e2e]\n\nWorkflow:\n1. Fetch GitHub issue details (if not in state)\n2. Run application te",
+      "workflow_type": "test",
+      "has_modules": true,
+      "has_triggers": true,
+      "has_tests": true
+    }
+  ],
+  "concepts": [
+    {
+      "name": "Natural Language SQL Interface",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\README.md",
+      "tac_source": "tac-5",
+      "description": null,
+      "category": "repository"
+    },
+    {
+      "name": "Features",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\README.md",
+      "tac_source": "tac-5",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Prerequisites",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\README.md",
+      "tac_source": "tac-5",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Setup",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\README.md",
+      "tac_source": "tac-5",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Quick Start",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\README.md",
+      "tac_source": "tac-5",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Manual Start (Alternative)",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5\\README.md",
+      "tac_source": "tac-5",
+      "description": null,
+      "category": "section"
+    }
+  ],
+  "metadata": {
+    "extracted_at": "2025-12-02T22:05:37.450458",
+    "repo_name": "tac-5",
+    "repo_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-5",
+    "summary": {
+      "total_commands": 21,
+      "total_agents": 0,
+      "total_adws": 5,
+      "total_concepts": 6
+    }
+  }
+}

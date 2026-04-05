@@ -1,0 +1,88 @@
+# USER.md Template
+# Fill {placeholders} from session_output/client_profile.json
+
+## About
+
+- **Name**: {client_name}
+- **Call them**: {client_nickname}
+- **Pronouns**: {client_pronouns}
+- **Timezone**: {client_timezone}
+- **Working hours**: {working_hours}
+
+## Role & Context
+
+- **Job title**: {client_job_title}
+- **Company / org**: {client_company}
+- **Team size**: {client_team_size}
+- **Industry**: {client_industry}
+- **How long in this role**: {client_role_tenure}
+
+## Life Context
+
+- **Location**: {client_location}
+- **Family / household**: {client_family_context}
+- **Daily routine**: {client_daily_routine}
+- **Energy peak**: {client_energy_peak}  <!-- morning / afternoon / evening -->
+
+## Known Weaknesses
+
+<!-- Things {client_nickname} is reliably bad at — the agent compensates for these proactively -->
+{client_known_weaknesses}
+
+<!-- Examples from session:
+- "I forget to follow up on emails after 3 days"
+- "I over-schedule Tuesdays — always running late"
+- "I lose track of invoices until they're overdue"
+- "I say yes to too many meetings"
+-->
+
+## Current Priorities
+
+<!-- Top 3 things {client_nickname} is focused on RIGHT NOW (update each session) -->
+1. {priority_1}
+2. {priority_2}
+3. {priority_3}
+
+## Notes
+
+{client_notes}
+
+## Context
+
+### Current Projects
+{current_projects_list}
+
+### Interests
+{client_interests}
+
+### Preferences
+{client_preferences}
+
+### Communication
+- Preferred channel: {preferred_channel}
+- Response style: {response_style}
+- Availability: {availability_notes}
+
+---
+
+## Day-1 Kickoff Prompt
+
+<!-- Pre-written message {client_nickname} should send on their very first day with the agent.
+     Copy this into the channel and send it — the agent uses it to self-orient. -->
+
+```
+Hey {agent_name} — I'm {client_nickname}. Today is my first day using you.
+
+Here's what I need most right now:
+{priority_1}
+
+My biggest pain point is:
+{client_known_weaknesses_top}
+
+Please start by:
+1. Confirming you can see my workspace files (SOUL.md, MEMORY.md, TOOLS.md)
+2. Telling me what you'll do for me today
+3. Asking me one clarifying question if you need it
+
+Let's go.
+```

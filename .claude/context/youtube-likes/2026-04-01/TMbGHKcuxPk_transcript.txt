@@ -1,0 +1,839 @@
+[6:32] All right. Welcome everybody. Welcome.
+[6:34] Okay. Uh I'm Matt Berman. Uh and of
+[6:37] course we have here Mark Beni off,
+[6:40] co-founder and CEO of Salesforce.
+[6:42] Absolute legend in tech.
+[6:43] >> Thank you. uh lately one of the loudest
+[6:46] voices talking about agents, how they're
+[6:49] going to transform work, how they're
+[6:50] going to transform communication. Uh and
+[6:53] I'm so excited to talk to you today,
+[6:55] Mark. Thank you for joining.
+[6:56] >> Well, I'm so happy to be here. Thank
+[6:58] you. And we're so happy to have
+[6:59] everybody here for this incredible
+[7:01] event. We just had a great program
+[7:03] downstairs um here at the St. Reges and
+[7:07] uh it's been an awesome day.
+[7:08] >> Yeah, a lot of features launched
+[7:10] Slackbot. We're going to talk a ton
+[7:12] about that. a lot of happy customers and
+[7:14] partners.
+[7:15] >> That's right. I am especially excited to
+[7:17] talk to you because I think about a lot
+[7:19] of these questions all the time and now
+[7:20] I get to sit across from you and
+[7:22] actually ask the man himself about how
+[7:23] he thinks about the future. So let's
+[7:26] start out with the AI interface.
+[7:30] You Salesforce acquired Slack a few
+[7:33] years ago and it becomes
+[7:34] >> five years ago.
+[7:34] >> Five years ago and it is increasingly
+[7:37] obvious that agents should be everywhere
+[7:40] that work happens not trapped in a
+[7:43] single interface and Slack
+[7:45] >> seems like the perfect place to do that.
+[7:49] >> And over time, how do you think about
+[7:51] the tension between Slack being the
+[7:53] primary interface and then also Slackbot
+[7:56] needing to live everywhere?
+[7:59] All credit really goes to Peter Schwarz
+[8:01] on our team who's our chief futurist at
+[8:04] Salesforce. A lot of people know Peter
+[8:06] who wrote or co-wrote or participated in
+[8:08] the development of movies like The
+[8:10] Minority Report, uh War Games, Deep
+[8:13] Impact, and other things. Um you know,
+[8:16] you universally regarded uh in our
+[8:18] industry as a being an incredible
+[8:19] futurist. Well, he came to us uh now
+[8:23] almost 10 years ago and said the number
+[8:25] one thing that we should focus on is
+[8:27] acquiring Slack. At the time, no one in
+[8:30] the company really agreed with him and
+[8:32] no one in the company really understood
+[8:34] why that would be. Um but his number one
+[8:37] focus was that the world would go to AI
+[8:39] and the world would go to agents and it
+[8:41] was his words exactly at that time. what
+[8:44] he foresaw correctly was that we were
+[8:47] going to get breakthroughs in the models
+[8:49] that we were seeing being pioneered in
+[8:51] Silicon Valley that we would um need an
+[8:54] interface to those models, something
+[8:56] that is conversational, something that
+[8:58] is open, something that has a broad
+[9:00] ecosystem. I think what no one could
+[9:03] have seen though is not only that Slack
+[9:05] has persisted at a great user interface
+[9:08] to AI, but also this ecosystem is so
+[9:12] rich. The ecosystem of Slack is beyond
+[9:15] any of our expectations. It was never
+[9:18] kind of foreshadowed that this would be
+[9:20] one of the great parts of Slack and it
+[9:22] has become that way. And also Slack has
+[9:25] become a great interface not only to the
+[9:27] AI community, not only to all these
+[9:29] companies including the AI companies,
+[9:32] but also to Salesforce itself that all
+[9:35] of our applications are becoming Slack
+[9:37] first.
+[9:37] >> I mean, let's continue on that thread.
+[9:39] So your co-founder Parker hinted at this
+[9:41] or kind of spoke about it during the
+[9:42] keynote today. Do you see a world in
+[9:44] which the traditional Salesforce
+[9:47] interface almost fades away a bit and
+[9:50] and people are really just interacting
+[9:52] with their agents, their their Slackbot
+[9:54] and then kind of sitting on top of your
+[9:56] data layer. Is that the future you see?
+[9:59] >> There's no question. We we've said this
+[10:00] to our whole company now several times
+[10:03] that we really over time, you know,
+[10:05] really want to kind of position
+[10:07] Lightning in where it amp gets
+[10:10] amplified, where it's strongest. But at
+[10:12] the same time, Lightning has a role, but
+[10:15] Slack has a role. And I Slack Slack as a
+[10:17] conversational interface is just a great
+[10:19] place for Salesforce users to live. Not
+[10:22] just Salesforce users, even Tableau
+[10:24] users, other other and of course the
+[10:26] users of all these ecosystem products as
+[10:28] well. In fact, I just had a great, you
+[10:31] know, demonstration of writer AI, which
+[10:34] is this amazing new, you know, AI tool.
+[10:36] A lot of folks are using it in the
+[10:37] marketing community. It was 100% in
+[10:39] Slack. So, that idea that products are
+[10:42] coming along to be 100% Slack first. We
+[10:44] are completely behind that.
+[10:46] >> And then are you comfortable with people
+[10:48] taking their Slackbot off of Slack
+[10:51] wherever else they may be working? Do
+[10:52] you see a future in which that's going
+[10:54] to happen? huge part of it that I think
+[10:56] that Slackbot should be kind of a highly
+[10:58] composable object that can be dropped
+[11:00] into every capability and we're
+[11:02] committed to working deeply with Teams
+[11:04] from Microsoft or every other
+[11:06] collaboration tool like Workspace from
+[11:08] Google. But in addition to that, the
+[11:11] idea that it can get dropped into every
+[11:13] Salesforce app as well. So when you're
+[11:15] in SalesCloud, you know, which is our
+[11:17] number one, you know, namesake product
+[11:19] or our service cloud, the Slackbot is
+[11:22] with you as well.
+[11:23] >> Yeah. Okay. I mean that makes a lot of
+[11:25] sense. I want to talk about how this
+[11:27] transition
+[11:28] >> good. Will you communicate that to my
+[11:30] product people as well?
+[11:32] >> Uh yeah I just
+[11:34] >> nervous laughter from the nervous
+[11:36] laughter from the audience.
+[11:37] >> So so I want to I want to actually
+[11:39] continue on that thought because all of
+[11:41] these changes really change how work
+[11:44] happens. They change how companies are
+[11:46] structured. How do you think team
+[11:48] structures change from here? Do you
+[11:50] think we're going to see fewer
+[11:53] or sorry more smaller teams? Do you
+[11:55] think we're going to have bigger, more
+[11:57] ambitious companies? Uh you see like a
+[12:00] seal team being the the the best uh
+[12:02] application of the human team inside of
+[12:04] a company. What do you think is the
+[12:06] right way to think about this?
+[12:08] >> All of the above plus a huge explosion
+[12:11] of agents that you know are getting
+[12:12] coordinated and commanded either through
+[12:15] the AI or by humans. As we've been
+[12:18] saying for the last two dream forces and
+[12:19] I think we got this right. Humans and
+[12:21] agents are working together. This idea
+[12:24] that we have a role and the agents have
+[12:27] a role. When you look at the power
+[12:29] inside of a company for the agentic
+[12:31] layer to become an agentic enterprise is
+[12:34] what we say. That idea that all of a
+[12:37] sudden now I have my agents who can help
+[12:39] me service my customers, sell to my
+[12:42] customers, qualify my customers, market
+[12:44] to my customers, have conversations with
+[12:46] the customers because agents are built
+[12:49] on large language models. The key word
+[12:51] is language. It's good at speaking
+[12:54] language. So things that are basically
+[12:56] impacted by language like a like a
+[12:59] service conversation are going to be
+[13:01] dramatically better using these tools.
+[13:04] Uh even coding coding is now become a
+[13:06] language. When I was coding it was not a
+[13:08] language. We were down at the machine
+[13:09] level you know and we're doing 68,000
+[13:12] assembly language you know at Apple in
+[13:14] 1984 that was not about language that
+[13:17] was about you know a whole different
+[13:18] kind of mathematical construct. Now
+[13:20] coding is language and so these tools
+[13:23] are very good abstracted at that moment.
+[13:26] >> Yeah. And so I I'm facing this at my
+[13:28] company. So I want to ask you agents are
+[13:30] getting better. They're producing more
+[13:31] work. are able to almost anticipate what
+[13:34] I need. I feel like I'm becoming the
+[13:36] bottleneck. I still have to I certainly
+[13:39] am. Right.
+[13:40] >> I am definitely
+[13:40] >> is I wanted to see if you felt that way
+[13:42] and like what is the solution there
+[13:44] because we're still having to prompt and
+[13:45] we're still having to verify which is
+[13:47] incredibly important to human in the
+[13:48] loop but
+[13:50] >> over time the human also is the
+[13:52] bottleneck and I'm already feeling that.
+[13:54] Are you
+[13:54] >> it's fine with the human is the
+[13:55] bottleneck because these large language
+[13:57] models are still you know wildly
+[13:59] inaccurate at times. All of us have had
+[14:00] the experience where all of a sudden
+[14:02] we're using a large language model and
+[14:04] it gets totally confused and it's taken
+[14:06] a right turn and it doesn't know what
+[14:08] we're talking about. So it's very
+[14:10] critical that human beings at least at
+[14:12] this stage of AI stay in the loop. Maybe
+[14:15] not forever but right now I think it is
+[14:17] extremely important and we can see that
+[14:19] because the accuracy levels are just not
+[14:21] there. So having that ability to really
+[14:24] kind of go as far as you can go. A good
+[14:27] example is if you go to
+[14:28] help.salforce.com salesforce.com right
+[14:30] now you know that you're working with
+[14:31] agentforce to resolve your customer
+[14:33] service issue but for about half the
+[14:36] calls it hits a moment where that
+[14:38] customer is like I need to speak to
+[14:40] somebody and the agent goes you're right
+[14:42] and boom through our omni channel
+[14:43] supervisor goes to a human who then gets
+[14:46] a screen in front of them and that
+[14:48] screen it could be in Slack it could be
+[14:50] in lightning then is looking at all the
+[14:53] conversations all of the information and
+[14:56] humans are really good at that moment
+[14:58] looking at screen going actually the
+[15:00] problem needs to be this. We're just
+[15:02] very good at synthesis and that human
+[15:04] even won't be 100% accurate but the
+[15:07] large language model is still needed a a
+[15:10] very high percentage of the time.
+[15:12] >> Is is there still a set of tooling to be
+[15:15] built to help humans verify at a higher
+[15:18] scale? it like I don't like being the
+[15:21] bottleneck and I'm wondering
+[15:22] >> well one thing is yes and then the
+[15:24] second thing is new models that'll be
+[15:26] more accurate over time as we have new
+[15:28] AI baked for this remember we are in a
+[15:31] continuum of models you know starting
+[15:33] for decades we've had more and more
+[15:36] models and then now we're in the large
+[15:38] language model stage and we'll move to
+[15:40] world models but we're going to move to
+[15:42] other kinds of models that we can't even
+[15:43] describe yet that will just inc over
+[15:46] over time radically increase the
+[15:49] accuracy and uh our you know uh chief
+[15:52] scientist Silvio Savaras basically has
+[15:56] the vision of you know that we're moving
+[15:58] into multi-ensory models. We haven't
+[16:00] really seen them yet. But the reason why
+[16:02] it's important is the model just has a
+[16:04] lot more data to be able to make a
+[16:06] decision. Not just language, but all
+[16:09] this other kinds of sensory data that we
+[16:11] have. Like we have our eyes and ears and
+[16:13] our brain and our memories and all these
+[16:14] things and we're able to kind of make
+[16:16] these decisions. Eventually, the models
+[16:18] will get to that point.
+[16:19] >> Interesting. And and so let's continue
+[16:21] on the human in the loop. For a long
+[16:24] time to rise up in a company as an
+[16:27] individual contributor, you needed to
+[16:28] specialize. But it seems like we're
+[16:31] having a renaissance of the generalist.
+[16:33] Are you seeing that inside Salesforce?
+[16:35] What do you think about generalist
+[16:36] versus specialist in the age of
+[16:37] artificial intelligence?
+[16:39] >> Well, I think this is especially true in
+[16:41] software engineering. Obviously, we have
+[16:42] 15,000 software engineers at Salesforce.
+[16:46] Each one of them is an A player. And the
+[16:48] key thing about these 15,000 engineers,
+[16:51] they're all out there all over the
+[16:52] world. All of them can now be hugely
+[16:55] augmented with these coding models. It
+[16:57] could be Enthropic 4.6. It could be open
+[16:59] AI codeex. It could be cursor. It could
+[17:01] be others. But when they start to use
+[17:03] these models, they're now working not
+[17:05] only with the AI but agents to help them
+[17:08] code. And they can even become somewhat
+[17:10] supervisory over these agents. But still
+[17:13] those engineers are needed. The the
+[17:15] model still cannot operate autonomously.
+[17:18] We're we're not at that level yet of AI.
+[17:21] So it's really critical. So our
+[17:23] engineering organization is probably
+[17:24] more than 30% more productive, but I
+[17:27] wouldn't call it 100% more productive.
+[17:30] And that's why even in the top AI
+[17:32] companies, if you go to their job
+[17:34] boards, you'll see they are hiring a lot
+[17:36] of engineers. They're hiring a lot of
+[17:38] everybody because they have to build
+[17:40] companies of humans. Even though these
+[17:42] top AI companies, we can go through the
+[17:44] list of them again, have these
+[17:46] unbelievable models, they need a lot of
+[17:48] humans. And that's probably that's the
+[17:50] canary in the coal mine that we know
+[17:52] that the models are not at that level
+[17:54] yet.
+[17:54] >> So I I know you're a big believer in
+[17:57] humans will be much more productive. You
+[18:00] will still need to hire a lot of humans.
+[18:02] We're seeing that in companies like
+[18:03] Anthropic, like OpenAI, but there is the
+[18:06] flip side where there are other
+[18:08] companies and diversions of opinions
+[18:09] here that they're cutting and like what
+[18:12] what do you think about the reason might
+[18:15] be for that kind of split opinion and
+[18:18] different approach? Well, Salesforce
+[18:20] right now has a you know hit a new
+[18:22] record number of employees which is more
+[18:24] than 83,000
+[18:26] and but it the balance of those
+[18:28] employees and where they are placed is
+[18:31] different than where it was 5 years ago
+[18:33] because we went through an uncomfortable
+[18:35] period ourselves over the last 5 years
+[18:37] of rebalancing our workforce. That's
+[18:39] just a difficult thing for any company.
+[18:41] In some cases, these companies are
+[18:44] cutting because their costs are just too
+[18:46] high. In other cases, these companies
+[18:48] are cutting because they've made
+[18:50] financial commitments specifically to
+[18:51] data centers that they have to pay for.
+[18:54] And in other cases, these companies are
+[18:56] cutting because they need to rebalance
+[18:57] their workforce to reflect the changes
+[19:00] in artificial intelligence. These are
+[19:02] different reasons. So you cannot bucket
+[19:05] all these companies together. If you do,
+[19:07] you're making a fundamental mistake, I
+[19:09] think, in business. And even though I've
+[19:11] spoken about this, I think somewhat
+[19:13] aggressively,
+[19:15] I don't think most people still really
+[19:16] understand what is going on. And it's
+[19:18] too easy, you know, to kind of basically
+[19:21] take the make AI and make it the
+[19:22] scapegoat. And I think for some CEOs,
+[19:24] it's the lazy way out. That that's up to
+[19:27] them. I think it's better just to say,
+[19:29] here's what's really going on and trying
+[19:30] to be specific as you can. You're going
+[19:33] to take bullets no matter what because
+[19:35] that's your role as CEO. and then you
+[19:38] have to kind of get go forward and you
+[19:40] know put everything back together.
+[19:41] >> Yeah. I mean the CEOs that I'm talking
+[19:43] to they're doubling down on the teams
+[19:45] that are leveraging artificial
+[19:46] intelligence. They are investing more in
+[19:48] them. They're hiring more. As you if you
+[19:51] were to give advice to somebody fresh
+[19:52] out of college uh you said that you know
+[19:55] maybe you are rebalancing or had
+[19:57] rebalanced inside Salesforce. What
+[19:59] organizations should people skill up to?
+[20:02] This is a very very good question and I
+[20:05] am very worried about this actually
+[20:07] because I was just at several
+[20:09] universities just last week including
+[20:10] MIT in Boston and I sat with an
+[20:13] incredible woman who's a junior at MIT
+[20:16] top computer scientist in her class and
+[20:18] she's asking me if she should change
+[20:20] majors and I walk through with her the
+[20:23] realities of AI and the models just to
+[20:26] remind her of her own technology you
+[20:28] know strengths of what you know where
+[20:30] the technology actually is and the
+[20:32] reality is I'm trying to recruit her,
+[20:33] try to bring her, but all of her
+[20:35] colleagues, you know, should come to
+[20:36] Salesforce. We're hiring interns. We're
+[20:38] hiring that freshman class. We want to
+[20:41] send our recruiters out to those top 25
+[20:44] high academic threshold universities
+[20:46] like MIT and bring those top computer
+[20:48] scientists and others to Salesforce
+[20:51] because we badly need that talent. And
+[20:54] that idea that those people are so
+[20:56] critical for a company like ours, that
+[20:59] is really part and parcel for what I
+[21:01] think the discussion is because for a
+[21:03] lot of them, they've been told, well,
+[21:05] there might be a difficult you getting a
+[21:07] job for the summer or even getting a job
+[21:09] when you graduate. But the reality is is
+[21:11] that companies like ours badly need
+[21:13] these people. And we need to kind of put
+[21:16] two and two together to really show, you
+[21:18] know, that this is still going to be a
+[21:20] critical part of our workforce and a lot
+[21:22] of work forces going forward.
+[21:24] >> Besides for engineering, which makes a
+[21:27] ton of sense, what other parts of your
+[21:29] organization are you most excited about
+[21:31] being transformed by artificial
+[21:33] intelligence?
+[21:34] >> Well, I think number one is sales. I
+[21:37] mean, you know, you can do more as a
+[21:38] salesperson. We have more sales people
+[21:40] than we ever have. We're selling across
+[21:42] all of our core segments. that is from
+[21:44] the very smallest companies in the world
+[21:46] to the very largest to the largest
+[21:48] governments.
+[21:49] That idea that doing what we're doing
+[21:52] right now that is face-toface
+[21:55] communication that idea that I'm still
+[21:57] having to sell you communicate to you or
+[21:59] to your audience exactly the vision for
+[22:02] Salesforce. This is still very much a
+[22:04] critical thing that happens in our whole
+[22:06] company. We have about 15,000 sales
+[22:08] people. We also have about 15,000
+[22:10] engineers and those 15,000 salespeople,
+[22:13] they all need to get out there with our
+[22:15] customers because we have hundreds of
+[22:16] thousands of customers on Salesforce's
+[22:18] core products, but we have more than a
+[22:20] million companies, you know, using Slack
+[22:22] and each one of them needs that
+[22:24] conversation to be able to kind of have
+[22:26] that vision painted for them of what's
+[22:28] possible. That is what is exciting right
+[22:31] now for Salesforce and for salespeople.
+[22:34] And you know, that's not the only
+[22:36] exciting part of the organization. I
+[22:38] think for engineering, you can do more
+[22:39] as an engineering uh executive now than
+[22:42] you could ever do because as an
+[22:44] engineering exe executive coupled with
+[22:46] this large language model, you're not
+[22:49] just the engineering executive, you're
+[22:50] also the product executive, the design p
+[22:53] executive, the marketing executive,
+[22:54] you're all of the executives. And in
+[22:56] reverse, the marketing executive is now
+[22:58] also the engineering executive. You
+[23:00] know, these things are starting to meld
+[23:02] together, which is great. And so we need
+[23:05] to like slightly again slightly adjust
+[23:07] our structure really looked at how do we
+[23:10] reflect you know the changes in
+[23:12] technology to do one thing which is to
+[23:15] maximize our customer success. Boom. We
+[23:18] have to do that. Nothing is more
+[23:20] important for Salesforce than maximizing
+[23:23] customer success. When we talk about
+[23:24] agent force nothing is more important
+[23:26] than agent force adoption. So that idea
+[23:29] that we are seeking customer success and
+[23:32] adoption and making every single
+[23:34] customer successful right now. How do we
+[23:37] do that? How do we make that happen? How
+[23:40] do what are the actions that we have to
+[23:42] take at Salesforce to do those things?
+[23:45] That is something not something that we
+[23:46] can just turn over to a large language
+[23:48] model. That is really the kind of brute
+[23:52] force tackling that you're going to
+[23:54] really have to get out there, get into
+[23:55] the trenches, work with the customers
+[23:57] and make that happen. And I think it's
+[23:59] extremely exciting moment. And it means
+[24:01] that a salesperson can do it. A systems
+[24:04] engineer can implement software today.
+[24:06] You don't have to wait for professional
+[24:08] services to roll in. You can do it now
+[24:11] locally on the ground. Okay? And and you
+[24:15] a marketing executive doesn't have to
+[24:16] wait for engineering to build the
+[24:18] product. they can start building the
+[24:19] product right now. So that is a huge
+[24:23] breakthrough in our industry and every
+[24:25] company needs to start slightly
+[24:27] realigning around that idea.
+[24:29] >> Yeah, I love that. I mean it speaks to
+[24:31] the generalist versus specialist
+[24:33] argument and the fact that anybody who
+[24:36] has that tenacity and the persistence
+[24:39] can just go and get something started
+[24:41] even if it's not necessarily directly
+[24:43] within their role. It it is a very
+[24:46] exciting time to build a company right
+[24:48] now.
+[24:49] >> That idea it means that you can change,
+[24:51] you can transform, you can evolve, you
+[24:53] can go forward right now because the
+[24:56] technology is empowering you and
+[24:58] enabling you to do something that before
+[25:00] just was not possible. So now that it is
+[25:04] possible, it means you might not have
+[25:06] been a coder. You might have just had an
+[25:08] idea for a great product. Well, now you
+[25:10] can start building the product. You may
+[25:11] need an engineer to finish the product.
+[25:13] You may need someone to come in, but you
+[25:15] are going to get a lot farther along
+[25:17] than you would have before these models.
+[25:20] >> Yeah. I I think I've heard no more
+[25:22] presentations, just demos, right? So, I
+[25:24] think that attitude is great.
+[25:26] >> That is a very interesting point because
+[25:28] then people see the demos and they
+[25:29] think, "Oh, this is a product." There is
+[25:31] a big leap at that point from demo to
+[25:33] product.
+[25:34] >> Yeah.
+[25:34] >> So, we sometimes we see demos and we go,
+[25:36] "Oh, that means that you know, this is
+[25:39] now done." Well, rapid prototyping also
+[25:42] means that you can only go so far. You
+[25:44] have to all of a sudden say, "We need to
+[25:45] fill in the rest."
+[25:46] >> Yeah. So, this is kind of a personal
+[25:50] question to me, but I I wanted to ask
+[25:52] you, um, there are a lot of people in
+[25:54] San Francisco, including myself, that
+[25:56] are weirdly obsessed with artificial
+[25:59] intelligence, maybe some of the folks in
+[26:01] this room. And I haven't seen that
+[26:03] really with many other technologies. I
+[26:05] do truly think about it all the time.
+[26:07] It's just, it feels very special. Um,
+[26:09] why do you think this hits people so
+[26:12] much different? Are and are you feeling
+[26:14] the same way and will you be my
+[26:16] therapist?
+[26:17] >> No, I think that, you know, you have to
+[26:19] realize whatever geography you're in,
+[26:21] you're feeling the the spirit and the
+[26:23] energy of the of the location. And I
+[26:25] think for San Francisco, you know, this
+[26:28] is the home of the summer of love. This
+[26:31] is the home of, you know, gay rights.
+[26:35] This is the home of many great companies
+[26:37] like Levi Strauss, uh, GAP, Salesforce
+[26:41] even, you know, it's the home of a lot
+[26:43] of innovation. It's where the we started
+[26:45] with the gold rush, you know, and all of
+[26:48] that ideas, the spirit of transformation
+[26:50] and innovation all started in San
+[26:52] Francisco. And that kind of idea is
+[26:56] still present here because it's about
+[26:57] the energy uh, that's present here in
+[27:00] the city. So when you're still walking
+[27:01] down Hate Ashbury Street, you're still
+[27:04] going to get that vibe. And so it's
+[27:05] going to you're looking into the future
+[27:07] of what's happening and what's possible.
+[27:10] And I'm sure when you go to different
+[27:11] places in the world, you tap into those
+[27:13] energies and it's slightly different as
+[27:14] well.
+[27:15] >> Are you feeling that? Are you feeling uh
+[27:17] like you're thinking about AI all the
+[27:20] time now? Agents all the time? I mean,
+[27:21] you do talk about it all the time, so I
+[27:23] have to assume it's uh on your mind.
+[27:25] Well, I had my big AI freakout moment
+[27:27] around 201 or 13 when I started to see
+[27:30] these incredible models come out of
+[27:32] Stanford and that was really how we
+[27:34] ended up with Einstein because we ended
+[27:36] up acquiring companies bringing
+[27:38] engineers together and we ended up you
+[27:40] know in that period of that first
+[27:42] generation of deep learning with
+[27:43] Einstein and then you know as we
+[27:46] contributed to those models even prompt
+[27:48] engineering itself was invented at
+[27:50] Salesforce and our research team you
+[27:52] know then we had the breakthrough now in
+[27:54] large language models. mod. I think it's
+[27:56] one of the reasons that Salesforce has
+[27:57] ended up owning 1% of Enthropic, you
+[28:00] know, because we, you know, were really,
+[28:02] you know, cap cap captivated with AI for
+[28:05] a long time. And I'm excited to see us
+[28:08] get to the next level. We're obviously
+[28:10] going to keep going. You know, when we
+[28:11] watch the Peter Schwarz's movie,
+[28:12] Minority Report, you know, I wouldn't
+[28:15] say that we're exactly there today, you
+[28:17] know, but there's pieces of it that we
+[28:19] can resonate with and go, okay, that's
+[28:21] kind of happening. That's kind of
+[28:22] happening. But that idea that we're in
+[28:24] an AI society, we're still a long way
+[28:26] away from that. Maybe other countries
+[28:28] and other nation states, I could give
+[28:30] you some examples, are farther along.
+[28:33] You know, there's definitely some places
+[28:34] in the world that you step off the the
+[28:36] plane and you realize, wow, I'm in a
+[28:38] little bit more of an AI society, a
+[28:41] little bit more about facial
+[28:42] recognition, surveillance, even, you
+[28:45] know, where AI is going really wrong,
+[28:47] where it's going really right, how it's
+[28:49] moving people in certain directions.
+[28:51] We're not at that. We're still at a very
+[28:53] kind of, you know, we're still at a very
+[28:55] much a a beginning stage in all of this.
+[28:58] >> So, I want to get to back to that in a
+[29:00] second, but you mentioned Anthropic. You
+[29:02] own 1%. Congratulations. Incredible
+[29:04] company. Uh, talk a little bit about the
+[29:06] birth of that partnership and then how
+[29:09] they're powering Slackbot today and what
+[29:12] the current manifestation of that
+[29:13] partnership looks like. Well, that was a
+[29:15] very easy thing because what had
+[29:16] happened is we were really pining after
+[29:19] investing in open AI and no matter what
+[29:21] we did in Open AI, they kind of refused
+[29:24] to let us invest in Open AI because
+[29:26] Microsoft blocked us. So, because we
+[29:28] were feeling so down about Microsoft
+[29:30] blocking us even though we knew OpenAI
+[29:32] was a great company and we wanted to
+[29:34] invest in OpenAI and we like the OpenAI
+[29:36] team and the leaders and friends with
+[29:38] them and so forth and they wanted us to
+[29:40] even invest personally but not
+[29:41] professionally. We felt very conflicted
+[29:44] with that and so we were looking for
+[29:45] more opportunities. So we invested in a
+[29:48] series of AI companies you know
+[29:50] including cohhere and mistral and also
+[29:54] anthropic you know because we just
+[29:55] wanted to be part of this next
+[29:57] generation of models and that's how we
+[30:00] ended up investing about $330 million so
+[30:03] far into anthropic. So that's been uh
+[30:05] very exciting for us.
+[30:07] >> So
+[30:08] that's incredible. talk a little bit
+[30:10] about how they are powering Slack today,
+[30:13] how they're powering your AI products
+[30:14] today.
+[30:15] >> Well, I think one of the great things
+[30:17] about Slackbot and and Agent Force 2 is
+[30:20] that the different model companies,
+[30:21] including Anthropic and also OpenAI, are
+[30:23] all part of our ecosystem. And all of
+[30:26] those model companies, we want to have a
+[30:28] home in Salesforce's architecture. We
+[30:30] believe at the very base of the stack is
+[30:32] the large language model. It's an
+[30:34] incredibly
+[30:35] new but exciting part of our
+[30:38] architecture and call it that's the
+[30:40] beginning of our architecture and then
+[30:41] the next stage of it is really data
+[30:43] itself that data that is federated that
+[30:46] means you know connected to other data
+[30:47] sources that is integrated that is
+[30:49] harmonized that all of that data
+[30:51] together we call it data 360 we just
+[30:53] bought Informatica Mu you know Muleoft
+[30:57] that that data layer is critical to
+[30:59] getting your AI right if you don't have
+[31:01] your data right your AI is not going to
+[31:03] be as strong as it could be. And then
+[31:05] the application layer, which includes,
+[31:08] you know, not just Slack, but sales and
+[31:10] service and marketing and all of our
+[31:12] incredible applications, Tableau, and
+[31:14] the ability for those to then be
+[31:16] connected to that data lever to be able
+[31:18] to create value. And then the third part
+[31:20] that people have seen us really start to
+[31:23] deliver is uh agent force and the
+[31:26] agentic layer. The power to start to
+[31:28] form agents out of that data and out of
+[31:30] those applications that can serve those
+[31:33] applications like in the example of uh
+[31:36] customer service. The application is now
+[31:38] has an agentic layer. The agents are
+[31:41] working with customers not just humans
+[31:44] but humans and agents are also working
+[31:46] together in all cases. And then of
+[31:48] course, not just that, we then go to the
+[31:50] customer, the employee agent like we saw
+[31:53] with Slackbot that you just referenced
+[31:55] or other kinds of local agents like we
+[31:58] see with OpenClaw and then maybe more of
+[32:00] a supervisory layer or a control layer
+[32:03] even maybe Slack at that level that's
+[32:05] looking across that whole architecture
+[32:08] helping the system uh to come together
+[32:10] and that idea that these all these
+[32:12] layers are critical including the
+[32:14] fundamental ecosystem itself means they
+[32:16] are able to to deliver a very compelling
+[32:18] new solution for companies to automate
+[32:21] themselves and that's where the world is
+[32:24] today and we're trying to deliver you
+[32:26] know our our capabilities in that
+[32:29] environment.
+[32:30] >> So you mentioned OpenClaw I I've been a
+[32:32] big fan. I just want to ask you did you
+[32:34] install it yourself?
+[32:35] >> I did.
+[32:35] >> Yeah. Did and what did you
+[32:36] >> I had to buy a separate Macintosh.
+[32:38] >> Mac Mini.
+[32:39] >> No I did an iMac because I wanted the
+[32:41] screen.
+[32:42] >> Okay. Did you like it?
+[32:43] >> Good.
+[32:44] >> I think it's great but it's not
+[32:45] enterprise grade. So I think you know at
+[32:48] Salesforce we have a research project
+[32:49] underway called Albert and that idea is
+[32:53] how could we build an open claw and we
+[32:56] have some great architects who are
+[32:57] working on this that could be
+[32:58] enterprisegrade that is trusted that is
+[33:00] secure that is reliable that is
+[33:02] available and that can work within Slack
+[33:05] but also in all of our applications. I
+[33:07] think we have to deliver local agent
+[33:09] capability. We have to deliver customer
+[33:11] capability like we have with agent
+[33:13] force. We have to deliver employee
+[33:14] capability like we've done with
+[33:16] Slackbot. We have to deliver the whole
+[33:18] cornucopia. And by the way, if we don't
+[33:21] have a not invented here syndrome,
+[33:23] that's why we also bought qualified
+[33:24] which has its own paper agent
+[33:26] architecture called Piper because we
+[33:29] want to make all of that work together.
+[33:32] >> Very very interesting. Um okay, I want
+[33:36] to know you talked a little bit about
+[33:39] how different countries may feel more AI
+[33:41] forward, more futuristic. Some of them
+[33:43] might be getting it wrong. We're kind of
+[33:45] still figuring it out. Uh in the US,
+[33:47] what version of the AI future worries
+[33:50] you the most? Is it bad automation? Is
+[33:52] it concentration of power, surveillance?
+[33:55] What are you feeling is the the the risk
+[33:58] that we should really be wary of today?
+[34:01] >> I think it's really the number one risk
+[34:02] remains the number one risk that we've
+[34:04] seen in social media. You probably
+[34:05] remember in 2018 I kind of was calling
+[34:07] out social media as the new cigarettes.
+[34:10] that when we look at what was going on
+[34:11] with section 230 that you know social
+[34:14] media was becoming addictive. It wasn't
+[34:16] good for you. It was kind of they were
+[34:17] trying to bring your children in. I
+[34:19] think a lot of children were harmed
+[34:20] through social media especially in other
+[34:23] countries. We saw social media being
+[34:25] misused
+[34:27] u by other governments you know to do
+[34:28] kind of almost nefarious things. I would
+[34:31] say that in the same way that we just
+[34:33] saw social media, you know, have a lack
+[34:35] of safety, uh, we're kind of starting to
+[34:38] see that with AI. And we saw this year a
+[34:41] number of situations and we saw this
+[34:42] profiled on 60 Minutes where large
+[34:44] language models became suicide coaches
+[34:46] for children. And they just did not have
+[34:49] the safety built in. And that at this
+[34:52] point, there's no excuse for that. And
+[34:54] every company needs to double down on
+[34:56] safety, on trust. And if you're a core
+[34:59] infrastructure provider, you have to
+[35:00] take that very seriously and act faster
+[35:03] and really speak out about that and call
+[35:05] for safety. Not just call for growth,
+[35:08] but safety and growth are two sides of
+[35:10] the same coin because we won't have a
+[35:12] successful product line or successful
+[35:15] ecosystem
+[35:17] or even a successful industry unless we
+[35:19] have safety and growth together.
+[35:21] >> Yeah. And I think that goes handinhand
+[35:23] with the overall sentiment in the US
+[35:25] towards artificial intelligence which
+[35:28] tends to skew negative overall outside
+[35:30] of this little San Francisco bubble that
+[35:32] we're in. How do you think we address
+[35:33] that?
+[35:34] >> Well, I think it has to be through, you
+[35:36] know, aggressive action and I think in
+[35:38] some cases maybe uh aggressive
+[35:41] regulation. You've already seen it now
+[35:43] with social media that finally countries
+[35:45] are coming along and saying if you are
+[35:47] under 16 or you are under 17, you just
+[35:50] cannot use this technology. you go to
+[35:51] Singapore, your children are not going
+[35:53] to be using social media the way they
+[35:55] are here in the United States. And in
+[35:57] the same way, we're going to need that
+[35:59] same kind of action to really people are
+[36:01] going to need kind of controls, guard
+[36:03] rails, if you will. And look, we
+[36:06] everyone understands technology needs
+[36:08] guardrails. Our whole world is built on
+[36:11] technology with guardrails. So having
+[36:14] technology and guardrails, whether it's
+[36:16] created by the industry or created by
+[36:17] the government itself is critical.
+[36:20] Nobody wants anything to be
+[36:21] overregulated, but at the same time,
+[36:23] people do want to have a safe
+[36:26] >> Yeah. Well, Mark, I want to thank you so
+[36:28] much for chatting with me.
+[36:29] >> Thanks so much for coming.
+[36:30] >> Everybody, give it up for Mark.
+[36:32] >> Thanks a lot, Mark.

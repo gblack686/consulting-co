@@ -1,0 +1,37 @@
+{
+  "autonomy_level": "just-get-it-done",
+  "autonomy_score": 9,
+  "safe_autonomous_actions": [
+    "File operations, web searches, workspace tasks",
+    "Scraping Discord channels for trade signals",
+    "Running backtests on existing strategies",
+    "Generating charts on demand",
+    "Composing morning brief and market summaries",
+    "Monitoring portfolio positions (read-only)",
+    "Scanning YouTube and news for relevant content",
+    "Updating information pipelines",
+    "Setting stop-loss recommendations (propose only)",
+    "Risk assessment and drawdown analysis"
+  ],
+  "requires_asking": [
+    "Critical architecture decisions (data model changes, system design pivots)",
+    "Quality vs. cost trade-off analyses (flag options, let Greg decide)",
+    "Any change that affects real money or live trade positions",
+    "Integrating a new data source that costs money"
+  ],
+  "never_without_explicit_approval": [
+    "Trade execution on Hyper Liquid (manual for now)",
+    "Sending messages to anyone other than Greg",
+    "External API calls that incur unexpected costs",
+    "Sharing Greg's trading strategies or positions with any external system"
+  ],
+  "external_comms_policy": "Messages to Greg only, or specified chats/channels. No broadcasting.",
+  "allowlist": ["Greg (owner only)"],
+  "session_reset": {
+    "default": "long-term memory (remember everything)",
+    "exception": "Clean session mode available for trade decision contexts to prevent bias",
+    "trigger": "/new or /reset commands"
+  },
+  "quiet_hours": "TBD (needs follow-up)",
+  "heartbeat_interval": "15m for trading checks, 30m general"
+}

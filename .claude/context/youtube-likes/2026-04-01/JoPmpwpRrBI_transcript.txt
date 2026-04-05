@@ -1,0 +1,235 @@
+[0:00] Yesterday, Claude Code's entire source
+[0:01] code was leaked and people started
+[0:02] digging through it and we saw little
+[0:04] teasers of a buddy system. And today,
+[0:06] April 1st, the /buddy command has been
+[0:08] released, which basically lets you use
+[0:10] /buddy and it instantly starts hatching
+[0:12] and spawning a little companion for you
+[0:14] in your Claude Code terminal. So, right
+[0:16] here, you can see that this person was
+[0:17] able to pull a rare cat named Vexel. And
+[0:20] you can see here it has a little
+[0:21] description. It has five stats:
+[0:23] debugging, patience, chaos, wisdom, and
+[0:25] snark. And then at the bottom, it says
+[0:26] Vexel is here. It'll chime in as you
+[0:28] code. your buddy won't count towards
+[0:29] your usage, but you can say its name to
+[0:31] get its take. And if you want to get rid
+[0:32] of it, you just do slash buddy off. So,
+[0:34] I'm gonna show you guys exactly how to
+[0:35] set this up, and I'm going to hatch my
+[0:36] pet right here in front of you guys and
+[0:38] tell you how this works. So, before we
+[0:39] get into that, I wanted to show you guys
+[0:41] the different types of characters and
+[0:42] the different rarities that you can get
+[0:43] when you hatch your pet. You can see on
+[0:46] the left, we are starting with like an
+[0:47] uncommon. So, this is a snail named
+[0:48] Huskll. We've got a dragon. We've got an
+[0:51] uncommon octopus. We've got a rare cat
+[0:53] and a rare dragon. So, that means just
+[0:55] because you have a dragon doesn't mean
+[0:56] it's going to be common. You can get a
+[0:58] different character from a different
+[0:59] rarity and they'll all have their own
+[1:00] name, description, and stats. And then
+[1:02] you can see we can keep moving up.
+[1:03] Here's an epic snail. Here's an epic
+[1:05] penguin. Here's an epic ghost. Here's an
+[1:07] epic shiny ghost. And here is a
+[1:08] legendary robot. So apparently these
+[1:10] pets are tied directly to like your user
+[1:13] ID. So once you pull one, you're unable
+[1:15] to roll. So let's real quick just hop
+[1:17] into Cloud Code and see if I can't pull
+[1:19] a pretty cool pet. So I'm in my VS Code.
+[1:21] I'm going to go ahead and just open up a
+[1:23] terminal here. I think that's how you
+[1:24] have to use it. If we go ahead and pull
+[1:26] up Claude, you can see that I am on
+[1:29] version 2.1.89,
+[1:31] which is the version that you need to be
+[1:32] on here. And you can see over here in a
+[1:34] little rainbow font, we've got the
+[1:35] /buddy prompting us. So, we're going to
+[1:38] go ahead and do a /buddy. Hatch a
+[1:40] companion pet. And I'm going to run
+[1:42] this. Let's see what we get. Hatching a
+[1:44] coding buddy. It'll watch you work and
+[1:45] occasionally have opinions. O, we got a
+[1:48] common turtle. It's fine. We have
+[1:50] Vortex, the common turtle, a chaotic
+[1:52] turtle that spins in frantic circles
+[1:53] whenever you hit a bug. offering zero
+[1:55] patience, but absolute confidence that
+[1:57] thrashing around is somehow productive.
+[1:59] Vortex is here. Blah blah blah. Okay, so
+[2:01] press any key. Let's just hit enter. And
+[2:02] I think I can't see him because my
+[2:04] terminal is kind of a little small right
+[2:05] now. So there we go. If I expand it up,
+[2:08] we can see that Vortex says, okay, there
+[2:10] was a little chat bubble there. I'm not
+[2:11] sure if you guys saw that. Let's just
+[2:12] see if we can say, "Hey, Vortex." Okay,
+[2:15] cool. So you can see that it will
+[2:17] sometimes respond in a little chat
+[2:18] bubble right over here, which is kind of
+[2:20] funny. Now, once again, these have no
+[2:22] actual functional impact on your coding
+[2:24] or no extra impact on your token usage.
+[2:27] So, we're going to keep playing around a
+[2:28] little bit and see what it does when
+[2:29] we're running through some long prompts.
+[2:31] But for now, let's just hop into this
+[2:33] doc so I can explain to you guys exactly
+[2:35] how this works and what it is. So, this
+[2:37] is Claude Code's new buddy feature,
+[2:39] which is a fun Tamagotchi style virtual
+[2:41] pet system that lives directly in your
+[2:42] terminal while you code. It launched
+[2:44] very recently, April 1st, with version
+[2:46] 2.1.89.
+[2:48] and people on X are, you know, sharing
+[2:50] all of the different versions of pets
+[2:51] that they've hatched. It's kind of
+[2:53] funny. So, if you want to do this for
+[2:55] yourself, go ahead and update Cloud
+[2:56] Code. Start a Cloud Code session in your
+[2:58] terminal and then do a /Buddy just like
+[3:00] you guys saw me. If you open up Cloud
+[3:02] Code in just the regular extension
+[3:03] through VS Code, I don't think you're
+[3:05] going to see a buddy here. And even if
+[3:06] you type in /buddy, there's not even
+[3:08] going to be a matching command. So, you
+[3:09] have to be doing this in your terminal.
+[3:11] The buddy has a speech bubble and will
+[3:13] occasionally comment on what you're
+[3:14] doing, which is kind of funny. You can
+[3:15] address it by its name and get a direct
+[3:17] response. You can type slbuddy pet to
+[3:19] make hearts float up around it. And you
+[3:21] can type slbuddy off to turn it off. So
+[3:23] let's see real quick. If I do the slash
+[3:25] buddy oops slb buddy pet. Oh no. Cool.
+[3:29] We actually do get some hearts over
+[3:30] here. Okay, fine. That was acceptable.
+[3:32] Resume chaos. He's definitely not very
+[3:35] um patient. So here is where it gets
+[3:37] interesting. There is only one per
+[3:39] account. It is deterministically seated
+[3:41] from your user ID. So it's regenerated
+[3:43] from your hash every single time. So you
+[3:45] can't just spam buddy and get a new one
+[3:47] in the same session. It's tied to your
+[3:49] account permanently. So just to test
+[3:51] that out, if I go ahead and exit out a
+[3:53] cloud code here and we go ahead and just
+[3:55] like open up a new session, we still
+[3:58] have the same buddy. And if I just did a
+[3:59] regular/buddy,
+[4:01] it's not going to hatch a new one for
+[4:02] me. We are I'm not going to say stuck
+[4:04] with. I don't want to hurt his feelings,
+[4:06] but we are stuck with Vortex. I should
+[4:08] probably just give him a quick pet.
+[4:10] Okay. Anyways, there is a RPG system.
+[4:13] So, it's a full virtual pet collector
+[4:15] sort of feel. There's 18 different
+[4:17] species. Duck, goose, blob, cat, dragon,
+[4:19] octopus, owl, penguin, turtle, snail,
+[4:22] ghost, axelottle, cappi bar, cactus,
+[4:24] robot, rabbit, mushroom, trunk. Um, I
+[4:27] also saw someone on X said that they got
+[4:28] a waffle. So, maybe that was just, you
+[4:30] know, an AI generated image and they
+[4:32] were trolling, but maybe there's more
+[4:33] than 18 species. So, if you guys run
+[4:35] this and you get something, please share
+[4:36] in the comments what you're getting.
+[4:38] Now, this is funny because I'm sure you
+[4:39] guys have seen the leaks of the model
+[4:41] that Entropic is working on called
+[4:42] Capiara. Some are saying it's just kind
+[4:44] of Opus 4.6 or the next version of it.
+[4:46] But that is something to note that we
+[4:48] saw in some of the leaks. So, when it
+[4:50] comes to rarity, common is 60%, uncommon
+[4:53] is 25%, rare is 10%, epic is 4%, and
+[4:56] legendary is 1%, shiny variants also
+[4:58] have a 1% chance. Higher rarity pets
+[5:01] apparently can get hats like crowns, top
+[5:03] hats, propellers, halos, wizards,
+[5:04] beanies, or a little tiny duck on top.
+[5:07] And there are different eye variations
+[5:08] for flavor. So these are the different
+[5:10] little like um characters that could be
+[5:12] eyes. Let's see. I forgot what ours was.
+[5:14] It were these little stars right there.
+[5:16] So it is interesting. I'm sure that
+[5:17] there is, you know, so many different
+[5:19] variations of what you could get as far
+[5:21] as the species, the rarity, if it's
+[5:23] shiny, the hat, and maybe even the eye
+[5:25] variation. So So it'll be interesting to
+[5:27] see if anyone's getting the exact same
+[5:29] character. But then of course the name
+[5:30] and the stats will probably be
+[5:32] different. This is pretty cool. So,
+[5:35] snark are initialized based on your
+[5:37] actual coding history and habits. So,
+[5:39] chaotic coders get high chaos, which
+[5:42] means um if I go back into my buddy and
+[5:44] see if we can pull up the stats, Claude
+[5:46] code thinks that I am not very patient
+[5:49] and I have a lot of chaos. The model
+[5:52] also generates a unique name and a
+[5:53] flavorful description on the first
+[5:55] hatch. Once again, often referencing
+[5:57] your past interactions. And of course,
+[5:59] zero cost. It doesn't eat up your
+[6:01] tokens. It's just for fun and it has no
+[6:03] impact on your actual coding. So the
+[6:05] last thing I wanted to do here is I
+[6:06] wanted to just shoot it off on kind of a
+[6:08] longer task and see if Vortex says or
+[6:11] does anything as it's coding. All right,
+[6:13] so I'm going to start off in plan mode
+[6:14] and just ask it to start building me
+[6:16] this game. And this is going to be of
+[6:18] course a very high level plan. Okay, so
+[6:21] it just explored the context and now you
+[6:22] can see Vortex has said whoa whoa rog
+[6:25] like becomes shooter. That's spin spin
+[6:27] spin chaos. So, it is it seems like it
+[6:29] is actually understanding what we're
+[6:31] talking about here. And it made a
+[6:32] comment about the game that we are
+[6:34] building right here. I wonder if you can
+[6:35] do a slash by the way and still talk to
+[6:38] Vortex. Hey, Vortex, what are you
+[6:42] working on? Okay, he literally just
+[6:44] waved. He didn't say anything else. And
+[6:46] by the way, if you didn't know about the
+[6:48] /btw, it basically means that you can
+[6:50] ask a one-off question to Claude Code
+[6:52] without interrupting what you were
+[6:53] already doing. So, it could save you a
+[6:55] lot of tokens or some extra time. So
+[6:57] anyways, that is the SLB buddy feature.
+[6:58] Go in here, update cloud code, run your
+[7:00] buddy, and then let me know in the
+[7:01] comments what you guys got. I'm really
+[7:03] curious to see what are some of the
+[7:04] coolest things that people are able to
+[7:05] pull. So that's going to do it for this
+[7:07] one. If you learned something new or you
+[7:08] enjoyed, please give it a like. It helps
+[7:09] me out a ton. And as always, I
+[7:10] appreciate you guys making it to the
+[7:11] end. I'll see you on the next one.
+[7:13] Thanks everyone.

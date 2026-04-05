@@ -1,0 +1,29 @@
+LINKS:
+Free Skool Community: https://www.skool.com/prompt-to-prod
+Work with me: https://consulting.jayminwest.com/
+
+My Github: https://github.com/jayminwest
+Free Agentic Engineering Book: https://jayminwest.com/agentic-engineering-book
+
+Overstory Repo: https://github.com/jayminwest/overstory
+Canopy Repo: https://github.com/jayminwest/canopy
+
+Diagram from this video: https://app.eraser.io/workspace/uBNx4lBk51tEvVUTKWhF?origin=share
+
+---
+
+In this video I discuss how I borrow concepts from OOP when I go about writing prompts for agents, as well as the tools I've built to support this workflow. 
+
+---
+
+00:00 Why Prompt Alignment Matters
+00:32 Base Prompt Inheritance
+01:22 Mix Ins for Specialization
+02:46 Overriding Prompt Sections
+03:56 Composable Prompt Sections
+05:29 Variables to Reduce Bloat
+06:51 Real Variable Examples
+07:50 Tools Overstory and Canopy
+08:23 Wrap Up and Next Steps
+
+#agenticai #codegeneration #programming #claudecode #aicoding #llms #openai #geminiai #claudeai #agentswarms #gastown

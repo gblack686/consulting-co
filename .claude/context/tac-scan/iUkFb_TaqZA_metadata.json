@@ -1,0 +1,89 @@
+{
+  "video_id": "iUkFb_TaqZA",
+  "title": "My OpenClaw Is Forgetting Everything — Here's How I Fixed It",
+  "channel": "Dave Swift",
+  "channel_url": "https://www.youtube.com/@dave-swift",
+  "url": "https://www.youtube.com/watch?v=iUkFb_TaqZA",
+  "upload_date": "2026-02-18",
+  "views": 6648,
+  "likes": 222,
+  "duration_seconds": 1149,
+  "duration_formatted": "19:08",
+  "subscribers": "32.2K",
+  "comment_count": 29,
+  "hashtags": [
+    "#OpenClaw",
+    "#Obsidian",
+    "#AIMemory",
+    "#AIAgent",
+    "#PersonalAI",
+    "#Tutorial"
+  ],
+  "chapters": [
+    {
+      "time": "00:00",
+      "title": "Introduction"
+    },
+    {
+      "time": "00:37",
+      "title": "OpenClaw's Memory Problem"
+    },
+    {
+      "time": "02:31",
+      "title": "The Obsidian Inspiration"
+    },
+    {
+      "time": "03:01",
+      "title": "Setting Up Obsidian"
+    },
+    {
+      "time": "03:27",
+      "title": "Creating Your First Vault"
+    },
+    {
+      "time": "04:38",
+      "title": "Designing the File Structure"
+    },
+    {
+      "time": "07:46",
+      "title": "Syncing Across Devices"
+    },
+    {
+      "time": "10:05",
+      "title": "Security Considerations"
+    },
+    {
+      "time": "12:13",
+      "title": "Configuring OpenClaw"
+    },
+    {
+      "time": "14:42",
+      "title": "Setting the Vault Path"
+    },
+    {
+      "time": "15:25",
+      "title": "Indexing the Vault"
+    },
+    {
+      "time": "16:32",
+      "title": "Troubleshooting and Testing"
+    },
+    {
+      "time": "18:06",
+      "title": "Understanding Your Thinking"
+    }
+  ],
+  "github_links": [],
+  "resource_links": {
+    "show_notes": "https://daveswift.com/openclaw-obsidian-memory/",
+    "premium": "https://daveswift.com/join/",
+    "x_article": "https://x.com/arscontexta/status/2013045749580259680",
+    "obsidian": "https://obsidian.md/",
+    "tailscale": "https://tailscale.com/",
+    "elfsight_sponsor": "https://daveswift.link/elfsight"
+  },
+  "transcript_available": true,
+  "transcript_segments": 133,
+  "description_length": 1520,
+  "extracted_at": "2026-02-19"
+}

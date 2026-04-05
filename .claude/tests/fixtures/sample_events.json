@@ -1,0 +1,44 @@
+{
+  "pretooluse_event": {
+    "source_app": "test-app",
+    "session_id": "test-session-123",
+    "hook_event_type": "PreToolUse",
+    "timestamp": 1731704400000,
+    "model_name": "claude-sonnet-4-5",
+    "payload": {
+      "tool_name": "Read",
+      "tool_input": {
+        "file_path": "/test/integration/file.py"
+      }
+    }
+  },
+  "posttooluse_event": {
+    "source_app": "test-app",
+    "session_id": "test-session-123",
+    "hook_event_type": "PostToolUse",
+    "timestamp": 1731704402667,
+    "model_name": "claude-sonnet-4-5",
+    "payload": {
+      "tool_name": "Read",
+      "tool_output": "File content: def test_function():\n    pass"
+    }
+  },
+  "subagentstop_event": {
+    "source_app": "test-app",
+    "session_id": "subagent-session-456",
+    "hook_event_type": "SubagentStop",
+    "timestamp": 1731704410000,
+    "model_name": "claude-sonnet-4-5",
+    "payload": {
+      "parent_session_id": "parent-session-123"
+    }
+  },
+  "stop_event": {
+    "source_app": "test-app",
+    "session_id": "test-session-123",
+    "hook_event_type": "Stop",
+    "timestamp": 1731704420000,
+    "model_name": "claude-sonnet-4-5",
+    "payload": {}
+  }
+}

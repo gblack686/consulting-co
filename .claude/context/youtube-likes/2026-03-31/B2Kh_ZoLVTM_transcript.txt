@@ -1,0 +1,438 @@
+[0:00] So today, OpenAI released an official
+[0:02] codec plugin for cloud code. You can see
+[0:04] here it says if you already use cloud
+[0:05] code, this codeex plugin gives you a
+[0:07] simple way to pull codeex into that same
+[0:09] workflow. Now this isn't like
+[0:10] groundbreaking technology. People have
+[0:12] already been kind of using a combination
+[0:13] of codec and claude code together, but
+[0:15] this plugin makes it a lot easier. And
+[0:17] so obviously I've been focusing a lot on
+[0:18] cloud code, but I have played around
+[0:20] with codecs a little bit and they felt
+[0:21] very similar to me. But as of lately,
+[0:23] I've been seeing more and more people
+[0:24] talk about how they've been using codecs
+[0:26] inside of their cloud code workflows and
+[0:28] projects to help do code reviews and to
+[0:31] help get a second pair of eyes on their
+[0:33] code. So here you can see the head of
+[0:35] developer experience at OpenAI said that
+[0:37] they've been seeing cloud code users
+[0:38] bring in codecs for code reviews and use
+[0:40] GBT 5.4 for some more complex tasks. So
+[0:43] that's kind of why they decided to do
+[0:44] this. And the cool thing is, which I
+[0:46] didn't actually know, you can use codecs
+[0:48] for free. So, you can just use your free
+[0:50] Chatbt subscription, which means there's
+[0:52] basically no reason for you to get this
+[0:54] plugin, put it into some of your Cloud
+[0:56] Code projects where you're building some
+[0:58] software or game or whatever it is, and
+[1:00] then just have it do some code reviews
+[1:02] and see what you might have missed with
+[1:03] Claude Code. So, you might be wondering
+[1:05] to yourself, is this just overkill? And
+[1:07] is it actually needed? And so, I was
+[1:09] thinking the exact same thing, and I
+[1:10] decided to do a little bit of research
+[1:12] to compare the benchmarks. So, starting
+[1:14] off, Opus 4.6 versus GBT 5.4. Opus is
+[1:17] the purple, GBT is the green, and we're
+[1:20] looking at different coding benchmarks.
+[1:21] So, the S. S. S. S. S. S. S. S. S. S. S.
+[1:22] Opus has a slight edge. But in all of
+[1:24] these other ones, you'll notice that GBT
+[1:26] 5.4 is actually ahead of Opus 4.6. And
+[1:30] if you actually break them down
+[1:31] headto-head, you can see here's the S
+[1:32] SWB verified where Opus leads by almost
+[1:34] a point. But in all these other ones, 13
+[1:37] points, 10 points, 1, 2.5, 3.5, GBT 5.4
+[1:44] actually beats out Opus 4.6. And when
+[1:46] you think about those benchmarks and
+[1:47] then you realize that Opus 4.5 is also
+[1:50] much more expensive than GPT 5x4, it
+[1:52] definitely makes you think. Now, all of
+[1:54] these are the benchmarks, right? So, I
+[1:55] think they're always important to look
+[1:56] at and to sort of be aware of like what
+[1:58] models are supposed to be good at
+[1:59] certain things, but I always want to get
+[2:01] in there, get my hands dirty, and see
+[2:03] how I like them, see what they feel
+[2:05] like, rather than just basing my
+[2:06] assumptions off of benchmarks. So I did
+[2:09] some research on X and Reddit and I
+[2:11] scraped information and thoughts from
+[2:12] people who have been using both of them
+[2:14] a lot and I threw together some of the
+[2:15] pitfalls of both of them. And it's
+[2:17] interesting because when you hear the
+[2:19] weaknesses of both, the strengths of
+[2:21] both kind of complement each other
+[2:22] really well. So for cloud code, some of
+[2:24] the things that people have been saying
+[2:25] are weaknesses are that it
+[2:27] overengineers, that it can be really
+[2:29] token hungry, and that it can sort of
+[2:31] get into long run drift. So it can miss
+[2:33] edge cases and just build bugs. And the
+[2:35] important part of that is when it goes
+[2:37] and reviews its own code, sometimes it
+[2:39] misses those because it just can't see
+[2:41] them. And these things right here are
+[2:42] some of the things that Codeex is known
+[2:44] for being really good at. But then if we
+[2:46] switch over to Codeex weaknesses, people
+[2:48] complain that it's not super good at
+[2:49] planning and it doesn't ask the right
+[2:51] questions and sometimes you don't get a
+[2:52] lot of good creative outputs from it and
+[2:55] it's just a little bit more rigid in
+[2:56] that way. And it's interesting because
+[2:58] some of these things that people
+[2:59] complain about codecs, cloud code or
+[3:01] opus does really well. And so naturally,
+[3:04] that's why you've seen a lot of people
+[3:05] on X talking about, oh, I like to plan
+[3:07] and maybe build the initial PC with
+[3:09] cloud code, but then I'll bring in
+[3:10] codeex to execute the rest of it, kind
+[3:12] of push it into production and do all of
+[3:14] the reviewing. Now, what this really
+[3:15] makes me think about is just the fact
+[3:17] that you should be trying different
+[3:18] tools and understanding like where to
+[3:21] use them together. It's not always like,
+[3:23] oh, I'm all in on this one and I'm only
+[3:24] going to use this one. It's about
+[3:26] understanding like, okay, for this
+[3:27] specific use case, I might use 30%
+[3:29] Claude and 70% OpenAI, and for this next
+[3:32] use case, I'm probably going to use
+[3:33] Claude Code pretty much all the way
+[3:34] through until the very end. So, I'll
+[3:37] leave a link to this article down in the
+[3:38] description of this video, but it's
+[3:39] really, really simple to set up. All you
+[3:41] have to do is run these three commands
+[3:42] in order. So, this one basically
+[3:43] installs the marketplace, this one
+[3:45] installs the plugin, and then this one
+[3:46] helps you get set up. And you can also
+[3:48] go to the actual GitHub documentation,
+[3:50] which has been growing in stars pretty
+[3:51] quickly since the release. And you
+[3:53] pretty much can read every single thing
+[3:54] about this. You can see that you can
+[3:56] also use your free chatbt subscription
+[3:57] once again, but you would just run these
+[3:59] in order. And it also breaks down all of
+[4:01] the different functions that are in
+[4:02] here. So we have like a review, we have
+[4:04] an adversarial review, we have rescue,
+[4:07] we have all these different little
+[4:08] functions that you can run, which almost
+[4:10] you can think of them like skills now.
+[4:11] And you can do some other things that
+[4:12] are pretty cool by adding these flags
+[4:14] that let them run in the background or
+[4:15] wait for things. And you get a lot of
+[4:17] extra functionality here. So in a
+[4:18] session, if you come over here and you
+[4:20] do /plugins, you would basically have
+[4:22] to, you know, try to install that
+[4:23] marketplace. You can see that I have the
+[4:25] OpenAI Codex one right here. And then
+[4:26] you can see right here I've got the
+[4:28] codeex plugin installed and enabled. So
+[4:30] now if I went ahead to do a /codex, you
+[4:33] can see all of these different things
+[4:34] that I could actually call on. And all
+[4:35] of these would be using GBT 5.4 instead
+[4:37] of Opus. So real quick example of what
+[4:40] that may look like. Here's a project
+[4:42] where I'm setting up just some sort of
+[4:43] dashboard for an internal system. And
+[4:46] keep in mind, a lot of this is mock
+[4:47] data. This is something that I just
+[4:48] recently spun up and right now I'm just
+[4:50] working on sort of the flow and the feel
+[4:52] rather than like having the data synced
+[4:53] in. But anyways, I built this obviously
+[4:55] using Opus. So now in this project, if I
+[4:57] do /codeex, I can see all these
+[4:59] different things to run. And right now I
+[5:01] want to decide between a review or an
+[5:02] adversarial review. So if I go over back
+[5:04] to the GitHub, we can read the
+[5:06] difference between the two, which is a
+[5:07] review runs a normal codeex review on
+[5:09] your current work, which is the same
+[5:11] quality of code review as running a
+[5:12] slash review inside of Codex directly.
+[5:14] So you can use this for reviewing
+[5:16] uncommitted changes or comparing
+[5:17] branches. And this is a readonly type of
+[5:21] skill. Now the adversarial review is
+[5:23] kind of just like a review on steroids.
+[5:25] It's steerable and it questions the
+[5:27] chosen implementation and design and it
+[5:29] can be used to pressure test things,
+[5:31] look at trade-offs, failure modes, and
+[5:32] whether different approaches would be
+[5:34] safer or more simple. This is also a
+[5:37] readonly command that does not change
+[5:38] code. Essentially, these are both just
+[5:40] kind of giving you uh a nice audit. So,
+[5:42] I'm going to go ahead and try the
+[5:44] adversarial review right here. So, what
+[5:46] you'll notice is right away it has to
+[5:47] get familiarized and acclimated with the
+[5:49] environment. So, it's going to look at
+[5:51] the working tree size. It's going to
+[5:52] check the differences between what's
+[5:53] staged and what's unstaged. And after
+[5:55] that, it should come back and ask us how
+[5:57] we want to run this review. So, it's
+[5:59] asking me how we want to run it. I'm
+[6:00] just going to go ahead and say in the
+[6:01] background and shoot that off. You can
+[6:03] see that it also said that this is a
+[6:04] pretty large review. So, we'll see how
+[6:07] long this takes. So, by the way, I'm on
+[6:09] Windows and when I was using this, I've
+[6:10] gotten a bug a few times which basically
+[6:12] said that there was something wrong with
+[6:14] like path, but it was able to do
+[6:16] research and fix that for me. And now
+[6:17] you can see that that adversarial review
+[6:20] has been complete. So, let's take a look
+[6:21] and see what we got here. It gives us a
+[6:23] target. It gives us a verdict. It tells
+[6:25] things that we don't need to ship. And
+[6:28] here are the things that it found. And
+[6:29] it also looks like it has priority
+[6:30] scores. So, we have some high priority
+[6:32] things. We have a recommendation. Same
+[6:34] thing right here. And then we also have
+[6:35] a medium priority thing as well as some
+[6:37] next steps. So from here it would be up
+[6:39] to you to either continue on using
+[6:42] codeex to build out these changes or
+[6:44] switch back to cloud code or what I
+[6:45] would probably do is I would split them
+[6:47] off do one with opus one with GBT and
+[6:49] then just see which one's better. So
+[6:51] that was a lot of the use cases that
+[6:52] I've been seeing on X and just when I
+[6:54] started looking into this, right? But
+[6:56] then I of course wanted to try okay
+[6:57] let's give both of them the exact same
+[6:59] prompt and see what the outputs actually
+[7:02] look like. So, I gave them both this
+[7:03] prompt, which was basically just like to
+[7:05] build me a game. I gave them some, you
+[7:07] know, specifications and things like
+[7:08] that. And it's detailed, but it's not
+[7:10] like super super detailed. I didn't put
+[7:12] them into plan mode. I just shot it off
+[7:14] in bypass permissions to see what the
+[7:16] outputs looked like. And so, here's
+[7:18] codecs open up in VS Code as well with
+[7:20] the extension. And you can see that I
+[7:22] gave them the exact same prompt, and
+[7:23] then I just shot them off to see what
+[7:24] happened. Now, before we open up the
+[7:26] outputs, there's two things I wanted to
+[7:28] tell you. The first thing is that Opus
+[7:30] finished way quicker than Codeex did. So
+[7:32] whether you take that as a good thing or
+[7:33] a bad thing, just something I wanted to
+[7:34] call out. Codex ran for a lot longer.
+[7:36] And the second thing is Opus came back
+[7:38] and basically said, "Hey, the server
+[7:39] started, you can open it up and you can
+[7:41] play the game." But when Codex came
+[7:42] back, it basically said like, "Hey, this
+[7:43] is only task one out of three, but the
+[7:46] game's finished and you're ready to
+[7:47] play." And then after that, I said,
+[7:48] "Okay, well, um, is the game done?" And
+[7:51] it said, "Not fully. It's playable and
+[7:52] it's local, but there's still a lot of
+[7:54] things that I need to do to meet the
+[7:56] original spec." Now, let's take a look
+[7:57] at the games. This first version right
+[8:00] here, this is the version that was built
+[8:02] by Claude Code. So, we have dungeon
+[8:04] crawler, a roglike adventure. We're
+[8:05] going to go ahead and start up a new
+[8:06] game. And you can see here we have a
+[8:08] little navbar on the right with our
+[8:10] floor. I think maybe our health, our
+[8:12] stats, our XP, equipment, gold, combat
+[8:16] log. We have a little mini map. And then
+[8:18] we have our controls. So, if I start
+[8:20] moving around here, you can see that I
+[8:22] can kind of see what's going on. I can
+[8:23] break through these little barriers. And
+[8:25] here's like a goblin, apparently. I can
+[8:27] move up here. There's a skeleton. Here's
+[8:29] some gold. I don't know how to pick that
+[8:30] up exactly. Um I don't know exactly what
+[8:32] all this stuff is, but you can see that
+[8:34] it is, you know, it's a 2D playable
+[8:36] game. It's nothing crazy, but the mini
+[8:38] map starts to unlock. And honestly, like
+[8:40] for one prompt and maybe like about a
+[8:42] 5minute workflow, this is not too bad.
+[8:45] But now, let's just go ahead and close
+[8:46] out of that and let's go over to
+[8:48] Codeex's version. This is what the
+[8:50] initial UI looks like. And already it
+[8:52] looks a little bit more polished and it
+[8:54] feels more like an app. And I can go
+[8:56] ahead and start this new game here. And
+[8:58] let me just zoom in a little bit more
+[8:59] now. This one already looks a lot less
+[9:02] pixy. And I guess I died really quick.
+[9:05] But this one looks a lot less pixy and
+[9:08] it just feels a little bit more polished
+[9:10] as you can see. Um I don't actually see
+[9:12] on this right hand side though. I guess
+[9:14] the mini map is down there. So there is
+[9:15] still the mini map. But overall I would
+[9:17] have definitely said that Codeex did a
+[9:19] better job of this game on the first
+[9:22] oneshot prompt than Claude Code did. So
+[9:25] now what I would do is I would come back
+[9:26] into this game, the version that was
+[9:28] built with cloud code, and I would just
+[9:29] want to do an adversarial review. And
+[9:31] then what I'm going to do after Codex
+[9:33] comes back with this review, I'm just
+[9:34] going to tell Opus, go implement all of
+[9:36] these changes, and then we're going to
+[9:37] open up the game again and see how much
+[9:39] different it is. But that's why it's
+[9:40] always interesting to test things out
+[9:42] yourself because some people were saying
+[9:44] that Codex does a worse job with like UI
+[9:47] design. Although clearly from this
+[9:49] example with the same prompt, Codex's
+[9:51] version in my mind was a lot better.
+[9:53] >> [snorts]
+[9:53] >> Now, as this is running, I did want to
+[9:54] just address something real quick, which
+[9:56] is basically like, okay, you know, if
+[9:57] Codeex is just better than Cloud Code
+[9:59] and it's cheaper, then why would I not
+[10:01] just use Codex instead? And that's
+[10:02] honestly a very fair question. And the
+[10:05] only answer that I can give you is
+[10:07] download it, try it, and just see which
+[10:09] one you like better. From what I've been
+[10:11] playing around with so far, I think
+[10:12] there's definitely very clear strengths
+[10:14] where Codeex is better than Cloud Code.
+[10:17] But overall, I really like the way Cloud
+[10:19] Code feels. I think that it's a lot more
+[10:21] forgiving, especially for me because I
+[10:22] don't come from a formal software
+[10:24] engineering background. And that type of
+[10:26] feel aligns with a lot of the stuff that
+[10:28] I've been seeing other people say as
+[10:29] well. But I'll tell you for sure that
+[10:30] I'm definitely going to be using this
+[10:32] codeex plugin to help review stuff and
+[10:34] to help build on extra features. And
+[10:36] maybe one day I'll get to the point
+[10:37] where I decide that I want to use codeex
+[10:39] 80% and cloud code 20 rather than the
+[10:41] other way around. So this is now running
+[10:43] in the background and I wanted to show
+[10:44] you guys what it looks like when you do
+[10:45] the codec status. It basically just
+[10:47] shows you the exact job that has, you
+[10:49] know, been running and how long it's
+[10:51] been running. And it looks like that's
+[10:52] actually finished up because now it's
+[10:53] giving us another output. And this is
+[10:55] interesting because I just spun up this
+[10:57] game as a demo. There was no actual
+[11:00] branch to compare itself with or there
+[11:02] was no commit. So what it decided to do
+[11:04] is rerun it properly by creating a
+[11:06] review branch so that codeex can
+[11:07] actually diff the actual game code. So,
+[11:10] this has come back and keep in mind that
+[11:12] these changes that it's suggesting are
+[11:14] probably not going to be anything to do
+[11:16] with the UI. So, that won't really see
+[11:18] any changes. It's about the actual game
+[11:20] play and it's about the actual like
+[11:22] functionality of the code and how this
+[11:24] works. So, we have just two high things.
+[11:26] We have final floor stairs let the
+[11:28] player soft lock the run permanently.
+[11:30] But the ancient amulet is only ever
+[11:32] spawned when floor equals 10. So,
+[11:34] there's no matching upward travel
+[11:35] mechanic and victory only triggers from
+[11:37] using the amulet. So a player can
+[11:38] therefore step on floor 10 stairs before
+[11:41] collecting the amulet, get sent to floor
+[11:42] 11, and then the run becomes unwinable.
+[11:45] So that's definitely a flaw in the way
+[11:47] that this was actually built from Opus.
+[11:50] And then there's another issue over
+[11:51] here, as you can see, which is a real
+[11:53] data loss rollback bug for a game that
+[11:55] exposes a continue entry point. So it
+[11:57] gives us a recommendation for how to fix
+[12:00] both of these. We can gate floor 10
+[12:01] stairs, and we can also persist after
+[12:03] state changing player actions or
+[12:05] debounce an auto save after each turn.
+[12:07] and on major events like new game blah
+[12:09] blah blah blah blah. So I'm just going
+[12:10] to go ahead on bypass permissions mode
+[12:12] just say implements. But obviously all
+[12:14] of this stuff is kind of more of a demo.
+[12:16] I would be taking this feedback and I
+[12:17] would be once again going into a plan
+[12:19] mode with cloud code and then taking
+[12:21] that plan and telling it to go ahead and
+[12:24] make the changes. So those changes have
+[12:26] been made as you can see. And if I go
+[12:27] ahead and open up the game and I give it
+[12:29] a quick refresh, like I said, nothing
+[12:31] really about the UI of the game has
+[12:32] changed, but apparently those changes
+[12:35] have been fixed. And actually, it does
+[12:37] already look a little bit better for
+[12:38] some reason. I'm probably just making
+[12:39] that up. But anyways, the point being
+[12:42] that was a super strong combination. As
+[12:43] you can see, we're using Cloud Code and
+[12:46] then the adversarial review with Codeex.
+[12:48] So, anyways, that is going to do it for
+[12:49] this one. I know that I haven't made a
+[12:51] video on Codeex yet on this channel, but
+[12:53] I've been playing around with all these
+[12:54] different tools and focusing mainly on
+[12:55] Cloud Code because I don't want to just
+[12:57] confuse you guys with throwing a bunch
+[12:58] of different tools at you. But, I do
+[13:00] think that this one is definitely
+[13:01] something that is worth checking out.
+[13:02] So, if you enjoyed the video or you
+[13:03] learned something new, please give it a
+[13:04] like. It helps me out a ton. And as
+[13:06] always, I appreciate you guys making it
+[13:07] to the end of the video. I'll see you on
+[13:08] the next one. Thanks, everyone.

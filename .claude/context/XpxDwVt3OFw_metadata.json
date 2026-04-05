@@ -1,0 +1,43 @@
+{
+  "video_id": "XpxDwVt3OFw",
+  "title_page": "I Found the Fastest Way to Get Great App UX",
+  "title_description": "My 3-Step Claude Skill for Perfect UX Design",
+  "channel": "Sean Kochel",
+  "channel_url": "https://www.youtube.com/@iamseankochel",
+  "publish_date": "2026-01-12",
+  "views": 22527,
+  "likes": 159,
+  "subscribers": "32.6K",
+  "url": "https://www.youtube.com/watch?v=XpxDwVt3OFw",
+  "thumbnail": "https://i.ytimg.com/vi/XpxDwVt3OFw/hqdefault.jpg",
+  "description_length": 1243,
+  "transcript_status": "partial",
+  "transcript_source": "kome.ai free preview",
+  "github_links": [],
+  "external_links": [
+    "https://www.skool.com/tech-snack/classroom/0ca89703?md=dc5d1bed0d134b30963ced22f163d811",
+    "https://x.com/IAmSeanKochel"
+  ],
+  "topics": [
+    "Claude Skills",
+    "UX Design",
+    "Google Stitch Ideate",
+    "PRD creation",
+    "Vibe coding",
+    "AI-assisted design",
+    "Prototyping"
+  ],
+  "timestamps": {
+    "0:00": "The problem with vanilla AI-generated UIs",
+    "0:50": "Step 1: Creating the PRD",
+    "3:04": "Why this isn't enough (the step most builders skip)",
+    "4:28": "Step 2: Defining the user experience",
+    "5:41": "What goes into professional UX documentation",
+    "8:15": "Running the Claude Skill workflow",
+    "11:49": "Step 3: Building the prototype prompt by prompt",
+    "14:03": "Final result walkthrough",
+    "16:26": "Before vs After comparison"
+  },
+  "extraction_date": "2026-02-26",
+  "extraction_notes": "YouTube required sign-in (bot check). Description extracted from ytInitialData engagement panel. Transcript partial via Kome.ai free tier. YouTube transcript API and yt-dlp both blocked by IP/bot restrictions."
+}

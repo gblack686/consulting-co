@@ -1,0 +1,27 @@
+{
+  "id": "epZy_NajGnA",
+  "title": "Claude Code Skills Changed Everything (And Nobody Noticed)",
+  "channel": "Leon van Zyl",
+  "channel_url": "https://www.youtube.com/channel/UCtevzRsHEKhs-RK8pAqwSyQ",
+  "upload_date": "20260324",
+  "duration": 1238,
+  "duration_string": "20:38",
+  "view_count": 13803,
+  "like_count": 349,
+  "description": "In this video you will learn how to use Agent Skills in Claude Code to supercharge your agentic coding workflows.\n\n\ud83d\udd0c Airtop (Sponsor) Use code LEON for a free month:\nwww.airtop.ai/?utm_source=youtube&utm_medium=paid&utm_campaign=leonvanzyl032526&utm_term=technical&utm_content=integration\n\ud83d\ude80 Join 700+ builders learning AI automation & agentic coding: https://www.skool.com/agentic-labs\n\n\ud83d\udee0\ufe0f Skills Marketplace: https://skills.sh\n\ud83d\udee0\ufe0f Anthropic Skills Repo: https://github.com/anthropics/claude-plugins-official\n\nWe cover all the new features added to the Skill Creator skill including how to install skills from the official marketplace and skills.sh, create custom skills manually or with the Skill Creator, use forked context to run large skills in their own session, set up subagents with background mode for long running tasks, inject dynamic project data using pre-processing commands and run evaluations with blind AB comparisons to benchmark your skills against the base model.\n\n\u23f0 TIMESTAMPS:\n00:00 New Agent Skills features overview\n00:27 Installing skills via plugin command and skills.sh\n02:55 Why you need the Skill Creator skill\n03:07 Creating a skill manually (skill.md structure)\n04:04 Using Skill Creator to automate skill building\n04:38 Two skill types (capability uplift vs encoded preferences)\n06:46 Building your first skill with Skill Creator\n07:43 Invoking skills and the custom commands merge\n08:28 Subagents with background mode for long running skills\n10:30 Context fork to keep your context window clean\n12:46 Airtop sponsor segment\n13:55 Dynamic context injection with pre-processing\n17:54 Running evaluations and blind AB comparisons\n20:29 Wrap up\n\nBusiness & sponsorship enquiries: leon.vanzyl@gmail.com\n\n#claudecode #vibecoding #agenticcoding",
+  "tags": [
+    "claude code",
+    "vibe coding",
+    "agentic coding",
+    "ai automation",
+    "leon van zyl",
+    "claude code skills",
+    "claude skills examples",
+    "ai coding",
+    "anthropic",
+    "claude skills tutorial",
+    "how to use claude code",
+    "claude code tutorial"
+  ],
+  "url": "https://www.youtube.com/watch?v=epZy_NajGnA"
+}

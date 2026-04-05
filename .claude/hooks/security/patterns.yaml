@@ -1,0 +1,406 @@
+# Dangerous Command Patterns — Configurable Block/Ask Rules
+# Source: Adapted from disler/claude-code-damage-control + custom additions
+#
+# Actions:
+#   block  — Exit 2, prevent execution entirely
+#   ask    — Print warning to stderr, allow but flag
+#
+# Pattern Types:
+#   regex  — Regular expression match against command
+#   exact  — Exact substring match (case-insensitive)
+
+# ──────────────────────────────────────────────
+# DESTRUCTIVE FILE OPERATIONS
+# ──────────────────────────────────────────────
+destructive_file_ops:
+  - pattern: 'rm\s+.*-[a-z]*r[a-z]*f.*(/\s*$|/\*)'
+    type: regex
+    action: block
+    reason: "rm -rf on root directory"
+
+  - pattern: 'rm\s+.*-[a-z]*r[a-z]*f.*~'
+    type: regex
+    action: block
+    reason: "rm -rf on home directory"
+
+  - pattern: 'rm\s+.*-[a-z]*r[a-z]*f.*\$HOME'
+    type: regex
+    action: block
+    reason: "rm -rf on $HOME"
+
+  - pattern: 'sudo\s+rm'
+    type: regex
+    action: block
+    reason: "sudo rm — elevated deletion"
+
+  - pattern: 'rm\s+.*-[a-z]*r[a-z]*f'
+    type: regex
+    action: ask
+    reason: "Recursive force delete"
+
+  - pattern: ':\(\)\{\s*:\|:&\s*\};\s*:'
+    type: regex
+    action: block
+    reason: "Fork bomb detected"
+
+  - pattern: 'mkfs\.'
+    type: exact
+    action: block
+    reason: "Filesystem format command"
+
+  - pattern: '> /dev/null 2>&1 &'
+    type: exact
+    action: ask
+    reason: "Background command hiding output"
+
+# ──────────────────────────────────────────────
+# PERMISSION CHANGES
+# ──────────────────────────────────────────────
+permission_changes:
+  - pattern: 'chmod\s+777'
+    type: regex
+    action: block
+    reason: "chmod 777 — world-writable permissions"
+
+  - pattern: 'chmod\s+-R\s+777'
+    type: regex
+    action: block
+    reason: "Recursive chmod 777"
+
+  - pattern: 'chown\s+-R\s+root'
+    type: regex
+    action: block
+    reason: "Recursive chown to root"
+
+  - pattern: 'chmod\s+-R'
+    type: regex
+    action: ask
+    reason: "Recursive permission change"
+
+# ──────────────────────────────────────────────
+# GIT DESTRUCTIVE
+# ──────────────────────────────────────────────
+git_destructive:
+  - pattern: 'git\s+reset\s+--hard'
+    type: regex
+    action: block
+    reason: "git reset --hard — discards all changes"
+
+  - pattern: 'git\s+push.*--force'
+    type: regex
+    action: block
+    reason: "Force push — may overwrite remote history"
+
+  - pattern: 'git\s+push.*-f'
+    type: regex
+    action: block
+    reason: "Force push (-f) — may overwrite remote history"
+
+  - pattern: 'git\s+clean\s+-[a-z]*f[a-z]*d'
+    type: regex
+    action: block
+    reason: "git clean -fd — removes untracked files and directories"
+
+  - pattern: 'git\s+checkout\s+\.'
+    type: regex
+    action: block
+    reason: "git checkout . — discards all unstaged changes"
+
+  - pattern: 'git\s+restore\s+\.'
+    type: regex
+    action: block
+    reason: "git restore . — discards all unstaged changes"
+
+  - pattern: 'git\s+stash\s+clear'
+    type: regex
+    action: block
+    reason: "git stash clear — deletes all stashes"
+
+  - pattern: 'git\s+stash\s+drop'
+    type: regex
+    action: ask
+    reason: "git stash drop — deletes a stash"
+
+  - pattern: 'git\s+branch\s+-D'
+    type: regex
+    action: ask
+    reason: "Force delete branch"
+
+  - pattern: 'git\s+push.*--delete'
+    type: regex
+    action: ask
+    reason: "Delete remote branch"
+
+  - pattern: 'git\s+rebase'
+    type: regex
+    action: ask
+    reason: "Rebase — rewrites history"
+
+# ──────────────────────────────────────────────
+# AWS DESTRUCTIVE
+# ──────────────────────────────────────────────
+aws_destructive:
+  - pattern: 'aws\s+s3\s+rm\s+.*--recursive'
+    type: regex
+    action: block
+    reason: "Recursive S3 deletion"
+
+  - pattern: 'aws\s+s3\s+rb'
+    type: regex
+    action: block
+    reason: "Remove S3 bucket"
+
+  - pattern: 'aws\s+ec2\s+terminate-instances'
+    type: regex
+    action: block
+    reason: "Terminate EC2 instances"
+
+  - pattern: 'aws\s+rds\s+delete-db'
+    type: regex
+    action: block
+    reason: "Delete RDS database"
+
+  - pattern: 'aws\s+cloudformation\s+delete-stack'
+    type: regex
+    action: block
+    reason: "Delete CloudFormation stack"
+
+  - pattern: 'aws\s+lambda\s+delete-function'
+    type: regex
+    action: ask
+    reason: "Delete Lambda function"
+
+  - pattern: 'aws\s+iam\s+delete'
+    type: regex
+    action: block
+    reason: "Delete IAM resource"
+
+  - pattern: 'aws\s+ecs\s+update-service.*--desired-count\s+0'
+    type: regex
+    action: ask
+    reason: "Scale ECS service to zero"
+
+# ──────────────────────────────────────────────
+# GCP / FIREBASE
+# ──────────────────────────────────────────────
+gcp_destructive:
+  - pattern: 'gcloud\s+projects\s+delete'
+    type: regex
+    action: block
+    reason: "Delete GCP project"
+
+  - pattern: 'firebase\s+.*firestore.*delete'
+    type: regex
+    action: block
+    reason: "Delete Firestore data"
+
+  - pattern: 'gcloud\s+compute\s+instances\s+delete'
+    type: regex
+    action: ask
+    reason: "Delete GCP compute instance"
+
+# ──────────────────────────────────────────────
+# KUBERNETES
+# ──────────────────────────────────────────────
+kubernetes_destructive:
+  - pattern: 'kubectl\s+delete\s+namespace'
+    type: regex
+    action: block
+    reason: "Delete Kubernetes namespace"
+
+  - pattern: 'kubectl\s+delete\s+all\s+--all'
+    type: regex
+    action: block
+    reason: "Delete all Kubernetes resources"
+
+  - pattern: 'kubectl\s+delete\s+(?:deploy|service|pod)'
+    type: regex
+    action: ask
+    reason: "Delete Kubernetes resource"
+
+  - pattern: 'helm\s+uninstall'
+    type: regex
+    action: ask
+    reason: "Helm uninstall"
+
+# ──────────────────────────────────────────────
+# INFRASTRUCTURE AS CODE
+# ──────────────────────────────────────────────
+infrastructure_destructive:
+  - pattern: 'terraform\s+destroy'
+    type: regex
+    action: block
+    reason: "Terraform destroy — tears down infrastructure"
+
+  - pattern: 'pulumi\s+destroy'
+    type: regex
+    action: block
+    reason: "Pulumi destroy — tears down infrastructure"
+
+  - pattern: 'cdk\s+destroy'
+    type: regex
+    action: block
+    reason: "CDK destroy — tears down CloudFormation stack"
+
+# ──────────────────────────────────────────────
+# DATABASE
+# ──────────────────────────────────────────────
+database_destructive:
+  - pattern: 'DROP\s+(TABLE|DATABASE|SCHEMA|INDEX)'
+    type: regex
+    action: block
+    reason: "SQL DROP statement"
+
+  - pattern: 'TRUNCATE'
+    type: exact
+    action: block
+    reason: "SQL TRUNCATE — removes all rows"
+
+  - pattern: 'DELETE\s+FROM\s+\w+\s*;?\s*$'
+    type: regex
+    action: block
+    reason: "DELETE FROM without WHERE clause"
+
+  - pattern: 'FLUSHALL'
+    type: exact
+    action: block
+    reason: "Redis FLUSHALL — deletes all data"
+
+  - pattern: 'FLUSHDB'
+    type: exact
+    action: block
+    reason: "Redis FLUSHDB — deletes current database"
+
+  - pattern: 'mongosh.*--eval.*db\.dropDatabase'
+    type: regex
+    action: block
+    reason: "MongoDB drop database"
+
+# ──────────────────────────────────────────────
+# PROCESS / SYSTEM
+# ──────────────────────────────────────────────
+process_system:
+  - pattern: 'kill\s+-9\s+-1'
+    type: regex
+    action: block
+    reason: "kill -9 -1 — kills all user processes"
+
+  - pattern: 'dd\s+.*if=/dev/zero'
+    type: regex
+    action: block
+    reason: "dd from /dev/zero — overwrites data"
+
+  - pattern: 'dd\s+.*of=/dev/(sd|hd|nvme)'
+    type: regex
+    action: block
+    reason: "dd to block device"
+
+# ──────────────────────────────────────────────
+# CONTAINER / DOCKER
+# ──────────────────────────────────────────────
+docker_destructive:
+  - pattern: 'docker\s+system\s+prune\s+-a'
+    type: regex
+    action: ask
+    reason: "Docker prune all — removes unused containers, images, networks"
+
+  - pattern: 'docker\s+rm\s+-f'
+    type: regex
+    action: ask
+    reason: "Force remove Docker container"
+
+  - pattern: 'docker-compose\s+down\s+-v'
+    type: regex
+    action: ask
+    reason: "Docker Compose down with volumes — removes persistent data"
+
+# ──────────────────────────────────────────────
+# NETWORK / SECURITY
+# ──────────────────────────────────────────────
+network_security:
+  - pattern: 'iptables\s+-F'
+    type: regex
+    action: block
+    reason: "Flush iptables — removes all firewall rules"
+
+  - pattern: 'ufw\s+disable'
+    type: regex
+    action: block
+    reason: "Disable firewall"
+
+  - pattern: 'curl.*\|\s*(bash|sh)'
+    type: regex
+    action: ask
+    reason: "Piping curl output to shell — potential code execution"
+
+  - pattern: 'wget.*\|\s*(bash|sh)'
+    type: regex
+    action: ask
+    reason: "Piping wget output to shell — potential code execution"
+
+# ──────────────────────────────────────────────
+# PACKAGE MANAGERS
+# ──────────────────────────────────────────────
+package_managers:
+  - pattern: 'npm\s+unpublish'
+    type: regex
+    action: block
+    reason: "npm unpublish — removes published package"
+
+  - pattern: 'pip\s+install\s+--force-reinstall'
+    type: regex
+    action: ask
+    reason: "Force reinstall all packages"
+
+# ──────────────────────────────────────────────
+# PATH PROTECTION LEVELS
+# ──────────────────────────────────────────────
+# Used by edit_guard.py and write_guard.py
+
+path_protection:
+  zeroAccess:
+    - ".env"
+    - ".env.local"
+    - ".env.production"
+    - "*.pem"
+    - "*.key"
+    - "*.p12"
+    - "*.pfx"
+    - "~/.ssh/"
+    - "~/.aws/"
+    - "~/.gnupg/"
+    - "id_rsa"
+    - "id_ed25519"
+    - "credentials.json"
+    - "service-account*.json"
+    - "*.secret"
+
+  readOnly:
+    - "/etc/"
+    - "*.lock"
+    - "package-lock.json"
+    - "yarn.lock"
+    - "pnpm-lock.yaml"
+    - "poetry.lock"
+    - "Pipfile.lock"
+    - "uv.lock"
+    - "dist/"
+    - "build/"
+    - "node_modules/"
+    - ".git/"
+    - "__pycache__/"
+
+  noDelete:
+    - "CLAUDE.md"
+    - ".github/"
+    - "LICENSE"
+    - "LICENSE.md"
+    - "Dockerfile"
+    - "docker-compose.yml"
+    - ".gitignore"
+    - "Makefile"
+    - "justfile"
+    - "pyproject.toml"
+    - "package.json"
+    - "tsconfig.json"
+    - "README.md"

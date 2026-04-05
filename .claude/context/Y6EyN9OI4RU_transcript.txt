@@ -1,0 +1,251 @@
+[0:00] As you start using more and more agents
+[0:02] in tandem within your projects, it's
+[0:04] important to make sure that every agent
+[0:06] that is working is aligned. And how do
+[0:10] we do this? We do this with prompts and
+[0:12] with inheritance within prompting. So
+[0:14] prompting can borrow from
+[0:16] object-oriented programming concepts
+[0:18] that have been around for decades in
+[0:21] software engineering. And today I'm
+[0:22] going to talk a little bit about how I
+[0:24] use inheritance within prompting as well
+[0:26] as show you a tool that I built for
+[0:29] doing this. So I'll give some real life
+[0:31] examples as well. To begin, let's start
+[0:33] at a highle overview of what inheritance
+[0:36] within prompting actually looks like. So
+[0:38] at the most basic level, what we have is
+[0:40] a base prompt which child prompts extend
+[0:44] upon. So this is a pretty simple example
+[0:47] where you can imagine we have a large
+[0:49] base prompt that we're sending to say
+[0:51] the orchestration agent the like top
+[0:53] level agent that we're interacting with
+[0:55] and then every child agent that this
+[0:57] agent is either spawning or interacting
+[0:59] with inherits the prompt from the base
+[1:03] agent. So what this allows for is you're
+[1:06] able to ensure high amounts of
+[1:08] consistency between the prompts that
+[1:09] every agent in your codebase is getting.
+[1:11] Like I said, this is just the most
+[1:13] simple example of single inheritance
+[1:15] where you have a base prompt that is
+[1:17] inherited by three different child or n
+[1:20] different child prompts. Next up, we
+[1:22] have mixins. So mixins you can think of
+[1:25] as additional tools that you can provide
+[1:28] to child agents. So say we have this
+[1:31] base prompt here. Same as before where
+[1:34] we have three child nodes that are
+[1:36] inheriting this base prompt. However,
+[1:38] now we have mixins. So what we can do is
+[1:41] append something like the safety rules
+[1:43] to a builder child as well as something
+[1:46] like architecture information to a
+[1:48] scout. So this is just an example of
+[1:50] what is possible here. But you can
+[1:52] imagine as you start extending your
+[1:54] prompts further and narrowing down the
+[1:56] agent roles within your codebase, you
+[1:59] can use mix-ins to specialize every
+[2:02] agent prompt, every single agent that is
+[2:05] working in your codebase. So without
+[2:07] mixins, what this would look like is
+[2:08] you'd have to shove architecture
+[2:10] information and safety rules into the
+[2:12] base prompt and then every single child
+[2:14] prompt would inherit those whether you
+[2:17] like it or not. So this just leads to
+[2:20] prompt bloating where you now have like
+[2:22] safety rules in a child node that
+[2:25] doesn't necessarily need to have access
+[2:27] to that information. So you can think of
+[2:29] this as inheritance being vertical. you
+[2:31] know who you are. And then mixins are
+[2:33] more horizontal, what you can do, what
+[2:36] you know. So your agent is a builder,
+[2:39] but it has safety rules or safety
+[2:42] constraints or whatever this looks like.
+[2:44] So that's mixins. Next up, we have
+[2:47] section overriding. And this is super
+[2:50] powerful because you can override
+[2:52] specific sections of a prompt based on
+[2:55] the role of the agent that you are
+[2:57] calling upon or giving that prompt to.
+[3:00] So we can imagine we have that base
+[3:01] prompt still and this new child prompt
+[3:04] and you can see the child is overwriting
+[3:06] some of these base prompt values. So say
+[3:09] that the child has different constraints
+[3:11] than the base prompt. It can override
+[3:14] those constraints. However, the
+[3:15] communication protocol stays the same.
+[3:17] So that is as you can see inherited by
+[3:19] the child prompt and then so on and so
+[3:22] forth with things like completion
+[3:23] protocol and failure modes. You can
+[3:26] specify which parts of the base prompt
+[3:28] are actually inherited by the child
+[3:30] prompt and which parts are overwritten
+[3:32] by the child prompt. This is important
+[3:34] because this means you're not
+[3:36] duplicating context between agents.
+[3:38] You're not having 50 prompt files that
+[3:42] are sharing 60 70% of the same context.
+[3:46] Instead, you just have this base prompt.
+[3:48] And then as you pass the base prompt to
+[3:49] a child prompt, you can customize that
+[3:52] child prompt to be more suited for that
+[3:55] specific agent. Next up, let's talk
+[3:57] about sections as composable units. So,
+[4:00] this is an actual diagram of the actual
+[4:04] coordinator prompt that I'm using in
+[4:06] Overstory. I'll show this in just a
+[4:07] second here. But what we can see is that
+[4:10] every prompt section, every piece of
+[4:12] information or section of information
+[4:14] getting passed to the agent via the
+[4:16] prompt is a composable unit. So we have
+[4:21] a ton of different composable units
+[4:23] within this specific prompt. And like I
+[4:26] said, you can change these in and out if
+[4:28] another agent were to inherit this
+[4:30] prompt, say. So let's take a look at
+[4:32] what this prompt actually looks like. So
+[4:34] here I am in the code and what we have
+[4:37] here is that same prompt that I was just
+[4:39] showcasing and each of these sections
+[4:41] that it has access to is highly
+[4:44] composable. You can swap these in and
+[4:46] out so that like the constraints here
+[4:49] for example the constraints of a
+[4:50] coordinator agent are going to be
+[4:52] different than the constraints of a
+[4:53] builder agent. So this coordinator agent
+[4:55] for example is never allowed to use the
+[4:57] right tool. It's never allowed to edit
+[4:59] files. However, a builder would
+[5:01] obviously want to be able to use those
+[5:02] things. So we can just swap in and out
+[5:04] the constraints section without losing
+[5:07] all of this other context. For example,
+[5:10] the communication protocol goes over how
+[5:13] agents send mail between one another as
+[5:16] well as rosp specific communication
+[5:18] protocols. So for example, this this
+[5:21] coordinator agent communicates with
+[5:22] agents in a specific way that builders
+[5:25] don't need to know about. So we can swap
+[5:27] in and out this communication protocol
+[5:29] as well. Finally, let's talk about
+[5:31] variables within prompts. So variables
+[5:33] are a massive unlock once you start
+[5:35] using them within prompts. You can
+[5:37] reduce the number of prompts that you're
+[5:39] writing. Reduce the number of MD files
+[5:41] that are taking up bloat in your
+[5:43] directory. Reduce the number of MD files
+[5:46] that are filling up space in your
+[5:48] project. And you can pass variables into
+[5:51] specific sections of a prompt. So again,
+[5:54] I'll showcase what this looks like in a
+[5:55] second here within the actual codebase.
+[5:58] But for now, we can just imagine again
+[6:00] this overstory coordinator prompt. is
+[6:02] the same prompt as the last example, but
+[6:05] say you're working with a different text
+[6:07] stack than another project where you
+[6:09] have a coordinator running. You can pass
+[6:11] in the text stack variable to whatever
+[6:14] section it's relevant to. So this is
+[6:16] just an example. You wouldn't actually
+[6:17] pass it into this section, but you can
+[6:19] imagine this text stack gets passed into
+[6:21] the prompt as a variable rather than as
+[6:25] a piece of hard-coded markdown.
+[6:28] Additionally, we have things like
+[6:29] testing and lint commands, comms,
+[6:31] tooling. So tooling is specifically very
+[6:34] important with variables because you can
+[6:36] pass in you have access to x, y, and z
+[6:38] tools. So having that as a variable
+[6:42] rather than as a defined piece of a
+[6:45] prompt means that you can extend that
+[6:48] same prompt with different variables to
+[6:50] different agents. So here are some
+[6:52] examples of variables that I use within
+[6:55] the overstory codebase. This is just a
+[6:57] project that I am working on, but this
+[7:00] is an example of actual variables. You
+[7:02] can see we have quality gate variables.
+[7:04] So instead of passing in something like
+[7:06] bun test or bun run lint as hard-coded
+[7:09] prompts, what I do instead is pass in
+[7:12] this variable for this quality gate
+[7:14] inline variable. And then the output of
+[7:17] that variable is going to be bun test.
+[7:19] But you can imagine this is like pi test
+[7:21] or whatever you're running for your
+[7:23] specific text stack. Continuing with
+[7:26] tools as variables, we have task
+[7:28] tracking variables. So I use a project
+[7:31] I've built called seeds for all of my
+[7:33] task tracking. But if you are using
+[7:35] something like beads, for example, we
+[7:36] can just pass in a different tracking
+[7:39] tool and then every agent will use beads
+[7:42] instead of seeds. So this is just an
+[7:44] example. Hopefully you can see where
+[7:45] this goes where you have variables that
+[7:48] are actually being passed into every
+[7:49] specific prompt. If you're curious about
+[7:52] any of the prompts or any of the tools
+[7:53] that I was showing here in this video,
+[7:56] you can check out Overstory. I will of
+[7:58] course link it down below. And here in
+[8:00] Overstory, you can go into the agents
+[8:02] directory and see all of the actual
+[8:04] prompts that I'm running, as well as the
+[8:06] tool that I'm using for prompt
+[8:08] inheritance for all of these techniques
+[8:11] that I'm talking about is a tool called
+[8:12] Canopy, which again will be linked down
+[8:14] below. And what this allows for is
+[8:17] basically all of those different
+[8:18] concepts that I was talking about. So,
+[8:19] we have inheritance, mix-ins, so on and
+[8:22] so forth. Hopefully, you found this
+[8:25] video to be informative. I think
+[8:26] inheritance within prompting as well as
+[8:29] thinking of prompts as code almost where
+[8:31] you have things like variables and
+[8:33] mixins and all these techniques that I'm
+[8:35] talking about is a helpful way to think
+[8:37] about how to scale your agent usage and
+[8:41] how to scale the amount of intelligence
+[8:43] that you can orchestrate.
+[8:45] So this is by no means a comprehensive
+[8:48] list of prompting techniques or
+[8:50] inheritance within prompting techniques.
+[8:52] Even this is just an overview of what I
+[8:55] think about when I am going into
+[8:57] defining an agent role as well as how I
+[8:59] can ensure that agents that work in any
+[9:02] section of my codebase are very
+[9:04] consistent and that I'm not duplicating
+[9:06] context between agent files or that I
+[9:09] have to go back and update specific
+[9:10] agent files when I update a different
+[9:12] one. Let me know in the comments below
+[9:14] what you think about all of this. If
+[9:15] you're using similar techniques, if
+[9:17] there's other tools you know of that do
+[9:19] similar things. I'm very curious about
+[9:21] this because I think treating prompting
+[9:23] like an actual practice is just helpful
+[9:25] when it comes to orchestrating tons of
+[9:27] agents in a codebase. So, thank you so
+[9:30] much for watching and I will see you in
+[9:31] the next

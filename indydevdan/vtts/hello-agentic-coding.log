@@ -1,0 +1,94 @@
+======================================================================
+ULTRA-FAST VTT PROCESSOR
+======================================================================
+
+Reading: vtts/hello-agentic-coding.txt
+✓ Found 45 VTT URLs
+
+Downloading in parallel (max 10 concurrent)...
+----------------------------------------------------------------------
+  ✓ Chunk   5 (21 lines)
+  ✓ Chunk   6 (17 lines)
+  ✓ Chunk   0 (10 lines)
+  ✓ Chunk   4 (21 lines)
+  ✓ Chunk   2 (18 lines)
+  ✓ Chunk   1 (18 lines)
+  ✓ Chunk   8 (20 lines)
+  ✓ Chunk   3 (16 lines)
+  ✓ Chunk   7 (18 lines)
+  ✓ Chunk   9 (23 lines)
+  ✓ Chunk  10 (22 lines)
+  ✓ Chunk  12 (18 lines)
+  ✓ Chunk  17 (23 lines)
+  ✓ Chunk  13 (20 lines)
+  ✓ Chunk  19 (24 lines)
+  ✓ Chunk  16 (23 lines)
+  ✓ Chunk  15 (21 lines)
+  ✓ Chunk  14 (19 lines)
+  ✓ Chunk  11 (20 lines)
+  ✓ Chunk  18 (20 lines)
+  ✓ Chunk  20 (23 lines)
+  ✓ Chunk  21 (22 lines)
+  ✓ Chunk  22 (24 lines)
+  ✓ Chunk  23 (26 lines)
+  ✓ Chunk  25 (23 lines)
+  ✓ Chunk  24 (24 lines)
+  ✓ Chunk  28 (23 lines)
+  ✓ Chunk  26 (24 lines)
+  ✓ Chunk  27 (21 lines)
+  ✓ Chunk  29 (21 lines)
+  ✓ Chunk  30 (21 lines)
+  ✓ Chunk  31 (20 lines)
+  ✓ Chunk  34 (22 lines)
+  ✓ Chunk  32 (19 lines)
+  ✓ Chunk  35 (28 lines)
+  ✓ Chunk  33 (21 lines)
+  ✓ Chunk  38 (22 lines)
+  ✓ Chunk  36 (26 lines)
+  ✓ Chunk  37 (20 lines)
+  ✓ Chunk  39 (24 lines)
+  ✓ Chunk  41 (18 lines)
+  ✓ Chunk  40 (21 lines)
+  ✓ Chunk  43 (16 lines)
+  ✓ Chunk  42 (21 lines)
+  ✓ Chunk 999999 (100 lines)
+
+======================================================================
+✓ EXTRACTION COMPLETE!
+======================================================================
+
+📄 Output: vtts\hello-agentic-coding_transcript.txt
+📊 Successful: 45
+📊 Failed: 0
+📊 Characters: 89,822
+📊 Words: 3,785
+📊 Lines: 1,022
+
+======================================================================
+Preview (first 500 characters):
+======================================================================
+Welcome to lesson one
+of Tactical Agentic Coding.
+I have to say
+right away, I'm incredibly
+excited to be here
+with you. What we're
+going to accomplish here
+is nothing short of
+extraordinary. If you're here,
+you've realized something critical.
+you've realized something critical.
+AI coding is not
+enough. Engineering is about
+much more than just
+writing code. In your
+first lesson, we're going
+to set the stage
+and discuss the one
+idea you need to
+transform from a phase
+one AI coding engineer
+into an
+
+... (transcript continues)
+======================================================================

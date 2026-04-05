@@ -1,0 +1,21 @@
+{
+  "video_id": "fkT41ooKBuY",
+  "title": "I cut my OpenClaw API bill by 80% with one config change",
+  "channel": "VelvetShark",
+  "views": "59K",
+  "date": "2026-02-04T00:21:47.000Z",
+  "likes": "1,900",
+  "description_file": "fkT41ooKBuY_description.txt",
+  "transcript_file": "fkT41ooKBuY_transcript.txt",
+  "config_file": "fkT41ooKBuY_config.json5",
+  "transcript_available": true,
+  "transcript_source": "apify",
+  "transcript_chars": 7409,
+  "github_links": [],
+  "resource_links": [
+    "https://calculator.vlvt.sh",
+    "https://velvetshark.com/openclaw-multi-model-routing",
+    "https://docs.openclaw.ai/",
+    "https://openrouter.ai"
+  ]
+}

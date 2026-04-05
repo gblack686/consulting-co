@@ -1,0 +1,1232 @@
+Hello Agentic Coding - Become the Engineer They Can't Replace
+Lesson #1 (Beginner)
+
+Discover why your hands and mind are no longer the best tools for writing code. Make the hard, but important decision to let go of the old ways of engineering to adopt the new. Set the stage for learning the new way to engineering with agents and the core four.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+AI Coding is NOT enough
+AI coding is NOT enough. Engineering is about much more than just writing code. AI coding was just phase one. Agentic coding marks phase two - this is where real engineers strike back.
+
+🔥
+TAC Mission: Become Irreplaceable
+We have one mission in tactical agentic coding: transform you into an engineer they can't replace. You know who they are. It's your boss. It's the company. It's the industry. It's AI.
+
+🔥
+Commander of Compute
+How do we become irreplaceable? We move up the stack once again. We become a commander of compute. You don't just prompt to generate code. That's phase one engineering. You take this compute and use it to build systems that build systems.
+
+🔥
+Engineering Was Never About Writing Code
+Engineering was never about writing code. It's about building systems of leverage that produce valuable outcomes for your users and customers. Remember, you're an engineer, not a coder. The difference is massive.
+
+🔥
+The 10X Engineer Opportunity
+In every software revolution, there's an opportunity for you to become the fabled 10X engineer, not by spending 10X the time or effort, but by achieving 10X leverage. The number is arbitrary - it's 2X, 10X, 100X. It all depends on the leverage points you can find.
+
+🔥
+Transform Code Into Self-Operating Machines
+The irreplaceable engineer in phase two that we're aiming to become is the engineer that transforms their code bases into self-operating machines. You'll learn how to maximize your leverage so much so that your code base literally runs itself.
+
+🏆
+Tactic #1: Stop Coding
+Your hands and mind are no longer the best tool for the job of writing code. Language models wrapped in the right agent architecture, running on supercomputers are vastly superior coders than you and I are. Stop coding and use the best tool for the job.
+
+Tactic #1: Stop Coding
+🔥
+Throughout TAC: No Typing Code
+Throughout TAC, Tactical Agentic Coding, we're not going to type a single line of code. This is the first and most foundational tactic. If you're still typing code, you have no chance of keeping up.
+
+🔥
+Phase Two Role: Planning & Reviewing
+To scale into this new phase two role, we need to allocate our engineering cycles to planning, reviewing, and creating closed loop structures. Code understanding is still critically important, but we're not coding anymore.
+
+⚡
+WSL (Windows Subsystem for Linux) Documentation
+Official Microsoft documentation for WSL - run a Linux environment directly on Windows for development
+
+⚡
+Vite Documentation
+Official documentation for Vite - next generation frontend tooling with fast HMR and optimized build
+
+⚡
+pytest Documentation
+Official documentation for pytest - the Python testing framework for writing better programs
+
+⚡
+npm Documentation
+Official documentation for npm - the Node.js package manager and world's largest software registry
+
+⚡
+Bun Documentation
+Official documentation for Bun - all-in-one JavaScript runtime with built-in bundler, transpiler, and package manager
+
+⚡
+Node.js Documentation
+Official Node.js documentation - JavaScript runtime built on Chrome's V8 engine
+
+⚡
+GitHub CLI Documentation
+Official documentation for GitHub CLI (gh) - bring GitHub to your terminal for seamless workflow
+
+⚔️
+TAC Lesson 1 - Hello Agentic Coding Repository
+⚡
+Git Setup Guide
+Download and installation guide for Git version control
+
+⚡
+UV (Astral) Setup Guide
+Installation and setup guide for UV, the fast Python package manager
+
+⚡
+Python Setup Guide
+Installation and setup guide for Python
+
+⚡
+Claude Code Setup Guide
+Get started with Claude Code for agentic coding
+
+📜
+Claude Code: Primary Agentic Tool
+Throughout tactical agentic coding, Claude Code will be our primary agentic coding tool. We're going to be using millions and millions of tokens. Just as Aider was for the AI coding phase one era, Claude Code represents the best phase two agentic coding tool.
+
+🔥
+The Core Four: Context, Model, Prompt, Tools
+Agentic coding expands the big three (context, model, prompt) by adding tools. When you add reliable tool execution, we upgrade the big three to the core four: context, model, prompt, and tools.
+
+🔥
+Long-Running AI Developer Workflows
+When you take the core four and wrap it in an agentic coding tool like Claude Code, you can create long running end-to-end AI developer workflows that run for minutes to hours with and without your oversight.
+
+🔥
+Programmable Agentic Coding
+Claude Code is programmable - you can run it from any programming language that has terminal access. We can embed our own agents, workflows, and agentic prompts across the software development lifecycle.
+
+🔥
+Building Systems That Build Systems
+We need this capability of having a programmable agentic coding tool because we want to be building systems that build systems for us. We can embed our tooling across developer environments to drive real engineering outcomes.
+
+🔥
+Lesson 1 Foundation Complete
+This essential tactic, stop coding, and the key difference between AI coding and agentic coding will ripple throughout every lesson moving forward. Agentic coding is about building systems that build systems on our behalf.
+
+🔥
+To Become Irreplaceable, Replace Yourself
+The contradicting truth about what you'll learn in tactical agentic coding: To become an irreplaceable engineer, you will replace yourself. You won't see any vibe coders replicating what you'll be able to do.
+
+The 12 Leverage Points of Agentic Coding
+Lesson #2 (Beginner)
+
+Step inside your agent's context window and see your codebase through its eyes. Master the Core Four and eight additional leverage points to maximize not what you can do, but what your agents can do for you.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+Phase 2 Software Development Lifecycle
+Plan, Code, Test, Review, Document - The compressed, focused version of the software development lifecycle built for phase two of the generative AI age.
+
+🔥
+The 12 Leverage Points of Agentic Coding
+There are 12 leverage points of agentic coding you can use to multiply your agent's ability to execute on your behalf. These leverage points are the key to becoming an irreplaceable engineer.
+
+🏆
+Tactic #2: Adopt Your Agent's Perspective
+Your agent is brilliant, but blind. With every new session, it starts as a blank instance - ephemeral, no context, no memories. If you want your agent to perform like you would across your code base agentically, it needs your perspective. Your agent needs the information, tools, and resources you would use to solve the problem at hand.
+
+Tactic #2: Adopt Your Agent's Perspective
+🔥
+Always Think from Agent's Perspective
+Consistently adopting your agent's perspective closes the gap between what you can do and what your agent can do. This is the core philosophy of high-leverage agentic coding.
+
+🔥
+Two Types of Leverage Points
+In-Agent leverage points are internal to the agent (Context, Model, Prompt, Tools). Through-Agent leverage points are external things your agent can interact with to increase leverage.
+
+⚔️
+TAC Lesson 2 - The 12 Leverage Points Repository
+🔥
+The Core Four: In-Agent Leverage Points
+Context, Model, Prompt, and Tools - these are the four in-agent leverage points that are always with your agent. These are the foundational leverage points for agentic coding success.
+
+🔥
+Context: What Can Your Agent See?
+Context is everything your agent can see in its context window. The question is: can our agent see everything it needs to complete the task successfully? Always think from your agent's perspective about context.
+
+🔥
+Documentation: Agent-Specific Context
+Documentation written for agents is different from documentation written for humans. Agent-specific documentation focuses on what the agent needs to know to complete tasks successfully.
+
+🔥
+Types: Structured Information for Agents
+Types are a fantastic way to communicate structured information to your agent. They provide clear contracts and expectations that help agents understand exactly what they're working with.
+
+🔥
+Architecture: Code-Based Navigation
+Architecture that agents can follow is a massive leverage point. Make it easy for your agent to understand and navigate your codebase structure.
+
+🔥
+Tests: Validation and Self-Correction
+Tests are one of the highest leverage points of agentic coding. If your agent can run tests, it can validate its own work and self-correct. This is critical for autonomous agent success.
+
+🔥
+Planning: Meta-Work for Agents
+High-leverage agentic coding includes planning meta-work. Let your agent plan its approach before execution - this dramatically improves success rates.
+
+🔥
+AI Developer Workflows (ADWs)
+ADWs combine one or more agentic prompts with deterministic code to create reusable workflows. They represent a major leverage point in agentic coding.
+
+🔥
+Agentic Coding KPIs
+Key performance indicators for agentic coding help you measure improvement. Focus on longer agent runs, reduced iteration cycles, and increased autonomous success rates.
+
+🔥
+One-Shot Agentic Coding Success
+The goal is one-shot agentic coding success - getting results right the first time without iteration. This requires mastering all leverage points.
+
+🔥
+Mastering All 12 Leverage Points
+Stack up all 12 leverage points to maximize agentic coding success. Focus on the Core Four first, then add through-agent leverage points for massive capability multiplication.
+
+🔥
+Transition from AI Coding to Agentic Coding
+We're not AI coders anymore. We're adopting our agent's perspective and giving our agents the leverage points they need to succeed autonomously.
+
+
+Success is Planned: The 80-20 of Agentic Coding
+Lesson #3 (Intermediate)
+
+First came prompts, then came plans and what comes next will push your ability to hand off work to your agents even further beyond. Learn a powerful leverage point of agentic coding that enables your agents to ship with you and your team's engineering best practices.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+The Prompt is Everything
+What was once a complete joke is now the most valuable skill any engineer can have. The prompt is the medium through which you communicate to your agentic tools and all generative AI technology.
+
+🔥
+Plans Are Scaled Prompts
+A scaled prompt is a plan, a specification, a PRD. Plans are prompts scaled up for high impact. Great planning is great prompting - they are one and the same.
+
+🔥
+Success is Planned
+Those who plan the future tend to create it. Success is planned. In this lesson, we enter the plan and build phase of the agentic software developer lifecycle.
+
+🔥
+The 80-20 of Agentic Coding
+With just three tactics (Stop Coding, Adopt Agent's Perspective, Template Your Engineering), you'll learn the Pareto 80-20 of agentic engineering. These fundamentals deliver 80% of the impact with 20% of the complexity.
+
+🏆
+Tactic #3: Template Your Engineering
+When you template your engineering, you encode your engineering workflows and best practices into reusable, scalable units of agentic success. By encoding your problem-solving patterns into templates, you create a living library of engineering expertise that your agents can consistently execute with high precision across sets of problems.
+
+Tactic #3: Template Your Engineering
+🔥
+Solving Problem Classes, Not Problems
+Templates enable you to solve entire classes of problems, not just individual problems. Create templates for chores, bugs, features, and refactors that work consistently across any codebase.
+
+🔥
+Templates for Team Leverage
+Templates create leverage not just for you, but for your entire team. Your engineering expertise becomes a shared resource that everyone can access, use, and improve.
+
+🔥
+Planning Alone is Expensive
+Planning is time consuming and there's always something to miss. The time planning consumes scales with the difficulty of the problem and the size and complexity of your codebase. Templates solve this problem.
+
+🔥
+Templates Encode Problem Solving
+Templates let us encode problem solving into reusable units that work on small to large codebases. They can handle chores, bugs, small features, large features, new codebases, all the way up to massive refactors.
+
+⚔️
+TAC Lesson 3 - Success is Planned Repository
+🔥
+Reusable Prompts as Time Savers
+Reusable prompts and templates are extremely powerful time savers due to how reusable they are - not just for you, but for your entire team. They encode engineering expertise once, execute infinitely.
+
+⚙️
+Chore Template Command
+🔥
+Meta-Prompts: Prompts That Build Prompts
+A meta-prompt is a prompt that builds a prompt. This agentic prompt builds a plan based on a template that your agent fills out. This is extremely powerful - not only should we stop coding, we should also leverage our agents to write plans with us and for us.
+
+🔥
+Plans Written to Specs Directory
+All generated plans are written to the specs directory. These plans contain chore descriptions, relevant files, step-by-step tasks, validation commands, and implementation notes.
+
+🔥
+Built-in Validation Commands
+Every plan includes validation commands that verify the work was completed successfully. This creates a closed-loop system where agents can self-validate their implementations.
+
+🔥
+From One Line to Comprehensive Plan
+With templates, you write one high-level sentence and get an entire comprehensive plan. This scales your impact exponentially - turning simple ideas into detailed, executable specifications.
+
+🔥
+Anatomy of a Template
+Every great template contains: Purpose at the top, detailed instructions, relevant files to guide success, plan format in markdown, and a parameter that accepts your high-level description.
+
+🔥
+Now We Can Template Our Engineering
+By using meta-prompts and templates, we can now template our engineering. This fundamentally changes your engineering impact by encoding problem-solving patterns into reusable units.
+
+⚙️
+Implement Plan Command
+🔥
+Activating Reasoning with "Think Hard"
+The "think hard" instruction activates Claude Code's reasoning model. This is one of the 12 leverage points of agentic coding - turning on the reasoning model for complex problem solving.
+
+🔥
+Higher-Order Prompts (HOPs)
+A Higher-Order Prompt accepts another prompt as input. When you pass a plan into the implement command, you're using a HOP - plans getting passed into plans. This enables powerful prompt composition.
+
+🔥
+Aligning Plans with Agent Capabilities
+We're leveraging our plan and aligning it with the capabilities of our agent. The to-do list created by the agent lines up perfectly with the step-by-step breakdown in our plan.
+
+
+AFK Agents: Let Your Product Build Itself
+Lesson #4 (Intermediate)
+
+Move beyond 'in the loop' agentic coding with a single agent with the PITER framework. Transform problems into solutions with a single prompt. Replace generic, 'built for everyone' expensive cloud tools with your own superior pipeline of agents that knows YOUR codebase and YOUR domain specific problems.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+Four Elements of AFK Agents
+There are four elements you need to add to enable AFK agents in your development workflow. These elements work together to create autonomous systems that can ship features without your direct involvement.
+
+🔥
+Replace Cloud-Based Agentic Tools
+By the end of this lesson, you'll know exactly how to replace and outperform modern cloud-based agentic coding tools like Copilot, Devon, Jules, Codex, and other in-the-cloud coding agents with your own superior agentic layer.
+
+🔥
+AFK Agents: Away From Keyboard
+AFK agents enable you to step out of the loop and let your product build itself. These agents run in their own environment, triggered automatically, executing your workflows without your direct oversight.
+
+🏆
+Tactic #4: Stay Out The Loop
+Stay out the loop means building AFK (Away From Keyboard) agents that run while you're not there. Using the PITER Framework, you create out-of-loop agentic systems that execute AI Developer Workflows independently, letting your product build itself while you focus on what matters most.
+
+Tactic #4: Stay Out The Loop
+🔥
+From Prompt to PR Automatically
+With AFK agents, you go from prompt input to merged PR automatically. The agent executes the entire workflow - classification, planning, implementation, and review - without your direct intervention.
+
+🔥
+AI Developer Workflows (ADWs)
+An ADW is the synthesis of previous tactics - combining templates, prompts, and agents. ADWs are reusable agentic workflows that combine deterministic code with non-deterministic agents to solve problem classes.
+
+🔥
+Build the System That Builds the System
+Stay out the loop and let your product build itself. This is about building systems that operate autonomously, creating value while you focus on higher-level strategic work.
+
+🔥
+The PITER Framework
+The four elements of AFK agents can be remembered with PITER: Prompt input, Trigger, Environment, Review. These elements work together to create autonomous agentic systems that run while you stay out of the loop.
+
+🔥
+P - Prompt Input via GitHub Issues
+For prompt input, use GitHub issues. Create new issues that serve as the input for your AFK agents. This allows you to trigger workflows from your phone, Slack, or anywhere you can create issues.
+
+🔥
+T - Trigger via GitHub Webhooks
+For the trigger, use GitHub webhooks. When a new issue is created, the webhook automatically kicks off your AFK agent workflow, eliminating the need for manual intervention.
+
+🔥
+E - Dedicated Environment
+Your AFK agents need their own dedicated environment to run in. This isolated environment ensures safe execution and allows agents to work autonomously without interfering with your main development setup.
+
+🔥
+R - Review via Pull Requests
+The review system uses GitHub pull requests. After your AFK agent completes its work, it creates a PR for review. This gives you visibility and control over what gets merged while maintaining the autonomous workflow.
+
+🔥
+Environment Variables and Prerequisites
+Proper environment variable setup is crucial for AFK agents. Configure your environment variables, prerequisites, and access tokens to enable seamless autonomous operation.
+
+⚔️
+TAC Lesson 4 - AFK Agents Repository
+🎁
+Strategic Knowledge
+Continue your agentic journey to discover this...
+
+🎁
+Agentic Gem
+Advance through the lesson to reveal this tool...
+
+🎁
+Tactical Resource
+Tactical content unlocks with lesson progress...
+
+🔥
+Chain Templates into ADWs
+Your template meta-prompts from lesson 3 become the building blocks for ADWs. Chain templates together to create comprehensive workflows that solve entire problem classes autonomously.
+
+🔥
+No Ad Hoc Prompts - Build Reusable Systems
+Avoid ad hoc prompts that can't be improved. Build reusable, version-controlled prompts and templates that get better with each execution. Store your prompts in your codebase for continuous improvement.
+
+🔥
+Programmable Agentic Coding Mode
+Run Claude Code in programmable mode to build, log, and execute prompts systematically. This creates reproducible, improvable agentic workflows that can be version controlled and scaled.
+
+🔥
+Integrate AFK Agents Into Your Workflow
+The goal isn't to replace your entire development process overnight. Start by identifying repetitive tasks and problem classes, then build AFK agents to handle those specific workflows while you focus on higher-value work.
+
+🔥
+Solve Problem Classes, Not Individual Problems
+Focus on building ADWs that solve classes of problems rather than individual issues. This approach scales your engineering efforts and creates reusable autonomous workflows.
+
+🔥
+Halfway Through Tactical Agentic Coding
+You are now halfway through Tactical Agentic Coding! You've learned to stop coding, adopt your agent's perspective, template your engineering, and now stay out of the loop with AFK agents. The foundation is set for advanced techniques.
+
+Close The Loops: More Compute, More Confidence
+Lesson #5 (Intermediate)
+
+Close the loop(s) and let the code write itself. Transform brittle agent workflows into self-correcting systems with strategic feedback loops. Build 'Closed Loop Prompts' that ensure your agents correct their own work so you don't have to.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+Your Most Valuable Contribution
+Our most valuable contribution is the experience we create for our users. Making sure all engineering stuff does what it's meant to do is one of the most valuable things we can do.
+
+🔥
+The Gift of Generative AI
+Agentic coding presents us with a massive opportunity to have your agents test on your behalf like you never could at scales you never will achieve. This is the gift of generative AI and the agent architecture.
+
+🔥
+The Core Validation Question
+Given a unit of valuable work that's production ready, how would you, the engineer, test and validate this work? If you can answer this for every class of work and encode it into commands or tool calls, you will fly while other engineers run.
+
+🔥
+Architecture Leverage
+Codebase architecture comes into play as a massive critical leverage point. Net new code bases have a massive advantage here when it comes to validation and testing.
+
+🔥
+Common Validation Steps
+Examples of validation: run your linter, execute unit tests, run UI tests, CI/CD integration tests, build/compile your application, check Datadog logs, monitor Sentry for errors, run custom evaluations, or LLM as judge workflows.
+
+🔥
+Manual Testing is a Waste of Time
+Opening the browser and clicking through your new feature is a waste of time. These are all feedback loops you can now hand off to your agents - work you don't have to do anymore.
+
+🏆
+Tactic #5: Always Add Feedback Loops
+Your work is useless unless it's tested. Always add feedback loops enables your agents to act, validate, and correct in a continuous cycle until the job is done right. By teaching your agents to test through linters, unit tests, UI tests, and end-to-end validation, you create closed-loop systems where agents self-validate their work.
+
+Tactic #5: Always Add Feedback Loops
+🔥
+Your Work is Useless Unless Tested
+Your work, my work, any engineer's work is useless unless it's tested. The ultimate test will always be your users. The next best test used to be you. Now, the next best test is an army of agents validating your entire codebase.
+
+🔥
+Army of Agents Validation
+An army of agents validating your entire code base with regression tests and most importantly with end-to-end tests. Start handing off this responsibility and teaching your agents to test.
+
+🔥
+Closed Loop Feedback Systems
+When you do this, you create closed loop feedback systems where your agent can execute, validate, and reflect on the work done in a loop until the job is done right.
+
+🔥
+Building the System That Builds the System
+This is us building the system that builds the system. Keep this idea in mind because this is the differentiating factor between agentic engineers and engineers of the past.
+
+🔥
+In-Loop vs Out-Loop Terminology
+In-loop agent coding means you sitting here, prompting back and forth with your agent. Out-loop is a high level prompt running through the PITER system that fires off on your isolated device. Closing the loop is letting your agent operate on work, get feedback, and continue until feedback is positive.
+
+🔥
+Let the Code Write Itself
+When you close the loop, you let the code write itself. You let the agent operate with the right information so well that it closes the loop and continues building until the feedback is positive.
+
+🔥
+Engineers That Test With Agents Win
+Now engineers that test with their agents win. Full stop, zero exceptions. This is because the value of tests are multiplied by the number of agent executions that occur in your code base.
+
+🔥
+Confidence Through Testing
+If your auth tests are passing, you can be more confident your authentication system is working. With every passing set of tests, you free your context window and you stop second guessing so you can focus on what's next for your users.
+
+🔥
+Test, Let Your Agents Scale Your Success
+Test, let your success scale. As you're testing every net new feature with your agents, you can scale with confidence. With agentic coding, test, let your agents scale your success.
+
+🔥
+Great Agentic Coding KPIs
+Remember, we want attempts down, we want size up, we want streak up, and we want our presence down. How do we accomplish this? With upfront investment into the new agentic layer of our code base.
+
+🔥
+End-to-End Agents, Not In-Loop
+Remember, we want end-to-end agents, not in-loop agents. We don't want to be babysitting our agents. We want work done agentically.
+
+⚔️
+TAC Lesson 5 - Close The Loops Repository
+🔥
+Everything is One Tool Call Away
+Remember everything is one tool call away. Tools are just functions and functions can do anything. We'll work through these capabilities using in-loop agentic coding for presentational purposes, but you want to be doing less and less of this.
+
+🔥
+Stay Out The Loop
+As you progress, you wanna be doing less and less in-loop prompting. You wanna stay out the loop, kicking off workflows that run in an agent environment.
+
+🔥
+Outloop AFK Agent Using PITER Framework
+Spin up a new Outloop AFK agent using the PITER framework we discussed in the previous video. This is the system that lets us stay out of the loop while agents handle the work.
+
+🔥
+GitHub Issue as Trigger
+GitHub issues serve as triggers for our AFK agents. Creating a new issue kicks off the workflow through webhooks, demonstrating the 'T' in PITER (Trigger).
+
+
+Let Your Agents Focus: Agentic Review and Documentation
+Lesson #6 (Advanced)
+
+Reach a critical milestone in your agentic coding journey with specialized Review and Documentation agents. Learn the crucial difference between testing and reviewing your agent's work.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+Review vs Testing: Different Questions
+Testing asks "does it work?" but Review asks "is what we built what we asked for?" These are fundamentally different questions that require different approaches. Review validates against the original plan, not just functionality.
+
+🔥
+SDLC as Questions and Answers
+Every step of the software developer lifecycle can be represented as a question: Plan asks "what are we building?", Build asks "did we make it real?", Testing asks "does it work?", Review asks "is what we built what we planned?", and Document asks "how does it work?"
+
+🔥
+Optimize for Agentic KPIs
+We want attempts down, streak up, size up, presence down. These specialized agents can drastically increase your agentic coding KPIs and help you achieve higher success rates with lower human intervention.
+
+🔥
+Documentation Creates Feedback Loops
+Documentation provides feedback on work done for future agents to reference in their work. They can operate and then update the documentation when the time is right. This creates a complete software developer lifecycle feedback loop.
+
+🏆
+Tactic #6: One Agent, One Prompt, One Purpose
+Specialized agents with focused prompts to achieve a single purpose well. This frees up the context window, lets agents focus on what matters most, and creates reproducible, improvable prompts you can commit to your codebase. Every step of engineering requires different information, tools, and context - honor this with dedicated agents for each purpose.
+
+Tactic #6: One Agent, One Prompt, One Purpose
+🔥
+Avoid Context Pollution
+Massive context windows often lead to distracted, confused agents. Context pollution, context overloading, toxic context - whatever you call it, when you overload the context window, your agent has a harder time focusing on what matters most: the original task you asked it to complete.
+
+🔥
+Engineering Steps Require Different Context
+Every step of engineering requires a different set of information, a different approach, a different perspective. It requires a different set of tools and context. We operate one step at a time, and every step has unique requirements.
+
+🔥
+Real Engineering Requires Real Developer Workflows
+Real engineering requires real developer workflows, not some pie in the sky God model that claims to do it all. You can teach your agents how to operate your codebase to solve your problems through AI Developer Workflows.
+
+🔥
+Use Specialized Agents with Focused Prompts
+You want to use specialized agents with focused prompts to achieve a single purpose well. No agent runs more than a single prompt. This doesn't mean the prompt isn't large or doesn't do a lot of work - it means focused execution.
+
+🔥
+Free Up the Context Window
+You give your agent the full 200K, 500K, 1 million tokens - whatever you're working with - and give your agent all of the space and opportunity to solve the one problem well. This is important as your codebase grows.
+
+🔥
+Three Constraints of Agentic Engineers
+As agentic engineers, we have three constraints: the context window, the complexity of our codebase and the problem we're solving, and lastly our abilities. Specialized agents bypass two out of three of these constraints.
+
+🔥
+Let Your Agents Focus
+A focused engineer working on a single task is a productive engineer. Agents are the same. Big context windows cause context confusion, which drops your agent's performance. When your agent's performance drops, your performance drops.
+
+🔥
+Minimum Context Principle
+You want to context engineer as little as possible. You want the minimum context in your prompt required to solve the problem. Every piece of context you add increases the number of variables your agent has to reason about.
+
+🔥
+Commit and Improve Your Prompts
+We get to commit every one of our prompts and all of our workflows, which means we can easily improve them. Since you're not stacking up many prompt calls from who knows where, we can easily reproduce and more importantly, improve every single step down to the prompt level.
+
+🔥
+Create Evals for Your Agentic Layer
+By using individualized agents with specific prompts for one purpose, you effectively create evals for the agentic layer of your codebase. You can change the model, add thinking mode, change your agentic coding tool, and rerun these over and over to literally create evals for your codebase.
+
+⚔️
+TAC Lesson 6 - Let Your Agents Focus Repository
+📜
+Playwright MCP: Browser Automation for Agents
+Enable your agents to interact with web pages through the Playwright MCP server. This powerful integration allows agents to perform browser automation, UI testing, and web scraping as part of their testing and validation workflows.
+
+ZTE: The Secret of Agentic Engineering
+Lesson #7 (Advanced)
+
+Understand the North Star of Agentic Coding where your codebase ships itself. Progress from in loop, to out loop, to ZTE.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+Witness the Impossible: A Codebase That Runs Itself
+You'll witness something most engineers dismiss as impossible: a codebase that nearly runs itself. This is the edge of agentic coding where you ship end-to-end with out-loop systems.
+
+🔥
+Invest in Your Agentic Layer
+See what it looks like to fully invest in your agentic layer. The more you invest in the agentic layer, the more your agents can solve problem classes autonomously.
+
+🔥
+Git Work Trees for Agent Parallelization
+Use Git work trees to enable multiple agent pipelines to execute simultaneously in isolated environments on a single device. This parallelizes your AI developer workflows.
+
+🔥
+Containerization Alternatives for Agent Isolation
+You can use Docker or agent-based containerization frameworks instead of Git work trees. The key is providing isolated environments for simultaneous agent execution.
+
+🔥
+Scaling Beyond In-Loop Agentic Coding
+Focus on the key idea of scaling beyond what in-loop agentic coding can offer. Move from interactive prompting to building autonomous systems that ship end-to-end.
+
+🔥
+Integrate Your Engineering Practices
+Out-loop systems outperform out-of-the-box agentic coding tools because they contain your engineering practices and domain knowledge. Embed your best practices into the agentic layer.
+
+⚔️
+ZTE Secret GitHub Repository
+🔥
+ADW Scripting Layer for Agent Pipelines
+Use the ADW (Agentic Developer Workflow) scripting layer for constructing agent pipelines. This solves specific problem classes back-to-back with integrated development infrastructure.
+
+🔥
+Gradual Transition to Out-Loop
+The transition to out-loop isn't binary but gradual. Move toward operating out-of-the-loop more frequently. Workflows won't work perfectly end-to-end initially - that's acceptable.
+
+🔥
+Dedicated Environments for Agent Safety
+Agents need dedicated, isolated, safe environments for parallel operation. Use containerization or Git work trees to ensure multiple agents can work simultaneously without interference.
+
+🔥
+Agent Multiplication Through Isolation
+Multiply agents through parallel, isolated environments. Each agent needs dedicated, isolated, safe environments to operate simultaneously without interference.
+
+🔥
+Build the System That Builds the System
+Focus on meta-engineering: creating systems that generate other systems. Time spent building the agentic layer pays exponential dividends in engineering leverage.
+
+🔥
+Review Is Especially Important
+Review is especially important in agentic systems. Build both automated and human review processes to ensure agent-generated code meets quality standards before deployment.
+
+🏆
+Tactic #7: Target Zero-Touch Engineering
+Zero-Touch Engineering is the third level of agentic coding where your presence KPI drops from two touchpoints (prompt and review) to just one (prompt only). Build systems so reliable that human review becomes a bottleneck, not a safety net.
+
+Tactic #7: Target Zero-Touch Engineering
+💎
+The ZTE Workflow: Plan → Build → Test → Review → Generate → Ship
+Zero-Touch Engineering workflow: Plan the feature, Build the implementation, Test functionality, Review quality, Generate documentation, Ship to production. This enables agents to ship end-to-end without human intervention.
+
+💎
+The Secret: Composable Agentic Primitives
+The secret of tactical agentic coding: it's not about the software developer lifecycle at all. It's about composable agentic primitives you can use to solve any engineering problem class.
+
+🔥
+Composable Primitives Trump Traditional SDLC
+Build arbitrary AI developer workflows using composable primitives that outperform traditional SDLC. Different compositions work for web apps, CLI tools, notebooks - flexibility trumps rigid lifecycle.
+
+🔥
+Evolution Beyond SDLC
+Each organization will have unique primitive compositions. AI workflows will outperform traditional approaches as we move away from rigid development lifecycles to flexible primitive composition.
+
+🔥
+Achieve Zero-Touch Engineering
+Zero-Touch Engineering is where your codebase literally ships itself. Progress from Out-Loop to Zero-Touch when confidence hits 90% and human review becomes a bottleneck rather than a safety net.
+
+
+The Agentic Layer
+Lesson #8 (Advanced)
+
+Learn the one meta-tactic to rule them all. The single idea you need to become irreplaceable in phase 2 of the Generative AI age.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+The Agentic Layer Ring
+Imagine a ring around your codebase. At first it's thin, then it becomes thicker as you scale agentics into your codebase. Machines that operate with your judgment, shipping your way, getting work done autonomously in your product.
+
+🔥
+The Single Guiding Question
+At the end of this course, there'll be a single guiding question you can use to know whether you're moving in the right direction. This question represents the oil of this course - all the tactics compressed into one.
+
+🏆
+Tactic #8: Prioritize Agentics
+Prioritize your agentic layer. More than half of your engineering time should be spent on the agentic layer rather than the application layer. This tactic represents all others compressed into one.
+
+Tactic #8: Prioritize Agentics
+💎
+50%+ Time on Agentic Layer
+As a starting point, at least half of your engineering time should be spent on the new agentic layer. The more time you invest into your agentic layer, the more it will be able to solve problem classes on your behalf.
+
+🔥
+Agentic Layer vs Application Layer
+There's the agentic layer, and then there's the application layer. Inside application layer: DevOps, infrastructure, database, and the actual raw application layer. The irreplaceable engineer operates on the agentic layer much more often.
+
+⚔️
+Lesson 8: The Agentic Layer Github Repo
+🔥
+Focus on the Primitives
+Focus on the pieces that make the whole, from the individual agentic prompts up to the composed multi-step AI developer workflows. This is what matters - the primitives, not the tool.
+
+🔥
+Minimum Viable Agentic Layer
+For your minimum viable agentic layer, you really only need these pieces: AI developer workflow directory, prompts (stored in .claude commands), and plans. This is the minimum set of information that you need.
+
+🔥
+Problem Classes, Not One-Offs
+Focus on problem classes, not one-off fixes. You wanna solve the class of problems that you're approaching. You can do that by templating your engineering inside of powerful template meta prompts.
+
+🔥
+The Gateway Script
+This script is the gateway into agentic coding. It's the minimal version of what you need to get started. It's distinctly different from any other type of code - it's calling an agent.
+
+🔥
+Moving Out of the Loop
+By creating a script that can surround the application, that can surround any unit of code, we are slowly moving out the loop. You're not responding here, not having a conversation with the agent.
+
+
+Elite Context Engineering
+Lesson #9 (Intermediate)
+
+A focused agent is a performant agent. The context window is your agent's most precious resource - ephemeral, limited, and critical to success. Master context engineering through the R&D Framework.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+Context Engineering: The Name of the Game
+A focused agent is a performant agent. Context engineering is the name of the game for high value engineering in the age of agents. Context is a critical in-agent leverage point that determines how an agent performs at any given task.
+
+🔥
+Four Levels of Context Engineering
+There are three levels of context engineering and a fourth hidden level if you're on the bleeding edge pushing into agentic engineering. Master all four levels to achieve complete context window mastery.
+
+🔥
+Context Sweet Spot Range
+There's a sweet spot - a range of context where your agent performs to its maximum possible capability for the task at hand. As you scale to hundreds and thousands of agent executions, hitting this sweet spot consistently becomes even more important.
+
+🔥
+Hit the Core Four Bullseye
+When aligned with the right model, prompt, tools, and the right range of context, we can hit the core four bullseye over and over. This directly increases our agentic coding KPIs and tells us if we're improving our capabilities.
+
+🔥
+Search and Destroy Context Bloat
+Search and destroy is the real skill in context engineering. The real trick is finding context agentically and then removing and delegating context so it doesn't create context rot and context bloat.
+
+🔥
+Reduce and Delegate Context
+There are only two ways to manage your context window: R and D - reduce and delegate. Every technique fits into one or both of these buckets.
+
+🔥
+Context Window: Precious & Temporal Resource
+Your agent's context window is a precious, renewable, but limited temporal resource. It's ephemeral, resets, and is alive for only a certain amount of time. The state in your context window is critical to your success.
+
+💎
+What Gets Measured Gets Managed
+Whenever you have a resource that determines your success, you must measure it so you can improve it. The context window is the single most important leverage point for effective agentic coding.
+
+⚔️
+Elite Context Engineering Repository
+⚙️
+Measure Context Window State
+🔥
+Avoid Vibe Coding
+If you aren't actively paying attention to the state of your agent's context, you're just vibe coding and you'll only be able to tackle the lowest hanging fruit, which is already a massively saturated space.
+
+🔥
+Install Token Counter in IDE
+Install a tokenizer right in your IDE so you know what's coming into your agent's context. Token counters help you understand context consumption before files are loaded into your agent.
+
+🔥
+Avoid MCP Server Bloat
+Do not load MCP servers unless you need them. Default .mcp.json files can consume 10-12% of your entire context window, completely wasted unless you're actively using every single MCP server. Be very purposeful with your MCP servers.
+
+🔥
+Delete Default .mcp.json Files
+Get rid of default .mcp.json files completely. Don't use a default .mcp.json for your code base. This immediately clears up your context window and prevents wasteful token consumption on every agent instance.
+
+⚙️
+Load Specific MCP Server
+🔥
+Context Priming Over Memory Files
+Use context priming over claude.md or similar auto-loading memory files. Context priming uses dedicated reusable prompts (custom slash commands) to set up your agent's initial context specifically for the task type at hand, avoiding bloated memory files.
+
+🔥
+Problems with Always-On Context
+Always-on context like claude.md files is not dynamic or controllable. Engineering work constantly changes, but memory files only grow. Eventually they become bloated with irrelevant context, and in worst case, contradictory information.
+
+⚙️
+Context Priming Command
+
+
+Agentic Prompt Engineering
+Lesson #10 (Intermediate)
+
+The prompt is the fundamental unit of engineering in the age of agents. Every prompt you create becomes a force multiplier - one well-crafted prompt can generate tens to hundreds of hours of productive work.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+The Prompt is the Fundamental Unit of Engineering
+The prompt is now the fundamental unit of engineering. With agents, every prompt you create becomes a force multiplier. One well-crafted prompt can generate tens and hundreds of hours of productive work.
+
+🔥
+The Stakeholder Trifecta
+Engineering for three audiences: you, your team, and your agents. This is the stakeholder trifecta for the age of agents. The agentic shift that most engineers haven't yet made.
+
+🔥
+Build Libraries of Reusable Battle-Tested Prompts
+The winners are building libraries of reusable battle-tested agentic prompts with composable sections that work like lego blocks. You can swap these in and out to scale your engineering impact with compute.
+
+🔥
+ZTE: The North Star of Agentic Coding
+ZTE is the North Star of agentic coding. You want to be handing off more work to compute and setting up systems that trigger your workflow so your presence isn't needed. Building AFK agents.
+
+🔥
+The Prompt is Everything
+The prompt is everything. Context engineering is incredibly important, but we can't forget about the underlying skill that dictates everything - the prompt, and now the agentic prompt.
+
+🔥
+Learning to Communicate to the Trifecta
+What we're doing here is learning how to best communicate what we want to the trifecta: you, your team, and your agents. Let's level up our agentic prompt engineering abilities.
+
+🔥
+Level 1: High Level Prompt
+The reusable ad hoc static prompt. This is the one-off that you throw into a file as soon as you start repeating work that your agent can do without a problem. Contains 1-3 sections: Title and high level prompt.
+
+⚔️
+Agentic Prompt Engineering Repository
+🔥
+Three Times Marks a Pattern
+Whenever you start doing repeat work, hand it off to your agent. Three times marks a pattern - copy whatever you're doing and write it as a high level prompt, then move up the levels from there.
+
+🔥
+Level 2: Workflow Prompt - The Game Changer
+A huge milestone. The workflow prompt represents a sequential workflow with additional sections. The workflow section is S-tier usefulness - the most important section. It's a sequential list of tasks for your agent to execute.
+
+🔥
+Level 3: Control Flow
+Building on workflow sections with flow control. At this level, we have flow control and are building customizable agents for domain-specific use cases. Continue building on that workflow section.
+
+🔥
+Level 3-4 is the 80/20.
+For most practical applications, "level three, level four is all you need." These levels provide the foundation for effective agentic engineering without overwhelming complexity.
+
+🔥
+Level 4: Delegation Prompt
+The delegate prompt - a prompt that kicks off other workflows. This handles delegation to multiple agents while properly communicating to the trifecta (you, your team, and your agents).
+
+🔥
+Level 5: Higher Order Prompts
+An interesting concept discussed in TAC and used quite a bit. This is the perfect prompt passing prompts into prompts. You can maintain the higher order prompt and change and swap out the lower order prompts as needed.
+
+🔥
+Level 6: Template Meta Prompt
+A prompt used to create another prompt in a specific pattern. This is at level six for a reason and is essential for advanced agentic engineering. Meta-prompts that generate other prompts.
+
+🔥
+Level 7: Self-Improving Prompt
+Agents updating agents through prompts updating prompts. The highest level where the system becomes self-modifying and self-improving. This represents the pinnacle of agentic prompt engineering.
+
+
+Building Domain-Specific Agents
+Lesson #11 (Advanced)
+
+Create specialized agents tailored for specific domains and use cases. Learn to build agents that understand your business logic, domain constraints, and specialized workflows for maximum effectiveness.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+Engineer Specialized Agents
+Better agents → More agents → Custom agents. Move from generic agents to domain-specific powerhouses with full SDK control.
+
+🔥
+The Agent Evolution Path
+Every engineer follows the same path: better agents (prompt & context engineering), more agents (scaling compute), then custom agents (domain-specific solutions).
+
+🔥
+The Mismatch Problem
+Out-of-the-box agents are built for everyone's codebase, not yours. This mismatch costs hundreds of hours and millions of tokens as your codebase grows.
+
+🔥
+Where The Alpha Is
+All the alpha in engineering is in hard, specific problems that most engineers and agents can't solve out of the box. Custom agents let you pass domain-specific knowledge directly to your agents.
+
+🔥
+Master The Core Four
+Custom agents give you full control over the Core Four: Context, Model, Prompt, and Tools. Scale them beyond defaults to solve domain-specific problems.
+
+🔥
+Template Your Engineering
+Custom agents let you template your engineering directly into your agent. Push one agent, one prompt, one purpose to its limits for maximum effectiveness.
+
+⚡
+Claude Agent SDK Documentation
+Official documentation for the Claude Agent SDK. This is the gateway to building custom agents programmatically.
+
+🔥
+Scale Beyond The Rest
+Master agents by going to the bare metal. Deploy effective compute by teaching agents your domain. Scale your compute far beyond what generic agents can achieve.
+
+⚔️
+TAC Lesson 11 - Building Domain Specific Agents Repository
+🎯
+The Pong Agent Pattern
+The simplest custom agent that demonstrates total system prompt control. Override the system prompt completely to create an entirely new product.
+
+🔥
+The System Prompt Is Everything
+The system prompt is your most important element with zero exceptions. It affects EVERY user prompt the agent runs. Touch the system prompt, and you change the product entirely.
+
+🔥
+Critical Warning
+When you override the system prompt, this is NOT Claude Code anymore. You've created a new product entirely. Be very careful with system prompt modifications.
+
+🎯
+The Echo Agent Pattern
+Add custom tools to your agent using the @tool decorator. Build MCP servers in-memory and give your agent specialized capabilities.
+
+📜
+Building Custom Tools
+Tools are built with @tool decorator. The description tells your agent how to use the tool. Create SDK MCP servers in-memory for specialized functionality.
+
+🔥
+Model Selection Strategy
+Choose wisely: Claude Haiku for simple, fast tasks. Claude Sonnet for balanced performance. Claude Opus for complex reasoning. Match model to task complexity.
+
+🔥
+Tool Overhead Warning
+Default Claude Code includes 15+ tools that consume precious context even if unused. Every tool adds to context window overhead. Strip unnecessary tools for focused agents.
+
+💎
+Context Is Precious
+15 extra tools consume space in your agent's mind. Use /context command to understand what's going into your agent. Control this for better performance.
+
+🔥
+System Prompt Strategies
+Two approaches: Append to extend Claude Code capabilities, or Override to build true custom agents. Version control all system prompts for reproducibility.
+
+🎯
+The Calculator Agent Pattern
+Progress to more capable custom agents with focused functionality. Use consistent codebase architecture across all custom agents for better agent navigation.
+
+🔥
+Leverage Consistent Architecture
+Use consistent codebase structure across all agents: prompts directory, same format. It's easy for your team to read and most importantly for your agents to navigate.
+
+🔥
+Query vs Client Pattern
+Use Query() for one-off prompts, Claude SDK Client for multi-turn conversations. Track conversation state explicitly for complex agent interactions.
+
+🎯
+Multi-Agent Systems
+Progress from single agents to multi-agent orchestration. Build agent-by-agent handoff systems with dedicated workflows for complex problem solving.
+
+🔥
+Deploy Agents Everywhere
+Deploy agents in scripts, data streams, terminals, and UIs. Think about repeat workflows that benefit from agents. Find constraints in personal workflows and products.
+
+🔥
+Test in Isolation
+Test custom agents in isolation before production. Log everything - adopt your agent's perspective. Version control is critical for agent configurations.
+
+
+Multi-Agent Orchestration: One Agent To Rule Them All
+Lesson #12 (Advanced)
+
+Scale your agentic engineering with the one agent to rule them all: The Orchestrator Agent. Command fleets of specialized agents through a single interface with CRUD operations and real-time observability. Get ahead of the next paradigm in Agentic Coding.
+
+Loot Box
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+🎁
+Useful links, documentation, and tips for your ai coding experience. Unlock new resources as you progress through the lesson.
+
+🔥
+The Agent Evolution Path
+Base agents → Better agents → More agents → Custom agents → Orchestrated agents. Each step scales your compute to scale your impact.
+
+🔥
+Orchestrate to Scale
+Command your fleet of agents using the single interface pattern. The rate at which you create and command agents becomes your engineering output constraint.
+
+🔥
+The Single Interface Pattern
+Talk to one orchestrator agent that creates, commands, and deletes specialized agents. One interface to rule them all.
+
+🔥
+The Three Pillars of Multi-Agent Orchestration
+Orchestrator Agent (unified interface), CRUD for agents at scale, and Observability (real-time monitoring of performance, costs, and results).
+
+🔥
+Observability Is Key
+If you can't measure it, you can't improve it. If you can't measure it, you can't scale it. Multi-agent observability is essential for success.
+
+🔥
+Managing The Core Four At Scale
+Track context windows, models, prompts, and tools for every agent you spin up. Adopt your agent's perspective multiplied across your fleet.
+
+⚔️
+TAC Lesson 12 - Multi-Agent Orchestration Repository
+⚡
+Claude Code Agent SDK Documentation
+Official Python SDK documentation for building custom agents programmatically. The extensibility of Claude Code makes multi-agent orchestration possible.
+
+🔥
+Stay Out The Loop With Multi-Agent Systems
+Multi-agent orchestration is an out-loop PETER system: Prompt input, Trigger (HTTP), Environment, and Review (observability). Compound your engineering leverage.
+
+🎁
+Agent Arsenal
+Master the fundamentals to access this resource...
+
+🔥
+R&D Framework For Multi-Agent Context
+Reduce unnecessary context in your primary orchestrator, Delegate work to specialized sub-agents with focused context windows. Context mastery at scale.
+
+
+

@@ -1,0 +1,570 @@
+# OpenClaw Expert Knowledge Base
+# AI Agent Platform — Mac Mini Instance
+# Last updated: 2026-03-20
+# Auto-updated via self-improve command
+
+overview:
+  description: "OpenClaw - Node.js AI agent gateway with multi-channel support (Telegram, Discord, Slack, WhatsApp, etc.)"
+  website: "https://docs.openclaw.ai"
+  npm_package: "openclaw"
+  current_version: "2026.3.13"
+  runtime: "pi-mono derived — single embedded agent runtime with independent session management"
+  primary_use_cases:
+    - "Long-running autonomous coding projects"
+    - "Multi-agent orchestration"
+    - "Background task automation"
+    - "Remote development workflows"
+    - "Customer-facing AI agent gateway"
+    - "Multi-channel messaging (Telegram, Discord, Slack, WhatsApp)"
+    - "GUI + terminal automation via mac-mini-agent (Steer/Drive/Listen)"
+
+# Infrastructure Setup
+infrastructure:
+  primary_instance:
+    platform: "Mac Mini (Apple Silicon)"
+    hostname: "Gregs-Mac-mini.local"
+    ip: "192.168.4.95 (DHCP — use Gregs-Mac-mini.local for stable mDNS)"
+    os: "macOS 26.3.1 (arm64)"
+    disk: "228GB (15GB used, 162GB free)"
+    ssh: "ssh greg@Gregs-Mac-mini.local (key auth, no password) — prefer mDNS over IP"
+    ssh_key: "~/.ssh/id_ed25519 (auto, no passphrase)"
+    service_manager: "launchd"
+    service_name: "ai.openclaw.gateway"
+    sleep: "disabled (pmset -a disablesleep 1)"
+    cost: "$0/month (hardware owned)"
+
+  archived_instances:
+    - note: "Lightsail instance 18.234.126.236 decommissioned"
+      ssh_key: "~/.ssh/lightsail-default.pem"
+
+  deployment_options:
+    - name: "Mac Mini"
+      guide: "templates/mac-mini-install.md"
+      service: "launchd (~/Library/LaunchAgents/)"
+      cost: "Hardware only"
+    - name: "AWS Lightsail"
+      guide: ".claude/commands/experts/openclaw/INSTALLATION_GUIDE.md"
+      service: "systemd (systemctl --user)"
+      cost: "~$24/month (4GB)"
+    - name: "ZeroClaw CDK"
+      guide: "zeroclaw-deploy/"
+      service: "systemd"
+      cost: "~$3.50/month (nano)"
+      note: "Archived — dashboard lacked self-improvement"
+
+# OpenClaw Installation
+installation:
+  official_installer:
+    macos_linux: "curl -fsSL https://openclaw.ai/install.sh | bash"
+    windows: "iwr -useb https://openclaw.ai/install.ps1 | iex"
+    note: "Handles Homebrew, Node.js 22, and OpenClaw install automatically"
+  manual:
+    - "npm install -g openclaw@latest"
+    - "openclaw onboard --non-interactive --accept-risk --flow quickstart --auth-choice zai-api-key --zai-api-key <key> --install-daemon --skip-channels"
+  onboard_flags:
+    auth_choices: "zai-api-key, openrouter-api-key, anthropic-api-key, gemini-api-key, custom-api-key, ollama, skip"
+    key_flags: "--non-interactive --accept-risk --flow quickstart --install-daemon --skip-channels --skip-skills --skip-search --skip-ui"
+    gateway_flags: "--gateway-auth token --gateway-bind loopback --gateway-port 18789"
+  reference: ".claude/commands/experts/openclaw/INSTALLATION_GUIDE.md"
+  mac_mini_guide: ".claude/skills/consulting-intake/templates/mac-mini-install.md"
+
+# Model Providers
+model_providers:
+  zai:
+    description: "Z.AI GLM Coding Plan — free tier for OpenClaw"
+    docs: "https://docs.z.ai/devpack/tool/openclaw"
+    base_url: "https://api.z.ai/api/coding/paas/v4"
+    api: "openai-completions"
+    models:
+      - id: "glm-5-turbo"
+        name: "GLM-5-Turbo"
+        reasoning: true
+        context_window: 200000
+        max_tokens: 131072
+        cost: "Free (coding plan)"
+        note: "Current primary model on Mac Mini"
+      - id: "glm-5"
+        name: "GLM-5"
+        reasoning: true
+        context_window: 204800
+        max_tokens: 131072
+        cost: "Free (coding plan)"
+      - id: "glm-4.7"
+        name: "GLM-4.7"
+        reasoning: true
+        context_window: 204800
+        max_tokens: 131072
+        cost: "Free (coding plan)"
+      - id: "glm-4.7-flash"
+        name: "GLM-4.7 Flash"
+        reasoning: true
+        context_window: 204800
+        max_tokens: 131072
+        cost: "Free (coding plan)"
+      - id: "glm-4.7-flashx"
+        name: "GLM-4.7 FlashX"
+        reasoning: true
+        context_window: 204800
+        max_tokens: 131072
+        cost: "Free (coding plan)"
+    secret: "openclaw/zai-api (AWS Secrets Manager)"
+    note: "GLM Coding Plan uses secondary scheduling — coding agent tasks get priority, OpenClaw gets best-effort"
+
+  openrouter:
+    description: "OpenRouter — 300+ models via single API key"
+    secret: "gbautomation/core/openrouter-api-key (AWS Secrets Manager)"
+    spending_cap: "Set at openrouter.ai/settings/limits — recommended $5/mo CHEAP, $20/mo MID"
+    note: "Configured as fallback provider on Mac Mini"
+
+  model_tiers:
+    cheap:
+      brain: "openrouter/deepseek/deepseek-chat-v3"
+      coder: "openrouter/deepseek/deepseek-chat-v3 (or z-ai/glm-4.7 if account has it)"
+      est: "~$2-15/mo"
+    mid:
+      brain: "openrouter/google/gemini-2.0-flash-001"
+      coder: "openrouter/deepseek/deepseek-chat-v3"
+      est: "~$20-60/mo"
+    pro:
+      brain: "openrouter/google/gemini-2.5-pro-preview (orchestrator)"
+      reason: "openrouter/deepseek/deepseek-r1 (analysis domains)"
+      coder: "openrouter/deepseek/deepseek-chat-v3 (build domains)"
+      est: "~$50-200/mo — intelligent routing, no Claude tax"
+
+# OpenClaw Commands
+commands:
+  gateway:
+    description: "Manage the gateway service"
+    commands:
+      start: "openclaw gateway"
+      restart: "openclaw gateway restart"
+      status: "launchctl list | grep openclaw"
+    note: "On Mac Mini: launchd service ai.openclaw.gateway. On Linux: systemctl --user"
+
+  doctor:
+    description: "Health check"
+    command: "openclaw doctor --non-interactive"
+    fix: "openclaw doctor --fix"
+
+  config:
+    description: "Non-interactive config management"
+    subcommands:
+      get: "openclaw config get <key>"
+      set: "openclaw config set <key> <value>"
+      unset: "openclaw config unset <key>"
+      validate: "openclaw config validate"
+    note: "Use for setting env vars, channel config, model settings without interactive wizard"
+
+  configure:
+    description: "Interactive setup wizard"
+    command: "openclaw configure"
+    sections: "--section model | --section channels | --section web"
+
+  channels:
+    description: "List configured channels"
+    command: "openclaw channels list"
+
+  message:
+    description: "Send messages via channels"
+    command: "openclaw message send --channel telegram --target <chat_id> --message <text>"
+    flags: "--json, --dry-run, --media <path-or-url>, --silent, --buttons <json>, --reply-to <id>"
+    channels: "telegram, discord, whatsapp, slack, signal, irc, googlechat, msteams, matrix, and more"
+
+  skills:
+    description: "Skill management"
+    command: "openclaw skills list"
+    install: "npx clawhub search <query> && npx clawhub install <skill>"
+    clawhub: "clawhub.ai — 1,700+ community skills. Always check VirusTotal report before installing (~5% contain threats)"
+
+  agents:
+    description: "Agent identity management"
+    subcommands:
+      list: "openclaw agents list"
+      add: "openclaw agents add <id>"
+
+  cron:
+    description: "Scheduled job management"
+    subcommands:
+      list: "openclaw cron list"
+      add: "openclaw cron add"
+
+  secrets:
+    description: "Secrets runtime controls (NOT for setting secrets — use config set)"
+    subcommands:
+      audit: "openclaw secrets audit"
+      reload: "openclaw secrets reload"
+      configure: "openclaw secrets configure"
+    note: "To set secrets, use: openclaw config set env.SECRET_NAME 'value'"
+
+  dashboard:
+    description: "Open the Control UI"
+    command: "openclaw dashboard"
+    url: "http://localhost:18789/?token=<gateway-token>"
+    tunnel: "ssh -L 18789:127.0.0.1:18789 greg@Gregs-Mac-mini.local"
+
+  security:
+    description: "Security audit"
+    command: "openclaw security audit --deep"
+
+  memory:
+    description: "Memory management"
+    subcommands:
+      status: "openclaw memory status --deep"
+    note: "Requires embedding provider (OpenAI, Gemini, Voyage, or Mistral). Disable with: openclaw config set agents.defaults.memorySearch.enabled false"
+
+# OpenClaw Configuration (openclaw.json)
+config:
+  format: "JSON (supports JSON5 comments in templates)"
+  file_path: "~/.openclaw/openclaw.json"
+  backup: "~/.openclaw/openclaw.json.bak (auto-created on each config set)"
+
+  key_config_sections:
+    gateway:
+      port: 18789
+      mode: "local | remote"
+      bind: "loopback | lan | tailnet | custom"
+      auth: "token | password | none | trusted-proxy"
+    channels:
+      telegram: "dmPolicy: pairing|allowlist|open, allowFrom: [chat_ids], streaming: partial"
+      discord: "groupPolicy: allowlist|open, streaming: off|partial|block"
+      whatsapp: "dmPolicy: allowlist, pairing via QR code"
+    agents:
+      defaults:
+        model: "primary + fallbacks"
+        heartbeat: "every, target, ackMaxChars"
+        subagents: "model, archiveAfterMinutes, maxSpawnDepth, maxConcurrent"
+        contextPruning: "mode: cache-ttl, ttl, keepLastAssistants, softTrimRatio"
+        compaction: "mode: safeguard, memoryFlush with softThresholdTokens"
+        sandbox: "mode: off|non-main|all, docker/ssh/openshell"
+    session:
+      dmScope: "per-channel-peer (recommended)"
+      reset: "mode: daily|idle, atHour"
+      maintenance: "pruneAfter, maxEntries"
+    logging:
+      redactSensitive: "tools | all | off"
+    tools:
+      profile: "minimal | coding | messaging | full"
+      elevated: "enabled, allowFrom per channel (telegram/discord/session/*)"
+      loopDetection: "enabled, historySize, warningThreshold, criticalThreshold, globalCircuitBreakerThreshold"
+      web: "search (Brave API), fetch with caching"
+    commands:
+      native: "auto"
+      nativeSkills: "auto"
+      restart: true
+    plugins:
+      entries: "damage-control, channel plugins, custom plugins"
+      note: "9/41 loaded on Mac Mini (discord, telegram, memory-core, ollama, sglang, vllm, device-pair, phone-control, talk-voice)"
+    cron:
+      jobs: "every, to, prompt, model, sessionTarget: main|isolated"
+    bindings:
+      note: "Multi-agent routing by channel/peer/account"
+    messages:
+      responsePrefix: "Supports {model}, {provider}, {identity.name} templates"
+      queue: "mode: steer|followup|collect|interrupt|queue"
+      tts: "ElevenLabs or OpenAI providers"
+
+  auth:
+    methods:
+      - "Plaintext in config env section"
+      - "Environment variable substitution: ${VAR_NAME}"
+      - "SecretRef objects with source (env|file|exec)"
+    precedence: "Agent config > Channel config > Global config > Env fallback"
+
+# Mac Mini Agent (GUI + Terminal Automation)
+mac_mini_agent:
+  repo: "~/mac-mini-agent (github.com/disler/mac-mini-agent)"
+  description: "Full macOS GUI and terminal automation for AI agents"
+
+  steer:
+    binary: "/usr/local/bin/steer"
+    language: "Swift"
+    commands: 14
+    key_commands:
+      see: "Screenshot + accessibility tree (--json for structured output)"
+      click: "Click by element ID, label, or coordinates"
+      type: "Type into focused or targeted element"
+      hotkey: "Send keyboard shortcuts (cmd+s, cmd+tab)"
+      ocr: "Vision framework OCR — essential for Electron apps"
+      apps: "List, launch, activate applications"
+      window: "Move, resize, minimize, fullscreen, close"
+    pattern: "Observe-Act-Verify loop — ONE steer command per call, always verify after"
+    permissions_needed:
+      - "System Settings → Privacy & Security → Accessibility → Terminal"
+      - "System Settings → Privacy & Security → Screen Recording → Terminal"
+
+  drive:
+    location: "~/mac-mini-agent/apps/drive (uv project)"
+    language: "Python"
+    commands: 6
+    key_commands:
+      session: "Create, list, kill tmux sessions"
+      run: "Execute command with sentinel protocol (deterministic completion)"
+      send: "Send raw keystrokes (interactive CLIs)"
+      logs: "Capture pane output"
+      poll: "Wait for regex pattern in output"
+      fanout: "Same command across multiple sessions"
+      proc: "Process management (list, kill, tree, top)"
+
+  listen:
+    location: "~/mac-mini-agent/apps/listen (uv project, FastAPI)"
+    port: 7600
+    endpoints:
+      submit: "POST /job {prompt}"
+      status: "GET /job/{id}"
+      list: "GET /jobs"
+      stop: "DELETE /job/{id}"
+    note: "Fire-and-forget worker model — spawns Claude Code per job"
+
+  direct:
+    location: "~/mac-mini-agent/apps/direct (uv project)"
+    commands: "start, get, list, latest, stop"
+
+# Current Instance State (Mac Mini)
+current_state:
+  version: "2026.3.13"
+  gateway_token: "8557a53bb1fe863697b10a46a77f8f7979779790b706b587"
+  model_primary: "glm-5-turbo (200k ctx)"
+  channels:
+    telegram: "enabled, dmPolicy: pairing, allowFrom: [6777263736]"
+    discord: "enabled, groupPolicy: allowlist"
+  auth_provider: "zai:default (api_key)"
+  usage: "Z.AI monthly: 100% left, resets Apr 6"
+  heartbeat_model: "zai/glm-4.7-flash (cheap model — saves $10-30/mo vs primary)"
+  subagent_model: "zai/glm-4.7-flash"
+  fallback_model: "zai/glm-4.7"
+  plugins_loaded: "9/41 (discord, telegram, memory-core, ollama, sglang, vllm, device-pair, phone-control, talk-voice)"
+  skills:
+    - "back-tester"
+    - "charting"
+    - "daily-lesson"
+    - "discord-scraping"
+    - "domain-discovery"
+    - "expert-scheduler"
+    - "portfolio-manager"
+    - "setup-openclaw"
+  cron:
+    - id: "daily-lesson"
+      schedule: "0 8 * * * UTC"
+      status: "error (needs investigation)"
+  workspace_files:
+    - "AGENTS.md"
+    - "BOOTSTRAP.md"
+    - "HEARTBEAT.md"
+    - "IDENTITY.md"
+    - "MEMORY.md"
+    - "SIGNAL_STYLE_GUIDE.md"
+    - "SOUL.md"
+    - "TOOLS.md"
+    - "USER.md"
+  env_keys:
+    - "TELEGRAM_BOT_TOKEN"
+    - "TELEGRAM_CHAT_ID (6777263736)"
+    - "DISCORD_BOT_TOKEN"
+    - "DISCORD_USER_TOKEN"
+    - "DISCORD_WEBHOOK_MORNING_BRIEF"
+    - "DISCORD_SIGNAL_AGGREGATION_CHANNEL"
+    - "DISCORD_APPLICATION_ID"
+    - "DISCORD_EMAIL"
+    - "OPENROUTER_API_KEY"
+    - "GITHUB_TOKEN (gho_ OAuth token from gh CLI)"
+    - "ANTHROPIC_API_KEY"
+    - "OPENAI_API_KEY"
+    - "HYPERLIQUID_PRIVATE_KEY"
+    - "HYPERLIQUID_ACCOUNT_ADDRESS"
+    - "HYPERLIQUID_API_URL"
+    - "HYP_SECRET, HYP_KEY, HYP_MODE, NETWORK"
+    - "SUPABASE_URL, SUPABASE_KEY, SUPABASE_SERVICE_KEY"
+    - "KIYOTAKA_USERNAME, KIYOTAKA_PASSWORD"
+    - "FRED_API_KEY"
+
+# Workspace Files (Bootstrap Context)
+workspace_files_spec:
+  description: "Six user-editable files inject into agent context on first session turn"
+  files:
+    AGENTS.md: "Operating instructions, autonomy rules, memory"
+    SOUL.md: "Persona, boundaries, tone definition"
+    TOOLS.md: "User-maintained tool guidance"
+    BOOTSTRAP.md: "One-time initialization ritual"
+    IDENTITY.md: "Agent name, emoji, vibe"
+    USER.md: "User profile preferences"
+  behavior: "Blank files skipped. Oversized files trimmed with markers. Missing → default template unless agent.skipBootstrap: true"
+
+# Runtime (macOS launchd)
+runtime:
+  macos:
+    service_name: "ai.openclaw.gateway"
+    plist: "~/Library/LaunchAgents/ai.openclaw.gateway.plist"
+    commands:
+      status: "launchctl list | grep openclaw"
+      restart: "openclaw gateway restart"
+      logs: "tail -f ~/.openclaw/logs/gateway.log"
+    note: "Auto-installed by openclaw onboard --install-daemon"
+  linux:
+    service_name: "openclaw-gateway"
+    type: "systemd user service"
+    path: "~/.config/systemd/user/openclaw-gateway.service"
+    commands:
+      status: "systemctl --user status openclaw-gateway"
+      restart: "systemctl --user restart openclaw-gateway"
+      logs: "journalctl --user -u openclaw-gateway -f"
+    note: "Requires loginctl enable-linger for persistence"
+
+# Customer Gateway Proxy
+proxy:
+  location: "customer-gateway-proxy/"
+  port: 3050
+  protocol: "WebSocket"
+  endpoints:
+    health: "GET http://<ip>:3050/health"
+    websocket: "ws://<ip>:3050?token=<customer-token>"
+  auth:
+    method: "Token-based (query param ?token=xxx)"
+    token_store: "tokens.json"
+    rate_limit: "30 messages per 60 seconds per customer"
+
+# State and Directories
+state:
+  root: "~/.openclaw"
+  config_file: "~/.openclaw/openclaw.json"
+  directories:
+    workspace: "~/.openclaw/workspace/"
+    workspace_skills: "~/.openclaw/workspace/skills/"
+    agents: "~/.openclaw/agents/"
+    sessions: "~/.openclaw/agents/<agentId>/sessions/<SessionId>.jsonl"
+    logs: "~/.openclaw/logs/"
+
+# Troubleshooting
+troubleshooting:
+  common_issues:
+    - issue: "Config set returns 'unknown command set'"
+      cause: "Using 'openclaw secrets set' — wrong command"
+      fix: "Use 'openclaw config set env.KEY value' instead"
+
+    - issue: "Telegram bot not responding"
+      cause: "allowFrom empty or dmPolicy not configured"
+      fix: "openclaw config set channels.telegram.allowFrom '[\"CHAT_ID\"]'"
+
+    - issue: "Gateway won't start on macOS"
+      cause: "Port conflict or plist not loaded"
+      fix: "launchctl list | grep openclaw; openclaw gateway restart"
+
+    - issue: "Memory search not ready"
+      cause: "No embedding provider configured"
+      fix: "openclaw config set agents.defaults.memorySearch.enabled false"
+
+    - issue: "Skills not found"
+      cause: "Skills not in workspace/skills/ directory"
+      fix: "mkdir -p ~/.openclaw/workspace/skills && ls ~/.openclaw/workspace/skills/"
+
+    - issue: "SSH can't run sudo on macOS"
+      cause: "sudo requires terminal for password"
+      fix: "Add NOPASSWD to sudoers: sudo visudo -f /etc/sudoers.d/greg"
+
+    - issue: "Homebrew install fails via SSH"
+      cause: "Nested quotes break in SSH"
+      fix: "Use official installer: curl -fsSL https://openclaw.ai/install.sh -o /tmp/install.sh && bash /tmp/install.sh"
+
+    - issue: "SSH connection timed out to Mac Mini"
+      cause: "DHCP lease renewed and IP changed"
+      fix: "Use mDNS hostname: ssh greg@Gregs-Mac-mini.local — or set static IP in router"
+
+    - issue: "Config validation error: Unrecognized key"
+      cause: "Config has keys from older/newer OpenClaw version"
+      fix: "openclaw doctor --fix --non-interactive"
+
+    - issue: "CRITICAL: Elevated exec allowlist contains wildcard"
+      cause: "tools.elevated.allowFrom.telegram includes '*'"
+      fix: "openclaw config set tools.elevated.allowFrom.telegram '[\"6777263736\"]'"
+
+    - issue: "Steer can't click or take screenshots"
+      cause: "Missing macOS permissions"
+      fix: "System Settings → Privacy & Security → Accessibility + Screen Recording → add Terminal"
+
+# Key Paths Reference
+key_paths:
+  config: "~/.openclaw/openclaw.json"
+  agents: "~/.openclaw/agents/main/"
+  workspace: "~/.openclaw/workspace/"
+  skills: "~/.openclaw/workspace/skills/"
+  logs: "~/.openclaw/logs/gateway.log"
+  launchd_plist: "~/Library/LaunchAgents/ai.openclaw.gateway.plist"
+  steer_binary: "/usr/local/bin/steer"
+  mac_mini_agent: "~/mac-mini-agent/"
+
+# Resources
+resources:
+  documentation:
+    - url: "https://docs.openclaw.ai"
+      title: "OpenClaw Official Documentation"
+    - url: "https://docs.openclaw.ai/gateway/configuration-reference"
+      title: "Configuration Reference"
+    - url: "https://docs.openclaw.ai/concepts/agent"
+      title: "Agent Concepts"
+    - url: "https://docs.z.ai/devpack/tool/openclaw"
+      title: "Z.AI GLM OpenClaw Integration"
+  local:
+    - path: ".claude/commands/experts/openclaw/INSTALLATION_GUIDE.md"
+      title: "Full Installation Guide (Lightsail)"
+    - path: ".claude/skills/consulting-intake/templates/mac-mini-install.md"
+      title: "Mac Mini Install Guide"
+    - path: "customer-gateway-proxy/"
+      title: "Customer Gateway Proxy Source"
+  community:
+    - url: "https://clawhub.ai"
+      title: "ClawHub — 1,700+ community skills (search before building)"
+      note: "~5% contain threats — always check VirusTotal report before installing"
+    - url: "https://onlycrabs.ai"
+      title: "OnlyCrabs — community SOUL templates for agent persona shaping"
+    - url: "https://here.now"
+      title: "here.now — instant static hosting for agent dashboards/tools"
+  github_org: "gbauto/ (formerly gblack686/ — all client repos now under org)"
+  archived:
+    - path: "archive/zeroclaw-deploy/"
+      title: "ZeroClaw CDK deployment (archived)"
+    - note: "Lightsail instance 18.234.126.236 (decommissioned)"
+
+# Pi Extensions (in-process runtime extensions)
+pi_extensions:
+  description: "Extensions run in-process in the Pi runtime, loaded via -e flags"
+  core_stack:
+    - "minimal — base runtime hooks"
+    - "theme-cycler — rotating agent themes"
+    - "cross-agent — inter-agent communication"
+    - "pi-pi — introspection loop"
+  extras_selection: "Chosen per-client from selection matrix in references/pi-extension-selection.md"
+  config_location: "extensions section in openclaw.json"
+  note: "Core stack always loaded; extras added based on session analysis (e.g. web-search, code-runner)"
+
+# Consulting Pipeline Patterns
+consulting_patterns:
+  morning_brief:
+    description: "Default quick-win domain — get one working Telegram notification within 24 hours"
+    skill: "morning-brief (always included in skill entries)"
+    note: "Universally useful; builds client confidence fast"
+
+  discord_user_token:
+    description: "For signal feed channels, use Discord user token (not bot token)"
+    pattern: "Extract user token from browser DevTools → Application → Local Storage → discord.com → token"
+    why: "Bot tokens require OAuth flow + guild admin invite; user tokens see everything the user sees"
+    security: "User tokens violate Discord ToS — inform client of risk, never use on primary account"
+
+  zero_touch_bootstrap:
+    description: "Post-deploy checklist for automated instance setup"
+    steps:
+      - "1. Secrets discovery — scan session for all API keys mentioned"
+      - "2. Batch injection — openclaw config set env.KEY value for each"
+      - "3. API key validation — curl each provider endpoint"
+      - "4. Channel test — send test message via each configured channel"
+      - "5. Skill deploy — copy skills to workspace/skills/"
+      - "6. Cron setup — configure scheduled jobs"
+    note: "Goal: client sends zero follow-up questions after deploy"
+
+  soul_shaping:
+    description: "Extract verbatim communication style preferences from intake sessions"
+    pattern: "Pull exact quotes from transcript where client describes desired agent personality"
+    output: "SOUL.md with personality traits, tone rules, and example responses"
+    reference: "onlycrabs.ai for community SOUL templates"
+
+  github_org:
+    pattern: "Client repos under gbauto/ org (not personal gblack686/)"
+    repo_naming: "gbauto/{client-slug} — e.g. gbauto/greg-trading"

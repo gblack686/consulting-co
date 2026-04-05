@@ -1,0 +1,21 @@
+{
+  "version": "52.0.0",
+  "files": {
+    "151e9e3610286fd053b98d340300bb3eb02f0a80d2d58593f66a35e2aa490222": {
+      "displayName": "ZeroClaw-test-client Template",
+      "source": {
+        "path": "ZeroClaw-test-client.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "274487662938-us-east-1-a31f6e34": {
+          "bucketName": "cdk-hnb659fds-assets-274487662938-us-east-1",
+          "objectKey": "151e9e3610286fd053b98d340300bb3eb02f0a80d2d58593f66a35e2aa490222.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::274487662938:role/cdk-hnb659fds-file-publishing-role-274487662938-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

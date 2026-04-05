@@ -1,0 +1,151 @@
+{
+  "generated": "2026-01-20",
+  "total_directories": 24,
+  "base_path": "C:/Users/gblac/OneDrive/Desktop/tac",
+  "directories": [
+    {
+      "name": "agent-experts",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/agent-experts/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "agent-sandbox-skill",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/agent-sandbox-skill/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "agent-sandboxes",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/agent-sandboxes/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "agentic-finance-review",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/agentic-finance-review/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "building-domain-specific-agents",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/building-domain-specific-agents/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "claude-code-damage-control",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/claude-code-damage-control/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "claude-code-hooks-mastery",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/claude-code-hooks-mastery/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "fork-repository-skill",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/fork-repository-skill/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "multi-agent-orchestration-the-o-agent",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/multi-agent-orchestration-the-o-agent/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "orchestrator-agent-with-adws",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/orchestrator-agent-with-adws/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "rd-framework-context-window-mastery",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/rd-framework-context-window-mastery/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "seven-levels-agentic-prompt-formats",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/seven-levels-agentic-prompt-formats/.claude",
+      "category": "TAC Course",
+      "processed": false
+    },
+    {
+      "name": "tac-1",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-1/.claude",
+      "category": "TAC Numbered",
+      "processed": false
+    },
+    {
+      "name": "tac-2",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-2/.claude",
+      "category": "TAC Numbered",
+      "processed": false
+    },
+    {
+      "name": "tac-3",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-3/.claude",
+      "category": "TAC Numbered",
+      "processed": false
+    },
+    {
+      "name": "tac-4",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-4/.claude",
+      "category": "TAC Numbered",
+      "processed": false
+    },
+    {
+      "name": "tac-5",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-5/.claude",
+      "category": "TAC Numbered",
+      "processed": false
+    },
+    {
+      "name": "tac-6",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-6/.claude",
+      "category": "TAC Numbered",
+      "processed": false
+    },
+    {
+      "name": "tac-7",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-7/.claude",
+      "category": "TAC Numbered",
+      "processed": false
+    },
+    {
+      "name": "tac8_app1__agent_layer_primitives",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app1__agent_layer_primitives/.claude",
+      "category": "TAC-8 Apps",
+      "processed": false
+    },
+    {
+      "name": "tac8_app2__multi_agent_todone",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app2__multi_agent_todone/.claude",
+      "category": "TAC-8 Apps",
+      "processed": false
+    },
+    {
+      "name": "tac8_app3__out_loop_multi_agent_task_board",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app3__out_loop_multi_agent_task_board/.claude",
+      "category": "TAC-8 Apps",
+      "processed": false
+    },
+    {
+      "name": "tac8_app4__agentic_prototyping",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app4__agentic_prototyping/.claude",
+      "category": "TAC-8 Apps",
+      "processed": false
+    },
+    {
+      "name": "tac8_app5__nlq_to_sql_aea",
+      "path": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app5__nlq_to_sql_aea/.claude",
+      "category": "TAC-8 Apps",
+      "processed": false
+    }
+  ]
+}

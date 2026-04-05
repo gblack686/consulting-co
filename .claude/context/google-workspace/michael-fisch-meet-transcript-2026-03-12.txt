@@ -1,0 +1,776 @@
+﻿45 min - AI Session - 2026/03/12 13:44 PDT - Transcript
+Attendees
+Emil's Notetaker, Emilfisch, Greg Black, Michael Fisch
+Transcript
+Greg Black: Hey, good.
+Emilfisch: Hey, Greg. How's it going?
+Greg Black: How are you?
+Emilfisch: I think Michael will probably join in a little bit.
+Greg Black: How's the week going?
+Emilfisch: It's been good. I was actually in California this last weekend.
+Emilfisch: Visiting some college friends which was nice.
+Greg Black: Nice.
+Greg Black: What part?
+Emilfisch: The Mammoth area. It's like or they live in Bishop next to Mammoth.
+Greg Black: Cool.
+Emilfisch: But yeah.
+Greg Black: They live there. Sweet.
+Emilfisch: Yeah. Yeah. Yeah. one of them lives at the ki ort works at the ski resort. Another one is in the fish and wildlife. another one like a nonprofit.
+Emilfisch: But it's such a sweet area. my god. Because you're in California,…
+Greg Black: Yeah.
+Emilfisch: aren't you? In San Okay.
+Greg Black: Yeah. it's beautiful up there. That drive is amazing.
+Emilfisch: Yeah. …
+Greg Black: Where did you fly into?
+Emilfisch: it was kind of a nightmare. I was supposed to fly into Bishop. but my flight kind of got delayed and I was going to miss my connection. So, I flew to Las Vegas and my friends picked me up which was really nice. not close, but we went and camped in a Death Valley. Kind of made a trip out of it.
+Greg Black: Sick.
+Emilfisch: Okay.
+Greg Black: That's a sick trip. Yeah. I've been around that area and Bishop's just so cool.
+Emilfisch: 
+Emilfisch: Yeah. Yeah. It really I don't know.
+Emilfisch: Such a quaint little town. I don't know. It's Wait, would you mind Are you in San Diego or Neither. Very nice.
+Greg Black: I'm in Los Angeles.
+Greg Black: Yeah. Yeah.
+Emilfisch: Yeah. But yeah, I feel it's pretty really good skiing for not too far away, but I guess six hour drive. you can also go to Utah or…
+Greg Black: It's Yeah,…
+Emilfisch: Wyman. Yeah.
+Greg Black: I think it's five or five and a half. but it's worth it.
+Greg Black: A lot of us do it. I haven't been snowboarding in a while, but I actually flew out to Colorado last year and I was not in shape and dude, it's skiing is no joke. you take a fall, it hurts.
+Emilfisch: Yeah. No.
+Emilfisch: No. No. I know. I haven't seen a Wild and I was just like I don't know.
+Greg Black: Was it powdery?
+Emilfisch: 
+Emilfisch: No. No. It hadn't. they've been kind of having a tough year.
+Emilfisch: Let me text mic real quick. should we start without Why don't we do that?
+Greg Black: Okay, we can also get started with Adam.
+Greg Black: Yeah, did you happen to take a look at any of the videos I sent over or explore skills and quad code anymore?
+Emilfisch: Yes, I checked out the videos. Super interesting. I think it's somehow I lost I have too many tabs open. but yeah, I did watch the videos. super Here we go. super interesting. yeah, it's kind of mindblowing. I feel like it's good to kind of get a little background about how skills work.
+Emilfisch: Definitely something I'm not super familiar with.
+Emilfisch: And just also watching the video about creating the agent and just seems like you do a lot better with fewer really good skills rather than just adding the whole library into your system.
+Greg Black: Yeah, right.
+Greg Black: That's the difference between MCP that has all those tools and then skills. so…
+Emilfisch: Yeah. …
+Greg Black: if I was thinking that we would Do you have cloud code?
+Emilfisch: no. But is that something like I can open from my COD account or…
+Greg Black: Yeah.
+00:05:00
+Emilfisch: is that a completely separate yeah I think…
+Greg Black: Why don't you share your screen and we can try and get there.
+Greg Black: There is a cloud code web.
+Emilfisch: 
+Emilfisch: who knows what I'm saying …
+Greg Black: There's got to be ways to use skills in …
+Emilfisch: yeah, I made one skill for lovable and I attached it to the folder it was in.
+Greg Black: sweet. …
+Emilfisch: I went to the folders and kind of I created this skill,…
+Greg Black: have to let him in maybe. Let's see. What?
+Emilfisch: but I definitely didn't do it in the way that the video instructed. that kind of just was review our conversation also Greg I was wondering I made my account with my personal Gmail and that's what my cloud subscriptions on. Should I switch this to my fish group working email? Will it sync better with I don't know all the files or…
+Emilfisch: just like future.
+Greg Black: No,…
+Greg Black: it's fine.
+Emilfisch: Okay.
+Greg Black: I think it should be fine. you can give it access, I think Mike should be joining. Just let him in.
+Emilfisch: Yeah, I've been.
+Greg Black: Hey, Mike. No worries.
+Michael Fisch: Hey guys,…
+Michael Fisch: sorry for the delay.
+Greg Black: Just getting started. And yeah, so the question about should it be synced to your personal or I think you should be able to give it access to any one of those. you should authorize OOTH.
+Greg Black: So, you don't need to put your camera on,…
+Emilfisch: 
+Emilfisch: So, it doesn't really matter there. I was kind of waiting to set up the card code until I finalized which account. Yeah.
+Greg Black: Mike, if you're in the car.
+Michael Fisch: You don't want to see me in the Uber. I think what would be helpful is Emil if you could show Greg like the portal that you built just so Greg your wheels can start turning because we built it in lovable but we want some interoperability in case we want to use replet or clog code directly and also be able to run agents based on all the data that we're getting together. So not sure if lovable is the best place to be building. and we just kind of want to run it by you and however you want to work together, Greg. I think for now, I just charge me hourly if you'd like.
+Greg Black: Mhm. Okay.
+Michael Fisch: Whatever your rate is and then we'll figure out a product that we can buy from you or however you want to do it. But I want to make sure you're paid for your time today and whatever else we talk. So just if that's cool.
+Greg Black: Yeah, that's all good. it's been a few hours so far,…
+Greg Black: so it's nothing crazy. I'll send you on Stripe something. cool.
+Michael Fisch: Perfect. Great.
+Emilfisch: Yeah, let me share my So,…
+Emilfisch: we've Mike built out a pretty comprehensive we both kind of been going about it a little differently, but I'm going to share the Puremont one just because I think that one's the most comprehensive and then I've been doing remixes of it, which is basically just like it copies the whole folder or…
+Emilfisch: library and then you can just connect it to each client.
+Greg Black: Mhm.
+Emilfisch: And I guess one thought this is a single company with two entities right technically I guess we could create some kind of drop down and switch between all our clients or do you think it's better to replicate it each time and have each client have their own unique portal I guess is something I was thinking about or blank  Yep. Yeah.
+Michael Fisch: And just to take a step back here,…
+Michael Fisch: Greg. Emil, if you want to hide the chat on the left, so it's a little bigger, you can click the button next to preview. Yeah. so we built this portal for this company, Puremont Brands, big client of ours, and there's a bunch of different tabs. It's probably integrated to 12 different source systems via APIs.
+Greg Black: Okay.
+Michael Fisch: So Sin 7's one of them, QuickBooks is one of them. Plaid is one of them. It's hooked up to resend inventory system. and then there's just a bunch of modules. it's pretty built out and comprehensive and we've got all this great source data that's coming in. And now the next step for this particular client and we'll take a step back kind of like Emil was saying looking at fish group more globally…
+Michael Fisch: but just thinking about this particular client all this data is in the native superbase integration that's within lovable currently and…
+00:10:00
+Greg Black: H. Mhm.
+Michael Fisch: I don't know if that is good. I like lovable. but I know Replet just came out with an awesome new agent that makes it easier to build stuff and I don't want to be locked into one system. I also want to be mindful like we want to run continuous and recursive agents on top of the data here to be able to execute goals of ours. and…
+Greg Black: Mhm.
+Michael Fisch: so thinking architecturally all the context that we've added now into this portal how can we make the best use of it and how should we structure it should we get it in Azure or in AWS should we convert it to our own superbase and…
+Michael Fisch: how should we be thinking about this and you don't have to have the answers to all this now but this is just kind of what I'm thinking architecturerwise  is how do we set ourselves up for the most success as we proceed?
+Greg Black: Yeah. you guys have gotten pretty far so far and…
+Greg Black: it's great that you have the superbase back end. you can and this is great, You got your front ends, the tabs that you need. you've thought through most of it. You can get the database and then get this front end and then have I would pretty much connect Claude to all of those APIs and see how much it can do Claude code, right?
+Greg Black: how many of the workflows it can do itself and have it say okay whatever the new clients onboarded can you add them to the system and then send them an email whatever so I would start up cloud code I'd find make skills and basically find the tools that connect to all those APIs  and see how much the agent can do because I think it should be able to do just about everything that you want it to do if you can connect those APIs.
+Michael Fisch: And so, okay, here's what I'm trying to figure out. So, let's do a very specific example of let's say accounts receivable. we have every this particular client even more specific in the accounts receivable tab.  We have aging receivables, meaning people who owe us money. And we'd like to programmatically follow up with each vendor with a statement every week, basically aggregating all their receivables into one email and saying, "Hey, here's everything you owe us. When can we expect payment?"
+Michael Fisch: And then this can be done very easily in my opinion it will on a scheduled basis be able to send an email to each of these vendors as long as we enter the contact information.
+Greg Black: Mhm.
+Michael Fisch: So I'm just trying to figure out…
+Michael Fisch: what the agent that you're referring to and the skills and the workflows. How is that different than things that we would build into this directly as a scheduled email followup?
+Greg Black: Yeah. Yeah.
+Michael Fisch: Would the agent be able to respond to responses? Is that the idea of it?
+Greg Black: So, the agent could do a lot of things.
+Greg Black: It could read the accounts receivable. It could check on inventory.
+Greg Black: it could pull a lot of different APIs to get a full picture and then use reasoning to come up with a response. suppose they send you an email like a complaint or…
+Greg Black: something and you could use the agent to gather a lot of information from all over your website and make a response. So that's the main difference. You could allow it to …
+Emilfisch: Would that also include would it fix let's say a client was like hey this is incorrect would the agent not only respond…
+Michael Fisch: f* s***.
+Emilfisch: but also go into the system and fix it.  Yeah.
+Greg Black: but you'd probably want some sort of depends on how severe right the change is or how much control you want and all that would be done yeah with you would need connection to superbase you need a connection
+Greg Black: wherever else the data and it should propagate through to the front end automatically,…
+Michael Fisch: Thank you. what…
+Greg Black: right? If it's connected Mhm.
+Michael Fisch: what if I'd love to do a working session at some point where we build it for example every time we get a new client I'd love to Emil…
+00:15:00
+Michael Fisch: if you could show the client work workspace that you created and lovable yeah that's okay just one for them.
+Emilfisch: Yeah, I've kind of made a couple of them…
+Emilfisch: where it's like let's see here. Okay.
+Michael Fisch: So, we'll spin up a default workspace for our client that's like we're prompted to enter their QuickBooks their API information. We're prompted to enter company details and it spins up this workspace that will prepopulate with all the tabs and everything that we need.
+Michael Fisch: 
+Greg Black: Mhm. Yeah.
+Michael Fisch: And so we'd love to start with an agent that will help us create these workspaces with tasks and everything within the client that would be needed. and maybe that's a good starting point trying to figure out where we start.
+Greg Black: An onboarding skill.
+Michael Fisch: Yeah, exactly.
+Greg Black: Yeah. So, if we want to stay in Lovable,…
+Greg Black: there may be an API that we can help. there's probably a way to do that. and it seems like you guys are familiar with Lovable, so I wouldn't suggest ditching it just yet, right? …
+Michael Fisch: Okay,…
+Michael Fisch: fair enough.
+Greg Black: so yeah.
+Greg Black: I mean once you get more comfortable with things then if you want to try out replet yeah you do have a lot of the framework here. So we'll get into claw code if we can connect to lovable superbase any of the main APIs. we'll create that onboarding skill. so just with the parameters Claude should be able to do most of the template, send, an email saying, "Hey, your site's ready to view." so that can be a 10-step workflow. and…
+Greg Black: that'll be a skill. so that would be a good working session.
+Michael Fisch: Yeah,…
+Greg Black: I'm going to see if I can do some of that a little hello world example in my environment, but I'm used to working in cursor, So, I do have to figure out the capabilities of a cloud code web, but I'm confident they have most of them.
+Emilfisch: one actually I should keep going Mike I was just curious like it I don't even know…
+Michael Fisch: go ahead. No, no, no. go ahead. Go ahead.
+Emilfisch: if our projects are in superbase if I go into your account Mike part of me thinks it's all living in lovable cloud rather than superbase or it seems like So maybe we could connect level into superbase for some of their projects.
+Emilfisch: 
+Michael Fisch: That's correct. But I think lovable cloud is powered by subbase. I could be wrong. yeah.
+Greg Black: So, none of these two are it.
+Emilfisch: I don't think so. Especially as it says project is paused makes me Sorry.
+Greg Black: Go to the top left.
+Michael Fisch: No, it would be unlovable.
+Greg Black: Next to the free button there's two little carrots you can on the left top left.
+Emilfisch: Free. Okay. Yeah. Yeah.
+Greg Black: Okay.
+Emilfisch: All organizations maybe.
+Greg Black: So, there's only one organization. Yeah.
+Greg Black: If you go over to lovable, you can probably see it's probably hosted by Versel or something. So,…
+Michael Fisch: Yeah, I do.
+Emilfisch: Yeah. Let me just go back to do we have a GitHub account?
+Greg Black: this is actually good. We can do Find that superbase. and then we'll connect. If you want to pull up Claude Code web and see if we can connect to GitHub.
+Emilfisch: Mike, the other thing I was reading about and Mike also if you want to go in a different direction than this just let me know but was I was reading an article about you have your lovable project right and then you almost clone it with using superbase and then you open it into clawed code and that way you're not using any lovable tokens like you can do all your fixes in claw
+Emilfisch: mod and…
+Greg Black: Yeah. Cool.
+Emilfisch: then you can clone it again and send it back into lovable for I don't know there's certain visual and…
+Michael Fisch: I love that.
+Emilfisch: just like general website I think that lovable is pretty good at but another work flow Yeah,…
+00:20:00
+Greg Black: I do have So, I've set it up where my agent is listening and the transcript goes through an agent. So, we'll tell Claude to look up workflows of cloning and then I guess templates for lovable.
+Emilfisch: I can also send you the article. I think it was probably written by code as well,…
+Greg Black: Yeah, that'd be helpful.
+Emilfisch: but let me share my screen. so you mentioned opening up in quad code or…
+Emilfisch: on the desktop.
+Greg Black: Yeah. …
+Greg Black: this looks correct.
+Greg Black: Go back to click back. So, you're not in projects.
+Emilfisch: Okay, I'll just go.
+Emilfisch: Yeah.
+Greg Black: Should be all projects on the top in the middle.
+Emilfisch: Okay, I got you.
+Greg Black: So you're still in Where's I guess if you want to work within the project, maybe we can just go to project and…
+Greg Black: okay, here we go. Somewhere we can connect to GitHub.
+Michael Fisch: I just sent you my GitHub credentials by the way.
+Michael Fisch: All I also have cloud code on my desktop setup to VS Code.
+Emilfisch: Okay, sweet. What if we would we better create a new conversation and…
+Greg Black: Maybe click the
+Emilfisch: be like yeah I guess what's the best next Yeah.
+Greg Black: So, you need to be in/code. Can you type that in?
+Emilfisch: Sorry.
+Michael Fisch: I don't know if that would be helpful,…
+Greg Black: Nice. Yeah,…
+Michael Fisch: but I think we should use it…
+Greg Black: that's how I use it. yeah.
+Michael Fisch: 
+Michael Fisch: how you use it, Greg. …
+Emilfisch: Yeah, I think you probably have. So, sorry, I've lost my Okay.
+Greg Black: So we'll do that for next session.
+Michael Fisch: okay. Awesome.
+Greg Black: I can either walk or drive us through how I create the skill. but in the mean it would be great even if Emil could get that set up or whoever's going to be building this stuff.
+Greg Black: and…
+Michael Fisch: Emil, yeah,…
+Greg Black: have them follow along.
+Michael Fisch: 
+Michael Fisch: Emil will be leading it.
+Greg Black: Yeah. Yeah.
+Michael Fisch: But I'll be helping and building stuff too. So we collaborate on it, do you think? if we were both building,…
+Greg Black: In terms of the license, yeah, I don't know exactly. I'm assuming you're paying 25 a month,…
+Emilfisch: Yeah, I think they're on the basic plan.
+Greg Black: not 100.
+Michael Fisch: we can pay 100.
+Greg Black: Okay.
+Michael Fisch: It's fine.
+Greg Black: I'm not sure you need to just yet. It depends on how many tokens you're going to be using. So, Okay.
+Greg Black: So, yeah. Cloud code. Do we have So, you're connected.
+Emilfisch: Seems so I should just kind of go through this and…
+Emilfisch: set this all up.
+Greg Black: We'll go to connectors is GitHub.
+Emilfisch: You mean back in? wait. Sorry, you can't see my page. Okay. crap.
+Greg Black: You can connect GitHub there. Yeah. It shows up below…
+Emilfisch: Okay. okay.
+Greg Black: if you go out.
+Emilfisch: I think I can probably do this. I guess we can do it quicker now probably helpful.
+Greg Black: Yeah, let's give it a shot.
+Greg Black: Let's see.
+Emilfisch: I'm just opening what Max sent me. Should have cleaned up a little bit more before too many times. There we go.
+Michael Fisch: The client,…
+Emilfisch: If holy hell.
+Michael Fisch: Puremont, is so pumped, by the Just left their office. they've got eight,…
+Greg Black: Nice. What's going to move the needle for them?
+Michael Fisch: nine different employees already using our portal that we created. And we …
+Emilfisch: Heat.
+Michael Fisch: it's just getting everything out of email and out of their heads into one place. And also being able to just see all of the information in one dashboard, that alone is a game changer.
+00:25:00
+Greg Black: Mhm. Sweet.
+Michael Fisch: And then the agentic stuff like that's going to follow up with different sales reps and different distributors and whatnot. that stuff will be very interesting to them, too. But we just have to find the right use cases.
+Greg Black: Nice.
+Michael Fisch: But they're super interested in agentic things and then this dashboard they're loving. U Emil,…
+Emilfisch: Mike, did you Okay,…
+Michael Fisch: I'll forward this to Sorry, my bad.
+Emilfisch: perfect. Sorry,…
+Michael Fisch: 509052.
+Emilfisch: I wasn't on the right. would you do that one more time?
+Michael Fisch: That's okay.
+Emilfisch: 509. No.
+Michael Fisch: 509 U 052.  Yeah, I'm sure we can create a team account with
+Emilfisch: Seems like at some point we need to enable 2FA, but let's do it tomorrow. And if we can do that, we should be able to do that for all our clients. We need maybe something I definitely want to think about.
+Greg Black: how yeah so you can create an organization and then just share each client has their own GitHub in that organization.
+Greg Black: All So you're connected. go back to aicode if you can. It should be in the browser. Yeah. AI/Code.
+Emilfisch: Okay.
+Emilfisch: Just quad.
+Emilfisch: terminal. maybe I can start with web and then go back to Yeah.
+Greg Black: Yeah, try web.
+Michael Fisch: I'm close.
+Greg Black: So, you can we'll do it all over.
+Greg Black: we'll get connected to the web to the terminal. so I don't know…
+Greg Black: which whatever. Yeah. All right.
+Greg Black: So then select a repository if you go down. Click So does that look familiar? Try Samply dash. Same go. mic would.
+Emilfisch: Should I go into super base?
+Michael Fisch: Yeah,…
+Michael Fisch: so this is a startup that I'm un unrelated at the moment, but Greg, we can discuss it separately.
+Greg Black: So right.
+Michael Fisch: Yeah, we don't want to mess with that GitHub. we want to create a different one.
+Greg Black: …
+Emilfisch: Maybe connect that
+Greg Black: yeah, that's a good point.
+Greg Black: Then Mike, you want to create an organization for fish group in GitHub and…
+Michael Fisch: In GitHub. Okay,…
+Greg Black: then only limit access to that organization. Only allow access yeah it's not pressing.
+Michael Fisch: I can try to do that right now. I've got two minutes. let's see.
+Emilfisch: Was it NSP and…
+Greg Black: Yeah,…
+Michael Fisch: All right.  bottle.
+Greg Black: don't worry about it right now. so maybe add the plus sign or there should be a way to Ask How do I connect to MCP?
+Emilfisch: Sweet. Yeah,…
+Greg Black: Yeah. Let's see what it says. it's making you
+Emilfisch: I think it wants me to select the repository.
+Greg Black: model context protocol.
+Greg Black: So I would go back and disconnect from GitHub for now.
+Emilfisch: Should I try connecting to Superbase or…
+Greg Black: Yeah. Yeah.
+Emilfisch: Okay, I'm gonna do it in another tab. okay. Let's see here. Settings.
+Greg Black: And Mike, if you want, are you on Google Workspace?
+Michael Fisch: No, no,…
+Greg Black: Is Fish Group in Google?
+Michael Fisch: We're out.
+Greg Black: No. Outlook?
+Michael Fisch: Unfortunately. I know you're a Google guy.
+Greg Black: They just came out with this package that's built for AI agents. So, I'm in the process of giving it my agent access to everything in Google Workspace.
+00:30:00
+Greg Black: So, if any of your clients are on Google, that might be of interest.
+Michael Fisch: Yeah. Yeah.
+Michael Fisch: It's interesting. Most of our clients are on Outlook, but we do have one or two. We've got three clients on Google, I think. but be nice in our system that we build in to be able to easily see which clients are using what software down the road.
+Emilfisch: Yeah, I was thinking about it.
+Emilfisch: We should necessarily create a map of all the different systems and how they talk to each other one visual. Okay, I think I added
+Michael Fisch: Yeah. Yeah,…
+Greg Black: But Mike,…
+Greg Black: if you want to give me access and then I can have my own username within your account, I could also work async with you guys…
+Michael Fisch: that'd be awesome,…
+Greg Black: if that's something that Okay.
+Michael Fisch: Greg. and I feel like that'd be great too cuz I've had so many clients…
+Michael Fisch: who will want your services as it makes sense for you to have an email. not that you could still do it through your company, but I'm just saying it would let's see.
+Greg Black: Okay. Mhm.
+Greg Black: Yeah. Yeah. Yeah.
+Michael Fisch: Okay, I'm just seeing if I can do that real quick. I'm going to make you an admin.
+Greg Black: So, Emil, go ahead and click your profile. settings,…
+Emilfisch: Yeah, I just let me show you.
+Michael Fisch: What are you doing?
+Emilfisch: I just added super base as well.
+Greg Black: Go ahead and disconnect GitHub for now.
+Emilfisch: Okay. Yeah.
+Greg Black: We don't want to be messing with Mike's other repositories. so yeah configure superbase.
+Emilfisch: What is that? Does that mean it's still like in the process?
+Greg Black: It says needs approval. Go ahead and…
+Greg Black: Yeah. Yeah. I'm not sure if it's connected.
+Greg Black: Did you click on a specific superbase instance and this is where it brought you to.
+Emilfisch: I just clicked connect back at the Yeah,…
+Emilfisch: maybe I did something though along the way.
+Greg Black: Do you have go to view details?
+Emilfisch: I could try doing it again. Can I just try it again?
+Greg Black: No. go to the chat and We might be connected.
+Emilfisch: Okay. …
+Greg Black: Ask it what data you have in Superbase.
+Emilfisch: just go back to our code or…
+Greg Black: Yeah, I think like a general chat.
+Emilfisch: 
+Emilfisch: just even a chat would work. Okay.
+Greg Black: Yeah. Nice listing organizations guild portal and Mike at fish group. So those are still the other ones, right?
+Emilfisch: Yeah. Should I? …
+Emilfisch: yeah. Yeah, exactly. Okay.
+Greg Black: go into super lovable.
+Greg Black: Let's see if Yeah.
+Emilfisch: Yeah.
+Greg Black: So, I guess login for me would be helpful. so I could adjust things myself. Let's see if you can go to lovable and if we have probably the top there's probably that cloud icon.
+Emilfisch: Sorry. Yeah, try.
+Greg Black: You see it top and…
+Emilfisch: Let me show a different screen. this should be maybe a little easier. Here we go. Okay, we can actually find the tab I'm working on.  So you were saying yes
+Greg Black: then there's a cloud right database Maybe. Go to secrets.
+00:35:00
+Greg Black: here's where
+Greg Black: where is the I can just Google it. How do I find my superbase connection string when I'm working within lovable?
+Emilfisch: Okay. Yeah,…
+Emilfisch: I could also ask lovable too. Sometimes that works pretty well.  Yes.
+Greg Black: is there any chance that since Mike Do you guys share the same Superbase account?
+Emilfisch: Though my only thought is right now I'm in my own account but I'm in Mike's account So yeah it should all be connected. it says click the cloud icon in the navigation bar you can access base users. They say no need to create a separate superbase account. Everything is built in. So, it seems like it's not connecting to Sorry.
+Emilfisch: What was it you were asking?
+Greg Black: Connected to lovable for us to connect with cloud code.
+Greg Black: So I'm trying to find out where that database is and it says here that GitHub sync is the best option.
+Greg Black: So yeah, so the workflow is you work in lovable, you make changes, it syncs up to GitHub. When it syncs up, you can connect to that with cloud code. but we just need to find out where the GitHub is for this project. So if you can you find GitHub within lovable here.
+Emilfisch: Okay. …
+Emilfisch: yeah, but I could ask it where or how would I connect this to is it just hub HubSpot?
+Greg Black: So top toolbar look for GitHub icon in the top right. Is that true?
+Emilfisch: Yeah. Let me Okay.
+Greg Black: It may be The code thing is in the middle. Yeah, that one. Is there keep clicking those buttons up top?
+Emilfisch: Yeah. analytics code design cloud preview.
+Greg Black: Maybe not.
+Greg Black: This says option two, check settings here. Look for GitHub section. Mike, you missed it, but the flow is since lovable does not have a REST API, we don't control. So you work in lovable with the chat and then it syncs to the cloud and then when it's in the cloud, you can connect to cloud code and manipulate it there.
+Emilfisch: Check some else.
+Greg Black: But we don't actually manipulate lovable within Claude.
+Michael Fisch: How do we write back into the lovable text files in the workspace …
+Greg Black: There's a sync. So Lovable is essentially just a GitHub repo. And when it's synced to GitHub, we can connect to it from Cloud and make adjustments.
+00:40:00
+Michael Fisch: sick. So,…
+Greg Black: Yeah. …
+Michael Fisch: …
+Emilfisch: There go Here we go.
+Michael Fisch: everything in lovable is in all the things. And then whose GitHub is it in or we just think it?
+Greg Black: we're trying to find that out,…
+Michael Fisch: It's in mine.
+Greg Black: I think.
+Michael Fisch: I have another one that I think I set up. michael hfish@gmail.com. It's just authorized to my Gmail. So, I'll try to I'm pretty sure it's in that one probably.
+Greg Black: Yeah, we'll do a Gmail search for that. so that'll be good. I'll do a little more research on how to effectively work within lovable with claude code.
+Greg Black: Okay.
+Emilfisch: This is And we can connect it seems like to most things.
+Greg Black: So, it's not connected yet, but yeah,…
+Michael Fisch: Cool.
+Greg Black: you want that connect project two-way sync. Yeah.
+Emilfisch: We could either manage organizations like make a new one.
+Emilfisch: It seems like Yeah.
+Michael Fisch: Yeah, not to sampling.
+Michael Fisch: Let's make a new one.
+Emilfisch: Yeah. god.
+Greg Black: add or…
+Greg Black: add organization below it.
+Emilfisch: Yeah. Yeah. Okay. What did I just do?
+Greg Black: No,…
+Michael Fisch: Can you overwrite the sample database, Emil? No,…
+Emilfisch: My god.
+Michael Fisch: It's okay.
+Emilfisch: I hope god.
+Greg Black: no. I think he just disconnected. connect GitHub again.
+Emilfisch: 
+Emilfisch: Here we go.
+Michael Fisch: Don't worry about it.
+Emilfisch: Okay, we're back.
+Greg Black: It's back.
+Michael Fisch: The samply guys are coming to Jersey City tomorrow,…
+Emilfisch: I like Okay,…
+Michael Fisch: so they would yell at you if you did something wrong.
+Emilfisch: so it seems like Where do you want to stove? the mic fish.
+Greg Black: So it only has access to sampling.
+Greg Black: …
+Emilfisch: We have to go to HubSpot and make a new one probably on that side.
+Greg Black: So, Mike, so let's see.
+Emilfisch: I mean I keep calling GitHub hubspot here.
+Michael Fisch: I'm gonna have to go,…
+Michael Fisch: guys, but feel free to keep going…
+Greg Black: Yeah,…
+Michael Fisch: if you have time.
+Emilfisch: Yeah, I'll share this with you.
+Michael Fisch: No need. Yeah, it's all good.
+Greg Black: we'll work for another 10, 15 and…
+Emilfisch: …
+Greg Black: then I'll send you a list of stuff.
+Michael Fisch: Awesome. Thank you so much,…
+Greg Black: Mike. you just need to make that organization housekeeping and stuff. All right.
+Michael Fisch: This is awesome. All right. Talk to you soon.
+Greg Black: Yeah. Cool.
+Emilfisch: it seems like I can create another organization.
+Greg Black: Sick. Do that. Breathe.
+Emilfisch: Yeah. …
+Emilfisch: should I call it the fish group lovable maybe?
+Greg Black: forgot the key.
+Emilfisch: Thank you. And then for Okay.
+Greg Black: Just do fish group…
+Emilfisch: Yeah. …
+Greg Black: because it's …
+Emilfisch: should I put mine in or Mike's in?
+Greg Black: I put mics in because you're logged in with him,…
+Emilfisch: This is his. Okay. Yeah,…
+Greg Black: right? That's him.
+Emilfisch: exactly. Although I do have my own lovable as well that's linked as well.
+Emilfisch: Let me just make sure.
+Greg Black: Yeah, I think are we in lovable or…
+Emilfisch: That's right. M. Okay. belongs to my or…
+Greg Black: GitHub right now?
+Emilfisch: we're in GitHub…
+Greg Black: This is G.
+Emilfisch: because it seemed like when we're in lovable it could only connect.
+Greg Black: Act as Mike.
+Emilfisch: Okay, so should I make it a personal account or…
+Emilfisch: should I make it a business?
+Greg Black: I think personal is fine.
+Emilfisch: Okay. what the hell? Okay. …
+Greg Black: You got to submit that guy.
+Emilfisch: I see. So weird. I've never seen that before.
+Emilfisch: Perfect. I can add myself. And should I add you as well?
+Greg Black: Yeah. yeah,…
+00:45:00
+Greg Black: black. you can do Greg at gbautomation.xyz.
+Greg Black: XYZ. It's just Yeah.
+Emilfisch: Okay, I'm going to pull that from your email.
+Emilfisch: Here we go. Perfect. Does that look right?
+Greg Black: Yep. Cool.
+Emilfisch: Okay, sweet. okay.
+Greg Black: Let's see.
+Emilfisch: So, should we go back to lovable maybe and…
+Greg Black: I just got it.
+Emilfisch: try to add it in?
+Greg Black: Yeah, exactly.
+Greg Black: Nice.
+Emilfisch: I know.
+Emilfisch: I kind of got Here we go. Okay. …
+Greg Black: You add the organization that's not there. Yep.
+Emilfisch: it just popped up window here. I had install and authorize for Fish group. Now it should show up. Next project. Sway.  You're moving only. Okay, sweet. I switch from there.
+Greg Black: sweet.
+Emilfisch: I didn't see So, this is all on GitHub now. So, where is the project we just connected in?
+Emilfisch: Or…
+Greg Black: Let's see.
+Emilfisch: is it all projects I guess? here. Maybe it would be under or do I now need now that they're connected now do I Okay,…
+Greg Black: So, you link a project. Damn. …
+Emilfisch: maybe I supposed to do that inside a lovable I'd imagine.
+Greg Black: you're still in Yes. Yes.
+Emilfisch: So, let's go to the pure malt one. Okay. how do I …
+Emilfisch: here's Sync your project with GitHub to collaborate on the source. Check. I thought we did this though.
+Greg Black: Yep. Yeah.
+Greg Black: Connect to project. There you go. Fish group. Nice. …
+Emilfisch: Were that different than what we just did? the sync set up.
+Greg Black: I don't think you had the.
+Emilfisch: Okay. Yeah.
+Greg Black: So now we're connected.
+00:50:00
+Greg Black: Go to the chat and…
+Emilfisch: Do you want me to stay in level or…
+Greg Black: ask it about the Piermont Reach hub or the Show me the go to Claude.
+Emilfisch: go to GitHub? Okay. …
+Greg Black: So now I say tell me yeah I guess you have to connect to GitHub.
+Emilfisch: because the seem to have worked. Okay.
+Greg Black: So sign out of this bottom left probably and…
+Emilfisch: So,…
+Greg Black: then settings and GitHub. Disconnect. Yeah.
+Emilfisch: and then it might load the new ones that we added.
+Greg Black: organization. I'm hoping…
+Emilfisch: Yeah, it seems like it just connected again.
+Greg Black: Is there a configure button? All right, let's go to Yeah.
+Emilfisch: Should we try?
+Greg Black: The Yeah.
+Greg Black: If you have access to the organization, it should pop up.
+Emilfisch: Sorry, I keep not mixing my share. So, I'm back in the code, but it seems like these two are still showing up.
+Greg Black: Yeah. Yeah.
+Emilfisch: 
+Emilfisch: Install get …
+Greg Black: Yeah. Try that.
+Emilfisch: all responsibility. Okay, maybe. Yeah, I think we just didn't need okay. …
+Emilfisch: Let's try it so now we can go into Okay,…
+Greg Black: Didn't click that one.
+Emilfisch: and okay,…
+Greg Black: Ask it a question about the dashboard.
+Emilfisch: what is the table for March 204? One thing I've been coming across is a lot of our things pull from QuickBooks and when I pull it into Lovable, it doesn't always match. there's small I mean for the most part it's pretty good,…
+Emilfisch: but there's usually small discrepancies. yeah.
+Greg Black: That's not good.
+Emilfisch: And I think I have no idea. Yeah. Yeah.
+Greg Black: So, yeah, that's something that maybe we can set up a script to check those things, there's a chance that Lovables just got the math wrong, right? So,…
+Emilfisch: Or somehow it's like how it's displayed mixes up. I could while this is loading maybe Okay.
+Greg Black: no, let's go to connections and try and connect QuickBooks.
+Emilfisch: Okay. As a connector,…
+Greg Black: Yeah.
+Emilfisch: we can just do own. I have a developer account, so maybe we can just do a custom one. This surprises me though. Does QuickBooks not connect with cloud? I guess it's like I don't know.
+Emilfisch: Online it says that they do connect, so I'm a little bit.
+Greg Black: Is it QuickBooks?
+Greg Black: There's the Air Table connection, right? Do you guys hear Air Table? Are you saying that?
+Emilfisch: I would say Mike is more familiar. I'm more on the QuickBooks side of things, I would say. But It's super sweet.
+Greg Black: Got it. for QuickBooks.
+00:55:00
+Emilfisch: seems like you can kind of should I make a custom connector or is that going to be pretty complicated? Actually, I have this stuff pretty available.  Yeah, cuz I have a Okay. Okay.
+Greg Black: So yeah, I would just connect as many things as you can. it seems like I don't want to scare you with a terminal window, which is what I use. And if you can start to learn the capabilities through the web version here, I think that's almost just as good. from now and…
+Greg Black: we'll try and work out a workflow of how I can create some code, generate some stuff templates for you guys and you can use them in the web version. so is this QuickBooks?
+Emilfisch: Okay. Yeah,…
+Emilfisch: this is like the …
+Greg Black: No. Gotcha.
+Emilfisch: this is QuickBooks developer program and this is where I go to connect API or client secrets and client keys.  But honestly, if I'm looking at find a charger, I'm looking at what it's requesting. seems it's the client ID and client secret. I guess I can just connect it to this app, right?
+Emilfisch: I don't need to I think I could just go into wait…
+Emilfisch: but okay I'm kind of rambling here but these two I think are just production keys kind of which maybe I shouldn't be showing you but …
+Greg Black: Yeah,…
+Emilfisch: but I could show credentials and this is a client ID and client secret and then I could put those into quad.
+Greg Black: but I think it's a little Search into it.
+Emilfisch: Yeah, that's what I'm a little worried about as well.
+Greg Black: Maybe there's a connector into it.
+Emilfisch: That's smart. Also, the URL thing, I was a little confused.
+Greg Black: Weird. Yeah.
+Emilfisch: God, they have so many. You'd think they would Yeah, not sure.
+Emilfisch: When is this remote MCP?
+Greg Black: MCP it's like a toolkit.
+Greg Black: It's like an API toolkit.
+Emilfisch: Where would I find that on this portal?
+Greg Black: So it's just a remote toolkit server.
+Greg Black: So no Book MCP connector exists. export from QuickBooks, paste into claude. That's not good.
+Emilfisch: What about this custom?
+Greg Black: Yeah, let's got to be an open source.  Seems like that's the most prominent, most
+Greg Black: popular QuickBooks MCP server. So essentially people can just create their own MCP server code.
+Greg Black: Do you Yeah. So, I would create open the link I just sent you.
+Emilfisch: on their developer program.
+Emilfisch: You sent my email or in our chat.
+Greg Black: Right here in the chat.
+Emilfisch: Perfect. I'm not seeing it chat with everyone.
+01:00:00
+Greg Black: Not seeing this.
+Emilfisch: Can you get my chat?
+Greg Black: Did you see my response? No. Why isn't that showing?
+Emilfisch: No, I'm not unfortunately.
+Greg Black: That's really weird. go to Google,…
+Emilfisch: MCP server GitHub.
+Greg Black: type in QuickBooks MCP server. GitHub. Yeah.
+Greg Black: And there should be the one by ashit or it's the QuickBooks online MCP server with hyphens in between.
+Emilfisch: Sorry. Would you describe that one more time?
+Greg Black: You want to share your Google?
+Emilfisch: Could Yeah. Is it fine if I'm on Microsoft? I just don't think I can share on Google Chrome.
+Greg Black: It's fine.
+Emilfisch: Okay.
+Greg Black: That's fine.
+Greg Black: Go to do GitHub QuickBooks MCP server.
+Emilfisch: Or we could …
+Greg Black: That's it.
+Emilfisch: perfect. Whoa.
+Greg Black: So click that one. Is it?
+Emilfisch: Sorry. Pick GitHub. …
+Greg Black: It always opens up in a new tab.
+Emilfisch: sorry. I keep free switch.
+Greg Black: You're good.
+Emilfisch: Okay.
+Greg Black: It's fine. so then you go down. I think there should be There you go. So, this is going to require Yeah.
+Emilfisch: Go into Create a new app. Okay. I have all this. we're just add this to the …
+Emilfisch: so I have the ID cont secret. I need to add this.
+Greg Black: go back to claude and…
+Emilfisch: Yeah, please.
+Greg Black: ask it to run npm install. So yeah, so we're gonna need you probably already have NPM, but yeah,…
+Emilfisch: You mean in the code or just the chat?
+Greg Black: ask it to run npm install.
+Emilfisch: MPP, sorry. MVP.
+Greg Black: We can just ask NPM.
+Greg Black: So Nancy Pramik.
+Emilfisch: Just like this. Okay.
+Greg Black: So this is a node package manager and node is just a very popular JavaScript package manager.
+Greg Black: So it helps us download packages. Yeah.
+Emilfisch: Or so we're doing this instead of doing the custom connector.
+Emilfisch: Is that kind of the idea?
+Greg Black: So, what's going to happen is could probably go back to so number three,…
+Greg Black: if we go to the GitHub the instructions you have Are there …
+Emilfisch: Yeah. So there's setup option one,…
+Emilfisch: option two, and option three.
+Greg Black: we
+Greg Black: This is the problem with MCP.
+01:05:00
+Greg Black: We actually have to spin up a separate server and we have to write some code and then you need to install Docker. yeah.
+Emilfisch: God,…
+Emilfisch: I don't know what any of that means. Also, I don't want to keep you too long, so we can sign off whenever.
+Greg Black: Yeah, we'll do five more minutes.
+Emilfisch: Would going through option one like work better then we don't have to set up all the rest of that.
+Greg Black: No, both of them. this GitHub act it's custom code. So, yeah,…
+Emilfisch: Okay. Yeah.
+Greg Black: it's not the best option for what we want.
+Greg Black: Skills into a quick books.
+Greg Black: You still can't see my chat.
+Emilfisch: My dragon.
+Emilfisch: No, but it's weird. You can see mine. I don't really know what to make of that.
+Greg Black: Yeah. …
+Emilfisch: 
+Emilfisch: They were not in the same organization. And if you created the meeting,…
+Greg Black: maybe it's saying maybe
+Emilfisch: we just have a Slack channel or you can mail it any link.
+Greg Black: Yeah, let me just email out to here real quick.
+Greg Black: So this should be pretty high leverage if you can. whatever happened to the answer in Okay.
+Emilfisch: Yeah. Yeah.
+Emilfisch: I was just looking at it. It seems And it's still running the MVPM. Seems like it was blocked.
+Greg Black: Okay, that's fine. Did it answer properly about the lovable
+Emilfisch: Okay. …
+Greg Black: Didn't we ask a question about
+Emilfisch: about it did but that was before I can sound Nothing has changed. Interesting. wait. This was Superbase, I think is this the chat you're referencing and…
+Greg Black: A ask it…
+Emilfisch: the question about lovable or is that another was it actually in lovable  That's so interesting. Yeah.
+Greg Black: if it can find which GitHub repos do you have access to? So, it looks like we need to connect it here as well because this is cloud web and you have cloud code or it says it's connected. That's weird. Maybe just refresh the chat. Yeah.
+Greg Black: Nice. …
+Emilfisch: settings. maybe it's something more in the settings that the chat isn't connected to.
+Greg Black: enable in chat connectors.
+01:10:00
+Emilfisch: Okay.
+Greg Black: Go to quad code.
+Greg Black: Yeah. …
+Greg Black: if that has ask the same question there.
+Emilfisch: Yeah, I mean it seems like we could switch…
+Emilfisch: which was the question just like what we're  channel screen.
+Greg Black: Which GitHub access to?
+Greg Black: So yeah, that's right. Ask it do you have access to the superbase back end?
+Greg Black: nice. …
+Greg Black: you go back to Subabase. Are you logged into Suba Base? I think we were,…
+Emilfisch: Yeah, I am.
+Greg Black: We're looking for that OVAT project.
+Emilfisch: Yep. OV18.
+Greg Black: What would be a T is the So, click on either one of these.
+Emilfisch: Okay. …
+Greg Black: Go to the top. There's connect. these probably aren't in the URL. Does it say OVAT?
+Emilfisch: no. This might just be the wrong.
+Greg Black: So, unless the URL says OVAT, it's probably not the right one.
+Emilfisch: Yeah, this doesn't say either.
+Greg Black: So, Mike has the Superbase login credentials. he said there's another one though.
+Emilfisch: I'm in his account. right. Exactly. or…
+Emilfisch: 
+Greg Black: So he'll have to provide those credentials for us or…
+Greg Black: yeah,…
+Emilfisch: share access with me.
+Greg Black: I think the credentials are what we're going to need.
+Emilfisch: It's still running the MPM install.
+Greg Black: It's going to be I didn't Yeah,…
+Greg Black: maybe stop that's just a package manager that allows you to install coding libraries. but not essential today.
+Emilfisch: What is the mpm?
+Emilfisch: Cool. Yeah.
+Greg Black: All right. Final thing. This intuitit skill.
+Greg Black: I think did I send it?
+Greg Black: Let's Yeah, I sent it to you in email.
+Emilfisch: Perfect. Oops.
+Emilfisch: Go back. Nice. Yeah, I have it.
+Greg Black: Go ahead and just copy that link and throw it into Claude code. and then ask it if can you set up this skill for me? You may want to create a sandbox environment for QuickBooks.
+01:15:00
+Emilfisch: No.
+Greg Black: Do you know how to do that? Let's find out how to do that.
+Emilfisch: In QuickBooks or the developer program because developer program has a development sandbox right here.
+Greg Black: Yeah. …
+Greg Black: if you're just going to want to save that URL and…
+Emilfisch: And should I run this first?
+Greg Black: we'll use Yeah.
+Emilfisch: And…
+Greg Black: So Claude should be able to pull down that URL and help us install it.
+Emilfisch: so can you help set the skill for me? And then here is the link to the sandbox version on the init develop program.
+Greg Black: Yeah, it doesn't need the link yet.
+Emilfisch: I don't know if it seems like this is all link. Okay. Okay.
+Greg Black: It's fine. You can just Yeah,…
+Emilfisch: Run this first. Okay.
+Greg Black: see what it says.
+Greg Black: So hopefully it'll ask for the keys and…
+Greg Black: you'll give it to them and then it should have access to the sandbox. Is there any sandbox right now? Probably Where do you see sandbox?
+Emilfisch: Sweet. …
+Emilfisch: what do you mean what would be in the sandbox?
+Greg Black: Let me make it bigger. Okay, great.
+Emilfisch: This has been the sandbox when I've used it in Lovable and the production has been like the live. so Yeah.
+Greg Black: So, the sandbox will have its own name or URL, right?
+Emilfisch: Or it has its own client secret and client ID that's unique from the Okay.
+Greg Black: Okay, perfect. So,
+Greg Black: How's it going?
+Emilfisch: It's just pattern.
+Greg Black: It's weird. It's not a good sign that it's not helping, not working. go ahead and…
+Emilfisch: Mhm. Okay.
+Greg Black: download Cloud Code on desktop over there in the bottom left.
+Greg Black: Yeah, install that. I don't know if you need Slack, but maybe the desktop will have a better connection than the web.
+Emilfisch: …
+Emilfisch: do I I have the app right?
+Greg Black: You have quad desktop.
+Emilfisch: But I don't know if I have called. Sorry, this sharing thing is pretty brutal.
+Greg Black: What you can do is share full screen.
+Emilfisch: God, I should have started with that. I don't know if it'll let me do that, unfortunately. There we go. And then this should be the code.
+Greg Black: Go ahead So it's connected, right? But we ask the same question.
+Emilfisch: Yeah.
+Greg Black: Maybe we have a better in here.
+Emilfisch: So, it doesn't seem like it matched. okay. Let me rerun I'll cancel it on quad code and then rerun it here. that's and
+Greg Black: Yeah, you just say,…
+Emilfisch: It's just the URL of what you sent me. Is that right?
+01:20:00
+Greg Black: "Yeah, …
+Emilfisch: Nothing more specific.
+Greg Black: you can sometimes I just throw the URL in and it goes and fetches it." Yep,…
+Emilfisch: Okay. Yeah.
+Greg Black: that's pretty good. It's weird how it sent the text. It didn't send the URL. It's weird. But it should be able to find that. I don't know why it's taking so slow.
+Greg Black: potentially,…
+Emilfisch: Could it be my Wi-Fi is usually not?
+Greg Black: but the video is streaming fine.
+Emilfisch: Yeah, I know. Wi-Fi seems pretty  which another's that retry connection.  Yeah.
+Greg Black: So, if we get this working right, you could potentially have clients come in here and just chat with their data if it's all connected for them.
+Emilfisch: Sometimes I'm a little dub dubious about the or…
+Emilfisch: I wonder if a client wants to chat with their data rather than just look at a dashboard. I almost feel like the visual aesthetic sometimes is just a little easier for people to I don't know…
+Greg Black: True, true.
+Greg Black: Yeah. No, I agree. I think…
+Emilfisch: but it's nice interacting with the LLM too. So yeah.
+Greg Black: if you're familiar with your own dashboard, you get comfortable and then that's easier. But I'll still want the opportunity to ask it a complex question, And most dashboards don't do that.
+Emilfisch: Yeah. just Mhm.
+Greg Black: All right.
+Greg Black: Maybe you try this again later sometime tonight.
+Emilfisch: Yeah. Yeah.
+Greg Black: But is that the right repo?
+Emilfisch: Okay, that seems like Yeah.
+Greg Black: You see how it says main claude march AR calculation. I wonder if that's probably the you can try.
+Emilfisch: Should I start a new chat maybe? new session.
+Greg Black: Just throw the link in there.
+Emilfisch: Do I like not even click? Should I try to Yeah.
+Greg Black: Do you have the URL?
+Emilfisch: Yeah, I just lost it.
+Emilfisch: There we go. Should I put it into anything like kind of what you're saying about the repo? yeah,…
+Greg Black: Why can't it paste the actual URL?
+Greg Black: It keeps doing this hyperlink. It's so weird.
+Emilfisch: I could ask claw to make a URL, I guess. okay.
+Greg Black: All right. That's okay. But if it wakes up it maybe can help us set that up with that and…
+Emilfisch: Okay.
+Greg Black: we can maybe do that next time as well. But I'll manage connectors.
+Emilfisch: I don't even see HubSpot as one of the connections, which is kind of interesting. I don't know if GitHub is right here.
+Greg Black: So there's your skills.
+Greg Black: Did you see that?
+Emilfisch: Damn it. …
+Greg Black: It's all good. I think so.
+Emilfisch: I Did it close out on me? I think it did. But that's good for me know. I'll play around with that more. maybe we'll call it a day for now.
+Greg Black: Yeah, let's call it a day. I'll have the AI transcription give us a rundown of what we need to do. we did create that organization so we can connect there.
+Greg Black: I can connect.
+01:25:00
+Greg Black: We'll want Michael to give us the keys or give you the username and password and then you can share the keys with me somehow. Do you guys use one password or anything? Okay.
+Emilfisch: Okay. Yeah,…
+Emilfisch: we do really like it.
+Greg Black: So, maybe getting that organized with some keys.
+Emilfisch: Okay. With mic.
+Greg Black: Yeah. And…
+Emilfisch: Okay,…
+Greg Black: You can share specific ones with me. And then you can just send it to me whenever you're ready. I'll try and do that. and then probably same time next week.
+Emilfisch: perfect. Yeah, that sounds great.
+Greg Black: Sweet,…
+Emilfisch: Okay, thanks,…
+Greg Black: We'll take care. Bye.
+Emilfisch: 
+Emilfisch: G Appreciate it. Yeah. Kiss.
+Meeting ended after 01:25:51 👋
+This editable transcript was computer generated and might contain errors. People can also change the text after it was created.

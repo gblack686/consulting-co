@@ -1,0 +1,32 @@
+{
+  "tools": [
+    { "name": "Claude Code", "api": true, "status": "Active — Michael has it installed", "priority": "primary" },
+    { "name": "Lovable", "api": true, "status": "Active — Emil building Piermont dashboard", "priority": "high" },
+    { "name": "Airtable", "api": true, "status": "Active — multiple client workflows", "priority": "high" },
+    { "name": "QuickBooks", "api": true, "status": "Active — Piermont integration target", "priority": "high" },
+    { "name": "ShipStation", "api": true, "status": "Needs setup — Piermont shipment requests", "priority": "medium" },
+    { "name": "Google Workspace (Gmail, Drive, Docs)", "api": true, "status": "Active", "priority": "high" },
+    { "name": "PowerBI", "api": false, "status": "Active but limiting — no custom buttons/logic", "priority": "low — replacing" },
+    { "name": "n8n", "api": true, "status": "Used a little by Michael", "priority": "low" },
+    { "name": "AWS", "api": true, "status": "Not yet — Greg recommending per-client accounts", "priority": "high" },
+    { "name": "LinkedIn", "api": true, "status": "Mentioned as agent use case", "priority": "medium" }
+  ],
+  "channel": "Claude Code (CLI + chat interface)",
+  "channel_notes": "Michael and Emil are technical — no WhatsApp/Telegram. Claude Code is primary interface. Chat UI to be built for Piermont client-facing portal.",
+  "model_recommendation": {
+    "tier": "medium",
+    "brain": "openrouter/google/gemini-2.0-flash-001",
+    "muscle": "openrouter/anthropic/claude-3-5-haiku",
+    "notes": "B2B firm with multiple clients — slightly heavier workload than solo creator, but not enterprise-scale yet"
+  },
+  "budget": {
+    "per_client_estimate": "$25-50/month",
+    "fish_group_internal": "$50-100/month",
+    "total_estimate": "$100-200/month all in"
+  },
+  "aws_strategy": {
+    "recommended": "One AWS account per client",
+    "benefit": "Client pays own bill, isolated environment, AWS partner program eligibility",
+    "partner_program": "Fish Group may qualify for AWS partner funding — Greg to send details"
+  }
+}

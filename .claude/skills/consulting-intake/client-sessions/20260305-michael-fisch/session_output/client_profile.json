@@ -1,0 +1,33 @@
+{
+  "name": "Michael Fisch",
+  "email": "mike@piermontbrands.com",
+  "business": "Fish Group",
+  "business_type": "Accounting & Finance Consulting",
+  "location": "Jersey City, NJ",
+  "timezone": "EST",
+  "device": "Laptop (Claude Code installed)",
+  "associates": [
+    {
+      "name": "Emil",
+      "last_name": "Caplow",
+      "role": "Team member / co-builder / primary hands-on",
+      "email": "ecaplow@fischgroup.com",
+      "github": "Fisch-Group org member",
+      "notes": "Primary builder. Uses Lovable for frontend, QuickBooks developer program access. Personal Claude subscription (basic plan). Located in Jersey City office."
+    }
+  ],
+  "session_type": "60 Minute Agent Build",
+  "session_date": "2026-03-05",
+  "referral": "High school friend of Greg (travel soccer teammates)",
+  "company_size": {
+    "us_team": "Michael + Emil + fractional CFOs",
+    "overseas": "8-10 full-time bookkeepers and controllers",
+    "clients": 15
+  },
+  "primary_focus": "Fish Group internal workflows + Piermont Brands as test case client",
+  "key_clients": [
+    "Piermont Brands (Chica Cheetah + Caya brands)",
+    "Gary's (family stores \u2014 retail, has Philippines CS team)",
+    "Drop Fitness"
+  ]
+}

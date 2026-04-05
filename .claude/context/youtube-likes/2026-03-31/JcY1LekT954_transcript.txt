@@ -1,0 +1,681 @@
+[0:00] So Boris Jurnney, the guy who actually
+[0:01] built Claude Code, just dropped his
+[0:03] latest tips and tricks on how to get the
+[0:06] most out of it. And given that it's
+[0:07] gotten more than a million views in the
+[0:09] last 24 hours, I went through each and
+[0:11] every feature that he mentioned. So in
+[0:13] this video, I'm going to walk you
+[0:14] through 15 different features that you
+[0:15] may or may not know how to use or not
+[0:18] use to the full potential. But I'm not
+[0:19] just going to conceptually walk you
+[0:21] through these concepts, but actually
+[0:22] show you how you can practically apply
+[0:24] them. So if you watch this video till
+[0:26] the end, you'll be one step closer to
+[0:27] mastering Cloud Code. Let's get into it.
+[0:29] So, from these 15 core features and
+[0:32] concepts, I'm going to breeze past the
+[0:34] ones that are pretty straightforward and
+[0:35] double click into the ones that are a
+[0:37] little bit more nuanced.
+[0:44] So, many of you might know you can
+[0:45] access Cloud Code on your phone, but
+[0:48] most people don't know that they're
+[0:49] constantly trying to achieve feature
+[0:51] parody. So, eventually you can run the
+[0:53] majority of cloud code using a terminal
+[0:56] through the Cloud Code app. And despite
+[0:58] building my own personal assistant I
+[0:59] called Claudeclaw that I showed on this
+[1:01] channel a few weeks ago, I still use the
+[1:03] Claude Code app on my mobile because
+[1:06] it's helpful to see things like bash the
+[1:08] actual code executions. If you're using
+[1:10] something like an open claw or something
+[1:12] derivative of that, if you can't see
+[1:14] what's happening and you're doing very
+[1:16] code inensive tasks, even if you're not
+[1:18] the one coding, then you're missing out
+[1:19] on some of the transparency. A couple
+[1:21] key things to note is that to make the
+[1:23] use of this app, then you'd want to
+[1:25] create a GitHub repository that you log
+[1:27] into so that all your code lives in one
+[1:29] place. So you can push it from one end
+[1:31] and then pull it from the other. And
+[1:32] when it comes to clicking on this code
+[1:34] tab at the bottom left hand side of the
+[1:36] mobile, you can actually go and click on
+[1:38] plan mode. So you can do a lot of the
+[1:40] planning on the go and maybe push that
+[1:42] planning to your GitHub repo, then pull
+[1:45] that from an existing session on your
+[1:46] desktop and continue executing from
+[1:48] there.
+[1:54] So tip number two is one thing that I
+[1:56] have underused greatly which is
+[1:58] teleport. And the whole point of
+[1:59] teleport is that you can have an
+[2:01] existing unsaved session on your cloud
+[2:03] code on your app that you can just
+[2:05] resume from a desktop computer. So let's
+[2:08] say I executed this prompt for my mobile
+[2:10] device and I just said read the
+[2:11] following website and make the changes
+[2:13] to the hero section. Make sure you have
+[2:15] a better call to action etc. Let's say I
+[2:18] am resuming this session and I'm getting
+[2:20] home and I want to hop onto my laptop.
+[2:22] All I have to do is nothing from the app
+[2:24] itself. I just have to go and write
+[2:26] claud- teleport and it'll be able to
+[2:29] look at my existing sessions in the
+[2:31] cloud. And you can see right here 2
+[2:33] minutes ago update hero section for
+[2:35] spring promotion. And if we do enter
+[2:38] right here, we'll be able to go through
+[2:40] and this was the exact conversation that
+[2:42] we had on the mobile device.
+[2:48] Now tip three is very much related to
+[2:50] teleport. But instead of going from your
+[2:52] mobile device to your desktop, you can
+[2:54] go from your desktop to your mobile
+[2:56] device. So how you would do that is if
+[2:57] you go to your terminal and you do /
+[2:59] remote control. This is another feature
+[3:02] that I discounted. But now that I
+[3:03] understand where and when to use
+[3:05] different types of tools like when to
+[3:06] use dispatch, when to use remote
+[3:08] control, when to use my own
+[3:09] configuration on my telegram, now I
+[3:11] understand that when it comes to
+[3:13] monitoring a task that's a lot heavier
+[3:15] that you want to be able to navigate and
+[3:17] see what are all the logs and the
+[3:19] details happening right now, remote
+[3:22] control is an awesome way to take an
+[3:23] existing terminal where all you want to
+[3:25] do is narrowly focus on that task and
+[3:28] have it on the go. But one additional
+[3:29] nugget from Boris is beyond remote
+[3:31] control on its own, you can actually put
+[3:33] in quotes the name of the session
+[3:35] because usually if I pull up my mobile
+[3:37] phone right here, you can see that some
+[3:38] of these are basically the name of the
+[3:40] task or the first thing that's being
+[3:42] asked of that chat. So if I move my
+[3:44] phone to the right for a second, you'll
+[3:45] see that right here I've called this
+[3:47] session website redesign and we have the
+[3:50] exact same thing popping up on mobile.
+[3:52] Otherwise, we'd get confused. Let's say
+[3:54] you had five or six different remote
+[3:56] control sessions. Now you can name each
+[3:58] one, something you can always remember,
+[4:00] especially if you're busy on the go. Now
+[4:01] the next tip is definitely more powerful
+[4:04] and this is how Boris and his team runs
+[4:06] Claude code on what's called autopilot
+[4:08] mode where they take advantage of two
+[4:10] newer features. One of them is called
+[4:12] /loop and the other is called /
+[4:14] schedule. The core difference is sloop
+[4:17] works as long as your terminal session
+[4:19] and your computer is on whereas schedule
+[4:22] can be written in the cloud and executed
+[4:24] in the cloud. But the core idea is this.
+[4:26] You can execute some form of request
+[4:28] like check my inbox and then every 5 10
+[4:31] 30 minutes you just allocate what is the
+[4:33] time interval to re-execute said task.
+[4:36] So Boris is using it to babysit his code
+[4:39] in his own words every 5 10 minutes. So
+[4:41] if we pop into the terminal, let's say
+[4:43] we have a series of hypothetical files
+[4:45] here. So we have brand assets, we have
+[4:47] client documents, we have proposals, we
+[4:49] have reports, we have templates. All of
+[4:51] them kind of feed into this demo. And
+[4:53] let's say our first prompt was the
+[4:54] following. Read through all the client
+[4:56] folders in clients and give me a quick
+[4:58] summary where each project stands. So
+[5:01] this will walk through and then we can
+[5:02] do the following. For this one, we could
+[5:04] do / loop and right after sloop, the
+[5:07] syntax is to put the time interval as to
+[5:09] when it should execute. Check my email
+[5:12] inbox. Draft professional responses for
+[5:14] anything that needs a reply. Save drafts
+[5:17] but don't send anything. And if we
+[5:19] execute this now, this will naturally
+[5:21] try to invoke a series of skills on my
+[5:23] computer. But so long as this terminal
+[5:25] session and my computer are open, it
+[5:27] should be able to go on this autopilot
+[5:29] mode. And you can see right here, it
+[5:30] invokes something called cron create.
+[5:32] This will go and execute this every 30
+[5:35] minutes. Like we mentioned, this is the
+[5:36] job ID. This is the interval. This is
+[5:39] the task. And this is when it auto
+[5:41] expires unless you cancel it sooner.
+[5:48] Now, next up are one of my favorite
+[5:49] features of Cloud Code and the ones that
+[5:51] I mainly teach in all the workshops we
+[5:53] do at different companies, which are
+[5:55] hooks. And if you still don't understand
+[5:56] the concept of hooks, you can think of
+[5:58] it as a series of rules that
+[6:00] automatically fire based on an event. If
+[6:03] you want it layman's terms, then imagine
+[6:05] you have your phone. Let's say you have
+[6:06] an iPhone and before you go to bed, it
+[6:08] automatically goes into sleep mode or do
+[6:11] not disturb. Technically, that's a hook.
+[6:13] That's a hook based on a time. Let's say
+[6:15] 10 p.m. is your bedtime or 11:30. Then
+[6:18] that would fire and then execute your
+[6:20] phone to not have notifications during
+[6:22] that sleeping time. And then in the
+[6:24] morning when you wake up and it sees
+[6:25] that you're actually using your phone,
+[6:26] you're sending messages, it asks you, do
+[6:28] you want me to remove this mode and go
+[6:30] into the normal mode where we turn off
+[6:32] your alarm and everything else is just
+[6:33] normal. Hooks work in exactly the same
+[6:36] way. So you can attach a hook to a
+[6:37] session start before any particular
+[6:39] action or tool use or after a tool is
+[6:42] used, after any or every edit or after a
+[6:46] session even ends. So you have so many
+[6:48] checkpoints where you can attach a hook.
+[6:50] So one example of a practical use case
+[6:52] of a hook is most people rely on
+[6:54] something like a claude MD file to auto
+[6:57] inject all of their preferences. And you
+[6:59] can use it to say always learn and
+[7:01] understand our brand guidelines before
+[7:04] we create any new asset. But another way
+[7:05] you can do this is to attach a hook. And
+[7:08] the way you can attach it is say set up
+[7:10] a hook so that every time I start a new
+[7:12] session in this project, you
+[7:14] automatically read the brand guidelines.
+[7:16] So you're forcing the tool calls of
+[7:18] cloud code to read this and have it in
+[7:20] context each and every time. And then
+[7:23] you can also do the following where you
+[7:24] tag the claude code guide agent. This is
+[7:26] my favorite thing to do from a syntax
+[7:28] standpoint because at the end of the
+[7:30] day, a hook is just a series of code in
+[7:32] what's called a JSON file. It's called a
+[7:34] settings.json file. In case you don't
+[7:37] want to get your hands dirty, you're
+[7:38] non-technical. Then you can tag this
+[7:41] specific agent and it will help you do
+[7:42] it with the best syntax. And you can see
+[7:45] it writes this hook to your settings
+[7:47] file directly. And then the next time
+[7:49] you have a session start, then it should
+[7:51] be able to fire said hook and make sure
+[7:53] that it auto injects the same document
+[7:55] every single time. And the core
+[7:57] difference between this versus relying
+[7:59] on cloud code with cloud MD is that this
+[8:01] is deterministic. This will get shoved
+[8:04] into that context window whether cloud
+[8:06] code wants it or not.
+[8:12] Now, the next one is very
+[8:13] straightforward and it's something you
+[8:14] probably have heard of because there is
+[8:16] so much coverage about it, which is
+[8:18] co-work dispatch. And it's essentially
+[8:20] the quote unquote open claw killer wink
+[8:22] wink nudge nudge more so for enterprise
+[8:25] and SMBs where they don't want to get
+[8:26] their hands dirty and all they want is
+[8:28] an experience of having remote control
+[8:30] access to your desktop. So, the way you
+[8:33] set it up is unbelievably
+[8:34] straightforward. All you have to do is
+[8:35] download the Claude Code desktop app.
+[8:38] And then once you navigate to Dispatch
+[8:40] right here, you'll be able to whitelist
+[8:42] a series of access requests. And once
+[8:44] you whitelist everything that's needed,
+[8:45] you can always toggle on things like
+[8:47] keep awake and enable computer use. And
+[8:49] beyond that, initially I was confused
+[8:51] where to derive the most value out of
+[8:53] this. And yesterday I was battle testing
+[8:55] a Chrome extension that I built for my
+[8:57] community. And I realized that if you
+[8:59] use something like claude in Chrome,
+[9:00] let's say we actually go into Chrome,
+[9:03] and this is the Chrome extension I put
+[9:04] together, it couldn't actually
+[9:06] physically click on the extension and
+[9:08] execute requests. I had to basically
+[9:11] click on it myself or have it go and
+[9:14] access things through the network tab
+[9:15] because Claude and Chrome can access
+[9:17] everything within the browser right
+[9:19] here. But using clawed dispatch now
+[9:22] technically it could take control of my
+[9:24] computer in full then open the browser
+[9:27] then physically click on this. So if I
+[9:30] ever wanted it to actually reload the
+[9:31] extension and keep testing itself I
+[9:34] would need to use something like a
+[9:35] dispatch to physically take control of
+[9:37] every single part of my browser. Now
+[9:39] there are probably even more use cases
+[9:41] than this but this is an example of one
+[9:42] that I found actually useful.
+[9:49] Now the next one is something that I
+[9:50] personally use every single day when it
+[9:52] comes to validating anything that needs
+[9:54] a visual inspection layer. So instead of
+[9:57] just checking whatever claude code
+[9:59] builds yourself on let's say local host
+[10:02] or an HTML for website, you can just
+[10:04] tell it recursively go and use the MCP
+[10:08] claude in Chrome to go and review your
+[10:10] settings and review anything that you
+[10:12] built and make sure that it lines up
+[10:14] with our requirements or our
+[10:15] specifications. So the analogy here is
+[10:17] would you trust a chef who can't taste
+[10:19] their own food. So the goal is you have
+[10:21] cla code right? It will then visually
+[10:23] inspect its own creation and then once
+[10:26] it checks it through the claude in
+[10:28] Chrome extension. All you have to do is
+[10:30] download this and then log in through
+[10:32] your cloud code account. Then you have a
+[10:34] very systematic process where cloud code
+[10:36] writes the code then repeats until it
+[10:39] thinks it matches the requirements. Then
+[10:41] it can actually go and check it and see
+[10:43] the result, fix any issues and go into
+[10:45] this recursive loop where typically it's
+[10:47] not endless. Cloud code is somewhat
+[10:49] arrogant where sometimes it will think
+[10:51] that it's done but it's done the 80 of
+[10:53] the 8020. So you might pop in and say
+[10:56] you tested eight out of 10 things but
+[10:58] you didn't actually test it deeply. I
+[11:00] want you to take this specific user
+[11:02] journey or assume that someone's
+[11:04] clicking into each and every nook and
+[11:06] cranny of our app. Go and battle test
+[11:08] that yourself. And one extra bonus
+[11:09] nugget here is if you want to make sure
+[11:11] you're always enabling cloud and Chrome
+[11:13] as well as a series of other things, you
+[11:15] can do slashconfig.
+[11:17] Once you do that, you will see all of
+[11:19] these settings and whether or not they
+[11:20] are set to true, whether you want to do
+[11:22] auto compaction in your sessions,
+[11:24] whether you want to be able to go into
+[11:26] thinking mode by default, everything.
+[11:28] And if you go to the very bottom here,
+[11:30] you will see things at the very very
+[11:32] bottom like enable control for all
+[11:34] sessions as well as claude and chrome
+[11:36] enabled by default. So you'll see here I
+[11:39] have it set to true. So whenever it
+[11:40] makes logical sense for it to invoke and
+[11:43] use said tool, then it always will.
+[11:45] Whereas with something like enable
+[11:46] remote control, right now I have this on
+[11:48] default. So if I set it to true, then
+[11:51] every single session technically that I
+[11:53] spin up will be something that I'll be
+[11:55] able to port into my clawed mobile
+[11:57] phone. Now, one expert tip on this from
+[11:59] yours truly is that if you have multiple
+[12:02] skills or MCP servers that know how to
+[12:04] use browsers in different ways and there
+[12:07] could be some overlap on which one fires
+[12:09] when you ask for a task that involves
+[12:11] this, you can call it out specifically.
+[12:13] So you can say use cloud and chrome for
+[12:15] a very particular task and then it will
+[12:17] know 100% of the time to use it and I
+[12:20] find it personally useful for logging
+[12:22] into pre-authenticated apps or services.
+[12:25] So if I wanted to log into my Gmail and
+[12:28] you use let's say agent browser skill
+[12:30] from versell you'd have to physically go
+[12:32] into the new browser it spins up
+[12:34] authenticate yourself every single time
+[12:36] and then that adds some more burden. So
+[12:38] cloud and chrome is great for quick and
+[12:40] dirty because it's using your actual
+[12:42] browser just creating a separate group
+[12:44] within it.
+[12:50] So the next feature is also very
+[12:51] straightforward and it's also back in
+[12:53] the claude desktop app and instead of
+[12:56] cla co-work or claude code this one
+[12:58] works primarily in claude chat where you
+[13:01] have a chat on the lefth hand side and
+[13:03] instead of just giving you some form of
+[13:05] HTML file for you to render on your own
+[13:07] you can actually get a preview. So, if
+[13:09] we pop into the Claude desktop app,
+[13:11] you'll see here I've asked for a brand
+[13:13] new landing page. And instead of just
+[13:15] cranking out a file, then we can
+[13:17] actually click on this sidebar right
+[13:19] here. And when we click on the sidebar,
+[13:21] we can click on this file. We'll be able
+[13:23] to get a live preview of the site. And
+[13:25] the cool thing is, given the name live
+[13:27] preview, as you're making changes, you
+[13:29] can actually see it changing in real
+[13:31] time. So if you want the light version
+[13:33] of seeing everything and you don't feel
+[13:35] like opening up cloud code asking it to
+[13:37] spin up a local host on your computer
+[13:39] then to preview it and you just want to
+[13:41] draft something then this is an amazing
+[13:43] way with the path of least resistance.
+[13:50] Next up is a feature that I've also
+[13:51] reviewed on this channel called slash
+[13:53] branch and it comes very handy when you
+[13:56] have a little fork in the road where you
+[13:58] want to decide do I go path A or path B.
+[14:01] but you don't want to risk path A in
+[14:02] case that is the right path, but you
+[14:04] feel like physically side questing to
+[14:06] investigate an additional idea or a
+[14:09] different take. So to put this into
+[14:10] action, let's say I have the following
+[14:12] prompt and I say something like, I need
+[14:14] your help to refine a proposal for a
+[14:17] specific client and these are the
+[14:18] addresses of the files. I break down
+[14:20] what the situation is to give it
+[14:22] context. I tell it exactly what I want
+[14:24] the proposal to look like for what
+[14:25] denomination and a series of criteria
+[14:28] here on how it should rewrite it. So
+[14:30] let's assume it executed that. Now I ran
+[14:32] this before this video just so that you
+[14:34] wouldn't have to watch me watch cloud
+[14:36] code crank it out. And let's assume we
+[14:38] get some version and this goes through
+[14:40] the current state of things. But let's
+[14:42] say I want to experiment with really
+[14:44] aggressive pricing, but I don't want to
+[14:46] flood that in my context window and have
+[14:49] the language model start getting
+[14:50] confused between our current rate versus
+[14:52] this very aggressive different possible
+[14:55] reality. So, in order for us to side
+[14:57] quest, we could do something like branch
+[15:00] very aggressive pricing versions.
+[15:05] So, now we're in a separate branch where
+[15:07] I can ask for the exact same proposals
+[15:09] with very different structures of
+[15:11] pricing. And the good part of this is if
+[15:12] I review this and it looks like this is
+[15:14] the way to go. I can now purely go down
+[15:17] this path and leave our old conversation
+[15:19] in a way where as you can see here we
+[15:21] can always resume it by entering
+[15:23] claude-r with this ID in any terminal.
+[15:31] Now the next one is the simple useful
+[15:33] and very applicable slash by the way.
+[15:36] And this one doesn't need too much
+[15:38] information. All we have to do is enter
+[15:40] some form of prompt and while said
+[15:41] prompt is executing we can just do slash
+[15:44] by the way. what are our numbers for Q1?
+[15:49] And then this allows us to multitask in
+[15:51] a way where we're not flooding the
+[15:52] context window of the main session and
+[15:55] we can just get all the information as
+[15:57] we go. We can click on space and keep
+[15:59] the conversation flowing as we need it
+[16:01] to.
+[16:07] Now, this next tip is typically one that
+[16:09] non-technical people run away from
+[16:11] because it sounds very intimidating, but
+[16:13] conceptually it's actually unbelievably
+[16:15] simple, which are using work trees and
+[16:18] how to actually invoke them. Now, work
+[16:20] trees, if the analogy of a tree isn't
+[16:22] helpful, you can think of it as having
+[16:24] three separate desks with three separate
+[16:26] agents with three separate types of work
+[16:29] and documents. The goal is each one can
+[16:32] actually work mutually exclusively
+[16:34] without having a risk that multiple
+[16:36] agents are working on the exact same
+[16:38] file or trying to edit or write to the
+[16:40] same file at the same time. So if we
+[16:43] think of it as different lanes with
+[16:44] different desks with different agents
+[16:46] and different work then lane one could
+[16:49] be writing the client proposal, lane two
+[16:51] could be website redesign and lane three
+[16:53] could be financial reporting where all
+[16:55] of these files shouldn't have any form
+[16:57] of overlap. Now, one thing to talk about
+[16:59] it and another thing to show it. So, the
+[17:01] syntax is the following. You would write
+[17:03] claude. You don't need this part. I'm
+[17:05] just running this in YOLO mode. And then
+[17:07] you do dashw. This stands for work tree.
+[17:10] This tells claude that you are executing
+[17:12] a separate desk with a separate set of
+[17:14] work. And in this case, we're just
+[17:16] basically assigning it what this work
+[17:18] tree is about. So, in this case, it's
+[17:20] about proposal for Acme Company. And
+[17:22] beyond that, there's really not much to
+[17:24] it. You just prompt as you normally
+[17:25] would. So in this case, I would just say
+[17:27] write a revised proposal for Acme Corp
+[17:29] based on their project notes in this
+[17:31] folder. They're now in phase 2. Propose
+[17:33] an upsell to enterprise tier for phase
+[17:36] three. And again, exact same concept for
+[17:38] another task. So you'd enter the exact
+[17:40] same syntax right here. You do the -w
+[17:43] for a brand new desk work tree, whatever
+[17:46] concept makes sense. And now you have a
+[17:48] separate lane called website update. And
+[17:50] this will be designated to adding
+[17:52] testimonials to your website at the very
+[17:54] bottom using real client names from our
+[17:56] client folder. And then while this is
+[17:58] running, you can also run this one which
+[18:00] is -w quarterly report. Read the reports
+[18:04] from this folder and create a
+[18:05] professional Q1 board report that looks
+[18:08] at X Y and Z and then execute it. So if
+[18:11] you've historically been intimidated by
+[18:13] this concept, be intimidated no more.
+[18:15] Really easy to execute and very useful.
+[18:23] So this next tip should be taken with a
+[18:25] gigantic grain of salt and a lot of
+[18:27] caution especially if you're very token
+[18:29] conscious of your rate limits and
+[18:31] everything that's now happening with all
+[18:33] these different usage capacities. So if
+[18:35] work trees can spin up three clouds at
+[18:37] once at different desks technically
+[18:39] batch can spin up 5 10 15 30 at once. So
+[18:43] slashbatch has a higher emphasis on
+[18:46] breadth of execution versus depth and
+[18:49] thoughtfulness of how to derive the most
+[18:51] of each singular agent. So the way it
+[18:53] works is if we pop into the terminal,
+[18:55] you can open a session and do the
+[18:57] following. Do slashbatch then after
+[18:59] batch you have to enter some form of
+[19:01] request. So you could say update the
+[19:03] hourly rate from 150 to 175 across all
+[19:07] proposal files in the proposals folder.
+[19:09] Keep existing formatting. recalculate
+[19:11] all line items totals and the grand
+[19:14] total in each proposal. So if we send
+[19:16] this over I will show you what happens.
+[19:18] So now it enters plan mode and in plan
+[19:20] mode it researches and sees basically
+[19:22] what is the scope of this task. So now
+[19:25] it's going through each and every
+[19:27] possible proposal that we have in our
+[19:29] workspace. Once it finishes its plan it
+[19:32] goes through and it breaks down all the
+[19:34] context, all the formatting conventions
+[19:36] that need to change, what's going to
+[19:38] change in each and every proposal. So it
+[19:40] has a draft of that and then at the very
+[19:41] bottom it walks through the worker
+[19:44] instructions template. Each worker that
+[19:46] it will spin up receives the specific
+[19:48] file, the exact old to new values for
+[19:51] each line item and the new grand total.
+[19:53] So now if you go onto YOLO mode and
+[19:56] execute it, it will employ as many
+[19:58] agents as it wants as if it's venture
+[20:01] capital funded and it can hire whoever
+[20:03] whenever to execute the task. So if you
+[20:05] are rich in tokens, feel free to go for
+[20:08] this. But if you are airing on the side
+[20:10] of caution, you're being frugal, I would
+[20:12] avoid this, comma, for now.
+[20:20] Now, the next recommendation is one that
+[20:22] I barely use and I don't really see many
+[20:24] use cases, at least for myself to use,
+[20:26] but just in case it's useful for you,
+[20:28] it's basically adding what's called dash
+[20:30] d-bear. and d-bear will allow you to run
+[20:34] a command without having claude always
+[20:36] inject the claud the skills all of the
+[20:39] additional burden and bloat that comes
+[20:41] into each and every session when you add
+[20:43] d-bear it will circumvent all of that
+[20:46] and just execute the request you have in
+[20:48] seconds so just in case you thought I
+[20:50] meant bear the animal you would actually
+[20:52] write it claude-bear
+[20:54] and then execute some form of command
+[20:56] one thing I noticed in trying to use
+[20:57] this myself is if you're using your
+[20:59] normal max account or your subscription,
+[21:02] then running this won't work because it
+[21:04] says not logged in. So, it appears,
+[21:06] correct me if I'm wrong if you know
+[21:08] otherwise in the comments, but you have
+[21:10] to use this via an API request and then
+[21:12] once you have the API, then you should
+[21:14] be able to run it. So, I tried multiple
+[21:17] different ways to log in, exit my own
+[21:19] terminal, but the core idea is you would
+[21:21] send something like this. So, this is a
+[21:24] shortcut that does work. That's -p and
+[21:27] you ask the question and you get the
+[21:28] answer immediately. But if you use this
+[21:30] -p alone without the d-bear, you're not
+[21:33] getting technically the benefits of not
+[21:35] having any form of bloat or burden in
+[21:37] the conversation. So you might have a
+[21:39] use case on your end where this makes
+[21:41] sense, but for myself, I'm okay with
+[21:43] having the cloud MD loaded in for a
+[21:45] basic question versus having to wrangle
+[21:47] this myself.
+[21:53] For the penultimate tip, this one's also
+[21:55] very straightforward. This is purely a
+[21:56] syntax play. So instead of just giving
+[21:58] cloud code access to one singular
+[22:01] project, you can also give it one basic
+[22:03] command. I'll show you right now that
+[22:05] will allow it to also shop different
+[22:07] projects and different resources in
+[22:09] those projects. So if we pop into the
+[22:11] terminal and you write something like
+[22:12] claude and then you say dash d- add dur
+[22:16] in this case add directory and then
+[22:18] templates and then I do another one
+[22:20] which is adding brand assets. I'm
+[22:22] technically adding multiple different
+[22:24] directories within my session. So that's
+[22:26] where all of these come from where I
+[22:28] added the templates folder right here as
+[22:30] well as the brand assets. These were
+[22:32] external for my project, but now with
+[22:34] this command, I'm bringing them into
+[22:36] context.
+[22:43] And the last core tip was being able to
+[22:45] call an agent by name at the very
+[22:47] beginning of your cloud code session. So
+[22:49] instead of starting a cloud code session
+[22:51] then asking claude to go and remember
+[22:54] how to use a specific agent, you start
+[22:56] the session with the agent already
+[22:58] injected in context. So if that doesn't
+[23:00] make sense, you basically start a
+[23:02] session with your agent already auto
+[23:04] injected with all the personalities, the
+[23:06] quirks, the rules, the regulations, and
+[23:08] the tools that it has access to. So if
+[23:11] you watch my last video, I spoke at
+[23:13] length at the power of this dotcloud
+[23:15] folder and every permutation and
+[23:17] everything inside that makes it tick.
+[23:20] One of the things that makes it tick is
+[23:21] this agents folder where you can write a
+[23:23] markdown file and whatever the name of
+[23:25] the markdown file is technically the
+[23:28] name of the agent. So if I take a click
+[23:30] on this, this is the name which is
+[23:32] called proposal writer. This is the
+[23:33] description and these are the tools that
+[23:35] this agent can invoke. So if we go down,
+[23:37] these are the structure of the commands
+[23:39] and you can start a session by saying
+[23:42] claude-
+[23:43] agent proposal writer. So you can have
+[23:46] it by name and when it loads it up and
+[23:48] you say something like write a proposal
+[23:50] for tech corp, it will execute this
+[23:52] entire structure using all the rules and
+[23:54] the paradigms and a description with
+[23:57] this specific agent. Now I know that was
+[23:59] a lot, but I did my best to be as
+[24:01] concise as I possibly could to show you
+[24:03] the concept as well as the application.
+[24:05] And don't worry if you want to be able
+[24:07] to access all of the different prompts
+[24:09] that I showed you, the demos, the actual
+[24:11] shortcut commands, I'll make those all
+[24:13] available to you in the second link in
+[24:15] the description below. And if you found
+[24:16] this video helpful and you learned
+[24:18] something, then I'd super appreciate if
+[24:19] you left a like, a comment, and a sub on
+[24:22] the channel. It really means a lot to me
+[24:24] and it really helps me grow the channel.
+[24:25] And to anyone else that wants to go much
+[24:27] deeper into claude code and be in a
+[24:28] community with tons of folks, tons of
+[24:31] coaches, my own wisdom, and exclusive
+[24:33] content, then check out the first link
+[24:35] in the description below. And maybe I'll
+[24:36] see you in my early AI adopters
+[24:38] community. I'll see you the next one.

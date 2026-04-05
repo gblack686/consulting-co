@@ -1,0 +1,762 @@
+[0:00] How autonomous are your agents? Really?
+[0:03] This is a question I ask myself all the
+[0:06] time. The truth is our agents are stuck
+[0:09] in the terminal. They're stuck in a box.
+[0:12] The open claw, nano claw, and claw
+[0:15] variants were an absolute nightmare. A
+[0:19] complete disaster. Why is that? It's
+[0:22] because they exposed the worst of vibe
+[0:25] coding at scale. buy a Mac Mini, set up
+[0:28] a claw, generate vulnerable slop code,
+[0:30] share with the world, and get prompt
+[0:33] injected. But there was and is a bright
+[0:36] side to the open claw agents. What is
+[0:39] it? It's the fact that it pushed Vibe
+[0:41] Coders and engineers to give their
+[0:44] agents more autonomy. Claw agents have
+[0:48] escaped the terminal. The M5 Mac devices
+[0:52] were just announced. So, now is a great
+[0:55] time to get ahead, set up your skills
+[0:58] and the CLI and all the tools that your
+[1:00] agents are going to need to operate a
+[1:02] complete device. I have my Mac Mini
+[1:05] right here and as you can see, it is
+[1:06] operating autonomously for me with
+[1:09] complete control over the user
+[1:11] interface. You may have realized this
+[1:12] too. It's becoming very, very clear.
+[1:15] When you increase your agents autonomy,
+[1:18] you increase your own. Right now, our
+[1:20] agents are stuck in the terminal. Let's
+[1:23] rip out the core of what makes the claw
+[1:25] agents so great so that we can equip our
+[1:28] own professional minimal agents with the
+[1:32] right tools to get the job done. Let's
+[1:34] teach our agents to steer and drive
+[1:38] their own MacOss devices.
+[1:45] What you're seeing right now is a cloud
+[1:47] code agent operating a Mac OS device end
+[1:50] to end. And I gave it a entire task list
+[1:53] that I kicked off from a single just
+[1:55] command. The great part about this is
+[1:58] the agent running right here in this Mac
+[2:00] Mini is running on just two skills and
+[2:03] two CLI tools. And here we go. It's just
+[2:07] completed its work and it air dropped me
+[2:09] the result. Let's open it up and see
+[2:12] what it did for me. So, in the
+[2:13] downloads, you can see here we have a
+[2:15] brand new MacBook research report. My
+[2:17] agent's going to do a little bit of
+[2:18] cleanup work here, but let's see what it
+[2:20] wrote here. We have a markdown report of
+[2:23] the new Mac devices that were just
+[2:25] released. So, they released the new Neo
+[2:27] MacBook, Mac Air M5, and of course, the
+[2:30] MacBook Pro in its two variants. And I
+[2:32] just had an agent handle all this on its
+[2:34] own device. I didn't really care how it
+[2:36] got to the result. I just needed to know
+[2:39] some details, some information about
+[2:41] these devices. All right. And so it
+[2:42] broke this down for me really, really
+[2:44] nicely and it marked on document. And
+[2:45] then as you saw, it air dropped me the
+[2:47] result. This is fascinating. With a
+[2:49] single prompt, I kicked off an agent to
+[2:51] operate its own device. It operated the
+[2:54] entire Mac OS operating system and then
+[2:56] it communicated the end result back to
+[2:59] me. So, how does this work? Knowing how
+[3:01] your agents, tools, and products work is
+[3:04] a requirement for making them better.
+[3:05] Here's everything we're going to cover.
+[3:07] It's a lot simpler than it looks. We
+[3:09] have our custom agents. I don't care if
+[3:11] you're using Claude, Pi, Gemini, Codeex,
+[3:14] Open Code, Cursor, CLI, whatever you
+[3:16] want to use, unless you're building out
+[3:17] your own custom agent harness. The
+[3:19] interesting part really isn't your agent
+[3:21] harness anymore. Okay, it's the systems
+[3:23] of agents that you're building. All
+[3:25] right, what do I mean by that? Let's
+[3:26] break this down. So, we have the trigger
+[3:27] layer. Inside of the trigger layer, this
+[3:29] is how we kick off our Mac Mini device,
+[3:31] right? With our agents on it. The
+[3:33] trigger layer is very important because
+[3:34] it connects to some HTTP server. And so
+[3:38] as you can imagine, you know, if we take
+[3:39] a look at this, you can see right in the
+[3:40] background here, I have this application
+[3:43] running here, apps/listen, and it's
+[3:45] executing this Python code. So it is
+[3:47] waiting for requests to come in from
+[3:49] anywhere. That's a key element to this.
+[3:51] That's the listen server. All right. And
+[3:53] then things get interesting. Then we get
+[3:54] into our device. All right. So now we're
+[3:57] inside of our MacOSS device. Inside of
+[4:00] that, we have a couple really powerful
+[4:02] pieces. All right. We have our AI agent
+[4:03] running two key skills and two key CLI
+[4:06] applications. Drive for terminal control
+[4:09] and we have steer for guey control.
+[4:11] Right? We have steer to control the Mac
+[4:14] OS device. This is critical. And of
+[4:16] course again you can pick any agent you
+[4:18] want to do this and you can specialize
+[4:21] these skills and the CLI into your agent
+[4:24] harness if you're cracked enough to know
+[4:25] how to do that. It's simple from there.
+[4:27] Right? Then we flow right into our host
+[4:29] of apps and then our terminal can do the
+[4:31] same. Right? whatever traditional skills
+[4:33] tools, CLIs, MCP servers, whatever you
+[4:36] give to your agent, it can control that
+[4:37] via the terminal. But the big advantage
+[4:39] here is this, right? This is really
+[4:42] about the steer application and the
+[4:44] steer skill because it means that we can
+[4:46] from any one of our trigger layers
+[4:48] communicate to our job server, steer the
+[4:51] UI with an agent. It can of course
+[4:54] access the terminal, right? This is
+[4:55] where all of our agents are currently
+[4:57] trapped, but this helps us get out of
+[4:59] that, right? because our agent can now
+[5:00] use the terminal to access the guey,
+[5:03] right? Access the actual user interface.
+[5:06] And this lets us control all of the
+[5:08] applications on our device. Okay? And so
+[5:11] that is the architecture. We've ripped
+[5:13] out the very core of what makes these
+[5:16] claw agents in this claw paradigm so
+[5:19] important. It's the ability that they
+[5:20] can operate a device. You know, this is
+[5:22] just the bare minimum. These tools do a
+[5:24] lot more, but the way they do it is
+[5:25] very, very dangerous. This is a much
+[5:28] more safe professional approach to
+[5:31] building out these agents. Let's boil
+[5:33] this down to like it's atoms, right? Let
+[5:35] me show you the simplest version of
+[5:37] this. In my just file, if I type J, you
+[5:39] can see all the different commands I
+[5:41] have set up. J send, write your favorite
+[5:43] programming language and which OP pillar
+[5:47] is your favorite NY and a new file air
+[5:50] drop it and devan. And so this single
+[5:52] command lets me communicate to my agent
+[5:53] on its own device. I'll fire it off. We
+[5:55] have a user prompt that just got kicked
+[5:57] off and a brand new window. Okay, so
+[5:59] it's kicking off a brand new window. You
+[6:01] can see we have a classic cloud code
+[6:02] instance. It's running inside of T-Mox
+[6:06] here and it was kicked off from the
+[6:08] listen server, right? The listen HTTP
+[6:10] server. Part of what I want to do here
+[6:12] is just demystify these claw agents and
+[6:15] really make it clear that you can build
+[6:16] your own dedicated agent environment on
+[6:19] your Mac OS device on even Windows
+[6:21] devices, right? It's not a lot to
+[6:23] transfer these skills over to support
+[6:25] Windows. I want to show you that you can
+[6:26] set this up and operate your own
+[6:29] personal AI assistant with just the key
+[6:31] pieces, right? And very importantly, you
+[6:34] know, we'll take a look at the code, but
+[6:35] I really want to show you that like it's
+[6:37] not all that complicated and it's much
+[6:39] safer when you know what is actually
+[6:42] going on. Okay, we have four CLIs and
+[6:44] just two skills to drive this entire
+[6:47] multi-device application. And so here we
+[6:49] go. You can see my agent is getting to
+[6:51] the point where it's written that file.
+[6:53] It's just inside the temp directory,
+[6:54] right? And now it's going to airdrop me,
+[6:56] right? So, here we go. This is the kind
+[6:58] of one of my favorite parts. I love this
+[7:00] like workflow of having your agent do a
+[7:02] bunch of work and then it pings you via
+[7:04] AirDrop whenever it's done. It's kind of
+[7:06] a nice setup on the Mac stack. There we
+[7:08] go. Favorite programming language. So,
+[7:09] I'm curious about this too. You know,
+[7:11] what is Opus' favorite language and
+[7:13] favorite object-oriented pillar? So, its
+[7:16] favorite language is Python. Not a huge
+[7:18] surprise there. But it OOP pillar is
+[7:20] polymorphism. Interesting. Why is that?
+[7:23] Because it's truly flexible, extensible
+[7:25] as you write functions and systems to
+[7:27] work objects of different types through
+[7:29] a shared interface. Bridge between rigid
+[7:31] and creative freedom. Lets you design
+[7:33] systems that are both predictable and
+[7:35] adaptable, which is the hallmark of
+[7:37] great software architecture written by
+[7:39] cloud and AI asn'tropic. Okay, very
+[7:41] cool. Right? As you saw there, our agent
+[7:43] just did all this work by itself and it
+[7:45] air dropped me. Very simple idea, right?
+[7:47] But you can see a new type of
+[7:48] engineering workflow available to you
+[7:51] when you have your own dedicated device
+[7:53] with an agent running it. To be super
+[7:55] clear here, I'm never going to touch
+[7:56] this device myself. Okay? This is my
+[7:58] agent's device. If there's something
+[8:00] wrong with the device, I'm not going to
+[8:01] jump in fix it myself. I'm going to
+[8:03] teach my agent how to do it. Once again,
+[8:06] I'm going to template my engineering and
+[8:08] I'm going to focus on building the
+[8:10] system that builds the system. That's a
+[8:12] critical theme here for us on the
+[8:14] channel. This is a big idea we also
+[8:15] talked about last week. Thanks for
+[8:17] everyone who liked and shared that
+[8:18] video. In our previous video, we've
+[8:20] reviewed Stripes end to end coding
+[8:22] agents and we reviewed their agentic
+[8:24] layer. A lot of very valuable ideas
+[8:26] there. You know, one that we're carrying
+[8:28] forward into today is the dev boxes. You
+[8:31] want to create a space to place your
+[8:34] agents and that's exactly what we're
+[8:35] doing here with our Mac Mini and with
+[8:37] some of those new Mac devices that are
+[8:39] going to show up pretty soon here.
+[8:40] Definitely check out last week's video
+[8:42] where we break down Stripe's endtoend
+[8:44] coding agents. There are a lot of very
+[8:46] valuable ideas buried in there. You
+[8:48] know, let let me just pause here for a
+[8:49] second, right? Like, why does this
+[8:51] matter? Like, who cares? Can't I just
+[8:53] run everything on my device? Can't I
+[8:55] just shoot everything into the terminal?
+[8:56] Like, why does this matter at all for
+[8:58] engineers? This matters for just one
+[9:01] reason. If you want your agent to
+[9:03] perform like you do, they must have the
+[9:06] tools you have. And I mean tools in a
+[9:09] generic sense, right? They must have the
+[9:11] capabilities that you have. The only way
+[9:14] to truly get that experience is to give
+[9:16] them their own device. There is no
+[9:19] ceiling here on my multi- aent system.
+[9:21] Now, they can do whatever they need to
+[9:23] to get the job done just like you do on
+[9:25] a daily basis. And that's why, you know,
+[9:28] an architecture like this is going to be
+[9:30] so important. Let me make this super
+[9:32] clear. the job server and the Mac
+[9:34] device. It's not a Mac Mini agent
+[9:37] specifically, right? This is just a
+[9:38] MacOSS specific set of skills and tools.
+[9:42] And the way that I've engineered this
+[9:43] with a really simple simple minimal
+[9:45] architecture is with a YAML job system.
+[9:48] What does this mean? This means that we
+[9:50] can scale to multiple MacOSS devices.
+[9:53] Okay, let me show you exactly what I
+[9:54] mean. We're going to give our agent
+[9:55] something more complex. I know, you
+[9:57] know, some engineers, some vibe coders
+[9:58] watching right now, you're probably
+[10:00] thinking, you could have done all that
+[10:01] in the terminal. You're totally right.
+[10:02] Minus the airdropping and the kind of
+[10:04] slick communication. Let's go ahead and
+[10:05] fire off a more uh complex task. If I
+[10:08] type J, you can see all of my commands.
+[10:10] I'm using just file for quick commands.
+[10:13] So, I have some encoded here for this
+[10:16] video, but I also have repeat commands
+[10:18] for just operating the Mac mini agent
+[10:20] application. What we're going to do here
+[10:21] is this. So, I'll run J send to CC. You
+[10:26] can see that kicked off another job just
+[10:28] right away. I am one prompt away from
+[10:30] kicking off an agent that operates its
+[10:32] own device. This is something that the
+[10:34] Stripe engineering team has done as
+[10:36] well. They have multiple ways to kick
+[10:38] off their minions or their, you know,
+[10:40] Stripe custom minions as discussed in
+[10:42] last week's video. But you can see here
+[10:43] my agent is going to start working on
+[10:45] that. So, how do we know what's going on
+[10:46] right now? Let's say we weren't
+[10:47] monitoring with the screen sharing
+[10:50] functionality. Uh, we could do something
+[10:51] like this. J.
+[10:54] I'm going to copy this job ID. Type J.
+[10:57] Paste this in. Here we have a YAMLbased
+[11:00] summary of this job. Okay. So you can
+[11:03] see the actual command of what JJOB
+[11:04] does. It does this. It goes into the
+[11:06] direct application which you know the
+[11:08] direct application lets us interface and
+[11:11] start jobs from the listen server. Okay.
+[11:14] So that's all that's doing there. It's
+[11:15] running this Python git command. We have
+[11:17] a nice simple CLI where we pass in the
+[11:20] MAC device local area URL for this and
+[11:23] then I pass in the job ID. So at any
+[11:24] point in time, you or I or much more
+[11:26] likely our agents can just run any tool
+[11:29] it needs to inside of the direct
+[11:31] application to actually like figure out
+[11:33] where our jobs are. Right? Here we're
+[11:35] obviously just observing this directly.
+[11:37] So we don't need to monitor the job like
+[11:38] this. Right? So where is this coming
+[11:39] from? What does this prompt actually
+[11:40] look like? I ran this just command send
+[11:43] to CC. So let me just go ahead and open
+[11:45] up the codebase. This is going to be
+[11:46] available to you of course link in the
+[11:48] description. I want to help you set up
+[11:50] powerful agents that can operate their
+[11:52] own devices without all the croft and
+[11:54] security flaws of a full-on openclaw
+[11:58] agent because the claws are very very
+[11:59] powerful but they're very very
+[12:00] dangerous. They just install packages
+[12:02] like very very aggressively. So I want
+[12:05] to give you a simpler grounded approach
+[12:07] to building your own personal AI
+[12:09] assistant with just a few tools and a
+[12:11] few skills. Let's go and break this
+[12:12] down. By the way, this agent is still
+[12:14] running. It's still putting this
+[12:15] together for us. You can see it's
+[12:16] spinning up as many windows and agents
+[12:18] as it needs to to actually get the job
+[12:20] done. Okay, so now it's going to start
+[12:21] taking screenshots of the changes it
+[12:24] made. And what am I asking this agent to
+[12:25] do, right? Let's go ahead and focus on
+[12:27] that. Inside of specs, update hooks,
+[12:29] mastery. There's not really a limit to
+[12:31] what you can hand off to your agent once
+[12:33] you give it its own device. So I have
+[12:34] this prompt structure, instructions,
+[12:36] tasks, and you can see here, here's the
+[12:38] deliverable. This is the easiest place
+[12:39] to go. updated codebase with all current
+[12:42] cloud code hooks implemented air dropped
+[12:44] to Andy Deubdan's MacBook Pro containing
+[12:46] screenshots of visual proof of all hooks
+[12:49] added and then a text edit document
+[12:51] summarizing the changes made. Okay, so
+[12:53] it's doing some engineering work for us.
+[12:55] Here are all the tasks and here are some
+[12:56] lightweight instructions. So you can see
+[12:58] it's keeping track of everything in text
+[12:59] edit. If you work longer than 5 minutes,
+[13:02] wrap it up and send what you have.
+[13:03] Periodically check by comparing to your
+[13:05] start time. Okay, so that's exactly what
+[13:07] this agent is doing right now. You can
+[13:08] see here it's run for about six
+[13:10] something minutes. So it's probably
+[13:11] going to wrap up pretty soon here. But
+[13:12] this agent is doing something
+[13:14] interesting. If I open up Chrome here,
+[13:16] go to my GitHub profile, it's taking
+[13:18] this Cloud Code Hooks mastery codebase.
+[13:20] This is a public codebase that I have
+[13:22] for breaking down Cloud Code hooks in
+[13:24] detail, piece by piece. It's got a
+[13:26] concrete structure to it already. Like
+[13:29] you can see here in the readme, we break
+[13:30] down every hook. We go step by step by
+[13:32] step in detail. And we showcase this
+[13:34] inside the application. Right? Here's
+[13:35] all the key files. And so what I'm doing
+[13:37] here is I'm having this engineering
+[13:39] agent test out this work with itself and
+[13:42] other agents and multiple terminal
+[13:44] windows, right? It's doing whatever work
+[13:45] it needs to. I don't really care what
+[13:47] it's doing, but it's actually just
+[13:49] executing on its own. And then it's
+[13:51] going to I think I ask it to push a new
+[13:54] branch. Let me actually see what I asked
+[13:55] here. So if I close this, go into code
+[13:58] commit changes to a new branch and push.
+[14:01] So this is going to do an end toend
+[14:03] workflow, right? It's actually going to
+[14:04] push this to the public repo. It just
+[14:06] noticed this is a nice spot to catch
+[14:08] this agent. Let me check the time. I
+[14:09] need to mindful of the 5-minute window.
+[14:11] Let me take a more efficient approach
+[14:13] for the screenshots because it's 8
+[14:15] minutes in. Let me wrap up efficiently.
+[14:17] So, it's creating proof in the
+[14:18] screenshots and then it's going to
+[14:19] airdrop it to us here. So, very cool.
+[14:21] We're going to let it keep cooking and
+[14:23] let's refocus back on this code here.
+[14:25] You know, this is what the prompt
+[14:27] effectively looks like. All right. So,
+[14:28] we're passing this prompt into the just
+[14:30] file. And so, just file is a tool that
+[14:32] I've picked up. It's a command line
+[14:34] runner. It's very, very simple. You can
+[14:35] see all we're doing here like let's find
+[14:37] the send command. The send command is
+[14:39] getting run from send one CC. And so
+[14:42] this is what I ran in the beginning. And
+[14:43] it's just routing to another command,
+[14:45] right? It's just routing a variable,
+[14:47] right? So I'm cadding that file.
+[14:48] Research MacBooks. That's the first
+[14:50] command we ran. Here's the second one.
+[14:52] You can run the third one if you like.
+[14:54] And all we're doing here is firing off
+[14:56] the send command. All right. So
+[14:57] interesting. We can call just commands
+[14:59] inside of just commands. Very important.
+[15:01] And this lets us treat commands like
+[15:03] functions. And so all I'm doing here is
+[15:05] using the just file as a quick way to
+[15:07] fire off repeat workflows in the system.
+[15:10] And you can even see this inside the
+[15:12] application here. If I jump in here and
+[15:15] just move this down just a little bit,
+[15:17] you can see that I fired this off with J
+[15:20] listen. So I'm just using that
+[15:21] shorthand. I have an alias J is just and
+[15:24] I'm just use and I'm just using this to
+[15:28] quickly fire off typically one of four
+[15:30] of the CLI tools, right? or an entire
+[15:33] agent. Let's see how it keeps working
+[15:35] here. And I actually took focus away
+[15:37] from what the agent was doing. So
+[15:39] hopefully this doesn't cause any issues.
+[15:40] Yeah, another important reason to just
+[15:42] let your agent cook. Let your agent do
+[15:43] whatever it needs to do. So let's hop
+[15:45] back to the codebase here. You can see
+[15:47] the send command. All it does is it
+[15:49] takes a prompt and a URL. So I have my
+[15:51] default URL here, which is pointed to my
+[15:53] Mac Mini device, but this is going to
+[15:55] take a prompt and a URL and just goes to
+[15:57] the direct application, right? It's
+[15:59] going to run start with the URL and the
+[16:01] prompt. And you can imagine what that
+[16:02] does. That's just going to kick off a
+[16:05] client call to our listen application,
+[16:08] right? And listen is just going to
+[16:09] listen for jobs and then kick off its
+[16:12] own individual cloud code instance. And
+[16:14] I'll be adding support for PI custom
+[16:16] agents as well. But that's a great part
+[16:17] about setting up a system like this,
+[16:19] right? You can mount and deliver any
+[16:21] type of coding agent that you want here
+[16:23] and have it drive the application
+[16:25] experience, right? So we have the
+[16:27] direct. So this is us calling into our
+[16:30] listen tool. We have the steer. It's
+[16:32] giving our agent control over the MacOSS
+[16:35] user interfaces. We get really nice
+[16:37] things like accessibility trees and OCR
+[16:40] capability. The Mac is just like a
+[16:42] really really great OS down to the bare
+[16:44] metal. It's no shocker that this is like
+[16:46] the engineers device. Windows of course
+[16:48] has some decent stuff too, but it's just
+[16:49] a lot cleaner and clearer on Mac. And
+[16:51] then of course we have the drive
+[16:53] application, which is how our agent is
+[16:56] firing off all these terminals, right?
+[16:58] So I did jump in here. I don't just want
+[17:00] out of the box T-Mox. I wanted some
+[17:02] additional opinionated workflows. And so
+[17:04] I built a tool for the agent to drive
+[17:06] terminals. T-Mox is very powerful
+[17:08] because it gives your agents the ability
+[17:10] to spin up brand new terminal windows
+[17:12] and send and read commands to and from
+[17:15] them. You may have noticed like this is
+[17:17] what the cloud code multi-pane multi-
+[17:19] aent orchestration feature is actually
+[17:22] doing and we covered that in a previous
+[17:23] video. I'll link that in the description
+[17:25] for you as well. Our agent is doing a
+[17:27] lot of work, right? And not only is it
+[17:29] doing the work, it's proving that the
+[17:31] work is done. It's way over that 5
+[17:34] minute time limit, but we'll go ahead
+[17:36] and just let it keep cooking, right? I'm
+[17:37] really interested to see its proof of
+[17:40] work and how it really ties this all
+[17:42] together for us. All right, so back in
+[17:43] the codebase here, you can see that we
+[17:45] can type send to the agent device at any
+[17:48] point in time. We do need to make sure
+[17:50] that the device isn't being used by an
+[17:52] agent. So this is an enhancement that
+[17:54] needs to be made to this tool. But this
+[17:56] is the application structure. So we have
+[17:58] the listen HTTP server. So it's just
+[18:00] listening for requests. We have direct.
+[18:03] So this is the client. This is how we
+[18:04] call into the listen server. And then we
+[18:07] have our two applications. You can see
+[18:09] here this is a swift application. This
+[18:11] is literally giving our agent the
+[18:12] ability to use the Mac OS user
+[18:14] interface. And then we have drive. And
+[18:16] so this is the lightweight wrapper
+[18:18] around spinning up T-Mox applications,
+[18:21] firing off new agents or just firing up
+[18:23] new terminals that the primary agent can
+[18:26] communicate to. You know, you can see
+[18:27] here our agent has spun up quite a few
+[18:30] terminals to get this work done. All
+[18:32] right. And so you can see how that's
+[18:34] like manifesting down here a little bit,
+[18:36] right? The agent is actually running.
+[18:38] There we go. It's doing some typing
+[18:39] here. You can see here our agent is uh
+[18:42] summarizing all the work done in its
+[18:44] text edit. And I'm not in this machine
+[18:46] at all. Right? My hands are up here. So
+[18:49] my agent is doing all this work, right?
+[18:50] This is fully autonomous work, right?
+[18:52] High agency work. And it's typed all
+[18:55] that out in the text edit file. It's
+[18:57] probably going to save it now. There we
+[18:59] go. You know, you can see here it's it's
+[19:00] actually clicking on the keyboard. So
+[19:02] this is what that steer CLI command is
+[19:04] doing. And again, you know, link for
+[19:06] this Mac Mini agent is going to be in
+[19:07] the description for you so that you can
+[19:09] get just the bare bones, the essential
+[19:11] pieces of what makes up a powerful claw
+[19:13] agent. So that's the steer and drive
+[19:16] application. Now on top of that we have
+[19:17] the skill for our agents to use the
+[19:20] application. So you know there's nothing
+[19:22] new here. We're just teaching our agent
+[19:23] how we want them to use the applications
+[19:26] and some caveats and workflows with how
+[19:29] it should work. For instance, when
+[19:30] you're using the steer skill, you want
+[19:32] them to be aware of the screens
+[19:34] available. I have a monitor here. So
+[19:36] that's going to add an additional screen
+[19:37] and it's going to change the XY
+[19:39] coordinates of where all the clicks are
+[19:41] going to land. But then there's also
+[19:42] things like this, right? You want to be
+[19:43] focused on the application before you do
+[19:45] anything, right? Focus, then verify, and
+[19:47] then we have an observation loop, so on
+[19:49] and so forth, right? But it's it's not
+[19:50] that complicated, right? It's 130 lines
+[19:52] detailing how it should use its own Mac
+[19:55] device. And then we have the drive
+[19:57] application. This is our terminal
+[19:58] automation via T-Mox. I can probably
+[20:00] tone this down a little bit. As you can
+[20:02] see here, it's spinning up quite a few
+[20:04] T-Max windows. You can see here it's
+[20:06] about to send the airdrop.
+[20:09] And look at all the proof it created.
+[20:11] Look at all the proof it has. Proof of
+[20:13] work.
+[20:14] So, pretty cool stuff there. This ran
+[20:17] for, you know, quite a long time, but it
+[20:19] really proved out all the work that it's
+[20:21] been doing. There it is. It found the
+[20:22] device. And now it's clicked. Okay. So,
+[20:24] you know, again, fully autonomous work.
+[20:26] Minimize that. Accept. And let's go
+[20:28] ahead and take a look at what our agent
+[20:30] delivered for us here. So, show and
+[20:31] finder. Check out all of these all these
+[20:35] items. All right. So, inside of Cloud
+[20:36] Code, there's that new teammate idle
+[20:38] hook. So it created an image, cadded the
+[20:41] log. This is actual proof that these
+[20:43] were added. But our agent is really
+[20:45] proving this, right? It spun up a new
+[20:48] terminal to prove that this work was
+[20:49] done. Took a screenshot just like we
+[20:51] asked. Remember inside of this spec
+[20:53] here, we have a spec to drive behavior,
+[20:56] right? This is a a full-on prompt. It's
+[20:58] doing exactly what we asked here, right?
+[20:59] Let's let's do new line wrap and search
+[21:01] for image or screenshot probably. There
+[21:03] we go. for proof of work. For each hook
+[21:05] added, take a screenshot of some visual
+[21:08] proof that the hooks are working and
+[21:10] group them in a folder. That's exactly
+[21:11] what it's done here. This is proof. It's
+[21:13] opened up a log and the logs are getting
+[21:15] written out from the actual hook. All
+[21:17] right, so very cool. And you know, you
+[21:19] know, it's also important to mention
+[21:20] that this means that the agent started a
+[21:23] team. It started a team to activate all
+[21:25] these hooks. So there's that. There's
+[21:27] the output.ext, right? Here's a
+[21:29] screenshot. All hooks test all hooks,
+[21:32] right? That's not very useful, but
+[21:33] thankfully there's a lot more. There's
+[21:35] our per hook screenshot from each
+[21:38] terminal. So, very powerful stuff here.
+[21:39] On and on and on, right? We don't need
+[21:40] to go through all the proof, but it's
+[21:42] all here, right? So, it looks like it
+[21:43] added the five latest proof hooks and it
+[21:45] air dropped us all the results. So, you
+[21:47] know, I hope you can really see how a
+[21:50] tool like this and a skill like this can
+[21:52] be super valuable. Right? There's a Mac
+[21:53] Mini agent. It's architected and
+[21:55] engineered like this, right? I can
+[21:57] deploy this application and these agents
+[22:00] across any Mac mini device. Right? as
+[22:02] soon as and there's something I'm
+[22:03] planning on doing as soon as I pick up a
+[22:05] MacBook Air or MacBook Pro or maybe the
+[22:07] the new Neo device, right? I can just
+[22:10] have that sitting right here next to me
+[22:12] with an agent running that device,
+[22:14] right? Just like, you know, everyone's
+[22:15] super obsessed with running the Mac
+[22:16] minis. We can have an agent operate a
+[22:19] laptop and then we can just very very
+[22:21] quickly just view the work. It's more
+[22:22] observable. We can understand what is
+[22:24] going on. All right, and that's a big
+[22:26] piece of of you know, some of my push
+[22:28] back against call agents. It's not
+[22:30] inherently bad or dumb or stupid. It's
+[22:33] actually quite innovative to really push
+[22:35] your agents beyond. And check this out.
+[22:37] The agent is trying to clean up. It
+[22:38] almost deleted its server process. I'm
+[22:40] going to cancel this. You can see here
+[22:41] there are no windows. It cleaned
+[22:43] everything up after it finished. Very,
+[22:45] very powerful stuff here. Claws
+[22:47] inherently are very, very valuable
+[22:49] because they really did shine a light on
+[22:51] the fact that if you give your agent
+[22:52] more autonomy, they can do much more
+[22:54] than you think they can. But where Claw
+[22:56] goes wrong is just in the scale and the
+[22:58] unawareness. And frankly, just the
+[23:00] vibecoded
+[23:02] approach to how this all works. Just
+[23:05] because you can generate infinite code
+[23:07] doesn't mean you should. And I'm not
+[23:09] slamming OpenClaw or any of these other
+[23:11] claw tools, but we do need to and
+[23:14] Carpathy, you know, explicitly mentions
+[23:16] this. It's a security nightmare. There's
+[23:18] so much that can go wrong right now. Uh
+[23:19] I don't know if he mentions prompt
+[23:21] injection, but that's one of the biggest
+[23:22] things I'm concerned about. Uh probably
+[23:24] mentioned skills. Yeah, it's so easy to
+[23:26] cause catastrophic damage right now and
+[23:29] it will be as agents are are running
+[23:31] everything, right? Agents are and will
+[23:34] run everything. So, it's very important
+[23:36] to know how this stuff works. If you
+[23:38] want to scale your compute, to scale
+[23:40] your impact, which is something we talk
+[23:41] about all the time on this channel, you
+[23:43] need to add agents. You need to improve
+[23:45] your context engineering and your prompt
+[23:46] engineering. And you need to give your
+[23:48] agents more autonomy like we're doing
+[23:50] right here. But you still need to know
+[23:53] what your agents are doing. This is the
+[23:55] critical idea I'm talking about a lot
+[23:57] right now on the channel. This year is
+[23:59] about increasing the trust we have in
+[24:01] our agentics, right? And our agents and
+[24:03] our agentic layer all the way down to
+[24:05] the prompt. To increase our trust, we
+[24:08] must know what our agents are doing. And
+[24:10] here's a big idea for you to hold on to.
+[24:13] Agentic engineering is knowing what your
+[24:15] agents are doing so well you don't have
+[24:19] to look. Vibe coding is not knowing and
+[24:22] not looking. And that's where these claw
+[24:24] tools go wrong. My note to all the
+[24:26] engineers watching and vibe coders
+[24:28] watching, shout out to the vibe coders,
+[24:29] you know, trying to keep up with
+[24:30] everything. My note to you is know what
+[24:32] your system is doing. Keep engineering,
+[24:34] keep learning, keep using real
+[24:36] engineering design patterns to build
+[24:38] systems that can scale with your
+[24:40] agentics, right? Scale with your agents.
+[24:43] So these are all the key pieces for how
+[24:45] this works. Four unique applications,
+[24:48] each with their own purpose. two skills,
+[24:51] drive and steer to activate our agents.
+[24:53] I created an install command for your
+[24:56] agent sandbox. I created an install
+[24:57] command for your dev box. And then we
+[24:59] have our key user prompt that drives the
+[25:02] experience. It just sets up the skills
+[25:04] and it sets up the primary task. All
+[25:06] right, so this is what's actually
+[25:07] running when we kick off our Mac Mini
+[25:09] agent, right? It's running this prompt.
+[25:11] So it's doing something like this and
+[25:13] then it's running whatever prompt we
+[25:14] passed in. And if you search for this in
+[25:16] the codebase, you'll find exactly where
+[25:18] it is. that's in the worker apps/listen.
+[25:21] That's the key idea there. We just have
+[25:22] one agent which is the system prompt for
+[25:25] this agent that's driving the
+[25:27] experience. We're not going to d into
+[25:28] this. I want to leave some of this for
+[25:30] discovery for you to read, not your
+[25:32] agent, for you to read to understand
+[25:35] how, you know, you can build your
+[25:37] powerful agent that runs its own device.
+[25:40] All right, we're getting to a really
+[25:42] important inflection point where if
+[25:44] you're not keeping up with what's
+[25:45] possible as an engineer, you will be
+[25:47] left behind. I'm trying to bring every
+[25:50] engineer I can along with me on this
+[25:52] insane ride we're going on into the age
+[25:54] of agents. If it's not clear yet, it's
+[25:57] not about what you can do anymore. It's
+[25:59] about what you can teach your agents to
+[26:01] do for you. Links in the description for
+[26:04] you. We have an exciting road ahead of
+[26:06] us, but we need to stay focused and keep
+[26:08] engineering throughout it. If you made
+[26:10] it this far, make sure to like and
+[26:12] subscribe so the algorithm knows you're
+[26:14] interested. You know where to find me
+[26:15] every single Monday. Stay focused and
+[26:18] keep building.

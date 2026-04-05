@@ -1,0 +1,216 @@
+// OpenClaw Configuration — Fish Group
+// Agent: Finn 🐟
+// Pattern B: Multi-agent by domain (client-ops, data-airtable, permissions, garys-cs)
+// Models: Medium tier (brain=gemini-2.0-flash-001, muscle=claude-3-5-haiku)
+// Channel: Claude Code CLI (technical users — Michael Fisch + Emil)
+// Updated: 2026-03-05 — initial build from intake session
+
+{
+  // --- Gateway ---
+  gateway: {
+    port: 18789,
+    reload: { mode: "hybrid", debounceMs: 300 },
+    controlUi: { allowInsecureAuth: true },
+    auth: { mode: "token" },
+    tailscale: { mode: "off", resetOnExit: false },
+  },
+
+  // --- Logging ---
+  logging: { redactSensitive: "tools" },
+
+  // --- Models: OpenRouter (medium tier) ---
+  models: { mode: "merge" },
+
+  // --- Environment ---
+  // Secrets injected via 1Password: `op run --env-file=.env.secrets -- openclaw start`
+  // Vault: Client-FischGroup (scoped service account: openclaw-fischgroup)
+  // Reference syntax: op://vault/item/field
+  env: {
+    // Shared (op://GBAutomation-Shared/openrouter/api-key)
+    OPENROUTER_API_KEY: "set via: openclaw secrets set OPENROUTER_API_KEY <key>",
+
+    // Microsoft 365 (op://Client-FischGroup/microsoft-365/*)
+    // MS_CLIENT_ID: "set via: openclaw secrets set MS_CLIENT_ID <id>"
+    // MS_CLIENT_SECRET: "set via: openclaw secrets set MS_CLIENT_SECRET <secret>"
+    // MS_TENANT_ID: "set via: openclaw secrets set MS_TENANT_ID <tenant>"
+    // MS_REFRESH_TOKEN: "set via: openclaw secrets set MS_REFRESH_TOKEN <token>"
+
+    // GitHub (op://Client-FischGroup/github/*)
+    // GITHUB_TOKEN: "set via: openclaw secrets set GITHUB_TOKEN <pat>"
+    // GITHUB_ORG: "Fisch-Group"
+
+    // Airtable (op://Client-FischGroup/airtable/api-key)
+    // AIRTABLE_API_KEY: "set via: openclaw secrets set AIRTABLE_API_KEY <token>"
+
+    // QuickBooks (op://Client-FischGroup/quickbooks/*)
+    // QUICKBOOKS_CLIENT_ID: "set via: openclaw secrets set QUICKBOOKS_CLIENT_ID <id>"
+    // QUICKBOOKS_CLIENT_SECRET: "set via: openclaw secrets set QUICKBOOKS_CLIENT_SECRET <secret>"
+    // QUICKBOOKS_REFRESH_TOKEN: "set via: openclaw secrets set QUICKBOOKS_REFRESH_TOKEN <token>"
+
+    // ShipStation (op://Client-FischGroup/shipstation/*)
+    // SHIPSTATION_API_KEY: "set via: openclaw secrets set SHIPSTATION_API_KEY <key>"
+    // SHIPSTATION_API_SECRET: "set via: openclaw secrets set SHIPSTATION_API_SECRET <secret>"
+
+    // Supabase — blocked until migration (op://Client-FischGroup/supabase/*)
+    // SUPABASE_URL: "set via: openclaw secrets set SUPABASE_URL <url>"
+    // SUPABASE_SERVICE_KEY: "set via: openclaw secrets set SUPABASE_SERVICE_KEY <key>"
+  },
+
+  // --- Agents ---
+  agents: {
+    defaults: {
+      model: {
+        primary: "openrouter/google/gemini-2.0-flash-001",
+        fallbacks: ["openrouter/anthropic/claude-3-5-haiku"],
+      },
+      heartbeat: {
+        every: "15m",
+        target: "main",
+        ackMaxChars: 300,
+      },
+      subagents: {
+        model: "openrouter/anthropic/claude-3-5-haiku",
+        archiveAfterMinutes: 60,
+        maxSpawnDepth: 2,
+        maxChildrenPerAgent: 4,
+        maxConcurrent: 5,
+      },
+      contextPruning: {
+        mode: "cache-ttl",
+        ttl: "1h",
+        keepLastAssistants: 3,
+        softTrimRatio: 0.3,
+        minPrunableToolChars: 50000,
+      },
+      compaction: {
+        mode: "safeguard",
+        memoryFlush: { enabled: true, softThresholdTokens: 6000 },
+      },
+    },
+
+    list: [
+      {
+        id: "main",
+        default: true,
+        name: "Finn",
+        workspace: "~/.openclaw/workspace-main",
+        agentDir: "~/.openclaw/agents/main/agent",
+        model: "openrouter/google/gemini-2.0-flash-001",
+        identity: { name: "Finn", emoji: "🐟" },
+        subagents: {
+          allowAgents: ["client-ops", "data-airtable", "permissions", "garys-cs"],
+        },
+      },
+      {
+        id: "client-ops",
+        name: "Client Ops",
+        workspace: "~/.openclaw/workspace-client-ops",
+        agentDir: "~/.openclaw/agents/client-ops/agent",
+        model: "openrouter/anthropic/claude-3-5-haiku",
+        identity: { name: "Client Ops", emoji: "📋" },
+      },
+      {
+        id: "data-airtable",
+        name: "Data Agent",
+        workspace: "~/.openclaw/workspace-data",
+        agentDir: "~/.openclaw/agents/data-airtable/agent",
+        model: "openrouter/anthropic/claude-3-5-haiku",
+        identity: { name: "Data Agent", emoji: "📊" },
+      },
+      {
+        id: "permissions",
+        name: "Permissions Agent",
+        workspace: "~/.openclaw/workspace-permissions",
+        agentDir: "~/.openclaw/agents/permissions/agent",
+        model: "openrouter/anthropic/claude-3-5-haiku",
+        identity: { name: "Permissions Agent", emoji: "🔑" },
+      },
+      {
+        id: "garys-cs",
+        name: "Gary's CS",
+        workspace: "~/.openclaw/workspace-garys",
+        agentDir: "~/.openclaw/agents/garys-cs/agent",
+        model: "openrouter/google/gemini-2.0-flash-001",
+        identity: { name: "Gary's CS", emoji: "🛒" },
+        // Phase 2 — enable after Fish Group internal is live
+      },
+    ],
+  },
+
+  // --- Bindings ---
+  bindings: [
+    { from: "main", to: "client-ops",    on: ["onboard", "offboard", "new client", "welcome package", "statement of work"] },
+    { from: "main", to: "data-airtable", on: ["airtable", "shipment", "quickbooks", "piermont", "sync", "dashboard"] },
+    { from: "main", to: "permissions",   on: ["access", "permissions", "add user", "remove user", "provision", "credentials", "audit"] },
+    { from: "main", to: "garys-cs",      on: ["gary", "customer service", "return", "refund", "order lookup"] },
+  ],
+
+  // --- Channels ---
+  channels: {
+    // Claude Code CLI is primary — no WhatsApp/Telegram for technical users
+    // Future: add chat UI endpoint for Piermont client-facing portal
+  },
+
+  // --- Sessions ---
+  session: {
+    dmScope: "per-channel-peer",
+    reset: { mode: "daily", atHour: 4 },
+    maintenance: { mode: "enforce", pruneAfter: "30d", maxEntries: 500 },
+  },
+
+  // --- Safety ---
+  tools: {
+    loopDetection: {
+      enabled: true,
+      historySize: 30,
+      warningThreshold: 10,
+      criticalThreshold: 20,
+      globalCircuitBreakerThreshold: 30,
+    },
+  },
+
+  // --- Commands ---
+  commands: { native: "auto", nativeSkills: "auto", restart: true },
+
+  // --- Plugins ---
+  plugins: {
+    entries: {
+      "damage-control": { enabled: true },
+    },
+  },
+
+  // --- Skills ---
+  skills: {
+    entries: {
+      // Client Ops domain
+      "client-onboarding":    { enabled: true, user_invocable: true },
+      "client-offboarding":   { enabled: true, user_invocable: true },
+
+      // Data & Airtable domain
+      "airtable-sync":        { enabled: true },
+      "shipment-request":     { enabled: true, user_invocable: true },
+      "quickbooks-sync":      { enabled: true },
+
+      // Permissions domain
+      "provision-user":       { enabled: true, user_invocable: true },
+      "revoke-access":        { enabled: true, user_invocable: true },
+      "access-audit":         { enabled: true },
+
+      // Ops
+      "morning-brief":        { enabled: true },
+
+      // Utility
+      "setup-openclaw":       { enabled: true, user_invocable: true },
+      "pi-pi":                { enabled: true, user_invocable: true },
+    },
+    load: { watch: true },
+  },
+
+  // --- Cron ---
+  cron: { enabled: true },
+
+  // Cron jobs to add after deploy:
+  // openclaw cron add "morning-brief"        "0 8 * * 1-5"   (weekdays 8am EST)
+  // openclaw cron add "airtable-sync-check"  "0 9 * * 1"     (Monday 9am)
+  // openclaw cron add "access-audit"         "0 16 * * 5"    (Friday 4pm)
+}

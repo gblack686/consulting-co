@@ -1,0 +1,150 @@
+# Consulting-Co Repository - Complete Organization Overview
+
+REPOSITORY OVERVIEW:
+- Type: Claude Code Consulting Framework + Production Applications
+- Size: 8,000+ files (7,638 Python, 92 JS/TSX, 21+ markdown specs)
+- Purpose: Complete business framework for .claude consulting
+
+MAIN SECTIONS:
+
+1. .claude/ (Project Infrastructure)
+   - 50+ configuration files
+   - 6 specialized agents
+   - 15+ commands
+   - 5+ hook scripts (Python automation)
+   - 20+ utility scripts
+   - 3 skill bundles
+   - 10 context directories
+   - 26,000+ lines of documentation
+   - Configuration: YAML files for Neo4j, Langfuse, Obsidian
+
+2. specs/ (Consulting Framework - 11,884 lines)
+   - 6 core guides (CLAUDE-CODE-ESSENTIALS, CONSULTING-WORKFLOW, VIBE-PLANNING, etc.)
+   - 4 workflow documents
+   - 5 infrastructure specs
+   - 6 marketing materials
+   - YAML analyses of 8 reference repos
+
+3. claude-repos/ (8 Production .claude Repositories)
+   - quickstart-acme-test-claude (Multi-client isolation)
+   - quickstart-agentcore-claude (Shared framework, 110+ commands)
+   - quickstart-board-director-claude (Graphiti + ADO time tracking)
+   - quickstart-compcorrect-claude (11 MCP servers)
+   - quickstart-nexus-claude (Advanced observability)
+   - quickstart-parenting-autism-claude (25+ agents)
+   - quickstart-perl-street-claude
+   - quickstart-word-collections-claude
+   
+   Each contains: ado/, agents/, commands/, PRPs/, templates/, skills/, settings.local.json
+
+4. gb-automation-landing/ (React Landing Page)
+   - Technology: React 18.3.1, Vite 7.1.7, Tailwind CSS, AWS Amplify
+   - Components: 10 JSX files (ContactForm, PRDGenerator, VideoHero, etc.)
+   - Features: Contact form, PRD generator, voice demo, responsive design
+   - Deployment: AWS Amplify (continuous deployment)
+   - Structure: src/components/, src/pages/, amplify/, public/, dist/
+
+5. observability/ (Separate Observability Workspace)
+   - Standalone .claude configuration
+   - Demo applications (client, server, agent)
+   - AI documentation (Haiku45, Sonnet45)
+   - Obsidian vault
+   - Utility scripts
+
+6. Supporting Directories
+   - PRP/: Project planning documents
+   - archive/: Legacy code
+   - logs/: Session logs
+   - dynamous-posts/: Blog/content
+   - obsidian-ai-agent/: Obsidian plugin
+
+KEY TECHNOLOGIES:
+
+Languages: Python (7,638 files), JavaScript/React (92 files), Node.js, Bash
+Frameworks: React 18, Vite, Tailwind CSS, AWS Amplify
+Observability: Langfuse (LLM tracing), Neo4j/Graphiti (knowledge graphs), Obsidian (notes)
+Cloud: AWS Amplify, S3, CloudFront, Route53, Lambda, CloudWatch
+
+CRITICAL FILE LOCATIONS:
+
+- README.md - Main entry point
+- specs/core-guides/CLAUDE-CODE-ESSENTIALS-GUIDE.md - 100+ page technical handbook
+- specs/core-guides/CONSULTING-WORKFLOW.md - 7-phase client engagement
+- specs/core-guides/VIBE-PLANNING-FRAMEWORK.md - 32 discovery questions
+- .claude/ARCHITECTURE.md - System design diagrams
+- .claude/settings.local.json - Main configuration with hooks & permissions
+- .claude/COMPLETE_STACK_QUICK_START.md - Observability setup guide
+- gb-automation-landing/src/ - React components
+- gb-automation-landing/package.json - Dependencies
+
+ARCHITECTURAL PATTERNS:
+
+1. Three-System Integration:
+   - Knowledge Management (Obsidian + Neo4j/Graphiti)
+   - Observability (Langfuse + OpenTelemetry)
+   - Automation (Skills + Hooks)
+
+2. Event-Driven Automation:
+   Session Events → Hooks (capture) → Python Scripts (process) → Storage (Neo4j, Langfuse, Obsidian) → Dashboards
+
+3. Agent-Centric Task Management:
+   - Archon (single source of truth)
+   - Specialized agents for domains
+   - Commands as operations
+   - Skills as capability bundles
+
+4. Reference Implementation Pattern:
+   Each repo in claude-repos/ contains: ado/, agents/, commands/, skills/, templates/, settings.local.json
+
+ORGANIZATION PRINCIPLES:
+
+By Function:
+  - specs/: Documentation
+  - .claude/: Configuration
+  - claude-repos/: References
+  - gb-automation-landing/: Application
+  - logs/: Data
+
+By Audience:
+  - Consultants: README.md + specs/core-guides/
+  - Developers: claude-repos/ + .claude/
+  - Users: gb-automation-landing/
+  - Agents: .claude/context/ + .claude/agents/
+
+CONSULTING WORKFLOW:
+
+Prospect → Read README.md + handbook
+          → Discovery call (32 questions)
+          → Create VIBE_PLAN.md
+          → Review claude-repos/ examples
+          → Design custom .claude architecture
+          → Build using patterns
+          → Test with .claude/tests/
+          → Setup observability
+          → Handoff with docs
+          → Ongoing support
+
+FILE TYPE DISTRIBUTION:
+
+Python: 7,638 files
+JS/TSX: 92 files
+Markdown: 600+ files (documentation)
+JSON: 50+ files (configs, data)
+YAML: 10+ files (system configs)
+CSS: 5+ files (styling)
+
+SUMMARY:
+
+This is a complete consulting business framework providing:
+- 11,884 lines of consulting documentation
+- 8 production reference implementations
+- Proven 7-phase consulting methodology
+- 32-question discovery framework
+- Full-stack landing page (React + AWS)
+- Advanced observability infrastructure
+- Complete .claude configuration examples
+- 20+ utility scripts
+- Test suites
+- Multiple skill bundles
+
+Ready to build a Claude Code consulting business!

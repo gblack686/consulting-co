@@ -1,0 +1,58 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run .claude/hooks/security/dangerous_command_blocker.py",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run .claude/hooks/security/write_guard.py",
+            "timeout": 5000
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run .claude/hooks/security/edit_guard.py",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run .claude/hooks/creative/secret_scanner.py",
+            "timeout": 5000
+          }
+        ]
+      }
+    ],
+    "Stop": [],
+    "Notification": [],
+    "SubagentStop": [],
+    "SubagentStart": [],
+    "PreCompact": [],
+    "PostCompact": [],
+    "SessionStart": [],
+    "SessionPause": [],
+    "SessionResume": [],
+    "UserPromptSubmit": []
+  }
+}

@@ -1,0 +1,608 @@
+project_name: quickstart-word-collections-claude
+analysis_date: 2025-11-13
+project_type: RevStar QuickStart Development Framework
+description: Comprehensive Claude Code workflow system with Archon MCP integration for task-driven development, PRP-based implementation, and multi-agent code generation orchestration.
+
+directory_structure:
+  root_level:
+    - agents/
+    - commands/
+    - archon_rules.md
+    - settings.local.json
+
+  agents_directory:
+    - architecture-planner.md
+    - database-architect.md
+    - documentation-generator.md
+    - revstar-scoping-agent.md
+    - scoping-agent.md
+    - test-generator.md
+    - test-runner.md
+    - INSTALL.txt
+
+  commands_directory:
+    - branch-cleanup.md
+    - branch-start.md
+    - commit.md
+    - execute-prp.md
+    - generate-prp.md
+    - test.md
+    - unit-test.md
+
+primitives:
+  commands:
+    - name: branch-cleanup
+      purpose: Clean up local and remote branches systematically with safety checks and analysis
+      file_path: commands/branch-cleanup.md
+      triggers: Manual invocation
+      output: Branch status report, cleanup candidates analysis, execution checklist
+      features:
+        - Analyzes merged vs. stale branches
+        - Identifies orphaned branches
+        - Provides safe deletion recommendations
+        - Supports dry-run mode and force options
+        - Categorizes branches by activity status
+
+    - name: branch-start
+      purpose: Create new feature branches from latest base branch with proper tracking
+      file_path: commands/branch-start.md
+      triggers: Manual invocation with feature name parameter
+      output: Created branch name, remote tracking setup, next steps
+      features:
+        - Auto-detects base branch (develop or main)
+        - Enforces naming conventions (feature/, bugfix/, hotfix/, chore/)
+        - Sets up upstream tracking
+        - Pulls latest changes before creating branch
+        - Provides branch status verification
+
+    - name: commit
+      purpose: Create well-structured commits with conventional commit format
+      file_path: commands/commit.md
+      triggers: Manual invocation after code changes
+      output: Commit plan, messages following conventional commits, execution logs
+      features:
+        - Analyzes staged and unstaged changes
+        - Recommends single vs. multiple commits
+        - Enforces conventional commit format (feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert)
+        - Validates commit messages against standards
+        - Supports selective file staging for logical commits
+
+    - name: generate-prp
+      purpose: Create comprehensive PRPs (Project Requirements Plans) for one-pass implementation success
+      file_path: commands/generate-prp.md
+      triggers: Manual invocation for new features/bugfixes
+      output: PRP markdown file in PRPs/ directory with complete context
+      features:
+        - Invokes codebase-analysis subagent for deep research
+        - Spawns multiple subagents for parallel research
+        - Creates detailed YAML context structures
+        - Includes specific file references and patterns
+        - Documents external resources with URLs
+        - Defines implementation tasks in dependency order
+        - Includes validation gates and success criteria
+
+    - name: execute-prp
+      purpose: Execute completed PRPs to generate working code on first attempt
+      file_path: commands/execute-prp.md
+      triggers: Manual invocation after PRP creation
+      output: Implemented code, validation reports, completion checklist
+      features:
+        - Loads and fully absorbs PRP context
+        - Creates comprehensive implementation plan
+        - Breaks down into Archon tasks
+        - Follows PRP task sequence
+        - Implements 4-level progressive validation
+        - Verifies all success criteria from PRP
+        - Provides detailed failure protocol with recovery
+
+    - name: test
+      purpose: Generate comprehensive tests following existing patterns with edge cases
+      file_path: commands/test.md
+      triggers: Manual invocation with file/function/class target
+      output: Test suite in project structure, coverage analysis, pattern compliance report
+      features:
+        - Discovers existing test patterns automatically
+        - Analyzes test framework (Jest, Pytest, Mocha, Vitest, etc.)
+        - Identifies edge cases comprehensively
+        - Includes boundary value testing
+        - Tests state variations and async operations
+        - Generates tests matching project conventions
+        - Provides coverage analysis and recommendations
+
+    - name: unit-test
+      purpose: Generate focused unit tests for specific functions with mocking
+      file_path: commands/unit-test.md
+      triggers: Manual invocation with function/method/class name
+      output: Unit test code, mock strategy, coverage report for specific unit
+      features:
+        - Examines test infrastructure for patterns
+        - Identifies dependencies to mock
+        - Defines mock strategy following project patterns
+        - Maps all execution paths
+        - Creates descriptive test names
+        - Implements proper test isolation
+        - Provides mock verification patterns
+
+  agents:
+    - name: scoping-agent
+      type: specialized analyzer
+      purpose: Analyzes project requirements from transcripts and POC specs to generate comprehensive technical specifications
+      file_path: agents/scoping-agent.md
+      model: sonnet
+      tools: [Read, Write, Grep, Glob, MCP]
+      input_requirements:
+        - input_folder: Path to folder containing Fathom transcripts and POC specification documents (required)
+      capabilities:
+        - Parses Fathom transcripts for requirements
+        - Generates cost estimates (development, infrastructure, maintenance)
+        - Creates UX flow specifications with user scenarios
+        - Designs normalized data schemas with relationships
+        - Produces technical specifications (project structure, technology stack, deployment)
+        - Generates UI specifications with components and screens
+        - Creates test specifications (unit, integration, E2E)
+      output_formats:
+        - cost-estimate.yaml: Development hours, infrastructure costs, maintenance estimates
+        - ux-flow.yaml: User flows, scenarios, example interactions
+        - data-schema.yaml: Entities, relationships, indexes, constraints
+        - tech-specs.yaml: Architecture, technology stack, deployment strategy
+        - ui-specs.yaml: Component definitions, screen layouts, sample data
+        - test-specs.yaml: Unit test plans, integration tests, E2E scenarios
+
+    - name: revstar-scoping-agent
+      type: specialized analyzer
+      purpose: RevStar-specific scoping agent for QuickStart projects following 5-week delivery methodology
+      file_path: agents/revstar-scoping-agent.md
+      model: sonnet
+      tools: [Read, Write, Grep, Glob, Edit]
+      input_requirements:
+        - Fathom call transcripts
+        - Technical requirements
+        - QuickStart alignment needs
+      capabilities:
+        - Requirements analysis for RevStar methodology
+        - AWS service architecture planning
+        - QuickStart alignment verification
+        - 5-week timeline planning
+        - Cost estimation with AWS services
+        - Security and compliance verification
+      output_formats:
+        - AWS_TECHNICAL_FRAMEWORK.yaml: Infrastructure, AI components, monitoring, security, deployment
+        - USER_EXPERIENCE.yaml: Onboarding, document management, AI interaction, engagement features, progression stages
+        - DATA_SCHEMA.yaml: Entities, relationships, indexes (optimized for AWS)
+        - UI_SPECS.yaml: Components, screens, permissions (AWS Amplify focused)
+        - COST_ESTIMATE.yaml: Development, AWS services breakdown, maintenance
+        - IMPLEMENTATION_PLAN.yaml: 5-week timeline with weekly deliverables
+        - AWS_ARCHITECTURE_DIAGRAM: Visual representation of services and flows
+      revstar_specifics:
+        - Optimized for 5-week delivery window
+        - AWS managed services focus
+        - Identifies core vs. custom features
+        - Includes AWS cost management
+
+    - name: architecture-planner
+      type: system design specialist
+      purpose: Designs scalable, maintainable software architectures and recommends design patterns
+      file_path: agents/architecture-planner.md
+      model: opus
+      tools: [Read, Write, Grep, Glob]
+      triggers: When starting new features, designing components, planning microservices, solving architectural challenges
+      capabilities:
+        - Analyzes current architecture (style, patterns, boundaries, data flow)
+        - Assesses technical constraints and stack
+        - Evaluates quality attributes (performance, scalability, security, availability)
+        - Designs component decomposition
+        - Defines interfaces and communication patterns
+        - Selects appropriate design patterns
+        - Performs risk assessment
+        - Creates architecture decision records (ADR)
+      pattern_expertise:
+        system_architectures: [Layered, Microservices, Event-Driven, Serverless, Hexagonal]
+        design_patterns: [Creational (Factory, Builder, Singleton), Structural (Adapter, Facade, Proxy), Behavioral (Observer, Strategy, Command), Concurrency (Producer-Consumer, Thread Pool), Distributed (Saga, Circuit Breaker, Retry)]
+        data_patterns: [Repository, Unit of Work, CQRS, Event Sourcing, Sharding]
+      output_deliverables:
+        - Architecture design summary
+        - System architecture diagrams (Mermaid)
+        - Component designs with interfaces
+        - Entity relationship diagrams
+        - Data storage strategy
+        - API design documentation
+        - Technology decision matrix
+        - Scalability plan with triggers
+        - Security architecture
+        - Migration strategy
+        - Risk assessment
+        - Architecture decision records
+
+    - name: database-architect
+      type: data architecture specialist
+      purpose: Designs efficient database schemas, optimizes queries, and solves data modeling challenges
+      file_path: agents/database-architect.md
+      model: sonnet
+      tools: [Read, Write, Grep, Glob, Bash]
+      triggers: Designing features needing data storage, experiencing slow queries, planning data models, solving database performance issues
+      capabilities:
+        - Database setup assessment (DBMS identification, schema analysis, index strategy)
+        - Data pattern analysis (read/write ratio, transaction patterns, data volumes)
+        - Performance baseline establishment
+        - Schema design and normalization strategy
+        - Query optimization and EXPLAIN plan analysis
+        - Index strategy development
+        - Data integrity enforcement
+        - Partitioning strategy for large tables
+        - Performance tuning recommendations
+      database_expertise:
+        supported_systems: [PostgreSQL, MySQL, MongoDB, Oracle, SQL Server, Cassandra]
+        optimization_techniques: [Materialized views, Proper indexing, Query rewriting, Caching strategies, Table partitioning, Denormalization where appropriate]
+        performance_tools: [EXPLAIN ANALYZE, pg_stat_statements, pgstattuple, slow query logs, profiling]
+      output_deliverables:
+        - Database design summary
+        - Entity relationship diagrams (Mermaid)
+        - Optimized schema definitions (SQL)
+        - Query optimization analysis with before/after
+        - Index strategy matrix
+        - Data migration scripts
+        - Partitioning strategy
+        - Performance tuning recommendations
+        - Connection pool settings
+        - Query performance checklist
+        - Monitoring queries
+        - Backup and recovery strategy
+
+    - name: documentation-generator
+      type: documentation specialist
+      purpose: Creates comprehensive, accurate, and up-to-date documentation and keeps it synchronized with code
+      file_path: agents/documentation-generator.md
+      model: sonnet
+      tools: [Read, Write, Grep, Glob, MultiEdit]
+      triggers: After code changes, when documentation is missing, before releases, when onboarding new team members
+      capabilities:
+        - Existing documentation assessment
+        - Code structure analysis for documentation targets
+        - API documentation generation
+        - README maintenance and generation
+        - Architecture diagram creation
+        - Component documentation
+        - Configuration documentation
+        - Synchronization checking
+        - Documentation quality assurance
+      documentation_formats:
+        - README.md with features, installation, usage, configuration
+        - API documentation (OpenAPI/Swagger YAML)
+        - JSDoc/docstring comments
+        - Architecture diagrams (Mermaid)
+        - Markdown tables
+        - Installation guides
+        - Configuration references
+        - Contributing guidelines
+      quality_metrics:
+        - Coverage percentage
+        - Completeness scoring
+        - Accuracy validation
+        - Example coverage
+        - Up-to-date verification
+      output_deliverables:
+        - Generated/updated README.md
+        - OpenAPI specification
+        - JSDoc comments
+        - Architecture diagrams
+        - Documentation gap analysis
+        - Outdated section identification
+        - Auto-update scripts
+        - Documentation maintenance checklist
+
+    - name: test-runner
+      type: test execution specialist
+      purpose: Runs tests, analyzes failures, and implements fixes while preserving test intent
+      file_path: agents/test-runner.md
+      model: sonnet
+      tools: [Read, Bash, Grep, Glob, Edit]
+      triggers: When code changes are made, before commits, when test failures occur
+      capabilities:
+        - Test framework detection (Jest, Mocha, Vitest, Pytest, unittest, Go tests, JUnit, RSpec)
+        - Test file location and pattern identification
+        - Test command discovery
+        - Test execution with full suite running
+        - Failure analysis and root cause identification
+        - Test failure fixing with intent preservation
+        - Coverage analysis
+        - Flaky test detection
+        - Performance testing
+      test_strategies:
+        - Run appropriate test suite per project
+        - Parse failure output for patterns
+        - Extract error messages and stack traces
+        - Determine failure patterns (related vs. random)
+        - Identify test vs. code issues
+        - Fix with minimal changes
+        - Verify no regressions
+      output_deliverables:
+        - Test execution summary
+        - Passed/failed test lists
+        - Failure root cause analysis
+        - Applied fixes with verification
+        - Remaining issues documentation
+        - Coverage analysis
+        - Test quality observations
+        - Recommendations for improvements
+
+    - name: test-generator
+      type: test generation specialist
+      purpose: Creates comprehensive test suites ensuring code reliability with high coverage
+      file_path: agents/test-generator.md
+      model: sonnet
+      tools: [Read, Write, Grep, Glob, Edit]
+      triggers: When new features are added, when test coverage is low, when critical paths lack tests
+      capabilities:
+        - Testing framework discovery and analysis
+        - Existing test pattern analysis
+        - Code path mapping
+        - Test scenario design
+        - Edge case identification
+        - Mock strategy development
+        - Test fixture creation
+        - Performance test generation
+        - Coverage analysis
+      test_categories:
+        unit_tests: Single function/method testing with mocked dependencies
+        integration_tests: Component interaction with real dependencies when possible
+        edge_case_tests: Boundary values, null/undefined, large datasets, concurrent operations
+        error_scenario_tests: Invalid inputs, network failures, timeouts, permission denied
+        performance_tests: Large dataset handling, throughput targets, latency targets
+      test_quality_principles:
+        - Fast execution
+        - Independent test execution
+        - Repeatable results
+        - Self-validating
+        - Timely (with or before code)
+      output_deliverables:
+        - Generated test suites in project structure
+        - Coverage analysis and improvements
+        - Critical path coverage verification
+        - Mock strategy documentation
+        - Test data fixtures
+        - Performance test suggestions
+        - Coverage maps
+        - Test quality assessment
+
+integrations:
+  archon:
+    enabled: true
+    purpose: Task management, knowledge base (RAG), project tracking
+    critical_note: "ARCHON-FIRST RULE - This project REQUIRES Archon MCP server as PRIMARY task management system. TodoWrite is explicitly disabled in favor of Archon."
+    core_workflows:
+      task_driven_development:
+        - Get Task (find_tasks)
+        - Start Work (manage_task update to 'doing')
+        - Research (rag_search_knowledge_base)
+        - Implement (write code)
+        - Review (manage_task update to 'review')
+        - Next Task (find_tasks for 'todo')
+      rag_search:
+        - Get available sources (rag_get_available_sources)
+        - Find source ID from documentation
+        - Search knowledge base (rag_search_knowledge_base)
+      project_management:
+        - Create projects (manage_project create)
+        - Create tasks (manage_task create)
+        - Filter by status/project/assignee
+        - Track with task_order (0-100 priority)
+    task_status_flow: [todo, doing, review, done]
+    search_best_practices:
+      - Use 2-5 keywords only
+      - Specific over generic queries
+      - Include service names for better results
+      - Higher task_order = higher priority
+      - Task duration: 30 min - 4 hours
+
+  logging:
+    setup: Permission-based bash execution logging
+    capabilities_allowed:
+      - Bash(grep:*)
+      - Bash(ls:*)
+      - Bash(source:*)
+      - Bash(./venv/Scripts/activate.bat)
+      - Bash(find:*)
+      - Bash(python -m pytest:variants)
+      - Bash(mv:*)
+      - Bash(npm:variants)
+      - Bash(mkdir:*)
+    purpose: Controlled execution of test and development commands within safe sandbox parameters
+
+  graphiti:
+    enabled: false
+    notes: Not configured in this project
+
+  mcp:
+    required_servers:
+      - name: aws-pricing
+        type: local
+        command: uvx awslabs.aws-pricing-mcp-server@latest (or Windows exe variant)
+        environment: AWS_PROFILE, AWS_REGION
+        purpose: AWS service pricing analysis for cost estimation
+
+      - name: aws-diagram
+        type: local
+        command: uvx awslabs.aws-diagram-mcp-server (or Windows exe variant)
+        purpose: Generate architecture diagrams from CDK code
+
+    installation_notes:
+      - Requires uv package manager (Astral)
+      - Python 3.10+ required
+      - GraphViz required for diagram generation
+      - AWS credentials configured with pricing permissions
+      - Commands provided for Windows and Linux/macOS
+
+  other:
+    claude_code_integration: Full Claude Code support with slash commands and custom prompts
+    version_control: Git-based workflow with conventional commits
+    prs_and_prps: Unified PRP (Project Requirements Plan) system for implementation planning
+
+key_files:
+  - name: archon_rules.md
+    purpose: Core configuration defining Archon MCP as PRIMARY task management system, RAG workflow patterns, and task-driven development methodology
+    path: C:/Users/gblac/OneDrive/Desktop/consulting-co/claude-repos/quickstart-word-collections-claude/archon_rules.md
+    critical: true
+    content_sections:
+      - ARCHON-FIRST RULE overriding all TodoWrite usage
+      - Task-driven development cycle with mandatory task updates
+      - RAG workflow for knowledge base searching
+      - Project and task management examples
+      - Tool references and best practices
+      - Task status flow documentation
+
+  - name: settings.local.json
+    purpose: Claude Code sandbox permissions configuration
+    path: C:/Users/gblac/OneDrive/Desktop/consulting-co/claude-repos/quickstart-word-collections-claude/settings.local.json
+    content: Allows specific bash commands for testing, package management, and virtual environment activation
+
+  - name: INSTALL.txt
+    purpose: Setup guide for RevStar Scoping Agent with MCP server installations
+    path: C:/Users/gblac/OneDrive/Desktop/consulting-co/claude-repos/quickstart-word-collections-claude/agents/INSTALL.txt
+    prerequisites:
+      - uv package manager
+      - Python 3.10
+      - GraphViz
+      - AWS credentials with pricing permissions
+    includes: Windows and Linux/macOS installation commands, verification steps, troubleshooting guide
+
+notable_patterns:
+  - name: Task-Driven Development Methodology
+    description: All work flows through Archon task management system starting with task discovery, status updates during work, and research before implementation
+
+  - name: PRP-Based Implementation
+    description: Two-stage process (generate-prp, execute-prp) ensuring one-pass implementation success through comprehensive research and context documentation
+
+  - name: Multi-Agent Orchestration
+    description: Specialized agents for different concerns (architecture, database, testing, documentation) that can be invoked during PRP generation and execution
+
+  - name: Comprehensive Test Generation
+    description: Systematic test generation based on existing patterns, edge case discovery, and coverage analysis rather than ad-hoc test writing
+
+  - name: Context Preservation
+    description: Agents designed to preserve critical context and avoid token waste by returning only essential information to the main orchestrator
+
+  - name: Pattern Discovery
+    description: Commands and agents systematically discover existing project patterns (test frameworks, naming conventions, architecture styles) before implementing new features
+
+  - name: Conventional Commits
+    description: Enforced commit message format (feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert) with intelligent commit splitting for logical changes
+
+  - name: Specification-Driven Architecture
+    description: Clear separation between specification generation (scoping agents) and implementation (execute-prp command with validation gates)
+
+  - name: AWS-First Infrastructure
+    description: RevStar scoping agent specifically targets AWS services (Amplify, Cognito, S3, Bedrock, CloudWatch) for QuickStart projects
+
+  - name: One-Pass Success Focus
+    description: Every command and agent optimizes for success on first attempt through comprehensive research, context curation, and validation gates
+
+observability:
+  logging_setup:
+    - Controlled bash execution within sandbox permissions
+    - Test output captured and analyzed
+    - Failure analysis with root cause identification
+    - Coverage metrics tracked and reported
+
+  monitoring:
+    - Test execution status tracking
+    - Coverage analysis and gaps identified
+    - Performance benchmarks in tests
+    - Flaky test detection
+    - Validation gate status monitoring
+    - Task status tracking in Archon
+
+  error_handling:
+    - Comprehensive failure analysis in test-runner
+    - Root cause identification before fixes
+    - Progressive validation gates in PRP execution
+    - Recovery protocols for validation failures
+    - Archon task status for blocking issues
+
+recommendations:
+  strengths:
+    - Exceptional structure for one-pass implementation success with PRP methodology
+    - Comprehensive multi-agent system covering all development concerns
+    - Strong integration with Archon for task-driven development
+    - Clear patterns for test generation and database design
+    - Detailed context preservation to minimize token usage
+    - RevStar QuickStart methodology alignment for AWS projects
+    - Excellent safety mechanisms (dry-run, validation gates, permission-based execution)
+
+  best_practices_demonstrated:
+    - Research-first approach before implementation (PRP generation)
+    - Systematic pattern discovery in codebases
+    - Comprehensive test coverage strategies
+    - Architecture-first design approach
+    - Documentation generation from code
+    - Progressive validation gates
+    - Clear role separation between agents
+
+  areas_for_enhancement:
+    - Consider adding CI/CD pipeline generation agent
+    - Could benefit from performance profiling agent
+    - Security audit agent would complement architecture-planner
+    - Dependency analysis and vulnerability scanning agent
+    - Load testing and scalability analysis agent
+    - API versioning and deprecation agent
+
+  workflow_optimization_tips:
+    - Always start with Archon task management (explicitly required)
+    - Run generate-prp for new features (2-3 hours) before execute-prp (4-6 hours)
+    - Use revstar-scoping-agent specifically for AWS QuickStart projects
+    - Run test-generator immediately after generate-prp to establish coverage baselines
+    - Use architecture-planner for any new components above microservice level
+    - Leverage database-architect early in feature design for data-heavy features
+    - Generate documentation right after implementation while context is fresh
+    - Use test-runner as final validation before commit
+
+  mcp_setup_critical_items:
+    - AWS credentials must have pricing:* permissions for aws-pricing MCP
+    - GraphViz installation required for diagram generation
+    - uv package manager must be in PATH
+    - Python 3.10 required for MCP servers
+    - Windows vs. Linux command variants must match system
+
+execution_flow_recommended:
+  new_feature_workflow:
+    1: "Create Archon task in 'todo' status"
+    2: "Update Archon task to 'doing'"
+    3: "Run generate-prp with deep codebase research"
+    4: "Run revstar-scoping-agent if AWS project (outputs to scope/agent-yaml/{timestamp}/)"
+    5: "Run architecture-planner for system design"
+    6: "Run database-architect for data modeling"
+    7: "Execute execute-prp with 4-level validation gates"
+    8: "Run test-generator for comprehensive coverage"
+    9: "Run documentation-generator after implementation"
+    10: "Create feature branch with branch-start"
+    11: "Make changes per PRP guidance"
+    12: "Run test-runner for validation"
+    13: "Create conventional commit with commit command"
+    14: "Update Archon task status to 'review' when ready for review"
+
+agent_invocation_scenarios:
+  scoping_agent: New projects without RevStar methodology
+  revstar_scoping_agent: AWS QuickStart projects (preferred over scoping-agent)
+  architecture_planner: New feature starting, microservice planning, architectural challenges
+  database_architect: Data-heavy features, performance issues, schema design
+  test_generator: After feature implementation, before PRs, low coverage areas
+  test_runner: After any code changes, before commits, CI integration
+  documentation_generator: After implementation, before releases, onboarding new members
+
+commands_quick_reference:
+  branch_start: "Generate feature branch from base branch with tracking setup"
+  branch_cleanup: "Analyze and clean up merged/stale branches with safety"
+  generate_prp: "Create comprehensive PRP with research and context (2-3 hours)"
+  execute_prp: "Implement PRP-specified features with validation gates (4-6 hours)"
+  commit: "Create conventional commits with intelligent splitting"
+  test: "Generate comprehensive test suites with edge cases"
+  unit_test: "Generate focused unit tests for specific functions"
+
+git_workflow_integration:
+  branch_naming: [feature/, bugfix/, hotfix/, chore/] with optional [ticket-id]-[description]
+  commit_format: conventional commits (feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert)
+  workflow_safety:
+    - No uncommitted changes allowed before branch operations
+    - Branch merged verification before deletion
+    - Dry-run mode available for cleanup
+    - Remote tracking setup automatic
+    - Base branch pull before feature branch creation

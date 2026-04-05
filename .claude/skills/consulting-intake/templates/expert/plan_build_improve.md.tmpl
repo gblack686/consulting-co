@@ -1,0 +1,141 @@
+# Expert plan_build_improve.md Template
+# Fill {placeholders} from domain spec
+
+---
+type: expert-file
+parent: "[[{domain_name}/_index]]"
+file-type: command
+command-name: plan_build_improve
+model: sonnet
+tags: [expert-file, command, workflow, {domain_name}]
+---
+
+# {Domain_Display_Name} Expert - Plan Build Improve
+
+> Full ACT-LEARN-REUSE workflow for {domain_name} changes.
+
+## Purpose
+
+Execute the complete plan-build-improve cycle for a {domain_name} change or addition.
+
+## Allowed Tools
+`Task, TaskOutput, Read, Write, Edit, Glob, Grep, Bash`
+
+## Workflow
+
+```
+ACT → LEARN → REUSE
+
+Step 1: Plan (ACT) — Create TAC-informed implementation plan
+Step 2: Build (ACT) — Execute the implementation
+Step 3: Self-Improve (LEARN) — Update expertise with new patterns
+```
+
+## Flow Control
+
+```
+Receive Request
+    │
+    ▼
+  PLAN ──────► Plan Approved?
+    ▲               │
+    │ No             │ Yes
+    └────────────────┘
+                     │
+                     ▼
+                   BUILD ──────► Successful?
+                     ▲               │
+                     │ No → Fix      │ Yes
+                     └───────────────┘
+                                     │
+                                     ▼
+                              Human-in-the-Loop?
+                                     │
+                              Yes    │    No
+                              ▼      │    │
+                           Review    │    │
+                              │      │    │
+                        Approved?    │    │
+                              │      │    │
+                         Yes  ▼      ▼    ▼
+                        Self-Improve
+                              │
+                              ▼
+                            Done
+```
+
+### Phase 1: PLAN (ACT)
+
+1. Load `expertise.md` for current domain state
+2. Analyze the request against existing workflows
+3. Classify by TAC pattern (see plan.md Step 3)
+4. If research needed:
+   - Dispatch browser agent for API docs
+   - Dispatch YouTube agent for tutorials
+5. Write implementation plan to `specs/{domain_name}-{feature}.md`
+6. **[CHECKPOINT]**: Review plan before proceeding
+
+### Phase 2: BUILD (ACT)
+
+Execute the plan:
+
+1. Create or modify files as specified in the plan
+2. For new SKILL.md files:
+   - Use `templates/skill.md.tmpl` as starting point
+   - Ensure metadata is single-line JSON
+   - Verify description follows "{category}: {Name} - {purpose}" format
+3. For new cron jobs:
+   - Validate cron expression syntax
+   - Ensure timezone matches USER.md
+4. For expertise.md updates:
+   - Maintain 7-part structure
+   - Update `last_updated` timestamp
+5. Test where possible:
+   - Validate YAML frontmatter parses
+   - Check file cross-references
+   - Verify cron expressions
+
+### Phase 3: SELF-IMPROVE (LEARN)
+
+After successful build:
+
+1. Read the results of what was built
+2. Compare actual vs. planned implementation
+3. Update `expertise.md` Part 7 with:
+   - New patterns_that_work entries
+   - New patterns_to_avoid entries
+   - Updated known_issues
+   - New tips discovered during build
+4. Update `last_updated` timestamp on expertise.md
+5. If API research was done: update Part 4 with findings
+6. If YouTube research was done: update Part 7 with patterns
+
+### Quality Gate
+
+Before marking complete, verify:
+- [ ] All planned files created/modified
+- [ ] SKILL.md frontmatter valid (metadata single-line)
+- [ ] expertise.md still has all 7 parts
+- [ ] _index.md updated with new commands/skills
+- [ ] Cross-references consistent
+- [ ] No hardcoded API keys (use env vars)
+
+## Report Format
+
+```markdown
+## {Domain_Display_Name} PBI Complete
+
+### Changes Made
+- {file}: {what changed}
+
+### New Files
+- {file}: {purpose}
+
+### Expertise Updated
+- Part {N}: {what was added}
+
+### Patterns Learned
+- {pattern}
+
+### Score: {score}/100
+```

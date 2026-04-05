@@ -1,0 +1,988 @@
+project_name: quickstart-parenting-autism-claude
+analysis_date: '2025-11-13'
+project_type: RevStar QuickStart - AI/ML Development Framework
+project_location: C:/Users/gblac/OneDrive/Desktop/consulting-co/claude-repos/quickstart-parenting-autism-claude
+
+---
+
+directory_structure:
+  root_level:
+    - __pycache__
+    - ado
+    - agents
+    - archon
+    - commands
+    - docs
+    - git
+    - knowledge-base
+    - PRPs
+    - scripts
+    - skills
+    - templates
+
+  subdirectories_detailed:
+    ado:
+      description: Azure DevOps integration and time tracking automation
+      contents:
+        - config_files: ado_config.py, project_config.py, project_mapping.py, calendar_config.json
+        - time_logging: log_time_to_ado.py, sync_calendar_to_ado.py, log_meeting_time.py
+        - utilities: ado_utils.py, test_ado_connection.py, verify_calendar_sync.py
+        - reporting: batch_log_missing_time.py, batch_log_today.py, generate_board_snapshot.py
+        - debugging: debug_admin_tasks.py, inspect_task_fields.py, list_admin_tasks.py, list_greg_tasks.py
+        - archive: board_snapshot_current.yaml, week-reviews folder
+
+    agents:
+      description: Specialized Claude agents for focused domain expertise
+      count: 25+ agent definitions
+      example_agents:
+        - architecture-planner.md
+        - aws-infrastructure-expert.md
+        - react-frontend-expert.md
+        - testing-expert.md
+        - documentation-expert.md
+        - react-amplify-developer.md
+        - database-architect.md
+        - revstar-scoping-agent.md
+
+    skills:
+      description: Reusable specialized capabilities
+      subdirectories:
+        - aws-cdk-diagram: CDK stack analysis and AWS architecture visualization
+        - git-wizard: Git crisis recovery, bisect automation, reflog recovery
+        - handoff: Client handoff documentation and presentation materials
+        - qa-hardening: Quality assurance hardening utilities
+
+    commands:
+      description: Slash commands for development workflow
+      count: 20 commands
+      categories:
+        development:
+          - commit.md
+          - branch-start.md
+          - branch-cleanup.md
+          - code-review.md
+        testing:
+          - test.md
+          - unit-test.md
+          - e2e-playwright-test-generator.md
+        ado_integration:
+          - ado-log-time.md
+          - ado-status.md
+          - ado-sync-archon.md
+        prp_generation:
+          - generate-prp.md
+          - execute-prp.md
+          - generate-aws-poc-prp.md
+        workflow:
+          - primer.md
+          - week-review.md
+          - git-login.md
+          - aws-sign-in.md
+
+    knowledge_base:
+      description: Local documentation and reference materials
+      categories:
+        - aws: amplify-best-practices.md
+        - deployment: troubleshooting-checklist.md
+        - frontend: react-patterns.md
+        - testing: testing-strategy.md
+
+    prps:
+      description: Project Research Plans for systematic implementation
+      structure:
+        - docs: planning documents and analysis
+        - templates: prp_base.md and other templates
+
+---
+
+primitives:
+
+  commands:
+    - name: primer
+      purpose: Prime context for Claude Code - initialize project understanding
+      file_path: commands/primer.md
+      triggers: Project initialization, context gathering
+
+    - name: generate-prp
+      purpose: Create comprehensive Project Research Plans with context curation
+      file_path: commands/generate-prp.md
+      triggers: Feature development, bugfix implementation
+      key_workflow: Codebase analysis → External research → PRP generation → Quality gates
+
+    - name: execute-prp
+      purpose: Execute a previously created PRP with systematic implementation
+      file_path: commands/execute-prp.md
+      triggers: After PRP creation, ready for implementation
+
+    - name: ado-log-time
+      purpose: Intelligent time tracking to ADO with AWS evidence collection
+      file_path: commands/ado-log-time.md
+      features:
+        - Check ADO board state
+        - Analyze AWS CloudWatch activity
+        - Match AWS activity to work items
+        - Generate contextual time entry descriptions
+        - Interactive review and approval
+        - Calendar meeting sync for ADO
+      time_target: 20 hours/week
+
+    - name: ado-status
+      purpose: View current Azure DevOps board status
+      file_path: commands/ado-status.md
+
+    - name: ado-sync-archon
+      purpose: Sync Azure DevOps tasks to Archon task management
+      file_path: commands/ado-sync-archon.md
+
+    - name: archon-list-revstar
+      purpose: List RevStar projects in Archon task management
+      file_path: commands/archon-list-revstar.md
+
+    - name: branch-start
+      purpose: Initialize new Git feature branch with naming conventions
+      file_path: commands/branch-start.md
+
+    - name: branch-cleanup
+      purpose: Clean up and manage feature branches
+      file_path: commands/branch-cleanup.md
+
+    - name: commit
+      purpose: Create structured commits with conventional commit formatting
+      file_path: commands/commit.md
+
+    - name: code-review
+      purpose: Conduct code review with quality standards
+      file_path: commands/code-review.md
+
+    - name: test
+      purpose: Run end-to-end tests
+      file_path: commands/test.md
+
+    - name: unit-test
+      purpose: Run unit tests with coverage
+      file_path: commands/unit-test.md
+
+    - name: e2e-playwright-test-generator
+      purpose: Generate E2E tests using Playwright
+      file_path: commands/e2e-playwright-test-generator.md
+
+    - name: week-review
+      purpose: Review weekly progress and generate reports
+      file_path: commands/week-review.md
+
+    - name: git-login
+      purpose: Configure Git authentication
+      file_path: commands/git-login.md
+      parameterized: true
+      uses_template_variables: true
+
+    - name: aws-sign-in
+      purpose: Authenticate to AWS services
+      file_path: commands/aws-sign-in.md
+      parameterized: true
+
+    - name: generate-aws-poc-prp
+      purpose: Generate PRPs specifically for AWS proof-of-concept implementations
+      file_path: commands/generate-aws-poc-prp.md
+
+  agents:
+    - name: architecture-planner
+      purpose: Plan and design system architecture
+      file_path: agents/architecture-planner.md
+      focus_areas:
+        - High-level system design
+        - Component decomposition
+        - Integration patterns
+
+    - name: aws-infrastructure-expert
+      purpose: AWS CDK, Lambda, API Gateway, OpenSearch, IAM expertise
+      file_path: agents/aws-infrastructure-expert.md
+      capabilities:
+        - CDK stack modification
+        - Lambda function creation/updates
+        - API Gateway configuration
+        - IAM permission management
+        - OpenSearch optimization
+        - S3 configuration
+      mcp_tools: Optional - Bash, WebFetch
+
+    - name: react-frontend-expert
+      purpose: React component development, TypeScript, state management, UI/UX
+      file_path: agents/react-frontend-expert.md
+      capabilities:
+        - Component creation and modification
+        - State management implementation
+        - Performance optimization
+        - AWS Amplify SDK integration
+
+    - name: react-amplify-developer
+      purpose: AWS Amplify hosting and deployment configuration
+      file_path: agents/react-amplify-developer.md
+      focus_areas:
+        - Amplify hosting setup
+        - Custom build rules
+        - Redirects and CORS configuration
+        - Environment variables
+        - Cache optimization
+
+    - name: testing-expert
+      purpose: Unit tests, integration tests, E2E tests, QA strategy
+      file_path: agents/testing-expert.md
+      expertise:
+        - Test framework selection
+        - Test strategy design
+        - Coverage improvement
+        - E2E test creation with Playwright
+        - Debugging test failures
+
+    - name: documentation-expert
+      purpose: Technical documentation, API specs, runbooks, diagrams
+      file_path: agents/documentation-expert.md
+      focuses_on:
+        - Architecture documentation
+        - API specifications
+        - Deployment runbooks
+        - Troubleshooting guides
+        - Decision records
+
+    - name: documentation-generator
+      purpose: Generate documentation from code and specifications
+      file_path: agents/documentation-generator.md
+
+    - name: database-architect
+      purpose: Database schema design, optimization, data modeling
+      file_path: agents/database-architect.md
+
+    - name: revstar-scoping-agent
+      purpose: RevStar-specific project scoping and planning
+      file_path: agents/revstar-scoping-agent.md
+      specialization: RevStar QuickStart methodology
+
+    - name: scoping-agent
+      purpose: Project scope definition and requirements analysis
+      file_path: agents/scoping-agent.md
+
+    - name: test-generator
+      purpose: Automated test generation
+      file_path: agents/test-generator.md
+
+    - name: test-runner
+      purpose: Test execution and result reporting
+      file_path: agents/test-runner.md
+
+    - name: cleanup-testing
+      purpose: Cleanup and testing utilities
+      file_path: agents/cleanup-testing.md
+
+    - name: context-window-agent-test (variants)
+      purpose: Test agent context window capabilities
+      variants:
+        - unrestricted: No context limits
+        - restricted: Limited context
+      file_path: agents/context-window-agent-test-*.md
+
+  hooks:
+    - name: Archon Integration
+      trigger: Task management and knowledge base operations
+      description: CRITICAL rule override - Archon MCP server is PRIMARY system
+      file_path: archon_rules.md
+      key_directives:
+        - Use Archon before TodoWrite
+        - Task-driven development cycle mandatory
+        - RAG workflow for research
+        - Never skip task updates
+      mcp_server: Archon (local installation required)
+
+    - name: Pre-commit Validation
+      trigger: Before git commit
+      enforces: Code quality and conventional commits
+
+    - name: Parameterization Override
+      trigger: Configuration loading
+      file_path: QUICK_REFERENCE.md
+      loads_from: settings.local.json (single source of truth)
+
+  skills:
+    - name: aws-cdk-diagram
+      description: Analyze AWS CDK stacks and generate architecture diagrams
+      location: skills/aws-cdk-diagram/
+      capabilities:
+        - CDK stack analysis (TypeScript)
+        - Microservice identification
+        - Data flow mapping
+        - Diagram generation via MCP server
+        - Architecture pattern validation
+      references: skills/aws-cdk-diagram/references/cdk-patterns.md
+      requires_mcp: AWS architecture diagram server
+
+    - name: git-wizard
+      description: Expert Git troubleshooting and time-travel debugging
+      location: skills/git-wizard/
+      capabilities:
+        - Crisis analysis and documentation
+        - Time-travel diff analysis
+        - Automated git bisect
+        - Lost commit recovery via reflog
+        - Safe testing with worktrees
+      scripts:
+        - crisis_snapshot.sh: Create emergency backup
+        - safe_diff_analysis.sh: Comprehensive diff analysis
+        - bisect_helper.sh: Automated bisect
+        - reflog_recovery.sh: Recover lost commits
+        - create_test_worktree.sh: Isolated testing
+      references:
+        - git-crisis-checklist.md
+        - common-git-issues.md
+      assets: crisis-report-template.md
+
+    - name: handoff
+      description: Client handoff documentation and presentation materials
+      location: skills/handoff/
+      workflow:
+        - Codebase analysis (scripts/analyze_codebase.py)
+        - Developer-led slide content (slides 5-8 of 16)
+        - Access checklist generation
+        - Next steps documentation
+        - README update (never overwrites original)
+      deliverables:
+        - handoff-slides-content.md
+        - access-checklist.md
+        - next-steps.md
+        - README_HANDOFF_YYYYMMDD.md
+        - client-deployment-guide.md
+      templates:
+        - handoff_deck_structure.md (16-slide standard)
+        - access_checklist_template.md
+        - next_steps_template.md
+      saves_to: docs/revstar/handoff/
+
+    - name: qa-hardening
+      description: Quality assurance hardening utilities
+      location: skills/qa-hardening/
+      skill_file: skill.md
+
+  tools:
+    python_utilities:
+      - config_loader.py: Central configuration loader from settings.local.json
+      - ado_utils.py: Azure DevOps API utilities
+      - ado_config.py: Legacy config wrapper
+      - project_config.py: Legacy config wrapper
+      - github_auth.py: GitHub authentication
+      - git_login.py: Git login automation
+
+    ado_integration:
+      main_scripts:
+        - log_time_to_ado.py: Core time logging for development work
+        - sync_calendar_to_ado.py: Google Calendar → ADO sync
+        - query_calendar_meetings.py: Calendar API integration
+        - log_meeting_time.py: Meeting time logging
+        - verify_calendar_sync.py: Verification utility
+      utilities:
+        - ado_config.py: Configuration management
+        - project_mapping.py: Project-to-task mapping
+      reporting:
+        - batch_log_missing_time.py: Catch up on missed weeks
+        - batch_log_today.py: Log today's time
+        - generate_board_snapshot.py: Board state capture
+
+    archon_integration:
+      - sync_to_archon.py: Sync ADO tasks to Archon
+      - transformer.py: Transform ADO data to Archon format
+      - ado_utils.py: Utilities for Archon sync
+      - config.json: Archon sync configuration
+
+---
+
+integrations:
+
+  ado:
+    status: Fully Integrated
+    description: Azure DevOps as primary task and time management system
+    features:
+      - Time tracking with AWS CloudWatch evidence correlation
+      - Calendar meeting synchronization
+      - Child task creation for time logging (company policy)
+      - Work item linking and hierarchy
+      - Board snapshots for progress tracking
+    configuration:
+      org_url: https://dev.azure.com/RevStarConsulting
+      project_name: Parenting Autism
+      key_config_file: settings.local.json
+    ado_pat: Configured in settings.local.json (sensitive)
+    time_tracking_policy:
+      target_hours: 20 hours per week
+      method: Child tasks under parent work items
+      evidence: AWS service activity correlation
+      closing: Daily task closure required
+
+  logging:
+    status: CloudWatch + ADO Activity Logging
+    description: Comprehensive activity logging across systems
+    cloudwatch_monitoring:
+      log_groups: Lambda function logs by prefix
+      metrics: Service activity tracking
+      correlation: Used to justify time entries
+    ado_activity:
+      description: Activity types tracked (AI/ML, Development, etc.)
+      activity_field: Microsoft.VSTS.Common.Activity
+      configured_activities:
+        - AI/ML (current project)
+        - Solutions Architect
+        - Project Manager
+        - Software Development
+        - DevOps
+
+  graphiti:
+    status: Not configured
+    description: Could be integrated for knowledge base visualization
+
+  archon:
+    status: Configured and Critical
+    rules:
+      - PRIMARY system for task management
+      - OVERRIDES TodoWrite system reminders
+      - RAG workflow for knowledge base search
+      - Project and task lifecycle management
+    functionality:
+      find_tasks: Query by ID, filter by status/project/assignee
+      manage_task: Create, update, delete tasks
+      manage_project: Create, update, delete projects
+      rag_search_knowledge_base: Search documentation
+      rag_search_code_examples: Find code examples
+      rag_get_available_sources: List available sources
+    task_workflow: todo → doing → review → done
+    configuration: archon/config.json
+    usage: Must be checked before starting any work
+
+  mcp:
+    configured_servers:
+      archon: Local task management and knowledge base (CRITICAL - overrides defaults)
+      supabase: Documentation search patterns (optional)
+      azure_devops: CI/CD integration (ado_* tools)
+      elevenlabs: Audio/voice capabilities (if needed for accessibility)
+    recommended_additional_servers:
+      - GitHub MCP: Check official repos (aws-amplify, aws-cdk)
+      - AWS Documentation MCP: Official AWS docs access
+      - Filesystem MCP: Direct project file access
+      - NPM Registry MCP: Package version checking
+    mcp_control:
+      default: All MCP servers available to all agents
+      override_capability: Can restrict per-agent via tools field in YAML
+      documentation: TOOLS-AND-MCP-CONTROL.md
+
+  other:
+    google_calendar:
+      purpose: Meeting sync to ADO
+      configuration: calendar_config.json
+      credentials: google_calendar_token.json
+      scopes: Google Calendar API access
+      usage: /ado-log-time command syncs calendar
+
+    github:
+      purpose: Repository management
+      credentials: gregrevstargmail-credentials.json
+      repositories:
+        client_repo: https://github.com/ClientOrg/client-repo-name
+        template_repo: https://github.com/revstarconsulting/LLM-Ops-Quickstart
+      authentication: github_auth.py
+
+    aws:
+      region: us-east-1
+      account_id: 909899699131
+      credentials:
+        access_key: Configured in settings.local.json
+        secret_key: Configured in settings.local.json
+      services: CDK deployment, Lambda, S3, Bedrock, OpenSearch, Cognito, DynamoDB
+
+    git:
+      login_automation: commands/git-login.md, git/git_login.py
+      config_file: GIT_CONFIG_GLOBAL path configured
+      authentication: Automated via cli
+
+---
+
+key_files:
+
+  core_configuration:
+    - name: settings.local.json
+      purpose: Single source of truth for all project configuration
+      path: settings.local.json
+      contents:
+        env: All configuration variables (project, ADO, AWS, GitHub)
+        permissions: Bash and WebFetch tool permissions
+      critical_for: Everything - referenced by all scripts and commands
+
+    - name: config_loader.py
+      purpose: Central configuration loader with environment override support
+      path: config_loader.py
+      features:
+        - Property-based access to config values
+        - Environment variable override capability
+        - Test/debug functionality with --show-sensitive flag
+        - Legacy wrapper support for backward compatibility
+
+    - name: archon_rules.md
+      purpose: CRITICAL directives for task-driven development
+      path: archon_rules.md
+      key_content:
+        - Archon-first rule overrides all other instructions
+        - Task management mandatory before coding
+        - RAG workflow for research
+        - Never use TodoWrite (use Archon instead)
+
+  documentation:
+    - name: QUICK_REFERENCE.md
+      purpose: Quick start guide for parameterization usage
+      path: QUICK_REFERENCE.md
+      covers:
+        - Single source of truth concept
+        - Python usage examples
+        - Markdown template variable syntax
+        - Environment override instructions
+
+    - name: PARAMETERIZATION_GUIDE.md
+      purpose: Comprehensive parameterization documentation
+      path: PARAMETERIZATION_GUIDE.md
+      includes:
+        - Complete implementation details
+        - Variable reference
+        - Python API documentation
+        - Migration guide
+        - Best practices
+        - Troubleshooting
+
+    - name: PARAMETERIZATION_SUMMARY.md
+      purpose: Summary of parameterization implementation status
+      path: PARAMETERIZATION_SUMMARY.md
+      describes:
+        - What was changed
+        - How it works
+        - Quick reference
+        - Testing instructions
+        - Next steps
+
+  agent_documentation:
+    - name: agents/README.md
+      purpose: Comprehensive guide to using specialized Claude agents
+      path: agents/README.md
+      sections:
+        - Available agents (5+ with detailed descriptions)
+        - How to use agents (@agent-name syntax)
+        - Multi-agent workflows examples
+        - Agent design patterns
+        - MCP server integration
+        - When to use which agent
+        - Best practices
+        - Learning resources
+
+    - name: agents/MCP-SERVER-SETUP.md
+      purpose: MCP server connection and configuration
+      path: agents/MCP-SERVER-SETUP.md
+
+    - name: agents/TOOLS-AND-MCP-CONTROL.md
+      purpose: Control MCP tool access per agent
+      path: agents/TOOLS-AND-MCP-CONTROL.md
+
+  command_documentation:
+    - name: commands/ado-log-time.md
+      purpose: Detailed time logging workflow (3800+ lines)
+      path: commands/ado-log-time.md
+      covers:
+        - Weekly time logging target (20 hours/week)
+        - Multi-week audit process
+        - Company time tracking policy (child tasks)
+        - ADO board status checking
+        - AWS service activity analysis
+        - Time entry mapping to work items
+        - Calendar meeting sync
+        - Task title formats
+        - Time estimation guidelines
+        - Error handling
+        - Best practices
+
+    - name: commands/generate-prp.md
+      purpose: PRP creation methodology and requirements
+      path: commands/generate-prp.md
+      methodology:
+        - Codebase analysis in depth
+        - External research at scale
+        - User clarification
+        - Template selection
+        - Context completeness validation
+        - Research integration
+        - Information density standards
+        - ULTRATHINK before writing
+      quality_gates:
+        - Context completeness check
+        - Template structure compliance
+        - Information density standards
+
+  knowledge_base:
+    - name: knowledge-base/aws/amplify-best-practices.md
+      purpose: AWS Amplify deployment best practices
+      path: knowledge-base/aws/amplify-best-practices.md
+
+    - name: knowledge-base/deployment/troubleshooting-checklist.md
+      purpose: Deployment troubleshooting reference
+      path: knowledge-base/deployment/troubleshooting-checklist.md
+
+    - name: knowledge-base/frontend/react-patterns.md
+      purpose: React component and state management patterns
+      path: knowledge-base/frontend/react-patterns.md
+
+    - name: knowledge-base/testing/testing-strategy.md
+      purpose: Testing approach and best practices
+      path: knowledge-base/testing/testing-strategy.md
+
+  ado_utilities:
+    - name: ado/ado_config.py
+      purpose: Azure DevOps configuration management
+      path: ado/ado_config.py
+      status: Legacy wrapper (uses config_loader internally)
+
+    - name: ado/calendar_config.json
+      purpose: Google Calendar sync configuration
+      path: ado/calendar_config.json
+
+    - name: ado/project_mapping.py
+      purpose: Map meetings and activities to projects
+      path: ado/project_mapping.py
+
+  archon_utilities:
+    - name: archon/config.json
+      purpose: Archon MCP server configuration
+      path: archon/config.json
+
+    - name: archon/ado_utils.py
+      purpose: ADO integration utilities for Archon
+      path: archon/ado_utils.py
+
+    - name: archon/sync_to_archon.py
+      purpose: Sync ADO tasks to Archon
+      path: archon/sync_to_archon.py
+
+    - name: archon/transformer.py
+      purpose: Transform ADO data to Archon format
+      path: archon/transformer.py
+
+---
+
+notable_patterns:
+
+  architecture_patterns:
+    - pattern: Parameterized Configuration
+      description: Single source of truth (settings.local.json) with multiple access patterns
+      implementation:
+        - Python config_loader.py for programmatic access
+        - {{VARIABLE_NAME}} template syntax for markdown commands
+        - Environment variable overrides for testing/CI
+      benefit: Eliminates hardcoded values, enables easy project cloning
+
+    - pattern: Task-Driven Development (Archon-First)
+      description: All work must flow through Archon task management system
+      implementation:
+        - Archon rules.md overrides ALL other instructions
+        - Mandatory workflow: Get Task → Start Work → Research → Implement → Review
+        - RAG knowledge base integration for research phase
+        - Never use TodoWrite (uses Archon instead)
+      benefit: Systematic task tracking, knowledge base integration, evidence-based work
+
+    - pattern: Specialized Agent Coordination
+      description: Domain-specific agents for focused problem-solving
+      implementation:
+        - 25+ agent definitions covering frontend, backend, infrastructure, testing, docs
+        - Multi-agent workflows chain agents sequentially
+        - Agent design patterns follow single responsibility principle
+        - MCP server access controlled per agent
+      benefit: Expert-level guidance per domain, composable workflows
+
+    - pattern: Multi-Phase Command Workflows
+      description: Complex commands broken into clear implementation phases
+      example_ado_log_time:
+        phase_1: Check ADO Board State
+        phase_2: Analyze AWS Service Activity
+        phase_3: Generate Time Entry Suggestions
+        phase_4: Log Time to ADO
+        phase_5: Sync Calendar Meetings
+      benefit: Systematic, verifiable, auditable workflow
+
+    - pattern: Skill-Based Capability Separation
+      description: Reusable, self-contained capabilities distributed as skills
+      implementations:
+        - aws-cdk-diagram: Infrastructure visualization
+        - git-wizard: Crisis recovery and debugging
+        - handoff: Client deliverables generation
+        - qa-hardening: Quality assurance utilities
+      benefit: Modularity, reusability across projects, focused expertise
+
+    - pattern: Evidence-Based Time Tracking
+      description: Time entries linked to actual AWS service activity
+      implementation:
+        - CloudWatch log volume analysis
+        - Service modification timestamps
+        - Deployment change set details
+        - Lambda invocation patterns
+      benefit: Accountability, audit trail, prevents guessing
+
+    - pattern: Company Policy Alignment
+      description: Time tracking follows specific company policies (child tasks)
+      rules:
+        - Create child tasks under parent work items (not direct logging)
+        - Title format: "AI - {name} - MMddYYYY"
+        - One child task per day per work item
+        - Close daily (not weekly)
+        - Required fields: Title, AssignedTo, State, IterationPath, CompletedWork, Activity, TeamCode
+      benefit: Compliance, audit readiness, integration with company systems
+
+  development_patterns:
+    - pattern: PRP-Driven Implementation
+      description: Project Research Plans guide systematic, one-pass implementation
+      methodology:
+        - Deep codebase analysis
+        - External research and documentation gathering
+        - Template-based structure
+        - Quality gates before implementation
+        - Information density standards
+      benefit: Higher success rate, reduced rework, knowledge capture
+
+    - pattern: Knowledge Base Integration
+      description: Local documentation serves as agent reference materials
+      structure:
+        - aws/: AWS service patterns and best practices
+        - deployment/: Deployment procedures and troubleshooting
+        - frontend/: React patterns and component strategies
+        - testing/: Test methodology and patterns
+      usage: Agents reference knowledge base before suggesting changes
+
+    - pattern: Git Crisis Recovery
+      description: Systematic approach to Git problem resolution
+      steps:
+        1. Crisis snapshot (backup current state)
+        2. Gather intelligence (commit range identification)
+        3. Diff analysis (find breaking changes)
+        4. Root cause identification (manual review or git bisect)
+        5. Recovery strategy formulation
+        6. Testing in isolation (worktrees)
+        7. Documentation and commit
+      benefit: Safe recovery, prevents data loss, knowledge retention
+
+    - pattern: Client Handoff Standardization
+      description: Structured handoff materials generation
+      components:
+        - Slides 5-8 of 16-slide presentation (developer content)
+        - Access checklist (actual resource names/URLs)
+        - Next steps documentation (enhancement opportunities)
+        - Updated README (preserves original, timestamped)
+        - Deployment guide
+      benefit: Consistent deliverables, client readiness, support clarity
+
+  best_practices_demonstrated:
+    - practice: Single Source of Truth
+      implementation: settings.local.json with config_loader.py access layer
+      evidence: PARAMETERIZATION_GUIDE.md, QUICK_REFERENCE.md
+
+    - practice: Task Lifecycle Management
+      implementation: Archon task workflow (todo → doing → review → done)
+      evidence: archon_rules.md
+
+    - practice: Systematic Code Analysis
+      implementation: CFK patterns, architecture diagramming, crisis analysis
+      evidence: skills/git-wizard/*, skills/aws-cdk-diagram/*
+
+    - practice: Evidence-Based Decisions
+      implementation: Time tracking linked to CloudWatch, activity evidence
+      evidence: commands/ado-log-time.md phases 2-3
+
+    - practice: Modular Capability Design
+      implementation: Reusable skills, specialized agents, focused commands
+      evidence: skills/* directory, agents/* definitions
+
+    - practice: Documentation-First Approach
+      implementation: Comprehensive markdown documentation for every feature
+      evidence: 25+ markdown documents covering all aspects
+
+    - practice: Backward Compatibility
+      implementation: Legacy config wrappers, gradual parameterization migration
+      evidence: ado_config.py, project_config.py legacy support
+
+---
+
+observability:
+
+  logging_setup:
+    cloudwatch_integration:
+      lambda_logs: /aws/lambda/{project}-* log groups
+      log_analysis: CloudWatch Logs Insights queries for activity detection
+      correlation: Log timestamps matched to time entries
+      script: ado/log_time_to_ado.py Phase 2 implementation
+
+    ado_activity_logging:
+      scope: All work items logged with activity type
+      activity_field: Microsoft.VSTS.Common.Activity
+      time_field: Microsoft.VSTS.Scheduling.CompletedWork
+      state_tracking: Work item state transitions (New → Closed)
+
+    calendar_logging:
+      source: Google Calendar API
+      filtering: Project name matching from settings
+      exclusions: Personal time (lunch, breaks, focus)
+      correlation: Meeting duration → time entry
+
+  monitoring:
+    weekly_time_tracking:
+      metric: Hours logged per week vs 20-hour target
+      tool: /ado-log-time --review mode
+      output: Weekly summary with status (on-target, under, over)
+      automation: Recommended daily EOD execution
+
+    board_snapshot:
+      purpose: Capture board state for progress tracking
+      frequency: Manual via generate_board_snapshot.py
+      usage: Week review reports, progress documentation
+
+    aws_service_activity:
+      lambda_updates: List of modified Lambda functions
+      s3_bucket_changes: Bucket creation and modification timestamps
+      cloudformation_stacks: Stack status and update times
+      correlation: Service changes linked to time entries
+
+    task_status_tracking:
+      archon_dashboard: Task status (todo/doing/review/done)
+      priority_management: Task order field (0-100)
+      progress_visibility: Project completion percentage
+
+    error_tracking:
+      ado_errors: Task creation failures, invalid fields
+      aws_errors: CloudWatch log volume detection, service issues
+      calendar_errors: Meeting sync failures, duplicate detection
+      reporting: Detailed error messages in command output
+
+---
+
+recommendations:
+
+  what_works_well:
+    - strength: Comprehensive parameterization reduces maintenance burden
+      evidence: settings.local.json single source, multiple access patterns (Python, Markdown, CLI)
+      impact: Easy project cloning, consistent configuration across all tools
+
+    - strength: Task-driven development with Archon ensures systematic work
+      evidence: archon_rules.md mandatory workflow, RAG knowledge base integration
+      impact: Higher quality implementations, knowledge base as reference system
+
+    - strength: Evidence-based time tracking prevents guessing and audit issues
+      evidence: CloudWatch correlation, activity timestamps, service change details
+      impact: Accountability, compliance, justifiable hours
+
+    - strength: Specialized agents provide domain-expert guidance
+      evidence: 25+ agent definitions, multi-agent workflow support
+      impact: Faster problem-solving, better architectural decisions
+
+    - strength: Skill-based modularity enables code reuse across projects
+      evidence: aws-cdk-diagram, git-wizard, handoff skills with self-contained implementations
+      impact: Consistency, reduced redundancy, faster onboarding
+
+    - strength: Comprehensive documentation enables self-service problem-solving
+      evidence: 25+ markdown documents covering all aspects
+      impact: Lower support needs, faster issue resolution
+
+    - strength: Git-wizard skill provides systematic crisis recovery
+      evidence: Crisis snapshot, bisect automation, worktree safe testing
+      impact: Confidence in Git operations, prevents data loss
+
+  what_could_be_improved:
+    - opportunity: MCP Server auto-discovery and setup
+      current_state: Manual installation required, documented in MCP-SERVER-SETUP.md
+      improvement: Automated detection and configuration validation
+      benefit: Faster onboarding, fewer setup failures
+
+    - opportunity: ADO to Git commit message linking
+      current_state: Time entries created but not linked back to commits
+      improvement: Git commit → work item reference, automatic linking
+      benefit: Full traceability from code to time to requirement
+
+    - opportunity: Automated knowledge base generation
+      current_state: Manual markdown files in knowledge-base/
+      improvement: Extract patterns from actual codebase and create KB entries
+      benefit: Keeps KB current, captures emerging patterns
+
+    - opportunity: Dashboard for weekly metrics
+      current_state: Manual --review mode to check weekly hours
+      improvement: Visual dashboard with trend analysis
+      benefit: Quick status checks, pattern identification
+
+    - opportunity: Multi-project template support
+      current_state: Tailored for single project (Parenting Autism)
+      improvement: Parameterize project-specific templates separately
+      benefit: Easier multi-project management
+
+    - opportunity: Skill versioning and compatibility checking
+      current_state: No explicit version tracking
+      improvement: Semantic versioning for skills, compatibility matrix
+      benefit: Safe skill updates, clear upgrade paths
+
+    - opportunity: Agent capability matrix
+      current_state: Agents defined but no formal capability tracking
+      improvement: Explicit capability matrix with supported tools
+      benefit: Better agent selection, clearer delegation
+
+    - opportunity: Integration test suite for cross-tool workflows
+      current_state: Individual tool testing via --review mode
+      improvement: E2E tests for complete workflows (git → ADO → AWS)
+      benefit: Confidence in tool integration, catch breaking changes
+
+    - opportunity: Performance metrics for complex commands
+      current_state: Manual execution, no timing data
+      improvement: Automatic timing and performance tracking
+      benefit: Identify bottlenecks, optimize workflows
+
+    - opportunity: Archon knowledge base synchronization
+      current_state: One-way sync from ADO to Archon
+      improvement: Bidirectional sync, conflict resolution
+      benefit: Consistent task state across systems
+
+---
+
+summary:
+
+  maturity_level: Production-Ready with Advanced Features
+
+  key_characteristics:
+    - Highly parameterized for multi-project reuse
+    - Task-driven development enforced via Archon integration
+    - Comprehensive skill-based architecture for modular capabilities
+    - Evidence-based time tracking with AWS activity correlation
+    - Company policy-compliant ADO integration
+    - 25+ specialized agents for domain expertise
+    - 20+ workflow commands for systematic development
+    - Extensive documentation (25+ markdown documents)
+    - Git crisis recovery capabilities
+    - Client handoff standardization
+
+  intended_usage:
+    - QuickStart project foundation for AI/ML development
+    - Systematic task management via Archon (overrides default systems)
+    - Time tracking with AWS evidence for billing accuracy
+    - Multi-agent workflows for complex problem-solving
+    - Knowledge-base driven research and implementation
+    - Client handoff and support materials generation
+
+  project_readiness:
+    - Configuration: Complete (settings.local.json, parameterized)
+    - Agents: Complete (25+ agents defined and documented)
+    - Commands: Complete (20+ commands for workflow)
+    - Skills: Complete (4 specialized skills with full documentation)
+    - Knowledge Base: Initialized (ready for expansion)
+    - Documentation: Comprehensive (all major systems documented)
+    - Integration: Complete (ADO, Archon, AWS, GitHub, Google Calendar)
+    - MCP Support: Configured (Archon primary, others optional)
+
+  suitable_for:
+    - AI/ML application development
+    - AWS infrastructure and Bedrock integration
+    - React/TypeScript frontend development
+    - Serverless architectures (Lambda, API Gateway)
+    - Data processing pipelines (S3, Glue, DynamoDB)
+    - Multi-tenant SaaS applications
+    - Rapid prototyping (QuickStart methodology)
+    - Client delivery and handoff

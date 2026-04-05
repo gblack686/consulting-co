@@ -1,0 +1,33 @@
+{
+  "name": "mtg-art-finder",
+  "description": "Search and assign unique MTG cards to Claude ecosystem components following _color-registry.md rules",
+  "version": "2.0.0",
+  "author": "gbautomation",
+  "commands": {
+    "mtg-search": {
+      "description": "Search MTG cards by name, text, or color and get art URLs",
+      "usage": "/mtg-search <type> <query> [filters]"
+    }
+  },
+  "dependencies": {
+    "python": ["requests"]
+  },
+  "config": {
+    "registry_source": "AI-Agent-KB/_color-registry.md",
+    "metadata_file": "AI-Agent-KB/_assets/mtg-cards/_card_metadata.json",
+    "default_edition": "8ed"
+  },
+  "api": {
+    "provider": "Scryfall",
+    "docs": "https://scryfall.com/docs/api",
+    "auth_required": false,
+    "rate_limit": "10 requests/second"
+  },
+  "features": [
+    "duplicate_prevention",
+    "registry_integration",
+    "agent_purpose_extraction",
+    "color_detection",
+    "batch_updates"
+  ]
+}

@@ -1,0 +1,101 @@
+# Expert self-improve.md Template
+# Fill {placeholders} from domain spec
+
+---
+type: expert-file
+parent: "[[{domain_name}/_index]]"
+file-type: command
+command-name: self-improve
+tags: [expert-file, command, learning, {domain_name}]
+---
+
+# {Domain_Display_Name} Expert - Self-Improve
+
+> Update expertise after workflow runs. This is how the expert gets smarter.
+
+## Purpose
+
+After a workflow execution (successful or failed), analyze the outcome and update expertise.md with new patterns and learnings.
+
+## Allowed Tools
+`Read, Edit, Glob, Grep, Bash`
+
+## Workflow
+
+### Step 1: Gather Results
+
+1. Read latest run output (logs, deliverables, errors)
+2. Read the skill or command that was executed
+3. Read current `expertise.md` Part 7 for existing patterns
+
+### Step 2: Analyze Outcome
+
+Compare actual vs. expected:
+
+| Check | Question |
+|-------|----------|
+| **Success** | Did the workflow produce the expected output? |
+| **Quality** | Was the output good enough? (check against client standards) |
+| **Efficiency** | Were there unnecessary steps or API calls? |
+| **Errors** | What failed and why? |
+| **Surprises** | Anything unexpected (positive or negative)? |
+| **Timing** | Did it run within expected time? |
+
+### Step 3: Update expertise.md Part 7
+
+Edit `expertise.md` to add new entries under the appropriate section:
+
+#### Patterns That Work
+Add entries for successful approaches:
+```markdown
+- {date}: {pattern description} — {why it works}
+```
+
+#### Patterns To Avoid
+Add entries for approaches that failed:
+```markdown
+- {date}: {pattern description} — {what went wrong}
+```
+
+#### Known Issues
+Add entries for recurring problems:
+```markdown
+- {date}: {issue description} — {workaround if known}
+```
+
+#### Tips
+Add operational tips:
+```markdown
+- {date}: {tip}
+```
+
+### Step 4: Update Timestamp
+
+Set `last_updated` in expertise.md frontmatter to today's date.
+
+### Step 5: Cross-Domain Learnings
+
+If the learning affects other domains:
+1. Note which domain(s) should be updated
+2. Create a brief in `memory/{date}.md` for cross-domain sync
+3. Do NOT modify other domain experts directly — flag for review
+
+## Report Format
+
+```markdown
+## Self-Improve: {Domain_Display_Name}
+
+### Run Analyzed
+- Command: {command_name}
+- Date: {date}
+- Outcome: {success|partial|failed}
+
+### Expertise Updates
+- Part 7 Patterns That Work: +{N} entries
+- Part 7 Patterns To Avoid: +{N} entries
+- Part 7 Known Issues: +{N} entries
+- Part 7 Tips: +{N} entries
+
+### Cross-Domain Notes
+- {domain}: {what to check}
+```

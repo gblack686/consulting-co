@@ -1,0 +1,48 @@
+{
+  "defaultProfile": "default",
+  "defaultRegion": "us-east-1",
+  "account": {
+    "id": "274487662938",
+    "alias": "gblack686",
+    "description": "GBlack Personal AWS Account"
+  },
+  "ssoSettings": {
+    "startUrl": null,
+    "region": "us-east-1",
+    "accountId": "274487662938",
+    "roleName": null
+  },
+  "costExplorer": {
+    "granularity": "DAILY",
+    "defaultMetrics": ["UnblendedCost", "UsageQuantity"],
+    "groupByDimension": "SERVICE",
+    "lookbackDays": 30
+  },
+  "secretsManager": {
+    "defaultKmsKeyId": null,
+    "secretPrefix": "",
+    "cacheSecrets": false,
+    "cacheTtlSeconds": 300
+  },
+  "ssmParameterStore": {
+    "parameterPrefix": "",
+    "decryptByDefault": true,
+    "recursiveByDefault": true
+  },
+  "cloudwatch": {
+    "namespaceFilter": null,
+    "alarmPrefix": "",
+    "defaultPeriod": 300,
+    "defaultEvaluationPeriods": 2,
+    "defaultStatistic": "Average"
+  },
+  "outputFormat": {
+    "dateFormat": "YYYY-MM-DD",
+    "currencyFormat": "USD",
+    "maskSecrets": true,
+    "prettyPrint": true
+  },
+  "profiles": {
+    "aliases": {}
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "commands": [
+    {
+      "name": "all_tools",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\all_tools.md",
+      "tac_source": "building-specialized-agents",
+      "title": "List All Tools",
+      "description": null,
+      "sections": [],
+      "delegations": []
+    },
+    {
+      "name": "background",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\background.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Background Claude Code",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "WORKFLOW",
+        "Response to User"
+      ],
+      "delegations": [
+        "agents",
+        "command",
+        "blocked",
+        "background",
+        "primary",
+        "modified"
+      ]
+    },
+    {
+      "name": "build",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\build.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Build",
+      "description": "Build the codebase based on the plan",
+      "sections": [
+        "Variables",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "build_w_report",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\build_w_report.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Build",
+      "description": "Build a feature based on a plan",
+      "sections": [
+        "Variables",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "format"
+      ]
+    },
+    {
+      "name": "load_ai_docs",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\load_ai_docs.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Load AI Docs",
+      "description": "Load documentation from their respective websites into local markdown files our agents can use as context.",
+      "sections": [
+        "Variables",
+        "Workflow",
+        "Report Format"
+      ],
+      "delegations": [
+        "README",
+        "scrape_loop_prompt",
+        "agent"
+      ]
+    },
+    {
+      "name": "load_bundle",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\load_bundle.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Load Context Bundle",
+      "description": "Understand the previous agents context and load files from a context bundle with their original read parameters",
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Example Deduplication Logic"
+      ],
+      "delegations": [
+        "offset"
+      ]
+    },
+    {
+      "name": "parallel_subagents",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\parallel_subagents.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Parallel Subagents",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Workflow"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "plan_vite_vue",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\plan_vite_vue.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Plan Vite Vue",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Codebase Structure",
+        "Plan Format",
+        "Metadata",
+        "Task Description",
+        "Objective",
+        "Problem Statement",
+        "Solution Approach"
+      ],
+      "delegations": [
+        "if",
+        "vite",
+        "commands",
+        "complex"
+      ]
+    },
+    {
+      "name": "plan_w_docs",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\plan_w_docs.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Quick Plan",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "prime",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\prime.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Prime",
+      "description": "Gain a general understanding of the codebase",
+      "sections": [
+        "Instructions",
+        "Codebase Structure",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "custom_4_social_hype",
+        "claude",
+        "custom_1_pong_agent",
+        "custom",
+        "cc_sdk_custom_tools"
+      ]
+    },
+    {
+      "name": "prime_cc",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\prime_cc.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Prime Claude Code",
+      "description": "Gain a general understanding of the codebase with a focus on Claude Code improvements",
+      "sections": [
+        "Run",
+        "Read",
+        "Report"
+      ],
+      "delegations": [
+        "commands",
+        "settings",
+        "hooks",
+        "prime",
+        "output"
+      ]
+    },
+    {
+      "name": "question",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\question.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Question",
+      "description": "Answer questions about the project structure and documentation without coding",
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Response Format"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "quick-plan",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\quick-plan.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Quick Plan",
+      "description": "Creates a concise engineering implementation plan based on user requirements and saves it to specs directory",
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "scout",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\scout.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Purpose",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "qwen",
+        "relevant_files_",
+        "scout_files",
+        "limit"
+      ]
+    },
+    {
+      "name": "scout_plan_build",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\scout_plan_build.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Scout Plan Build",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "scout",
+        "build",
+        "plan_w_docs"
+      ]
+    },
+    {
+      "name": "t_metaprompt_workflow",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\t_metaprompt_workflow.md",
+      "tac_source": "building-specialized-agents",
+      "title": "MetaPrompt",
+      "description": "Create a new prompt",
+      "sections": [
+        "Variables",
+        "Workflow",
+        "Documentation",
+        "Specified Format",
+        "Variables",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "common",
+        "commands",
+        "settings",
+        "en",
+        "slash",
+        "claude",
+        "docs"
+      ]
+    },
+    {
+      "name": "cc_hook_expert_build",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\experts\\cc_hook_expert\\cc_hook_expert_build.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Claude Code Hook Expert Build",
+      "description": "Build or update Claude Code hooks from specifications",
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Expertise",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "bin",
+        "uv",
+        "usr",
+        "SubagentStop",
+        "settings",
+        "hooks",
+        "SessionEnd",
+        "security",
+        "PostToolUse",
+        "except"
+      ]
+    },
+    {
+      "name": "cc_hook_expert_improve",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\experts\\cc_hook_expert\\cc_hook_expert_improve.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Claude Code Hook Expert Improve",
+      "description": "Review hook changes and update expert knowledge with improvements",
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "uv",
+        "settings",
+        "hooks",
+        "experts",
+        "cc_hook_expert",
+        "claude"
+      ]
+    },
+    {
+      "name": "cc_hook_expert_plan",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\.claude\\commands\\experts\\cc_hook_expert\\cc_hook_expert_plan.md",
+      "tac_source": "building-specialized-agents",
+      "title": "Claude Code Hook Expert Plan",
+      "description": "Plan a Claude Code hook feature implementation with detailed specifications",
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Expertise",
+        "Workflow",
+        "Report"
+      ],
+      "delegations": [
+        "values",
+        "uv",
+        "SubagentStop",
+        "settings",
+        "hooks",
+        "blocking",
+        "SessionEnd",
+        "PostToolUse",
+        "experts",
+        "cc_hook_expert"
+      ]
+    }
+  ],
+  "agents": [],
+  "adws": [],
+  "concepts": [
+    {
+      "name": "Building Specialized Agents",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\README.md",
+      "tac_source": "building-specialized-agents",
+      "description": null,
+      "category": "repository"
+    },
+    {
+      "name": "Custom Agent Capabilities",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\README.md",
+      "tac_source": "building-specialized-agents",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Claude Code Bash Alias",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\README.md",
+      "tac_source": "building-specialized-agents",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "AI Docs",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents\\ai_docs\\README.md",
+      "tac_source": "building-specialized-agents",
+      "description": null,
+      "category": "ai_doc"
+    }
+  ],
+  "metadata": {
+    "extracted_at": "2025-12-02T22:05:40.772298",
+    "repo_name": "building-specialized-agents",
+    "repo_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\building-specialized-agents",
+    "summary": {
+      "total_commands": 19,
+      "total_agents": 0,
+      "total_adws": 0,
+      "total_concepts": 4
+    }
+  }
+}

@@ -10,7 +10,7 @@
 // MODEL TIERS — select one, see references/model-tiers.md for full details
 //
 // CHEAP   brain: openrouter/deepseek/deepseek-chat-v3
-//         coder: z-ai/glm-4.7-20251222  ($0.06/M in, fallback: glm-4.7-flash free)
+//         coder: openrouter/deepseek/deepseek-chat-v3  (or z-ai/glm-4.7 if account has it)
 //         est:   ~$2-15/mo
 //
 // MID     brain: openrouter/google/gemini-2.0-flash-001
@@ -18,8 +18,8 @@
 //         est:   ~$20-60/mo
 //
 // PRO     brain: openrouter/google/gemini-2.5-pro-preview  (orchestrator)
-//         reason:openrouter/deepseek/deepseek-r1           (analysis domains)
-//         coder: openrouter/deepseek/deepseek-chat-v3      (build domains)
+//         reason:openrouter/deepseek/deepseek-r1            (analysis domains)
+//         coder: openrouter/deepseek/deepseek-chat-v3       (build domains)
 //         est:   ~$50-200/mo  — intelligent routing, no Claude tax
 //
 // Browse all models: https://openrouter.ai/models
@@ -29,18 +29,32 @@
   gateway: {
     port: 18789,
     reload: { mode: "hybrid", debounceMs: 300 },
+    controlUi: { allowInsecureAuth: true },
+    auth: { mode: "token" },
+    tailscale: { mode: "off", resetOnExit: false },
   },
+
+  // --- Logging (security — always include) ---
+  logging: { redactSensitive: "tools" },
 
   // --- Model Provider: OpenRouter ---
   // Single API key gives access to 300+ models. Switch models without new keys.
   // Set OPENROUTER_API_KEY in env below. No models.providers config needed.
+  //
+  // SPENDING CAP: Set a monthly limit at openrouter.ai/settings/limits to prevent
+  // runaway costs. Also set at console.anthropic.com if using Claude models directly.
+  // Recommended starting cap: $20/mo for MID tier, $5/mo for CHEAP tier.
+  // Tip: run `npm update -g openclaw@latest` monthly after setting the cap.
   models: {
     mode: "merge", // keep built-in providers active alongside OpenRouter
   },
 
   // --- Environment ---
+  // Secrets injected via 1Password: `op run --env-file=.env.secrets -- openclaw start`
+  // Vault: Client-{client_slug} (scoped service account: openclaw-{client_slug_lower})
+  // Reference syntax: op://vault/item/field
   env: {
-    OPENROUTER_API_KEY: "{openrouter_api_key}", // https://openrouter.ai/keys
+    OPENROUTER_API_KEY: "{openrouter_api_key}", // op://GBAutomation-Shared/openrouter/api-key
     {env_vars}
   },
 
@@ -55,6 +69,10 @@
       heartbeat: {
         every: "{heartbeat_interval}",
         target: "{heartbeat_target}",
+        ackMaxChars: 300,
+        // Use CHEAP model for heartbeats — saves $10-30/mo vs main model.
+        // Background checks don't need intelligence, just tool execution.
+        model: "openrouter/deepseek/deepseek-chat-v3",
       },
       subagents: {
         model: "{subagent_model}",
@@ -62,6 +80,18 @@
         maxSpawnDepth: 2,
         maxChildrenPerAgent: 5,
         maxConcurrent: 8,
+      },
+      // --- Context Management (production hardening — always include) ---
+      contextPruning: {
+        mode: "cache-ttl",
+        ttl: "1h",
+        keepLastAssistants: 3,
+        softTrimRatio: 0.3,
+        minPrunableToolChars: 50000,
+      },
+      compaction: {
+        mode: "safeguard",
+        memoryFlush: { enabled: true, softThresholdTokens: 6000 },
       },
     },
 
@@ -74,7 +104,7 @@
         workspace: "~/.openclaw/workspace-main",
         agentDir: "~/.openclaw/agents/main/agent",
         model: "{main_model}",
-        identity: { name: "{agent_name}" },
+        identity: { name: "{agent_name}", emoji: "{agent_emoji}" },
         subagents: {
           allowAgents: [{domain_agent_ids}],
         },
@@ -92,9 +122,34 @@
 
   // --- Channels ---
   channels: {
+    // Telegram (allowlist = only approved IDs can message the agent)
+    // telegram: {
+    //   enabled: true,
+    //   dmPolicy: "allowlist",
+    //   allowFrom: ["{telegram_user_id}"],
+    // },
+
+    // Discord — SECURITY WARNING:
+    //   NEVER set dmPolicy: "open" — exposes the agent to any Discord user.
+    //   ALWAYS use dmPolicy: "allowlist" or "guild-member" with requireMention: true.
+    //   requireMention: true prevents the agent from responding to every message in the channel.
+    // discord: {
+    //   enabled: true,
+    //   dmPolicy: "allowlist",           // NOT "open"
+    //   allowFrom: ["{discord_user_id}"],
+    //   guilds: { "*": { requireMention: true } },  // require @AgentName to trigger
+    // },
+
+    // WhatsApp (pairing via QR code — run `openclaw channels login`)
+    // whatsapp: {
+    //   enabled: true,
+    //   dmPolicy: "allowlist",
+    //   allowFrom: ["{whatsapp_number}"],
+    // },
+
     {channel_type}: {
-      dmPolicy: "allowlist",
-      allowFrom: [{allowed_numbers}],
+      enabled: true,
+      dmPolicy: "{channel_policy}",
       {channel_specific_config}
     },
   },
@@ -103,24 +158,98 @@
   session: {
     dmScope: "per-channel-peer",
     reset: {
-      mode: "{session_reset_mode}",
-      atHour: {session_reset_hour},
-      idleMinutes: {session_idle_minutes},
+      mode: "{session_reset_mode}", // "daily" | "never" | "idle"
+      atHour: {session_reset_hour}, // 4 = 4am local time
     },
+    // Production hardening — always include
+    maintenance: { mode: "enforce", pruneAfter: "30d", maxEntries: 500 },
+  },
+
+  // --- Safety (production hardening — always include) ---
+  tools: {
+    profile: "coding",
+    // elevated: grant exec/bash to ALL channels by default so the agent can run scripts
+    // without per-call approval prompts. Restrict to telegram-only if you want tighter control.
+    elevated: {
+      enabled: true,
+      allowFrom: {
+        telegram: ["*"],
+        discord: ["*"],
+        session: ["*"],
+        "*": ["*"],
+      },
+    },
+    loopDetection: {
+      enabled: true,
+      historySize: 30,
+      warningThreshold: 10,
+      criticalThreshold: 20,
+      globalCircuitBreakerThreshold: 30,
+    },
+  },
+
+  // --- Commands (production hardening — always include) ---
+  commands: { native: "auto", nativeSkills: "auto", restart: true },
+
+  // --- Plugins ---
+  plugins: {
+    entries: {
+      // damage-control: safety plugin — blocks dangerous bash patterns and protects sensitive paths
+      // Plugin files: workspace/plugins/damage-control/ (index.ts, rules.yaml, openclaw.plugin.json)
+      "damage-control": { enabled: true },
+      // Channel plugins — add for each active channel
+      {plugin_entries}
+    },
+  },
+
+  // --- Pi Extensions ---
+  // Extensions run in-process in the Pi runtime, loaded via -e flags.
+  // Core stack loads automatically; extras are available as sample code.
+  // See references/pi-extension-selection.md for selection logic.
+  //
+  // Core stack (always loaded):
+  //   minimal.ts, theme-cycler.ts, cross-agent.ts, pi-pi.ts
+  //
+  // Selected extras (from session analysis):
+  //   {pi_extension_extras_comment}
+  //
+  extensions: {
+    dir: "./extensions",
+    core: ["minimal", "theme-cycler", "cross-agent", "pi-pi"],
+    extras: [{pi_extension_extras}],
   },
 
   // --- Skills ---
   skills: {
     entries: {
+      // Domain skills (from session domains)
       {skills_entries}
+
+      // --- Fundamental modules (always include) ---
+
+      // Post-deploy hardening: config, API validation, Pi extensions, health checks
+      // Run /onboarding after first deploy and after any major config change
+      "onboarding":     { enabled: true, user_invocable: true }, // /onboarding → harden + validate + report
+
+      // Quick win: daily briefing assembled and delivered to Telegram — universally useful
+      // Customize content in workspace/skills/morning-brief/SKILL.md after deploy
+      "morning-brief":  { enabled: true, user_invocable: true }, // /morning-brief → assemble + send
+
+      // Meta: self-organizing domain discovery from GitHub repos → Obsidian archive
+      "domain-discovery": { enabled: true, user_invocable: true },
+
+      // Pi infrastructure skills
+      "agent-chain":    { enabled: true, user_invocable: true }, // /chain plan-build-review <task>
+      "pi-pi":          { enabled: true, user_invocable: true }, // introspection loop
     },
-    load: {
-      watch: true,
-    },
+    load: { watch: true },
   },
 
   // --- Cron ---
-  cron: {
-    enabled: true,
-  },
+  cron: { enabled: true },
+
+  // --- GitHub Access (for domain-discovery and repo-aware skills) ---
+  // The agent needs read access to scan repos. Set via:
+  //   openclaw secrets set GITHUB_TOKEN '<your PAT with repo read scope>'
+  // Or give the agent access to `gh` CLI if authenticated.
 }

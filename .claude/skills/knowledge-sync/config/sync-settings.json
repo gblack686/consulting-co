@@ -1,0 +1,59 @@
+{
+  "obsidian": {
+    "enabled": true,
+    "vaultPath": "/path/to/your/obsidian/vault",
+    "syncFolders": ["Decisions", "Learnings"],
+    "excludeFolders": ["Private", "Archive", "Templates"]
+  },
+  "graphiti": {
+    "enabled": true,
+    "neo4jUri": "${NEO4J_URI}",
+    "neo4jUser": "${NEO4J_USER}",
+    "neo4jPassword": "${NEO4J_PASSWORD}",
+    "openaiApiKey": "${OPENAI_API_KEY}",
+    "extractionModel": "gpt-4o-mini"
+  },
+  "sync": {
+    "mode": "selective",
+    "strategy": "selective",
+    "autoSync": true,
+    "syncOnSessionStart": true,
+    "syncOnSessionEnd": true,
+    "obsidianToGraphiti": {
+      "enabled": true,
+      "triggers": ["note-create", "note-update"],
+      "noteTags": ["adr", "decision", "learning", "architecture"],
+      "minWordCount": 50,
+      "excludeTags": ["private", "draft", "wip"]
+    },
+    "graphitiToObsidian": {
+      "enabled": true,
+      "frequency": "weekly",
+      "insightTypes": ["connected-concepts", "emerging-patterns"],
+      "minConnections": 10,
+      "outputFolder": "Learnings/Graph Insights"
+    }
+  },
+  "search": {
+    "unifiedSearch": true,
+    "weighObsidian": 0.6,
+    "weighGraphiti": 0.4,
+    "maxResults": 10,
+    "mergeStrategy": "interleaved",
+    "enableSemanticSearch": true,
+    "enableGraphTraversal": true
+  },
+  "performance": {
+    "cacheEnabled": true,
+    "cacheTTL": 3600,
+    "parallelSearch": true,
+    "batchSize": 10,
+    "maxConcurrent": 5
+  },
+  "logging": {
+    "enabled": true,
+    "logPath": ".claude/logs/knowledge-sync.log",
+    "verbosity": "info",
+    "logSyncOperations": true
+  }
+}

@@ -1,0 +1,594 @@
+[00:00:00] AI coding assistants. We love them, but
+[00:00:02] they're actually pretty terrible at
+[00:00:04] validating their own work unless you
+[00:00:06] give them a framework to follow. And
+[00:00:08] that is what I've been experimenting
+[00:00:10] with for hundreds of hours at this
+[00:00:12] point, getting really specific for the
+[00:00:14] coding agent. So, it's not skimping out
+[00:00:16] on the validation. It does that all the
+[00:00:18] time. And so that it's actually testing
+[00:00:20] the application as a user would. And so,
+[00:00:23] I have packaged up my entire validation
+[00:00:26] process that I go through for most of my
+[00:00:28] AI generated code. and I put it into a
+[00:00:30] single command. This diagram that you're
+[00:00:33] looking at here outlines everything that
+[00:00:35] I got packaged up for you. And the best
+[00:00:37] part is this is pretty general. And so
+[00:00:39] I'll have a link in the description to
+[00:00:41] this command. You could literally go and
+[00:00:42] run this on any codebase right now as
+[00:00:44] long as it has a frontend. And so I want
+[00:00:46] to explain right now how this command
+[00:00:49] works and help you understand some of
+[00:00:51] the ideas that go into this so that you
+[00:00:53] can improve your own workflows for your
+[00:00:56] coding agents to validate their own
+[00:00:58] work. There's a lot of golden nuggets
+[00:00:59] that I have in here for you. I've been
+[00:01:01] doing a lot of iterating on this. And
+[00:01:03] the reason this is so important is
+[00:01:05] because coding agents now are generating
+[00:01:07] code so incredibly quickly that it's
+[00:01:09] almost impossible for us to keep up with
+[00:01:11] the validation. And AI generated code is
+[00:01:14] still your responsibility. So you need
+[00:01:16] to validate. I'm not going to be a
+[00:01:18] proponent of Vive coding. And so really
+[00:01:20] what this workflow is doing is just
+[00:01:22] delegating as much of the validation as
+[00:01:25] possible to the coding agent. This is
+[00:01:26] the workflow that I'll show you in a
+[00:01:28] little bit here, just a sneak peek
+[00:01:29] preview. And so we want it to fix as
+[00:01:32] many issues up front, even point us to
+[00:01:34] where we should address things ourself,
+[00:01:36] so that by the time control passes back
+[00:01:39] to us, there's just a lot less of that
+[00:01:41] mental burden, that drag of having to
+[00:01:43] review hundreds or even thousands of
+[00:01:45] lines of code that was generated in the
+[00:01:47] last 20 minutes. And man, let me tell
+[00:01:49] you, it feels like a weight lifted off
+[00:01:51] my shoulders using this kind of process,
+[00:01:54] especially with the evolution that I'm
+[00:01:56] currently at. That's why I'm so excited
+[00:01:58] to show this to you right now. It's why
+[00:01:59] I'm calling it the self-healing AI
+[00:02:02] coding workflow. It's not that coding
+[00:02:03] agents are going to be perfect with
+[00:02:05] this, but it does come pretty close.
+[00:02:07] I've been really impressed with the
+[00:02:09] results recently. So, I'll show you each
+[00:02:11] little component of this workflow very
+[00:02:13] quickly, how it works. We'll see it in
+[00:02:15] action. and I'll also talk about how you
+[00:02:16] can incorporate something like this into
+[00:02:18] your own AI coding workflows. So, here
+[00:02:21] is the command or the claude code skill
+[00:02:23] that we're going to be using right now.
+[00:02:25] And so, I'll link to this exact skill.md
+[00:02:27] in the description if you just want to
+[00:02:29] take this command, use it for yourself
+[00:02:30] on any codebase right away. It works out
+[00:02:32] of the box. It even automatically
+[00:02:34] installs the Verscel agent browser CLI.
+[00:02:37] This is the browser automation tool that
+[00:02:40] I've been leaning on very heavily
+[00:02:41] recently. I also made a video on it
+[00:02:43] already that I'll link to right here.
+[00:02:45] And so this is a big part of the
+[00:02:46] process, but it's going to work for
+[00:02:49] really any coding agent as well. You
+[00:02:51] could also change this up to work with
+[00:02:52] any other browser automation tool like
+[00:02:54] Chrome DevTools, MCP, whatever you want
+[00:02:57] to use. And it's really just giving a
+[00:02:59] lot of specificity, a framework to the
+[00:03:02] coding agent for how to do research,
+[00:03:04] what should the flow look like for self-
+[00:03:05] validation. And I figured instead of
+[00:03:07] going through this entire markdown
+[00:03:09] document, it'd be a lot better for me to
+[00:03:12] explain things more visually. So that's
+[00:03:13] why I have this diagram that I'll go
+[00:03:15] over really quickly so you can
+[00:03:16] understand all the components that I
+[00:03:18] have built into this. So for your own
+[00:03:20] agentic engineering, there are two ways
+[00:03:22] that you can use this workflow. You can
+[00:03:24] either just use it whenever you want
+[00:03:26] outside of any feature development. So
+[00:03:28] maybe you just want to at some certain
+[00:03:29] point run full end toend testing on your
+[00:03:31] codebase. That's what I'll cover first
+[00:03:33] as a live demo. And then the other way
+[00:03:36] that I'll speak to more towards the end
+[00:03:37] of the video is you can build this
+[00:03:38] workflow directly in your feature
+[00:03:41] implementation process. So after the
+[00:03:43] coding agent writes any kind of feature,
+[00:03:45] it's going to dive right into this to do
+[00:03:47] regression testing and making sure that
+[00:03:49] what it just built is working well. So
+[00:03:51] first of all, since this is a command,
+[00:03:52] we are going to invoke it with /2e test.
+[00:03:55] And that will kick off the six-step
+[00:03:57] workflow that we have here. Starting
+[00:03:59] with our prerec check. So because we are
+[00:04:02] using a browser automation tool very
+[00:04:04] heavily in this process I do require you
+[00:04:07] to have a frontend for your codebase
+[00:04:09] which for me personally that is a
+[00:04:11] majority of my applications probably is
+[00:04:13] for you as well which is why I'm saying
+[00:04:15] we can use this command for pretty much
+[00:04:18] every single codebase. If you want to do
+[00:04:20] any kind of testing for backendon apps
+[00:04:23] definitely requires a different kind of
+[00:04:24] workflow that I'll definitely cover in
+[00:04:26] future content. Another check here is if
+[00:04:29] you're running on Windows because if you
+[00:04:30] are you can't use the Verscell agent
+[00:04:32] browser CLI but you can simply just use
+[00:04:34] WSL. That's what I'm literally doing in
+[00:04:36] this video. So we check all the prerexs.
+[00:04:38] If we are good then we go to phase one,
+[00:04:41] our research phase. So the point of this
+[00:04:43] phase is to ground ourself in the
+[00:04:46] application. what are all the ways that
+[00:04:48] users would actually use this
+[00:04:50] application so that we can test all of
+[00:04:52] that and then also understanding our
+[00:04:54] data schema and just how we're working
+[00:04:56] with the database overall because almost
+[00:04:58] every single full stack application is
+[00:05:00] working with a database and so the cool
+[00:05:02] part about this is we have three sub
+[00:05:04] agents that run in parallel. This is
+[00:05:06] built directly into the workflow. So one
+[00:05:09] agent is going to understand the
+[00:05:10] structure of the codebase and how users
+[00:05:12] will use it. another understands the
+[00:05:14] database schema and then the other one
+[00:05:16] is doing the code review part of our
+[00:05:18] validation. So the rest of this process
+[00:05:20] is more let's go through the application
+[00:05:22] as a user would. But this sub aent is
+[00:05:24] going to find things like logic errors
+[00:05:26] that we have in our code. And so all
+[00:05:28] three sub aents run in parallel. And
+[00:05:30] then the research is compiled in the
+[00:05:32] context for our primary agent. And then
+[00:05:35] at that point we are ready to get into
+[00:05:36] our full endto-end testing. And so we
+[00:05:39] instruct the agent to start the dev
+[00:05:41] server. So it'll spin up the entire
+[00:05:43] application. So it's ready to go to the
+[00:05:45] URL. And then it's going to define a
+[00:05:47] task list here. And so each one of the
+[00:05:50] tasks is going to be one of the user
+[00:05:52] journeys that we want it to test. Making
+[00:05:54] sure we can sign in, making sure that we
+[00:05:56] can edit our profile or many other
+[00:05:59] things that will get pretty specific to
+[00:06:00] your codebase. But it'll figure that out
+[00:06:02] in real time based on its understanding
+[00:06:05] here. Okay, what are each of the tasks
+[00:06:07] that we have to lay out? And it'll
+[00:06:09] really spend a good amount of time with
+[00:06:10] each one of them. So then next with our
+[00:06:12] workflow, we pretty much have a for loop
+[00:06:14] built directly in because we're going to
+[00:06:16] look at this task list and we're going
+[00:06:17] to pull out each of the user journeys
+[00:06:19] and knock them out one at a time in a
+[00:06:21] very comprehensive way. So just giving
+[00:06:23] you a little bit of a demonstration here
+[00:06:26] for what the timeline looks like. This
+[00:06:28] is what our coding agent is going to be
+[00:06:29] going through. So it's going to use a
+[00:06:31] mix of the agent browser CLI to navigate
+[00:06:33] the website and database queries to make
+[00:06:36] sure that things are looking good in the
+[00:06:37] back end as we are creating updating and
+[00:06:40] deleting records. I am being specific to
+[00:06:42] Postgress here because currently I am
+[00:06:44] using Neon with Postgress but you can
+[00:06:47] really use any database and the command
+[00:06:49] will adapt itself. And so as an example
+[00:06:52] here the agent will take a snapshot.
+[00:06:53] This is how it understands what we
+[00:06:55] currently have in the page. Then it'll
+[00:06:56] query the database to make sure things
+[00:06:58] are looking good. interact with a
+[00:07:00] certain element and verify like if
+[00:07:01] there's a record that was supposed to be
+[00:07:02] created for example and then it'll also
+[00:07:04] take screenshots along the way. So not
+[00:07:06] only can it verify that the flows are
+[00:07:09] working correctly, but also that the UI
+[00:07:10] looks good because coding agents these
+[00:07:12] days can analyze images. So we'll have a
+[00:07:15] bunch of PGs that it'll create along the
+[00:07:17] way and store in a directory for us to
+[00:07:19] review after. So the screenshots are
+[00:07:21] awesome for the agent to review itself,
+[00:07:24] but then also for us to validate after
+[00:07:26] that the end toend testing really is
+[00:07:28] complete. And so at this point, the
+[00:07:29] coding agent is going to check its work
+[00:07:31] and it's going to figure out is there
+[00:07:32] any big issues that we need to address
+[00:07:35] here. If there is anything that is
+[00:07:37] entirely blocking the coding agent from
+[00:07:39] really validating the user journey, then
+[00:07:41] it will fix the code, retest, take new
+[00:07:43] screenshots, and validate and do this in
+[00:07:45] a loop until the user journey is
+[00:07:47] complete. Now, the really important
+[00:07:49] distinction to make here is that there
+[00:07:51] still will be remaining issues after the
+[00:07:54] endto-end testing. In fact, there are
+[00:07:55] usually more remaining issues than ones
+[00:07:57] that are fixed because I have
+[00:07:58] specifically prompted the coding agent
+[00:08:00] to only fix the big blockers. And so for
+[00:08:04] all of the other more, you know,
+[00:08:05] moderate or minor issues, I want to work
+[00:08:08] with the coding agent to figure out
+[00:08:09] like, do I want to address this and how
+[00:08:11] do I want to do so? So, it's only fixing
+[00:08:13] this stuff to get it to the point where
+[00:08:15] it can test the entire user journey. And
+[00:08:17] then once it does that, it'll take it
+[00:08:19] from the top and just go through the
+[00:08:21] next user journey that we have in the
+[00:08:23] task list. So very systematically
+[00:08:25] knocking these out one at a time, doing
+[00:08:28] some responsive checking at the end,
+[00:08:29] just a lighter like go through the pages
+[00:08:31] and make sure it looks good on mobile,
+[00:08:33] tablet, and desktop. And then it gives
+[00:08:35] us the end toend report at the end. And
+[00:08:36] this is very important. I'm not just
+[00:08:38] telling it to share with the user what
+[00:08:40] happened willy-nilly. I have a lot of
+[00:08:41] structure built at the bottom of the
+[00:08:43] prompt, the bottom of the skill.md. So
+[00:08:46] it's always outputting to me in the
+[00:08:48] exact same way every time. Here is what
+[00:08:49] we fixed. Here are the issues that were
+[00:08:51] remaining. And here is everything that I
+[00:08:53] went through. And so the goal here is
+[00:08:55] with the report combined with the
+[00:08:57] screenshots, I can really go through
+[00:08:59] things super quickly and make sure the
+[00:09:01] agent truly did a good job identifying
+[00:09:03] all the user journeys and going through
+[00:09:05] them. And then optionally, it can output
+[00:09:07] to a markdown report. So at this point,
+[00:09:10] the context window is going to be pretty
+[00:09:11] bloated with the coding agent going
+[00:09:13] through all this testing. So if there's
+[00:09:14] anything more that I want to work with
+[00:09:16] the agent to reason about and address, I
+[00:09:18] want to do that in a new context window.
+[00:09:20] So, I'll take the report from the output
+[00:09:23] here, send that into a new session with
+[00:09:26] my coding agent. The sponsor of today's
+[00:09:28] video is Bright Data, the platform that
+[00:09:30] unlocks the web for your AI agents, and
+[00:09:32] it's built to handle hundreds of agents
+[00:09:35] that you have running in parallel. So,
+[00:09:37] in this video, we've been focusing on
+[00:09:39] browser automation for local host. There
+[00:09:41] is no anti-bot protection. But when your
+[00:09:44] agents need to access the real internet,
+[00:09:46] things like LinkedIn profiles,
+[00:09:48] e-commerce sites, all of these sites are
+[00:09:50] actively trying to block your agent.
+[00:09:52] That is why you need bright data. And
+[00:09:54] the way it works is genuinely
+[00:09:56] impressive. Your requests from your
+[00:09:58] agents are routed through 150 million
+[00:10:00] residential IPs. Captions are solved
+[00:10:03] automatically. Browser fingerprints are
+[00:10:05] rotated. Your agent becomes a real
+[00:10:07] person. And Bright Data has an MCP
+[00:10:10] server that makes it super easy to get
+[00:10:12] started. They also have an API. That's
+[00:10:13] what I'm using for this demo really
+[00:10:15] quick to show you the power of bright
+[00:10:16] data getting structured public data on
+[00:10:19] demand. So, for example, I can say I'm
+[00:10:21] looking for 10 software engineers in
+[00:10:23] Minneapolis. And watch, look at all the
+[00:10:25] logs. It's solved the captures
+[00:10:26] automatically. It's pulling LinkedIn
+[00:10:28] information. So, I have all their
+[00:10:29] profiles. I can research an individual
+[00:10:31] person. Now, this is just a
+[00:10:33] demonstration. There are a million
+[00:10:34] different things that you can do with
+[00:10:36] bright data. pulling any kind of
+[00:10:38] information even from sources like
+[00:10:39] LinkedIn that are usually really hard to
+[00:10:42] crawl. Now, 14 of the top 20 AI labs are
+[00:10:45] already running their agents through
+[00:10:46] bright data. Over 100 million
+[00:10:49] interactions go through their platform
+[00:10:51] every day. So, they really are the most
+[00:10:53] reliable solution when you need real
+[00:10:54] time access to the web for your agents.
+[00:10:57] Plus, you can use code Cole Medine. I
+[00:10:59] also have a link in the description to
+[00:11:00] get your first $20 of credits for free.
+[00:11:02] So, definitely check out Bright Data.
+[00:11:05] All right, so let's go ahead and do a
+[00:11:06] live demo now that we understand how the
+[00:11:08] command works, all the components of it.
+[00:11:10] And so I have the skill.md right here in
+[00:11:13] my local repository for an application
+[00:11:15] that I built in the last video on my
+[00:11:17] channel. So I built this link and bio
+[00:11:19] page builder. It's kind of like linkree
+[00:11:21] where you can design your own website
+[00:11:23] where you put all your links up. You can
+[00:11:24] send this to people like check this out.
+[00:11:26] This is where you can go to see all of
+[00:11:28] my socials and things like that. So this
+[00:11:29] is the application that we're testing
+[00:11:31] here. There's quite a bit built into
+[00:11:32] this for authentication and managing
+[00:11:34] different themes and being able to
+[00:11:35] create your own links. And so we're
+[00:11:37] going to have quite a few user journeys
+[00:11:39] to go through here. And so I'll do /e2
+[00:11:41] test. No parameters or anything. And if
+[00:11:43] you're using a coding agent that doesn't
+[00:11:45] support commands, then you can literally
+[00:11:47] just point it to the skill.md tell it to
+[00:11:51] read that as its prompt and execute
+[00:11:53] those instructions. And so I'll go ahead
+[00:11:54] and send this off and it's going to
+[00:11:56] start right away by checking those
+[00:11:57] prerexs. So it'll make sure I have the
+[00:11:59] RCell agent browser CLI that I'm running
+[00:12:01] on Linux or in this case in WSL and then
+[00:12:05] pretty soon here it'll kick off the sub
+[00:12:07] agents for research. So take a look at
+[00:12:09] this. It's kicking off the first one to
+[00:12:11] understand the app structure and
+[00:12:12] journeys. Now the next one to understand
+[00:12:14] the database schema and then in just a
+[00:12:16] second here we'll see the code review
+[00:12:17] one. There we go. The bunk hunting code
+[00:12:19] analysis. And so I'm obviously not going
+[00:12:22] to go through this entire thing with
+[00:12:24] you. So let me pause and come back once
+[00:12:26] it goes on to the next stage. So I'll
+[00:12:28] show you all the important stuff here.
+[00:12:30] All right, very good. We can see that
+[00:12:31] all three of the sub aents have finished
+[00:12:33] and now it goes on to the next step of
+[00:12:35] starting our entire application and it
+[00:12:37] knows how to do this like the exact
+[00:12:39] command to run because it's one of the
+[00:12:41] things that this sub aent finds for us.
+[00:12:43] And so even if your application has a
+[00:12:45] couple of steps like you have docker
+[00:12:47] containers that you have to spin up,
+[00:12:49] it's still going to figure out all of
+[00:12:50] that. And then it'll even run into some
+[00:12:53] of these issues once in a while where it
+[00:12:54] has to self-correct. And so don't worry,
+[00:12:56] you might see a lot of errors throughout
+[00:12:58] the entire process. Like right here, it
+[00:13:00] tried to visit the site before it was
+[00:13:01] compiled and started as an Nex.js app.
+[00:13:04] And so it corrects itself. It waits a
+[00:13:05] while. Finally, the server's up. Now we
+[00:13:07] are using the agent browser CLI to visit
+[00:13:09] it. Taking a screenshot here as well. We
+[00:13:11] could already take a look at this if we
+[00:13:13] want to watch its progress as it is
+[00:13:16] validating. And then here is our task
+[00:13:19] list. So now that it visited the website
+[00:13:21] at first just to get its graphs. Now
+[00:13:24] it's going through all of the user
+[00:13:25] journeys. And this is the part that
+[00:13:27] takes the longest for sure because we
+[00:13:29] have that for loop. We're doing quite a
+[00:13:31] bit to validate every single one of the
+[00:13:33] tasks that we have here. And so we'll
+[00:13:35] see a combination of the agent browser
+[00:13:37] and whatever calls it's going to make in
+[00:13:40] order to visit the database and validate
+[00:13:43] our records. All right. Right. So now
+[00:13:44] we're getting to some of the interesting
+[00:13:46] parts of the validation where it has to
+[00:13:48] do write operations from within the user
+[00:13:50] interface. And so for example, updating
+[00:13:52] our profile for this website. And so
+[00:13:55] it's going to save and then verify the
+[00:13:57] database update. So we see it take a
+[00:13:59] snapshot so it understands. Okay, here
+[00:14:01] is the save button. Now let me click
+[00:14:03] that. Now let me take a screenshot. Read
+[00:14:06] the screenshot to make sure that we have
+[00:14:07] a good UX of saving. It says we save. We
+[00:14:10] have a pop-up everything like that. And
+[00:14:12] then make a call to the database. So it
+[00:14:14] creates a query here to make sure that
+[00:14:16] the record is confirmed. The profile is
+[00:14:18] updated with the new display name, bio,
+[00:14:20] and avatar URL. So it's looking good in
+[00:14:22] the front end and it's looking good in
+[00:14:24] our database. And so just going to the
+[00:14:27] Neon console really quickly here.
+[00:14:28] There's just a few tables that I have
+[00:14:29] for this application. So profiles, this
+[00:14:32] is where we just made an update, right?
+[00:14:33] So you can see here that we have some of
+[00:14:35] these E2E test users that were created.
+[00:14:38] So the coding agent creates a brand new
+[00:14:41] user, making sure it can update profiles
+[00:14:43] and then go in and create link items for
+[00:14:46] that profile tied to the right profile.
+[00:14:48] Like there's a lot that happens with the
+[00:14:49] database under the hood and if there's
+[00:14:51] any issues there, it might not
+[00:14:52] necessarily be reflected in the front
+[00:14:54] end, which is why it's really important
+[00:14:55] that we're doing this level of
+[00:14:56] validation as well. And then while we're
+[00:14:58] in the Neon dashboard, one thing I want
+[00:15:00] to mention really quickly is when we're
+[00:15:02] doing this kind of endto-end testing and
+[00:15:04] we're building all these fake profiles
+[00:15:05] and links and just database entries in
+[00:15:08] general, it kind of bloats our database.
+[00:15:10] Even with a dev database, we might not
+[00:15:12] want to have all those records just
+[00:15:14] sitting around. And so one thing that I
+[00:15:17] like doing with Neon is creating a
+[00:15:19] branch. So this is something specific to
+[00:15:21] Neon and how they work with Postgress.
+[00:15:22] we can make these branches where it'll
+[00:15:25] essentially take a snapshot of our
+[00:15:26] current data and then give us this
+[00:15:29] secondary database that we can do
+[00:15:31] whatever the heck we want with and then
+[00:15:32] we can delete that go back to our main
+[00:15:34] branch whenever we want and so that way
+[00:15:36] I can just create this you know like end
+[00:15:38] to end test to and then this is the
+[00:15:40] database that I'm connected to for my
+[00:15:42] end toend test and you could even build
+[00:15:44] this directly into the workflow if you
+[00:15:46] want I'm not doing that right now
+[00:15:47] because I want this to be more of a
+[00:15:49] general workflow that works no matter
+[00:15:51] your database but there are some pretty
+[00:15:52] powerful things you can do to keep your
+[00:15:55] test in isolation, keeping your database
+[00:15:57] clean while still giving your agent full
+[00:15:59] reign over your database to create
+[00:16:01] records and validate records, everything
+[00:16:03] it has to do. All right, take a look at
+[00:16:05] this. Our validation is done and it
+[00:16:07] actually fixed quite a few things during
+[00:16:09] its end toend testing and then some
+[00:16:11] other issues that we'll need to address
+[00:16:13] with our agent later. So, it found some
+[00:16:15] from its end to end testing and then
+[00:16:16] also some from the bug hunt sub aent
+[00:16:19] that ran towards the beginning. We have
+[00:16:21] our end toend screenshots folder. So we
+[00:16:22] can also validate a lot of these things
+[00:16:24] to make sure that it really did all the
+[00:16:26] testing that we expect it to. But yeah,
+[00:16:28] this is looking super super good. And
+[00:16:30] then it also asks us if we'd want to
+[00:16:32] create a markdown to send into another
+[00:16:35] coding agent to address these issues.
+[00:16:37] And so from here you can take it as you
+[00:16:39] want. You can address each one of these
+[00:16:41] issues one at a time. You could just
+[00:16:42] send this entire markdown into another
+[00:16:44] coding agent. Entirely up to you. But
+[00:16:46] the important thing here is that we
+[00:16:47] found even the small issues like this is
+[00:16:50] so detailed. I love the specificity that
+[00:16:52] this workflow gives our coding agents.
+[00:16:54] The kinds of things that the agent is
+[00:16:56] really never going to catch by itself or
+[00:16:59] at least very rarely. So one last golden
+[00:17:01] nugget that I want to cover with you
+[00:17:02] really quickly is how can we use this
+[00:17:04] end toend test skill directly in our
+[00:17:07] feature development. So, in the last
+[00:17:09] video on my channel that I already
+[00:17:11] linked to, I covered my full process for
+[00:17:13] AI coding with green field development.
+[00:17:16] And the PIV loop is the core framework
+[00:17:18] here. Plan, implement, and validate. And
+[00:17:21] what I always do for my planning is I
+[00:17:23] create a structured markdown document
+[00:17:25] that outlines everything that we need to
+[00:17:27] build and the entire validation strategy
+[00:17:29] before we go into implementation. And
+[00:17:32] this is our opportunity to specify. We
+[00:17:34] can literally just tell the agent, I
+[00:17:36] want you to use the endto-end test skill
+[00:17:38] after you've written the code to test
+[00:17:40] things in a very comprehensive way. And
+[00:17:43] so for the skill that I have linked in
+[00:17:44] the GitHub repo, I've actually disabled
+[00:17:46] model invocation. You can do this with
+[00:17:48] all claude code skills. So if I remove
+[00:17:50] this line, you can do that yourself.
+[00:17:52] Then the agent can use the end toend
+[00:17:54] test skill. That's just kind of a safety
+[00:17:56] cuz most of the time you might just want
+[00:17:58] to invoke this yourself. But you remove
+[00:18:00] that line and then and I covered this in
+[00:18:02] the last video course. So I have my plan
+[00:18:04] feature command. This is where I outline
+[00:18:06] the exact structure for my plans that I
+[00:18:08] want to send into implementation. So we
+[00:18:10] can just add a line here. So I have the
+[00:18:12] validation commands. I have a section
+[00:18:14] for any additional validation. This is
+[00:18:16] exactly the template that I have in the
+[00:18:18] last video. So we could just change this
+[00:18:19] and say use the E2E test skill to do
+[00:18:24] comprehensive testing. Right? Like
+[00:18:26] literally that simple. That's all we
+[00:18:28] have to do. And so now it's going to
+[00:18:30] basically use this as a subskll. So it's
+[00:18:32] kind of a subworkflow as a part of this
+[00:18:35] la larger implementation workflow which
+[00:18:37] you have to be careful about token usage
+[00:18:39] here. And that really is the last
+[00:18:41] warning that I have for you for this
+[00:18:43] entire process. It is somewhat
+[00:18:45] tokenheavy and it's going to take a
+[00:18:48] while. So it's definitely the kind of
+[00:18:49] thing where you want to send this off
+[00:18:52] and then work on something else. Step
+[00:18:54] away from your computer, whatever it is.
+[00:18:56] Just let this go. But the point of it is
+[00:18:58] not to be fast. The point of it is to be
+[00:19:00] comprehensive. And so the time I have to
+[00:19:03] wait for this to finish and the tokens
+[00:19:05] that I have to spend, it's worth it to
+[00:19:07] me. In fact, I think it's saving me
+[00:19:08] tokens in the end because it's finding
+[00:19:10] all these issues that otherwise I'd have
+[00:19:12] to deal with with my coding agents later
+[00:19:14] on. And I've run this dozens of times in
+[00:19:16] the last week and I haven't even hit the
+[00:19:18] rate limit for my Claude Code Max
+[00:19:20] subscription. So it's pretty token
+[00:19:22] efficient overall. mainly why it takes
+[00:19:24] so long is just because we have to wait
+[00:19:26] for all of these uh you know page
+[00:19:29] interactions and so sometimes it'll like
+[00:19:30] run asleep after clicks on a button to
+[00:19:32] wait for it to load things like that so
+[00:19:34] it is pretty token efficient overall so
+[00:19:36] yeah I would encourage you to take this
+[00:19:39] skill this command just apply it on some
+[00:19:41] codebase with a front end right now I
+[00:19:43] think you'll be pretty impressed with
+[00:19:44] the kinds of things that it can find the
+[00:19:47] issues that it will surface for you and
+[00:19:49] so if you appreciated this video and
+[00:19:50] you're looking forward to more things on
+[00:19:52] AI coding and self-healing AI coding
+[00:19:55] workflows. I'd really appreciate a like
+[00:19:56] and a subscribe. And with that, I will
+[00:19:58] see you in the next video.

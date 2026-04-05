@@ -1,0 +1,217 @@
+YouTube Daily Scanner — 2026-03-12
+Output: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-03-12
+
+Authenticating...
+Fetching liked videos from past 24h...
+  2 new liked video(s)
+Checking 9 whitelisted channels...
+  Mark Kashef: 1 new
+  Cole Medin: 1 new
+  Matthew Berman: 1 new
+  Sean Kochel: 1 new
+  Nate Herk | AI Automation: 2 new
+Checking 1 whitelisted playlists...
+  Kyle Doops Trading Show: 3 new
+
+Processing 11 total new video(s)...
+
+  [3NzCBIcIqD0] 10 CLI Tools I'm using alongside Claude Code | Starmorph AI
+    Extracting transcript...
+    > Transcript: 10563 chars
+  [JNqbzgG-VGc] Inflation Expectations Higher Despite February CPI | Daily Macro Update - 3.11.26
+    Extracting transcript...
+    > Transcript: 23899 chars
+  [dMXuKdIGzVo] Anthropic Just Dropped Skills for Office Apps
+    Extracting transcript...
+    > Transcript: 10434 chars
+  [NMWgXvm--to] Stripe&#39;s Coding Agents Ship 1,300 PRs EVERY Week - Here&#39;s How They Do It
+    Extracting transcript...
+    > Transcript: 24841 chars
+  [1roSPMSnCBw] Claude just got caught...
+    Extracting transcript...
+    x No transcript available
+  [l1f4ruHcjzw] Extract Any Site’s DNA
+    Extracting transcript...
+    > Transcript: 2398 chars
+  [mpALXah_PBg] Build &amp; Sell with Claude Code (10+ Hour Course)
+    Extracting transcript...
+    x No transcript available
+  [hem5D1uvy-w] Google&#39;s New Model + Claude Code Just Changed RAG Forever
+    Extracting transcript...
+    > Transcript: 23523 chars
+  [AvucJCGZdnQ] Economic Contagion: Huge Stock Market Correction Imminent! [Bitcoin To $50,000?]
+    Extracting transcript...
+    > Transcript: 41231 chars
+  [daPtZSoyKMI] CAUTION: The Stage Is Set For Another Bitcoin Trap! [Probably Today]
+    Extracting transcript...
+    > Transcript: 31619 chars
+  [DRgMA08OPLY] URGENT: Most Investors Aren’t Ready! [Its Happening Right Now]
+    Extracting transcript...
+    > Transcript: 34916 chars
+
+Summary: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-03-12\daily-summary.md
+
+Done! 11 video(s) processed.
+YouTube Daily Scanner — 2026-03-19
+Output: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-03-19
+
+Authenticating...
+Traceback (most recent call last):
+  File "C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\scripts\youtube_liked_scanner.py", line 402, in <module>
+    main()
+  File "C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\scripts\youtube_liked_scanner.py", line 320, in main
+    access_token = get_access_token()
+                   ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\scripts\youtube_liked_scanner.py", line 41, in get_access_token
+    resp.raise_for_status()
+  File "C:\Users\gblac\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://oauth2.googleapis.com/token
+YouTube Daily Scanner — 2026-03-30
+Output: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-03-30
+
+Authenticating...
+Fetching liked videos from past 24h...
+  0 new liked video(s)
+Checking 9 whitelisted channels...
+  IndyDevDan: 1 new
+  Cole Medin: 1 new
+  Matthew Berman: 1 new
+  Nate Herk | AI Automation: 1 new
+  Macro Optics: 2 new
+Checking 1 whitelisted playlists...
+  Kyle Doops Trading Show: 9 new
+
+Processing 15 total new video(s)...
+
+  [M30gp1315Y4] One Agent Is NOT ENOUGH: Agentic Coding BEYOND Claude Code
+    Extracting transcript...
+    > Transcript: 47147 chars
+  [iPHofrSJtQQ] This n8n Node Makes Powerful RAG SUPER Easy
+    Extracting transcript...
+    > Transcript: 2389 chars
+  [TmgGH21Tl_E] Futuristic Movies Tier List
+    Extracting transcript...
+    > Transcript: 3570 chars
+  [Y3PcRp5RFzk] I Built 500 AI Workflows, These 5 Actually Sell in 2026
+    Extracting transcript...
+    > Transcript: 26069 chars
+  [izJf17CAERw] The best leading economic indicator. ￼
+    Extracting transcript...
+    > Transcript: 1556 chars
+  [QgiP9WJG8oc] Rare Market Volatility Returns! | Monday Pre-Market Macro - 3.30.26
+    Extracting transcript...
+    x No transcript available
+  [Q-eDi8lj0Iw] My Last Crypto Market Update! [Not Clickbait… Hear Me Out]
+    Extracting transcript...
+    > Transcript: 39827 chars
+  [7c4VTptE9lY] It’s Happening… The Next Trade Is Lined Up!
+    Extracting transcript...
+    > Transcript: 42515 chars
+  [8j2lVi4-Gbo] Trump Market Manipulation Will Trap You! [This Happens Next]
+    Extracting transcript...
+    > Transcript: 48964 chars
+  [Tblx8BGuDZk] WARNING! Trump Bipolarity Is Bad For Markets!
+    Extracting transcript...
+    > Transcript: 46114 chars
+  [JrX8p5it2mQ] URGENT: This Rejection Is Worse Than You Realise! [Here Is Why]
+    Extracting transcript...
+    > Transcript: 29918 chars
+  [BMa8ByySDrY] Attention All Traders: We’ve Seen This Before! [Do This Now]
+    Extracting transcript...
+    > Transcript: 28943 chars
+  [csic_Jca3h4] CAUTION: This Bitcoin TRAP Is Almost Set! [How I’m Playing It]
+    Extracting transcript...
+    > Transcript: 32896 chars
+  [_eLvpa-rc5E] URGENT: Critical Week Ahead! [This Level Must Hold]
+    Extracting transcript...
+    > Transcript: 42003 chars
+  [KcpNziIqDa8] URGENT: This Next Market Rotation Will Go Parabolic! [& It’ll Be Quick]
+    Extracting transcript...
+    > Transcript: 44030 chars
+
+Summary: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-03-30\daily-summary.md
+
+Done! 15 video(s) processed.
+YouTube Daily Scanner — 2026-03-31
+Output: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-03-31
+
+Authenticating...
+Fetching liked videos from past 24h...
+  0 new liked video(s)
+Checking 9 whitelisted channels...
+  Mark Kashef: 1 new
+  Cole Medin: 1 new
+  Matthew Berman: 1 new
+  Sean Kochel: 1 new
+  Nate Herk | AI Automation: 1 new
+  Macro Optics: 1 new
+Checking 1 whitelisted playlists...
+
+Processing 6 total new video(s)...
+
+  [JcY1LekT954] Every Claude Code Secret Its Creator Just Revealed
+    Extracting transcript...
+    > Transcript: 31032 chars
+  [HAkSUBdsd6M] Coding Agent Reliability EXPLODES When They Argue (New Adversarial Dev Technique)
+    Extracting transcript...
+    > Transcript: 23219 chars
+  [61JUHDK-em8] AI Self EVOLUTION (Meta Harness)
+    Extracting transcript...
+    > Transcript: 30070 chars
+  [-AL4Wx-LVEs] Skill Wizard + Claude Code = Your Next 10X Advantage
+    Extracting transcript...
+    > Transcript: 12355 chars
+  [B2Kh_ZoLVTM] Codex Just 10x’d Claude Code Projects
+    Extracting transcript...
+    > Transcript: 19972 chars
+  [-8cy4yPM5HU] When Bad Markets Get Worse | Daily Macro Update - 3.30.26
+    Extracting transcript...
+    > Transcript: 28505 chars
+
+Summary: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-03-31\daily-summary.md
+
+Done! 6 video(s) processed.
+YouTube Daily Scanner — 2026-04-01
+Output: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-04-01
+
+Authenticating...
+Fetching liked videos from past 24h...
+  0 new liked video(s)
+Checking 9 whitelisted channels...
+  Cole Medin: 1 new
+  Matthew Berman: 2 new
+  Nate Herk | AI Automation: 2 new
+  Macro Optics: 3 new
+Checking 1 whitelisted playlists...
+
+Processing 8 total new video(s)...
+
+  [hdCZUNQ40VY] I Taught My Second Brain to Run Multi-Agent Coding Workflows (Live Session)
+    Extracting transcript...
+    x No transcript available
+  [TMbGHKcuxPk] One on One with Marc Benioff
+    Extracting transcript...
+    > Transcript: 37595 chars
+  [dYG8JxtSgmM] Claude Code was just leaked... (WOAH)
+    Extracting transcript...
+    > Transcript: 17406 chars
+  [JoPmpwpRrBI] Claude Code Just Gave Everyone Virtual Pets (April Fools?)
+    Extracting transcript...
+    > Transcript: 10559 chars
+  [tXtCK66fPj8] Claude Code Source Code Just Leaked… 8 Things You Must Do
+    Extracting transcript...
+    > Transcript: 19723 chars
+  [upUJr7Eyby8] Markets Bounce On Iran War Optimism | Daily Macro Update - 3.31.26
+    Extracting transcript...
+    > Transcript: 30846 chars
+  [iGHZUzlmWcU] A similar oil bar market happened in the 90s
+    Extracting transcript...
+    > Transcript: 778 chars
+  [lW57ag8L9QU] This will end the United States. #recession #depopulation #economy #inflation #gold
+    Extracting transcript...
+    > Transcript: 2435 chars
+
+Summary: C:\Users\gblac\OneDrive\Desktop\consulting-co\.claude\context\youtube-likes\2026-04-01\daily-summary.md
+
+Done! 8 video(s) processed.

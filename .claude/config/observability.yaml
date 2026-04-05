@@ -1,0 +1,47 @@
+# Observability Event Source Configuration
+# Controls how observability events are read and processed
+
+database:
+  # Path to SQLite events database (relative to project root)
+  path: "./observability/apps/server/events.db"
+
+  # How often to poll for new events (seconds)
+  query_interval: 5
+
+  # Maximum events to process per batch
+  batch_size: 50
+
+events:
+  # Event types to process
+  types:
+    - PreToolUse      # Tool execution starts
+    - PostToolUse     # Tool execution completes
+    - Stop            # Session ends
+    - SubagentStop    # Subagent completes
+
+  # Optional filters to apply
+  filters:
+    # Only process events from specific source apps
+    # Leave empty to process all apps
+    source_apps: []
+
+    # Minimum timestamp to process (ms since epoch)
+    # Leave null to process all events
+    min_timestamp: null
+
+  # Deduplication settings
+  deduplication:
+    enabled: true
+    # How long to remember processed event IDs (seconds)
+    cache_ttl: 3600
+
+# Retry configuration for failed processing
+retry:
+  enabled: true
+  max_attempts: 3
+  backoff_seconds: 2
+
+# Logging
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  output: stderr

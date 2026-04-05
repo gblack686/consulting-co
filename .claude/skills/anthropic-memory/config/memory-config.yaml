@@ -1,0 +1,60 @@
+# Anthropic Memory Tool Configuration
+# Last Updated: 2026-01-11
+
+# Memory storage paths
+memory_base_path: .claude/memories
+obsidian_vault_path: C:/Users/gblac/OneDrive/Desktop/obsidian/Gbautomation
+
+# Session management
+session_id_prefix: session
+session_date_format: "%Y-%m-%d"
+auto_create_index: true
+
+# Entity extraction
+enable_entity_extraction: true
+entity_extraction_model: claude-haiku-4
+entity_types:
+  - files
+  - technologies
+  - concepts
+  - decisions
+
+# Pattern detection
+enable_pattern_detection: true
+pattern_similarity_threshold: 0.75
+min_occurrences_for_pattern: 3
+
+# Obsidian export
+enable_obsidian_export: true
+export_on_session_end: true
+obsidian_daily_notes_path: daily
+obsidian_session_notes_path: sessions
+create_backlinks: true
+
+# Search settings
+search_result_limit: 10
+semantic_search_enabled: true
+search_snippet_length: 200
+
+# Context management
+auto_optimize_context: true
+context_clear_tool_uses: true
+context_clear_thinking: true
+max_context_tokens: 150000
+
+# Security
+validate_paths: true
+max_file_size_mb: 10
+allowed_extensions:
+  - .md
+  - .txt
+
+# Logging
+enable_logging: true
+log_level: INFO
+log_file: .claude/logs/memory.log
+
+# Performance
+cache_entity_index: true
+cache_ttl_seconds: 3600
+async_export: false

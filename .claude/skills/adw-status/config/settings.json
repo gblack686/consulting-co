@@ -1,0 +1,29 @@
+{
+  "skill_name": "adw-status",
+  "version": "1.0.0",
+  "description": "Monitor running ADWs with cost tracking",
+
+  "github_actions": {
+    "repo": "gblack686/consulting-co",
+    "workflow": "adw-plan-build-review.yml",
+    "max_runs": 10,
+    "poll_interval": 10
+  },
+
+  "local_tracking": {
+    "task_dir": ".claude/tasks",
+    "log_pattern": "*.output"
+  },
+
+  "cost_tracking": {
+    "usage_log": "../cost-tracker/data/usage_log.json",
+    "daily_budget": 1.00
+  },
+
+  "display": {
+    "show_timestamps": true,
+    "show_cost": true,
+    "show_tokens": true,
+    "compact_mode": false
+  }
+}

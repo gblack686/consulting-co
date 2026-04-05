@@ -1,0 +1,1616 @@
+{
+  "metadata": {
+    "root_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2",
+    "total_files": 12,
+    "average_complexity": 21.17,
+    "average_maintainability": 76.24,
+    "total_security_issues": 118,
+    "high_severity_issues": 0
+  },
+  "summary": {
+    "complex_functions": [
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_file_processor.py",
+        "function": "test_convert_csv_to_sqlite_success",
+        "complexity": 17,
+        "rank": "C"
+      },
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_file_processor.py",
+        "function": "test_convert_json_to_sqlite_success",
+        "complexity": 18,
+        "rank": "C"
+      }
+    ],
+    "files_with_security_issues": [
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\server.py",
+        "issues": 1
+      },
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\file_processor.py",
+        "issues": 4
+      },
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\insights.py",
+        "issues": 4
+      },
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\sql_processor.py",
+        "issues": 1
+      },
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_file_processor.py",
+        "issues": 42
+      },
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_llm_processor.py",
+        "issues": 29
+      },
+      {
+        "file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_sql_processor.py",
+        "issues": 37
+      }
+    ]
+  },
+  "detailed_results": [
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\server.py",
+      "complexity": [
+        {
+          "name": "upload_file",
+          "complexity": 4,
+          "rank": "A",
+          "line_start": 52,
+          "line_end": 83
+        },
+        {
+          "name": "process_natural_language_query",
+          "complexity": 3,
+          "rank": "A",
+          "line_start": 87,
+          "line_end": 118
+        },
+        {
+          "name": "get_database_schema_endpoint",
+          "complexity": 4,
+          "rank": "A",
+          "line_start": 122,
+          "line_end": 153
+        },
+        {
+          "name": "generate_insights_endpoint",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 157,
+          "line_end": 171
+        },
+        {
+          "name": "health_check",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 175,
+          "line_end": 198
+        },
+        {
+          "name": "delete_table",
+          "complexity": 5,
+          "rank": "A",
+          "line_start": 202,
+          "line_end": 230
+        }
+      ],
+      "maintainability": {
+        "mi_score": 58.6,
+        "mi_rank": "A",
+        "halstead_volume": 70.32,
+        "halstead_difficulty": 2.0
+      },
+      "raw_metrics": {
+        "loc": 234,
+        "lloc": 105,
+        "sloc": 181,
+        "comments": 18,
+        "multi": 0,
+        "blank": 31,
+        "single_comments": 22
+      },
+      "security": [
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible binding to all interfaces.",
+          "line_number": 234,
+          "test_id": "B104"
+        }
+      ]
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\data_models.py",
+      "complexity": [
+        {
+          "name": "FileUploadRequest",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 6,
+          "line_end": 8
+        },
+        {
+          "name": "FileUploadResponse",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 10,
+          "line_end": 15
+        },
+        {
+          "name": "QueryRequest",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 18,
+          "line_end": 21
+        },
+        {
+          "name": "QueryResponse",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 23,
+          "line_end": 29
+        },
+        {
+          "name": "ColumnInfo",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 32,
+          "line_end": 36
+        },
+        {
+          "name": "TableSchema",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 38,
+          "line_end": 42
+        },
+        {
+          "name": "DatabaseSchemaRequest",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 44,
+          "line_end": 45
+        },
+        {
+          "name": "DatabaseSchemaResponse",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 47,
+          "line_end": 50
+        },
+        {
+          "name": "InsightsRequest",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 53,
+          "line_end": 55
+        },
+        {
+          "name": "ColumnInsight",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 57,
+          "line_end": 65
+        },
+        {
+          "name": "InsightsResponse",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 67,
+          "line_end": 71
+        },
+        {
+          "name": "HealthCheckRequest",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 74,
+          "line_end": 75
+        },
+        {
+          "name": "HealthCheckResponse",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 77,
+          "line_end": 82
+        }
+      ],
+      "maintainability": {
+        "mi_score": 100.0,
+        "mi_rank": "A",
+        "halstead_volume": 0,
+        "halstead_difficulty": 0
+      },
+      "raw_metrics": {
+        "loc": 82,
+        "lloc": 107,
+        "sloc": 63,
+        "comments": 10,
+        "multi": 0,
+        "blank": 13,
+        "single_comments": 6
+      },
+      "security": []
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\file_processor.py",
+      "complexity": [
+        {
+          "name": "convert_csv_to_sqlite",
+          "complexity": 6,
+          "rank": "B",
+          "line_start": 7,
+          "line_end": 53
+        },
+        {
+          "name": "convert_json_to_sqlite",
+          "complexity": 8,
+          "rank": "B",
+          "line_start": 55,
+          "line_end": 111
+        }
+      ],
+      "maintainability": {
+        "mi_score": 82.09,
+        "mi_rank": "A",
+        "halstead_volume": 6.34,
+        "halstead_difficulty": 0.5
+      },
+      "raw_metrics": {
+        "loc": 111,
+        "lloc": 58,
+        "sloc": 64,
+        "comments": 18,
+        "multi": 6,
+        "blank": 25,
+        "single_comments": 16
+      },
+      "security": [
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 34,
+          "test_id": "B608"
+        },
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 40,
+          "test_id": "B608"
+        },
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 92,
+          "test_id": "B608"
+        },
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 98,
+          "test_id": "B608"
+        }
+      ]
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\insights.py",
+      "complexity": [
+        {
+          "name": "generate_insights",
+          "complexity": 10,
+          "rank": "B",
+          "line_start": 5,
+          "line_end": 83
+        }
+      ],
+      "maintainability": {
+        "mi_score": 75.27,
+        "mi_rank": "A",
+        "halstead_volume": 22.46,
+        "halstead_difficulty": 1.88
+      },
+      "raw_metrics": {
+        "loc": 83,
+        "lloc": 40,
+        "sloc": 60,
+        "comments": 6,
+        "multi": 3,
+        "blank": 14,
+        "single_comments": 6
+      },
+      "security": [
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 31,
+          "test_id": "B608"
+        },
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 34,
+          "test_id": "B608"
+        },
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 47,
+          "test_id": "B608"
+        },
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 62,
+          "test_id": "B608"
+        }
+      ]
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\llm_processor.py",
+      "complexity": [
+        {
+          "name": "generate_sql_with_openai",
+          "complexity": 6,
+          "rank": "B",
+          "line_start": 8,
+          "line_end": 63
+        },
+        {
+          "name": "generate_sql_with_anthropic",
+          "complexity": 6,
+          "rank": "B",
+          "line_start": 65,
+          "line_end": 119
+        },
+        {
+          "name": "format_schema_for_prompt",
+          "complexity": 3,
+          "rank": "A",
+          "line_start": 121,
+          "line_end": 137
+        },
+        {
+          "name": "generate_sql",
+          "complexity": 4,
+          "rank": "A",
+          "line_start": 139,
+          "line_end": 157
+        }
+      ],
+      "maintainability": {
+        "mi_score": 71.21,
+        "mi_rank": "A",
+        "halstead_volume": 34.87,
+        "halstead_difficulty": 1.5
+      },
+      "raw_metrics": {
+        "loc": 157,
+        "lloc": 77,
+        "sloc": 98,
+        "comments": 12,
+        "multi": 13,
+        "blank": 34,
+        "single_comments": 12
+      },
+      "security": []
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\sql_processor.py",
+      "complexity": [
+        {
+          "name": "execute_sql_safely",
+          "complexity": 6,
+          "rank": "B",
+          "line_start": 11,
+          "line_end": 58
+        },
+        {
+          "name": "get_database_schema",
+          "complexity": 4,
+          "rank": "A",
+          "line_start": 61,
+          "line_end": 100
+        }
+      ],
+      "maintainability": {
+        "mi_score": 81.88,
+        "mi_rank": "A",
+        "halstead_volume": 4.75,
+        "halstead_difficulty": 0.5
+      },
+      "raw_metrics": {
+        "loc": 100,
+        "lloc": 54,
+        "sloc": 64,
+        "comments": 11,
+        "multi": 6,
+        "blank": 21,
+        "single_comments": 9
+      },
+      "security": [
+        {
+          "severity": "MEDIUM",
+          "confidence": "MEDIUM",
+          "issue_text": "Possible SQL injection vector through string-based query construction.",
+          "line_number": 87,
+          "test_id": "B608"
+        }
+      ]
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\__init__.py",
+      "complexity": [],
+      "maintainability": {
+        "mi_score": 100.0,
+        "mi_rank": "A",
+        "halstead_volume": 0,
+        "halstead_difficulty": 0
+      },
+      "raw_metrics": {
+        "loc": 1,
+        "lloc": 0,
+        "sloc": 0,
+        "comments": 1,
+        "multi": 0,
+        "blank": 0,
+        "single_comments": 1
+      },
+      "security": []
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\__init__.py",
+      "complexity": [],
+      "maintainability": {
+        "mi_score": 100.0,
+        "mi_rank": "A",
+        "halstead_volume": 0,
+        "halstead_difficulty": 0
+      },
+      "raw_metrics": {
+        "loc": 0,
+        "lloc": 0,
+        "sloc": 0,
+        "comments": 0,
+        "multi": 0,
+        "blank": 0,
+        "single_comments": 0
+      },
+      "security": []
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_file_processor.py",
+      "complexity": [
+        {
+          "name": "test_db",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 13,
+          "line_end": 23
+        },
+        {
+          "name": "test_assets_dir",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 27,
+          "line_end": 29
+        },
+        {
+          "name": "TestFileProcessor",
+          "complexity": 8,
+          "rank": "B",
+          "line_start": 32,
+          "line_end": 156
+        },
+        {
+          "name": "test_convert_csv_to_sqlite_success",
+          "complexity": 17,
+          "rank": "C",
+          "line_start": 34,
+          "line_end": 34
+        },
+        {
+          "name": "test_convert_csv_to_sqlite_column_cleaning",
+          "complexity": 10,
+          "rank": "B",
+          "line_start": 66,
+          "line_end": 66
+        },
+        {
+          "name": "test_convert_csv_to_sqlite_with_inconsistent_data",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 89,
+          "line_end": 89
+        },
+        {
+          "name": "test_convert_json_to_sqlite_success",
+          "complexity": 18,
+          "rank": "C",
+          "line_start": 103,
+          "line_end": 103
+        },
+        {
+          "name": "test_convert_json_to_sqlite_invalid_json",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 136,
+          "line_end": 136
+        },
+        {
+          "name": "test_convert_json_to_sqlite_not_array",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 146,
+          "line_end": 146
+        },
+        {
+          "name": "test_convert_json_to_sqlite_empty_array",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 156,
+          "line_end": 156
+        }
+      ],
+      "maintainability": {
+        "mi_score": 51.7,
+        "mi_rank": "A",
+        "halstead_volume": 961.26,
+        "halstead_difficulty": 2.78
+      },
+      "raw_metrics": {
+        "loc": 164,
+        "lloc": 107,
+        "sloc": 105,
+        "comments": 23,
+        "multi": 0,
+        "blank": 37,
+        "single_comments": 22
+      },
+      "security": [
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 44,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 45,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 46,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 47,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 50,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 51,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 54,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 55,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 56,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 57,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 61,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 62,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 63,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 64,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 76,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 77,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 78,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 79,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 83,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 84,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 85,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 86,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 87,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 101,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 113,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 114,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 115,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 116,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 119,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 120,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 123,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 124,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 125,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 126,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 127,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 131,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 132,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 133,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 134,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 144,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 154,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 164,
+          "test_id": "B101"
+        }
+      ]
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_llm_processor.py",
+      "complexity": [
+        {
+          "name": "TestLLMProcessor",
+          "complexity": 3,
+          "rank": "A",
+          "line_start": 13,
+          "line_end": 287
+        },
+        {
+          "name": "test_generate_sql_with_openai_success",
+          "complexity": 5,
+          "rank": "A",
+          "line_start": 16,
+          "line_end": 43
+        },
+        {
+          "name": "test_generate_sql_with_openai_clean_markdown",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 49,
+          "line_end": 62
+        },
+        {
+          "name": "test_generate_sql_with_openai_no_api_key",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 66,
+          "line_end": 73
+        },
+        {
+          "name": "test_generate_sql_with_openai_api_error",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 78,
+          "line_end": 89
+        },
+        {
+          "name": "test_generate_sql_with_anthropic_success",
+          "complexity": 5,
+          "rank": "A",
+          "line_start": 94,
+          "line_end": 121
+        },
+        {
+          "name": "test_generate_sql_with_anthropic_clean_markdown",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 127,
+          "line_end": 140
+        },
+        {
+          "name": "test_generate_sql_with_anthropic_no_api_key",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 144,
+          "line_end": 151
+        },
+        {
+          "name": "test_generate_sql_with_anthropic_api_error",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 156,
+          "line_end": 167
+        },
+        {
+          "name": "test_format_schema_for_prompt",
+          "complexity": 9,
+          "rank": "B",
+          "line_start": 171,
+          "line_end": 171
+        },
+        {
+          "name": "test_format_schema_for_prompt_empty",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 197,
+          "line_end": 197
+        },
+        {
+          "name": "test_generate_sql_openai_key_priority",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 206,
+          "line_end": 217
+        },
+        {
+          "name": "test_generate_sql_anthropic_fallback",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 220,
+          "line_end": 231
+        },
+        {
+          "name": "test_generate_sql_request_preference_openai",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 234,
+          "line_end": 245
+        },
+        {
+          "name": "test_generate_sql_request_preference_anthropic",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 248,
+          "line_end": 259
+        },
+        {
+          "name": "test_generate_sql_both_keys_openai_priority",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 262,
+          "line_end": 273
+        },
+        {
+          "name": "test_generate_sql_only_openai_key",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 276,
+          "line_end": 287
+        }
+      ],
+      "maintainability": {
+        "mi_score": 43.32,
+        "mi_rank": "A",
+        "halstead_volume": 498.33,
+        "halstead_difficulty": 1.14
+      },
+      "raw_metrics": {
+        "loc": 287,
+        "lloc": 185,
+        "sloc": 199,
+        "comments": 20,
+        "multi": 0,
+        "blank": 68,
+        "single_comments": 20
+      },
+      "security": [
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 39,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 44,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 45,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 46,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 64,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 75,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 91,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 117,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 122,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 123,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 124,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 142,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 153,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 169,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 188,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 189,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 190,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 191,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 192,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 193,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 194,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 195,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 203,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 216,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 230,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 244,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 258,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 272,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 286,
+          "test_id": "B101"
+        }
+      ]
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_sql_processor.py",
+      "complexity": [
+        {
+          "name": "test_db",
+          "complexity": 1,
+          "rank": "A",
+          "line_start": 10,
+          "line_end": 50
+        },
+        {
+          "name": "TestSQLProcessor",
+          "complexity": 5,
+          "rank": "A",
+          "line_start": 53,
+          "line_end": 171
+        },
+        {
+          "name": "test_execute_sql_safely_valid_select",
+          "complexity": 8,
+          "rank": "B",
+          "line_start": 55,
+          "line_end": 55
+        },
+        {
+          "name": "test_execute_sql_safely_with_joins",
+          "complexity": 4,
+          "rank": "A",
+          "line_start": 69,
+          "line_end": 69
+        },
+        {
+          "name": "test_execute_sql_safely_no_results",
+          "complexity": 4,
+          "rank": "A",
+          "line_start": 78,
+          "line_end": 78
+        },
+        {
+          "name": "test_execute_sql_safely_dangerous_keywords",
+          "complexity": 6,
+          "rank": "B",
+          "line_start": 86,
+          "line_end": 90
+        },
+        {
+          "name": "test_execute_sql_safely_case_insensitive_keywords",
+          "complexity": 3,
+          "rank": "A",
+          "line_start": 97,
+          "line_end": 97
+        },
+        {
+          "name": "test_execute_sql_safely_sql_error",
+          "complexity": 5,
+          "rank": "A",
+          "line_start": 105,
+          "line_end": 105
+        },
+        {
+          "name": "test_execute_sql_safely_syntax_error",
+          "complexity": 4,
+          "rank": "A",
+          "line_start": 115,
+          "line_end": 115
+        },
+        {
+          "name": "test_get_database_schema_success",
+          "complexity": 8,
+          "rank": "B",
+          "line_start": 124,
+          "line_end": 124
+        },
+        {
+          "name": "test_get_database_schema_empty_database",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 143,
+          "line_end": 149
+        },
+        {
+          "name": "test_get_database_schema_error",
+          "complexity": 2,
+          "rank": "A",
+          "line_start": 152,
+          "line_end": 155
+        },
+        {
+          "name": "test_dangerous_keywords_coverage",
+          "complexity": 5,
+          "rank": "A",
+          "line_start": 159,
+          "line_end": 171
+        }
+      ],
+      "maintainability": {
+        "mi_score": 50.8,
+        "mi_rank": "A",
+        "halstead_volume": 693.52,
+        "halstead_difficulty": 2.61
+      },
+      "raw_metrics": {
+        "loc": 173,
+        "lloc": 107,
+        "sloc": 119,
+        "comments": 20,
+        "multi": 0,
+        "blank": 37,
+        "single_comments": 17
+      },
+      "security": [
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 59,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 60,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 61,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 65,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 66,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 67,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 74,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 75,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 76,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 82,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 83,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 84,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 92,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 93,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 94,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 95,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 102,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 103,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 110,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 111,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 112,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 113,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 120,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 121,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 122,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 127,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 128,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 129,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 134,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 135,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 140,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 141,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 150,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 157,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 166,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 172,
+          "test_id": "B101"
+        },
+        {
+          "severity": "LOW",
+          "confidence": "HIGH",
+          "issue_text": "Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.",
+          "line_number": 173,
+          "test_id": "B101"
+        }
+      ]
+    },
+    {
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\__init__.py",
+      "complexity": [],
+      "maintainability": {
+        "mi_score": 100.0,
+        "mi_rank": "A",
+        "halstead_volume": 0,
+        "halstead_difficulty": 0
+      },
+      "raw_metrics": {
+        "loc": 0,
+        "lloc": 0,
+        "sloc": 0,
+        "comments": 0,
+        "multi": 0,
+        "blank": 0,
+        "single_comments": 0
+      },
+      "security": []
+    }
+  ]
+}

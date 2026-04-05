@@ -1,0 +1,197 @@
+# Hooks Lifecycle Management Justfile
+# Usage: just -f .claude/skills/hooks/justfile <recipe>
+
+set shell := ["bash", "-cu"]
+
+# Project root (relative to justfile location)
+project_root := justfile_directory() / "../../.."
+hooks_dir := project_root / ".claude/hooks"
+settings_file := project_root / ".claude/settings.json"
+templates_dir := justfile_directory() / "templates"
+test_inputs_dir := justfile_directory() / "test_inputs"
+
+# All 12 Claude Code hook events
+all_events := "PreToolUse PostToolUse Stop Notification SubagentStop SubagentStart PreCompact PostCompact SessionStart SessionPause SessionResume UserPromptSubmit"
+
+# ──────────────────────────────────────────────
+# Hook Lifecycle Commands
+# ──────────────────────────────────────────────
+
+# Scaffold .claude/hooks/ directory + settings.json template
+hooks-init:
+    @echo "🔧 Initializing hooks directory..."
+    @mkdir -p "{{hooks_dir}}/{security,cicd,creative,dev,git,aws,utils,logs}"
+    @if [ ! -f "{{hooks_dir}}/utils/hook_utils.py" ]; then \
+        echo "⚠️  hook_utils.py not found — copy from templates or existing project"; \
+    else \
+        echo "✅ hook_utils.py exists"; \
+    fi
+    @if [ ! -f "{{settings_file}}" ]; then \
+        cp "{{templates_dir}}/settings_template.json" "{{settings_file}}"; \
+        echo "✅ Created settings.json from template"; \
+    else \
+        echo "✅ settings.json already exists"; \
+    fi
+    @echo "✅ Hooks directory initialized"
+
+# List all configured hooks from settings.json
+hooks-list:
+    @echo "📋 Configured Hooks:"
+    @echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    @python3 -c " \
+    import json, sys; \
+    settings = json.load(open('{{settings_file}}')); \
+    hooks = settings.get('hooks', {}); \
+    total = 0; \
+    for event, matchers in hooks.items(): \
+        for m in matchers: \
+            matcher = m.get('matcher', '*'); \
+            for h in m.get('hooks', []): \
+                cmd = h.get('command', 'N/A'); \
+                timeout = h.get('timeout', 'default'); \
+                print(f'  {event:20s} | {matcher:10s} | {cmd}'); \
+                total += 1; \
+    print(f'\n  Total: {total} hooks configured') \
+    "
+
+# Validate all hooks — run each with test input, verify exit 0
+hooks-validate:
+    @echo "🔍 Validating all hooks..."
+    @echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    @cd "{{project_root}}" && python3 -c " \
+    import json, subprocess, sys, os; \
+    settings = json.load(open('{{settings_file}}')); \
+    hooks = settings.get('hooks', {}); \
+    passed = failed = skipped = 0; \
+    test_input = json.dumps({'tool_name': 'Bash', 'tool_input': {'command': 'echo hello'}}); \
+    for event, matchers in hooks.items(): \
+        for m in matchers: \
+            for h in m.get('hooks', []): \
+                cmd = h.get('command', ''); \
+                if not cmd: continue; \
+                script = cmd.replace('uv run ', ''); \
+                if not os.path.exists(script): \
+                    print(f'  ⏭️  SKIP {script} (not found)'); \
+                    skipped += 1; \
+                    continue; \
+                try: \
+                    result = subprocess.run( \
+                        ['python3', script], \
+                        input=test_input, capture_output=True, text=True, timeout=10 \
+                    ); \
+                    if result.returncode == 0: \
+                        print(f'  ✅ PASS {script}'); \
+                        passed += 1; \
+                    else: \
+                        print(f'  ❌ FAIL {script} (exit {result.returncode})'); \
+                        if result.stderr: print(f'       stderr: {result.stderr[:200]}'); \
+                        failed += 1; \
+                except subprocess.TimeoutExpired: \
+                    print(f'  ⏱️  TIMEOUT {script}'); \
+                    failed += 1; \
+                except Exception as e: \
+                    print(f'  ❌ ERROR {script}: {e}'); \
+                    failed += 1; \
+    print(f'\nResults: {passed} passed, {failed} failed, {skipped} skipped') \
+    "
+
+# Generate a new hook script from template
+hooks-add event:
+    @echo "➕ Creating new hook for event: {{event}}"
+    @if echo "{{all_events}}" | grep -qw "{{event}}"; then \
+        snake=$(echo "{{event}}" | sed 's/\([A-Z]\)/_\1/g' | sed 's/^_//' | tr '[:upper:]' '[:lower:]'); \
+        target="{{hooks_dir}}/dev/new_${snake}_hook.py"; \
+        if [ -f "$target" ]; then \
+            echo "⚠️  Hook already exists: $target"; \
+        else \
+            sed "s/{{EVENT_TYPE}}/{{event}}/g" "{{templates_dir}}/hook_template.py" > "$target"; \
+            chmod +x "$target"; \
+            echo "✅ Created: $target"; \
+            echo "📝 Don't forget to add it to settings.json!"; \
+        fi; \
+    else \
+        echo "❌ Invalid event: {{event}}"; \
+        echo "   Valid events: {{all_events}}"; \
+    fi
+
+# Copy hooks + settings.json to another project
+hooks-sync target:
+    @echo "📦 Syncing hooks to: {{target}}"
+    @if [ ! -d "{{target}}" ]; then \
+        echo "❌ Target directory does not exist: {{target}}"; \
+        exit 1; \
+    fi
+    @mkdir -p "{{target}}/.claude/hooks"
+    @cp -r "{{hooks_dir}}"/* "{{target}}/.claude/hooks/"
+    @cp "{{settings_file}}" "{{target}}/.claude/settings.json"
+    @echo "✅ Synced hooks and settings.json to {{target}}"
+
+# Show which of the 12 events have hooks vs gaps
+hooks-status:
+    @echo "📊 Hook Coverage Status:"
+    @echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    @python3 -c " \
+    import json; \
+    all_events = '{{all_events}}'.split(); \
+    settings = json.load(open('{{settings_file}}')); \
+    hooks = settings.get('hooks', {}); \
+    configured = covered = 0; \
+    for event in all_events: \
+        if event in hooks and hooks[event]: \
+            count = sum(len(m.get('hooks', [])) for m in hooks[event]); \
+            print(f'  ✅ {event:20s} — {count} hook(s)'); \
+            covered += 1; \
+        else: \
+            print(f'  ⬜ {event:20s} — no hooks'); \
+    print(f'\n  Coverage: {covered}/{len(all_events)} events ({100*covered//len(all_events)}%)') \
+    "
+
+# Feed sample JSON to a specific hook and show output
+hooks-test event:
+    @echo "🧪 Testing hooks for event: {{event}}"
+    @echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    @cd "{{project_root}}" && python3 -c " \
+    import json, subprocess, sys, os, glob; \
+    event = '{{event}}'; \
+    test_files = glob.glob('{{test_inputs_dir}}/' + event + '*.json'); \
+    if not test_files: \
+        print(f'  ⚠️  No test input found for {event}'); \
+        print(f'  💡 Create one at: {{test_inputs_dir}}/{event}.json'); \
+        sys.exit(0); \
+    settings = json.load(open('{{settings_file}}')); \
+    hooks = settings.get('hooks', {}).get(event, []); \
+    if not hooks: \
+        print(f'  ⚠️  No hooks configured for {event}'); \
+        sys.exit(0); \
+    for test_file in test_files: \
+        test_data = open(test_file).read(); \
+        print(f'\n  📄 Test input: {os.path.basename(test_file)}'); \
+        for m in hooks: \
+            for h in m.get('hooks', []): \
+                cmd = h.get('command', ''); \
+                script = cmd.replace('uv run ', ''); \
+                if not os.path.exists(script): \
+                    print(f'  ⏭️  SKIP {script} (not found)'); \
+                    continue; \
+                result = subprocess.run( \
+                    ['python3', script], \
+                    input=test_data, capture_output=True, text=True, timeout=10 \
+                ); \
+                status = '✅' if result.returncode == 0 else '🚫' if result.returncode == 2 else '❌'; \
+                print(f'  {status} {script} (exit {result.returncode})'); \
+                if result.stderr: print(f'       stderr: {result.stderr.strip()[:300]}'); \
+                if result.stdout: print(f'       stdout: {result.stdout.strip()[:300]}'); \
+    "
+
+# Bundle hooks as a portable zip for distribution
+hooks-export:
+    @echo "📦 Exporting hooks..."
+    @cd "{{project_root}}" && tar -czf hooks-export.tar.gz \
+        .claude/hooks/ \
+        .claude/settings.json \
+        .claude/skills/hooks/ \
+        --exclude='__pycache__' \
+        --exclude='*.pyc' \
+        --exclude='logs/'
+    @echo "✅ Exported to: {{project_root}}/hooks-export.tar.gz"
+    @ls -lh "{{project_root}}/hooks-export.tar.gz"

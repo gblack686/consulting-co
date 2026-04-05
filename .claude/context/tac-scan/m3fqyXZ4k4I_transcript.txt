@@ -1,0 +1,283 @@
+[0:00] Most people are visual learners. I am
+[0:02] myself. You probably are watching this
+[0:04] video. The problem is coding agents like
+[0:06] Claude Code are not very visual tools.
+[0:09] When you want it to explain something to
+[0:11] you visually or even just help you
+[0:13] explain something to someone else, they
+[0:16] really don't do a good job unless you do
+[0:18] a lot of prompting and give it the right
+[0:20] abilities. And that is what I have been
+[0:22] working on. So, I love using Excaladrop
+[0:25] for all of my diagrams. You've seen this
+[0:28] before if you've been on my channel or
+[0:30] in the Dynamis community. I build dozens
+[0:32] of these every single month. And so I've
+[0:35] taken my entire workflow and I've
+[0:37] packaged it up into a skill so I can use
+[0:39] Claude code or any coding agent to help
+[0:42] me build all these beautiful and
+[0:43] practical diagrams. And so giving my
+[0:46] coding agent the ability to argue
+[0:48] visually. And so right now I want to
+[0:50] share this skill with you, my entire
+[0:52] process packaged up so you can use it
+[0:54] right now. So I will have a link in the
+[0:56] description to this GitHub repository
+[0:58] that says everything for the Excal
+[1:00] diagram skill. It is pretty simple
+[1:02] overall. So you just clone this
+[1:04] repository and then you create a new
+[1:05] folder in your do.cloud/skills or
+[1:07] whatever it is for your coding agent and
+[1:09] then you just copy over everything from
+[1:11] this and it is going to work no matter
+[1:13] your coding agent. So I'll show you my
+[1:15] setup really quickly. Here I have my
+[1:17] doclaude skills directory. I created a
+[1:19] new folder called Excal diagram and then
+[1:21] I just dumped in everything from the
+[1:23] repo including the skill.md. This is the
+[1:26] primary instruction set that guides
+[1:29] claude code how to argue visually
+[1:31] creating the JSON files for these Excal
+[1:34] diagrams. And I know this is super meta,
+[1:36] but I use the Excal diagram skill to
+[1:39] create this diagram to explain the
+[1:41] workflow to you so you understand how it
+[1:43] works. And I iterated a couple of times
+[1:45] to get to this point, but this is the
+[1:47] kind of thing that you can generate with
+[1:48] this skill. All you have to do, I'll
+[1:51] show you a really quick demo of this
+[1:52] right now, is go into cloud code and
+[1:54] just say, "Hey, I want to create a
+[1:56] diagram to explain." And then I could
+[1:59] just like give the path to this file for
+[2:00] example. You could also give it the path
+[2:02] to maybe like a YouTube script. I do
+[2:04] that all the time to help with my
+[2:06] YouTube videos. You can have it build a
+[2:08] diagram based on a PDF document. Like it
+[2:10] can be literally anything. And so you
+[2:12] just send in this prompt and then claude
+[2:14] code or whatever coding agent is going
+[2:16] to be smart enough to know like okay let
+[2:17] me go ahead and load in the skill and
+[2:20] that brings in the entire workflow. So
+[2:22] basically we're giving it a very
+[2:24] articulate prompt how to generate the
+[2:27] diagram and validate it as well. And
+[2:30] once your coding agent outputs the JSON
+[2:32] for the Excal diagram, you can just go
+[2:34] to excalraw.com and load it from your
+[2:37] local file system or you can use the
+[2:39] Excal plugin in Obsidian. Both are very
+[2:42] valid and excal.com is entirely free. So
+[2:45] very easy to render these diagrams once
+[2:48] you have them. And my favorite part
+[2:50] about this workflow is not only does it
+[2:51] create the Excal diagram, but it also
+[2:54] validates it visually. So it will render
+[2:56] the diagram, take a screenshot, look at
+[2:58] the PNG, and then iterate on any of the
+[3:01] imperfections. And I just get insane
+[3:03] results with this workflow when we have
+[3:05] this self- validation. Cuz like I said
+[3:06] earlier, coding agents are not the best
+[3:09] at visual tasks. they need the ability
+[3:11] to check their own work and we can do
+[3:13] that with Excal. So I'll show you an
+[3:15] example really quick of an image that it
+[3:17] rendered after it built the diagram. So
+[3:19] it's looking at this directly to see if
+[3:21] there's anything off with the visual
+[3:23] flow, the hierarchy of information, all
+[3:25] the things that I have prompted into the
+[3:27] skill.md and it uses a Python script in
+[3:30] order to do this rendering which that's
+[3:32] really the only setup that we have for
+[3:34] this skill. So, I cover that in the
+[3:36] readme here, but honestly, the easiest
+[3:38] thing is you can just ask your coding
+[3:39] agent to help you set up the Excalra
+[3:41] diagram skill because then it knows to
+[3:44] read the readme and it'll pretty much
+[3:46] just go through the manual steps on its
+[3:49] own so that by the time it's your turn
+[3:51] to use the skill, everything is all good
+[3:54] to go and you can just simply ask it to
+[3:55] build any kind of diagram like I showed
+[3:57] in the simple demo earlier. Now, one
+[3:59] very important thing to keep in mind, no
+[4:02] matter how well-designed this Excala
+[4:04] draw skill is, and I have been iterating
+[4:06] on it constantly, it is not going to be
+[4:09] perfect. For example, this meta diagram
+[4:13] here that explains the workflow. It took
+[4:15] me two or three iterations to get to
+[4:17] this point. This is the original diagram
+[4:19] that the skill with claude code produced
+[4:21] for me, which it still looks pretty
+[4:23] good, but you can see there are a couple
+[4:24] of imperfections here. Like I feel like
+[4:26] the arrows look a little jank, for lack
+[4:28] of better words. This arrow is too
+[4:30] short. I don't quite like the colors. I
+[4:32] feel like there's not enough information
+[4:33] displayed here. So, I have my critiques.
+[4:36] And it's very easy though to iterate on
+[4:39] this. Just a couple of directed updates
+[4:42] with my help to get to the point where
+[4:44] we have something more like this. Now,
+[4:46] the reason that it's never perfect at
+[4:48] first, it actually makes sense when you
+[4:50] think about how much the large language
+[4:52] model has to produce for this diagram.
+[4:54] Cuz think about this. It has to decide
+[4:56] every color, every shape, the entire
+[4:59] layout, the position of everything.
+[5:00] There's so many micro decisions going
+[5:03] into creating just this single rather
+[5:05] simple diagram. And so it's always going
+[5:07] to be imperfect, but it's easy to get to
+[5:09] this point. That's the important thing
+[5:10] is getting the starting point with this
+[5:12] skill for you to apply your own
+[5:14] reasoning for how you want it to evolve
+[5:17] and the exact information that you want
+[5:19] to display. Cool. Cool. So, the last
+[5:21] thing that I want to cover with you is
+[5:22] the workflow, at least at a high level,
+[5:24] especially so you know how to customize
+[5:26] it to your own liking. We'll also talk
+[5:29] about the color palette. That's one of
+[5:30] the most important things to make the
+[5:32] diagrams on brand to you or just the
+[5:34] color scheme that you like using. So,
+[5:36] the core philosophy that I have built a
+[5:39] lot of prompting around in the skill.md
+[5:42] is teaching the coding agent how to
+[5:44] argue visually. So explaining that like
+[5:46] we don't just want to put things in a
+[5:48] bunch of blocks because when it
+[5:50] generates Excal diagrams without this
+[5:52] skill, it's very blocky for lack of
+[5:54] better words. But instead, we want to
+[5:56] argue visually, we want the structure
+[5:58] and labels to explain the entire
+[6:00] concept. So even if we strip out all of
+[6:03] the explanatory text from the diagram
+[6:05] like this, we would still be able to
+[6:08] understand what we are arguing visually
+[6:11] in the diagram. And so there are two
+[6:12] main questions that I have the coding
+[6:14] agent ask itself in the workflow. First,
+[6:17] does the visual structure mirror the
+[6:19] concepts behavior? And then also, could
+[6:21] someone learn something concrete from
+[6:23] this diagram? I'm very educational
+[6:25] focused on my YouTube channel as you
+[6:27] probably know. So I want these diagrams
+[6:29] to be very complimentary to exactly what
+[6:31] I'm trying to explain in the content.
+[6:33] And then for the workflow itself, it
+[6:34] just starts with your idea. So this
+[6:36] skill is assuming that you already have
+[6:38] a good idea what you want to create a
+[6:39] diagram for. So you can iterate with
+[6:41] your coding agent before you load this
+[6:43] skill and then have it first assess the
+[6:45] depth of the diagram. And the reason
+[6:48] this is important is because we have
+[6:50] very simple diagrams like this and then
+[6:52] we have more complicated ones like this.
+[6:55] Maybe this is a better example as well.
+[6:57] And the reason we need to assess the
+[6:59] depth is because for more complicated
+[7:02] diagrams we have to build them section
+[7:04] by section. Otherwise, you'll get an
+[7:06] error with clawed code where it's trying
+[7:08] to output more than 32,000 tokens.
+[7:10] There's a limit there. So, we have to
+[7:11] build it section by section because
+[7:13] these diagrams, they take quite a few
+[7:15] tokens. It's definitely worth it, but it
+[7:17] does take a while to generate these. And
+[7:20] so, after it assesses, do I need to
+[7:21] build it all at once or in chunks? Then,
+[7:24] it's going to map the pattern. So taking
+[7:25] our idea and thinking about what shapes
+[7:27] do we need, what text do we need in the
+[7:28] diagram, putting that all together to
+[7:30] then build the JSON file that we can
+[7:32] render with the Obsidian Excalibraw
+[7:35] plugin or an excalraw.com.
+[7:38] But after before it comes back to us, it
+[7:40] goes through the validation loop. This
+[7:42] is what I was talking about earlier
+[7:43] where it renders the PNG, views the
+[7:45] image, finds any imperfections, and then
+[7:47] it'll just make direct edits to the JSON
+[7:49] file it already created. So it's not
+[7:50] like it has to spend all the time to
+[7:52] create a duplicate or anything. Usually,
+[7:54] it'll iterate like two to four times.
+[7:56] Not that it's going to fix everything by
+[7:58] the time control passes back to us, but
+[8:01] it is going to be a fantastic starting
+[8:03] point. I also have all of my design
+[8:05] patterns laid out in the skill.md giving
+[8:08] it examples of visual patterns, telling
+[8:11] it to not do boxes and boxes and boxes.
+[8:14] These are the kinds of things that
+[8:15] coding agents will do without guidance
+[8:17] because they generate excal diagrams
+[8:19] that are always way too simple and look
+[8:21] the same every single time when we don't
+[8:23] have this kind of workflow. Multi-isoom
+[8:26] architecture again just things for
+[8:27] variety. We have the color system so I
+[8:30] can be consistent in the colors for my
+[8:32] diagrams. And then also the evidence
+[8:34] artifacts. So being really specific for
+[8:36] the kinds of elements that I want to
+[8:38] really make my diagrams educational. And
+[8:40] these are all the things that you can
+[8:42] tune for yourself, especially the color
+[8:44] palette. So I'll go back to my skill
+[8:46] here and show you that one of the files
+[8:48] that I referenced in the reference
+[8:50] folder of the skill. This is in the
+[8:51] GitHub repo as well is the color
+[8:54] palette. And so you can just ask your
+[8:56] coding agent like, hey, I want to use
+[8:58] purples and yellows instead of blues or
+[8:59] whatever, right? And it can create the
+[9:01] hex codes and like put all this in the
+[9:02] color palette so that way when you are
+[9:04] generating diagrams going forward, it's
+[9:06] your brand and the color scheme that you
+[9:08] want to use. And so you can edit this,
+[9:11] you can change the different element
+[9:13] templates that it can bring in. All of
+[9:15] this you can tune yourself, but also it
+[9:17] all works out of the box if you just
+[9:19] want to use it right away. So a very
+[9:20] flexible skill that I have built for
+[9:22] you. So there you go. That is the
+[9:24] Excaladra diagram skill. And I encourage
+[9:26] you to clone this repo, bring in the
+[9:28] skill, and just try it right now on a
+[9:30] PDF, even a code base. You could do
+[9:32] research you do with an agent or just
+[9:34] raw text. The possibilities are endless.
+[9:36] And it does such a good job creating a
+[9:38] starting point. literally saving me
+[9:40] hours and hours every single week. And
+[9:42] so, if you appreciated this video and
+[9:44] you're looking forward to more things on
+[9:46] skills and agentic engineering, I'd
+[9:48] really appreciate a like and a
+[9:49] subscribe. And with that, I will see you
+[9:51] in the next

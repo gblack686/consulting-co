@@ -1,0 +1,662 @@
+[0:00] All software will be self-evolving
+[0:03] software very soon. This is a new paper
+[0:06] from a team out of Stanford, MIT and
+[0:09] Crafted and it's called Meta Harness
+[0:12] endtoend optimization of model
+[0:15] harnesses. If you've been following the
+[0:17] AI industry at all, if you've watched
+[0:19] this channel at all recently, I have
+[0:22] been talking about aentic harnesses a
+[0:24] ton. What is a harness? It is basically
+[0:27] the traditional code that is wrapped
+[0:30] around a model like Claude, like GPT54,
+[0:33] like Gemini that tells it how to operate
+[0:36] that allows it to store memories, search
+[0:39] through text, write code, execute code,
+[0:42] and so much more. It is what makes
+[0:44] things like cloud code, cursor, factory,
+[0:47] and so many other agentic hardnesses so
+[0:50] special. When you type in a prompt in
+[0:52] cursor, it can run for hours on end. And
+[0:56] that's all because of the harness. I'm
+[0:59] going to explain all of this in detail,
+[1:00] but now imagine if the harness itself
+[1:04] can actually self-improve. Typically,
+[1:06] they're written by hand by a human.
+[1:08] They're run and they're evolved over
+[1:11] time, but they're not self- evvolved.
+[1:14] And let's pause there for a moment and
+[1:16] talk about Andre Carpathy's auto
+[1:19] research project, which absolutely blew
+[1:21] up in the last couple weeks already at
+[1:23] 61,000 stars. Basically what it does is
+[1:27] it allows a model like Claude to propose
+[1:31] a series of experiments to run overnight
+[1:34] self-improving its ability to train a
+[1:37] GPT2 level model. If all of this sounds
+[1:40] very foreign, just think of it like
+[1:42] this. It's AI training itself. It is
+[1:46] looking at what worked, proposing new
+[1:48] experiments on how to do those things
+[1:50] better, and then continuously doing that
+[1:53] all night long. And since this project
+[1:56] came out, there have been a number of
+[1:58] projects that are very similar looking
+[2:01] to essentially self-evolve, self-improve
+[2:05] different pieces of software. And now we
+[2:08] actually have the harness itself that is
+[2:10] able to self-improve.
+[2:12] So cool. Let's get into the details. So
+[2:15] here's the paper. They already published
+[2:16] the paper and they open sourced the code
+[2:19] so you can use it right now. I'm going
+[2:21] to drop all these links in the
+[2:22] description below. All right. Let me
+[2:23] give you the gist of what we're going to
+[2:25] talk about. The performance of large
+[2:26] language model systems depends not only
+[2:30] on model weights, but also on their
+[2:32] harness. The harness being the code that
+[2:35] determines what information to store,
+[2:37] retrieve, and present to the model. The
+[2:40] harness is just as important as the
+[2:43] model weights. Now, if this is
+[2:44] confusing, let me just explain quickly.
+[2:47] The model itself, when you hear GPT 5.4,
+[2:50] when you hear Opus 4.6, six, we're just
+[2:53] talking about the model weights. When
+[2:55] the Frontier Labs do these huge
+[2:57] pre-training runs, they're basically
+[2:59] baking what eventually becomes the
+[3:01] weights of the model. And the model
+[3:03] weights are really, really good at
+[3:06] predicting the next token or the next
+[3:08] word in a series of words. That is
+[3:11] really all they're doing. But they
+[3:13] become very special when you wrap them
+[3:16] in a harness. when you say, "Hey, next
+[3:19] time you're predicting the next word,
+[3:21] maybe you should also look at the memory
+[3:23] over here, or maybe you should write
+[3:25] some code and then execute it over
+[3:27] there." And I'll give you an environment
+[3:29] for that. And you can save files over
+[3:32] here. There's so much you can do with an
+[3:34] Aentic harness. And the models
+[3:36] themselves, the weights are incredibly
+[3:38] powerful already. They are incredibly
+[3:40] intelligent. I've been saying this for a
+[3:42] while. The models are good enough to
+[3:45] reach AGI today. All we need to do is
+[3:48] build out the harness. I used to call it
+[3:50] scaffolding but now it's called a
+[3:51] harness suddenly to make them really
+[3:54] good. So then they introduce metah
+[3:56] harness which is an outer loop. So
+[3:59] around the agentic harness system that
+[4:02] searches over harness code for LLM
+[4:04] applications. All right let's get into
+[4:06] the details of metah harness. Now,
+[4:08] changing the harness around a fixed
+[4:10] large language model, so just the
+[4:12] weights, can produce a 6x performance
+[4:15] gap on the same benchmark. Harnesses are
+[4:18] everything. The models are so good at
+[4:21] this point, but that's just raw
+[4:23] intelligence. That's like the engine of
+[4:25] a car. But the engine of a car is not
+[4:27] enough to get you from point A to point
+[4:29] B. You need seats and you need a
+[4:32] steering wheel and you need a way to
+[4:34] deliver all of that power that's coming
+[4:37] out of the engine to the tires and the
+[4:40] tires to the road. So, the harness, the
+[4:42] code that determines what to store,
+[4:45] retrieve, and show to the model often
+[4:47] matters as much as the model itself.
+[4:49] Yes, this is called harness engineering.
+[4:51] And the best Frontier Labs are making
+[4:55] their own harnesses. And there's a bunch
+[4:57] of other companies that make their own
+[4:59] harnesses that are fantastic. And I'll
+[5:02] talk about a few of them today, but you
+[5:04] probably have heard about most of them.
+[5:06] But despite its importance, harness
+[5:08] engineering remains largely manual. And
+[5:11] you know what else needs to be
+[5:12] self-evolving? Your skills. And that's
+[5:14] why I'm excited to tell you about the
+[5:16] sponsor of today's video, HubSpot. I
+[5:17] know a lot of you are trying to keep up
+[5:19] with how fast AI is moving, and you want
+[5:21] to actually learn about these tools, not
+[5:24] just read about them. Cloud Co-work just
+[5:26] came out and lets you automate huge
+[5:29] portions of your workload. And so I
+[5:32] suggest you check out the Cloud Co-work
+[5:34] Stack 12 prompts to replace a week of
+[5:37] work. This is the guide to understanding
+[5:39] AI agents and how they actually work in
+[5:42] practice. It covers the different ways
+[5:44] to use Claude Co-work and specific
+[5:47] walkthroughs about how to get the most
+[5:48] out of it. You'll understand how to give
+[5:50] your Claude Co-work agent access to
+[5:53] hundreds of files and to let it do deep
+[5:56] analysis, pattern recognition, run
+[5:59] autonomous tasks in the background, and
+[6:01] all without having to babysit it. You
+[6:02] will get real deliverables from Cloud
+[6:04] Co-work like spreadsheets,
+[6:06] presentations, and reports instead of
+[6:08] just chat responses. I personally found
+[6:10] the section about background processing
+[6:12] and real file creation to be
+[6:14] particularly helpful because background
+[6:17] processing is what AI agents look like
+[6:19] in 2026. So, this ebook was made by
+[6:21] HubSpot. They're giving it to you for
+[6:23] free. Shout out to HubSpot once more.
+[6:25] They've been a fantastic partner. So, go
+[6:27] download this ebook. It is a great
+[6:29] resource. Plus, they're a great sponsor.
+[6:31] It helps the channel. Now, back to the
+[6:33] video. And so the authors of the paper
+[6:36] asked, can harness engineering be
+[6:39] automated? And it turns out it can. So
+[6:43] check this out. A natural starting point
+[6:45] is recent work on text optimization.
+[6:48] When they say starting point, they mean
+[6:49] how can we experiment on a harness made
+[6:53] for a kind of narrow use case. And this
+[6:55] is text optimization. Harness
+[6:57] engineering also involves iteratively
+[6:59] improving text and code artifacts using
+[7:02] feedback from prior attempts. So the
+[7:04] actual harness itself is executing that
+[7:07] learning pattern but the harness is not
+[7:11] doing it itself if that makes sense.
+[7:13] Let's keep going. So these methods are
+[7:15] poorly matched to harness engineering
+[7:17] because they typically operate with
+[7:19] short horizon or heavily compressed
+[7:21] feedback. Some condition only on the
+[7:24] current candidate. Others rely primarily
+[7:26] on scalar scores. So just think, you
+[7:29] know, 0ero to one scores. But a 0ero to1
+[7:31] score is not really good for what
+[7:33] they're describing here. It doesn't
+[7:35] really work. The problem is harnesses
+[7:37] are incredibly complex. They include so
+[7:40] many different factors, so many
+[7:41] different success signals that boiling
+[7:43] them all down to a single score like
+[7:46] 04.8 8 makes it very difficult for us to
+[7:49] understand how to improve or which parts
+[7:51] of the harness we should improve based
+[7:54] on that score. So harnesses act over
+[7:56] long horizons. A single choice about
+[7:58] what to store, when to retrieve it, or
+[8:01] how to present it can affect behavior
+[8:03] many reasoning steps later. Compressed
+[8:06] feedback. So that means okay, let's
+[8:08] figure out what happens. let's summarize
+[8:11] it using a model and then feed that
+[8:13] summary into this experimentation loop
+[8:16] that we're trying to do. It doesn't
+[8:18] really work. Compressed feedback often
+[8:20] removes the information needed to trace
+[8:22] downstream failures to earlier harness
+[8:24] decisions across the task studied by
+[8:27] several representative text optimizers.
+[8:29] The available context per optimization
+[8:32] step ranges from only 100 to 30,000
+[8:34] tokens. Basically, they're trying to
+[8:36] boil down everything that comes in a
+[8:39] harness, which can be millions and
+[8:41] millions and millions of tokens, down to
+[8:43] a few tens of thousands of tokens to try
+[8:46] to figure out what happened. And
+[8:47] obviously, you lose a lot of quality.
+[8:50] You lose a lot of the signal doing that.
+[8:52] So, it's not a good approach. And here's
+[8:55] an important concept we're going to go
+[8:56] over a few times during this paper. Work
+[8:59] on retrieval and memory augmented
+[9:01] language models. meaning we have this
+[9:03] large amount of memory, this large
+[9:05] amount of data. What should I choose to
+[9:07] give the model? That's all it means.
+[9:09] Suggests that useful context should
+[9:12] often be accessed adaptively rather than
+[9:15] monolithically packed into a single
+[9:17] prompt. And there are multiple reasons
+[9:19] for that. But first, what does that
+[9:21] mean? That means let the model decide
+[9:23] what it needs. Don't try to figure out
+[9:26] what it needs. Don't try to pack
+[9:28] everything into a single prompt up front
+[9:31] and give it to the model. Just say,
+[9:34] "Hey, here's what you have available.
+[9:36] You choose." And it seems more often
+[9:38] than not that is the right approach. All
+[9:41] right. So, how does meta harness
+[9:43] actually work? Well, it has a proposer
+[9:46] and it is a coding agent, a language
+[9:48] modelbased system that can invoke
+[9:50] developer tools and modify code.
+[9:52] Basically, a harness around a model. And
+[9:55] the choice of using a coding agent
+[9:57] versus a raw LLM was deliberate and
+[10:00] makes a ton of sense. Let me show you.
+[10:02] The choice of coding agent rather than
+[10:04] raw LLM matters because the amount of
+[10:07] experience quickly exceeds context
+[10:09] limits. Meaning of all the code
+[10:11] necessary to write a harness. As I said
+[10:14] earlier, you can't fit it all into the
+[10:16] context window. You have to give the
+[10:18] model and the harness around the model
+[10:20] the ability to choose which parts of the
+[10:23] harness it's going to read and
+[10:26] understand as part of its experiments.
+[10:28] The proposer must decide what to inspect
+[10:30] and validate edits through direct
+[10:32] interaction with the codebase. So this
+[10:34] is very similar if you're doing any kind
+[10:36] of agentic coding right now. You're
+[10:38] probably familiar with how to visualize
+[10:40] what I'm talking about right now. So for
+[10:42] example, this is cursor. I said, "Review
+[10:45] the entire codebase for code issues,
+[10:46] user confusion, and so on." And what it
+[10:49] did is it read the entire codebase, but
+[10:52] not all at once. It looked at the
+[10:54] different files in the codebase. It
+[10:56] looked at the different methods, decided
+[10:58] where it should gather more information,
+[10:59] and that's what you're seeing here. And
+[11:01] that's exactly what the coding agent in
+[11:04] Metaharn is doing, the proposer. And now
+[11:07] we get the full history of all the
+[11:10] harnesses. So imagine this. You have a
+[11:12] harness, you test it, you make changes
+[11:15] to it, and then you test it again. And
+[11:17] now you have two versions of the
+[11:19] harness. And now imagine you do that 10
+[11:21] different times. And so if every harness
+[11:23] is a million tokens, and you do that 10
+[11:25] times, you now have to reason over 10
+[11:28] million tokens, which is not possible
+[11:30] based on current LLM context windows. So
+[11:33] instead, we give it everything and we
+[11:36] give it the tools to know how to look
+[11:38] and find what it needs. And it works
+[11:40] exactly like that. So for previous
+[11:42] candidate harnesses, the file system
+[11:44] stores the source code evaluation scores
+[11:47] and execution traces which the proposer
+[11:51] retrieves via standard operations such
+[11:53] as GP and cat rather than ingesting them
+[11:57] as a single prompt. So it is very meta
+[12:00] as the name suggests. So they ran a
+[12:02] bunch of tests. We evaluate meta harness
+[12:04] on text classification. great on
+[12:07] retrieval augmented math reasoning which
+[12:10] I'll explain when we get there and on
+[12:12] terminal bench 2 which is the benchmark
+[12:15] testing how these harnesses operate
+[12:17] terminals all right but metah harness
+[12:20] didn't come out of nowhere they built on
+[12:22] top of a lot of ideas and concepts that
+[12:25] are floating around the AI industry
+[12:26] right now and let me point those out so
+[12:28] here's the related work so first
+[12:30] external memory and adaptive access
+[12:33] retrieval augmented generation interle
+[12:36] believed retrieval and reasoning. Memory
+[12:38] based agents or recursive language
+[12:41] models are mechanisms for adaptive
+[12:43] access to external context and they
+[12:47] leveraged a lot of these concepts in the
+[12:49] meta harness executable code search.
+[12:51] Metaharness searches over domain
+[12:53] specific harnesses including prompt
+[12:56] construction retrieval and state update
+[12:58] strategies that reset between tasks. Its
+[13:01] outer loop is deliberately minimal which
+[13:04] I really like. Minimal is good. Instead
+[13:07] of relying on a fixed scaffold, an
+[13:11] archive of prior discoveries, or a
+[13:13] persistent memory mechanism, it gives
+[13:16] the proposer unrestricted file system
+[13:18] access to prior experience. Again, let
+[13:22] the model choose what it needs. It also
+[13:25] gains inspiration from other systems
+[13:28] that improve itself. One of the ones
+[13:30] that I want to point out is Alpha Evolve
+[13:32] by Google, which figured out ways to
+[13:34] optimize Google's own systems
+[13:37] architecture and actually figured out a
+[13:40] faster way to do matrix multiplication,
+[13:42] which was the first time we figured out
+[13:44] a faster way in like 50 years. So, this
+[13:47] self-improving loop is incredibly
+[13:50] powerful. So, how does it actually work?
+[13:53] At a high level, it repeatedly proposes,
+[13:56] evaluates, and logs new harnesses. Very
+[13:59] similar to how auto research by Carpathy
+[14:02] worked trying to figure out a faster way
+[14:05] to build a GPT2 model. The goal is
+[14:07] simple. Find the harness that makes the
+[14:09] underlying model perform best on the
+[14:12] target task distribution. So here's the
+[14:15] loop. Metaharness uses a single coding
+[14:18] agent proposer with access to a growing
+[14:21] file system that serves as its feedback
+[14:23] channel. Here the coding agent is a
+[14:26] language-based model system that can
+[14:28] invoke developer tools and modify code.
+[14:30] Meta harness delegates diagnosis and
+[14:32] proposal to the coding agent itself. It
+[14:35] decides which prior artifact to inspect,
+[14:38] which failure modes to address, and
+[14:40] whether to make a local edit or a more
+[14:43] substantial rewrite. Why did they do
+[14:45] this? Why are they letting another
+[14:46] harness try to figure out how to improve
+[14:49] the harness itself? It is just so meta
+[14:52] and it's so recursive. And that's
+[14:55] exactly why as the core models get
+[14:57] better, the LLMs themselves, as the
+[15:00] harnesses get better, as the meta
+[15:03] harness gets better, these multiple
+[15:06] layers of self-improving, recursively
+[15:10] self-improving, I should say, factors
+[15:12] stack on top of each other, the success
+[15:14] rate and the velocity to success
+[15:17] increases dramatically very quickly. So
+[15:21] each evaluated harness contributes a
+[15:23] directory containing its source code,
+[15:25] scores, and execution traces. So that's
+[15:28] stuff like prompts, tool calls, model
+[15:29] outputs, and state updates. The proposer
+[15:32] is free to inspect any prior harness. So
+[15:35] it is not just told only inspect the
+[15:38] best performing ones. It can inspect any
+[15:41] of them, even the low performing ones,
+[15:42] because you can avoid local maxima that
+[15:45] way. and while it's proposing new ones.
+[15:48] So you give it a fixed number of
+[15:50] iterations and perform a final test set
+[15:52] evaluation on the parade of frontier.
+[15:54] This simplicity is deliberate. Listen to
+[15:56] this. By leaving diagnosis and edit
+[15:59] decisions to the proposer rather than
+[16:02] hard coding such heristics, metaharness
+[16:05] can improve automatically as coding
+[16:07] agents become more capable. So the
+[16:10] target for improvement can improve the
+[16:13] improver which then improves back the
+[16:16] target for improvement. So now
+[16:18] Metaharness reads everything. It's
+[16:20] looking at the code, the prompts, the
+[16:22] tool calls, the output, the terminal
+[16:25] output, everything, and it's determining
+[16:28] what should we change. Should we make a
+[16:30] little change? Should we make a big
+[16:32] change? Then it puts forth a new harness
+[16:35] and then they test against that harness
+[16:37] and they continuously do that over time.
+[16:39] And interestingly enough, I'm a big fan
+[16:41] of Opus 4.6 and it seems like the
+[16:44] authors of this paper are as well. So in
+[16:46] our experiments, the proposer, they
+[16:48] chose claude code with Opus 4.6. Now,
+[16:51] personally, I use cursor with Opus 4.6,
+[16:53] but a lot of people I know are using cla
+[16:55] code. As I mentioned earlier, they have
+[16:58] three experiments that they're running.
+[16:59] One on text classification, one on math
+[17:02] reasoning, and one on agentic coding.
+[17:04] And they compete against two different
+[17:07] things. One, human design strategies. So
+[17:10] if a human wrote the harness themselves,
+[17:13] that would count there. And program
+[17:16] search methods. These methods search
+[17:18] over candidate harnesses using feedback
+[17:20] and reward signals, but are designed for
+[17:22] smaller scale settings and harness
+[17:23] engineering. So basically kind of
+[17:25] self-improving code, but not meant for
+[17:28] this level of self-improving code. All
+[17:31] right, so let's look at some of the
+[17:32] initial results. So, first we have the
+[17:34] online text classification benchmark.
+[17:37] And what that is meant to do is take
+[17:39] text and exactly what it sounds like,
+[17:41] classify it. And it's not just the
+[17:43] model, the raw LLM that does that. It is
+[17:46] also the harness around it. So, we have
+[17:48] zero shot. So, that literally just means
+[17:50] put the text in the LLM and say, how do
+[17:52] you classify it? And it takes zero
+[17:54] context and does okay. All right. So for
+[17:59] USPTO, which is the patent trade office,
+[18:02] I believe it gets a 12. On the symptoms
+[18:05] to disease, which is a medical text
+[18:07] benchmark, we have 63.2. Still really
+[18:10] good. And then the law benchmark, a
+[18:11] seven, which compared to the other
+[18:13] results is very bad. We have few shot
+[18:15] with eight examples, few shot with 32
+[18:17] examples, and few shot with all
+[18:18] examples. And you can see they get a
+[18:21] little bit better over time. So the more
+[18:23] examples you give it, the better it
+[18:25] does. We all knew that this is early
+[18:27] prompt engineering learnings. Next, we
+[18:30] compare against MCE and ACE, which is
+[18:33] basically kind of the next evolution of
+[18:34] prompt engineering. MCE is metacontext
+[18:37] engineering, and it allows the model to
+[18:40] build and curate a library of natural
+[18:44] language skills to help it with its
+[18:46] task. And then ACC, which is agentic
+[18:49] context engineering, which basically
+[18:50] allows the model to reflect on what it's
+[18:52] learned over time. So, as we see for the
+[18:55] USPTO,
+[18:57] ACCE actually did best, although the
+[18:59] Meta Harness down here did pretty well
+[19:00] at 14. For the S2D,
+[19:04] the Meta Harness did really well, going
+[19:07] four points above the second place of
+[19:09] MCE. And then for law, it absolutely
+[19:13] dominated. The highest score being a 29
+[19:16] with Fshot and ACC and the Meta Harness
+[19:19] coming in at 45. a massive massive
+[19:22] improvement and the average overall it
+[19:25] is the best. It scored a 48. Second
+[19:27] place 40.9
+[19:30] with ACE. Not only was it better, but it
+[19:32] also used far fewer tokens. Look at
+[19:35] this. This is the context usage. So,
+[19:37] zero shot, fuse shot, fuse shot all the
+[19:39] way up. ACE and MCE 28.5 and 50.8 on
+[19:45] their context. 11.4 for the Meta
+[19:48] Harness. So it is far cheaper and just
+[19:51] as good if not better on most cases. So
+[19:54] Meta Harness matches the best prior text
+[19:56] optimizers. Open evolve ttt discover
+[19:59] with 10x fewer full evaluations and its
+[20:02] final accuracy surpasses theirs by more
+[20:05] than 10 points. So these are literal
+[20:08] optimizers that were built for text
+[20:10] classification and it still beat it. And
+[20:13] the nice thing about Meta Harness is it
+[20:15] doesn't go in with any preconceived
+[20:17] notions. It just says, "Okay, let's
+[20:19] start testing and see what works." A
+[20:21] human doesn't have to curate the
+[20:23] experiments or decide what to change in
+[20:25] future experiments. It's all automated.
+[20:28] And so, it's really just limited by how
+[20:30] many tokens can we throw at it and how
+[20:32] fast are those tokens. And so, let's
+[20:33] look at one more thing because this is
+[20:35] super interesting. The Metaharn median
+[20:37] score against the other best-in-class
+[20:40] harnesses, state-of-the-art harnesses
+[20:42] for this task, it gets a 50 as compared
+[20:45] to a 39.1. Now, the best score for all
+[20:49] of the other ones is 45.6. The median
+[20:54] score for the Meta Harness is higher
+[20:56] than the best score from all the others.
+[20:59] And of course, the best score for Meta
+[21:01] Harness 56.7. So, you can see this is
+[21:04] not just luck. The Meta Harness, the
+[21:06] auto research, the self-improving
+[21:10] way of doing things is the best. So,
+[21:13] then they thought, okay, are we
+[21:14] overfitting? Are we making the harness
+[21:16] that is just so good at this one task
+[21:18] and maybe not so good at most other
+[21:20] tasks? Well, it turns out no. They
+[21:21] actually took the harness that they
+[21:23] built based on those three tasks and
+[21:27] generalized it out to nine other data
+[21:30] sets that the harness had never seen.
+[21:32] And more often than not, it won. And on
+[21:36] average, it was the highest score by
+[21:39] three points, 73.1 versus the second
+[21:41] highest score with ACE, 70.2.
+[21:45] And it was relatively inexpensive,
+[21:47] definitely more expensive than fshot,
+[21:50] but less expensive than ACE. And then
+[21:53] they thought, what if we applied this to
+[21:56] mathematical reasoning? What if we put
+[21:59] our meta harness up against the IMO,
+[22:02] International Math Olympiads? That is
+[22:04] mid last year. All of the frontier labs
+[22:07] were competing in the IMO showing that
+[22:10] their models with a ton of harness
+[22:11] around them can perform incredibly well
+[22:14] in that competition. That is the
+[22:16] frontier of math, the hardest math
+[22:18] problems given as a competition. And
+[22:21] here's what they found. The discovered
+[22:23] metah harness retrieval strategy
+[22:25] improves reasoning on these IMO level
+[22:29] problems across all five held out models
+[22:31] with a 4.7 point average gain over no
+[22:35] retriever. But how does that even make
+[22:37] sense? Why would retrieving past memory
+[22:40] or past context help with a new math
+[22:43] problem? Well, they explain. There is a
+[22:47] good reason to expect retrieval to help
+[22:49] mathematical reasoning in principle
+[22:51] because solutions often share reusable
+[22:54] proof patterns. So that's it. They said,
+[22:56] well, what worked for the last one?
+[22:58] Maybe we can use part of that proof for
+[23:01] our current problem. So very
+[23:03] interesting. All right, last and my
+[23:06] favorite terminal bench. This is the
+[23:08] benchmark that tests a model or a
+[23:11] harness's ability to interact with a
+[23:13] terminal across long horizon difficult
+[23:16] tasks to be done via terminal. So,
+[23:19] Terminal Bench 2 evaluates LLM agents on
+[23:22] 89 challenging tasks that require long
+[23:24] horizon fully autonomous execution under
+[23:27] complex dependencies and substantial
+[23:30] domain knowledge. They use this
+[23:31] benchmark as a discovery problem. The
+[23:34] goal to discover a harness configuration
+[23:36] that improves performance on a hard
+[23:38] publicly contested benchmark. So look at
+[23:41] all of these. You've probably heard of
+[23:43] some of them. Claude Code, obviously
+[23:46] Droid, one of my favorite. And so what
+[23:48] are the results? We have Claude Opus 46
+[23:51] and Claude Haiku 45. These are the two
+[23:54] core base models that they tested
+[23:56] against. And remember this is against
+[23:58] the terminal bench benchmark. So
+[24:01] Metaharness on Opus 4.6. This is the
+[24:04] Frontier model on the market today. It
+[24:06] scored a 76.4
+[24:08] higher than every other benchmark that
+[24:11] has been handwritten with the exception
+[24:14] of Forge Code. So remember, Metaharn
+[24:17] wasn't really written at all. It was
+[24:19] just evolved from the Meta Harness
+[24:22] framework. Then for Haiku 4.5, it did
+[24:25] better than all of them. 37.6 6 versus
+[24:29] second place Goose 35.5. So just letting
+[24:33] the model figure out how to build its
+[24:35] own harness seems to be the way. And
+[24:36] this seems to all tie back into
+[24:39] something called the bitter lesson. I
+[24:40] know it's not a direct analogy, but it
+[24:43] feels close to me. And so the bitter
+[24:45] lesson shows that handwritten
+[24:47] heruristics by humans, basically
+[24:49] patterns described by humans, never beat
+[24:54] just end-to-end neural networks. the AI
+[24:57] itself learning those heruristics on the
+[25:00] fly. And so the most prominent example
+[25:03] of the bitter lesson is Tesla's full
+[25:06] self-driving. For a long time, it used a
+[25:09] combination of neural nets and
+[25:11] handwritten code. If you see a stop
+[25:13] sign, you better stop. But over time as
+[25:17] the neural net got bigger and bigger
+[25:18] what they figured out and they swapped
+[25:20] it all out for end to-end neural nets
+[25:22] one day is that those neural nets will
+[25:24] figure out those heruristics itself. And
+[25:27] that's always the best way. AI figuring
+[25:30] out what to do will always be humans
+[25:33] telling it what to do. Remember that
+[25:36] that's going to pop up in our lives a
+[25:39] lot over the coming years. And so right
+[25:41] now the harnesses are written by humans.
+[25:44] But should they be? Obviously not. If
+[25:46] you're writing any code, if you're
+[25:48] writing any automations yourself, why
+[25:50] can't we extrapolate this to say all
+[25:52] code should be self-improving?
+[25:55] All code needs its own meta harness. Why
+[25:59] not? We've already seen a lot of
+[26:00] examples. We've seen the founder of
+[26:03] Shopify improve a code library
+[26:06] significantly that hadn't been touched
+[26:08] in years. And it just let Carpathies
+[26:10] auto research just iterate on it and
+[26:12] figure out how to improve it. And it had
+[26:14] massive gains from just letting AI write
+[26:18] it and rewrite it and rewrite it. And so
+[26:21] a lot of the token usage in the future
+[26:23] is going to come from just letting the
+[26:25] tokens burn and iterating as much as we
+[26:29] can on these problems. So, I found this
+[26:31] paper to be absolutely fascinating and I
+[26:34] really think self-evolving software,
+[26:37] self-improving software is going to be
+[26:40] such a big presence in artificial
+[26:42] intelligence in the coming years. We're
+[26:44] already seeing it. We're starting to see
+[26:46] the Frontier Labs put out models that
+[26:48] were trained by previous models and
+[26:50] we're going to start to see harnesses
+[26:52] being built by previous harnesses. And
+[26:55] then we're going to see all software
+[26:57] just being built by previous software.
+[27:00] And it is so awesome to watch. It is so
+[27:03] fascinating and it is hard to keep up at
+[27:06] times. But if you follow me here, I will
+[27:08] help you keep up as best I can. If you
+[27:10] enjoyed this video, please consider
+[27:12] giving a like and subscribe.

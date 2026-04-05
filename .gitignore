@@ -6,8 +6,10 @@
 client_secret.json
 credentials.json
 
-# Claude session data (may contain API keys)
+# Claude session data and local settings (may contain API keys)
 .claude/data/sessions/
+.claude/settings.local.json
+.claude/projects/
 
 # Keys and tokens
 **/api-keys/
@@ -30,3 +32,78 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+nul
+
+# Claude Code temp files
+tmpclaude-*
+
+# IDE/editor settings
+.vscode/
+.cursor/
+
+# Video/large media
+*.mp4
+
+# Google Drive sync temp
+.tmp.driveupload/
+.tmp.drivedownload/
+
+# Temp keys
+.temp-lightsail-key
+
+# MCP config (contains project refs)
+.mcp.json
+
+# Credentials docs and scripts (sensitive)
+.claude/context/AGGREGATED_KEYS_AND_CREDENTIALS.md
+.claude/context/CREDENTIALS_UPLOADED.md
+.claude/context/README_CREDENTIALS.md
+.claude/context/REVSTAR_CREDENTIALS_BY_PROJECT.md
+.claude/context/*credentials*
+.claude/context/*store-credentials*
+.claude/context/*retrieve-credentials*
+
+# Large dumps
+.claude/context/lightsail-openclaw-dump/
+
+# API keys / credentials in context
+.claude/context/setup/KMS_KEYS_CONFIG*.json
+.claude/context/setup/encrypt_all_api_keys.py
+.claude/context/setup/API_KEYS_*.md
+.claude/context/LINEAR_API_KEY_STORED.md
+
+# OAuth tokens and credential files
+**/google_calendar_token.json
+**/gregrevstargmail-credentials.json
+**/aws-credentials.template
+archive/keys/
+
+# Gmail token retrieval script (contains auth patterns)
+.claude/skills/gmail-manager/get_god_token.py
+
+# Context docs with real API keys / credentials
+.claude/context/upload-to-kms.sh
+.claude/context/langfuse/
+.claude/context/AWS_KMS_ORGANIZATION_GUIDE.md
+.claude/context/ELEVENLABS_*.md
+
+# Hook logs (contain session data with keys)
+logs/
+
+# MCP configs with credentials
+claude-repos/**/mcp/claude-mcp.txt
+
+# Quickstart repos — pervasively contain real AWS keys and OAuth tokens
+claude-repos/
+quickstarts/
+
+# KMS setup scripts with real keys
+.claude/context/setup/
+
+# Scripts with embedded real credentials
+.claude/scripts/vault_migration.sql
+.claude/scripts/reauth_youtube.py
+.claude/scripts/youtube_oauth.py
+
+# State files with cached secrets
+.claude/skills/consulting-admin/state/

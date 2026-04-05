@@ -1,0 +1,25 @@
+{
+  "name": "zeroclaw-deploy",
+  "version": "1.0.0",
+  "description": "ZeroClaw quick-deploy CDK stack for consulting clients",
+  "bin": {
+    "zeroclaw-deploy": "bin/zeroclaw-deploy.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "synth": "cdk synth",
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy"
+  },
+  "devDependencies": {
+    "aws-cdk": "^2.180.0",
+    "typescript": "~5.7.0",
+    "@types/node": "^22.0.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.180.0",
+    "constructs": "^10.4.0"
+  }
+}

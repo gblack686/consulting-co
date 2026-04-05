@@ -1,0 +1,60 @@
+# Obsidian Export Configuration for consulting-co
+# This configures where this project exports logs and tracking data to Obsidian
+
+vault:
+  # Path to this project's namespace in Obsidian
+  path: "C:/Users/gblac/OneDrive/Desktop/obsidian/Gbautomation/claude/projects/consulting-co"
+
+  # Project identifier (used for Neo4j namespace)
+  project_name: "consulting-co"
+
+  # Project description
+  description: "Active consulting work using claude-template pattern"
+
+  # Reference to template
+  template: "claude-template"
+
+export:
+  # Session logs
+  sessions:
+    enabled: true
+    path: "logs/sessions"
+    template: "templates/session.md"
+
+  # Daily summaries
+  daily:
+    enabled: true
+    path: "logs/daily"
+    template: "templates/daily.md"
+
+  # Entity notes from Neo4j
+  entities:
+    enabled: true
+    path: "entities"
+
+  # Tracking updates
+  tracking:
+    bugs:
+      enabled: true
+      path: "tracking/bugs.md"
+    tasks:
+      enabled: true
+      path: "tracking/tasks.md"
+    plans:
+      enabled: true
+      path: "tracking/plans.md"
+
+neo4j:
+  # Namespace for this project in Neo4j
+  namespace: "consulting-co"
+
+  # Whether to include project prefix in node labels
+  use_namespace: true
+
+sync:
+  # Bilateral sync settings
+  obsidian_to_neo4j:
+    enabled: true
+
+  neo4j_to_obsidian:
+    enabled: true

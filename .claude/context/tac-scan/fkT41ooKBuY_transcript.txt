@@ -1,0 +1,86 @@
+YouTube Video Transcript
+========================
+Title: I cut my OpenClaw API bill by 80% with one config change
+Channel: VelvetShark
+Video ID: fkT41ooKBuY
+Published: 2026-02-04T00:21:47.000Z
+Characters: 7409
+
+================================================================================
+
+If you're running OpenClaw, there's
+a good chance that you're burning money right now, without realizing it. By default, everything
+goes to your primary model. Heartbeat checks? Opus. Quick calendar
+lookup? Opus. Sub-agents doing parallel work? All Opus. Opus is a great model, but using
+it for a heartbeat is like hiring a lawyer to check your mailbox. It works, but it
+makes no financial sense. In this video, I'll show you how to cut costs
+by 50-80% with one config change without losing quality on the tasks that matter. Let's go save some money! OpenClaw sends everything
+to one model by default. And that's the problem. Heartbeats are periodic "are you still
+there?" checks sent every 30 minutes. They use your primary model. Sub-agents spawn when your main agent does parallel
+work. Each one uses the primary model. Simple queries like "what's on my
+calendar?" get routed to the same model you use for complex coding. And also there's no fallback. When Anthropic's API hits a rate
+limit, your agent stops. No automatic switch to OpenAI or anything else. So you're paying premium prices for simple tasks
+and you have no fallback when things break. The fix is model tiering. Different models for different
+tasks based on what each one needs. Complex reasoning like architecture
+decisions or multi-file refactoring needs a frontier model. Opus or GPT-5.2. They are expensive, but they're
+worth it for hard tasks. Daily work, like code generation, research,
+or content creation works fine on a mid-tier model like Sonnet or DeepSeek R1. R1 costs 90% less than Opus, or 80% less
+than GPT-5.2 for similar reasoning quality. Simple tasks like heartbeats, quick
+lookups, classification should use the cheapest model that works. Gemini Flash-Lite is 50 cents per million
+tokens. DeepSeek V3.2 is 53 cents. That's 60 times cheaper than Opus. Here's a comparison of some of the models. There are many more, but Opus is at the very
+top or bottom, depending how we look at it. $30 per million tokens. Gemini 2.5 Flash-Lite, 50 cents. There are models even cheaper than
+that, and there is a lot in between. For a heartbeat, there's no quality difference. The cheap model works fine as well as Opus. Cheap models are also faster. Gemini 3 Flash runs at
+about 250 tokens per second. Opus runs at around 50, so you get
+answers faster and pay 60 times less. There are two ways to implement this. First is manual configuration, where you
+set which model handles which task, more control, but a little bit more setup. Or you can use OpenRouter's auto router. You can set this as your model, and it
+then routes based on prompt complexity. Simple prompts go to cheap models,
+complex ones go to capable models. Less control but no configuration. I'll show you the manual approach where you
+see what happens and you make the decisions. Most configs look like this. One model. Everything goes there. Heartbeats, sub-agents, simple
+lookups, all Opus, all expensive. And here's the optimized version. You can copy it from description.
+Two sections matter most here. First is heartbeat configuration. Instead of Opus at $30, heartbeats use Gemini
+2.5 Flash-Lite at 50 cents per million tokens. Every 30 minutes, your agent
+checks in for almost nothing. And the second subsection is sub-agents. When your main agent spawns workers, they use
+DeepSeek R1 at $2.74 per million tokens. That's 10 times cheaper than Opus with solid
+reasoning and your main tasks still hit Opus. The cheap models only handle the stuff
+that doesn't need intelligence like heartbeats and background checks. The fallback chain also matters and notice that
+the first fallback is not Sonnet, it's GPT-5.2. Because if Anthropic is rate limited, all
+their models including Sonnet might be slow. Falling back to a different
+provider keeps you running. You can also define vision tasks models, but
+that's up to you if you want to go as deep. And the config file goes in your home directory. ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json Edit this config file,
+save, restart, and you're done. There's additional section here for
+defining aliases so that you don't need to write the whole model name every time
+you want to switch to Opus or Sonnet. So you define opus, sonnet,
+flash, or ds for DeepSeek. Once you have the config ready and the
+gateway is restarted, you can switch your models on the fly. /model sonnet, and you are
+switching to this one. /model opus to switch back to your default one. Or /models to see
+which providers you have available. Anthropic, three models, Google, OpenAI,
+and one for OpenRouter. This is good for quick cost control when
+you're working on something complex. Stay on Opus. If it's a quick question about the
+weather or about finding a file quickly and reading it, then you can switch to
+Sonnet or DeepSeek or Gemini Flash, and the aliases in the config - opus, sonnet, flash - is what you type after /model.
+Easier than typing the full model path. Okay, so let's talk about savings now. I built a calculator so you can see
+what you would save with your usage. It's at calculator.vlvt.sh. The link is in the description, and
+there are a few starting scenarios here. First is the light user where
+you are just getting started. 24 heartbeats, once every hour, 20 sub-agent
+tasks per day and 10 queries per day in general. With this kind of usage, if you are using API
+and sending everything to Opus on Anthropic, you would spend about $200 per month on API
+costs. With Gemini 2.5 Flash-Lite as the heartbeat model, and DeepSeek as your sub-agent, you are paying 65% less, about $70.
+Power user, probably most of you, 48 heartbeats per day, once every 30 minutes. 100 sub-agents per day and 50 queries. With
+all Opus would be $943. After, $347, so a saving of about $600 per month. As a
+heavy user with multiple agents, lots of parallel work, before it's almost $3,000. After it's $1,000, again, 62% less. $1,700 savings. You can play with the models
+here for the primary model, for heartbeat models, and sub-agent. And when you select something that
+you are fine with, then you can scroll down and see that in the config. So you can either copy the whole
+config or copy specific sections and add it to your openclaw.json file. One important question, why not use
+one of the free models available? Like for example, Kimi K2.5 on NVIDIA,
+or DeepSeek free tier on OpenRouter. There are three reasons. First is that free tiers
+have aggressive rate limits. When you hit them mid task,
+your agent just stops. Second is that free tiers
+also usually are quite slow. Lots of people use them. And three, they can disappear
+without notice at any moment. A provider can shut down the free tier
+tomorrow and you can't do anything about it. So that's why I don't use free models. But the next best thing is models that
+are almost free, like 40, 50 cents per million tokens. Gemini Flash-Lite. DeepSeek. GLM 4.7. Another good one. They cost almost nothing, but they are good. They're reliable, and they won't
+be shut down without notice. Tomorrow. For production work, for an agent
+that I want to rely on 24/7, this reliability is worth pennies per million tokens. A no-brainer for me. As usual, all
+links in the description, the calculator, the config, everything you need. Plug in your numbers and see how
+much less you could be paying. Subscribe if you want more practical
+AI content and go save some money without losing any quality.

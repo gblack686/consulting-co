@@ -1,0 +1,1360 @@
+{
+  "metadata": {
+    "root_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2",
+    "total_modules": 12,
+    "total_functions": 18,
+    "total_classes": 16,
+    "total_imports": 53
+  },
+  "modules": [
+    {
+      "name": "server",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\server.py",
+      "docstring": null,
+      "lines_of_code": 234,
+      "functions": [
+        {
+          "name": "upload_file",
+          "line_start": 52,
+          "line_end": 84,
+          "parameters": [
+            {
+              "name": "file",
+              "annotation": "UploadFile"
+            }
+          ],
+          "return_type": "FileUploadResponse",
+          "decorators": [
+            "app.post('/api/upload', response_model=FileUploadResponse)"
+          ],
+          "calls": [
+            "FileUploadResponse",
+            "read",
+            "endswith",
+            "convert_csv_to_sqlite",
+            "lower",
+            "post",
+            "File",
+            "replace",
+            "rsplit",
+            "str",
+            "convert_json_to_sqlite",
+            "HTTPException"
+          ],
+          "docstring": "Upload and convert .json or .csv file to SQLite table",
+          "complexity_hint": 2,
+          "is_async": true,
+          "is_method": false
+        },
+        {
+          "name": "process_natural_language_query",
+          "line_start": 87,
+          "line_end": 119,
+          "parameters": [
+            {
+              "name": "request",
+              "annotation": "QueryRequest"
+            }
+          ],
+          "return_type": "QueryResponse",
+          "decorators": [
+            "app.post('/api/query', response_model=QueryResponse)"
+          ],
+          "calls": [
+            "generate_sql",
+            "execute_sql_safely",
+            "get_database_schema",
+            "Exception",
+            "len",
+            "now",
+            "post",
+            "QueryResponse",
+            "str",
+            "total_seconds"
+          ],
+          "docstring": "Process natural language query and return SQL results",
+          "complexity_hint": 1,
+          "is_async": true,
+          "is_method": false
+        },
+        {
+          "name": "get_database_schema_endpoint",
+          "line_start": 122,
+          "line_end": 154,
+          "parameters": [],
+          "return_type": "DatabaseSchemaResponse",
+          "decorators": [
+            "app.get('/api/schema', response_model=DatabaseSchemaResponse)"
+          ],
+          "calls": [
+            "str",
+            "TableSchema",
+            "DatabaseSchemaResponse",
+            "get_database_schema",
+            "len",
+            "append",
+            "ColumnInfo",
+            "now",
+            "get",
+            "items"
+          ],
+          "docstring": "Get current database schema and table information",
+          "complexity_hint": 2,
+          "is_async": true,
+          "is_method": false
+        },
+        {
+          "name": "generate_insights_endpoint",
+          "line_start": 157,
+          "line_end": 172,
+          "parameters": [
+            {
+              "name": "request",
+              "annotation": "InsightsRequest"
+            }
+          ],
+          "return_type": "InsightsResponse",
+          "decorators": [
+            "app.post('/api/insights', response_model=InsightsResponse)"
+          ],
+          "calls": [
+            "InsightsResponse",
+            "now",
+            "post",
+            "str",
+            "generate_insights"
+          ],
+          "docstring": "Generate statistical insights for table columns",
+          "complexity_hint": 0,
+          "is_async": true,
+          "is_method": false
+        },
+        {
+          "name": "health_check",
+          "line_start": 175,
+          "line_end": 199,
+          "parameters": [],
+          "return_type": "HealthCheckResponse",
+          "decorators": [
+            "app.get('/api/health', response_model=HealthCheckResponse)"
+          ],
+          "calls": [
+            "execute",
+            "close",
+            "connect",
+            "HealthCheckResponse",
+            "fetchall",
+            "len",
+            "now",
+            "get",
+            "total_seconds",
+            "cursor"
+          ],
+          "docstring": "Health check endpoint with database status",
+          "complexity_hint": 0,
+          "is_async": true,
+          "is_method": false
+        },
+        {
+          "name": "delete_table",
+          "line_start": 202,
+          "line_end": 230,
+          "parameters": [
+            {
+              "name": "table_name",
+              "annotation": "str"
+            }
+          ],
+          "return_type": null,
+          "decorators": [
+            "app.delete('/api/table/{table_name}')"
+          ],
+          "calls": [
+            "fetchone",
+            "commit",
+            "execute",
+            "close",
+            "delete",
+            "isalnum",
+            "connect",
+            "replace",
+            "str",
+            "cursor",
+            "HTTPException"
+          ],
+          "docstring": "Delete a table from the database",
+          "complexity_hint": 2,
+          "is_async": true,
+          "is_method": false
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "module": "fastapi",
+          "imported_names": [
+            "FastAPI",
+            "File",
+            "UploadFile",
+            "HTTPException"
+          ],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": false
+        },
+        {
+          "module": "fastapi.middleware.cors",
+          "imported_names": [
+            "CORSMiddleware"
+          ],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": false
+        },
+        {
+          "module": "datetime",
+          "imported_names": [
+            "datetime"
+          ],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": true
+        },
+        {
+          "module": "os",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 4,
+          "is_stdlib": true
+        },
+        {
+          "module": "sqlite3",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 5,
+          "is_stdlib": false
+        },
+        {
+          "module": "typing",
+          "imported_names": [
+            "Optional"
+          ],
+          "alias": null,
+          "line_number": 6,
+          "is_stdlib": true
+        },
+        {
+          "module": "dotenv",
+          "imported_names": [
+            "load_dotenv"
+          ],
+          "alias": null,
+          "line_number": 7,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.data_models",
+          "imported_names": [
+            "FileUploadResponse",
+            "QueryRequest",
+            "QueryResponse",
+            "DatabaseSchemaResponse",
+            "InsightsRequest",
+            "InsightsResponse",
+            "HealthCheckResponse",
+            "TableSchema",
+            "ColumnInfo"
+          ],
+          "alias": null,
+          "line_number": 12,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.file_processor",
+          "imported_names": [
+            "convert_csv_to_sqlite",
+            "convert_json_to_sqlite"
+          ],
+          "alias": null,
+          "line_number": 25,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.llm_processor",
+          "imported_names": [
+            "generate_sql"
+          ],
+          "alias": null,
+          "line_number": 26,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.sql_processor",
+          "imported_names": [
+            "execute_sql_safely",
+            "get_database_schema"
+          ],
+          "alias": null,
+          "line_number": 27,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.insights",
+          "imported_names": [
+            "generate_insights"
+          ],
+          "alias": null,
+          "line_number": 28,
+          "is_stdlib": false
+        },
+        {
+          "module": "uvicorn",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 233,
+          "is_stdlib": false
+        }
+      ],
+      "global_variables": [
+        {
+          "name": "app",
+          "line": 30
+        },
+        {
+          "name": "app_start_time",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "name": "data_models",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\data_models.py",
+      "docstring": null,
+      "lines_of_code": 82,
+      "functions": [],
+      "classes": [
+        {
+          "name": "FileUploadRequest",
+          "line_start": 6,
+          "line_end": 8,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "FileUploadResponse",
+          "line_start": 10,
+          "line_end": 15,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "QueryRequest",
+          "line_start": 18,
+          "line_end": 21,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "QueryResponse",
+          "line_start": 23,
+          "line_end": 29,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "ColumnInfo",
+          "line_start": 32,
+          "line_end": 36,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "TableSchema",
+          "line_start": 38,
+          "line_end": 42,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "DatabaseSchemaRequest",
+          "line_start": 44,
+          "line_end": 45,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "DatabaseSchemaResponse",
+          "line_start": 47,
+          "line_end": 50,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "InsightsRequest",
+          "line_start": 53,
+          "line_end": 55,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "ColumnInsight",
+          "line_start": 57,
+          "line_end": 65,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "InsightsResponse",
+          "line_start": 67,
+          "line_end": 71,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "HealthCheckRequest",
+          "line_start": 74,
+          "line_end": 75,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        },
+        {
+          "name": "HealthCheckResponse",
+          "line_start": 77,
+          "line_end": 82,
+          "base_classes": [
+            "BaseModel"
+          ],
+          "methods": [],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        }
+      ],
+      "imports": [
+        {
+          "module": "pydantic",
+          "imported_names": [
+            "BaseModel",
+            "Field"
+          ],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": false
+        },
+        {
+          "module": "typing",
+          "imported_names": [
+            "Optional",
+            "List",
+            "Dict",
+            "Any",
+            "Literal"
+          ],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": true
+        },
+        {
+          "module": "datetime",
+          "imported_names": [
+            "datetime"
+          ],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": true
+        }
+      ],
+      "global_variables": []
+    },
+    {
+      "name": "file_processor",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\file_processor.py",
+      "docstring": null,
+      "lines_of_code": 111,
+      "functions": [
+        {
+          "name": "convert_csv_to_sqlite",
+          "line_start": 7,
+          "line_end": 53,
+          "parameters": [
+            {
+              "name": "csv_content",
+              "annotation": "bytes"
+            },
+            {
+              "name": "table_name",
+              "annotation": "str"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "decorators": [],
+          "calls": [
+            "dict",
+            "fetchone",
+            "execute",
+            "close",
+            "BytesIO",
+            "connect",
+            "zip",
+            "fetchall",
+            "lower",
+            "Exception",
+            "to_sql",
+            "replace",
+            "str",
+            "cursor",
+            "read_csv"
+          ],
+          "docstring": "Convert CSV file content to SQLite table",
+          "complexity_hint": 1,
+          "is_async": false,
+          "is_method": false
+        },
+        {
+          "name": "convert_json_to_sqlite",
+          "line_start": 55,
+          "line_end": 111,
+          "parameters": [
+            {
+              "name": "json_content",
+              "annotation": "bytes"
+            },
+            {
+              "name": "table_name",
+              "annotation": "str"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "decorators": [],
+          "calls": [
+            "dict",
+            "fetchone",
+            "execute",
+            "DataFrame",
+            "close",
+            "ValueError",
+            "connect",
+            "zip",
+            "fetchall",
+            "loads",
+            "decode",
+            "to_sql",
+            "Exception",
+            "isinstance",
+            "replace",
+            "lower",
+            "str",
+            "cursor"
+          ],
+          "docstring": "Convert JSON file content to SQLite table",
+          "complexity_hint": 3,
+          "is_async": false,
+          "is_method": false
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "module": "json",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": true
+        },
+        {
+          "module": "pandas",
+          "imported_names": [],
+          "alias": "pd",
+          "line_number": 2,
+          "is_stdlib": false
+        },
+        {
+          "module": "sqlite3",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": false
+        },
+        {
+          "module": "io",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 4,
+          "is_stdlib": true
+        },
+        {
+          "module": "typing",
+          "imported_names": [
+            "Dict",
+            "Any",
+            "List"
+          ],
+          "alias": null,
+          "line_number": 5,
+          "is_stdlib": true
+        }
+      ],
+      "global_variables": []
+    },
+    {
+      "name": "insights",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\insights.py",
+      "docstring": null,
+      "lines_of_code": 83,
+      "functions": [
+        {
+          "name": "generate_insights",
+          "line_start": 5,
+          "line_end": 83,
+          "parameters": [
+            {
+              "name": "table_name",
+              "annotation": "str"
+            },
+            {
+              "name": "column_names",
+              "annotation": "Optional[List[str]]"
+            }
+          ],
+          "return_type": "List[ColumnInsight]",
+          "decorators": [],
+          "calls": [
+            "fetchone",
+            "execute",
+            "close",
+            "connect",
+            "fetchall",
+            "Exception",
+            "append",
+            "ColumnInsight",
+            "str",
+            "cursor"
+          ],
+          "docstring": "Generate statistical insights for table columns",
+          "complexity_hint": 6,
+          "is_async": false,
+          "is_method": false
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "module": "sqlite3",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": false
+        },
+        {
+          "module": "typing",
+          "imported_names": [
+            "List",
+            "Optional",
+            "Dict",
+            "Any"
+          ],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": true
+        },
+        {
+          "module": "core.data_models",
+          "imported_names": [
+            "ColumnInsight"
+          ],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": false
+        }
+      ],
+      "global_variables": []
+    },
+    {
+      "name": "llm_processor",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\llm_processor.py",
+      "docstring": null,
+      "lines_of_code": 157,
+      "functions": [
+        {
+          "name": "generate_sql_with_openai",
+          "line_start": 8,
+          "line_end": 63,
+          "parameters": [
+            {
+              "name": "query_text",
+              "annotation": "str"
+            },
+            {
+              "name": "schema_info",
+              "annotation": "Dict[str, Any]"
+            }
+          ],
+          "return_type": "str",
+          "decorators": [],
+          "calls": [
+            "ValueError",
+            "str",
+            "endswith",
+            "strip",
+            "Exception",
+            "OpenAI",
+            "create",
+            "format_schema_for_prompt",
+            "startswith",
+            "get"
+          ],
+          "docstring": "Generate SQL query using OpenAI API",
+          "complexity_hint": 4,
+          "is_async": false,
+          "is_method": false
+        },
+        {
+          "name": "generate_sql_with_anthropic",
+          "line_start": 65,
+          "line_end": 119,
+          "parameters": [
+            {
+              "name": "query_text",
+              "annotation": "str"
+            },
+            {
+              "name": "schema_info",
+              "annotation": "Dict[str, Any]"
+            }
+          ],
+          "return_type": "str",
+          "decorators": [],
+          "calls": [
+            "ValueError",
+            "str",
+            "endswith",
+            "strip",
+            "Exception",
+            "format_schema_for_prompt",
+            "create",
+            "Anthropic",
+            "startswith",
+            "get"
+          ],
+          "docstring": "Generate SQL query using Anthropic API",
+          "complexity_hint": 4,
+          "is_async": false,
+          "is_method": false
+        },
+        {
+          "name": "format_schema_for_prompt",
+          "line_start": 121,
+          "line_end": 137,
+          "parameters": [
+            {
+              "name": "schema_info",
+              "annotation": "Dict[str, Any]"
+            }
+          ],
+          "return_type": "str",
+          "decorators": [],
+          "calls": [
+            "join",
+            "append",
+            "get",
+            "items"
+          ],
+          "docstring": "Format database schema for LLM prompt",
+          "complexity_hint": 2,
+          "is_async": false,
+          "is_method": false
+        },
+        {
+          "name": "generate_sql",
+          "line_start": 139,
+          "line_end": 157,
+          "parameters": [
+            {
+              "name": "request",
+              "annotation": "QueryRequest"
+            },
+            {
+              "name": "schema_info",
+              "annotation": "Dict[str, Any]"
+            }
+          ],
+          "return_type": "str",
+          "decorators": [],
+          "calls": [
+            "generate_sql_with_anthropic",
+            "generate_sql_with_openai",
+            "get"
+          ],
+          "docstring": "Route to appropriate LLM provider based on API key availability and request preference.\nPriority: 1) OpenAI API key exists, 2) Anthropic API key exists, 3) request.llm_provider",
+          "complexity_hint": 3,
+          "is_async": false,
+          "is_method": false
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "module": "os",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": true
+        },
+        {
+          "module": "json",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": true
+        },
+        {
+          "module": "typing",
+          "imported_names": [
+            "Dict",
+            "Any"
+          ],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": true
+        },
+        {
+          "module": "openai",
+          "imported_names": [
+            "OpenAI"
+          ],
+          "alias": null,
+          "line_number": 4,
+          "is_stdlib": false
+        },
+        {
+          "module": "anthropic",
+          "imported_names": [
+            "Anthropic"
+          ],
+          "alias": null,
+          "line_number": 5,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.data_models",
+          "imported_names": [
+            "QueryRequest"
+          ],
+          "alias": null,
+          "line_number": 6,
+          "is_stdlib": false
+        }
+      ],
+      "global_variables": []
+    },
+    {
+      "name": "sql_processor",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\sql_processor.py",
+      "docstring": null,
+      "lines_of_code": 100,
+      "functions": [
+        {
+          "name": "execute_sql_safely",
+          "line_start": 11,
+          "line_end": 59,
+          "parameters": [
+            {
+              "name": "sql_query",
+              "annotation": "str"
+            }
+          ],
+          "return_type": "Dict[str, Any]",
+          "decorators": [],
+          "calls": [
+            "dict",
+            "keys",
+            "execute",
+            "close",
+            "connect",
+            "list",
+            "fetchall",
+            "upper",
+            "append",
+            "str",
+            "cursor"
+          ],
+          "docstring": "Execute SQL query with safety checks",
+          "complexity_hint": 4,
+          "is_async": false,
+          "is_method": false
+        },
+        {
+          "name": "get_database_schema",
+          "line_start": 61,
+          "line_end": 100,
+          "parameters": [],
+          "return_type": "Dict[str, Any]",
+          "decorators": [],
+          "calls": [
+            "fetchone",
+            "execute",
+            "close",
+            "connect",
+            "fetchall",
+            "str",
+            "cursor"
+          ],
+          "docstring": "Get complete database schema information",
+          "complexity_hint": 2,
+          "is_async": false,
+          "is_method": false
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "module": "sqlite3",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": false
+        },
+        {
+          "module": "re",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": true
+        },
+        {
+          "module": "typing",
+          "imported_names": [
+            "Dict",
+            "Any",
+            "List"
+          ],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": true
+        }
+      ],
+      "global_variables": [
+        {
+          "name": "DANGEROUS_KEYWORDS",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "name": "__init__",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\core\\__init__.py",
+      "docstring": null,
+      "lines_of_code": 1,
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "global_variables": []
+    },
+    {
+      "name": "__init__",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\__init__.py",
+      "docstring": null,
+      "lines_of_code": 0,
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "global_variables": []
+    },
+    {
+      "name": "test_file_processor",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_file_processor.py",
+      "docstring": null,
+      "lines_of_code": 164,
+      "functions": [
+        {
+          "name": "test_db",
+          "line_start": 13,
+          "line_end": 23,
+          "parameters": [],
+          "return_type": null,
+          "decorators": [
+            "pytest.fixture"
+          ],
+          "calls": [
+            "connect",
+            "patch",
+            "close"
+          ],
+          "docstring": "Create an in-memory test database",
+          "complexity_hint": 1,
+          "is_async": false,
+          "is_method": false
+        },
+        {
+          "name": "test_assets_dir",
+          "line_start": 27,
+          "line_end": 29,
+          "parameters": [],
+          "return_type": null,
+          "decorators": [
+            "pytest.fixture"
+          ],
+          "calls": [
+            "Path"
+          ],
+          "docstring": "Get the path to test assets directory",
+          "complexity_hint": 0,
+          "is_async": false,
+          "is_method": false
+        }
+      ],
+      "classes": [
+        {
+          "name": "TestFileProcessor",
+          "line_start": 32,
+          "line_end": 164,
+          "base_classes": [],
+          "methods": [
+            "test_convert_csv_to_sqlite_success",
+            "test_convert_csv_to_sqlite_column_cleaning",
+            "test_convert_csv_to_sqlite_with_inconsistent_data",
+            "test_convert_json_to_sqlite_success",
+            "test_convert_json_to_sqlite_invalid_json",
+            "test_convert_json_to_sqlite_not_array",
+            "test_convert_json_to_sqlite_empty_array"
+          ],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        }
+      ],
+      "imports": [
+        {
+          "module": "pytest",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": false
+        },
+        {
+          "module": "json",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": true
+        },
+        {
+          "module": "pandas",
+          "imported_names": [],
+          "alias": "pd",
+          "line_number": 3,
+          "is_stdlib": false
+        },
+        {
+          "module": "sqlite3",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 4,
+          "is_stdlib": false
+        },
+        {
+          "module": "os",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 5,
+          "is_stdlib": true
+        },
+        {
+          "module": "io",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 6,
+          "is_stdlib": true
+        },
+        {
+          "module": "pathlib",
+          "imported_names": [
+            "Path"
+          ],
+          "alias": null,
+          "line_number": 7,
+          "is_stdlib": true
+        },
+        {
+          "module": "unittest.mock",
+          "imported_names": [
+            "patch"
+          ],
+          "alias": null,
+          "line_number": 8,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.file_processor",
+          "imported_names": [
+            "convert_csv_to_sqlite",
+            "convert_json_to_sqlite"
+          ],
+          "alias": null,
+          "line_number": 9,
+          "is_stdlib": false
+        }
+      ],
+      "global_variables": []
+    },
+    {
+      "name": "test_llm_processor",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_llm_processor.py",
+      "docstring": null,
+      "lines_of_code": 287,
+      "functions": [],
+      "classes": [
+        {
+          "name": "TestLLMProcessor",
+          "line_start": 13,
+          "line_end": 287,
+          "base_classes": [],
+          "methods": [
+            "test_generate_sql_with_openai_success",
+            "test_generate_sql_with_openai_clean_markdown",
+            "test_generate_sql_with_openai_no_api_key",
+            "test_generate_sql_with_openai_api_error",
+            "test_generate_sql_with_anthropic_success",
+            "test_generate_sql_with_anthropic_clean_markdown",
+            "test_generate_sql_with_anthropic_no_api_key",
+            "test_generate_sql_with_anthropic_api_error",
+            "test_format_schema_for_prompt",
+            "test_format_schema_for_prompt_empty",
+            "test_generate_sql_openai_key_priority",
+            "test_generate_sql_anthropic_fallback",
+            "test_generate_sql_request_preference_openai",
+            "test_generate_sql_request_preference_anthropic",
+            "test_generate_sql_both_keys_openai_priority",
+            "test_generate_sql_only_openai_key"
+          ],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        }
+      ],
+      "imports": [
+        {
+          "module": "pytest",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": false
+        },
+        {
+          "module": "os",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": true
+        },
+        {
+          "module": "unittest.mock",
+          "imported_names": [
+            "patch",
+            "MagicMock"
+          ],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.llm_processor",
+          "imported_names": [
+            "generate_sql_with_openai",
+            "generate_sql_with_anthropic",
+            "format_schema_for_prompt",
+            "generate_sql"
+          ],
+          "alias": null,
+          "line_number": 4,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.data_models",
+          "imported_names": [
+            "QueryRequest"
+          ],
+          "alias": null,
+          "line_number": 10,
+          "is_stdlib": false
+        }
+      ],
+      "global_variables": []
+    },
+    {
+      "name": "test_sql_processor",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\test_sql_processor.py",
+      "docstring": null,
+      "lines_of_code": 173,
+      "functions": [
+        {
+          "name": "test_db",
+          "line_start": 10,
+          "line_end": 50,
+          "parameters": [],
+          "return_type": null,
+          "decorators": [
+            "pytest.fixture"
+          ],
+          "calls": [
+            "commit",
+            "execute",
+            "close",
+            "connect",
+            "cursor",
+            "patch"
+          ],
+          "docstring": "Create an in-memory test database with sample data",
+          "complexity_hint": 1,
+          "is_async": false,
+          "is_method": false
+        }
+      ],
+      "classes": [
+        {
+          "name": "TestSQLProcessor",
+          "line_start": 53,
+          "line_end": 173,
+          "base_classes": [],
+          "methods": [
+            "test_execute_sql_safely_valid_select",
+            "test_execute_sql_safely_with_joins",
+            "test_execute_sql_safely_no_results",
+            "test_execute_sql_safely_dangerous_keywords",
+            "test_execute_sql_safely_case_insensitive_keywords",
+            "test_execute_sql_safely_sql_error",
+            "test_execute_sql_safely_syntax_error",
+            "test_get_database_schema_success",
+            "test_get_database_schema_empty_database",
+            "test_get_database_schema_error",
+            "test_dangerous_keywords_coverage"
+          ],
+          "decorators": [],
+          "docstring": null,
+          "attributes": []
+        }
+      ],
+      "imports": [
+        {
+          "module": "pytest",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 1,
+          "is_stdlib": false
+        },
+        {
+          "module": "sqlite3",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 2,
+          "is_stdlib": false
+        },
+        {
+          "module": "tempfile",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 3,
+          "is_stdlib": false
+        },
+        {
+          "module": "os",
+          "imported_names": [],
+          "alias": null,
+          "line_number": 4,
+          "is_stdlib": true
+        },
+        {
+          "module": "unittest.mock",
+          "imported_names": [
+            "patch"
+          ],
+          "alias": null,
+          "line_number": 5,
+          "is_stdlib": false
+        },
+        {
+          "module": "core.sql_processor",
+          "imported_names": [
+            "execute_sql_safely",
+            "get_database_schema",
+            "DANGEROUS_KEYWORDS"
+          ],
+          "alias": null,
+          "line_number": 6,
+          "is_stdlib": false
+        }
+      ],
+      "global_variables": []
+    },
+    {
+      "name": "__init__",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\app\\server\\tests\\core\\__init__.py",
+      "docstring": null,
+      "lines_of_code": 0,
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "global_variables": []
+    }
+  ]
+}

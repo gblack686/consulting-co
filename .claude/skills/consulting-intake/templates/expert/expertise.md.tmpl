@@ -1,0 +1,140 @@
+# Expert expertise.md Template
+# Fill {placeholders} from domain spec + workflow specs + research findings
+# Target: 200-600 lines depending on domain complexity
+
+---
+type: expert-file
+parent: "[[{domain_name}/_index]]"
+file-type: expertise
+human_reviewed: false
+tags: [expert-file, mental-model, {domain_name}]
+last_updated: {date}
+---
+
+# {Domain_Display_Name} Expert - Complete Mental Model
+
+## Part 1: Domain Architecture
+
+### Overview
+{domain_architecture_overview}
+
+### Tool Connections
+{tool_connection_diagram}
+
+### Key File Locations
+{key_file_locations}
+
+### Data Flows
+{data_flow_description}
+
+---
+
+## Part 2: Primary Workflow — {primary_workflow_name}
+
+### Trigger
+- Type: {trigger_type}
+- Schedule: {trigger_schedule}
+- Timezone: {client_timezone}
+
+### Steps
+
+1. {step_1}
+2. {step_2}
+3. {step_3}
+4. {step_4}
+5. {step_5}
+
+### API Endpoints Used
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+{api_endpoints_rows}
+
+### Expected Inputs
+{expected_inputs}
+
+### Expected Outputs
+{expected_outputs}
+
+### Approval Gates
+{approval_gates}
+
+---
+
+## Part 3: Secondary Workflows
+
+### {secondary_workflow_1_name}
+
+**Trigger**: {sw1_trigger}
+**Steps**:
+{sw1_steps}
+**Output**: {sw1_output}
+
+### {secondary_workflow_2_name}
+
+**Trigger**: {sw2_trigger}
+**Steps**:
+{sw2_steps}
+**Output**: {sw2_output}
+
+### Edge Cases & Variations
+{edge_cases}
+
+---
+
+## Part 4: Tool Configuration
+
+| Tool | Base URL | Auth Header | Key Endpoints |
+|------|----------|-------------|---------------|
+{tool_config_rows}
+
+### MCP Server Availability
+{mcp_servers}
+
+### ClawHub Plugin Availability
+{clawhub_plugins}
+
+---
+
+## Part 5: Scheduling & Automation
+
+### Cron Jobs
+
+| Name | Schedule | Skill | Mode | Delivery |
+|------|----------|-------|------|----------|
+{cron_jobs_rows}
+
+### Heartbeat Tasks
+{heartbeat_tasks}
+
+### Trigger Patterns
+{trigger_patterns}
+
+---
+
+## Part 6: Integration Points
+
+### Cross-Domain Connections
+{cross_domain_connections}
+
+### Shared Tools or Data Sources
+{shared_resources}
+
+### Workflow Handoffs
+{workflow_handoffs}
+
+---
+
+## Part 7: Patterns & Learnings
+
+### Patterns That Work
+- {populated after first self-improve cycle}
+
+### Patterns To Avoid
+- {populated after first self-improve cycle}
+
+### Known Issues
+- {populated after first self-improve cycle}
+
+### Tips
+- {populated after first self-improve cycle}

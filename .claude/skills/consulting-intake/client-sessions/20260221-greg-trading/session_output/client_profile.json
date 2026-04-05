@@ -1,0 +1,24 @@
+{
+  "name": "Greg",
+  "nickname": "Greg",
+  "pronouns": null,
+  "timezone": "America/Los_Angeles",
+  "timezone_label": "PST/PDT",
+  "location": "Los Angeles, CA",
+  "working_hours": "TBD — not specified in intake",
+  "device": "Lenovo laptop, Windows",
+  "current_projects": [
+    "Trading bot on Hyper Liquid",
+    "Discord trade-signal scraper",
+    "Paper trading system (to be built)"
+  ],
+  "interests": [
+    "Algorithmic trading",
+    "Crypto / DeFi (Hyper Liquid)",
+    "Quantitative analysis",
+    "Data pipelines & market intelligence"
+  ],
+  "preferred_channel": "Telegram (primary), Discord (secondary), iMessage (possible)",
+  "communication_style": "Professional, direct. Agent should think ahead about edge cases and be proactive.",
+  "notes": "Greg is building a trading income stream. Needs professional-grade assistance — he explicitly said he hasn't been doing well trading manually and wants the agent to help him gain an edge."
+}

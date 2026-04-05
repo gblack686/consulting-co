@@ -1,0 +1,33 @@
+{
+  "apps_and_tools": [
+    { "name": "Shopify",        "type": "e-commerce",       "api": true,  "api_note": "Shopify Admin REST API + GraphQL. Key: Settings > Apps > Develop apps." },
+    { "name": "Instagram",      "type": "social",           "api": "limited", "api_note": "Meta Graph API, requires Business account + app review for some endpoints." },
+    { "name": "TikTok",         "type": "social",           "api": "limited", "api_note": "TikTok for Developers API. Post creation limited; reading analytics easier." },
+    { "name": "Gmail",          "type": "email",            "api": true,  "api_note": "Gmail API via Google OAuth. Currently artbycruzcreations@gmail.com, migrating to erica@cruisecreations.com." },
+    { "name": "Google Calendar","type": "calendar",         "api": true,  "api_note": "Google Calendar API — full CRUD via OAuth." },
+    { "name": "Google Drive",   "type": "storage",          "api": true,  "api_note": "Google Drive API — used for workshop photos, content library." },
+    { "name": "Google Forms",   "type": "data-capture",     "api": true,  "api_note": "Google Forms + Sheets API — QR code form at workshops captures name, email, piece description." },
+    { "name": "Mailchimp",      "type": "newsletter",       "api": true,  "api_note": "REPLACING — $50/month, barely used. Replace with AI-drafted email via Gmail." },
+    { "name": "ClassBento",     "type": "ticket-sales",     "api": false, "api_note": "No documented public API. Browser automation required (agent controls browser to log in and post/check workshops)." },
+    { "name": "Canva",          "type": "design",           "api": "limited", "api_note": "Canva Connect API — can generate designs from templates programmatically. Explore for flyer automation." },
+    { "name": "Photoshop",      "type": "design",           "api": false, "api_note": "Desktop only. Can replace with Canva API or AI image generation (DALL-E, Ideogram) for social posts." },
+    { "name": "WhatsApp",       "type": "messaging",        "api": true,  "api_note": "WhatsApp Business API via Meta. Requires phone number verification + Meta Business app. Or use Twilio WhatsApp sandbox for dev." },
+    { "name": "iPhone Photos",  "type": "content-library",  "api": "limited", "api_note": "iCloud API limited. Best approach: Google Photos app on iPhone with Backup & Sync enabled → auto-uploads camera roll to cloud." }
+  ],
+  "channel_preference": "WhatsApp",
+  "channel_note": "Erica prefers WhatsApp over Telegram/Discord/iMessage for agent communication. Need to set up WhatsApp Business API or Twilio sandbox.",
+  "budget_monthly_usd": "20-100",
+  "budget_target_usd": 50,
+  "budget_note": "Currently pays $50/month for Mailchimp which she wants to replace. Target: cancel Mailchimp and redirect that $50 to agent infrastructure.",
+  "brain_model": "openrouter/google/gemini-2.0-flash-001",
+  "muscle_model": "openrouter/deepseek/deepseek-chat-v3",
+  "model_tier": "cheap",
+  "api_keys_needed": [
+    "SHOPIFY_API_KEY + SHOPIFY_API_SECRET (Shopify Admin API)",
+    "GMAIL_OAUTH_TOKEN (Google Workspace or personal Gmail)",
+    "GOOGLE_DRIVE_CREDENTIALS",
+    "WHATSAPP_API_TOKEN (Meta Business or Twilio)",
+    "OPENROUTER_API_KEY",
+    "CANVA_API_KEY (optional, for flyer automation)"
+  ]
+}

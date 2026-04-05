@@ -1,0 +1,436 @@
+[0:00] So, Cloud Code's source code just got
+[0:01] leaked to the internet. 2,000 files,
+[0:03] over half a million lines of production
+[0:04] code, the actual code base behind Cloud
+[0:06] Code. Here's what happened. Enthropic
+[0:09] published an MPM package that included a
+[0:11] source map file pointing to readable
+[0:13] TypeScript source on their servers. A
+[0:15] security researcher found it, followed
+[0:16] the breadcrumbs, and the full source was
+[0:18] mirrored publicly on GitHub within
+[0:20] hours. It went super viral. So, I went
+[0:22] through everything that people found and
+[0:23] I went through the codebase and I pulled
+[0:25] out every practical insight that will
+[0:26] actually change how you use cloud code.
+[0:28] I'm talking hidden commands that most
+[0:30] people have no idea exist, how context
+[0:32] and tokens actually work under the hood,
+[0:34] and what the architecture reveals about
+[0:35] features most users never touch. I broke
+[0:37] it down into eight key insights that
+[0:39] we're going to talk about today, and
+[0:40] each one builds on the previous one. The
+[0:42] first few will change how you think
+[0:43] about the tool, but the last one ties
+[0:45] everything together into a system, and
+[0:47] that's where the real leverage is. So,
+[0:48] by the end of this video, you'll know
+[0:50] how to use Cloud Code like a top 1%
+[0:51] user. So, let's get into it. Okay, I do
+[0:53] have to start off with a quick
+[0:54] disclaimer. I'm not going to show you
+[0:56] guys any of the actual source code in
+[0:57] this video, and I'd encourage you to be
+[0:59] careful if you go downloading it
+[1:01] yourself. Even though this leaked
+[1:02] through a public MPM package, Enthropic
+[1:05] still owns the copyright, they've shown
+[1:06] that they're willing to send DMCA
+[1:08] takedown notices. So, everything I'm
+[1:10] covering is just based on takeaways of
+[1:12] how you can use the tool better. All
+[1:14] right, so just to start off real quick
+[1:15] and to give you a taste of what's in
+[1:16] this codebase, you know those little
+[1:18] messages that you see while Claude Code
+[1:20] is thinking? That's a file with 187
+[1:22] spinner verbs in it. You've got normal
+[1:24] ones like computing or generating, but
+[1:26] then you've also got funny ones like
+[1:28] boondoggling, discombobulating,
+[1:29] fibridding,
+[1:31] moonwalking, things like that. And
+[1:32] someone at Enthropic got paid to write
+[1:34] 187 of these. I just think, you know,
+[1:36] that's the energy that I want from the
+[1:38] people that are building my tools. But
+[1:39] anyways, that's just a quick appetizer.
+[1:41] Let's get into the stuff that actually
+[1:42] matters here. So, starting off with
+[1:43] number one. It's not what you think it
+[1:44] is. The first thing this leak reveals is
+[1:46] that Claude code is not what most people
+[1:48] think it is because most people think
+[1:49] that it's basically just like Claude but
+[1:51] in your terminal like a chatbot with
+[1:53] access to your local files. And that's
+[1:55] completely wrong. What the source code
+[1:56] shows is that Claude Code is a full
+[1:58] agent runtime. It's a proper application
+[2:00] built with bun TypeScript and React. It
+[2:02] has a tool system, a command system, a
+[2:04] memory system, a permission engine, a
+[2:06] task manager, a multi-agent coordinator,
+[2:08] and an MCP client and server all wired
+[2:11] together under one execution pipeline.
+[2:13] So the flow goes, your input hits a CLI
+[2:15] parser. It goes to something called the
+[2:17] query engine, calls the LLM API, runs a
+[2:20] tool execution loop, and then renders
+[2:22] results back in your terminal. So I know
+[2:23] that sound like a bunch of gibberish. So
+[2:25] why does this matter to you? Because if
+[2:26] you're using Cloud Code like a chatbot,
+[2:28] meaning you're just typing questions and
+[2:29] hoping for good answers, you're using
+[2:31] maybe 10% of what it can actually do.
+[2:33] The rest of the value is in the systems
+[2:35] that are built around the model. And
+[2:36] that's what the rest of this video is
+[2:37] about. So the second piece is the
+[2:38] command service that you're ignoring.
+[2:40] Here's something that most people don't
+[2:41] realize about cloud code that the source
+[2:43] code revealed there's 85 slashcomands in
+[2:46] cloud code roughly. Most users may know
+[2:49] maybe five of them. You probably type
+[2:50] /help and that's about it or maybe
+[2:53] slashcontext. But the power users, the
+[2:55] ones getting 10 times more value out of
+[2:56] cloud code are using commands like
+[2:58] shortcuts. Here are the ones that matter
+[2:59] most. You've got /init which sets up
+[3:01] your project context. It generates a
+[3:03] cloudmd file that acts as cloud code's
+[3:05] operating manual for your repository.
+[3:07] And we'll talk more about why this file
+[3:09] is so important in a second. We also
+[3:11] have slash plan or slult plan. These put
+[3:14] cloud code into planning mode. Instead
+[3:15] of immediately executing, it maps out
+[3:17] the full approach first and then it asks
+[3:20] you before it starts touching files. And
+[3:21] this is huge when you're working on
+[3:23] something complex and you don't want it
+[3:24] to just start editing things everywhere.
+[3:26] You're also going to save tokens in the
+[3:27] long run doing this. You've got
+[3:29] /compact. And this is a big one for
+[3:31] saving money. When your conversation
+[3:32] gets long, context gets expensive. So
+[3:34] /compact compresses your conversation
+[3:36] history. So you can keep the important
+[3:38] stuff but drop the noise. And if you're
+[3:40] burning through tokens, this is one of
+[3:41] the fastest fixes. You can also do
+[3:42] /compact and then give it a prompt. So
+[3:45] if you want to compact a project but
+[3:46] keep all of the important information
+[3:47] about the website integration, you can
+[3:49] specify that when you run your
+[3:50] compaction. Then we have /re
+[3:52] and/security review. These are built-in
+[3:53] code review workflows. Instead of asking
+[3:55] cloud code to look at my code, you just
+[3:57] use these commands and it runs a
+[3:59] structured review. And the fact that
+[4:00] these exist as dedicated commands tells
+[4:02] you something that review isn't an
+[4:03] afterthought in this product. It is a
+[4:05] first class workflow. Then we have
+[4:07] /context. This manages what files cloud
+[4:10] code is actually paying attention to.
+[4:11] This matters because every file in
+[4:13] context costs you tokens. So this
+[4:15] command gives you more visibility so you
+[4:17] can help, you know, clean up your
+[4:18] project. /cost. This one shows you what
+[4:20] you've actually spent. Most people
+[4:22] usually have no idea how much a session
+[4:24] is costing them until they look at the
+[4:25] bill. So run /cost. Then we have slume
+[4:28] and slummary. These let you pick up
+[4:30] where you left off between sessions
+[4:32] without having to reexplain everything.
+[4:34] And that's only the tip of the iceberg
+[4:35] when it comes to all of these different
+[4:36] built-in commands. The point is better
+[4:38] prompts are one lever, but knowing these
+[4:40] commands is a completely separate lever
+[4:42] that most people aren't even touching.
+[4:43] Next one, number three, we have the
+[4:45] memory system, and it is way more
+[4:47] important than you think. The source
+[4:48] code here reveals that Cloud Code has a
+[4:50] full memory system, and the center of it
+[4:52] is a file called cloud.md. Now, most
+[4:54] people either ignore this file or dump a
+[4:56] bunch of random notes into it, and
+[4:58] that's a huge mistake because claw.md is
+[5:00] not documentation. It's operating
+[5:02] context. So, think of it like this, and
+[5:04] you guys know I love analogies. If
+[5:05] Claude Code is an employee, then claw.md
+[5:07] is their onboarding document. It tells
+[5:09] them, "Here's how we do things. Here's
+[5:10] what matters. Here's what we never do,
+[5:12] and here's how this project is
+[5:14] structured." The best users keep the
+[5:15] cloudmd file short, opinionated, and
+[5:17] operational. Things like, "We use
+[5:19] TypeScript strict mode." Always. Tests
+[5:21] go in test folders next to the source
+[5:22] file. Never modify the database schema
+[5:24] without running migrations. Use PNPM,
+[5:27] not npm, that kind of stuff. decision
+[5:29] rules, constraints, conventions, not a
+[5:32] novel about your project's history. The
+[5:33] source also reveals that there are
+[5:34] multiple layers to this. You've got user
+[5:37] level memory, extracted memories, and
+[5:39] even team memory synchronization. What
+[5:41] that tells us is that cloud code has
+[5:43] persistent memory mechanisms across
+[5:45] project, user, and session contexts. And
+[5:47] cloudMD is one of the highest leverage
+[5:49] inputs shaping how it behaves in future
+[5:51] sessions. So, if you get nothing else
+[5:53] from this video, go update your cloud.MD
+[5:55] file today, whether that's on the global
+[5:57] level or the project level. And
+[5:58] remember, these get injected every
+[6:00] single session before every single chat.
+[6:03] All right, number four, we have that
+[6:04] permissions are why Claude might feel
+[6:06] slow. If you've used Cloud Code, you've
+[6:08] hit this. You ask it to do something and
+[6:10] it keeps asking, "Allow me to do this.
+[6:12] Will you allow me to do this? Can I run
+[6:13] this? Can I edit this?" And it's really
+[6:15] annoying. And most people think the fix
+[6:16] is better prompting, but it's not. The
+[6:18] fix is permissions. The source code
+[6:20] shows us a deep permission system with
+[6:21] multiple modes. default mode where it
+[6:23] asks you about everything, plan mode,
+[6:25] and then there are things like bypass
+[6:27] permissions or auto modes where it can
+[6:28] just execute. But here's the real gem.
+[6:30] You can set wild card permissions. So
+[6:32] things like allow all git commands or
+[6:34] allow all file edits in my src folder.
+[6:36] So instead of cloud code asking you 15
+[6:38] times, can I run git status or can I
+[6:40] edit this file? Can I run this test? You
+[6:41] set the rule once and then it just
+[6:43] works. So for recurring workflows, stuff
+[6:45] that you do every day, this is one of
+[6:46] the highest ROI changes that you can
+[6:47] make. So in your settings.local.json or
+[6:50] in your settings.json, JSON, you can set
+[6:53] global or user level or project level
+[6:55] permissions for things that you always
+[6:57] want to allow or have it always deny or
+[6:59] have it always ask to do. And this lets
+[7:02] you go from babysitting every action to
+[7:03] actually being able to let it operate
+[7:05] like an agent while you step away. So
+[7:06] number five is that it is built for
+[7:08] multi-agent work. And this one surprised
+[7:10] me. The source code reveals a full
+[7:11] coordinator subsystem, agent tools, team
+[7:14] tools, and a task system designed for
+[7:16] background and parallel work. So what
+[7:17] does this mean in plain English? that
+[7:19] the architecture is clearly built to
+[7:20] support decomposition, splitting work
+[7:22] across multiple agents that can run in
+[7:24] parallel. So think one agent exploring
+[7:25] your codebase, another one implementing
+[7:27] changes, and another validating tests.
+[7:30] There are even concepts in the source
+[7:31] for background tasks, work that
+[7:33] continues while you're focused on
+[7:35] something else. Now, how much of this is
+[7:37] fully userfacing today versus still
+[7:38] rolling out? That's a little bit harder
+[7:40] to say from the source alone, but the
+[7:41] architecture makes the intent clear,
+[7:42] which is that cloud code is designed to
+[7:44] handle complex multi-step work by
+[7:46] breaking it apart, not by cramming it
+[7:48] all into one thread. The practical
+[7:49] takeaway here is about how you structure
+[7:51] your requests instead of one massive
+[7:53] prompt like refactor this entire module,
+[7:55] update the tests, and fix the
+[7:57] documentation. Break that up. Let cloud
+[7:59] code decompose the work. Think about it
+[8:01] the same way I talk about workflows
+[8:03] versus agents in something like NADN or
+[8:05] just in general. The best results come
+[8:07] from breaking complex work into clear
+[8:09] sequential steps or in this case
+[8:10] parallel steps rather than hoping that
+[8:12] one giant general instruction to one
+[8:15] giant general agent gets everything
+[8:16] right. All right, so number six is about
+[8:18] MCP plugins and skills being the real
+[8:20] extension layer. If you've been
+[8:21] following my channel, you know that I've
+[8:23] talked a lot about MCP, which is model
+[8:24] context protocol. And here's what the
+[8:27] source code confirms. MCP isn't just
+[8:29] supported by cloud code, but it's kind
+[8:31] of baked into the architecture. Cloud
+[8:33] code is both an MCP client and an MCP
+[8:35] server. It can connect to external tools
+[8:37] through MCP and other systems can
+[8:38] connect to it. But it does go beyond
+[8:40] MCP. The source also reveals a skills
+[8:43] and plug-in layer. Meaning power users
+[8:44] can build repeatable workflows, custom
+[8:46] capabilities, and domain specific
+[8:48] extensions that compound over time. It's
+[8:50] not just about connecting to one tool.
+[8:52] It's about building an ecosystem around
+[8:53] cloud code that makes it smarter for
+[8:55] your specific work. This is where cloud
+[8:57] code stops being just a coding tool and
+[8:59] it starts being an integration layer.
+[9:00] You can connect it to databases, APIs,
+[9:02] internal tools, documentation systems,
+[9:04] anything with an MCP server and then you
+[9:06] can layer skills and plugins on top for
+[9:08] the stuff that you do repeatedly. Now,
+[9:10] the more systems you connect it to, the
+[9:12] more useful it becomes. So, the power of
+[9:13] course isn't the tool itself. It's what
+[9:15] you connect to and the workflows that
+[9:16] you start to automate and build with it.
+[9:19] Okay, number seven. There are features
+[9:20] that we don't even have access to yet.
+[9:22] And this one's super interesting because
+[9:24] the codebase includes checks for
+[9:25] something called user type. And one of
+[9:27] the values is ant which means anthropic.
+[9:30] What this tells us is that certain
+[9:31] capabilities are gated behind internal
+[9:33] feature flags. The source references
+[9:35] things like voice mode. You know, a
+[9:36] system called chyros, a damon mode, and
+[9:39] a coordinator mode. All behind flags
+[9:40] that suggest that they're either
+[9:41] internal, experimental, or maybe being
+[9:44] rolled out gradually. Now, I want to be
+[9:45] honest here. We can't say for sure how
+[9:47] different the internal experience
+[9:48] actually is. Some of these could be
+[9:50] early prototypes. Some might be close to
+[9:51] shipping publicly. The source alone
+[9:53] doesn't tell us that. But what it does
+[9:55] confirm is that cloud code is heavily
+[9:56] feature flagged, meaning different users
+[9:58] may already be getting meaningfully
+[10:00] different experiences depending on their
+[10:02] environment, their build, or their
+[10:03] rollout group. The practical takeaway is
+[10:05] pay attention to cloud code updates.
+[10:07] Capabilities that are flagged or limited
+[10:08] today are likely on the road map. And
+[10:10] when they land, the people who already
+[10:12] understand the architecture, like you
+[10:13] watching this video, will be ready to
+[10:15] use them immediately. I mean, think
+[10:16] about how many features and tools cloud
+[10:18] code has been shipping lately. It's
+[10:19] because they've all been already built
+[10:21] and tested internally. I've heard rumors
+[10:22] that computer use has been around for a
+[10:24] long, long time, but they just released
+[10:25] those functions now that they were
+[10:27] ready. Moving on to number eight, we
+[10:28] have how to actually use this to save
+[10:30] money and to get better results. Let me
+[10:31] tie all of this together with what I
+[10:33] think matters most. The habits that
+[10:35] separate top 1% users from everyone
+[10:36] else. And the single biggest insight
+[10:38] from this entire source code is this.
+[10:40] Top users don't just write better
+[10:42] prompts. They design a better operating
+[10:44] environment for their cla code. Here's
+[10:46] what that looks like in practice. First,
+[10:48] treat claw.mmd like a force multiplier.
+[10:50] Keep it short. Keep it opinionated.
+[10:52] Update it regularly. Route to other
+[10:54] files. This single file shapes every
+[10:56] interaction that you have with cloud
+[10:57] code. Second, learn the command service.
+[11:00] You don't need all 85 commands, but /
+[11:02] plan/compact/context,
+[11:04] review, cost, and resume. These types of
+[11:07] commands will change your daily workflow
+[11:09] immediately. Third, configure
+[11:10] permissions for your recurring
+[11:12] workflows. Stop babysitting every
+[11:13] action. Set wildcard rules for the stuff
+[11:16] that you do every day. Fourth, think in
+[11:18] terms of decomposition, not monolithic
+[11:20] prompts. So break complex work into a
+[11:22] search phase, a plan phase, an execute
+[11:24] phase, a verify phase. Let Claude code
+[11:26] use its architecture the way that it was
+[11:28] actually designed to. Otherwise, it
+[11:29] might feel like you're trying to shoot
+[11:30] an American football through a
+[11:32] basketball hoop. That's not what it was
+[11:34] designed to do. Fifth, manage your
+[11:36] context like it's money, because it
+[11:37] literally is. Use /compact when
+[11:39] conversations get long. Use /context to
+[11:42] control what's loaded. Use/summary
+[11:43] and/resume to carry work across sessions
+[11:46] without losing your important details.
+[11:47] Every unnecessary file in context is
+[11:49] tokens that you're paying for. And
+[11:50] context management isn't just a nice to
+[11:52] have, but it is an actual discipline.
+[11:54] It's something that you need to build a
+[11:55] habit around. Sixth, connect things to
+[11:58] it. Whether that's MCP servers or CLIs
+[12:00] or plugins or skills, the more tools
+[12:02] that Cloud Code can access, the more
+[12:04] valuable it actually becomes. And
+[12:05] seventh, treat it like infrastructure,
+[12:07] not an app. The source reveals a massive
+[12:09] configuration surface. model routing,
+[12:11] sub agent model overrides, shell
+[12:12] behavior, privacy controls, even the
+[12:14] ability to route through different cloud
+[12:16] backends like AWS Bedrock or Google
+[12:18] Vertex. Most people never touch these
+[12:20] settings, but if you're using Cloud Code
+[12:22] seriously, there's real leverage in
+[12:23] tuning the environment to fit your
+[12:24] workflow. Anyways, that's what was
+[12:26] hiding inside of Cloud Code source code.
+[12:27] And I know that that was a ton of
+[12:29] information, and I wanted to move as
+[12:30] quick as I could so I didn't bore you
+[12:31] guys in this video. So, I broke all of
+[12:33] this stuff that we talked about and more
+[12:35] into a full resource guide that you can
+[12:36] access for completely free. You get that
+[12:38] inside of my free school community and
+[12:39] the link for that is down in the
+[12:40] description. But anyways, that's going
+[12:42] to do it for today. So, if you enjoyed
+[12:43] the video or you learned something new,
+[12:44] please give it a like. Definitely helps
+[12:45] me out a ton. And as always, I
+[12:47] appreciate you guys making it to the end
+[12:48] of the video. I'll see you on the next
+[12:49] one. Thanks everyone.

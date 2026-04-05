@@ -1,0 +1,36 @@
+# Per-Agent TOOLS.md Template
+# Used for domain-specific agents (Pattern B)
+# Only includes tools relevant to this domain
+
+## Device
+
+- **Type**: {device_type}
+- **OS**: {device_os}
+- **Agent ID**: {agent_id}
+- **Workspace**: ~/.openclaw/workspace-{domain_name}
+
+## {Domain_Display_Name} Tools
+
+| Tool | Base URL | Auth | Key Endpoints | Status |
+|------|----------|------|---------------|--------|
+{domain_tools_rows}
+
+## API Credentials
+
+| Service | Auth Method | Env Var | Status |
+|---------|-------------|---------|--------|
+{domain_api_credentials_rows}
+
+## MCP Servers
+
+| Server | Package | Status |
+|--------|---------|--------|
+{domain_mcp_servers_rows}
+
+## Notes
+
+{domain_infrastructure_notes}
+
+---
+
+*Skills define HOW tools work. This file is for YOUR specific {domain_name} infrastructure.*

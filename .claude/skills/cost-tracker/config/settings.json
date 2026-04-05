@@ -1,0 +1,38 @@
+{
+  "skill_name": "cost-tracker",
+  "version": "1.0.0",
+  "description": "Track API costs against daily budget with alerts",
+
+  "budget": {
+    "daily_budget": 1.00,
+    "alert_threshold": 0.80,
+    "critical_threshold": 0.95,
+    "hard_limit": true
+  },
+
+  "pricing": {
+    "haiku": {
+      "input_per_1k": 0.001,
+      "output_per_1k": 0.005
+    },
+    "sonnet": {
+      "input_per_1k": 0.003,
+      "output_per_1k": 0.015
+    },
+    "opus": {
+      "input_per_1k": 0.015,
+      "output_per_1k": 0.075
+    }
+  },
+
+  "storage": {
+    "usage_log": "data/usage_log.json",
+    "retention_days": 30
+  },
+
+  "alerts": {
+    "enabled": true,
+    "methods": ["console"],
+    "cooldown_minutes": 15
+  }
+}

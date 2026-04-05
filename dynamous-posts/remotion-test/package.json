@@ -1,0 +1,26 @@
+{
+  "name": "remotion-test",
+  "version": "1.0.0",
+  "description": "Remotion video test",
+  "scripts": {
+    "start": "npx remotion studio",
+    "build": "npx remotion render MyComposition out/video.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.427",
+    "@remotion/paths": "^4.0.427",
+    "@remotion/shapes": "^4.0.427",
+    "@remotion/transitions": "^4.0.427",
+    "@remotion/zod-types": "^4.0.427",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "remotion": "^4.0.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
+  }
+}

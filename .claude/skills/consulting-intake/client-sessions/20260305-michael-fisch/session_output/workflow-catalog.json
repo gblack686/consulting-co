@@ -1,0 +1,685 @@
+{
+  "client": "Fish Group",
+  "contacts": ["Michael Fisch", "Emil Caplow"],
+  "domain": "Accounting & Finance Consulting",
+  "generated": "2026-03-12",
+  "total_workflows": 27,
+  "workflows": [
+    {
+      "id": "WF-001",
+      "name": "AR Aging Follow-Up Emails",
+      "category": "custom",
+      "description": "Every week, pull aging receivables from QuickBooks for each vendor, aggregate into a statement, and draft a follow-up email. Human reviews batch, then sends.",
+      "apis": ["QuickBooks", "Gmail/Outlook"],
+      "trigger": "schedule",
+      "schedule": "weekly",
+      "human_in_the_loop": [
+        {"step": "review_emails", "description": "Review generated emails before sending (batch review pattern)"},
+        {"step": "flag_disputes", "description": "Flag any vendor with disputes for manual handling"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "AR totals match QuickBooks aging report"},
+        {"gate": "duplicate_detection", "description": "No duplicate emails sent (check last sent date per vendor)"},
+        {"gate": "format_check", "description": "Email contains correct vendor name, amounts, and contact"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 9,
+      "prerequisites": ["quickbooks_api_key", "vendor_contact_list"],
+      "estimated_hours": 2.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-002",
+      "name": "Daily Cash Position Summary",
+      "category": "domain",
+      "description": "Every morning, pull balances from Plaid (bank accounts) and QuickBooks (outstanding AR/AP), generate a one-page cash position summary, email to Michael.",
+      "apis": ["Plaid", "QuickBooks"],
+      "trigger": "schedule",
+      "schedule": "daily",
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "Bank balances match Plaid API response"},
+        {"gate": "cross_reference", "description": "AR/AP totals reconcile with QuickBooks"},
+        {"gate": "format_check", "description": "Report delivered successfully (email confirmation)"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 9,
+      "prerequisites": ["plaid_api_key", "quickbooks_api_key"],
+      "estimated_hours": 1.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-003",
+      "name": "New Client Workspace Generator",
+      "category": "custom",
+      "description": "When onboarding a new client, fork the Lovable portal template, create a new GitHub repo in Fisch-Group org, provision Supabase tables, configure API connections, and send welcome email.",
+      "apis": ["GitHub", "Supabase", "Gmail/Outlook"],
+      "trigger": "manual",
+      "schedule": null,
+      "human_in_the_loop": [
+        {"step": "approve_workspace", "description": "Approve workspace details before provisioning"},
+        {"step": "review_email", "description": "Review welcome email before sending"},
+        {"step": "enter_api_keys", "description": "Manually enter API keys for the new client's QuickBooks/Cin7"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "GitHub repo created and accessible"},
+        {"gate": "format_check", "description": "Supabase tables created with correct schema"},
+        {"gate": "rollback_ready", "description": "Welcome email drafted (not sent until approved)"},
+        {"gate": "format_check", "description": "All required API fields populated"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["supabase_migration", "github_org_admin"],
+      "estimated_hours": 3.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-004",
+      "name": "Data Discrepancy Checker",
+      "category": "custom",
+      "description": "Compare QuickBooks source data against what's displayed in the Lovable portal (via Supabase). Flag any discrepancies in amounts, dates, or categorization.",
+      "apis": ["QuickBooks", "Supabase"],
+      "trigger": "schedule",
+      "schedule": "daily",
+      "human_in_the_loop": [
+        {"step": "review_discrepancies", "description": "Review flagged discrepancies"},
+        {"step": "decide_action", "description": "Decide: fix in QuickBooks, fix in portal, or ignore (rounding)"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All QuickBooks accounts compared against Supabase records"},
+        {"gate": "format_check", "description": "Discrepancy report includes: field, QB value, portal value, delta"},
+        {"gate": "threshold_check", "description": "No false positives from known timing differences"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["supabase_migration", "quickbooks_api_key"],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-005",
+      "name": "Weekly Client Digest",
+      "category": "domain",
+      "description": "For each active client, generate a weekly summary: new invoices, payments received, outstanding AR, inventory alerts (Cin7), and any flagged items.",
+      "apis": ["QuickBooks", "Cin7", "Supabase"],
+      "trigger": "schedule",
+      "schedule": "weekly",
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All 15 clients included (or explicitly marked as skipped with reason)"},
+        {"gate": "cross_reference", "description": "Financial totals reconcile"},
+        {"gate": "format_check", "description": "Report delivered to correct recipients"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 7,
+      "prerequisites": ["quickbooks_api_key", "cin7_api_key"],
+      "estimated_hours": 2.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-006",
+      "name": "Vendor Payment Scheduler",
+      "category": "domain",
+      "description": "Review upcoming AP payments, prioritize by due date and cash position, draft payment schedule for approval. Execute approved payments.",
+      "apis": ["QuickBooks", "Plaid"],
+      "trigger": "schedule",
+      "schedule": "weekly",
+      "human_in_the_loop": [
+        {"step": "approve_schedule", "description": "Approve payment schedule before any payments execute (mandatory)"},
+        {"step": "flag_large", "description": "Flag any payment > $5,000 for additional review"}
+      ],
+      "validation_gates": [
+        {"gate": "threshold_check", "description": "Total payments don't exceed available cash"},
+        {"gate": "duplicate_detection", "description": "No duplicate payments (check payment history)"},
+        {"gate": "format_check", "description": "All payments have valid vendor bank details"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["quickbooks_payment_api", "bank_authorization"],
+      "estimated_hours": 4.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-007",
+      "name": "Multi-Client Dashboard Sync",
+      "category": "custom",
+      "description": "Nightly sync of all client data from QuickBooks + Cin7 + Plaid into each client's Supabase instance. Update portal dashboards automatically.",
+      "apis": ["QuickBooks", "Cin7", "Plaid", "Supabase"],
+      "trigger": "schedule",
+      "schedule": "daily",
+      "human_in_the_loop": [
+        {"step": "alert_failure", "description": "Alert if sync fails for any client"},
+        {"step": "alert_anomaly", "description": "Alert if data volume is abnormally high/low (possible API issue)"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "Record counts match source system"},
+        {"gate": "cross_reference", "description": "Financial totals reconcile pre/post sync"},
+        {"gate": "format_check", "description": "Sync completion logged with timestamp and record counts"},
+        {"gate": "rollback_ready", "description": "Rollback available if sync corrupts data"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["supabase_migration", "all_client_api_keys"],
+      "estimated_hours": 5.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-008",
+      "name": "Invoice Generator",
+      "category": "domain",
+      "description": "Generate and send invoices to Fish Group's clients based on time tracking, fixed fees, or milestone completion. Track payment status.",
+      "apis": ["QuickBooks", "Gmail/Outlook", "Stripe"],
+      "trigger": "schedule",
+      "schedule": "monthly",
+      "human_in_the_loop": [
+        {"step": "review_invoice", "description": "Review invoice details before sending"},
+        {"step": "approve_custom", "description": "Approve any custom line items or discounts"}
+      ],
+      "validation_gates": [
+        {"gate": "cross_reference", "description": "Invoice amounts match engagement terms"},
+        {"gate": "format_check", "description": "Client billing details are current"},
+        {"gate": "duplicate_detection", "description": "No duplicate invoices for same period"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["quickbooks_api_key", "client_billing_terms"],
+      "estimated_hours": 3.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-009",
+      "name": "Client Health Scorer",
+      "category": "domain",
+      "description": "Weekly scoring of each client based on: payment timeliness, portal usage, open support tickets, data quality, and engagement level. Flag at-risk clients.",
+      "apis": ["QuickBooks", "Supabase", "Airtable"],
+      "trigger": "schedule",
+      "schedule": "weekly",
+      "human_in_the_loop": [
+        {"step": "review_flagged", "description": "Review flagged at-risk clients"},
+        {"step": "decide_intervention", "description": "Decide on intervention (call, email, meeting)"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All 15 clients scored"},
+        {"gate": "format_check", "description": "Score components weighted correctly"},
+        {"gate": "cross_reference", "description": "Historical trend included (improving/declining)"}
+      ],
+      "complexity": "medium",
+      "impact": "medium",
+      "priority_score": 6,
+      "prerequisites": ["scoring_criteria_defined"],
+      "estimated_hours": 3.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-010",
+      "name": "Bank Reconciliation Alert",
+      "category": "domain",
+      "description": "Compare bank transactions (Plaid) against QuickBooks entries. Flag unmatched transactions, missing deposits, or suspicious activity.",
+      "apis": ["Plaid", "QuickBooks"],
+      "trigger": "schedule",
+      "schedule": "daily",
+      "human_in_the_loop": [
+        {"step": "review_unmatched", "description": "Review unmatched transactions"},
+        {"step": "categorize", "description": "Categorize and record in QuickBooks"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All bank transactions from last 24 hours checked"},
+        {"gate": "threshold_check", "description": "Match tolerance defined (±$0.01 for exact, ±$1 for rounding)"},
+        {"gate": "duplicate_detection", "description": "Alert only on genuine mismatches (not timing differences)"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["plaid_api_key", "quickbooks_api_key"],
+      "estimated_hours": 4,
+      "status": "idea"
+    },
+    {
+      "id": "WF-011",
+      "name": "Expense Report Processor",
+      "category": "domain",
+      "description": "Process expense reports from overseas bookkeepers. Categorize expenses, check against budget, flag policy violations, and post to QuickBooks.",
+      "apis": ["Gmail/Outlook", "QuickBooks", "Claude"],
+      "trigger": "event",
+      "schedule": null,
+      "human_in_the_loop": [
+        {"step": "approve_large", "description": "Approve expenses over threshold ($500)"},
+        {"step": "review_violations", "description": "Review flagged policy violations"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "All expenses categorized to valid GL accounts"},
+        {"gate": "format_check", "description": "Receipts attached for expenses > $25"},
+        {"gate": "threshold_check", "description": "Budget check: alert if category exceeds monthly budget"}
+      ],
+      "complexity": "medium",
+      "impact": "medium",
+      "priority_score": 6,
+      "prerequisites": ["expense_policy_document", "gl_account_mapping"],
+      "estimated_hours": 4.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-012",
+      "name": "Piermont Inventory Reorder Alert",
+      "category": "custom",
+      "description": "Monitor Cin7 inventory levels for Piermont's Chica Cheetah and Caya brands. Alert when stock drops below reorder point. Draft PO for approval.",
+      "apis": ["Cin7", "QuickBooks", "Gmail"],
+      "trigger": "schedule",
+      "schedule": "daily",
+      "human_in_the_loop": [
+        {"step": "approve_po", "description": "Review and approve purchase orders before submission"},
+        {"step": "adjust_quantities", "description": "Adjust reorder quantities based on seasonal demand"}
+      ],
+      "validation_gates": [
+        {"gate": "threshold_check", "description": "Reorder points defined per SKU"},
+        {"gate": "threshold_check", "description": "PO quantities within min/max bounds"},
+        {"gate": "cross_reference", "description": "Vendor lead times factored into urgency"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["cin7_api_key", "reorder_points_per_sku"],
+      "estimated_hours": 3.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-013",
+      "name": "Piermont Shipment Tracker",
+      "category": "custom",
+      "description": "Monitor ShipStation for Piermont shipments. Track delivery status, flag delays, and proactively notify customers of shipping updates.",
+      "apis": ["ShipStation", "Gmail", "Supabase"],
+      "trigger": "event",
+      "schedule": null,
+      "human_in_the_loop": [
+        {"step": "review_delay_notification", "description": "Review delay notifications before sending to customers"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Tracking numbers valid"},
+        {"gate": "cross_reference", "description": "Customer email addresses current"},
+        {"gate": "duplicate_detection", "description": "No duplicate notifications for same shipment"}
+      ],
+      "complexity": "medium",
+      "impact": "medium",
+      "priority_score": 6,
+      "prerequisites": ["shipstation_api_key"],
+      "estimated_hours": 3,
+      "status": "idea"
+    },
+    {
+      "id": "WF-014",
+      "name": "Tax Document Collector",
+      "category": "domain",
+      "description": "During tax season, automatically request W-9s, 1099s, and other tax documents from vendors and contractors. Track which are outstanding.",
+      "apis": ["Gmail/Outlook", "Supabase", "Google Drive"],
+      "trigger": "schedule",
+      "schedule": "annual",
+      "human_in_the_loop": [
+        {"step": "review_list", "description": "Review request list before sending"},
+        {"step": "follow_up", "description": "Follow up on non-responsive vendors"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All vendors above $600 threshold included"},
+        {"gate": "format_check", "description": "Documents stored in correct client folder"},
+        {"gate": "cross_reference", "description": "Completion percentage tracked and reported"}
+      ],
+      "complexity": "medium",
+      "impact": "medium",
+      "priority_score": 5,
+      "prerequisites": ["vendor_list", "document_templates"],
+      "estimated_hours": 3.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-015",
+      "name": "Monthly Close Checklist",
+      "category": "domain",
+      "description": "Automated monthly close process: verify all transactions posted, reconcile accounts, generate trial balance, flag adjustments needed, produce close report.",
+      "apis": ["QuickBooks", "Claude"],
+      "trigger": "schedule",
+      "schedule": "monthly",
+      "human_in_the_loop": [
+        {"step": "approve_adjustments", "description": "Review and approve adjusting journal entries"},
+        {"step": "sign_off", "description": "Sign off on final trial balance"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All bank accounts reconciled"},
+        {"gate": "cross_reference", "description": "AR/AP subledgers agree with GL"},
+        {"gate": "format_check", "description": "Revenue recognition complete"},
+        {"gate": "cross_reference", "description": "Intercompany eliminations applied (if applicable)"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["chart_of_accounts", "close_procedures_doc"],
+      "estimated_hours": 5.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-016",
+      "name": "Full Client Onboarding Agent",
+      "category": "custom",
+      "description": "End-to-end client onboarding: create workspace, provision all APIs, import historical data from QuickBooks, set up dashboards, configure alerts, create user accounts, send welcome package, schedule kickoff call.",
+      "apis": ["QuickBooks", "Cin7", "Plaid", "Supabase", "GitHub", "Gmail", "Google Calendar"],
+      "trigger": "manual",
+      "schedule": null,
+      "human_in_the_loop": [
+        {"step": "approve_plan", "description": "Approve onboarding plan"},
+        {"step": "review_data", "description": "Review imported data for accuracy"},
+        {"step": "attend_kickoff", "description": "Attend kickoff call"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "All API connections verified (health check)"},
+        {"gate": "data_reconciliation", "description": "Historical data imported and reconciled"},
+        {"gate": "format_check", "description": "Dashboard rendering correctly"},
+        {"gate": "format_check", "description": "User accounts active and accessible"},
+        {"gate": "format_check", "description": "Welcome package delivered"}
+      ],
+      "complexity": "high",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["WF-003", "WF-007"],
+      "estimated_hours": 10,
+      "status": "idea"
+    },
+    {
+      "id": "WF-017",
+      "name": "AI Financial Review Agent",
+      "category": "domain",
+      "description": "Monthly AI-powered financial review: analyze P&L trends, compare against budget, detect anomalies, identify cost savings, and generate executive summary with recommendations.",
+      "apis": ["QuickBooks", "Claude", "Gmail"],
+      "trigger": "schedule",
+      "schedule": "monthly",
+      "human_in_the_loop": [
+        {"step": "review_recommendations", "description": "Review AI recommendations before presenting to client"},
+        {"step": "add_context", "description": "Add context that AI may not have (one-time events, strategic decisions)"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "Financial data matches QuickBooks reports"},
+        {"gate": "threshold_check", "description": "Anomaly thresholds calibrated (no false alarms)"},
+        {"gate": "format_check", "description": "Recommendations are actionable and specific"}
+      ],
+      "complexity": "high",
+      "impact": "high",
+      "priority_score": 6,
+      "prerequisites": ["WF-015", "historical_data"],
+      "estimated_hours": 7,
+      "status": "idea"
+    },
+    {
+      "id": "WF-018",
+      "name": "Gary's Customer Service Agent",
+      "category": "custom",
+      "description": "AI-powered email triage and response for Gary's customer service. Categorize inquiries, draft responses using order/shipping data, handle returns/refunds with approval workflow.",
+      "apis": ["Gmail", "ShipStation", "QuickBooks", "Claude"],
+      "trigger": "event",
+      "schedule": null,
+      "human_in_the_loop": [
+        {"step": "review_response", "description": "Review AI-drafted responses before sending"},
+        {"step": "approve_refund", "description": "Approve refunds/returns over $50"},
+        {"step": "escalate", "description": "Escalate complaints to management"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Response tone matches brand guidelines"},
+        {"gate": "cross_reference", "description": "Order data accurate (correct order referenced)"},
+        {"gate": "threshold_check", "description": "Refund amounts within policy limits"},
+        {"gate": "threshold_check", "description": "Response time < 4 hours during business hours"}
+      ],
+      "complexity": "high",
+      "impact": "high",
+      "priority_score": 6,
+      "prerequisites": ["garys_email_access", "shipstation_api_key", "response_templates", "policy_document"],
+      "estimated_hours": 9,
+      "status": "idea"
+    },
+    {
+      "id": "WF-019",
+      "name": "Multi-Client Financial Consolidation",
+      "category": "domain",
+      "description": "Consolidate financial data across all 15 clients into a Fish Group master view. Track total AUM, revenue by client, profitability analysis.",
+      "apis": ["QuickBooks", "Supabase", "Claude"],
+      "trigger": "schedule",
+      "schedule": "monthly",
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All 15 clients included"},
+        {"gate": "cross_reference", "description": "Elimination of inter-client transactions"},
+        {"gate": "data_reconciliation", "description": "Totals reconcile with individual client reports"}
+      ],
+      "complexity": "high",
+      "impact": "medium",
+      "priority_score": 5,
+      "prerequisites": ["all_clients_on_quickbooks"],
+      "estimated_hours": 7,
+      "status": "idea"
+    },
+    {
+      "id": "WF-020",
+      "name": "Intelligent Vendor Communication Hub",
+      "category": "custom",
+      "description": "Centralized vendor communication system. When vendors email about invoices, payments, or disputes, AI reads the email, pulls relevant data from QuickBooks, drafts a response, and routes to the right person.",
+      "apis": ["Gmail/Outlook", "QuickBooks", "Claude", "Airtable"],
+      "trigger": "event",
+      "schedule": null,
+      "human_in_the_loop": [
+        {"step": "review_response", "description": "Review AI response before sending"},
+        {"step": "escalate_disputes", "description": "Escalate disputes to Michael"}
+      ],
+      "validation_gates": [
+        {"gate": "cross_reference", "description": "Correct vendor identified"},
+        {"gate": "data_reconciliation", "description": "Referenced invoices/payments match QuickBooks"},
+        {"gate": "format_check", "description": "Response factually accurate"},
+        {"gate": "format_check", "description": "Dispute flag triggers proper escalation"}
+      ],
+      "complexity": "high",
+      "impact": "high",
+      "priority_score": 6,
+      "prerequisites": ["vendor_email_rules", "quickbooks_api_key"],
+      "estimated_hours": 7,
+      "status": "idea"
+    },
+    {
+      "id": "WF-021",
+      "name": "LinkedIn Client Prospecting",
+      "category": "domain",
+      "description": "Monitor LinkedIn for potential new clients (companies seeking fractional CFO, bookkeeping, or accounting services). Draft outreach messages.",
+      "apis": ["LinkedIn", "Claude"],
+      "trigger": "schedule",
+      "schedule": "weekly",
+      "human_in_the_loop": [
+        {"step": "approve_outreach", "description": "Review and approve all outreach messages"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Message personalization quality"},
+        {"gate": "duplicate_detection", "description": "No duplicate outreach"}
+      ],
+      "complexity": "medium",
+      "impact": "medium",
+      "priority_score": 4,
+      "prerequisites": ["linkedin_api"],
+      "estimated_hours": 3.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-022",
+      "name": "Meeting Prep Agent",
+      "category": "domain",
+      "description": "Before each client meeting, pull recent financial data, open items, and portal activity. Generate a 1-page prep brief.",
+      "apis": ["QuickBooks", "Supabase", "Google Calendar"],
+      "trigger": "event",
+      "schedule": null,
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Data freshness (< 24 hours old)"},
+        {"gate": "cross_reference", "description": "Correct client matched to meeting"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 5,
+      "prerequisites": ["google_calendar_api"],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-023",
+      "name": "Contract Renewal Reminder",
+      "category": "domain",
+      "description": "Track client engagement terms and send renewal reminders 60/30/7 days before expiration.",
+      "apis": ["Supabase", "Gmail"],
+      "trigger": "schedule",
+      "schedule": "daily",
+      "human_in_the_loop": [
+        {"step": "review_terms", "description": "Review renewal terms before sending"}
+      ],
+      "validation_gates": [
+        {"gate": "cross_reference", "description": "Contract dates accurate"},
+        {"gate": "threshold_check", "description": "No premature reminders"}
+      ],
+      "complexity": "low",
+      "impact": "low",
+      "priority_score": 3,
+      "prerequisites": ["contract_data"],
+      "estimated_hours": 1.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-024",
+      "name": "Overseas Team Task Distributor",
+      "category": "custom",
+      "description": "Route bookkeeping tasks to the 8-10 overseas team members based on workload, skill, and timezone. Track completion.",
+      "apis": ["Airtable", "Gmail"],
+      "trigger": "event",
+      "schedule": null,
+      "human_in_the_loop": [
+        {"step": "override_assignment", "description": "Override assignments if needed"}
+      ],
+      "validation_gates": [
+        {"gate": "threshold_check", "description": "Balanced workload"},
+        {"gate": "format_check", "description": "SLA tracking"},
+        {"gate": "cross_reference", "description": "Quality score per team member"}
+      ],
+      "complexity": "medium",
+      "impact": "medium",
+      "priority_score": 4,
+      "prerequisites": ["airtable_token"],
+      "estimated_hours": 4.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-025",
+      "name": "Portal Usage Analytics",
+      "category": "custom",
+      "description": "Track which portal features each client uses most, generate usage reports, identify underutilized features.",
+      "apis": ["Supabase", "Claude"],
+      "trigger": "schedule",
+      "schedule": "monthly",
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All clients tracked"},
+        {"gate": "cross_reference", "description": "Usage data accurate"}
+      ],
+      "complexity": "low",
+      "impact": "low",
+      "priority_score": 3,
+      "prerequisites": ["supabase_migration"],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-026",
+      "name": "Drop Fitness Membership Billing Reconciler",
+      "category": "custom",
+      "description": "Reconcile membership billing (recurring payments) against bank deposits. Flag failed payments, cancellations, and billing discrepancies.",
+      "apis": ["QuickBooks", "Plaid"],
+      "trigger": "schedule",
+      "schedule": "weekly",
+      "human_in_the_loop": [
+        {"step": "review_discrepancies", "description": "Review flagged discrepancies"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All members accounted for"},
+        {"gate": "format_check", "description": "Failed payments listed with reasons"}
+      ],
+      "complexity": "medium",
+      "impact": "medium",
+      "priority_score": 4,
+      "prerequisites": ["quickbooks_api_key", "plaid_api_key"],
+      "estimated_hours": 3,
+      "status": "idea"
+    },
+    {
+      "id": "WF-027",
+      "name": "Automated Compliance Checklist",
+      "category": "domain",
+      "description": "Quarterly compliance check: verify all required filings submitted, licenses current, insurance up to date. Generate compliance scorecard per client.",
+      "apis": ["Supabase", "Gmail"],
+      "trigger": "schedule",
+      "schedule": "quarterly",
+      "human_in_the_loop": [
+        {"step": "verify_items", "description": "Verify compliance items, update status"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "All required items checked"},
+        {"gate": "cross_reference", "description": "Deadlines accurate"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 4,
+      "prerequisites": ["compliance_tracking_data"],
+      "estimated_hours": 2.5,
+      "status": "idea"
+    }
+  ],
+  "build_phases": [
+    {
+      "phase": 1,
+      "name": "Foundation",
+      "sessions": "3-4",
+      "workflows": ["WF-001", "WF-002", "WF-004"]
+    },
+    {
+      "phase": 2,
+      "name": "Client Operations",
+      "sessions": "5-6",
+      "workflows": ["WF-003", "WF-005", "WF-010"]
+    },
+    {
+      "phase": 3,
+      "name": "Automation",
+      "sessions": "7-8",
+      "workflows": ["WF-007", "WF-012", "WF-015"]
+    },
+    {
+      "phase": 4,
+      "name": "Intelligence",
+      "sessions": "9+",
+      "workflows": ["WF-017", "WF-018", "WF-016"]
+    }
+  ],
+  "prerequisites": {
+    "critical": [
+      "supabase_migration",
+      "quickbooks_api_key",
+      "cin7_api_key"
+    ],
+    "important": [
+      "plaid_api_key",
+      "shipstation_api_key",
+      "email_api_access",
+      "github_org_admin"
+    ],
+    "nice_to_have": [
+      "airtable_token",
+      "google_calendar_api",
+      "linkedin_api",
+      "1password_shared_vault"
+    ]
+  }
+}

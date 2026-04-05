@@ -1,0 +1,348 @@
+[0:00] Claude Code is now a 247 AI employee,
+[0:03] which means that it is always Cloud Code
+[0:05] O'Olock. And that might be the nerdiest
+[0:07] thing I've ever said. Anthropic has
+[0:08] finally done it and launched scheduled
+[0:10] tasks natively for Claude Code, which
+[0:12] means every single process, every single
+[0:14] skill, everything you've been building
+[0:15] and using inside of Claude Code just got
+[0:17] 10 times more powerful. And they
+[0:19] literally could not be easier to set up.
+[0:20] So in today's video, I'm going to show
+[0:22] you exactly how they work and tell you
+[0:23] everything important that you need to
+[0:25] know about them. Let's not waste any
+[0:26] time and get straight into it. So here I
+[0:28] am in cloud code in the cloud desktop
+[0:30] app. Now right now you do need to be
+[0:32] using the desktop app in order to access
+[0:33] these scheduled tasks. Now this
+[0:35] scheduled task feature came out about a
+[0:37] week or two ago in cloud co-work. As you
+[0:39] can see it's basically the exact same
+[0:40] thing. You could create scheduled
+[0:42] automations but now they finally brought
+[0:44] it to cloud code and there's a few ways
+[0:45] that you can set them up. The first way
+[0:47] is you go over here to the schedule tab
+[0:48] and you just click on it and you can see
+[0:50] right here run tasks on a schedule or
+[0:52] whenever you need them. Type / schedule
+[0:54] and any existing session to set one up.
+[0:56] So those are the two ways. You can
+[0:57] either click right here, new task, you
+[0:59] can give it a name, a description, give
+[1:01] it a prompt, you can choose the model
+[1:02] you want it to run on, you can choose
+[1:03] the mode to run on, and you can also
+[1:05] select the folder. And then finally, you
+[1:07] just say, "Hey, I want this to run every
+[1:08] hour, every day, every week, at this
+[1:10] time." Boom. You now have a scheduled
+[1:13] automation. So that cron would basically
+[1:15] fire off, the session would start up,
+[1:16] and then the agent would read the
+[1:18] prompt, it would go through your files,
+[1:19] it would work in your project, do
+[1:20] whatever it needed to do, and then after
+[1:22] it's done, it would just stop. And the
+[1:24] huge unlock here, which is so exciting
+[1:26] to me, is that this isn't a
+[1:27] deterministic workflow. And so there's
+[1:29] some good there and there's some bad
+[1:30] there. But the good news is that you can
+[1:32] completely control it. And what I mean
+[1:33] by that is, if you've been following
+[1:35] some other cloud code videos I've done
+[1:36] in the past, we build either like a
+[1:38] Python script or a TypeScript. And that
+[1:40] is the actual automation. And that is
+[1:41] deterministic logic code. Meaning that
+[1:44] will always happen step one, step two,
+[1:46] step three. If there's an error, it
+[1:48] can't fix itself. It just errors and
+[1:49] then we get notified. But this isn't
+[1:51] just a Python script. This is Claude
+[1:52] Code agent running the same exact way it
+[1:55] runs when you talk to it. And that's why
+[1:57] this is so exciting because Agentic
+[1:58] workflows are self-healing and they can
+[2:00] read everything in your entire project
+[2:01] and use all your tools. So, as you guys
+[2:03] know, you tell it to go do something and
+[2:05] it starts trying. If it runs into an
+[2:07] error, it doesn't just come back to you
+[2:08] and say, "Eh, I tried." It says, "Okay,
+[2:10] here's the error. Let me try three other
+[2:11] things." And then after I see which one
+[2:13] of those three other things worked best,
+[2:14] I'm going to update myself so that I
+[2:16] never run into that error again. So, now
+[2:18] you are no longer the bottleneck. And
+[2:19] these skills and these workflows can
+[2:21] actually get better and better over time
+[2:23] automatically. But the other important
+[2:24] thing to remember here is if you do want
+[2:26] it to be more deterministic and you want
+[2:27] more control, you can do that because
+[2:29] you could literally have it just execute
+[2:31] a script and that's the whole schedule
+[2:32] task and it just is completely
+[2:34] deterministic that way. So how do you go
+[2:36] ahead and start creating some scheduled
+[2:37] tasks? Well, here you can see one I have
+[2:39] is called morning coffee. So I've showed
+[2:40] this one off before in a few other
+[2:42] videos, but basically every single
+[2:43] morning I would open up my cloud code
+[2:45] and I would say, "Hey, run morning
+[2:46] coffee." Which would help me plan my
+[2:47] day. It would look at my commitments. It
+[2:49] would look at the projects and help me
+[2:50] catch up on what the team is up to. But
+[2:52] now, this can actually just run
+[2:53] automatically at 6:00 a.m. every
+[2:55] morning. And literally all that I did to
+[2:57] set this up was I said, "Take a look at
+[2:58] my morning coffee skill. I would like to
+[3:00] turn this into a scheduled task that
+[3:01] goes off every morning at 6:00 a.m. Help
+[3:03] me get this set up." It read the skill.
+[3:04] It complimented me on the skill. And
+[3:06] then it asked me one question about it.
+[3:08] And then a minute later, my skill that I
+[3:09] run every morning is now automated. And
+[3:11] if you've never used cloud code in the
+[3:12] desktop app, don't worry. It's super
+[3:14] easy. you can basically pull in, you
+[3:16] know, a GitHub repo or a different
+[3:17] folder and you can be working in the
+[3:19] exact same project that you're used to.
+[3:20] So, right here in a new session, I just
+[3:22] asked it, "What skills do you have in
+[3:23] this project?" And it came back and
+[3:25] said, "Hey, here are all the active
+[3:26] skills. We've got content creation.
+[3:27] We've got research and intelligence.
+[3:28] We've got visual diagrams, operations,
+[3:30] and meta." And now any of these skills,
+[3:32] I could just say, "Okay, cool. Turn that
+[3:34] into a weekly automation." All right.
+[3:36] So, there are a few limitations, though.
+[3:38] The first major gotcha is the fact that
+[3:39] your laptop has to be on or your
+[3:41] computer has to be on and the desktop
+[3:43] app has to be open. So if you turn off
+[3:45] your computer, that automation will not
+[3:47] run. Now, the good news is, let's say
+[3:48] you had a task for 7:00 a.m. and you
+[3:50] wake up at 8, you turn on your computer,
+[3:51] Cloud Code would actually check back 7
+[3:53] days and see any scheduled tasks that it
+[3:55] missed and then would catch up and it
+[3:57] would run those. Obviously, that's not
+[3:58] perfect because some of those may be
+[4:00] timesensitive, but it is cool that it
+[4:01] has that ability. Now, what are some
+[4:03] other things to think about? Well, the
+[4:04] first one is that this thing is now
+[4:06] running without your supervision. And
+[4:08] ideally, it's not going to stop to ask
+[4:09] you questions because then what's the
+[4:10] point of having it automated? So, that
+[4:12] means you want to be looking at your
+[4:13] permissions to make sure that it can't
+[4:15] actually go off the rails and do
+[4:16] anything like maybe make a major change
+[4:18] to your GitHub repository or go off and
+[4:20] delete things. And you can take care of
+[4:22] that by changing your local settings in
+[4:24] that project, which you could just say,
+[4:26] "Hey, I want to make sure that you never
+[4:27] delete things. How can I put this in
+[4:28] your settings?" You know, deny a bash
+[4:31] command that does any deletes or
+[4:32] removes. and it will help you figure
+[4:34] that out. I've got a video coming about
+[4:35] this. I will tag that right up here once
+[4:37] that is live on YouTube. These are also
+[4:39] stateless. So basically, every time that
+[4:41] you run one of these, it's going to
+[4:42] throw it in a new session. So right
+[4:44] here, I did a test run of my morning
+[4:46] coffee. Here's the actual task itself.
+[4:48] And then when I open this up, I will be
+[4:49] able to see every run and every run is
+[4:51] going to be fresh and it's not going to
+[4:52] have context of what happened on the
+[4:54] previous run. And the other thing, of
+[4:56] course, is that if you didn't put in an
+[4:57] API key or if there's literally
+[4:58] something that it can't do because it
+[5:00] needs your permission, it's going to
+[5:01] stop. So, what I'd recommend is as soon
+[5:03] as you create a new task, just run it
+[5:04] manually and make sure that it can go
+[5:06] through all of the steps without
+[5:08] oversight. Otherwise, what's going to
+[5:09] happen is it's going to pause and it's
+[5:10] going to ask you for permissions to do
+[5:11] this and permissions to do that. Now,
+[5:13] sometimes it's a good thing that they're
+[5:14] stateless and that they don't have
+[5:15] shared memory, but sometimes you might
+[5:17] want them to, and that would be kind of
+[5:19] part of this whole self-improving thing.
+[5:21] So, here's how I imagine the
+[5:22] self-improving loop working. So, first
+[5:25] of all is fixing the actual script. So
+[5:27] you can have in there the fact that if
+[5:28] it errors, edit your own code and make
+[5:30] sure you're fixed. The second layer is
+[5:32] the prompt. So if you realize that
+[5:34] there's an opportunity to improve this
+[5:35] prompt, rewrite it and now you have a
+[5:37] new prompt. And then the third one is
+[5:39] potentially having a log for memory.
+[5:41] Whether that means every single run, you
+[5:42] put some sort of like status of what
+[5:44] that run did, or maybe you just have a
+[5:46] file that you overwrite so that every
+[5:47] time when the new agent wakes up, it can
+[5:49] look at the log and say, "Hey, this is
+[5:50] what the previous agent just did. Now I
+[5:52] need to run." So, there's lots of ways
+[5:54] that you can kind of tweak these
+[5:55] scheduled tasks to fit your use cases
+[5:57] better. And once again, because they
+[5:59] have the context of everything in that
+[6:00] project, they're going to be super
+[6:02] powerful. They can look at any file that
+[6:03] you want them to. So, that's what my
+[6:05] brain immediately went to, but I wanted
+[6:06] to see what Cloud Code thought. So, I
+[6:08] asked it what it thought the most
+[6:09] optimal strategy was to make these
+[6:11] improve and make sure they have the
+[6:12] right context. So, what it thought of
+[6:14] was a lean strategy where you have one
+[6:16] file per task. So basically every single
+[6:18] time the agent runs it would overwrite
+[6:21] this file with information like here's
+[6:24] the last run, here's how long it lasted,
+[6:26] here's what happened, here's what I did,
+[6:27] here are known issues and things like
+[6:29] that. And this is better than an append
+[6:30] log in some scenarios because like I
+[6:32] said earlier, if you run an automation a
+[6:34] thousand times, then you might have a
+[6:35] thousand append logs. But then what's
+[6:37] cool is the actual structure of your
+[6:39] prompt. So, when you're creating a new
+[6:41] um task right here, the way that you
+[6:42] prompt it, you could basically say,
+[6:44] "Okay, before you actually do your job,
+[6:46] go ahead and read this file," which is
+[6:48] basically the last run, and then you do
+[6:49] your main task, and then after you're
+[6:51] done with the task, overwrite that file
+[6:53] with any current issues or status or
+[6:55] anything that you found that might help
+[6:56] the next agent. So, obviously, I'm going
+[6:58] to be playing around with different
+[6:59] structures of having context shared
+[7:01] between these different, you know,
+[7:02] tasks, but that's just something that I
+[7:04] thought would be really, really cool.
+[7:05] So, another thing I wanted to talk about
+[7:06] is because this is in the desktop app
+[7:08] and because this is running on a
+[7:09] schedule, how do you want to get
+[7:11] notified that that scheduled task has
+[7:13] been done? So, the desktop app does have
+[7:15] notifications, but they're not super
+[7:17] great. At least it wasn't making any
+[7:18] noise and it wasn't capturing my
+[7:19] attention. It's cool that everything
+[7:21] gets organized over here. So, as you
+[7:22] have more tasks, you can see them all
+[7:24] and it's organized. But what you can do
+[7:26] is you can add a hook so that every time
+[7:28] you actually get a sound. So, what I did
+[7:30] is I set up a hook so that every time a
+[7:32] Cloud Code session finishes, I get a
+[7:34] notification. So listen to this.
+[7:38] So that was like kind of the default
+[7:39] Windows little sound. You can change
+[7:41] that, but that's really helpful because
+[7:42] I could be working and I could forget
+[7:44] that a scheduled task might go off and
+[7:45] then I get that noise. But the other
+[7:47] thing I would recommend is in the prompt
+[7:49] of the actual skill itself, maybe just
+[7:50] at the bottom say, "Hey, once this is
+[7:52] done, just shoot me a ClickUp message
+[7:54] and say that this happened." And that's
+[7:56] probably what I'm going to set up for
+[7:57] all my scheduled tasks. And if you're
+[7:58] curious about setting up hooks,
+[7:59] literally just say to Cloud Code, "Set
+[8:01] up a hook. I want you to play a sound
+[8:03] every time you finish talking to me and
+[8:04] it will do it in like a minute. And the
+[8:06] last thing I was curious about is the
+[8:09] fact that we're limited to the desktop
+[8:10] app. Now, Enthropic is shipping like
+[8:13] crazy. So, I'm sure in a week or two
+[8:15] that this is going to be open in the
+[8:16] terminal and in the IDE extensions and
+[8:18] stuff like that, too. But for the
+[8:20] moment, it's only desktop app. And
+[8:22] basically why is because all of the
+[8:24] actual like cron logic and that kind of
+[8:26] metadata lives in the desktop app. even
+[8:28] though the actual files live in your
+[8:30] computer, they live somewhere where
+[8:32] terminal or your VS code cloud code
+[8:35] could actually see it. So I was
+[8:36] interested in that and I said, are you
+[8:38] able to see my scheduled task for
+[8:40] morning coffee? It runs at 609 and
+[8:41] here's where it lives because it lives
+[8:43] kind of in this global folder path right
+[8:45] here. And it can see it, right? Because
+[8:48] it just exists as a file. But what it
+[8:50] can't do is it can't create new
+[8:52] scheduled tasks because it can't
+[8:53] actually touch the cron that the desktop
+[8:55] app of cloud code sets up. But what it
+[8:58] could do is it could edit it. So it
+[9:00] could improve it. It could make changes,
+[9:02] but it can't create them or like run
+[9:04] them. Now, that's actually not a huge
+[9:05] deal to me right now because I usually
+[9:07] work in VS Code, but I can just have the
+[9:08] desktop app open and I can just leave it
+[9:10] open in the background while I've got my
+[9:12] computer on and all of my scheduled
+[9:14] tasks will still be running. And so now
+[9:15] that Cloud Code is so powerful on its
+[9:17] own, it can actually like do things in
+[9:18] the browser as well. I truly think we're
+[9:21] getting to that point where you can
+[9:22] automate anything. So I'm going to go
+[9:23] ahead and stop talking. What you need to
+[9:25] do now is go learn how to set up your
+[9:26] project and create your own executive
+[9:28] assistant to become way more productive
+[9:30] and start to schedule some stuff. Go
+[9:31] ahead and watch this video right up
+[9:32] here. So hopefully I'll see you guys
+[9:34] over there. But that is going to do it
+[9:35] for today. So I appreciate you guys
+[9:36] making it to the end. And if you enjoyed
+[9:38] the video or you learned something new,
+[9:39] please give it a like. Helps me out a
+[9:40] ton. And I'll see you on the next one.
+[9:42] Thanks everyone.

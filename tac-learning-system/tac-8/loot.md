@@ -1,0 +1,73 @@
+---
+title: "TAC Lesson 8 - The Agentic Layer"
+lesson: 8
+level: Advanced
+tactic: "Prioritize Agentics"
+source: indydevdan/loot/loot.txt
+transcript: transcript.txt
+video: "The Agentic Layer"
+---
+
+> **Full Transcript**: [[transcript.txt]] | **Source**: IndyDevDan TAC Course
+
+# The Agentic Layer
+
+> Learn the one meta-tactic to rule them all. The single idea you need to become irreplaceable in phase 2 of the Generative AI age.
+
+## Key Concepts
+
+### The Agentic Layer Ring
+Imagine a ring around your codebase. At first it's thin, then it becomes thicker as you scale agentics into your codebase. Machines that operate with your judgment, shipping your way, getting work done autonomously in your product.
+
+### The Single Guiding Question
+At the end of this course, there'll be a single guiding question you can use to know whether you're moving in the right direction. This question represents the oil of this course - all the tactics compressed into one.
+
+---
+
+## Tactic #8: Prioritize Agentics
+
+> Prioritize your agentic layer. More than half of your engineering time should be spent on the agentic layer rather than the application layer. This tactic represents all others compressed into one.
+
+### 50%+ Time on Agentic Layer
+As a starting point, at least half of your engineering time should be spent on the new agentic layer. The more time you invest into your agentic layer, the more it will be able to solve problem classes on your behalf.
+
+### Agentic Layer vs Application Layer
+There's the agentic layer, and then there's the application layer. Inside application layer: DevOps, infrastructure, database, and the actual raw application layer. The irreplaceable engineer operates on the agentic layer much more often.
+
+---
+
+## Building the Minimum Viable Agentic Layer
+
+### Focus on the Primitives
+Focus on the pieces that make the whole, from the individual agentic prompts up to the composed multi-step AI developer workflows. This is what matters - the primitives, not the tool.
+
+### Minimum Viable Agentic Layer
+For your minimum viable agentic layer, you really only need these pieces:
+- AI developer workflow directory
+- Prompts (stored in .claude commands)
+- Plans
+
+This is the minimum set of information that you need.
+
+### Problem Classes, Not One-Offs
+Focus on problem classes, not one-off fixes. You wanna solve the class of problems that you're approaching. You can do that by templating your engineering inside of powerful template meta prompts.
+
+---
+
+## The Gateway Script
+
+### The Gateway Script
+This script is the gateway into agentic coding. It's the minimal version of what you need to get started. It's distinctly different from any other type of code - it's calling an agent.
+
+### Moving Out of the Loop
+By creating a script that can surround the application, that can surround any unit of code, we are slowly moving out the loop. You're not responding here, not having a conversation with the agent.
+
+---
+
+## Related Concepts
+
+- [[Agentic Layer]]
+- [[Application Layer]]
+- [[Minimum Viable Agentic Layer]]
+- [[Problem Classes]]
+- [[Gateway Script]]

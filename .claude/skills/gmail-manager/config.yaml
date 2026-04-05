@@ -1,0 +1,93 @@
+# Gmail Manager Configuration
+
+gmail:
+  # Gmail account (for reference)
+  account: "gblack686@gmail.com"
+
+  # OAuth credentials file (download from Google Cloud Console)
+  credentials_file: "gmail_client_secret.json"
+
+  # Token storage location
+  token_file: ".tokens/gmail_oauth.pkl"
+
+# Contact extraction settings
+extraction:
+  sources:
+    - inbox
+    - sent
+  max_results: 1000
+
+  # Domains to exclude from extraction
+  exclude_domains:
+    - "noreply.google.com"
+    - "notifications.google.com"
+    - "mailer-daemon.googlemail.com"
+
+  # Categories to auto-assign
+  auto_categorize: true
+
+# Email summarization settings
+summarization:
+  # Maximum emails to summarize per run
+  max_emails: 50
+
+  # Only summarize unread emails by default
+  unread_only: true
+
+  # Skip detected newsletters
+  skip_newsletters: true
+
+  # Claude model for summarization
+  model: "claude-3-5-sonnet-20241022"
+
+  # Maximum body length to send to Claude (chars)
+  max_body_length: 10000
+
+# Newsletter management
+newsletters:
+  # Auto-detect newsletters
+  auto_detect: true
+
+  # Known newsletter platform domains
+  known_domains:
+    - "mailchimp.com"
+    - "convertkit.com"
+    - "substack.com"
+    - "buttondown.email"
+    - "beehiiv.com"
+    - "ghost.io"
+    - "sendgrid.net"
+    - "mailgun.org"
+
+  # Default action when blocking: 'archive' or 'trash'
+  default_action: "archive"
+
+# Draft generation settings
+drafts:
+  # Default email tone
+  default_tone: "professional"
+
+  # Email signature
+  signature: |
+    Best regards,
+    George Black
+
+  # Available tones
+  available_tones:
+    - professional
+    - casual
+    - formal
+    - friendly
+    - persuasive
+
+# Storage settings
+storage:
+  # Use Supabase for persistent storage
+  backend: "supabase"
+
+  # Tables
+  tables:
+    contacts: "gmail_contacts"
+    domains: "gmail_domains"
+    summaries: "gmail_email_summaries"
+    filters: "gmail_filters"

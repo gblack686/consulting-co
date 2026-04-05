@@ -1,0 +1,147 @@
+======================================================================
+ULTRA-FAST VTT PROCESSOR
+======================================================================
+
+Reading: vtts/the-12-leverage-points.txt
+✓ Found 96 VTT URLs
+
+Downloading in parallel (max 10 concurrent)...
+----------------------------------------------------------------------
+  ✓ Chunk   6 (20 lines)
+  ✓ Chunk   0 (11 lines)
+  ✓ Chunk   7 (21 lines)
+  ✓ Chunk   3 (17 lines)
+  ✓ Chunk   1 (23 lines)
+  ✓ Chunk   5 (21 lines)
+  ✓ Chunk   4 (23 lines)
+  ✓ Chunk   9 (22 lines)
+  ✓ Chunk   2 (20 lines)
+  ✓ Chunk   8 (24 lines)
+  ✓ Chunk  12 (21 lines)
+  ✓ Chunk  13 (25 lines)
+  ✓ Chunk  11 (19 lines)
+  ✓ Chunk  10 (22 lines)
+  ✓ Chunk  19 (26 lines)
+  ✓ Chunk  18 (24 lines)
+  ✓ Chunk  16 (28 lines)
+  ✓ Chunk  17 (26 lines)
+  ✓ Chunk  14 (28 lines)
+  ✓ Chunk  15 (33 lines)
+  ✓ Chunk  20 (25 lines)
+  ✓ Chunk  22 (22 lines)
+  ✓ Chunk  21 (23 lines)
+  ✓ Chunk  23 (27 lines)
+  ✓ Chunk  25 (27 lines)
+  ✓ Chunk  24 (25 lines)
+  ✓ Chunk  27 (28 lines)
+  ✓ Chunk  26 (24 lines)
+  ✓ Chunk  28 (22 lines)
+  ✓ Chunk  29 (28 lines)
+  ✓ Chunk  30 (26 lines)
+  ✓ Chunk  33 (28 lines)
+  ✓ Chunk  32 (29 lines)
+  ✓ Chunk  34 (25 lines)
+  ✓ Chunk  31 (25 lines)
+  ✓ Chunk  39 (27 lines)
+  ✓ Chunk  36 (25 lines)
+  ✓ Chunk  35 (31 lines)
+  ✓ Chunk  37 (26 lines)
+  ✓ Chunk  38 (23 lines)
+  ✓ Chunk  40 (24 lines)
+  ✓ Chunk  42 (23 lines)
+  ✓ Chunk  43 (26 lines)
+  ✓ Chunk  41 (23 lines)
+  ✓ Chunk  46 (26 lines)
+  ✓ Chunk  48 (20 lines)
+  ✓ Chunk  44 (24 lines)
+  ✓ Chunk  45 (26 lines)
+  ✓ Chunk  49 (24 lines)
+  ✓ Chunk  47 (28 lines)
+  ✓ Chunk  51 (29 lines)
+  ✓ Chunk  50 (26 lines)
+  ✓ Chunk  52 (25 lines)
+  ✓ Chunk  53 (25 lines)
+  ✓ Chunk  54 (24 lines)
+  ✓ Chunk  59 (27 lines)
+  ✓ Chunk  58 (26 lines)
+  ✓ Chunk  56 (26 lines)
+  ✓ Chunk  55 (26 lines)
+  ✓ Chunk  57 (26 lines)
+  ✓ Chunk  60 (24 lines)
+  ✓ Chunk  62 (24 lines)
+  ✓ Chunk  61 (27 lines)
+  ✓ Chunk  63 (23 lines)
+  ✓ Chunk  64 (25 lines)
+  ✓ Chunk  66 (23 lines)
+  ✓ Chunk  67 (25 lines)
+  ✓ Chunk  68 (22 lines)
+  ✓ Chunk  69 (24 lines)
+  ✓ Chunk  65 (22 lines)
+  ✓ Chunk  70 (26 lines)
+  ✓ Chunk  71 (25 lines)
+  ✓ Chunk  72 (23 lines)
+  ✓ Chunk  73 (24 lines)
+  ✓ Chunk  79 (26 lines)
+  ✓ Chunk  75 (23 lines)
+  ✓ Chunk  76 (25 lines)
+  ✓ Chunk  77 (22 lines)
+  ✓ Chunk  78 (22 lines)
+  ✓ Chunk  74 (26 lines)
+  ✓ Chunk  81 (24 lines)
+  ✓ Chunk  80 (22 lines)
+  ✓ Chunk  82 (25 lines)
+  ✓ Chunk  83 (24 lines)
+  ✓ Chunk  85 (27 lines)
+  ✓ Chunk  89 (27 lines)
+  ✓ Chunk  88 (21 lines)
+  ✓ Chunk  84 (22 lines)
+  ✓ Chunk  86 (23 lines)
+  ✓ Chunk  87 (23 lines)
+  ✓ Chunk  90 (23 lines)
+  ✓ Chunk  91 (23 lines)
+  ✓ Chunk  92 (25 lines)
+  ✓ Chunk  93 (22 lines)
+  ✓ Chunk  94 (11 lines)
+  ✓ Chunk 999999 (100 lines)
+
+======================================================================
+✓ EXTRACTION COMPLETE!
+======================================================================
+
+📄 Output: vtts\the-12-leverage-points_transcript.txt
+📊 Successful: 96
+📊 Failed: 0
+📊 Characters: 120,766
+📊 Words: 9,241
+📊 Lines: 2,397
+
+======================================================================
+Preview (first 500 characters):
+======================================================================
+Welcome to Tactical Agentic
+Coding. This is lesson
+two. In lesson one,
+we set the stage.
+In lesson two, we
+start performing. In order
+to become an irreplaceable
+engineer, we have to
+stop coding and learn
+to build systems that
+can operate on our
+can operate on our
+behalf. To get there,
+We need two things,
+a framework that won't
+change over time and
+a tactic that shifts
+how we engineer from
+AI coding to agentic
+coding so we can
+maximize not what we
+can do, but what
+our agents can do.
+Just like wit
+
+... (transcript continues)
+======================================================================

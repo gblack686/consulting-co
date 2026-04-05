@@ -1,0 +1,56 @@
+{
+  "hardware": {
+    "device": "Lenovo laptop",
+    "os": "Windows",
+    "form_factor": "Physical laptop (not VPS)",
+    "notes": "Will need cloud infra for 24/7 overnight tasks"
+  },
+  "apps": [
+    {
+      "name": "Discord",
+      "purpose": "Trade signal scraping from channels",
+      "api_available": true,
+      "api_status": "needs_key"
+    },
+    {
+      "name": "Hyper Liquid",
+      "purpose": "Primary trading platform",
+      "api_available": true,
+      "api_status": "needs_key",
+      "notes": "REST + WebSocket API for trading and market data"
+    },
+    {
+      "name": "GitHub",
+      "purpose": "Code versioning for trading bot / backtester",
+      "api_available": true,
+      "api_status": "likely_configured"
+    },
+    {
+      "name": "Telegram",
+      "purpose": "Primary agent communication channel",
+      "api_available": true,
+      "api_status": "needs_key"
+    },
+    {
+      "name": "YouTube",
+      "purpose": "Daily scrape for trading insights / strategy content",
+      "api_available": true,
+      "api_status": "needs_key"
+    },
+    {
+      "name": "iMessage",
+      "purpose": "Possible secondary communication channel",
+      "api_available": false,
+      "api_status": "mac_only_limitation"
+    }
+  ],
+  "models": {
+    "brain_model": "glm47",
+    "muscle_model": "glm47-lite",
+    "notes": "Greg specified 'glm47 and glm47 lite' — verify exact model IDs before deployment. May be GLM-4 (Zhipu AI) or a phonetic transcription of another provider."
+  },
+  "monthly_budget": "TBD — not specified in intake (needs follow-up)",
+  "channel_preference": "Telegram",
+  "allowlist": ["Greg only — no external access"],
+  "credentials_status": "Greg will provide all API keys at setup"
+}

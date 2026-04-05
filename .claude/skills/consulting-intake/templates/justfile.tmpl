@@ -1,0 +1,345 @@
+# OpenClaw Client Workspace — {CLIENT_NAME}
+# Generated: {INTAKE_DATE}
+# Agent: {AGENT_NAME}
+#
+# ── First time? Run in this order ─────────────────────────────────────────────
+#   just install-openclaw   → install GB Automation's OpenClaw (once, prereq)
+#   just onboard            → run the OpenClaw setup wizard (once)
+#   just setup              → deploy your workspace + skills + cron
+#
+# ── Day-to-day ────────────────────────────────────────────────────────────────
+#   just status             → check OpenClaw is running
+#   just verify             → full health check
+#   just update             → pull latest workspace updates and redeploy
+#   just update-openclaw    → pull latest GB OpenClaw and rebuild
+#
+# ── Individual steps ──────────────────────────────────────────────────────────
+#   just deploy             → workspace config files only
+#   just skills             → skills only
+#   just cron               → cron jobs only
+#   just restart            → restart gateway
+
+set shell := ["bash", "-cu"]
+
+# GB Automation OpenClaw fork
+gb_openclaw_fork := "https://github.com/gblack686/openclaw.git"
+gb_openclaw_build := env_var_or_default("GB_OPENCLAW_BUILD", "~/.gb-openclaw-build")
+
+# Resolve repo root and OpenClaw workspace dir
+repo_root    := `git rev-parse --show-toplevel`
+openclaw_dir := env_var_or_default("OPENCLAW_DIR", "~/.openclaw/workspace")
+
+# Show all commands
+default:
+    @just --list
+
+# ─── OpenClaw Installation (run once before anything else) ───────────────────
+
+# Install GB Automation's branded OpenClaw from the fork (builds from source)
+install-openclaw:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    build_dir="$(cygpath -u '{{gb_openclaw_build}}' 2>/dev/null || echo '{{gb_openclaw_build}}')"
+    build_dir="${build_dir/#\~/$HOME}"
+
+    echo "Installing GB Automation OpenClaw from fork..."
+    echo "Fork: {{gb_openclaw_fork}}"
+    echo ""
+
+    # Prerequisites check
+    for cmd in git node pnpm; do
+        if ! command -v "$cmd" &>/dev/null; then
+            echo "❌ Missing prerequisite: $cmd"
+            echo "   Install guide: https://docs.openclaw.ai/start/getting-started"
+            exit 1
+        fi
+    done
+
+    # Clone or update fork
+    if [ -d "$build_dir/.git" ]; then
+        echo "Updating existing fork clone..."
+        cd "$build_dir"
+        git fetch origin
+        git checkout main
+        git pull origin main
+    else
+        echo "Cloning GB OpenClaw fork..."
+        git clone "{{gb_openclaw_fork}}" "$build_dir"
+        cd "$build_dir"
+    fi
+
+    # Build
+    echo "Installing dependencies..."
+    pnpm install --frozen-lockfile
+    echo "Building gateway..."
+    pnpm build
+    echo "Building branded UI..."
+    pnpm ui:build
+
+    # Install globally
+    echo "Installing openclaw CLI globally..."
+    npm install -g .
+
+    echo ""
+    echo "✅ GB Automation OpenClaw installed"
+    echo "   Run: openclaw --version"
+    echo "   Next: just onboard"
+
+# Pull latest GB OpenClaw fork updates and rebuild
+update-openclaw:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    build_dir="$(cygpath -u '{{gb_openclaw_build}}' 2>/dev/null || echo '{{gb_openclaw_build}}')"
+    build_dir="${build_dir/#\~/$HOME}"
+
+    if [ ! -d "$build_dir/.git" ]; then
+        echo "❌ Fork not installed yet — run: just install-openclaw"
+        exit 1
+    fi
+
+    echo "Pulling latest GB OpenClaw updates..."
+    cd "$build_dir"
+    git pull origin main
+    pnpm install --frozen-lockfile
+    pnpm build
+    pnpm ui:build
+    npm install -g .
+    echo "✅ GB OpenClaw updated"
+    just restart
+
+# Run the OpenClaw onboarding wizard (first-time gateway setup)
+onboard:
+    @echo "Starting OpenClaw onboarding wizard..."
+    @openclaw onboard
+
+# ─── Full Workspace Setup (after openclaw is installed) ──────────────────────
+
+# Deploy workspace + agents + skills + cron, then restart and verify
+setup: deploy deploy-agents register-agents skills cron restart verify
+    @echo ""
+    @echo "══════════════════════════════════════════════"
+    @echo "✅  {CLIENT_NAME} workspace is live"
+    @echo "    Agent: {AGENT_NAME}"
+    @echo "    Domains: {DOMAIN_LIST}"
+    @echo "    Extra agents: Scout 📺 (YouTube)"
+    @echo "══════════════════════════════════════════════"
+
+# ─── Deploy ──────────────────────────────────────────────────────────────────
+
+# Copy workspace config files to OpenClaw directory
+deploy:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}"
+    echo "Deploying workspace config to $dest..."
+    mkdir -p "$dest"
+    cp -v "$root"/workspace/SOUL.md "$dest/"
+    cp -v "$root"/workspace/USER.md "$dest/"
+    cp -v "$root"/workspace/IDENTITY.md "$dest/"
+    cp -v "$root"/workspace/MEMORY.md "$dest/"
+    cp -v "$root"/workspace/AGENTS.md "$dest/"
+    cp -v "$root"/workspace/TOOLS.md "$dest/"
+    cp -v "$root"/workspace/HEARTBEAT.md "$dest/"
+    cp -v "$root"/workspace/openclaw.json "$dest/"
+    echo "✅ Workspace config deployed"
+
+# Copy skills to OpenClaw skills directory
+skills:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}/skills"
+    echo "Deploying skills to $dest..."
+    mkdir -p "$dest"
+    cp -rv "$root"/workspace/skills/* "$dest/"
+    skill_count=$(find "$root/workspace/skills" -name "SKILL.md" | wc -l)
+    echo "✅ $skill_count skills deployed"
+
+# ─── Agents ──────────────────────────────────────────────────────────────────
+
+# Deploy per-agent workspace directories (Scout YouTube agent + others)
+deploy-agents:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    base="${OPENCLAW_DIR:-$HOME/.openclaw}"
+
+    if [ -d "$root/agents/youtube" ]; then
+        dest="$base/workspace-youtube"
+        echo "Deploying Scout (YouTube) agent workspace to $dest..."
+        mkdir -p "$dest/skills"
+        cp -v "$root/agents/youtube/IDENTITY.md" "$dest/"
+        cp -v "$root/agents/youtube/SOUL.md"     "$dest/"
+        cp -v "$root/agents/youtube/AGENTS.md"   "$dest/"
+        cp -rv "$root/agents/youtube/skills/"*   "$dest/skills/"
+        mkdir -p "$dest/transcripts" "$dest/summaries"
+        touch "$dest/scan-log.md"
+        echo "✅ Scout agent workspace deployed"
+    else
+        echo "⚠️  No agents/ directory found — skipping agent deployment"
+    fi
+
+# Register named agents with OpenClaw CLI
+register-agents:
+    #!/usr/bin/env bash
+    base="${OPENCLAW_DIR:-$HOME/.openclaw}"
+    youtube_ws="$base/workspace-youtube"
+
+    if [ -d "$youtube_ws" ]; then
+        echo "Registering Scout (YouTube) agent..."
+        openclaw agents add youtube --workspace "$youtube_ws" 2>/dev/null || \
+            openclaw agents set-identity --agent youtube --from-identity 2>/dev/null || true
+        openclaw agents set-identity --agent youtube --workspace "$youtube_ws" --from-identity 2>/dev/null || true
+        echo "✅ Scout agent registered"
+    fi
+
+# Install cron jobs
+cron:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}"
+    echo "Installing cron jobs..."
+    cp "$root/workspace/cron-setup.sh" "$dest/"
+    bash "$dest/cron-setup.sh"
+    echo "✅ Cron jobs installed"
+
+# ─── Gateway ─────────────────────────────────────────────────────────────────
+
+# Restart the OpenClaw gateway
+restart:
+    @echo "Restarting OpenClaw gateway..."
+    @openclaw restart && echo "✅ Gateway restarted" || echo "⚠️  Could not restart — start manually with: openclaw start"
+
+# Check OpenClaw health (full doctor report)
+verify:
+    @openclaw doctor
+
+# Show current OpenClaw status
+status:
+    @openclaw status
+
+# ─── Updates ─────────────────────────────────────────────────────────────────
+
+# Pull latest workspace deliverables from GitHub and redeploy
+update:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    cd "$root"
+    echo "Pulling latest workspace from GitHub..."
+    git pull origin main
+    just deploy
+    just skills
+    just restart
+    echo "✅ Workspace update complete"
+
+# ─── Dry Run ─────────────────────────────────────────────────────────────────
+
+# Preview what would be deployed without copying anything
+dry-run:
+    #!/usr/bin/env bash
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}"
+    echo "Would deploy to: $dest"
+    echo ""
+    echo "Workspace files:"
+    ls "$root/workspace/"*.md "$root/workspace/"*.json 2>/dev/null | xargs -I{} basename {}
+    echo ""
+    echo "Skills:"
+    find "$root/workspace/skills" -name "SKILL.md" | sed "s|$root/workspace/skills/||" | sort
+    echo ""
+    echo "Cron jobs:"
+    grep -E "^openclaw cron" "$root/workspace/cron-setup.sh" 2>/dev/null || echo "(see workspace/cron-setup.sh)"
+    echo ""
+    echo "Agents:"
+    ls "$root/agents/" 2>/dev/null | sed 's/^/  📺 /' || echo "  (no agents/ dir)"
+
+# ─── Pi Extension Sessions ───────────────────────────────────────────────────
+# Pi extensions run in-process in the Pi runtime. These recipes launch Pi
+# with curated extension stacks. All 16 extensions ship as sample code
+# in extensions/ — activate any combination with `pi -e extensions/foo.ts`.
+#
+# Core stack: minimal + theme-cycler + cross-agent + pi-pi
+
+ext_dir := repo_root + "/extensions"
+
+# Launch Pi with core extensions (default interactive session)
+pi-core:
+    pi -e "{{ext_dir}}/minimal.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/cross-agent.ts" -e "{{ext_dir}}/pi-pi.ts"
+
+# Launch Pi with cost tracking (core + tool-counter)
+pi-costs:
+    pi -e "{{ext_dir}}/minimal.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/cross-agent.ts" -e "{{ext_dir}}/tool-counter.ts"
+
+# Launch Pi with safety auditing (core + damage-control)
+pi-safe:
+    pi -e "{{ext_dir}}/minimal.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/cross-agent.ts" -e "{{ext_dir}}/damage-control.ts"
+
+# Launch Pi with multi-agent dispatcher and team grid
+pi-orchestrate:
+    pi -e "{{ext_dir}}/agent-team.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/cross-agent.ts"
+
+# Launch Pi with sequential pipeline (plan-build-review chains)
+pi-pipeline:
+    pi -e "{{ext_dir}}/agent-chain.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/cross-agent.ts"
+
+# Launch Pi with full observability (costs + session replay)
+pi-debug:
+    pi -e "{{ext_dir}}/minimal.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/session-replay.ts" -e "{{ext_dir}}/tool-counter.ts"
+
+# Launch Pi zen mode (no footer, no status — just the agent)
+pi-focus:
+    pi -e "{{ext_dir}}/pure-focus.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/cross-agent.ts"
+
+# Launch Pi with task discipline (must define tasks before tools activate)
+pi-tasks:
+    pi -e "{{ext_dir}}/tilldone.ts" -e "{{ext_dir}}/theme-cycler.ts" -e "{{ext_dir}}/cross-agent.ts"
+
+# Launch Pi with intent gate (must declare purpose before working)
+pi-purpose:
+    pi -e "{{ext_dir}}/purpose-gate.ts" -e "{{ext_dir}}/minimal.ts" -e "{{ext_dir}}/cross-agent.ts"
+
+# Launch Pi with background sub-agents (/sub to spawn, /subcont to continue)
+pi-subagents:
+    pi -e "{{ext_dir}}/subagent-widget.ts" -e "{{ext_dir}}/pure-focus.ts" -e "{{ext_dir}}/theme-cycler.ts"
+
+# List available Pi extensions
+pi-list:
+    @echo "Core (always loaded with pi-core):"
+    @echo "  minimal.ts         Compact footer: model + context meter"
+    @echo "  theme-cycler.ts    Ctrl+X/Q cycle themes, /theme picker"
+    @echo "  cross-agent.ts     Loads .claude/, .gemini/, .codex/ commands"
+    @echo "  pi-pi.ts           Meta-agent: builds new Pi agents"
+    @echo ""
+    @echo "Samples (mix and match with pi -e extensions/NAME.ts):"
+    @echo "  pure-focus.ts       Zen mode — strips all UI chrome"
+    @echo "  tool-counter.ts     Rich footer: model, tokens, cost, branch"
+    @echo "  tool-counter-widget.ts  Persistent cost badge widget"
+    @echo "  purpose-gate.ts     Intent declaration before working"
+    @echo "  tilldone.ts         Task discipline — define tasks first"
+    @echo "  damage-control.ts   Safety auditing via YAML rules"
+    @echo "  agent-team.ts       Dispatcher + team grid dashboard"
+    @echo "  agent-chain.ts      Sequential pipelines (plan-build-review)"
+    @echo "  system-select.ts    /system swaps agent persona"
+    @echo "  subagent-widget.ts  /sub spawns background agents"
+    @echo "  session-replay.ts   Scrollable timeline overlay"
+
+# ─── YouTube Agent Shortcuts ──────────────────────────────────────────────────
+
+# Extract transcript from a single YouTube video (Scout agent, requires Chrome)
+youtube-transcript video_id:
+    openclaw agent --agent youtube --message "Extract transcript for YouTube video: {{video_id}}" --deliver
+
+# Scan a YouTube channel for new videos (last 7 days by default)
+youtube-scan channel="@IndyDevDan" days="7":
+    openclaw agent --agent youtube --message "Scan YouTube channel {{channel}} for new videos in the last {{days}} days. Extract transcripts and generate summaries."
+
+# Summarize a specific YouTube video from its saved transcript
+youtube-summarize video_id:
+    openclaw agent --agent youtube --message "Summarize YouTube video {{video_id}} from its saved transcript."
+
+# Check Scout agent status
+youtube-status:
+    @openclaw agent --agent youtube --message "List all transcripts and summaries in the workspace."

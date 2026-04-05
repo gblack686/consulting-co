@@ -1,0 +1,111 @@
+{
+  "commands": [
+    {
+      "name": "install",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\.claude\\commands\\install.md",
+      "tac_source": "tac-2",
+      "title": "Install & Prime",
+      "description": null,
+      "sections": [
+        "Read and Execute",
+        "Run"
+      ],
+      "delegations": [
+        "prime",
+        "commands"
+      ]
+    },
+    {
+      "name": "prime",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\.claude\\commands\\prime.md",
+      "tac_source": "tac-2",
+      "title": "Prime",
+      "description": null,
+      "sections": [
+        "Run",
+        "Read"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "tools",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\.claude\\commands\\tools.md",
+      "tac_source": "tac-2",
+      "title": "List Built-in Tools",
+      "description": null,
+      "sections": [],
+      "delegations": []
+    }
+  ],
+  "agents": [],
+  "adws": [],
+  "concepts": [
+    {
+      "name": "Natural Language SQL Interface",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\README.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "repository"
+    },
+    {
+      "name": "Features",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\README.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Prerequisites",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\README.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Setup",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\README.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Quick Start",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\README.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Manual Start (Alternative)",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\README.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Get started with Claude",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\ai_docs\\anthropic_quick_start.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "ai_doc"
+    },
+    {
+      "name": "Developer quickstart",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2\\ai_docs\\openai_quick_start.md",
+      "tac_source": "tac-2",
+      "description": null,
+      "category": "ai_doc"
+    }
+  ],
+  "metadata": {
+    "extracted_at": "2025-12-02T22:09:25.206483",
+    "repo_name": "tac-2",
+    "repo_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2",
+    "summary": {
+      "total_commands": 3,
+      "total_agents": 0,
+      "total_adws": 0,
+      "total_concepts": 8
+    }
+  }
+}

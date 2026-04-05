@@ -1,0 +1,9 @@
+{
+  "default_repo": "gblack686/consulting-co",
+  "environments": ["production", "staging", "dev"],
+  "deploy_workflow_patterns": ["deploy", "release", "publish"],
+  "notification_on_failure": true,
+  "auto_create_issue_on_failure": false,
+  "watched_workflows": [],
+  "default_branch": "main"
+}

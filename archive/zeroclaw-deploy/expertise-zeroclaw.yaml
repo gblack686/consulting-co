@@ -1,0 +1,446 @@
+# ZeroClaw Expert Knowledge Base
+# Remote AI Agent Platform — CDK-deployed EC2 Instance
+# Last updated: 2026-03-03
+# Auto-updated via self-improve command
+# Migration: OpenClaw (Lightsail, dead) → ZeroClaw (EC2 CDK, active)
+
+overview:
+  description: "ZeroClaw - Rust rewrite of OpenClaw. Sub-5MB binary, <10ms startup, built-in OpenClaw compatibility layer."
+  version: "0.1.7"
+  website: "https://github.com/zeroclaw-labs/zeroclaw"
+  status: "active (22 ok, 2 warnings, 0 errors)"
+  binary_size: "8.8MB"
+  memory_usage: "<5MB RSS"
+  startup_time: "<10ms"
+  primary_use_cases:
+    - "Long-running autonomous coding projects"
+    - "Multi-agent orchestration"
+    - "Background task automation"
+    - "Remote development workflows"
+    - "Customer-facing AI agent gateway"
+  default_model_our_instance: "deepseek/deepseek-chat"
+  note: "Uses OpenRouter as LLM provider. Model IDs sent directly to OpenRouter without prefix."
+
+  migration_from_openclaw:
+    old_platform: "OpenClaw v2026.2.19-2 on Lightsail (18.234.126.236)"
+    old_status: "DEAD — instance unreachable as of 2026-03-02"
+    old_cost: "$24/month (4GB Lightsail)"
+    new_platform: "ZeroClaw v0.1.7 on EC2 t3.medium (13.223.130.153)"
+    new_cost: "~$30/month (EC2 t3.medium, EBS GP3, Elastic IP)"
+    key_differences:
+      - "Rust binary vs Node.js (npm)"
+      - "config.toml vs openclaw.json"
+      - "CDK deploy vs manual SSH setup"
+      - "SSM access vs SSH key access"
+      - "zeroclaw daemon vs openclaw gateway"
+      - "S3 bundle for config delivery"
+
+# Infrastructure Setup
+infrastructure:
+  our_setup:
+    instance_id: "i-0487dd1848f73cb3e"
+    instance_ip: "13.223.130.153"
+    elastic_ip: true
+    provider: "AWS EC2 (CDK-managed)"
+    region: "us-east-1"
+    specs:
+      type: "t3.medium"
+      ram: "4GB (3.7Gi total, ~3.2Gi available)"
+      cpu: "2 vCPU"
+      disk: "20GB EBS GP3 (16GB free, 18% used)"
+      cost: "~$30/month (EC2 + EBS + EIP)"
+    aws_account: "274487662938"
+    s3_bucket: "zeroclaw-bundle-greg-trading-274487662938"
+    node_version: "v22.22.0"
+    zeroclaw_version: "0.1.7"
+    gateway_memory: "<5MB RSS"
+    agent_browser: "installed globally (v0.15.2)"
+    os: "Ubuntu 24.04 LTS"
+    cdk_stack: "ZeroClaw-greg-trading"
+
+  access:
+    primary: "AWS SSM Session Manager (no SSH key needed)"
+    ssm_command: "aws ssm start-session --target i-0487dd1848f73cb3e"
+    ssm_run_command: |
+      aws ssm send-command --instance-ids i-0487dd1848f73cb3e \
+        --document-name "AWS-RunShellScript" \
+        --parameters '{"commands":["sudo -u ubuntu HOME=/home/ubuntu <command>"]}' \
+        --output text --query "Command.CommandId"
+    ssh_command: "ssh ubuntu@13.223.130.153"
+    note: "SSM commands run as root — use sudo -u ubuntu HOME=/home/ubuntu for ZeroClaw commands"
+
+  tags:
+    Name: "zeroclaw-greg-trading"
+    Project: "zeroclaw"
+    Client: "greg-trading"
+
+# CDK Deployment
+deployment:
+  method: "AWS CDK (TypeScript)"
+  stack_location: "zeroclaw-deploy/"
+  deploy_command: |
+    cd zeroclaw-deploy
+    npm install
+    cdk bootstrap  # first time only
+    cdk deploy \
+      --context client=greg-trading \
+      --context openrouterKey=sk-or-v1-xxx \
+      --context modelTier=cheap
+  context_params:
+    client: "Client project name (e.g., greg-trading)"
+    openrouterKey: "OpenRouter API key"
+    gatewayToken: "Auth token for gateway (auto-generated if not provided)"
+    modelTier: "cheap | mid | pro (default: cheap)"
+  model_tiers:
+    cheap: "deepseek/deepseek-chat"
+    mid: "google/gemini-2.0-flash-001"
+    pro: "google/gemini-2.5-pro-preview"
+  outputs:
+    PublicIp: "Elastic IP address"
+    InstanceId: "EC2 instance ID (for SSM)"
+    GatewayToken: "Auth token for customer portal"
+    ProxyUrl: "ws://<ip>:3050"
+    HealthCheckUrl: "http://<ip>:3050/health"
+    SsmCommand: "aws ssm start-session --target <instance-id>"
+  stack_resources:
+    - "S3 Bucket (config bundle)"
+    - "EC2 Instance (t3.medium)"
+    - "Security Group (22, 3050, 18789)"
+    - "IAM Role (S3 read + SSM)"
+    - "Elastic IP"
+    - "BucketDeployment (Lambda)"
+
+  our_instance:
+    gateway_token: "0cd8108d-e545-4924-9c24-80baf84a5726"
+    proxy_url: "ws://13.223.130.153:3050"
+    health_check: "http://13.223.130.153:3050/health"
+    openrouter_key_source: "AWS Secrets Manager: gbautomation/core/openrouter-api-key"
+
+# ZeroClaw Binary & Commands
+commands:
+  daemon:
+    description: "Run ZeroClaw in production mode (gateway + scheduler + heartbeat)"
+    command: "zeroclaw daemon"
+    note: "This is the recommended production command. Creates daemon_state.json."
+
+  gateway:
+    description: "Run gateway only (no scheduler/heartbeat)"
+    command: "zeroclaw gateway"
+    note: "Use 'daemon' for production instead"
+
+  doctor:
+    description: "Health check — reports ok/warnings/errors"
+    command: "zeroclaw doctor"
+    note: "No --non-interactive flag in ZeroClaw. Just run 'zeroclaw doctor'."
+    our_result: "22 ok, 2 warnings, 0 errors"
+
+  config:
+    description: "Config management"
+    subcommands:
+      schema: "zeroclaw config schema  # Dump full JSON Schema for config.toml"
+      get: "zeroclaw config get <key>"
+      set: "zeroclaw config set <key> <value>"
+
+  skills:
+    description: "Skill management"
+    subcommands:
+      list: "zeroclaw skills list"
+      install: "zeroclaw skills install <source>"
+    our_skills:
+      - "customer-planning v0.1.0"
+      - "scope-generator v0.1.0"
+      - "customer-qa v0.1.0"
+
+  agent:
+    description: "Run an agent task"
+    command: "zeroclaw agent --prompt 'Your task here'"
+
+  memory:
+    description: "Memory management"
+    subcommands:
+      status: "zeroclaw memory status"
+      search: "zeroclaw memory search 'query'"
+
+# ZeroClaw Configuration (config.toml)
+config:
+  format: "TOML"
+  file_path: "/home/ubuntu/.zeroclaw/config.toml"
+  template_path: "zeroclaw-deploy/config/config.toml.tmpl"
+
+  top_level_fields:
+    default_provider: '"openrouter"'
+    default_model: '"deepseek/deepseek-chat" (model ID sent directly to OpenRouter)'
+    default_temperature: "0.7"
+    api_key: "OpenRouter API key (for doctor check, runtime uses env var)"
+    api_url: '"https://openrouter.ai/api/v1"'
+
+  sections:
+    gateway:
+      port: "18789"
+      host: '"127.0.0.1"'
+      allow_public_bind: "false"
+      require_pairing: "false"
+      paired_tokens: '["<gateway-token>"]  # Array of allowed tokens'
+      note: "paired_tokens replaces OpenClaw's gateway.auth.token"
+
+    agent:
+      max_tool_iterations: "20"
+      max_history_messages: "50"
+      compact_context: "false"
+
+    browser:
+      enabled: "true"
+      backend: '"agent_browser"'
+      native_headless: "true"
+
+    autonomy:
+      note: "ALL fields required when section exists — no defaults for missing fields"
+      level: '"full"'
+      workspace_only: "false"
+      block_high_risk_commands: "false"
+      require_approval_for_medium_risk: "false"
+      max_actions_per_hour: "100"
+      max_cost_per_day_cents: "1000"
+      allowed_commands: '["git", "npm", "cargo", "ls", "cat", "grep", "find", "echo", "pwd", "wc", "head", "tail", "date", "curl", "node", "python3", "agent-browser", "aws"]'
+      forbidden_paths: "[]"
+      auto_approve: '["file_read", "memory_recall", "shell", "file_write", "browser"]'
+      always_ask: "[]"
+      allowed_roots: "[]"
+      shell_env_passthrough: "[]"
+      non_cli_excluded_tools: "[]"
+
+    web_fetch:
+      enabled: "true"
+
+    web_search:
+      enabled: "true"
+      provider: '"duckduckgo"'
+
+  invalid_keys:
+    note: "These do NOT exist in ZeroClaw config schema — do not use"
+    list:
+      - "providers (use top-level api_key instead)"
+      - "safety"
+      - "sessions"
+      - "workspace_dir"
+      - "agent.models (use top-level default_model)"
+      - "gateway.auth_token (use gateway.paired_tokens array)"
+
+  critical_gotcha: |
+    The [autonomy] section requires ALL fields when partially specified.
+    If you add 'level = "full"' without the rest, ZeroClaw crashes with
+    'missing field forbidden_paths'. Always include every field.
+
+# Runtime Environment
+runtime:
+  env_vars:
+    OPENROUTER_API_KEY: "Required for LLM calls at runtime (set in systemd service)"
+    ZEROCLAW_API_KEY: "Alias for OPENROUTER_API_KEY (both set for compatibility)"
+    HOME: "/home/ubuntu"
+    note: "config.toml api_key is for doctor check only. Runtime needs env vars."
+
+  systemd_services:
+    zeroclaw:
+      name: "zeroclaw.service"
+      path: "/etc/systemd/system/zeroclaw.service"
+      exec: "/usr/local/bin/zeroclaw daemon"
+      user: "ubuntu"
+      restart: "always (3s)"
+      env:
+        - "HOME=/home/ubuntu"
+        - "OPENROUTER_API_KEY=<key>"
+        - "ZEROCLAW_API_KEY=<key>"
+      commands:
+        status: "systemctl status zeroclaw"
+        restart: "systemctl restart zeroclaw"
+        logs: "journalctl -u zeroclaw -f"
+
+    gateway_proxy:
+      name: "gateway-proxy.service"
+      path: "/etc/systemd/system/gateway-proxy.service"
+      exec: "/usr/bin/node server.js"
+      workdir: "/opt/gateway-proxy"
+      user: "ubuntu"
+      restart: "always (3s)"
+      env:
+        - "ZEROCLAW_WS_URL=ws://127.0.0.1:18789/ws/chat"
+        - "ZEROCLAW_AUTH_TOKEN=<gateway-token>"
+        - "PORT=3050"
+      commands:
+        status: "systemctl status gateway-proxy"
+        restart: "systemctl restart gateway-proxy"
+        logs: "journalctl -u gateway-proxy -f"
+
+  note: "Services are system-level (not --user). Managed by systemctl, not systemctl --user."
+
+# Customer Gateway Proxy
+proxy:
+  location: "/opt/gateway-proxy/"
+  port: 3050
+  source: "zeroclaw-deploy/proxy/server.js"
+  protocol: "WebSocket"
+
+  endpoints:
+    health: "GET http://<ip>:3050/health"
+    websocket: "ws://<ip>:3050?token=<customer-token>"
+    admin_tokens: "POST /admin/tokens, GET /admin/tokens"
+
+  zeroclaw_ws_protocol:
+    endpoint: "ws://127.0.0.1:18789/ws/chat?token=<token>&session_id=<sid>"
+    note: "Endpoint is /ws/chat — NOT root /"
+    send: '{"type":"message","content":"..."}'
+    receive:
+      chunk: '{"type":"chunk","content":"..."} — streaming text'
+      tool_call: '{"type":"tool_call","name":"...","input":{}} — tool use'
+      tool_result: '{"type":"tool_result","name":"...","output":"..."} — tool result'
+      thinking: '{"type":"thinking","content":"..."} — thinking block'
+      done: '{"type":"done","full_response":"..."} — response complete'
+      error: '{"type":"error","message":"..."} — error'
+    note: "ZeroClaw done message has NO usage field. Proxy estimates tokens from response length (chars/4)."
+
+  cost_tracking:
+    method: "Estimated from response text length (chars / 4 = tokens)"
+    pricing: "DeepSeek V3: $0.27/M input, $1.10/M output"
+    note: "ZeroClaw doesn't provide token counts. Estimation only."
+
+  auth:
+    method: "Token-based (query param ?token=xxx)"
+    token_store: "/opt/gateway-proxy/tokens.json"
+    rate_limit: "30 messages per 60 seconds per customer"
+
+# State and Directories
+state:
+  root: "/home/ubuntu/.zeroclaw"
+  config_file: "/home/ubuntu/.zeroclaw/config.toml"
+  directories:
+    workspace: "/home/ubuntu/.zeroclaw/workspace"
+    workspace_skills: "/home/ubuntu/.zeroclaw/workspace/skills/"
+    state: "/home/ubuntu/.zeroclaw/workspace/state/"
+    memory: "/home/ubuntu/.zeroclaw/workspace/memory/"
+    cron: "/home/ubuntu/.zeroclaw/workspace/cron/"
+
+# Workspace Files
+workspace_files:
+  description: "Files loaded into agent context on every session turn"
+  workspace_dir: "/home/ubuntu/.zeroclaw/workspace"
+  files:
+    IDENTITY.md: "Agent name, persona, emoji, character vibe"
+    SOUL.md: "Quality bar, philosophy, never-do rules, communication style"
+    USER.md: "User profile, timezone, preferences, communication style"
+    MEMORY.md: "Mission, 90-day goals, active context — agent writes here"
+    AGENTS.md: "Autonomy rules, allowlist, what agent can do without asking"
+    TOOLS.md: "API inventory, credentials guidance, tool usage conventions"
+    HEARTBEAT.md: "Scheduled check templates and periodic workflow triggers"
+
+  installed_skills:
+    - "customer-planning (v0.1.0) — Discovery and planning conversations"
+    - "scope-generator (v0.1.0) — Generate Scope of Work documents"
+    - "customer-qa (v0.1.0) — Answer customer questions about services"
+
+# Network Architecture
+network:
+  security_group:
+    ports:
+      - "22 (SSH) — open to 0.0.0.0/0"
+      - "3050 (Gateway Proxy) — open to 0.0.0.0/0"
+      - "18789 (ZeroClaw Gateway) — open to 0.0.0.0/0"
+  architecture: |
+    Customer Browser (React on gb-automation-landing:5173)
+        ↕ WebSocket ws://13.223.130.153:3050?token=xxx
+    Customer Gateway Proxy (Node.js, port 3050, on instance)
+        ↕ WebSocket ws://127.0.0.1:18789/ws/chat?token=xxx&session_id=yyy
+    ZeroClaw Gateway (Rust binary, port 18789, <5MB RAM)
+        ↕ HTTPS to OpenRouter API
+    LLM (DeepSeek/Gemini/Claude via OpenRouter)
+
+# Troubleshooting
+troubleshooting:
+  common_issues:
+    - issue: "zeroclaw doctor shows warnings"
+      cause: "Expected — 2 warnings are normal (no channels, etc.)"
+      fix: "As long as 0 errors, instance is healthy"
+
+    - issue: "OpenRouter 400 Bad Request"
+      cause: "Invalid model ID — don't use openrouter/ prefix"
+      fix: "Use bare model IDs: deepseek/deepseek-chat, google/gemini-2.0-flash-001"
+
+    - issue: "OpenRouter API key not set at runtime"
+      cause: "config.toml api_key is for doctor only. Runtime needs env var."
+      fix: "Add OPENROUTER_API_KEY and ZEROCLAW_API_KEY to zeroclaw.service Environment"
+
+    - issue: "SSM commands return wrong paths"
+      cause: "SSM runs as root, so ~ resolves to /root/"
+      fix: "Use sudo -u ubuntu HOME=/home/ubuntu <command>"
+
+    - issue: "Proxy can't connect to ZeroClaw"
+      cause: "Wrong WebSocket path"
+      fix: "ZeroClaw WS endpoint is /ws/chat — set ZEROCLAW_WS_URL=ws://127.0.0.1:18789/ws/chat"
+
+    - issue: "zeroclaw crashes on startup with 'missing field'"
+      cause: "[autonomy] section requires ALL fields when partially specified"
+      fix: "Include every autonomy field from the schema. Use zeroclaw config schema to see required fields."
+
+    - issue: "Cost tracking shows $0.00"
+      cause: "ZeroClaw done message has no usage field"
+      fix: "Proxy estimates tokens from response length (chars/4). This is expected."
+
+    - issue: "Gateway not responding after deploy"
+      cause: "User data script still running"
+      fix: |
+        Check bootstrap progress:
+        aws ssm send-command --instance-ids <id> --document-name AWS-RunShellScript \
+          --parameters '{"commands":["tail -20 /var/log/zeroclaw-setup.log"]}'
+
+    - issue: "Skills not found"
+      cause: "Skills not in /home/ubuntu/.zeroclaw/workspace/skills/"
+      fix: "Skills are delivered via S3 bundle during CDK deploy. Check S3 bucket contents."
+
+    - issue: "daemon_state.json error"
+      cause: "Running zeroclaw gateway instead of zeroclaw daemon"
+      fix: "Use zeroclaw daemon for production (includes gateway + scheduler + heartbeat)"
+
+# Quick Reference
+quick_reference:
+  check_status: |
+    aws ssm send-command --instance-ids i-0487dd1848f73cb3e \
+      --document-name AWS-RunShellScript \
+      --parameters '{"commands":["sudo -u ubuntu HOME=/home/ubuntu zeroclaw doctor 2>&1"]}'
+  health_check: "curl http://13.223.130.153:3050/health"
+  ssm_session: "aws ssm start-session --target i-0487dd1848f73cb3e"
+  restart_zeroclaw: |
+    aws ssm send-command --instance-ids i-0487dd1848f73cb3e \
+      --document-name AWS-RunShellScript \
+      --parameters '{"commands":["systemctl restart zeroclaw && sleep 2 && systemctl restart gateway-proxy"]}'
+  view_logs: |
+    aws ssm send-command --instance-ids i-0487dd1848f73cb3e \
+      --document-name AWS-RunShellScript \
+      --parameters '{"commands":["journalctl -u zeroclaw --no-pager -n 20"]}'
+  list_skills: |
+    aws ssm send-command --instance-ids i-0487dd1848f73cb3e \
+      --document-name AWS-RunShellScript \
+      --parameters '{"commands":["sudo -u ubuntu HOME=/home/ubuntu zeroclaw skills list 2>&1"]}'
+  deploy_new_client: |
+    cd zeroclaw-deploy && cdk deploy \
+      --context client=<name> \
+      --context openrouterKey=<key> \
+      --context modelTier=cheap
+  gateway_token: "0cd8108d-e545-4924-9c24-80baf84a5726"
+
+# Resources
+resources:
+  documentation:
+    - url: "https://github.com/zeroclaw-labs/zeroclaw"
+      title: "ZeroClaw GitHub Repository"
+    - url: "https://github.com/zeroclaw-labs/zeroclaw/releases"
+      title: "ZeroClaw Releases"
+  cdk_stack:
+    - path: "zeroclaw-deploy/lib/zeroclaw-stack.ts"
+      title: "Main CDK Stack"
+    - path: "zeroclaw-deploy/config/config.toml.tmpl"
+      title: "ZeroClaw Config Template"
+    - path: "zeroclaw-deploy/proxy/server.js"
+      title: "Customer Gateway Proxy"
+  legacy:
+    - url: "https://docs.openclaw.ai/"
+      title: "OpenClaw Documentation (legacy — old instance is dead)"
+      note: "ZeroClaw has OpenClaw compat layer but uses its own config format"

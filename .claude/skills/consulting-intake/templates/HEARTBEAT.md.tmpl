@@ -1,0 +1,312 @@
+# HEARTBEAT.md Template
+# Fill {placeholders} from session_output/domains/*/workflows/*.json
+# where trigger_type == "heartbeat"
+#
+# Leave empty (or comments only) to skip heartbeat API calls.
+# Each heartbeat task spawns a subagent, runs an eval, and sends Telegram
+# only if the threshold condition is met — keeps noise low.
+#
+# MODEL: Use CHEAP tier for all background checks (saves $10-30/mo).
+# Set heartbeat.model in openclaw.json to openrouter/deepseek/deepseek-chat-v3.
+
+{heartbeat_tasks}
+
+# Quiet hours: {quiet_hours}
+# During quiet hours, respond HEARTBEAT_OK
+
+---
+
+## Heartbeat Task Library
+## Copy relevant tasks into the section above for each client.
+## Each task: spawns subagent → runs eval → sends Telegram if threshold met.
+
+---
+
+### COMMS
+
+**[HB-01] Email urgency scan**
+```
+Spawn subagent: scan Gmail inbox for messages with urgency signals (subject contains
+"urgent", "ASAP", "time-sensitive", "deadline", "action required", sender is known client).
+Eval: any matching message flagged in last 30 min?
+If yes: send Telegram "📧 Urgent email from {sender}: {subject}" with link.
+State: track message IDs to avoid duplicate alerts.
+```
+
+**[HB-02] DM flag**
+```
+Spawn subagent: check Telegram/Discord DMs for unread messages older than 2h that
+haven't received a reply. Look for messages with "?" or names in @-mentions.
+Eval: unread DM older than 2h AND no reply sent?
+If yes: send Telegram "💬 Unread DM from {sender} (2h+): {preview}"
+State: track last-checked timestamps per channel.
+```
+
+**[HB-03] Social mentions**
+```
+Spawn subagent: search Twitter/X, Reddit, LinkedIn for mentions of {brand_name}
+or {client_handle} posted in the last 4h. Exclude retweets of own content.
+Eval: sentiment negative OR high engagement (>50 likes/comments)?
+If yes: send Telegram "📣 Mention: {platform} — {preview}" with link.
+State: store seen post IDs.
+```
+
+**[HB-04] Slack/Discord digest**
+```
+Spawn subagent: pull last 50 messages from {priority_channels} list.
+Summarize into 3 bullets: decisions made, action items, blockers raised.
+Eval: any new action item with @{client_name} or any blocker unresolved >4h?
+If yes: send Telegram "📋 Channel digest: {summary_bullets}"
+Run: every 4h during working hours.
+```
+
+---
+
+### MARKET / DATA
+
+**[HB-05] Price alerts**
+```
+Spawn subagent: check current price of {watchlist_assets} against alert thresholds
+in workspace/state/price_alerts.json.
+Format: [{asset, threshold_pct, direction}]
+Eval: any asset crossed threshold since last check?
+If yes: send Telegram "📈 {asset} {direction} {pct}% — now ${price}"
+State: update last_price per asset to avoid repeat alerts.
+```
+
+**[HB-06] News headlines**
+```
+Spawn subagent: fetch top 10 headlines from {news_sources} (RSS or API).
+Filter to topics in {topic_keywords} list.
+Eval: any headline matching keywords AND published in last 2h?
+If yes: send Telegram "📰 {count} relevant headlines" with top 3 as bullets.
+State: store seen headline URLs.
+```
+
+**[HB-07] Competitor monitor**
+```
+Spawn subagent: check {competitor_domains} for new blog posts, product pages,
+or pricing changes (compare against cached snapshot in state/competitor_cache.json).
+Eval: page content changed AND change involves pricing, features, or launch?
+If yes: send Telegram "🔍 Competitor update: {domain} — {change_summary}"
+Run: every 6h.
+```
+
+**[HB-08] Signal feed digest**
+```
+Spawn subagent: pull latest posts from {signal_channels} (Discord/Telegram groups,
+RSS feeds, or API endpoints defined in workspace/state/signal_sources.json).
+Score each signal: relevance to {domain} (1-5), urgency (1-5).
+Eval: any signal with combined score >= 8?
+If yes: send Telegram "⚡ Signal: {score}/10 — {summary}" with source link.
+State: store seen signal IDs.
+```
+
+---
+
+### DEV / OPS
+
+**[HB-09] CI/CD health**
+```
+Spawn subagent: query GitHub Actions / GitLab CI for last 3 workflow runs on
+{monitored_repos} using gh CLI or API.
+Eval: any run in "failure" or "cancelled" state in last 2h?
+If yes: send Telegram "🚨 CI failed: {repo}/{workflow} — {error_summary}" with link.
+State: track last-seen run IDs.
+```
+
+**[HB-10] Uptime check**
+```
+Spawn subagent: HTTP GET {monitored_urls} list with 10s timeout.
+Check: status code 200-299, response time < {latency_threshold_ms}.
+Eval: any URL non-200 OR latency > threshold?
+If yes: send Telegram "🔴 Down: {url} — {status_code} ({latency}ms)"
+Run: every 5 min during business hours, every 30 min overnight.
+```
+
+**[HB-11] Open PRs**
+```
+Spawn subagent: list open PRs on {repos} via gh CLI. Filter to PRs:
+- authored by {team_members} AND open > 2 days with no review
+- OR marked "needs review" AND no activity in 24h
+Eval: any stale PR matching criteria?
+If yes: send Telegram "🔁 Stale PR: {title} ({days}d open) — {link}"
+Run: every 4h during business hours.
+```
+
+**[HB-12] Error rate spike**
+```
+Spawn subagent: query {monitoring_source} (Datadog/Sentry/CloudWatch) for error
+rate on {service_name} over last 15 min. Compare to 7-day p75 baseline.
+Eval: current error rate > baseline * {spike_multiplier} (default 3x)?
+If yes: send Telegram "🚨 Error spike: {service} {rate}/min vs baseline {baseline}/min"
+State: store last baseline value.
+```
+
+---
+
+### CALENDAR / PRODUCTIVITY
+
+**[HB-13] Conflict detection**
+```
+Spawn subagent: fetch today's calendar events via Google Calendar API.
+Detect overlapping events (start time of event B < end time of event A).
+Eval: any overlap found in next 4h?
+If yes: send Telegram "⚠️ Calendar conflict: {event_a} overlaps {event_b} at {time}"
+Run: once at 7am local, then every 2h until 6pm.
+```
+
+**[HB-14] Deadline approach**
+```
+Spawn subagent: read workspace/state/deadlines.json (maintained by agent).
+Check for items with due_date within next {warning_hours} hours (default: 48h).
+Eval: any deadline within warning window not yet marked complete?
+If yes: send Telegram "⏰ Deadline in {hours}h: {task_name} — {notes}"
+Run: every 4h.
+```
+
+**[HB-15] Stale tasks**
+```
+Spawn subagent: query {task_tool} (Linear/Notion/Todoist) for tasks assigned to
+{client_name} last updated > {staleness_days} days ago (default: 5d).
+Eval: any stale tasks in active sprint or high priority?
+If yes: send Telegram "📋 {count} stale tasks (>{staleness_days}d): {top_3_titles}"
+Run: daily at 9am local.
+```
+
+---
+
+### CONTENT
+
+**[HB-16] Queue status**
+```
+Spawn subagent: check {content_scheduler} (Buffer/Hypefury/later.com) API for
+scheduled posts in next 24h. Flag if queue empty or any post missing required fields.
+Eval: queue empty for next 24h OR post flagged with missing media/caption?
+If yes: send Telegram "📭 Content queue low: {details}"
+Run: daily at 8am local.
+```
+
+**[HB-17] Engagement summary**
+```
+Spawn subagent: fetch last 7 days engagement metrics from {platform_apis}
+(impressions, likes, comments, shares, follower delta).
+Compare to prior 7-day window. Compute % change per metric.
+Eval: any metric down >20% week-over-week?
+If yes: send Telegram "📊 Engagement drop: {metric} -{pct}% WoW"
+Run: weekly, Monday 7am local.
+```
+
+**[HB-18] Publish reminder**
+```
+Spawn subagent: check if any piece in {content_calendar} (workspace/state/content_calendar.json)
+is marked "ready" AND scheduled date = today AND not yet published.
+Eval: ready content past its scheduled publish time?
+If yes: send Telegram "📢 Publish reminder: '{title}' scheduled for {time} — ready to go"
+Run: check at 9am and 12pm local.
+```
+
+---
+
+### SECURITY
+
+**[HB-19] Login alerts**
+```
+Spawn subagent: query {auth_provider} (Auth0/Supabase/AWS Cognito) for login
+events in last 1h. Flag logins from new IPs or countries not in allowlist.
+Eval: login from unknown IP or country?
+If yes: send Telegram "🔐 Login alert: {email} from {ip} ({country}) at {time}"
+State: maintain ip_allowlist.json in workspace/state/.
+```
+
+**[HB-20] Cert expiry**
+```
+Spawn subagent: check TLS certificate expiry for {monitored_domains} using
+openssl s_client or a cert API. Alert at 30d, 14d, 7d thresholds.
+Eval: any cert expiring within {days_threshold}?
+If yes: send Telegram "🔒 Cert expiring in {days}d: {domain} (expires {date})"
+Run: daily.
+```
+
+**[HB-21] Unusual API activity**
+```
+Spawn subagent: check API usage dashboards for {api_keys_to_monitor} (OpenRouter,
+Anthropic, OpenAI, Stripe). Alert if spend in last hour > {hourly_spend_cap}.
+Eval: hourly spend > cap OR usage > 2x prior-hour average?
+If yes: send Telegram "⚠️ Unusual API spend: {provider} ${amount}/hr (cap: ${cap})"
+Run: every 30 min.
+```
+
+---
+
+### BUSINESS
+
+**[HB-22] Lead pipeline**
+```
+Spawn subagent: query CRM ({crm_tool}: HubSpot/Notion/Airtable) for leads
+in "contacted" stage with last_activity > {stale_days} days ago (default: 3d).
+Eval: any stale leads in pipeline?
+If yes: send Telegram "💼 {count} stale leads ({stale_days}d+ no contact): {names}"
+Run: daily at 9am.
+```
+
+**[HB-23] Invoice aging**
+```
+Spawn subagent: check {billing_tool} (Stripe/QuickBooks/Wave) for unpaid invoices
+past due date. Group by: 1-7d late, 8-14d late, 15d+ late.
+Eval: any invoice 7d+ overdue?
+If yes: send Telegram "💰 Overdue invoice: {client} ${amount} ({days}d late)"
+Run: daily at 10am.
+```
+
+**[HB-24] Key metric drift**
+```
+Spawn subagent: fetch {kpi_name} from {metric_source} (database query, API,
+or dashboard scrape). Compare to {target_value} and {last_week_value}.
+Eval: metric below target by > {drift_threshold_pct}% for 3 consecutive days?
+If yes: send Telegram "📉 {kpi_name} at {current_value} — {pct}% below target"
+Run: daily after business close.
+```
+
+---
+
+### META / SELF-IMPROVEMENT
+
+**[HB-25] OpenClaw update scanner**
+```
+Spawn subagent: check for new OpenClaw releases and tutorials.
+
+Step 1 — GitHub releases:
+  GET https://api.github.com/repos/openclaw/openclaw/releases/latest
+  Compare tag_name to state/openclaw_last_seen_version.txt
+  If new: prepare update_notice = "OpenClaw {tag} released: {release_notes_url}"
+
+Step 2 — YouTube scan (Matthew Berman channel):
+  Use yt-dlp to list recent videos from channel @MatthewBermanAI:
+    yt-dlp --flat-playlist --playlist-end 5 --dump-single-json "https://www.youtube.com/@MatthewBermanAI/videos"
+  Compare video IDs to state/openclaw_youtube_seen.json
+  Filter titles containing "openclaw" or "open claw" (case-insensitive)
+  If new matching video: add to notice
+
+Step 3 — Send Telegram if anything found:
+  Format: "🦞 OpenClaw update:\n{update_notice}"
+  Reminder: "Run: npm update -g openclaw@latest"
+
+State files:
+  workspace/state/openclaw_last_seen_version.txt
+  workspace/state/openclaw_youtube_seen.json
+
+Run: daily at 06:00 UTC.
+```
+
+**[HB-26] Weekly self-improvement trigger**
+```
+Spawn subagent: review the last 7 days of agent activity logs in
+workspace/logs/ (or query session history if available).
+Identify: top 3 repeated errors, top 3 slowest tasks, any user corrections.
+Generate: 3 concrete improvement suggestions with implementation steps.
+Write to: workspace/state/weekly_improvement_{YYYY-MM-DD}.md
+Eval: always send (weekly digest).
+Send Telegram: "🧠 Weekly agent review: {top_issue} — improvement logged"
+Run: weekly, Sunday 20:00 local.
+```

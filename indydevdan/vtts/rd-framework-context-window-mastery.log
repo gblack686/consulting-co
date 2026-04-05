@@ -1,0 +1,176 @@
+======================================================================
+ULTRA-FAST VTT PROCESSOR
+======================================================================
+
+Reading: vtts/rd-framework-context-window-mastery.txt
+✓ Found 126 VTT URLs
+
+Downloading in parallel (max 10 concurrent)...
+----------------------------------------------------------------------
+  ✓ Chunk   1 (20 lines)
+  ✓ Chunk   0 (13 lines)
+  ✓ Chunk   8 (21 lines)
+  ✓ Chunk   6 (21 lines)
+  ✓ Chunk   3 (20 lines)
+  ✓ Chunk   7 (22 lines)
+  ✓ Chunk   2 (18 lines)
+  ✓ Chunk   5 (21 lines)
+  ✓ Chunk   9 (21 lines)
+  ✓ Chunk   4 (20 lines)
+  ✓ Chunk  12 (21 lines)
+  ✓ Chunk  13 (18 lines)
+  ✓ Chunk  11 (16 lines)
+  ✓ Chunk  10 (22 lines)
+  ✓ Chunk  18 (19 lines)
+  ✓ Chunk  14 (23 lines)
+  ✓ Chunk  15 (26 lines)
+  ✓ Chunk  17 (25 lines)
+  ✓ Chunk  19 (21 lines)
+  ✓ Chunk  16 (25 lines)
+  ✓ Chunk  20 (21 lines)
+  ✓ Chunk  22 (22 lines)
+  ✓ Chunk  23 (23 lines)
+  ✓ Chunk  21 (22 lines)
+  ✓ Chunk  24 (25 lines)
+  ✓ Chunk  26 (22 lines)
+  ✓ Chunk  25 (25 lines)
+  ✓ Chunk  28 (22 lines)
+  ✓ Chunk  29 (23 lines)
+  ✓ Chunk  27 (25 lines)
+  ✓ Chunk  30 (25 lines)
+  ✓ Chunk  31 (21 lines)
+  ✓ Chunk  34 (24 lines)
+  ✓ Chunk  32 (22 lines)
+  ✓ Chunk  35 (26 lines)
+  ✓ Chunk  33 (20 lines)
+  ✓ Chunk  38 (29 lines)
+  ✓ Chunk  36 (28 lines)
+  ✓ Chunk  37 (26 lines)
+  ✓ Chunk  39 (24 lines)
+  ✓ Chunk  40 (28 lines)
+  ✓ Chunk  41 (26 lines)
+  ✓ Chunk  45 (22 lines)
+  ✓ Chunk  43 (22 lines)
+  ✓ Chunk  42 (26 lines)
+  ✓ Chunk  47 (23 lines)
+  ✓ Chunk  48 (23 lines)
+  ✓ Chunk  44 (26 lines)
+  ✓ Chunk  46 (27 lines)
+  ✓ Chunk  49 (32 lines)
+  ✓ Chunk  50 (22 lines)
+  ✓ Chunk  51 (24 lines)
+  ✓ Chunk  55 (22 lines)
+  ✓ Chunk  52 (24 lines)
+  ✓ Chunk  53 (24 lines)
+  ✓ Chunk  54 (22 lines)
+  ✓ Chunk  56 (23 lines)
+  ✓ Chunk  57 (20 lines)
+  ✓ Chunk  58 (25 lines)
+  ✓ Chunk  59 (25 lines)
+  ✓ Chunk  60 (19 lines)
+  ✓ Chunk  62 (26 lines)
+  ✓ Chunk  63 (24 lines)
+  ✓ Chunk  64 (26 lines)
+  ✓ Chunk  61 (22 lines)
+  ✓ Chunk  65 (25 lines)
+  ✓ Chunk  69 (26 lines)
+  ✓ Chunk  68 (25 lines)
+  ✓ Chunk  70 (20 lines)
+  ✓ Chunk  66 (26 lines)
+  ✓ Chunk  74 (23 lines)
+  ✓ Chunk  71 (26 lines)
+  ✓ Chunk  77 (27 lines)
+  ✓ Chunk  76 (28 lines)
+  ✓ Chunk  78 (22 lines)
+  ✓ Chunk  84 (23 lines)
+  ✓ Chunk  79 (25 lines)
+  ✓ Chunk  90 (26 lines)
+  ✓ Chunk  85 (18 lines)
+  ✓ Chunk  89 (25 lines)
+  ✓ Chunk  92 (24 lines)
+  ✓ Chunk  93 (21 lines)
+  ✓ Chunk  91 (24 lines)
+  ✓ Chunk  94 (26 lines)
+  ✓ Chunk  96 (25 lines)
+  ✓ Chunk  95 (24 lines)
+  ✓ Chunk  97 (20 lines)
+  ✓ Chunk  99 (20 lines)
+  ✓ Chunk 100 (20 lines)
+  ✓ Chunk  98 (24 lines)
+  ✓ Chunk 103 (25 lines)
+  ✓ Chunk 112 (22 lines)
+  ✓ Chunk 111 (23 lines)
+  ✓ Chunk 105 (28 lines)
+  ✓ Chunk 113 (20 lines)
+  ✓ Chunk 115 (26 lines)
+  ✓ Chunk 116 (29 lines)
+  ✓ Chunk 118 (23 lines)
+  ✓ Chunk 117 (23 lines)
+  ✓ Chunk 119 (23 lines)
+  ✓ Chunk 120 (24 lines)
+  ✓ Chunk 125 (23 lines)
+  ✓ Chunk 121 (20 lines)
+  ✓ Chunk 123 (22 lines)
+  ✓ Chunk 122 (31 lines)
+  ✓ Chunk 124 (24 lines)
+  ✓ Chunk 126 (23 lines)
+  ✓ Chunk 127 (27 lines)
+  ✓ Chunk 128 (27 lines)
+  ✓ Chunk 129 (29 lines)
+  ✓ Chunk 130 (24 lines)
+  ✓ Chunk 136 (25 lines)
+  ✓ Chunk 133 (23 lines)
+  ✓ Chunk 134 (22 lines)
+  ✓ Chunk 135 (23 lines)
+  ✓ Chunk 131 (26 lines)
+  ✓ Chunk 132 (24 lines)
+  ✓ Chunk 137 (20 lines)
+  ✓ Chunk 139 (23 lines)
+  ✓ Chunk 138 (22 lines)
+  ✓ Chunk 140 (25 lines)
+  ✓ Chunk 143 (20 lines)
+  ✓ Chunk 144 (24 lines)
+  ✓ Chunk 146 (13 lines)
+  ✓ Chunk 145 (22 lines)
+  ✓ Chunk 999999 (100 lines)
+
+======================================================================
+✓ EXTRACTION COMPLETE!
+======================================================================
+
+📄 Output: vtts\rd-framework-context-window-mastery_transcript.txt
+📊 Successful: 126
+📊 Failed: 0
+📊 Characters: 133,941
+📊 Words: 11,717
+📊 Lines: 3,012
+
+======================================================================
+Preview (first 500 characters):
+======================================================================
+A focused engineer is
+a performant engineer and
+a focused agent is
+a performant agent. Context
+engineering is the name
+of the game for
+high value engineering in
+the age of agents.
+So how good are
+your context engineering skills?
+Do you have a
+skill issue? Let's find
+out and fix it.
+out and fix it.
+There are three levels
+of context engineering and
+a fourth hidden level
+if you're on the
+bleeding edge pushing into
+agentic engineering. But first
+we have to ask,
+why are context engineering
+techniques
+
+... (transcript continues)
+======================================================================

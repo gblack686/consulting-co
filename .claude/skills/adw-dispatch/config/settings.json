@@ -1,0 +1,43 @@
+{
+  "skill_name": "adw-dispatch",
+  "version": "1.0.0",
+  "description": "Route ADWs to local Haiku or GitHub Actions Opus based on complexity",
+
+  "routing": {
+    "haiku_threshold": 5000,
+    "opus_threshold": 20000,
+    "default_mode": "auto",
+    "modes": ["local", "github", "auto"]
+  },
+
+  "github_actions": {
+    "repo": "gblack686/consulting-co",
+    "workflow": "adw-plan-build-review.yml",
+    "branch": "main",
+    "token_env": "GH_TOKEN"
+  },
+
+  "local_execution": {
+    "model": "claude-haiku-4-5-20251001",
+    "max_turns": 50,
+    "permission_mode": "acceptEdits",
+    "working_dir": null
+  },
+
+  "worktree": {
+    "enabled": true,
+    "base_dir": "../adw-workspaces",
+    "branch_prefix": "adw/",
+    "auto_cleanup": true
+  },
+
+  "complexity_factors": {
+    "keywords_high": ["refactor", "implement", "architect", "migrate", "redesign"],
+    "keywords_medium": ["add", "update", "fix", "enhance", "improve"],
+    "keywords_low": ["typo", "comment", "rename", "format", "lint"],
+    "base_tokens_per_file": 2000,
+    "multiplier_high": 3.0,
+    "multiplier_medium": 1.5,
+    "multiplier_low": 0.5
+  }
+}

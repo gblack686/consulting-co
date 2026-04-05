@@ -1,0 +1,759 @@
+{
+ "Resources": {
+  "BundleBucket1F629586": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketName": "zeroclaw-bundle-greg-trading-274487662938",
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    },
+    "Tags": [
+     {
+      "Key": "aws-cdk:auto-delete-objects",
+      "Value": "true"
+     },
+     {
+      "Key": "aws-cdk:cr-owned:bundle:8e7f9401",
+      "Value": "true"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/BundleBucket/Resource"
+   }
+  },
+  "BundleBucketPolicy272FD4E6": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "BundleBucket1F629586"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:PutBucketPolicy",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::GetAtt": [
+          "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+          "Arn"
+         ]
+        }
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "BundleBucket1F629586",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "BundleBucket1F629586",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/BundleBucket/Policy/Resource"
+   }
+  },
+  "BundleBucketAutoDeleteObjectsCustomResource0C2708A9": {
+   "Type": "Custom::S3AutoDeleteObjects",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+      "Arn"
+     ]
+    },
+    "BucketName": {
+     "Ref": "BundleBucket1F629586"
+    }
+   },
+   "DependsOn": [
+    "BundleBucketPolicy272FD4E6"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/BundleBucket/AutoDeleteObjectsCustomResource/Default"
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role"
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-274487662938-us-east-1",
+     "S3Key": "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Description": {
+     "Fn::Join": [
+      "",
+      [
+       "Lambda function for auto-deleting objects in ",
+       {
+        "Ref": "BundleBucket1F629586"
+       },
+       " S3 bucket."
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6",
+    "aws:asset:property": "Code"
+   }
+  },
+  "BundleDeployAwsCliLayerD7024947": {
+   "Type": "AWS::Lambda::LayerVersion",
+   "Properties": {
+    "Content": {
+     "S3Bucket": "cdk-hnb659fds-assets-274487662938-us-east-1",
+     "S3Key": "0cfdecad2260a3a84ad0c2d08a77e03c9d25e26c7b52f26b1e1faf97aef92f18.zip"
+    },
+    "Description": "/opt/awscli/aws"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/BundleDeploy/AwsCliLayer/Resource",
+    "aws:asset:path": "asset.0cfdecad2260a3a84ad0c2d08a77e03c9d25e26c7b52f26b1e1faf97aef92f18.zip",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Content"
+   }
+  },
+  "BundleDeployCustomResourceD21C9B0E": {
+   "Type": "Custom::CDKBucketDeployment",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+      "Arn"
+     ]
+    },
+    "SourceBucketNames": [
+     "cdk-hnb659fds-assets-274487662938-us-east-1"
+    ],
+    "SourceObjectKeys": [
+     "df5e34ea64f29663cc21ee4ce5f0ad5effe0369746d2e3e6c10d4443d9746309.zip"
+    ],
+    "DestinationBucketName": {
+     "Ref": "BundleBucket1F629586"
+    },
+    "DestinationBucketKeyPrefix": "bundle",
+    "WaitForDistributionInvalidation": true,
+    "Prune": true,
+    "OutputObjectKeys": true
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/BundleDeploy/CustomResource/Default"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-274487662938-us-east-1"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-274487662938-us-east-1/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "BundleBucket1F629586",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "BundleBucket1F629586",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "Roles": [
+     {
+      "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-274487662938-us-east-1",
+     "S3Key": "3423a042b818e31c1e34a19d6689ab2e5f9b70fcbe9e71df66f241b20a200bd9.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+     }
+    },
+    "Handler": "index.handler",
+    "Layers": [
+     {
+      "Ref": "BundleDeployAwsCliLayerD7024947"
+     }
+    ],
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.13",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+    "aws:asset:path": "asset.3423a042b818e31c1e34a19d6689ab2e5f9b70fcbe9e71df66f241b20a200bd9",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ZeroClawSGB6B2857F": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "ZeroClaw gateway for greg-trading",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "SSH",
+      "FromPort": 22,
+      "IpProtocol": "tcp",
+      "ToPort": 22
+     },
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Gateway proxy",
+      "FromPort": 3050,
+      "IpProtocol": "tcp",
+      "ToPort": 3050
+     },
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "ZeroClaw gateway",
+      "FromPort": 18789,
+      "IpProtocol": "tcp",
+      "ToPort": 18789
+     }
+    ],
+    "VpcId": "vpc-7855ec02"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/ZeroClawSG/Resource"
+   }
+  },
+  "ZeroClawRole06D4FAC4": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/ZeroClawRole/Resource"
+   }
+  },
+  "ZeroClawRoleDefaultPolicyAAD8F209": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "BundleBucket1F629586",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "BundleBucket1F629586",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "ZeroClawRoleDefaultPolicyAAD8F209",
+    "Roles": [
+     {
+      "Ref": "ZeroClawRole06D4FAC4"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/ZeroClawRole/DefaultPolicy/Resource"
+   }
+  },
+  "ZeroClawInstanceInstanceProfile8028132D": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "ZeroClawRole06D4FAC4"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/ZeroClawInstance/InstanceProfile"
+   }
+  },
+  "ZeroClawInstance25D3E57B7db8c118295f26f7": {
+   "Type": "AWS::EC2::Instance",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "BlockDeviceMappings": [
+     {
+      "DeviceName": "/dev/sda1",
+      "Ebs": {
+       "VolumeSize": 20,
+       "VolumeType": "gp3"
+      }
+     }
+    ],
+    "IamInstanceProfile": {
+     "Ref": "ZeroClawInstanceInstanceProfile8028132D"
+    },
+    "ImageId": "ami-0071174ad8cbb9e17",
+    "InstanceType": "t3.medium",
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "ZeroClawSGB6B2857F",
+       "GroupId"
+      ]
+     }
+    ],
+    "SubnetId": "subnet-0651992e07deb99f6",
+    "Tags": [
+     {
+      "Key": "Client",
+      "Value": "greg-trading"
+     },
+     {
+      "Key": "Name",
+      "Value": "zeroclaw-greg-trading"
+     },
+     {
+      "Key": "Project",
+      "Value": "zeroclaw"
+     }
+    ],
+    "UserData": {
+     "Fn::Base64": {
+      "Fn::Join": [
+       "",
+       [
+        "#!/bin/bash\n#!/bin/bash\nset -euo pipefail\nexec > /var/log/zeroclaw-setup.log 2>&1\necho \"=== ZeroClaw bootstrap starting ===\"\n\n# 1. System deps + AWS CLI v2\napt-get update -qq\napt-get install -y -qq unzip curl\ncurl -fsSL \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o /tmp/awscliv2.zip\nunzip -q /tmp/awscliv2.zip -d /tmp\n/tmp/aws/install\nrm -rf /tmp/awscliv2.zip /tmp/aws\n\n# 2. Download ZeroClaw binary\nZEROCLAW_VERSION=\"v0.1.7\"\ncd /tmp\ncurl -fsSL \"https://github.com/zeroclaw-labs/zeroclaw/releases/download/${ZEROCLAW_VERSION}/zeroclaw-x86_64-unknown-linux-gnu.tar.gz\" -o zeroclaw.tar.gz\ntar xzf zeroclaw.tar.gz\nmv zeroclaw /usr/local/bin/zeroclaw\nchmod +x /usr/local/bin/zeroclaw\nrm zeroclaw.tar.gz\necho \"=== ZeroClaw binary installed ===\"\n\n# 3. Download bundle from S3\nBUCKET=\"",
+        {
+         "Ref": "BundleBucket1F629586"
+        },
+        "\"\nmkdir -p /home/ubuntu/.zeroclaw /opt/gateway-proxy\naws s3 cp s3://$BUCKET/bundle/config.toml /home/ubuntu/.zeroclaw/config.toml\naws s3 cp --recursive s3://$BUCKET/bundle/workspace/ /home/ubuntu/.zeroclaw/workspace/\naws s3 cp --recursive s3://$BUCKET/bundle/proxy/ /opt/gateway-proxy/\nchown -R ubuntu:ubuntu /home/ubuntu/.zeroclaw\necho \"=== Bundle downloaded from S3 ===\"\n\n# 4. ZeroClaw systemd service\ncat > /etc/systemd/system/zeroclaw.service << SVCEOF\n[Unit]\nDescription=ZeroClaw Gateway\nAfter=network.target\n\n[Service]\nType=simple\nUser=ubuntu\nExecStart=/usr/local/bin/zeroclaw daemon\nRestart=always\nRestartSec=3\nEnvironment=HOME=/home/ubuntu\nEnvironment=OPENROUTER_API_KEY=PLACEHOLDER\nEnvironment=ZEROCLAW_API_KEY=PLACEHOLDER\n\n[Install]\nWantedBy=multi-user.target\nSVCEOF\n\n# 5. Install Node.js 22\ncurl -fsSL https://deb.nodesource.com/setup_22.x | bash -\napt-get install -y nodejs\necho \"=== Node.js installed: $(node --version) ===\"\n\n# 6. Install agent-browser globally\nnpm install -g agent-browser\necho \"=== agent-browser installed: $(agent-browser --version 2>/dev/null || echo unknown) ===\"\n\n# 7. Install Chromium deps for agent-browser headless (Ubuntu 24.04)\napt-get install -y -qq libnss3 libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64 \\\n  libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 \\\n  libpango-1.0-0 libasound2t64 libxshmfence1 fonts-liberation xdg-utils || \\\n  apt-get install -y -qq libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \\\n    libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 \\\n    libpango-1.0-0 libasound2 libxshmfence1 fonts-liberation xdg-utils\n# Let agent-browser download its own Chromium on first run\nsu - ubuntu -c \"agent-browser --version\" || true\necho \"=== Chromium deps installed ===\"\n\n# 8. Install proxy dependencies\ncd /opt/gateway-proxy && npm install --production\nchown -R ubuntu:ubuntu /opt/gateway-proxy\n\n# 9. Gateway proxy systemd service\ncat > /etc/systemd/system/gateway-proxy.service << PROXYEOF\n[Unit]\nDescription=Customer Gateway Proxy\nAfter=zeroclaw.service\n\n[Service]\nType=simple\nUser=ubuntu\nWorkingDirectory=/opt/gateway-proxy\nExecStart=/usr/bin/node server.js\nRestart=always\nRestartSec=3\nEnvironment=ZEROCLAW_WS_URL=ws://127.0.0.1:18789/ws/chat\nEnvironment=ZEROCLAW_AUTH_TOKEN=baa079ac-8cec-4eb3-83df-c822c778ed37\nEnvironment=PORT=3050\n\n[Install]\nWantedBy=multi-user.target\nPROXYEOF\n\n# 10. Enable and start services\nsystemctl daemon-reload\nsystemctl enable zeroclaw gateway-proxy\nsystemctl start zeroclaw\nsleep 2\nsystemctl start gateway-proxy\n\necho \"=== ZeroClaw bootstrap complete ===\""
+       ]
+      ]
+     }
+    }
+   },
+   "DependsOn": [
+    "ZeroClawRoleDefaultPolicyAAD8F209",
+    "ZeroClawRole06D4FAC4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/ZeroClawInstance/Resource"
+   }
+  },
+  "ZeroClawEIP": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "zeroclaw-greg-trading-eip"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/ZeroClawEIP"
+   }
+  },
+  "ZeroClawEIPAssoc": {
+   "Type": "AWS::EC2::EIPAssociation",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "ZeroClawEIP",
+      "AllocationId"
+     ]
+    },
+    "InstanceId": {
+     "Ref": "ZeroClawInstance25D3E57B7db8c118295f26f7"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/ZeroClawEIPAssoc"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQ3WrCQBCFn8X7dVpj6b2mtgiFBgO9DetmIqObXdnZNYSQdy+bpEavzplvfhhOAsnbCl4XsuGlKi9LTUfoci/VRciGi47X0G2DuqAXaWUmN0pmNal2xlM9FlvJ2AteF12JV23bGo2HsfVxB0Iyo2fYROmFlvWxlNCllfmWLbpfdEzWiJzMSaO35jMY5SO5m7S6w16QrKE7WI0RDzq/OLu9YS+NwszZijT2AlUCXY4qOPLtl7PhGseewf/S44Hod/tskg2zVSSHT3qRBva2PiDb4MbJ2T+1MmdvVKKLeYkhh9zLE5nTlEahYxKFbFhpgk3DqaYhHPF4/Cf4a/C9MLZEOPPLLVnDO6wWZyZaumA81QiHUf8As2wH+PIBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "ZeroClaw-greg-trading/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "PublicIp": {
+   "Description": "ZeroClaw instance public IP",
+   "Value": {
+    "Fn::GetAtt": [
+     "ZeroClawEIP",
+     "PublicIp"
+    ]
+   }
+  },
+  "InstanceId": {
+   "Description": "EC2 instance ID (for SSM Session Manager)",
+   "Value": {
+    "Ref": "ZeroClawInstance25D3E57B7db8c118295f26f7"
+   }
+  },
+  "GatewayToken": {
+   "Description": "Gateway auth token (use in customer portal)",
+   "Value": "baa079ac-8cec-4eb3-83df-c822c778ed37"
+  },
+  "ProxyUrl": {
+   "Description": "Customer Gateway Proxy WebSocket URL",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "ws://",
+      {
+       "Fn::GetAtt": [
+        "ZeroClawEIP",
+        "PublicIp"
+       ]
+      },
+      ":3050"
+     ]
+    ]
+   }
+  },
+  "SshCommand": {
+   "Description": "SSH into the instance",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "ssh ubuntu@",
+      {
+       "Fn::GetAtt": [
+        "ZeroClawEIP",
+        "PublicIp"
+       ]
+      }
+     ]
+    ]
+   }
+  },
+  "SsmCommand": {
+   "Description": "SSM Session Manager (no SSH key needed)",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "aws ssm start-session --target ",
+      {
+       "Ref": "ZeroClawInstance25D3E57B7db8c118295f26f7"
+      }
+     ]
+    ]
+   }
+  },
+  "HealthCheckUrl": {
+   "Description": "Proxy health check URL",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "http://",
+      {
+       "Fn::GetAtt": [
+        "ZeroClawEIP",
+        "PublicIp"
+       ]
+      },
+      ":3050/health"
+     ]
+    ]
+   }
+  },
+  "SetupLog": {
+   "Description": "Watch bootstrap progress",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "ssh ubuntu@",
+      {
+       "Fn::GetAtt": [
+        "ZeroClawEIP",
+        "PublicIp"
+       ]
+      },
+      " \"tail -f /var/log/zeroclaw-setup.log\""
+     ]
+    ]
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,81 @@
+# Expert plan.md Template
+# Fill {placeholders} from domain spec
+
+---
+type: expert-file
+parent: "[[{domain_name}/_index]]"
+file-type: command
+command-name: plan
+tags: [expert-file, command, planning]
+---
+
+# {Domain_Display_Name} Expert - Plan Mode
+
+> Create TAC-informed implementation plans for {domain_name} changes.
+
+## Purpose
+
+Analyze a requested change or addition to {domain_name} workflows and produce an implementation plan.
+
+## Allowed Tools
+`Read, Write, Glob, Grep, Bash`
+
+## Workflow
+
+### Step 1: Load Context
+1. Read `expertise.md` for current {domain_name} state
+2. Read `_index.md` for available commands and tools
+3. Read relevant `MEMORY.md` entries for past decisions
+
+### Step 2: Analyze Request
+1. What is being asked?
+2. Which existing workflows are affected?
+3. What new capabilities are needed?
+4. Are there dependencies on other domains?
+
+### Step 3: Classify by TAC Pattern
+Map the request to the appropriate TAC pattern:
+
+| If the request involves... | Use TAC Pattern |
+|---------------------------|-----------------|
+| A repeatable output (report, newsletter) | TAC-3: Template Engineering |
+| A single focused research task | TAC-6: One Agent One Purpose |
+| Data sync between tools | TAC-5: Feedback Loops |
+| Content with style/context needs | TAC-3 + TAC-9: Context Engineering |
+| A workflow needing human approval | TAC-5 + TAC-12: Orchestration |
+| Learning from past results | TAC-10: Self-Improving Prompts |
+| Multi-step pipeline | TAC-7: Zero-Touch Engineering |
+
+### Step 4: Research (if needed)
+If the plan requires information about tools or APIs not in expertise.md:
+
+- **API research**: Dispatch browser agent
+  ```
+  Task(subagent_type: "playwright-bowser-agent", prompt: "Research {tool} API...")
+  ```
+- **Tutorial research**: Dispatch YouTube agent
+  ```
+  Task(subagent_type: "youtube-transcript-agent", prompt: "Search OpenClaw {topic}...")
+  ```
+
+### Step 5: Output Plan
+Write to `specs/{domain_name}-{feature}.md`:
+
+```markdown
+# Plan: {feature_name}
+
+## TAC Pattern: {pattern_name}
+## Affected Files: {file_list}
+## New Files Needed: {new_file_list}
+
+## Implementation Steps
+1. {step}
+2. {step}
+3. {step}
+
+## Validation Criteria
+- {criterion}
+- {criterion}
+
+## Estimated Complexity: {low|medium|high}
+```

@@ -1,0 +1,112 @@
+CLAUDE CODE HOOKS FOR MULTI-AGENT OBSERVABILITY
+IndyDevDan - Video ID: 9ijnN985O_c
+URL: https://www.youtube.com/watch?v=9ijnN985O_c
+
+TRANSCRIPT SUMMARY:
+==================
+
+This video explores Claude Code Hooks - a revolutionary feature that enables complete observability into Claude Code agent behavior through comprehensive hook event tracking and real-time monitoring systems.
+
+KEY TOPICS COVERED:
+- Claude Code Hooks architecture and design
+- Real-time observability for AI agents
+- Multi-agent monitoring and coordination
+- Hook event tracking system
+- WebSocket-based visualization
+- SQLite event storage
+- Debugging agent lifecycle events
+- Building observable AI systems
+
+ARCHITECTURE OVERVIEW:
+Claude Agents → Hook Scripts → HTTP POST → Bun Server → SQLite → WebSocket → Vue Client
+
+This creates a complete chain for:
+1. Capturing hook events from Claude Code execution
+2. Sending events to a backend server
+3. Storing events in a structured database
+4. Broadcasting events via WebSocket
+5. Real-time visualization in Vue client
+
+KEY HOOK TYPES:
+- Agent lifecycle hooks (initialization, execution, completion)
+- Task hooks (start, progress, completion)
+- Error hooks (debugging information)
+- Custom hooks (user-defined monitoring points)
+
+PROBLEM SOLVED:
+Building and debugging multi-agent systems has been difficult because developers couldn't see:
+- Agent internal state changes
+- Communication between agents
+- Hook execution order and timing
+- Performance bottlenecks
+- Error propagation through agent networks
+
+SOLUTION:
+Claude Code Hooks provide a transparent window into agent behavior through:
+1. Real-time event capture at hook points
+2. Comprehensive logging of all agent activities
+3. Visual representation of agent interactions
+4. Debugging tools for agent lifecycle
+5. Performance monitoring capabilities
+
+BENEFITS:
+- Complete visibility into multi-agent systems
+- Easier debugging of complex agent interactions
+- Performance optimization opportunities
+- Better understanding of agent behavior patterns
+- Real-time monitoring during development and production
+
+TECHNICAL IMPLEMENTATION:
+- Hook event format (timestamp, agent_id, hook_type, data)
+- Event broadcasting via WebSocket for real-time updates
+- SQLite for persistent event storage
+- Bun server for high-performance event processing
+- Vue client for interactive visualization
+
+USE CASES:
+1. Debugging multi-agent workflows
+2. Performance monitoring of agent systems
+3. Understanding agent communication patterns
+4. Optimizing agent lifecycle management
+5. Building production-ready observable systems
+6. Training and learning agent behavior
+7. Compliance and audit logging
+
+ADVANCED TOPICS:
+- Hook filtering and selective monitoring
+- Event aggregation and analytics
+- Real-time alerting based on hook events
+- Integration with external logging systems
+- Custom hook development
+- Hook performance optimization
+
+GITHUB REPOSITORY:
+https://github.com/disler/claude-code-hooks-multi-agent-observability
+
+This repository provides:
+- Complete source code for the observability system
+- Example hook implementations
+- Documentation and guides
+- Interactive visualization tools
+- Sample multi-agent systems with hooks
+
+RELATED WORK:
+- Claude Code Hooks: The Secret to Precise Control Over AI Agents
+- Mastering Claude Hooks: Building Observable AI Systems (Part 2)
+- Multi-Agent Orchestration: Running 10+ Claude Instances in Parallel
+- claude-code-hooks-mastery repository
+
+KEY TAKEAWAYS:
+1. Observability is critical for multi-agent system success
+2. Claude Code Hooks provide unprecedented visibility
+3. Real-time monitoring enables better debugging
+4. Hook-based architecture scales to complex systems
+5. Observable systems are easier to optimize and maintain
+6. Hooks enable new possibilities for agent coordination
+7. WebSocket-based visualization makes patterns visible
+8. SQLite storage enables historical analysis
+9. Hook events form the foundation of production systems
+10. Understanding agent lifecycle is key to optimization
+
+IMPACT:
+This feature transforms how developers build and debug multi-agent systems by providing complete transparency into agent behavior and interactions. It's a game-changer for building production-ready AI systems.

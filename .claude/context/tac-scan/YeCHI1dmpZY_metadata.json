@@ -1,0 +1,30 @@
+{
+  "video_id": "YeCHI1dmpZY",
+  "title": "This One Command Makes Coding Agents Find All Their Mistakes (Use it Now)",
+  "channel": "Cole Medin",
+  "subscribers": "192K",
+  "views": 12687,
+  "date": "Feb 25, 2026",
+  "likes": 552,
+  "comments": 57,
+  "duration": "00:20:00",
+  "url": "https://www.youtube.com/watch?v=YeCHI1dmpZY",
+  "transcript_source": "DownSub (auto-generated English)",
+  "transcript_segments": 594,
+  "transcript_chars": 29481,
+  "description_chars": 1538,
+  "github_links": [
+    "https://github.com/coleam00/link-in-bio-page-builder/blob/main/.claude/skills/e2e-test/SKILL.md"
+  ],
+  "chapters": [
+    { "timestamp": "0:00", "title": "Self-Healing AI Coding Workflow" },
+    { "timestamp": "3:18", "title": "The 6-Step Automation Framework" },
+    { "timestamp": "5:37", "title": "Testing User Journeys and UI" },
+    { "timestamp": "8:33", "title": "The E2E Report" },
+    { "timestamp": "9:26", "title": "Bright Data" },
+    { "timestamp": "11:05", "title": "Live Demo and Validation" },
+    { "timestamp": "15:00", "title": "Database Branching for Testing" },
+    { "timestamp": "17:02", "title": "Using this with Feature Development" }
+  ],
+  "extracted_at": "2026-02-26"
+}

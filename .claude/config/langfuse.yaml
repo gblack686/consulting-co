@@ -1,0 +1,57 @@
+# Langfuse Configuration
+# Maps repository directory names to Langfuse project IDs
+# All projects are in the 'gbautomation' organization
+
+langfuse:
+  # Langfuse server configuration
+  base_url: http://localhost:3000
+  organization: gbautomation
+
+  # API credentials (from environment variables)
+  # LANGFUSE_PUBLIC_KEY and LANGFUSE_SECRET_KEY
+
+  # Project mapping by directory name
+  # Format: directory_name -> project_id
+  projects:
+    consulting-co: cmi19k90n000atd0713m9maij
+    # Add more projects here as needed
+    # example-repo: cmXXXXXXXXXXXXXXXXXXXXXXXX
+
+  # Default behavior
+  # If PROJECT_NAME is not set in .env, uses current directory name
+  # to look up the project ID from the mapping above
+  auto_detect_project: true
+
+  # Tracing configuration
+  tracing:
+    enabled: true
+    sample_rate: 1.0  # 100% - trace all sessions
+    max_trace_depth: 10
+    batch_timeout_seconds: 30
+    batch_size: 50
+
+  # What to capture
+  capture:
+    user_input: true
+    assistant_response: true
+    tool_calls: true
+    token_usage: true
+    latency: true
+    metadata: true
+    model_name: true
+
+  # Hook configuration
+  hooks:
+    # Hook event names to process
+    events:
+      - Stop  # Main session end event
+      - SubagentStop  # For tracking subagent execution
+
+    # What to send to Langfuse from each event
+    stop_event:
+      - conversation trace (top-level)
+      - claude generation (child observation)
+      - tool spans (per-tool execution)
+      - session metadata
+      - latency metrics
+      - token usage breakdown

@@ -1,0 +1,18 @@
+# Gmail Manager Dependencies
+
+# Google APIs
+google-api-python-client>=2.100.0
+google-auth-httplib2>=0.1.0
+google-auth-oauthlib>=1.0.0
+
+# Anthropic Claude API
+anthropic>=0.28.0
+
+# Supabase
+supabase>=2.0.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Configuration
+pyyaml>=6.0

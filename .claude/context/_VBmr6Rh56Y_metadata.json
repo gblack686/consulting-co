@@ -1,0 +1,39 @@
+{
+  "video_id": "_VBmr6Rh56Y",
+  "title": "How to Use the Claude Code Playground Plugin",
+  "channel": "GritAI Studio",
+  "channel_url": "https://www.youtube.com/channel/UC5Ls4Ms_OFhUXIAm3iScyYQ",
+  "upload_date": "20260217",
+  "duration": 898,
+  "duration_string": "14:58",
+  "view_count": 12854,
+  "like_count": 438,
+  "comment_count": 19,
+  "tags": [
+    "claude code tutorial",
+    "claude ai",
+    "anthropic claude",
+    "interactive flat panel",
+    "ai agents",
+    "Claude Code Playground Plugin",
+    "claude code plugins",
+    "interactive AI tools",
+    "AI visual feedback",
+    "claude code playground",
+    "AI coding tools",
+    "playground plugin anthropic",
+    "claude code skills",
+    "concept map AI",
+    "image annotation AI",
+    "AI development workflow",
+    "claude code demo",
+    "vibe coding",
+    "AI-assisted development",
+    "GritAI",
+    "GritAI Studio"
+  ],
+  "categories": [
+    "Science & Technology"
+  ],
+  "description": "The Claude Code team just shipped a Playground plugin that changes how you interact with Claude. Instead of typing instructions, Claude builds you an interactive tool - sliders, annotation regions, approve/reject buttons - tailored to whatever you are working on. You give feedback visually, and the playground translates it back into precise instructions.\n\nIn this video I walk through exactly how it works and build several playgrounds live.\n\n\ud83d\udce9 Join our newsletter \u2192 https://gritai.kit.com/\n\ud83c\udf10 Website \u2192 https://www.gritai.studio/\n\ud83d\udc49 Join our AI community \u2192 https://www.gritai.studio/build-with-ai-community\n\nWhat you will learn:\n- How to install the Playground plugin in one command\n- The three-panel architecture every playground follows (controls + preview + prompt output)\n- How to annotate screenshots and give spatial feedback Claude can act on\n- How concept maps capture your knowledge state for targeted learning prompts\n- How to turn any custom playground into a reusable skill\n- The six built-in templates and when to use each one\n\n\u23f1\ufe0f Timestamps\n0:00 Playground - A new way to interact with Claude Code\n0:41 What is the Playground plugin?\n1:42 Installation - One command setup\n3:27 Playground Examples \n6:00 Build your own playground\n8:52 Learning with playground (Concept Map)\n11:03 Quick overview of all six templates\n12:44 Recap and takeaways\n\n\ud83d\udd17 Links and Resources\nPlayground Plugin (GitHub): https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground\n\nClaude Code Plugins Documentation: https://code.claude.com/docs/en/plugins\nDiscover and Install Plugins: https://code.claude.com/docs/en/discover-plugins\nSkills Documentation: https://code.claude.com/docs/en/skills\nAnthropic Official Plugin Marketplace: https://github.com/anthropics/claude-plugins-official\n\n\ud83d\udcfa Related videos\nMCP - https://www.youtube.com/watch?v=6x5G5Lam1Wk\nClaude Code For Beginners - https://www.youtube.com/watch?v=6ZGbKvM1bIM\n\nFollow us\nNewsletter \u2192 https://gritai.kit.com/\nWebsite \u2192 https://www.gritai.studio/\n\n#ClaudeCode #PlaygroundPlugin #AI #AItools #GritAI"
+}

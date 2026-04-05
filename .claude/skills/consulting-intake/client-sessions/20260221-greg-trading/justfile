@@ -1,0 +1,299 @@
+# OpenClaw Client Workspace — Greg Trading
+# Generated: 2026-02-21
+# Agent: Sebastian 📊
+#
+# ── First time? Run in this order ─────────────────────────────────────────────
+#   just install-openclaw   → install GB Automation's OpenClaw (once, prereq)
+#   just onboard            → run the OpenClaw setup wizard (once)
+#   just setup              → deploy your workspace + skills + cron
+#
+# ── Day-to-day ────────────────────────────────────────────────────────────────
+#   just status             → check OpenClaw is running
+#   just verify             → full health check
+#   just update             → pull latest workspace updates and redeploy
+#   just update-openclaw    → pull latest GB OpenClaw and rebuild
+#
+# ── Individual steps ──────────────────────────────────────────────────────────
+#   just deploy             → workspace config files only
+#   just skills             → skills only
+#   just cron               → cron jobs only
+#   just restart            → restart gateway
+#   just dry-run            → preview without copying
+
+set shell := ["bash", "-cu"]
+
+# GB Automation OpenClaw fork
+gb_openclaw_fork := "https://github.com/gblack686/openclaw.git"
+gb_openclaw_build := env_var_or_default("GB_OPENCLAW_BUILD", "~/.gb-openclaw-build")
+
+# Resolve repo root and OpenClaw workspace dir
+repo_root    := `git rev-parse --show-toplevel`
+openclaw_dir := env_var_or_default("OPENCLAW_DIR", "~/.openclaw/workspace")
+
+# Show all commands
+default:
+    @just --list
+
+# ─── OpenClaw Installation (run once before anything else) ───────────────────
+
+# Install GB Automation's branded OpenClaw from the fork (builds from source)
+install-openclaw:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    build_dir="$(cygpath -u '{{gb_openclaw_build}}' 2>/dev/null || echo '{{gb_openclaw_build}}')"
+    build_dir="${build_dir/#\~/$HOME}"
+
+    echo "Installing GB Automation OpenClaw from fork..."
+    echo "Fork: {{gb_openclaw_fork}}"
+    echo ""
+
+    # Prerequisites check
+    for cmd in git node pnpm; do
+        if ! command -v "$cmd" &>/dev/null; then
+            echo "❌ Missing prerequisite: $cmd"
+            echo "   Install pnpm: npm install -g pnpm"
+            exit 1
+        fi
+    done
+
+    # Clone or update fork
+    if [ -d "$build_dir/.git" ]; then
+        echo "Updating existing fork clone..."
+        cd "$build_dir"
+        git fetch origin
+        git checkout main
+        git pull origin main
+    else
+        echo "Cloning GB OpenClaw fork..."
+        git clone "{{gb_openclaw_fork}}" "$build_dir"
+        cd "$build_dir"
+    fi
+
+    # Build
+    echo "Installing dependencies..."
+    pnpm install --frozen-lockfile
+    echo "Building gateway..."
+    pnpm build
+    echo "Building branded UI..."
+    pnpm ui:build
+
+    # Install globally
+    echo "Installing openclaw CLI globally..."
+    npm install -g .
+
+    echo ""
+    echo "✅ GB Automation OpenClaw installed"
+    echo "   Run: openclaw --version"
+    echo "   Next: just onboard"
+
+# Pull latest GB OpenClaw fork updates and rebuild
+update-openclaw:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    build_dir="$(cygpath -u '{{gb_openclaw_build}}' 2>/dev/null || echo '{{gb_openclaw_build}}')"
+    build_dir="${build_dir/#\~/$HOME}"
+
+    if [ ! -d "$build_dir/.git" ]; then
+        echo "❌ Fork not installed yet — run: just install-openclaw"
+        exit 1
+    fi
+
+    echo "Pulling latest GB OpenClaw updates..."
+    cd "$build_dir"
+    git pull origin main
+    pnpm install --frozen-lockfile
+    pnpm build
+    pnpm ui:build
+    npm install -g .
+    echo "✅ GB OpenClaw updated"
+    just restart
+
+# Run the OpenClaw onboarding wizard (first-time gateway setup)
+onboard:
+    @echo "Starting OpenClaw onboarding wizard..."
+    @openclaw onboard
+
+# ─── Full Workspace Setup (after openclaw is installed) ──────────────────────
+
+# Deploy workspace + agents + skills + cron, then restart and verify
+setup: deploy deploy-agents register-agents skills cron restart verify
+    @echo ""
+    @echo "══════════════════════════════════════════════"
+    @echo "✅  Greg Trading workspace is live"
+    @echo "    Agent: Sebastian 📊 (main)"
+    @echo "    Agent: Scout 📺 (youtube)"
+    @echo "    Domains: discord-scraping, portfolio-manager, back-tester, charting"
+    @echo "    Skills: 11 SKILL.md + 3 YouTube skills"
+    @echo "    Cron jobs: 7 Sebastian + 4 Scout = 11 scheduled tasks"
+    @echo "══════════════════════════════════════════════"
+
+# ─── Deploy ──────────────────────────────────────────────────────────────────
+
+# Copy workspace config files to OpenClaw directory
+deploy:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}"
+    echo "Deploying workspace config to $dest..."
+    mkdir -p "$dest"
+    cp -v "$root"/workspace/SOUL.md "$dest/"
+    cp -v "$root"/workspace/USER.md "$dest/"
+    cp -v "$root"/workspace/IDENTITY.md "$dest/"
+    cp -v "$root"/workspace/MEMORY.md "$dest/"
+    cp -v "$root"/workspace/AGENTS.md "$dest/"
+    cp -v "$root"/workspace/TOOLS.md "$dest/"
+    cp -v "$root"/workspace/HEARTBEAT.md "$dest/"
+    cp -v "$root"/workspace/openclaw.json "$dest/"
+    echo "✅ Workspace config deployed"
+
+# Copy skills to OpenClaw skills directory
+skills:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}/skills"
+    echo "Deploying skills to $dest..."
+    mkdir -p "$dest"
+    cp -rv "$root"/workspace/skills/* "$dest/"
+    echo "✅ 11 skills deployed"
+
+# Install cron jobs
+cron:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}"
+    echo "Installing cron jobs..."
+    cp "$root/workspace/cron-setup.sh" "$dest/"
+    bash "$dest/cron-setup.sh"
+    echo "✅ 7 cron jobs installed"
+
+# ─── Gateway ─────────────────────────────────────────────────────────────────
+
+# Restart the OpenClaw gateway
+restart:
+    @echo "Restarting OpenClaw gateway..."
+    @openclaw restart && echo "✅ Gateway restarted" || echo "⚠️  Could not restart — start manually with: openclaw start"
+
+# Check OpenClaw health
+verify:
+    @openclaw doctor
+
+# Show current OpenClaw status
+status:
+    @openclaw status
+
+# ─── Updates ─────────────────────────────────────────────────────────────────
+
+# Pull latest workspace deliverables from GitHub and redeploy
+update:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    cd "$root"
+    echo "Pulling latest workspace from GitHub..."
+    git pull origin main
+    just deploy
+    just skills
+    just restart
+    echo "✅ Workspace update complete"
+
+# ─── Dry Run ─────────────────────────────────────────────────────────────────
+
+# Preview what would be deployed without copying anything
+dry-run:
+    #!/usr/bin/env bash
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    dest="${OPENCLAW_DIR:-$HOME/.openclaw/workspace}"
+    echo "Would deploy to: $dest"
+    echo ""
+    echo "Workspace files:"
+    ls "$root/workspace/"*.md "$root/workspace/"*.json 2>/dev/null | xargs -I{} basename {}
+    echo ""
+    echo "Skills:"
+    find "$root/workspace/skills" -name "SKILL.md" | sed "s|$root/workspace/skills/||" | sort
+    echo ""
+    echo "Cron jobs (Sebastian):"
+    grep "openclaw cron" "$root/workspace/cron-setup.sh" 2>/dev/null || cat "$root/workspace/cron-setup.sh"
+    echo ""
+    echo "Cron jobs (Scout / YouTube):"
+    grep "openclaw cron" "$root/agents/youtube/cron-setup-youtube.sh" 2>/dev/null || echo "  (see agents/youtube/cron-setup-youtube.sh)"
+    echo ""
+    echo "Agents:"
+    ls "$root/agents/" 2>/dev/null | sed 's/^/  📺 /' || echo "  (no agents/ dir)"
+
+# ─── Agents ──────────────────────────────────────────────────────────────────
+
+# Deploy Scout (YouTube) agent workspace
+deploy-agents:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    base="${OPENCLAW_DIR:-$HOME/.openclaw}"
+
+    if [ -d "$root/agents/youtube" ]; then
+        dest="$base/workspace-youtube"
+        echo "Deploying Scout (YouTube) agent workspace to $dest..."
+        mkdir -p "$dest/skills/youtube/extract-transcript"
+        mkdir -p "$dest/skills/youtube/scan-channel"
+        mkdir -p "$dest/skills/youtube/summarize-video"
+        mkdir -p "$dest/transcripts" "$dest/summaries" "$dest/digests"
+        cp -v "$root/agents/youtube/IDENTITY.md"  "$dest/"
+        cp -v "$root/agents/youtube/SOUL.md"      "$dest/"
+        cp -v "$root/agents/youtube/AGENTS.md"    "$dest/"
+        cp -v "$root/agents/youtube/HEARTBEAT.md" "$dest/"
+        cp -v "$root/agents/youtube/skills/youtube/extract-transcript/SKILL.md" "$dest/skills/youtube/extract-transcript/"
+        cp -v "$root/agents/youtube/skills/youtube/scan-channel/SKILL.md"       "$dest/skills/youtube/scan-channel/"
+        cp -v "$root/agents/youtube/skills/youtube/summarize-video/SKILL.md"    "$dest/skills/youtube/summarize-video/"
+        touch "$dest/scan-log.md"
+        echo "✅ Scout agent workspace deployed"
+    else
+        echo "⚠️  No agents/youtube/ directory found — skipping"
+    fi
+
+# Register Scout agent with OpenClaw and load identity
+register-agents:
+    #!/usr/bin/env bash
+    base="${OPENCLAW_DIR:-$HOME/.openclaw}"
+    youtube_ws="$base/workspace-youtube"
+
+    if [ -d "$youtube_ws" ]; then
+        echo "Registering Scout (YouTube) agent..."
+        openclaw agents add youtube --workspace "$youtube_ws" 2>/dev/null || true
+        openclaw agents set-identity --agent youtube --workspace "$youtube_ws" --from-identity 2>/dev/null || true
+        echo "✅ Scout agent registered"
+    else
+        echo "⚠️  workspace-youtube not deployed yet — run: just deploy-agents"
+    fi
+
+# Install Scout YouTube agent cron jobs
+cron-youtube:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    root="$(cygpath -u '{{repo_root}}' 2>/dev/null || echo '{{repo_root}}')"
+    echo "Installing Scout cron jobs..."
+    bash "$root/agents/youtube/cron-setup-youtube.sh"
+    echo "✅ Scout cron jobs installed"
+
+# ─── YouTube Shortcuts ────────────────────────────────────────────────────────
+
+# Scan Kyle Doops Trading Show playlist for new videos
+youtube-scan days="1":
+    openclaw agent --agent youtube --message "Scan the Kyle Doops Trading Show playlist (PLmOv2_vzOoGcDGeu-HHfifExgbvmPLO3l) for new videos in the last {{days}} days. Extract transcripts, generate summaries with trading relevance scores. Write digest to digests/latest.md."
+
+# Extract transcript from a single YouTube video
+youtube-transcript video_id:
+    openclaw agent --agent youtube --message "Extract transcript for YouTube video: {{video_id}}" --deliver
+
+# Summarize a specific YouTube video from its saved transcript
+youtube-summarize video_id:
+    openclaw agent --agent youtube --message "Summarize YouTube video {{video_id}} from its saved transcript. Use trading relevance scoring for Hyper Liquid perps context."
+
+# Show Scout's archive status (transcripts + summaries count)
+youtube-status:
+    @openclaw agent --agent youtube --message "List all transcripts and summaries in the workspace. Show count per channel in scan-log.md."
+
+# Show today's digest (what Scout found for Sebastian's morning brief)
+youtube-digest:
+    @openclaw agent --agent youtube --message "Show the contents of digests/latest.md. Format as a clean summary for the morning brief."

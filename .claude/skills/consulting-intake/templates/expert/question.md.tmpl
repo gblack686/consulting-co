@@ -1,0 +1,65 @@
+# Expert question.md Template
+# Fill {placeholders} from domain spec
+
+---
+type: expert-file
+parent: "[[{domain_name}/_index]]"
+file-type: command
+command-name: question
+tags: [expert-file, command, read-only]
+---
+
+# {Domain_Display_Name} Expert - Question Mode
+
+> Answer questions about {domain_name} workflows without making any changes.
+
+## Purpose
+
+Query {domain_name} production processes, tool configurations, and scheduling without modifying any files.
+
+## Allowed Tools
+`Read, Glob, Grep, Bash(read-only)`
+
+## Question Categories
+
+### 1. {primary_workflow_name} Questions
+**Examples**:
+- "How does the {primary_workflow} work?"
+- "What are the steps for {primary_task}?"
+
+**Resolution**: Read expertise.md Part 2
+
+### 2. {secondary_workflow_name} Questions
+**Examples**:
+- "When does {secondary_task} run?"
+- "What's the output of {secondary_workflow}?"
+
+**Resolution**: Read expertise.md Part 3
+
+### 3. Scheduling Questions
+**Examples**:
+- "When does {task} run?"
+- "How do I change the {cron_name} schedule?"
+
+**Resolution**: Read expertise.md Part 5
+
+### 4. Tool/API Questions
+**Examples**:
+- "What's the {tool_name} API endpoint?"
+- "How do I authenticate with {service}?"
+
+**Resolution**: Read expertise.md Part 4
+
+### 5. Integration Questions
+**Examples**:
+- "How does {domain_name} connect to {other_domain}?"
+- "What data flows between {A} and {B}?"
+
+**Resolution**: Read expertise.md Part 6
+
+### 6. Troubleshooting Questions
+**Examples**:
+- "Why did {task} fail?"
+- "What are common issues with {tool}?"
+
+**Resolution**: Read expertise.md Part 7

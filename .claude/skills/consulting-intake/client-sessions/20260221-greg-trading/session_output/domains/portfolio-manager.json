@@ -1,0 +1,57 @@
+{
+  "domain": "portfolio-manager",
+  "display_name": "Portfolio Manager",
+  "description": "Monitor and manage open Hyper Liquid positions, assess risk, ensure stop-losses are always set, adjust TP levels, learn from critical trade decisions, and prevent major drawdowns.",
+  "tools": ["Hyper Liquid API (REST + WebSocket)", "Telegram (alerts)"],
+  "frequency": "Real-time monitoring + 15-minute heartbeat checks + on-demand",
+  "workflows": [
+    {
+      "name": "monitor-positions",
+      "description": "Continuously watch open positions on Hyper Liquid for risk thresholds",
+      "trigger": "heartbeat every 15m",
+      "steps": [
+        "Fetch open positions from Hyper Liquid API",
+        "For each position: check if stop-loss is set",
+        "Alert Greg via Telegram if any position is missing a stop-loss",
+        "Calculate current drawdown % for each position and portfolio total",
+        "If drawdown exceeds threshold: alert Greg with position details and suggested action",
+        "Log portfolio snapshot to daily memory"
+      ],
+      "output": "Position health report in memory + Telegram alert if action needed",
+      "approval_gate": "[APPROVAL GATE] Trade execution — Greg must manually act on alerts",
+      "blast_radius": "Low — monitoring only. Critical: no automated trade execution."
+    },
+    {
+      "name": "manage-risk",
+      "description": "Proactive risk management: stop-loss checks, TP optimization, drawdown prevention",
+      "trigger": "on-demand or cron",
+      "steps": [
+        "Analyze all open positions for risk/reward ratios",
+        "Check stop-loss levels against current price action",
+        "Recommend stop-loss adjustments (trailing stops, tightening after gains)",
+        "Recommend TP adjustments based on current momentum",
+        "Generate risk summary: position risk, correlation risk, portfolio max drawdown scenario",
+        "Present recommendations as actionable list to Greg"
+      ],
+      "output": "Risk management report + trade adjustment recommendations (proposals only)",
+      "approval_gate": "[APPROVAL GATE] All recommendations require Greg's manual execution",
+      "blast_radius": "Low — proposals only, no execution"
+    },
+    {
+      "name": "trade-journal",
+      "description": "Log and learn from every trade — closed positions, decisions, outcomes",
+      "trigger": "on position close event (detected via API) + daily review",
+      "steps": [
+        "Detect closed position via Hyper Liquid API",
+        "Log: entry, exit, P&L, duration, stop-loss used, TP used, notes",
+        "Classify outcome: target_hit / stopped_out / manual_close",
+        "Update running win rate and average P&L",
+        "Flag patterns: repeated mistakes, what worked",
+        "Weekly: generate trade journal summary for Greg's review"
+      ],
+      "output": "Structured trade log in memory + weekly performance summary",
+      "approval_gate": "None — autonomous logging and analysis",
+      "blast_radius": "Low — write to memory only"
+    }
+  ]
+}

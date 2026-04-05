@@ -1,0 +1,37 @@
+Do you think Stripe can afford to vibe code? ABSOLUTELY NOT. And neither can you. 🔥
+
+Stripe engineers are shipping 1,300 pull requests per week with ZERO human-written code. Their custom end-to-end coding agents called Minions start from a Slack message and end in a production-ready PR. This is what agentic engineering looks like at scale.
+
+🎥 VIDEO REFERENCES
+• Stripes 2025 Annual Letter: https://stripe.com/newsroom/news/stripe-2025-update
+• Stripe Minions Blog Post: https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents
+• The PI Coding Agent Video: https://youtu.be/f8cfH5XX-XU
+• PI Dev: https://pi.dev/
+
+
+✅ PUSH YOUR AGENTIC ENGINEERING BEYOND
+https://agenticengineer.com/tactical-agentic-coding?y=V5A1IU8VVp4
+
+🚀 In this video, we break down how Stripe Built their own custom coding agents called Minions. They use it WITH Claude Code AND Cursor. It's not either or it's BOTH. We go piece by piece through Stripe's entire agentic layer, from their API entry points and warm dev box pools to their powerful blueprint engine that combines deterministic code with agent flexibility. If you're serious about agentic engineering and production coding agents, this is a masterclass in coding agent architecture.
+
+🔥 Stripe operates a code base with millions of lines of code, an uncommon Ruby stack with homegrown libraries unknown to LLMs, and moves over $1 trillion per year in payment volume. Vibe coding simply doesn't work here. Their Minions are fully unattended coding agents built for one-shot tasks at massive scale. We break down why specialization is the key advantage for AI software engineering and how Stripe's agentic development workflow outperforms out-of-the-box AI coding agents.
+
+🛠️ We dig deep into Stripe's six critical components: the API layer with Slack, CLI, and web interfaces; agent sandboxes using EC2 dev boxes that spin up in 10 seconds; their custom agent harness forked from Goose; the blueprint engine that interleaves agents with deterministic code; context engineering with scoped rule files; and their toolshed, a meta tool for managing nearly 500 MCP tools. This is what developer productivity looks like when you stop vibe coding and start agentic engineering.
+
+💡 Key takeaways:
+
+Stripe Minions: Fully unattended coding agents shipping 1,300+ PRs per week with zero human-written code.
+
+Blueprint Engine: The marriage of code and agents, delivering the best of both deterministic workflows and AI flexibility.
+
+Agent Sandboxes: Parallelized EC2 dev boxes that mirror engineer environments for maximum agent autonomy.
+
+Context Engineering: Scoped rule files that conditionally load context as agents traverse the file system.
+
+Meta Tools: A toolshed that unlocks 500 MCP tools for their agentic systems without token explosion.
+
+In-Loop vs Out-Loop: The critical difference between babysitting your agent and deploying fully autonomous coding agents at scale.
+
+Stay focused and keep building.
+
+#agenticengineering #codingagents #stripeminions

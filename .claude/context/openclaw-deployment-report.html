@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Deployment Config Report</title>
+<style>
+  :root {
+    --bg: #0f1219;
+    --surface: #1a1f2e;
+    --surface2: #232a3b;
+    --surface3: #2c3548;
+    --border: #344058;
+    --text: #e2e8f0;
+    --text-dim: #8892a8;
+    --text-muted: #5a6478;
+    --greg-primary: #f59e0b;
+    --greg-dim: #92600a;
+    --greg-bg: rgba(245,158,11,0.08);
+    --fish-primary: #06b6d4;
+    --fish-dim: #0e7490;
+    --fish-bg: rgba(6,182,212,0.08);
+    --cruz-primary: #a78bfa;
+    --cruz-dim: #6d51c7;
+    --cruz-bg: rgba(167,139,250,0.08);
+    --shared-primary: #10b981;
+    --shared-bg: rgba(16,185,129,0.08);
+    --badge-invoke: #22d3ee;
+    --badge-enabled: #4ade80;
+    --badge-disabled: #64748b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  /* Header */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .header h1 span { color: var(--text-dim); font-weight: 400; }
+  .header-date { color: var(--text-muted); font-size: 13px; }
+
+  /* Stats Bar */
+  .stats-bar {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat {
+    flex: 1;
+    background: var(--surface);
+    padding: 16px 24px;
+    text-align: center;
+  }
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    gap: 4px;
+  }
+  .tab {
+    padding: 14px 24px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tab:hover { color: var(--text); background: var(--surface2); }
+  .tab.active { color: var(--text); border-bottom-color: var(--active-color, var(--text)); }
+  .tab .emoji { font-size: 18px; }
+  .tab .pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--surface3);
+    color: var(--text-muted);
+  }
+
+  /* Main Content */
+  .content { padding: 24px 32px; max-width: 1400px; margin: 0 auto; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Section */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Agent Topology */
+  .topology {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 24px;
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .agent-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 160px;
+  }
+  .agent-node {
+    padding: 14px 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid;
+    min-width: 140px;
+    position: relative;
+  }
+  .agent-node.main-node {
+    border-width: 3px;
+  }
+  .agent-name { font-weight: 700; font-size: 15px; }
+  .agent-id { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+  .agent-model { font-size: 10px; color: var(--text-dim); margin-top: 4px; font-family: monospace; padding: 2px 6px; background: rgba(0,0,0,0.3); border-radius: 4px; display: inline-block; }
+
+  .topology-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    min-width: 60px;
+  }
+  .connector-line {
+    width: 40px;
+    height: 2px;
+    background: var(--border);
+    position: relative;
+  }
+  .connector-line::after {
+    content: '▶';
+    position: absolute;
+    right: -6px;
+    top: -9px;
+    font-size: 10px;
+    color: var(--border);
+  }
+  .connector-vert {
+    width: 2px;
+    height: 20px;
+    background: var(--border);
+  }
+
+  .subagents {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .subagent-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Skills Grid */
+  .skills-domain {
+    margin-bottom: 20px;
+  }
+  .domain-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .domain-label::before {
+    content: '';
+    width: 3px;
+    height: 14px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+  }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    transition: all 0.15s;
+    cursor: default;
+  }
+  .skill-card:hover {
+    border-color: var(--text-muted);
+    transform: translateY(-1px);
+  }
+  .skill-name {
+    font-weight: 600;
+    font-size: 14px;
+    font-family: monospace;
+    margin-bottom: 6px;
+  }
+  .skill-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-enabled { background: rgba(74,222,128,0.12); color: var(--badge-enabled); }
+  .badge-invocable { background: rgba(34,211,238,0.12); color: var(--badge-invoke); }
+  .badge-disabled { background: rgba(100,116,139,0.12); color: var(--badge-disabled); }
+  .badge-agent {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  /* Channels */
+  .channels-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .channel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    min-width: 200px;
+    flex: 1;
+  }
+  .channel-name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .channel-detail { font-size: 12px; color: var(--text-dim); }
+  .channel-status {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+  .channel-status.active { background: var(--badge-enabled); }
+  .channel-status.inactive { background: var(--badge-disabled); }
+
+  /* Bindings */
+  .bindings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+  }
+  .binding-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .binding-target {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .binding-target .arrow { color: var(--text-muted); font-size: 12px; }
+  .binding-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .keyword {
+    font-size: 11px;
+    font-family: monospace;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--surface3);
+    color: var(--text-dim);
+  }
+
+  /* Cron */
+  .cron-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .cron-table th {
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+  .cron-table td {
+    padding: 10px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cron-table tr:last-child td { border-bottom: none; }
+  .cron-expr { font-family: monospace; color: var(--text-dim); }
+
+  /* Config Summary */
+  .config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .config-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .config-key { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .config-val { font-size: 14px; font-weight: 600; margin-top: 4px; }
+
+  /* Shared Skills */
+  .shared-section {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 2px solid var(--border);
+  }
+  .shared-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .shared-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 4px solid var(--shared-primary);
+  }
+  .shared-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-family: monospace;
+  }
+  .shared-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* Prompt Output */
+  .prompt-section {
+    margin-top: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .prompt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+  .prompt-header span {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+  }
+  .copy-btn {
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  .copy-btn:hover { background: var(--border); color: var(--text); }
+  .prompt-body {
+    padding: 16px;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-dim);
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .shared-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { flex-wrap: wrap; }
+    .stat { min-width: 120px; }
+    .topology { flex-direction: column; align-items: center; }
+    .topology-connector { transform: rotate(90deg); }
+    .subagents { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>OpenClaw <span>Deployment Report</span></h1>
+  <div class="header-date">Generated 2026-03-26 &middot; 3 Active Deployments</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-value">15</div><div class="stat-label">Total Agents</div></div>
+  <div class="stat"><div class="stat-value">36</div><div class="stat-label">Total Skills</div></div>
+  <div class="stat"><div class="stat-value">4</div><div class="stat-label">Active Channels</div></div>
+  <div class="stat"><div class="stat-value">3</div><div class="stat-label">Shared Skills</div></div>
+  <div class="stat"><div class="stat-value">3</div><div class="stat-label">Deployments</div></div>
+</div>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" data-tab="greg" style="--active-color: var(--greg-primary);" onclick="switchTab('greg')">
+    <span class="emoji">🦁</span> Sebastian <span class="pill">Greg Trading</span>
+  </button>
+  <button class="tab" data-tab="fish" style="--active-color: var(--fish-primary);" onclick="switchTab('fish')">
+    <span class="emoji">🐟</span> Finn <span class="pill">Fish Group</span>
+  </button>
+  <button class="tab" data-tab="cruz" style="--active-color: var(--cruz-primary);" onclick="switchTab('cruz')">
+    <span class="emoji">🌙</span> Luna <span class="pill">Cruz Creations</span>
+  </button>
+</div>
+
+<div class="content">
+
+  <!-- ===== GREG TRADING ===== -->
+  <div class="panel active" id="panel-greg">
+
+    <div class="section">
+      <div class="section-title">Configuration Overview</div>
+      <div class="config-grid">
+        <div class="config-item"><div class="config-key">Pattern</div><div class="config-val">B — Multi-Agent by Domain</div></div>
+        <div class="config-item"><div class="config-key">Model Provider</div><div class="config-val" style="color:var(--greg-primary)">Z.AI GLM ($0/mo)</div></div>
+        <div class="config-item"><div class="config-key">Gateway Port</div><div class="config-val">18789</div></div>
+        <div class="config-item"><div class="config-key">Session Reset</div><div class="config-val">Daily @ 4am</div></div>
+        <div class="config-item"><div class="config-key">Updated</div><div class="config-val">2026-03-20</div></div>
+        <div class="config-item"><div class="config-key">Context Pruning</div><div class="config-val">cache-ttl / 1h</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Agent Topology</div>
+      <div class="topology">
+        <div class="agent-main">
+          <div class="agent-node main-node" style="border-color:var(--greg-primary); background:var(--greg-bg);">
+            <div class="agent-name">🦁 Sebastian</div>
+            <div class="agent-id">main</div>
+            <div class="agent-model">glm-5-turbo</div>
+          </div>
+        </div>
+        <div class="topology-connector">
+          <div class="connector-line" style="width:50px;"></div>
+        </div>
+        <div class="subagents">
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--greg-dim); background:var(--greg-bg);">
+              <div class="agent-name">Signal Scout</div>
+              <div class="agent-id">discord-scraping</div>
+              <div class="agent-model">glm-4.7-flash</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--greg-dim); background:var(--greg-bg);">
+              <div class="agent-name">Risk Guard</div>
+              <div class="agent-id">portfolio-manager</div>
+              <div class="agent-model">glm-5-turbo</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--greg-dim); background:var(--greg-bg);">
+              <div class="agent-name">Quant</div>
+              <div class="agent-id">back-tester</div>
+              <div class="agent-model">glm-5-turbo</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--greg-dim); background:var(--greg-bg);">
+              <div class="agent-name">Chart Maker</div>
+              <div class="agent-id">charting</div>
+              <div class="agent-model">glm-4.7-flash</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Skills (13)</div>
+      <div class="skills-domain">
+        <div class="domain-label" style="--domain-color:var(--greg-primary);"><span style="color:var(--greg-primary);">&#9632;</span> Signal &amp; Research</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">scrape-discord</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--greg-bg);color:var(--greg-primary);">Signal Scout</span></div></div>
+          <div class="skill-card"><div class="skill-name">monitor-feeds</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span></div></div>
+          <div class="skill-card"><div class="skill-name">scout-datasets</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span></div></div>
+          <div class="skill-card"><div class="skill-name">morning-brief</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--greg-primary);">&#9632;</span> Portfolio &amp; Risk</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">monitor-positions</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--greg-bg);color:var(--greg-primary);">Risk Guard</span></div></div>
+          <div class="skill-card"><div class="skill-name">manage-risk</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--greg-bg);color:var(--greg-primary);">Risk Guard</span></div></div>
+          <div class="skill-card"><div class="skill-name">trade-journal</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--greg-primary);">&#9632;</span> Backtesting</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">run-backtest</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--greg-bg);color:var(--greg-primary);">Quant</span></div></div>
+          <div class="skill-card"><div class="skill-name">optimize-strategy</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--greg-bg);color:var(--greg-primary);">Quant</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--greg-primary);">&#9632;</span> Visualization &amp; Utility</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">generate-chart</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span><span class="badge-agent" style="background:var(--greg-bg);color:var(--greg-primary);">Chart Maker</span></div></div>
+          <div class="skill-card"><div class="skill-name">generate-equity-curve</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--greg-bg);color:var(--greg-primary);">Chart Maker</span></div></div>
+          <div class="skill-card"><div class="skill-name">agent-chain</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span></div></div>
+          <div class="skill-card"><div class="skill-name">pi-pi</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Channels</div>
+      <div class="channels-row">
+        <div class="channel-card" style="border-left: 3px solid var(--greg-primary);">
+          <div class="channel-name"><span class="channel-status active"></span> Telegram</div>
+          <div class="channel-detail">Policy: allowlist &middot; Greg only</div>
+        </div>
+        <div class="channel-card" style="border-left: 3px solid var(--greg-primary);">
+          <div class="channel-name"><span class="channel-status active"></span> Discord</div>
+          <div class="channel-detail">Policy: open &middot; All guilds, no mention required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Bindings (Keyword Routing)</div>
+      <div class="bindings-grid">
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Signal Scout</div>
+          <div class="binding-keywords"><span class="keyword">scrape</span><span class="keyword">signal</span><span class="keyword">discord</span><span class="keyword">youtube</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Risk Guard</div>
+          <div class="binding-keywords"><span class="keyword">position</span><span class="keyword">risk</span><span class="keyword">stop-loss</span><span class="keyword">drawdown</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Quant</div>
+          <div class="binding-keywords"><span class="keyword">backtest</span><span class="keyword">optimize</span><span class="keyword">strategy</span><span class="keyword">historical</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Chart Maker</div>
+          <div class="binding-keywords"><span class="keyword">chart</span><span class="keyword">generate chart</span><span class="keyword">visualize</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Plugins</div>
+      <div class="channels-row">
+        <div class="channel-card"><div class="channel-name"><span class="channel-status active"></span> damage-control</div><div class="channel-detail">Safety rules &middot; blocks dangerous bash</div></div>
+        <div class="channel-card"><div class="channel-name"><span class="channel-status active"></span> telegram</div><div class="channel-detail">Messaging channel plugin</div></div>
+        <div class="channel-card"><div class="channel-name"><span class="channel-status active"></span> discord</div><div class="channel-detail">Messaging channel plugin</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FISH GROUP ===== -->
+  <div class="panel" id="panel-fish">
+
+    <div class="section">
+      <div class="section-title">Configuration Overview</div>
+      <div class="config-grid">
+        <div class="config-item"><div class="config-key">Pattern</div><div class="config-val">B — Multi-Agent by Domain</div></div>
+        <div class="config-item"><div class="config-key">Model Tier</div><div class="config-val" style="color:var(--fish-primary)">Medium (OpenRouter)</div></div>
+        <div class="config-item"><div class="config-key">Gateway Port</div><div class="config-val">18789</div></div>
+        <div class="config-item"><div class="config-key">Session Reset</div><div class="config-val">Daily @ 4am</div></div>
+        <div class="config-item"><div class="config-key">Updated</div><div class="config-val">2026-03-05</div></div>
+        <div class="config-item"><div class="config-key">Context Pruning</div><div class="config-val">cache-ttl / 1h</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Agent Topology</div>
+      <div class="topology">
+        <div class="agent-main">
+          <div class="agent-node main-node" style="border-color:var(--fish-primary); background:var(--fish-bg);">
+            <div class="agent-name">🐟 Finn</div>
+            <div class="agent-id">main</div>
+            <div class="agent-model">gemini-2.0-flash-001</div>
+          </div>
+        </div>
+        <div class="topology-connector">
+          <div class="connector-line" style="width:50px;"></div>
+        </div>
+        <div class="subagents">
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--fish-dim); background:var(--fish-bg);">
+              <div class="agent-name">📋 Client Ops</div>
+              <div class="agent-id">client-ops</div>
+              <div class="agent-model">claude-3-5-haiku</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--fish-dim); background:var(--fish-bg);">
+              <div class="agent-name">📊 Data Agent</div>
+              <div class="agent-id">data-airtable</div>
+              <div class="agent-model">claude-3-5-haiku</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--fish-dim); background:var(--fish-bg);">
+              <div class="agent-name">🔑 Permissions</div>
+              <div class="agent-id">permissions</div>
+              <div class="agent-model">claude-3-5-haiku</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--fish-dim); background:var(--fish-bg);">
+              <div class="agent-name">🛒 Gary's CS</div>
+              <div class="agent-id">garys-cs</div>
+              <div class="agent-model">gemini-2.0-flash-001</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Skills (11)</div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--fish-primary);">&#9632;</span> Client Operations</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">client-onboarding</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Client Ops</span></div></div>
+          <div class="skill-card"><div class="skill-name">client-offboarding</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Client Ops</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--fish-primary);">&#9632;</span> Data &amp; Airtable</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">airtable-sync</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Data Agent</span></div></div>
+          <div class="skill-card"><div class="skill-name">shipment-request</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Data Agent</span></div></div>
+          <div class="skill-card"><div class="skill-name">quickbooks-sync</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Data Agent</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--fish-primary);">&#9632;</span> Access &amp; Permissions</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">provision-user</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Permissions</span></div></div>
+          <div class="skill-card"><div class="skill-name">revoke-access</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Permissions</span></div></div>
+          <div class="skill-card"><div class="skill-name">access-audit</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--fish-bg);color:var(--fish-primary);">Permissions</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--fish-primary);">&#9632;</span> Ops &amp; Utility</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">morning-brief</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span></div></div>
+          <div class="skill-card"><div class="skill-name">setup-openclaw</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span></div></div>
+          <div class="skill-card"><div class="skill-name">pi-pi</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Channels</div>
+      <div class="channels-row">
+        <div class="channel-card" style="border-left: 3px solid var(--fish-primary);">
+          <div class="channel-name"><span class="channel-status active"></span> Claude Code CLI</div>
+          <div class="channel-detail">Technical users only &middot; Michael Fisch + Emil</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Bindings (Keyword Routing)</div>
+      <div class="bindings-grid">
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Client Ops</div>
+          <div class="binding-keywords"><span class="keyword">onboard</span><span class="keyword">offboard</span><span class="keyword">new client</span><span class="keyword">welcome package</span><span class="keyword">statement of work</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Data Agent</div>
+          <div class="binding-keywords"><span class="keyword">airtable</span><span class="keyword">shipment</span><span class="keyword">quickbooks</span><span class="keyword">piermont</span><span class="keyword">sync</span><span class="keyword">dashboard</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Permissions</div>
+          <div class="binding-keywords"><span class="keyword">access</span><span class="keyword">permissions</span><span class="keyword">add user</span><span class="keyword">remove user</span><span class="keyword">provision</span><span class="keyword">credentials</span><span class="keyword">audit</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Gary's CS</div>
+          <div class="binding-keywords"><span class="keyword">gary</span><span class="keyword">customer service</span><span class="keyword">return</span><span class="keyword">refund</span><span class="keyword">order lookup</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Cron Schedule</div>
+      <table class="cron-table">
+        <tr><th>Job</th><th>Schedule</th><th>Expression</th></tr>
+        <tr><td>morning-brief</td><td>Weekdays 8am EST</td><td class="cron-expr">0 8 * * 1-5</td></tr>
+        <tr><td>airtable-sync-check</td><td>Monday 9am</td><td class="cron-expr">0 9 * * 1</td></tr>
+        <tr><td>access-audit</td><td>Friday 4pm</td><td class="cron-expr">0 16 * * 5</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Plugins</div>
+      <div class="channels-row">
+        <div class="channel-card"><div class="channel-name"><span class="channel-status active"></span> damage-control</div><div class="channel-detail">Safety rules &middot; blocks dangerous bash</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CRUZ CREATIONS ===== -->
+  <div class="panel" id="panel-cruz">
+
+    <div class="section">
+      <div class="section-title">Configuration Overview</div>
+      <div class="config-grid">
+        <div class="config-item"><div class="config-key">Pattern</div><div class="config-val">B — Multi-Agent by Domain</div></div>
+        <div class="config-item"><div class="config-key">Model Tier</div><div class="config-val" style="color:var(--cruz-primary)">Cheap (OpenRouter)</div></div>
+        <div class="config-item"><div class="config-key">Gateway Port</div><div class="config-val">18789</div></div>
+        <div class="config-item"><div class="config-key">Session Reset</div><div class="config-val">Daily @ 4am</div></div>
+        <div class="config-item"><div class="config-key">Updated</div><div class="config-val">2026-03-05</div></div>
+        <div class="config-item"><div class="config-key">Context Pruning</div><div class="config-val">cache-ttl / 1h</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Agent Topology</div>
+      <div class="topology">
+        <div class="agent-main">
+          <div class="agent-node main-node" style="border-color:var(--cruz-primary); background:var(--cruz-bg);">
+            <div class="agent-name">🌙 Luna</div>
+            <div class="agent-id">main</div>
+            <div class="agent-model">gemini-2.0-flash-001</div>
+          </div>
+        </div>
+        <div class="topology-connector">
+          <div class="connector-line" style="width:50px;"></div>
+        </div>
+        <div class="subagents">
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--cruz-dim); background:var(--cruz-bg);">
+              <div class="agent-name">🏺 Workshop Assistant</div>
+              <div class="agent-id">workshop-assistant</div>
+              <div class="agent-model">deepseek-chat-v3</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--cruz-dim); background:var(--cruz-bg);">
+              <div class="agent-name">📬 Email Manager</div>
+              <div class="agent-id">newsletter-email</div>
+              <div class="agent-model">deepseek-chat-v3</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--cruz-dim); background:var(--cruz-bg);">
+              <div class="agent-name">📸 Content Studio</div>
+              <div class="agent-id">social-media</div>
+              <div class="agent-model">gemini-2.0-flash-001</div>
+            </div>
+          </div>
+          <div class="subagent-row">
+            <div class="agent-node" style="border-color:var(--cruz-dim); background:var(--cruz-bg);">
+              <div class="agent-name">☀️ Morning Brief</div>
+              <div class="agent-id">morning-brief</div>
+              <div class="agent-model">deepseek-chat-v3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Skills (12)</div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--cruz-primary);">&#9632;</span> Workshop</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">workshop-cleanup</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Workshop Asst</span></div></div>
+          <div class="skill-card"><div class="skill-name">kiln-notification</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Workshop Asst</span></div></div>
+          <div class="skill-card"><div class="skill-name">classbento-monitor</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Workshop Asst</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--cruz-primary);">&#9632;</span> Newsletter &amp; Email</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">draft-faq-reply</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Email Manager</span></div></div>
+          <div class="skill-card"><div class="skill-name">consumer-newsletter</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Email Manager</span></div></div>
+          <div class="skill-card"><div class="skill-name">artist-newsletter</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Email Manager</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--cruz-primary);">&#9632;</span> Social Media</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">content-calendar</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Content Studio</span></div></div>
+          <div class="skill-card"><div class="skill-name">draft-caption</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Content Studio</span></div></div>
+          <div class="skill-card"><div class="skill-name">analytics-summary</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Content Studio</span></div></div>
+        </div>
+      </div>
+      <div class="skills-domain">
+        <div class="domain-label"><span style="color:var(--cruz-primary);">&#9632;</span> Ops &amp; Utility</div>
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-name">morning-brief</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge-agent" style="background:var(--cruz-bg);color:var(--cruz-primary);">Morning Brief</span></div></div>
+          <div class="skill-card"><div class="skill-name">setup-openclaw</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span></div></div>
+          <div class="skill-card"><div class="skill-name">pi-pi</div><div class="skill-badges"><span class="badge badge-enabled">enabled</span><span class="badge badge-invocable">user invocable</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Channels</div>
+      <div class="channels-row">
+        <div class="channel-card" style="border-left: 3px solid var(--cruz-primary);">
+          <div class="channel-name"><span class="channel-status active"></span> WhatsApp</div>
+          <div class="channel-detail">Policy: allowlist &middot; Erica only &middot; Primary channel</div>
+        </div>
+        <div class="channel-card" style="border-left: 3px solid var(--badge-disabled);">
+          <div class="channel-name"><span class="channel-status inactive"></span> Telegram</div>
+          <div class="channel-detail">Fallback &middot; Currently disabled</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Bindings (Keyword Routing)</div>
+      <div class="bindings-grid">
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Workshop Assistant</div>
+          <div class="binding-keywords"><span class="keyword">workshop</span><span class="keyword">kiln</span><span class="keyword">pickup</span><span class="keyword">attendee</span><span class="keyword">pottery</span><span class="keyword">form</span><span class="keyword">QR</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Email Manager</div>
+          <div class="binding-keywords"><span class="keyword">email</span><span class="keyword">newsletter</span><span class="keyword">draft email</span><span class="keyword">respond</span><span class="keyword">mailchimp</span><span class="keyword">FAQ</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Content Studio</div>
+          <div class="binding-keywords"><span class="keyword">post</span><span class="keyword">instagram</span><span class="keyword">tiktok</span><span class="keyword">caption</span><span class="keyword">content</span><span class="keyword">reel</span><span class="keyword">viral</span><span class="keyword">flyer</span></div>
+        </div>
+        <div class="binding-card">
+          <div class="binding-target"><span class="arrow">main →</span> Morning Brief</div>
+          <div class="binding-keywords"><span class="keyword">morning brief</span><span class="keyword">daily summary</span><span class="keyword">today</span><span class="keyword">moon</span><span class="keyword">schedule</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Cron Schedule</div>
+      <table class="cron-table">
+        <tr><th>Job</th><th>Schedule</th><th>Expression</th></tr>
+        <tr><td>morning-brief</td><td>Daily 8am PST</td><td class="cron-expr">0 8 * * *</td></tr>
+        <tr><td>workshop-check</td><td>Monday 9am</td><td class="cron-expr">0 9 * * 1</td></tr>
+        <tr><td>newsletter-draft</td><td>Monthly 1st @ 10am</td><td class="cron-expr">0 10 1 * *</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Plugins</div>
+      <div class="channels-row">
+        <div class="channel-card"><div class="channel-name"><span class="channel-status active"></span> damage-control</div><div class="channel-detail">Safety rules &middot; blocks dangerous bash</div></div>
+        <div class="channel-card"><div class="channel-name"><span class="channel-status active"></span> whatsapp</div><div class="channel-detail">Primary messaging channel</div></div>
+        <div class="channel-card"><div class="channel-name"><span class="channel-status inactive"></span> telegram</div><div class="channel-detail">Fallback &middot; disabled</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SHARED SKILLS ===== -->
+  <div class="shared-section">
+    <div class="section-title" style="color:var(--shared-primary);">Shared Infrastructure Skills <span style="color:var(--text-muted); font-weight:400;">(openclaw-deploy/skills/)</span></div>
+    <div class="shared-grid">
+      <div class="shared-card">
+        <h3>customer-planning</h3>
+        <p>Structured discovery process for new customers. Guides through problem, users, features, integrations, compliance, timeline, and generates a session summary for SOW handoff.</p>
+      </div>
+      <div class="shared-card">
+        <h3>customer-qa</h3>
+        <p>Answers customer questions about GB Automation services, pricing ($50K/90-day program), technology stack (AWS-native), and engagement process. Transparent and non-salesy.</p>
+      </div>
+      <div class="shared-card">
+        <h3>scope-generator</h3>
+        <p>Generates a professional Scope of Work from a completed planning session. Extracts requirements, maps to phases, estimates budget, and produces a ready-to-sign document.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROMPT OUTPUT ===== -->
+  <div class="prompt-section">
+    <div class="prompt-header">
+      <span>Deployment Summary Prompt</span>
+      <button class="copy-btn" onclick="copyPrompt()">Copy</button>
+    </div>
+    <div class="prompt-body" id="prompt-output"></div>
+  </div>
+
+</div>
+
+<script>
+  let activeTab = 'greg';
+
+  const data = {
+    greg: {
+      label: 'Greg Trading', agent: 'Sebastian', emoji: '🦁',
+      model: 'Z.AI GLM (glm-5-turbo / glm-4.7-flash)', tier: '$0/mo subscription',
+      agents: 5, skills: 13, channels: ['Telegram (allowlist)', 'Discord (open)'],
+      skillList: ['scrape-discord','morning-brief','monitor-feeds','monitor-positions','manage-risk','trade-journal','run-backtest','optimize-strategy','scout-datasets','generate-chart','generate-equity-curve','agent-chain','pi-pi'],
+      invocable: ['generate-chart','agent-chain','pi-pi'],
+      updated: '2026-03-20',
+    },
+    fish: {
+      label: 'Fish Group', agent: 'Finn', emoji: '🐟',
+      model: 'OpenRouter Medium (gemini-2.0-flash / claude-3-5-haiku)', tier: '$20-60/mo',
+      agents: 5, skills: 11, channels: ['Claude Code CLI'],
+      skillList: ['client-onboarding','client-offboarding','airtable-sync','shipment-request','quickbooks-sync','provision-user','revoke-access','access-audit','morning-brief','setup-openclaw','pi-pi'],
+      invocable: ['client-onboarding','client-offboarding','shipment-request','provision-user','revoke-access','setup-openclaw','pi-pi'],
+      updated: '2026-03-05',
+    },
+    cruz: {
+      label: 'Cruz Creations', agent: 'Luna', emoji: '🌙',
+      model: 'OpenRouter Cheap (gemini-2.0-flash / deepseek-chat-v3)', tier: '$2-15/mo',
+      agents: 5, skills: 12, channels: ['WhatsApp (allowlist)'],
+      skillList: ['workshop-cleanup','kiln-notification','classbento-monitor','draft-faq-reply','consumer-newsletter','artist-newsletter','content-calendar','draft-caption','analytics-summary','morning-brief','setup-openclaw','pi-pi'],
+      invocable: ['draft-caption','setup-openclaw','pi-pi'],
+      updated: '2026-03-05',
+    },
+  };
+
+  function switchTab(tab) {
+    activeTab = tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById(`panel-${tab}`).classList.add('active');
+    updatePrompt();
+  }
+
+  function updatePrompt() {
+    const d = data[activeTab];
+    const inv = d.invocable.length;
+    const auto = d.skills - inv;
+    const prompt = `OpenClaw deployment report for ${d.label} (${d.emoji} ${d.agent}).
+
+Pattern B multi-agent: ${d.agents} agents using ${d.model} (${d.tier}).
+${d.skills} skills deployed: ${auto} automated, ${inv} user-invocable.
+Channels: ${d.channels.join(', ')}.
+Last updated: ${d.updated}.
+
+Skills: ${d.skillList.join(', ')}.
+User-invocable: ${d.invocable.join(', ')}.
+
+Across all 3 deployments: 15 agents, 36 total skills, 4 active channels, 3 shared infrastructure skills (customer-planning, customer-qa, scope-generator).`;
+
+    document.getElementById('prompt-output').textContent = prompt;
+  }
+
+  function copyPrompt() {
+    const text = document.getElementById('prompt-output').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 1500);
+    });
+  }
+
+  // Init
+  updatePrompt();
+</script>
+
+</body>
+</html>

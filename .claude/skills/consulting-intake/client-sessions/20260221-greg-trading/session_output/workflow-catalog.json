@@ -1,0 +1,490 @@
+{
+  "client": "Greg Trading",
+  "contacts": ["Greg"],
+  "domain": "Algorithmic Trading / Crypto (Hyper Liquid)",
+  "generated": "2026-03-18",
+  "total_workflows": 18,
+  "workflows": [
+    {
+      "id": "WF-001",
+      "name": "Morning Brief",
+      "category": "domain",
+      "description": "Every morning at 7am PST: pull overnight Discord signals, Hyper Liquid portfolio snapshot, market volume metrics, YouTube insights from last 24h, and news digest. Send consolidated daily letter to Greg via Telegram.",
+      "apis": ["Hyper Liquid", "Discord", "YouTube", "Telegram"],
+      "trigger": "schedule",
+      "schedule": "daily 7am PST",
+      "agent": "main (Sebastian)",
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "Portfolio data matches Hyper Liquid API response"},
+        {"gate": "format_check", "description": "Brief delivered to Telegram successfully"},
+        {"gate": "threshold_check", "description": "Signal count sanity check (0-50 signals in 24h is normal; alert if >100 or 0 for >24h)"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 10,
+      "prerequisites": ["hyperliquid_api_key", "discord_bot_token", "telegram_bot_token", "youtube_api_key"],
+      "estimated_hours": 2.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-002",
+      "name": "Discord Signal Scraper",
+      "category": "domain",
+      "description": "Every 15 minutes: connect to Discord API, fetch new messages from monitored trade-signal channels, parse for structured signals (ticker, direction, entry, TP, SL), filter noise, and log to daily signal file. High-quality signals trigger an immediate Telegram alert.",
+      "apis": ["Discord", "Telegram"],
+      "trigger": "schedule",
+      "schedule": "every 15 minutes",
+      "agent": "discord-scraping (Signal Scout)",
+      "human_in_the_loop": [
+        {"step": "channel_selection", "description": "Greg specifies which Discord channels to monitor — updated on request"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Signal parsed with all required fields: ticker, direction, entry, TP, SL, source, timestamp"},
+        {"gate": "duplicate_detection", "description": "No duplicate signals from same source within 1 hour"},
+        {"gate": "threshold_check", "description": "Quality filter: confidence score > 0.7 before Telegram alert"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 9,
+      "prerequisites": ["discord_bot_token", "monitored_channel_list"],
+      "estimated_hours": 3,
+      "status": "idea"
+    },
+    {
+      "id": "WF-003",
+      "name": "Position Monitor & Stop-Loss Guard",
+      "category": "domain",
+      "description": "Every 15 minutes: fetch all open Hyper Liquid positions, verify each has a stop-loss set, calculate drawdown vs threshold, log portfolio snapshot. Alert Greg via Telegram immediately if any position is missing a stop-loss or if portfolio drawdown exceeds defined threshold.",
+      "apis": ["Hyper Liquid", "Telegram"],
+      "trigger": "schedule",
+      "schedule": "every 15 minutes",
+      "agent": "portfolio-manager (Risk Guard)",
+      "human_in_the_loop": [
+        {"step": "act_on_alert", "description": "Greg manually executes any stop-loss or risk action — agent never trades autonomously"}
+      ],
+      "validation_gates": [
+        {"gate": "threshold_check", "description": "Drawdown alert threshold defined before activation (e.g. >10% portfolio drawdown)"},
+        {"gate": "duplicate_detection", "description": "De-duplicate alerts: don't re-alert same position within 30 minutes"},
+        {"gate": "format_check", "description": "Alert includes: position, current price, drawdown %, recommended action"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 10,
+      "prerequisites": ["hyperliquid_api_key", "telegram_bot_token", "drawdown_threshold_defined"],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-004",
+      "name": "Trade Journal & Performance Tracker",
+      "category": "domain",
+      "description": "On every position close event (detected via Hyper Liquid API): log entry, exit, P&L, duration, stop-loss used, TP used, outcome classification (target_hit / stopped_out / manual_close). Update running win rate and avg P&L. Weekly: generate performance summary with pattern analysis.",
+      "apis": ["Hyper Liquid", "Telegram"],
+      "trigger": "event",
+      "schedule": null,
+      "agent": "portfolio-manager (Risk Guard)",
+      "human_in_the_loop": [
+        {"step": "weekly_review", "description": "Greg reviews weekly performance summary and adds context/notes"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "P&L logged matches Hyper Liquid confirmed P&L"},
+        {"gate": "format_check", "description": "All required fields populated for each trade record"},
+        {"gate": "cross_reference", "description": "Running win rate and avg P&L calculations are accurate"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 9,
+      "prerequisites": ["hyperliquid_api_key"],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-005",
+      "name": "Run Backtest",
+      "category": "domain",
+      "description": "On demand or nightly: execute a backtest for a named strategy over a specified historical window. Fetch OHLCV data from Hyper Liquid, apply entry/exit rules, calculate metrics (total return, Sharpe, max drawdown, win rate, avg P&L). Summarize top 5 metrics + strengths/weaknesses. Store results tagged by strategy + date.",
+      "apis": ["Hyper Liquid"],
+      "trigger": "on-demand + schedule",
+      "schedule": "nightly + on-demand",
+      "agent": "back-tester (Quant)",
+      "human_in_the_loop": [
+        {"step": "strategy_spec", "description": "Greg provides: strategy name, parameters, asset, timeframe, date range"},
+        {"step": "results_review", "description": "Greg reviews backtest report and decides next steps"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "OHLCV data completeness check: no gaps in historical data for the specified range"},
+        {"gate": "format_check", "description": "All 5 core metrics included: total return, Sharpe, max drawdown, win rate, avg P&L"},
+        {"gate": "threshold_check", "description": "Minimum trade count for statistical significance (>30 trades)"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 9,
+      "prerequisites": ["hyperliquid_api_key", "strategy_code_in_github"],
+      "estimated_hours": 4,
+      "status": "idea"
+    },
+    {
+      "id": "WF-006",
+      "name": "Strategy Optimizer",
+      "category": "domain",
+      "description": "On demand: run parameter sweeps (grid search or Bayesian) to find optimal settings for a named strategy. Rank combinations by Sharpe ratio. Validate top 3 configs on holdout period to check for overfitting. Report: best params, performance, overfitting risk flag.",
+      "apis": ["Hyper Liquid"],
+      "trigger": "on-demand",
+      "schedule": null,
+      "agent": "back-tester (Quant)",
+      "human_in_the_loop": [
+        {"step": "define_ranges", "description": "Greg defines parameter ranges to sweep"},
+        {"step": "select_config", "description": "Greg selects which config to deploy from top 3 candidates"}
+      ],
+      "validation_gates": [
+        {"gate": "threshold_check", "description": "Overfitting check: top config must perform within 80% of in-sample on holdout period"},
+        {"gate": "format_check", "description": "Report includes: in-sample and out-of-sample metrics for each top config"},
+        {"gate": "threshold_check", "description": "Minimum parameter combinations tested before reporting"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["WF-005", "hyperliquid_api_key"],
+      "estimated_hours": 4.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-007",
+      "name": "Generate Chart",
+      "category": "domain",
+      "description": "On demand (Greg-triggered or post-trade-proposal): fetch OHLCV data from Hyper Liquid, render chart with requested indicators (MA, RSI, MACD, volume, etc.) as PNG, deliver via Telegram. Not automatically generated — Greg requests it.",
+      "apis": ["Hyper Liquid", "Telegram"],
+      "trigger": "on-demand",
+      "schedule": null,
+      "agent": "charting (Chart Maker)",
+      "user_invocable": true,
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Chart renders without error and is delivered to Telegram"},
+        {"gate": "format_check", "description": "All requested indicators applied correctly"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 8,
+      "prerequisites": ["hyperliquid_api_key", "telegram_bot_token", "charting_library_installed"],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-008",
+      "name": "YouTube Trading Intelligence Scraper",
+      "category": "domain",
+      "description": "Daily overnight: query YouTube API for new videos from Greg's tracked trading channels. Download transcripts/descriptions. Summarize key insights (strategy ideas, risk tips, market analysis). Store summaries with tags. Top 2-3 insights included in morning brief.",
+      "apis": ["YouTube", "Telegram"],
+      "trigger": "schedule",
+      "schedule": "daily overnight",
+      "agent": "discord-scraping (Signal Scout)",
+      "human_in_the_loop": [
+        {"step": "channel_list", "description": "Greg specifies which YouTube channels to track — updated on request"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Summary includes: video title, channel, key insight, relevance score"},
+        {"gate": "threshold_check", "description": "Only include videos with relevance score >0.6 in morning brief"},
+        {"gate": "duplicate_detection", "description": "Don't re-summarize videos already processed"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 7,
+      "prerequisites": ["youtube_api_key", "tracked_channel_list"],
+      "estimated_hours": 2.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-009",
+      "name": "Paper Trading System",
+      "category": "custom",
+      "description": "Simulate trades using real-time Hyper Liquid data without capital at risk. When a qualifying Discord signal or backtest-validated strategy generates an entry, execute a simulated trade. Track paper P&L, compare against live performance. Use to validate new strategies before going live.",
+      "apis": ["Hyper Liquid", "Telegram"],
+      "trigger": "event",
+      "schedule": null,
+      "agent": "portfolio-manager (Risk Guard)",
+      "human_in_the_loop": [
+        {"step": "strategy_approval", "description": "Greg approves which strategies run in paper mode"},
+        {"step": "go_live_decision", "description": "Greg decides when paper performance warrants going live"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Paper trade logged with same fields as live trade journal"},
+        {"gate": "cross_reference", "description": "Paper P&L benchmarked against live performance weekly"},
+        {"gate": "threshold_check", "description": "Minimum paper trade sample (>20 trades) before live recommendation"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["hyperliquid_api_key", "WF-004"],
+      "estimated_hours": 5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-010",
+      "name": "Volume Spike & Indicator Alert",
+      "category": "domain",
+      "description": "Heartbeat every 15 minutes: poll configured tickers for volume anomalies and indicator threshold crossings (RSI overbought/oversold, MACD signal cross, etc.). On trigger: send Telegram alert with ticker, context, and optional chart link. Queue chart generation if significant.",
+      "apis": ["Hyper Liquid", "Telegram"],
+      "trigger": "schedule",
+      "schedule": "every 15 minutes",
+      "agent": "discord-scraping (Signal Scout)",
+      "human_in_the_loop": [
+        {"step": "configure_alerts", "description": "Greg defines: tickers to watch, indicator conditions, volume spike % threshold"}
+      ],
+      "validation_gates": [
+        {"gate": "duplicate_detection", "description": "Don't re-alert same condition on same ticker within 1 hour"},
+        {"gate": "threshold_check", "description": "Alert only when signal strength is above defined minimum"},
+        {"gate": "format_check", "description": "Alert includes: ticker, condition triggered, current value vs threshold, suggested chart"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 7,
+      "prerequisites": ["hyperliquid_api_key", "telegram_bot_token", "alert_conditions_defined"],
+      "estimated_hours": 2.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-011",
+      "name": "Risk Management Report",
+      "category": "domain",
+      "description": "On demand or weekly: analyze all open positions for risk/reward ratios, check stop-loss levels, recommend adjustments (trailing stops, TP tightening). Generate risk summary: per-position risk, correlation risk, portfolio max drawdown scenario. Deliver as Telegram message.",
+      "apis": ["Hyper Liquid", "Telegram"],
+      "trigger": "on-demand + schedule",
+      "schedule": "weekly + on-demand",
+      "agent": "portfolio-manager (Risk Guard)",
+      "human_in_the_loop": [
+        {"step": "execute_recommendations", "description": "Greg manually executes any recommended adjustments — agent never trades"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "Position data is current (fetched within 5 minutes)"},
+        {"gate": "format_check", "description": "Report includes: per-position risk, portfolio correlation risk, max drawdown scenario"},
+        {"gate": "format_check", "description": "All recommendations are actionable with specific values"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["hyperliquid_api_key", "drawdown_threshold_defined"],
+      "estimated_hours": 3,
+      "status": "idea"
+    },
+    {
+      "id": "WF-012",
+      "name": "Dataset Scout",
+      "category": "domain",
+      "description": "Nightly: search for new public datasets that could provide trading edge (on-chain data, social sentiment, options flow, funding rates, whale wallet tracking, etc.). Evaluate each source for quality, update frequency, cost, and API availability. Flag 1-3 promising sources per week in morning brief.",
+      "apis": ["YouTube"],
+      "trigger": "schedule",
+      "schedule": "nightly",
+      "agent": "back-tester (Quant)",
+      "human_in_the_loop": [
+        {"step": "integration_decision", "description": "Greg decides whether to integrate a flagged dataset"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Each flagged source includes: name, data type, update frequency, cost, API availability, relevance score"},
+        {"gate": "threshold_check", "description": "Only surface sources with relevance score >0.6"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 6,
+      "prerequisites": [],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-013",
+      "name": "Signal Quality Scorer",
+      "category": "custom",
+      "description": "After enough trade journal data accumulates: score incoming Discord signals against historical signal quality by source/channel. Weight signals from sources with higher win rates. Flag consistently underperforming signal sources for removal from monitoring list.",
+      "apis": ["Discord"],
+      "trigger": "event",
+      "schedule": null,
+      "agent": "discord-scraping (Signal Scout)",
+      "human_in_the_loop": [
+        {"step": "review_sources", "description": "Greg reviews flagged underperforming sources and approves removal from list"}
+      ],
+      "validation_gates": [
+        {"gate": "threshold_check", "description": "Minimum 20 historical signals from source before scoring"},
+        {"gate": "cross_reference", "description": "Score calculation uses closed trades only (no open positions)"},
+        {"gate": "format_check", "description": "Source score card includes: win rate, avg P&L, signal count, trend (improving/declining)"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["WF-002", "WF-004"],
+      "estimated_hours": 4,
+      "status": "idea"
+    },
+    {
+      "id": "WF-014",
+      "name": "Equity Curve Generator",
+      "category": "domain",
+      "description": "Called automatically after every backtest: render equity curve with drawdown overlay from backtest output data. Send chart image via Telegram. Attach to backtest report in memory.",
+      "apis": ["Telegram"],
+      "trigger": "event",
+      "schedule": null,
+      "agent": "charting (Chart Maker)",
+      "human_in_the_loop": [],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Equity curve renders without error"},
+        {"gate": "cross_reference", "description": "Drawdown overlay matches backtest reported max drawdown"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 7,
+      "prerequisites": ["WF-005", "telegram_bot_token"],
+      "estimated_hours": 1.5,
+      "status": "idea"
+    },
+    {
+      "id": "WF-015",
+      "name": "Weekly Performance Review",
+      "category": "domain",
+      "description": "Every Sunday: compile weekly trading performance from trade journal. Metrics: total P&L, win rate, best/worst trade, avg hold time, drawdown this week vs account peak. Pattern analysis: recurring mistakes, what strategies are working. Delivered as Telegram message with optional chart.",
+      "apis": ["Telegram"],
+      "trigger": "schedule",
+      "schedule": "weekly Sunday",
+      "agent": "portfolio-manager (Risk Guard)",
+      "human_in_the_loop": [
+        {"step": "add_context", "description": "Greg can add notes or context to the performance log for that week"}
+      ],
+      "validation_gates": [
+        {"gate": "data_reconciliation", "description": "Weekly P&L matches sum of individual trade journal entries"},
+        {"gate": "format_check", "description": "All 6 core metrics included"},
+        {"gate": "cross_reference", "description": "Patterns identified are grounded in actual trade data, not assumptions"}
+      ],
+      "complexity": "low",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["WF-004"],
+      "estimated_hours": 2,
+      "status": "idea"
+    },
+    {
+      "id": "WF-016",
+      "name": "Strategy Live-Ready Validator",
+      "category": "custom",
+      "description": "Before any new strategy goes live: run full validation checklist — backtest results (>30 trades, Sharpe >1.0), paper trading results (>20 trades), max drawdown within tolerance, position sizing rules defined, stop-loss logic present. Generate go/no-go report for Greg.",
+      "apis": ["Hyper Liquid"],
+      "trigger": "on-demand",
+      "schedule": null,
+      "agent": "back-tester (Quant)",
+      "human_in_the_loop": [
+        {"step": "go_live_decision", "description": "Greg reviews go/no-go report and makes final call to deploy strategy"}
+      ],
+      "validation_gates": [
+        {"gate": "threshold_check", "description": "Backtest: >30 trades, Sharpe >1.0, max drawdown within tolerance"},
+        {"gate": "cross_reference", "description": "Paper trading results consistent with backtest expectations"},
+        {"gate": "format_check", "description": "Report explicitly lists: what passed, what failed, what's borderline"}
+      ],
+      "complexity": "medium",
+      "impact": "high",
+      "priority_score": 7,
+      "prerequisites": ["WF-005", "WF-009"],
+      "estimated_hours": 3,
+      "status": "idea"
+    },
+    {
+      "id": "WF-017",
+      "name": "Trade Proposal Builder",
+      "category": "custom",
+      "description": "When Sebastian (main agent) identifies a high-confidence trade setup from Discord signals + indicator alignment: generate a structured trade proposal. Includes: ticker, direction, entry zone, TP target, SL level, risk/reward ratio, supporting signal sources, recommended position size (% of account). Sent via Telegram as a card for Greg to approve or skip.",
+      "apis": ["Hyper Liquid", "Discord", "Telegram"],
+      "trigger": "event",
+      "schedule": null,
+      "agent": "main (Sebastian)",
+      "human_in_the_loop": [
+        {"step": "approve_or_skip", "description": "Greg approves or skips each trade proposal — agent never executes trades"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "Proposal includes all 7 required fields: ticker, direction, entry, TP, SL, R:R, position size"},
+        {"gate": "threshold_check", "description": "R:R ratio minimum 2:1 before proposal is generated"},
+        {"gate": "cross_reference", "description": "At least 2 independent confirming signals before proposal fires"}
+      ],
+      "complexity": "high",
+      "impact": "high",
+      "priority_score": 8,
+      "prerequisites": ["WF-002", "WF-010", "WF-003"],
+      "estimated_hours": 6,
+      "status": "idea"
+    },
+    {
+      "id": "WF-018",
+      "name": "OpenClaw Setup & Health Check",
+      "category": "custom",
+      "description": "Initial setup skill + ongoing health monitoring: verify all API connections (Hyper Liquid, Discord, YouTube, Telegram), check agent heartbeats, confirm secrets are loaded, test signal pipeline end-to-end. Run on first deploy and weekly thereafter.",
+      "apis": ["Hyper Liquid", "Discord", "YouTube", "Telegram"],
+      "trigger": "on-demand + schedule",
+      "schedule": "weekly + on-demand",
+      "agent": "main (Sebastian)",
+      "user_invocable": true,
+      "human_in_the_loop": [
+        {"step": "fix_failures", "description": "Greg provides updated API keys if any connection fails"}
+      ],
+      "validation_gates": [
+        {"gate": "format_check", "description": "All API connections return healthy status"},
+        {"gate": "format_check", "description": "All agent heartbeats responding"},
+        {"gate": "format_check", "description": "Health check report delivered via Telegram"}
+      ],
+      "complexity": "low",
+      "impact": "medium",
+      "priority_score": 9,
+      "prerequisites": ["all_api_keys_configured"],
+      "estimated_hours": 1.5,
+      "status": "idea"
+    }
+  ],
+  "build_phases": [
+    {
+      "phase": 1,
+      "name": "Foundation — Eyes Open",
+      "sessions": "1-2",
+      "description": "Get the agent observing. No trade execution. Greg gets daily intel with zero manual work.",
+      "workflows": ["WF-001", "WF-002", "WF-003", "WF-018"]
+    },
+    {
+      "phase": 2,
+      "name": "Memory — Learn From Every Trade",
+      "sessions": "3-4",
+      "description": "Agent starts logging and learning. Trade journal builds the data foundation for everything downstream.",
+      "workflows": ["WF-004", "WF-007", "WF-008", "WF-010"]
+    },
+    {
+      "phase": 3,
+      "name": "Edge — Backtesting & Validation",
+      "sessions": "5-6",
+      "description": "Quant agent comes online. Strategies get tested, optimized, and validated before any live capital.",
+      "workflows": ["WF-005", "WF-006", "WF-009", "WF-014"]
+    },
+    {
+      "phase": 4,
+      "name": "Intelligence — Synthesis & Proposals",
+      "sessions": "7+",
+      "description": "Agent synthesizes signals, scores sources, validates strategies, and generates trade proposals. Greg still pulls the trigger but the agent does all the pre-work.",
+      "workflows": ["WF-011", "WF-013", "WF-015", "WF-016", "WF-017"]
+    }
+  ],
+  "prerequisites": {
+    "critical": [
+      "hyperliquid_api_key",
+      "telegram_bot_token",
+      "discord_bot_token"
+    ],
+    "important": [
+      "youtube_api_key",
+      "openrouter_api_key",
+      "monitored_discord_channel_list",
+      "drawdown_threshold_defined"
+    ],
+    "nice_to_have": [
+      "tracked_youtube_channel_list",
+      "charting_library_selected",
+      "alert_conditions_defined"
+    ]
+  },
+  "notes": {
+    "no_autonomous_trading": "CRITICAL: Agent never executes live trades. All trade proposals require Greg's explicit approval. Blast radius on all trade-related workflows is strictly notification/proposal only.",
+    "model_config": "GLM-4.7 (Z.AI subscription) as brain + DeepSeek V3 as muscle/coder. Per tool_inventory.json Greg specified GLM-4.7.",
+    "phase1_quickwin": "WF-001 (Morning Brief) + WF-002 (Discord Scraper) are the highest-value, lowest-effort starting point. Get these live first."
+  }
+}

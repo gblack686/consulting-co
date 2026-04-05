@@ -1,0 +1,208 @@
+// OpenClaw Configuration — Greg Trading
+// Agent: Sebastian 🦁
+// Pattern B: Multi-agent by domain (one agent per trading domain)
+// Models: Z.AI GLM subscription — all agents use GLM to avoid OpenRouter costs
+//   Sebastian (main):     zai/glm-5-turbo  (200k ctx, reasoning)
+//   Signal Scout:         zai/glm-4.7-flash (fast, cheap background work)
+//   Risk Guard:           zai/glm-5-turbo  (needs reasoning for risk calcs)
+//   Quant:                zai/glm-5-turbo  (needs reasoning for backtests)
+//   Chart Maker:          zai/glm-4.7-flash (simple codegen, save context)
+//   Heartbeats/subagents: zai/glm-4.7-flash (background checks)
+// Deployed to: ~/openclaw-greg-trading/workspace/openclaw.json
+// Updated: 2026-03-20 — switched all agents from OpenRouter to Z.AI GLM
+
+{
+  // --- Gateway ---
+  gateway: {
+    port: 18789,
+    reload: { mode: "hybrid", debounceMs: 300 },
+    controlUi: { allowInsecureAuth: true },
+    auth: { mode: "token" },
+    tailscale: { mode: "off", resetOnExit: false },
+  },
+
+  // --- Logging (security) ---
+  logging: { redactSensitive: "tools" },
+
+  // --- Models: Z.AI GLM subscription (no OpenRouter costs) ---
+  models: {
+    mode: "merge",
+    providers: {
+      zai: {
+        baseUrl: "https://api.z.ai/api/coding/paas/v4",
+        api: "openai-completions",
+        models: [
+          { id: "glm-5-turbo",    name: "GLM-5-Turbo",    reasoning: true, contextWindow: 200000, maxTokens: 131072, cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }, input: ["text"] },
+          { id: "glm-4.7",        name: "GLM-4.7",        reasoning: true, contextWindow: 204800, maxTokens: 131072, cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }, input: ["text"] },
+          { id: "glm-4.7-flash",  name: "GLM-4.7 Flash",  reasoning: true, contextWindow: 204800, maxTokens: 131072, cost: { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }, input: ["text"] },
+        ],
+      },
+    },
+  },
+
+  // --- Environment ---
+  env: {
+    OPENROUTER_API_KEY: "set via: openclaw secrets set OPENROUTER_API_KEY <key>",
+    // HYPERLIQUID_API_KEY: "set via openclaw secrets set HYPERLIQUID_API_KEY <key>"
+    // HYPERLIQUID_SECRET: "set via openclaw secrets set HYPERLIQUID_SECRET <key>"
+    // DISCORD_BOT_TOKEN: "set via openclaw secrets set DISCORD_BOT_TOKEN <key>"
+    // TELEGRAM_BOT_TOKEN: "set via openclaw secrets set TELEGRAM_BOT_TOKEN <key>"
+    // YOUTUBE_API_KEY: "set via openclaw secrets set YOUTUBE_API_KEY <key>"
+  },
+
+  // --- Agents ---
+  agents: {
+    defaults: {
+      model: {
+        primary: "zai/glm-5-turbo",
+        fallbacks: ["zai/glm-4.7"],
+      },
+      heartbeat: {
+        every: "15m",
+        target: "main",
+        ackMaxChars: 300,
+        model: "zai/glm-4.7-flash",  // fast+cheap for background checks
+      },
+      subagents: {
+        model: "zai/glm-4.7-flash",  // fast+cheap for spawned subagents
+        archiveAfterMinutes: 60,
+        maxSpawnDepth: 2,
+        maxChildrenPerAgent: 5,
+        maxConcurrent: 8,
+      },
+      contextPruning: {
+        mode: "cache-ttl",
+        ttl: "1h",
+        keepLastAssistants: 3,
+        softTrimRatio: 0.3,
+        minPrunableToolChars: 50000,
+      },
+      compaction: {
+        mode: "safeguard",
+        memoryFlush: { enabled: true, softThresholdTokens: 6000 },
+      },
+    },
+
+    list: [
+      {
+        id: "main",
+        default: true,
+        name: "Sebastian",
+        workspace: "~/.openclaw/workspace-main",
+        agentDir: "~/.openclaw/agents/main/agent",
+        model: "zai/glm-5-turbo",
+        identity: { name: "Sebastian", emoji: "🦁" },
+        subagents: {
+          allowAgents: ["discord-scraping", "portfolio-manager", "back-tester", "charting"],
+        },
+      },
+      {
+        id: "discord-scraping",
+        name: "Signal Scout",
+        workspace: "~/.openclaw/workspace-discord",
+        agentDir: "~/.openclaw/agents/discord-scraping/agent",
+        model: "zai/glm-4.7-flash",
+        identity: { name: "Signal Scout" },
+      },
+      {
+        id: "portfolio-manager",
+        name: "Risk Guard",
+        workspace: "~/.openclaw/workspace-portfolio",
+        agentDir: "~/.openclaw/agents/portfolio-manager/agent",
+        model: "zai/glm-5-turbo",
+        identity: { name: "Risk Guard" },
+      },
+      {
+        id: "back-tester",
+        name: "Quant",
+        workspace: "~/.openclaw/workspace-backtester",
+        agentDir: "~/.openclaw/agents/back-tester/agent",
+        model: "zai/glm-5-turbo",
+        identity: { name: "Quant" },
+      },
+      {
+        id: "charting",
+        name: "Chart Maker",
+        workspace: "~/.openclaw/workspace-charting",
+        agentDir: "~/.openclaw/agents/charting/agent",
+        model: "zai/glm-4.7-flash",
+        identity: { name: "Chart Maker" },
+      },
+    ],
+  },
+
+  // --- Bindings ---
+  bindings: [
+    { from: "main", to: "discord-scraping",  on: ["scrape", "signal", "discord", "youtube"] },
+    { from: "main", to: "portfolio-manager", on: ["position", "risk", "stop-loss", "drawdown"] },
+    { from: "main", to: "back-tester",       on: ["backtest", "optimize", "strategy", "historical"] },
+    { from: "main", to: "charting",          on: ["chart", "generate chart", "visualize"] },
+  ],
+
+  // --- Channels ---
+  channels: {
+    telegram: {
+      enabled: true,
+      dmPolicy: "allowlist",
+      allowFrom: ["GREG_TELEGRAM_ID"],
+    },
+    discord: {
+      enabled: true,
+      dmPolicy: "open",
+      guilds: { "*": { requireMention: false } },
+    },
+  },
+
+  // --- Sessions ---
+  session: {
+    dmScope: "per-channel-peer",
+    reset: { mode: "daily", atHour: 4 },
+    maintenance: { mode: "enforce", pruneAfter: "30d", maxEntries: 500 },
+  },
+
+  // --- Safety ---
+  tools: {
+    loopDetection: {
+      enabled: true,
+      historySize: 30,
+      warningThreshold: 10,
+      criticalThreshold: 20,
+      globalCircuitBreakerThreshold: 30,
+    },
+  },
+
+  // --- Commands ---
+  commands: { native: "auto", nativeSkills: "auto", restart: true },
+
+  // --- Plugins ---
+  plugins: {
+    entries: {
+      "damage-control": { enabled: true },
+      "telegram": { enabled: true },
+      "discord": { enabled: true },
+    },
+  },
+
+  // --- Skills ---
+  skills: {
+    entries: {
+      "scrape-discord":        { enabled: true },
+      "morning-brief":         { enabled: true },
+      "monitor-feeds":         { enabled: true },
+      "monitor-positions":     { enabled: true },
+      "manage-risk":           { enabled: true },
+      "trade-journal":         { enabled: true },
+      "run-backtest":          { enabled: true },
+      "optimize-strategy":     { enabled: true },
+      "scout-datasets":        { enabled: true },
+      "generate-chart":        { enabled: true, user_invocable: true },
+      "generate-equity-curve": { enabled: true },
+      "agent-chain":           { enabled: true, user_invocable: true },
+      "pi-pi":                 { enabled: true, user_invocable: true },
+    },
+    load: { watch: true },
+  },
+
+  // --- Cron ---
+  cron: { enabled: true },
+}

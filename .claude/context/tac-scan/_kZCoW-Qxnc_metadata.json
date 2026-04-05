@@ -1,0 +1,83 @@
+{
+  "video_id": "_kZCoW-Qxnc",
+  "title": "100 hours of OpenClaw lessons in 35 minutes",
+  "channel": "Alex Finn",
+  "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg",
+  "channel_url": "https://www.youtube.com/channel/UCfQNB91qRP_5ILeu_S_bSkg",
+  "upload_date": "20260215",
+  "view_count": 124763,
+  "like_count": 4703,
+  "comment_count": 500,
+  "duration": 2134,
+  "duration_string": "35:34",
+  "description_length": 1110,
+  "categories": [
+    "Science & Technology"
+  ],
+  "tags": [],
+  "thumbnail": "https://i.ytimg.com/vi/_kZCoW-Qxnc/sddefault.jpg",
+  "webpage_url": "https://www.youtube.com/watch?v=_kZCoW-Qxnc",
+  "github_links": [],
+  "urls_in_description": [
+    "https://www.alexfinn.ai/subscribe",
+    "https://x.com/AlexFinn",
+    "https://www.creatorbuddy.io/",
+    "https://openclaw.ai/"
+  ],
+  "transcript_available": true,
+  "transcript_language": "en",
+  "transcript_type": "auto-generated",
+  "chapters": [
+    {
+      "start_time": 0.0,
+      "title": "Intro",
+      "end_time": 53.0
+    },
+    {
+      "start_time": 53.0,
+      "title": "What is OpenClaw",
+      "end_time": 273.0
+    },
+    {
+      "start_time": 273.0,
+      "title": "Where to host OpenClaw",
+      "end_time": 492.0
+    },
+    {
+      "start_time": 492.0,
+      "title": "Setting up OpenClaw",
+      "end_time": 803.0
+    },
+    {
+      "start_time": 803.0,
+      "title": "First things to do with OpenClaw",
+      "end_time": 1021.0
+    },
+    {
+      "start_time": 1021.0,
+      "title": "OpenClaw Use Cases",
+      "end_time": 1389.0
+    },
+    {
+      "start_time": 1389.0,
+      "title": "Brains and muscles",
+      "end_time": 1615.0
+    },
+    {
+      "start_time": 1615.0,
+      "title": "OpenClaw Mindset",
+      "end_time": 1832.0
+    },
+    {
+      "start_time": 1832.0,
+      "title": "Another advanced workflow",
+      "end_time": 1904.0
+    },
+    {
+      "start_time": 1904.0,
+      "title": "Security",
+      "end_time": 2134
+    }
+  ],
+  "extracted_at": "2026-02-19"
+}

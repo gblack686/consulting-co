@@ -1,0 +1,28 @@
+{
+  "skill_name": "worktree-manager",
+  "version": "1.0.0",
+  "description": "Manage isolated git worktrees for parallel ADW execution",
+
+  "worktree": {
+    "base_dir": "../adw-workspaces",
+    "branch_prefix": "adw/",
+    "auto_cleanup": true,
+    "cleanup_on_merge": true
+  },
+
+  "git": {
+    "main_branch": "main",
+    "auto_fetch": true,
+    "create_from_main": true
+  },
+
+  "naming": {
+    "slug_pattern": "[a-z0-9-]+",
+    "max_length": 50
+  },
+
+  "cleanup": {
+    "remove_branch": true,
+    "prune_worktrees": true
+  }
+}

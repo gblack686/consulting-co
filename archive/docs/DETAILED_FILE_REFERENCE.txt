@@ -1,0 +1,202 @@
+CONSULTING-CO: DETAILED FILE REFERENCE GUIDE
+
+ROOT LEVEL FILES:
+
+README.md (14KB) - Main entry point, business overview, pricing, ROI
+CLAUDE.md (101 bytes) - Instruction to save files in .claude/context/
+package.json - Root dependencies (minimal)
+settings.local.json (4.7KB) - Main .claude configuration
+REPOSITORY_STRUCTURE_MAP.txt - Overview document
+
+.CLAUDE DIRECTORY (Project Infrastructure):
+
+AGENTS (6 agents):
+- GRAPHITI_AGENT.md - Knowledge graph management
+- LANGFUSE_AGENT.md - LLM tracing
+- OBSERVABILITY_AGENT.md - Unified monitoring
+- OBSIDIAN_AGENT.md - Vault management
+- INTEGRATION_ORCHESTRATOR.md - System coordination
+
+COMMANDS (15+):
+- note-create.md, note-search.md
+- obsidian/ (9 commands): daily, episodes, export, graph, schema, search, stats, summary, view
+
+CONFIG (YAML):
+- graphiti.yaml - Neo4j config
+- langfuse.yaml - LLM tracing config
+- observability.yaml - Observability settings
+- obsidian.yaml - Vault config
+
+CONTEXT (10 directories):
+architecture/, implementation/, langfuse/, observability/, obsidian/, qa/, research/, setup/, telemetry/, testing/
+
+HOOKS (Python automation):
+- observe_to_graphiti.py - Sync to Neo4j
+- agent_progress_tracker.py - Task tracking
+- obsidian_exporter.py - Export to vault
+
+SCRIPTS (20+):
+check_langfuse_*.py, fetch_trace_details.py, verify_telemetry_ready.py, test_*.py, view_knowledge_graph.py
+
+SKILLS (3 bundles):
+- knowledge-sync/ (config + scripts)
+- obsidian-vault/ (config + scripts + templates)
+- revstar-quickstart-workflow/ (assets + references + scripts)
+
+TESTS:
+- unit/, integration/, compatibility/, performance/, fixtures/
+
+DOCUMENTATION (26,000+ lines):
+- ARCHITECTURE.md - System diagrams
+- COMPLETE_STACK_QUICK_START.md - Setup guide
+- LANGFUSE_TRACING_SETUP.md - LLM setup
+- OBSIDIAN_GRAPHITI_INTEGRATION.md - Knowledge management
+- TOKEN_ACCOUNTING_GUIDE.md - Cost tracking
+- 15+ more documentation files
+
+SPECS DIRECTORY (Consulting Framework - 11,884 lines):
+
+CORE GUIDES (6 files):
+1. CLAUDE-CODE-ESSENTIALS-GUIDE.md (100+ pages)
+   - Part I: Core Concepts
+   - Part II: Primitives (Commands, Agents, Hooks, Skills, MCP)
+   - Part III: Configuration
+   - Part IV: Real-World Patterns
+   - Part V: Building .claude Repos
+
+2. CONSULTING-WORKFLOW.md - 7-phase process (Discovery, Vibe Planning, Design, Implementation, Testing, Handoff, Support)
+3. VIBE-PLANNING-FRAMEWORK.md - 32 discovery questions + decision trees
+4. claude-official-docs.md - Index of 46 Anthropic docs
+5. agent-skills-guide.md - Agent development
+6. claude-code-ecosystem-handbook-part1.md - Ecosystem overview
+
+WORKFLOWS (4 files):
+- PRD-GENERATION-WORKFLOW.md
+- CUSTOMER-PLANNING-WORKFLOW.md
+- agentic_systems_consulting_framework.md
+- MASTER_CONSULTING_QUESTIONS.md
+
+INFRASTRUCTURE (5 files):
+- CLAUDE-CODE-EC2-ARCHITECTURE.md
+- CLAUDE-CODE-EVENT-MIRRORING.md
+- ORCHESTRATOR-SETUP-COMPLETE.md
+- AWS-PRD-SYSTEM-READY.md
+- PRD-DEPLOYMENT-COMPLETE.md
+
+MARKETING (6 files):
+- vsl-script.md, vsl-script-30sec.md, vsl-script-60sec.md
+- AWS-PRD-EXAMPLE.md
+- LANDING-PAGE-MOBILE-OPTIMIZATION-COMPLETE.md
+
+ANALYSIS (YAML):
+- ACME-TEST-CLAUDE-ANALYSIS.yaml
+- quickstart-word-collections-claude-analysis.yaml
+- QUICKSTART_PARENTING_AUTISM_ANALYSIS.yaml
+- Others...
+
+CLAUDE-REPOS DIRECTORY (8 Reference Implementations):
+
+1. quickstart-acme-test-claude - Multi-client isolation pattern
+2. quickstart-agentcore-claude - Shared framework (110+ commands)
+3. quickstart-board-director-claude - Graphiti + ADO time tracking
+4. quickstart-compcorrect-claude - 11 MCP servers integration
+5. quickstart-nexus-claude - Advanced observability (most complex)
+6. quickstart-parenting-autism-claude - 25+ agents, Python-heavy
+7. quickstart-perl-street-claude - Specialized domain
+8. quickstart-word-collections-claude - Lexical processing
+
+Each contains: ado/, agents/, commands/, PRPs/, templates/, skills/, settings.local.json
+
+GB-AUTOMATION-LANDING (React App):
+
+SRC/COMPONENTS (10 JSX files):
+- ContactForm.jsx (7.6KB) - Lead capture
+- PRDGenerator.jsx (16.2KB) - Interactive tool
+- VideoHero.jsx (4.5KB) - Video background
+- ParticleHero.jsx (10.3KB) - Animated particles
+- VoiceDemo.jsx (11.9KB) - Voice demo
+- Pricing.jsx, Features.jsx, Process.jsx, Footer.jsx, Hero.jsx
+
+SRC/PAGES (2 files):
+- Home.jsx - Main page
+- Plan.jsx - Planning page
+
+CONFIG:
+- package.json (18 deps, 27 devDeps)
+- vite.config.js - Build config
+- tailwind.config.js - Styling
+- amplify.yml - AWS deployment
+- tsconfig.json, tsconfig.node.json, eslint.config.js
+
+BUILD:
+- dist/ - Production output
+- node_modules/ - Dependencies
+
+TECHNOLOGY STACK:
+
+Languages: Python (7,638 files), JavaScript/React (92 files), Node.js, Bash
+Frontend: React 18.3.1, Vite 7.1.7, Tailwind CSS 3.4, React Router 7.9.5
+Backend: AWS Amplify 6.15.7
+Cloud: AWS S3, CloudFront, Route53, Lambda, CloudWatch
+Observability: Langfuse (LLM tracing), Neo4j/Graphiti (knowledge graphs), Obsidian (vault)
+
+OBSERVABILITY WORKSPACE:
+
+observability/.claude/ - Separate configuration
+observability/apps/ - Demo applications (client, server, agent)
+observability/ai_docs/ - LLM documentation (Haiku45, Sonnet45)
+observability/notes/ - Obsidian vault
+observability/scripts/ - Utilities
+
+SUPPORTING DIRECTORIES:
+
+PRP/ - Project planning documents (2 files)
+archive/ - Legacy code (orchestrator, websocket tests)
+logs/ - Session execution logs
+dynamous-posts/ - Blog/content
+obsidian-ai-agent/ - Obsidian plugin project
+
+KEY STATISTICS:
+
+Python files: 7,638
+JS/TSX files: 92
+Markdown docs: 600+
+JSON files: 50+
+YAML files: 10+
+
+Documentation lines: 40,000+
+Specs lines: 11,884
+.claude docs: 26,000+
+
+Reference repos: 8
+Commands total: 110+
+Agents: 6 main + 25+ in parenting-autism
+Skills: 3 bundles
+Hook scripts: 5+
+Config files: 50+
+
+CRITICAL PATHS:
+
+For Consultants:
+1. README.md
+2. specs/core-guides/CLAUDE-CODE-ESSENTIALS-GUIDE.md
+3. specs/core-guides/VIBE-PLANNING-FRAMEWORK.md
+4. specs/core-guides/CONSULTING-WORKFLOW.md
+
+For Developers:
+1. .claude/ARCHITECTURE.md
+2. claude-repos/quickstart-*/
+3. .claude/settings.local.json
+4. .claude/COMPLETE_STACK_QUICK_START.md
+
+For Landing Page:
+1. gb-automation-landing/
+2. npm install
+3. npm run dev
+4. npm run amplify:deploy
+
+For Observability:
+1. .claude/ARCHITECTURE.md
+2. .claude/COMPLETE_STACK_QUICK_START.md
+3. .claude/OBSERVABILITY_INTEGRATION_COMPLETE.md
+

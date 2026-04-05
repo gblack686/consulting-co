@@ -1,0 +1,6 @@
+{
+  "hook_event_name": "SubagentStart",
+  "agent_id": "agent-test-001",
+  "agent_type": "Explore",
+  "prompt": "Find all Python files in the project"
+}

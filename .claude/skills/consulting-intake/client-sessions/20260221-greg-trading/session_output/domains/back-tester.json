@@ -1,0 +1,57 @@
+{
+  "domain": "back-tester",
+  "display_name": "Back Tester / Quantitative Analyst",
+  "description": "Run strategy backtests on historical data, optimize parameters, identify new dataset opportunities, and keep Greg's trading edge validated and current.",
+  "tools": ["Hyper Liquid historical data API", "GitHub (strategy code)", "Python/backtesting libs (TBD)", "New dataset sources (scouting)"],
+  "frequency": "Nightly (scheduled overnight runs) + on-demand",
+  "workflows": [
+    {
+      "name": "run-backtest",
+      "description": "Execute a backtest of a named strategy over a historical window",
+      "trigger": "on-demand (Greg requests) + nightly scheduled",
+      "steps": [
+        "Receive strategy spec: name, parameters, asset, timeframe, date range",
+        "Fetch historical OHLCV data from Hyper Liquid API for specified range",
+        "Execute backtest logic (apply entry/exit rules to historical data)",
+        "Calculate performance metrics: total return, Sharpe ratio, max drawdown, win rate, avg P&L",
+        "Generate equity curve data",
+        "Summarize results: top 5 metrics + key strengths/weaknesses",
+        "Store results in memory tagged by strategy name + date",
+        "Optionally: trigger chart generation for equity curve"
+      ],
+      "output": "Backtest report with key metrics + equity curve data",
+      "approval_gate": "None — autonomous",
+      "blast_radius": "Low — computation only, no live trades"
+    },
+    {
+      "name": "optimize-strategy",
+      "description": "Run parameter sweeps to find optimal settings for a strategy",
+      "trigger": "on-demand",
+      "steps": [
+        "Receive strategy name + parameter ranges to sweep",
+        "Run backtest for each parameter combination (grid search or Bayesian)",
+        "Rank combinations by Sharpe ratio (or metric specified by Greg)",
+        "Identify top 3 configurations",
+        "Check for overfitting: validate top configs on holdout period",
+        "Report: best params + performance + overfitting risk flag"
+      ],
+      "output": "Optimization report with top 3 configurations and overfitting assessment",
+      "approval_gate": "None — autonomous analysis. Greg reviews and chooses.",
+      "blast_radius": "Low — analysis only"
+    },
+    {
+      "name": "scout-datasets",
+      "description": "Overnight search for new data sources that could give trading edge",
+      "trigger": "cron nightly",
+      "steps": [
+        "Search for new publicly available datasets: on-chain data, social sentiment, options flow, etc.",
+        "Evaluate each source: data quality, update frequency, cost, API availability",
+        "Flag 1-3 promising new sources per week",
+        "Summarize in weekly dataset scouting report"
+      ],
+      "output": "Dataset scouting report (weekly) — included in morning brief if significant finds",
+      "approval_gate": "None — research only. Greg decides whether to integrate.",
+      "blast_radius": "Low — research only"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "organizations": [],
+  "users": [],
+  "filters": {
+    "exclude_forks": true,
+    "exclude_archived": true,
+    "languages": []
+  },
+  "notification_settings": {
+    "group_by_repo": true,
+    "include_commit_messages": true,
+    "max_commits_per_repo": 10
+  }
+}

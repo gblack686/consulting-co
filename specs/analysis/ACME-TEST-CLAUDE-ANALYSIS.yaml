@@ -1,0 +1,781 @@
+project_name: quickstart-acme-test-claude
+analysis_date: 2025-11-13
+project_description: |
+  A comprehensive Claude Code project template system designed for multi-client QuickStart environments.
+  Implements complete isolation of AWS credentials, Git identities, and project-specific configurations.
+  Includes extensive ADO (Azure DevOps) integration with time tracking, workflow automation, and task management.
+  Serves as a reference implementation for RevStar QuickStart projects.
+
+directory_structure:
+  root_level:
+    - .claude/                          # Main Claude Code configuration directory
+    - ado/                              # Azure DevOps integration scripts and documentation
+    - agents/                           # Specialized agent definitions for project work
+    - commands/                         # Slash commands for Claude Code automation
+    - PRPs/                             # Project Requirement Plans and templates
+    - templates/                        # Template system documentation
+    - settings.local.json               # Claude Code environment configuration
+    - archon_rules.md                   # Archon MCP server integration rules
+    - AWS_SIGN_IN_IMPROVEMENTS.md       # AWS credential management documentation
+
+  ado_structure:
+    - ado/.claude/ado/                  # ADO-specific Claude configuration
+    - ado/archive/                      # Historical board snapshots and configurations
+    - ado/notes/                        # Meeting notes and documentation
+    - ado/__pycache__/                  # Python cache files
+
+  prps_structure:
+    - PRPs/docs/                        # Discovery call questions and research docs
+    - PRPs/templates/                   # Reusable PRP base templates
+    - PRPs/EXAMPLE_multi_agent_prp.md   # Example multi-agent implementation PRP
+    - PRPs/board_director_poc2_prp.md   # Actual Board Director POC2 project PRP
+
+primitives:
+  commands:
+    - name: ado-log-time
+      purpose: |
+        Intelligent time tracking command that checks ADO boards, verifies AWS service status,
+        and logs time entries with context-aware descriptions. Targets 20 hours/week billable
+        time with multi-week audit capability and catch-up functionality.
+      file_path: commands/ado-log-time.md
+      triggers: "Manual invocation or scheduled daily"
+      integrations:
+        - Azure DevOps Board Director project
+        - AWS CloudWatch logs for activity verification
+        - Calendar integration for meeting tracking
+
+    - name: ado-status
+      purpose: |
+        Display current status of Azure DevOps Board Director project work items with focus
+        on assigned user tasks. Supports snapshot generation for audit trails.
+      file_path: commands/ado-status.md
+      features:
+        - Show Greg's current tasks
+        - Display all work items
+        - Generate board snapshots
+        - Filter administrative tasks
+      example_usage: "/ado-status --all"
+
+    - name: aws-sign-in
+      purpose: |
+        Sign in to AWS account using project-level credentials with robust validation.
+        Enforces project-level credential isolation to prevent accidental use of personal
+        AWS accounts. Validates sign-in success with account verification.
+      file_path: commands/aws-sign-in.md
+      validation_checks:
+        - Pre-flight account check
+        - Credential file validation
+        - Post-sign-in account verification
+        - Account ID mismatch warnings
+
+    - name: git-login
+      purpose: |
+        Sign in to GitHub using project-level credentials and configure remote repositories.
+        Handles client project setup with automatic remote configuration and template repo removal.
+      file_path: commands/git-login.md
+      credential_sources:
+        - .env file (project root)
+        - .claude/PROJECT_CONFIG.txt
+      client_setup_features:
+        - Add client remote as origin
+        - Remove template remote
+        - Verify repository access
+        - Store credentials securely
+
+    - name: branch-start
+      purpose: |
+        Start new feature branch from latest base branch with automatic setup and upstream
+        tracking configuration.
+      file_path: commands/branch-start.md
+      argument_pattern: "[feature-name] [--from develop|main|master]"
+      branch_naming_conventions:
+        - "feature/[ticket-id]-[description]"
+        - "bugfix/[ticket-id]-[description]"
+        - "hotfix/[description]"
+        - "chore/[description]"
+
+    - name: branch-cleanup
+      purpose: |
+        Clean up local and remote branches systematically with dry-run support and safety checks.
+      file_path: commands/branch-cleanup.md
+      argument_options:
+        - "--dry-run (preview without deleting)"
+        - "--force (skip confirmations)"
+      cleanup_detection:
+        - "Identifies merged branches"
+        - "Finds stale branches (>30 days)"
+        - "Detects orphaned/deleted branches"
+
+    - name: commit
+      purpose: |
+        Create well-structured commits following conventional commit format with automatic
+        analysis of whether to split into multiple logical commits.
+      file_path: commands/commit.md
+      allowed_tools:
+        - "Bash(git status:*)"
+        - "Bash(git diff:*)"
+        - "Bash(git add:*)"
+        - "Bash(git commit:*)"
+      commit_types:
+        - "feat (new feature)"
+        - "fix (bug fix)"
+        - "docs (documentation)"
+        - "style (formatting)"
+        - "refactor (code restructuring)"
+        - "test (test additions/fixes)"
+        - "chore (build/config updates)"
+        - "perf (performance improvements)"
+        - "ci (CI configuration)"
+        - "build (build system changes)"
+        - "revert (revert previous commit)"
+      decision_logic: |
+        Analyzes diffs to determine if changes should be split into multiple logical commits.
+        Considers feature boundaries, bug fix separation, and documentation isolation.
+
+    - name: test
+      purpose: |
+        Generate comprehensive tests following existing patterns with edge cases and full coverage.
+      file_path: commands/test.md
+      argument_hint: "[file/function/class] to test"
+      test_discovery_process:
+        - "Find test directories (test/, tests/, **tests, spec/)"
+        - "Identify test framework (Jest, Pytest, Mocha, Vitest, etc.)"
+        - "Study naming conventions and test structure"
+        - "Learn mocking patterns and utilities"
+
+    - name: unit-test
+      purpose: |
+        Generate focused unit tests for a specific function or class with mocking and isolation.
+      file_path: commands/unit-test.md
+      argument_hint: "[function/method/class] name"
+      test_strategy:
+        - "Examine test infrastructure"
+        - "Study unit test patterns"
+        - "Analyze unit dependencies"
+        - "Generate isolated tests"
+
+    - name: primer
+      purpose: |
+        Prime context for Claude Code by understanding project structure, purpose, and key files.
+      file_path: commands/primer.md
+      startup_sequence:
+        - "Use tree command for project structure"
+        - "Read CLAUDE.md if present"
+        - "Read README.md"
+        - "Read key src/ or root directory files"
+
+    - name: generate-prp
+      purpose: |
+        Create comprehensive PRP (Project Requirement Plan) that enables one-pass implementation
+        success through systematic research and context curation.
+      file_path: commands/generate-prp.md
+      research_process:
+        - "Codebase analysis in depth"
+        - "External research at scale"
+        - "User clarification"
+      research_outputs:
+        - "Cost estimation documentation"
+        - "Architecture diagrams"
+        - "API specifications"
+        - "Data models"
+        - "Test plans"
+        - "Implementation tasks"
+
+    - name: execute-prp
+      purpose: |
+        Transform PRP into working code through guided execution with progressive validation gates.
+      file_path: commands/execute-prp.md
+      execution_stages:
+        - "Load and absorb PRP context completely"
+        - "ULTRATHINK & comprehensive planning"
+        - "Execute implementation following task order"
+        - "Progressive validation (4-level gates)"
+        - "Completion verification"
+
+    - name: new-client
+      purpose: |
+        Create complete isolated environment for new client project with AWS credentials,
+        Git configuration, Windows Terminal integration, and full .claude/ directory copy.
+      file_path: commands/new-client.md
+      argument_pattern: "[project-name]"
+      interactive_prompts:
+        - "Project Name (display name)"
+        - "Client/Organization Name"
+        - "AWS Account ID"
+        - "AWS Access Key ID"
+        - "AWS Secret Access Key"
+        - "AWS Region (default: us-east-1)"
+        - "GitHub Organization"
+        - "Color Preference (auto/color/hex)"
+        - "Icon/Emoji"
+        - "SSH Key Path (optional)"
+      setup_components:
+        - "Project directory structure creation"
+        - ".claude/ directory copy"
+        - "AWS credentials generation"
+        - "Git configuration"
+        - "Windows Terminal profile integration"
+        - "Color scheme generation"
+
+    - name: archon-list-revstar
+      purpose: |
+        List all RevStar projects in Archon MCP server with detailed task summaries grouped by status.
+      file_path: commands/archon-list-revstar.md
+      output_format:
+        - "Project metadata (title, ID, repo link)"
+        - "Task summary by status (todo/doing/review/done)"
+        - "Pagination support"
+        - "Search capability"
+      example_usage:
+        - "/archon-list-revstar"
+        - "/archon-list-revstar --page 2"
+        - "/archon-list-revstar --query 'Board Director'"
+
+  agents:
+    - name: scoping-agent
+      purpose: |
+        Analyzes project requirements from transcripts and POC specs to generate comprehensive
+        technical specifications including costs, UX flows, data schemas, architecture, and test plans.
+      file_path: agents/scoping-agent.md
+      model: sonnet
+      tools:
+        - Read
+        - Write
+        - Grep
+        - Glob
+        - MCP
+      arguments:
+        - name: input_folder
+          description: "Path to folder containing Fathom transcripts and POC specification documents"
+          type: string
+          required: true
+      output_documents:
+        - "cost-estimate.yaml"
+        - "technical-specification.md"
+        - "architecture-overview.md"
+        - "data-models.yaml"
+        - "api-specification.md"
+        - "test-plan.md"
+        - "implementation-roadmap.md"
+
+    - name: revstar-scoping-agent
+      purpose: |
+        Specialized scoping agent for RevStar QuickStarts that analyzes project requirements
+        and generates detailed technical planning documents following RevStar methodology.
+      file_path: agents/revstar-scoping-agent.md
+      model: sonnet
+      tools:
+        - Read
+        - Write
+        - Grep
+        - Glob
+        - Edit
+      specialization: "RevStar QuickStart methodology and patterns"
+      output_location: "scope/agent-yaml/{ISO_8601_timestamp}/"
+      analysis_approach:
+        - "Document Analysis (transcripts, requirements, business rules)"
+        - "QuickStart Review (templates, patterns, components)"
+
+    - name: architecture-planner
+      purpose: |
+        System architecture and design pattern specialist. Creates architectural blueprints
+        and design documents. Ensures architectural consistency across codebase.
+      file_path: agents/architecture-planner.md
+      model: opus
+      tools:
+        - Read
+        - Write
+        - Grep
+        - Glob
+      proactive_triggers: |
+        Use when starting new features, designing system components, planning microservices,
+        or solving architectural challenges.
+      analysis_scope:
+        - "Current architecture assessment"
+        - "Technical constraints and quality attributes"
+        - "Microservice design if applicable"
+        - "Data flow and integration patterns"
+        - "Performance and scalability planning"
+
+    - name: database-architect
+      purpose: |
+        Database schema design and query optimization specialist. Handles database performance
+        issues, schema planning, and data modeling challenges.
+      file_path: agents/database-architect.md
+      model: sonnet
+      tools:
+        - Read
+        - Write
+        - Grep
+        - Glob
+        - Bash
+      proactive_triggers: |
+        Use when designing new features needing data storage, experiencing slow queries,
+        planning data models, or solving database performance issues.
+      assessment_activities:
+        - "Current database setup identification"
+        - "Data pattern analysis"
+        - "Performance baseline measurement"
+        - "Schema normalization"
+        - "Index optimization"
+
+    - name: test-generator
+      purpose: |
+        Comprehensive test suite generation specialist. Creates unit, integration, and edge
+        case tests following project patterns.
+      file_path: agents/test-generator.md
+      model: sonnet
+      tools:
+        - Read
+        - Write
+        - Grep
+        - Glob
+        - Edit
+      proactive_triggers: |
+        Use when new features are added, test coverage is low, or critical paths lack tests.
+      test_coverage_areas:
+        - "Unit tests with mocking"
+        - "Integration tests"
+        - "Edge case tests"
+        - "Error condition tests"
+
+    - name: documentation-generator
+      purpose: |
+        Automated documentation creation and synchronization specialist. Generates API docs,
+        READMEs, and architecture documentation.
+      file_path: agents/documentation-generator.md
+      model: sonnet
+      tools:
+        - Read
+        - Write
+        - Grep
+        - Glob
+        - MultiEdit
+      proactive_triggers: |
+        Use after code changes, when documentation is missing, before releases,
+        or when onboarding new team members.
+      documentation_targets:
+        - "API documentation"
+        - "README files"
+        - "Architecture diagrams"
+        - "Configuration documentation"
+        - "Deployment guides"
+
+  hooks:
+    - hook_type: "NOT IMPLEMENTED"
+      description: "This project does not use git hooks (.hooks directory)"
+      note: "Project uses manual command invocation instead of automated hooks"
+
+  skills:
+    - not_configured
+    - description: "No custom skills detected. Project relies on built-in Claude Code tools"
+
+  tools:
+    integrated_tools:
+      - Bash (file operations, git, AWS CLI, Docker, npm)
+      - Read (file reading with context awareness)
+      - Write (file creation and modification)
+      - Grep (content search with regex)
+      - Glob (file pattern matching)
+      - Edit (in-place file editing)
+
+integrations:
+  ado:
+    enabled: true
+    organization: RevStarConsulting
+    url: https://dev.azure.com/RevStarConsulting
+    default_project: Board Director
+    project_id: 2d8c1de5-ff21-45a9-9a01-a378e5b46575
+    team_code: RVST
+    activity_type: AI/ML
+    integration_components:
+      - "Python scripts for board querying and time logging"
+      - "Calendar sync with ADO task creation"
+      - "Board snapshot generation for audit trails"
+      - "Time entry validation and multi-week auditing"
+    python_modules:
+      - ado_config.py (centralized configuration loader)
+      - aws_activity_analyzer.py (CloudWatch activity analysis)
+      - generate_board_snapshot.py (snapshot automation)
+      - log_time_to_ado.py (time entry creation)
+      - sync_calendar_to_ado.py (calendar integration)
+      - sync_greg_tasks_to_archon.py (Archon sync)
+
+  logging:
+    enabled: true
+    type: "AWS CloudWatch and Python logging"
+    integration_points:
+      - "CloudWatch Logs Insights queries for activity verification"
+      - "Lambda execution logs"
+      - "CloudWatch metrics for AWS service tracking"
+    python_logging: |
+      Standard Python logging module with configuration for:
+      - Debug level logging during development
+      - Info level logging for standard operations
+      - Error level logging for failures and warnings
+
+  graphiti:
+    enabled: false
+    description: "No Graphiti integration detected in this project"
+
+  archon:
+    enabled: true
+    server: "Archon MCP Server"
+    integration_type: "Task management and knowledge base"
+    critical_rule: "ARCHON-FIRST RULE - Always use Archon for task management"
+    archon_override: "Refrain from using TodoWrite, Archon is PRIMARY system"
+    workflow:
+      task_driven_development: |
+        1. Get Task → find_tasks(task_id="...") or find_tasks(filter_by="status")
+        2. Start Work → manage_task("update", status="doing")
+        3. Research → Use knowledge base (RAG workflow)
+        4. Implement → Write code based on research
+        5. Review → manage_task("update", status="review")
+        6. Next Task → find_tasks(filter_by="status", filter_value="todo")
+      rag_workflow: |
+        1. Get sources → rag_get_available_sources()
+        2. Find source ID → Match to documentation
+        3. Search → rag_search_knowledge_base(query="...", source_id="...")
+      project_workflows: |
+        - Create new projects with manage_project("create")
+        - Create tasks with manage_task("create")
+        - Find existing projects with find_projects(query="...")
+        - Filter tasks by status, project, or assignee
+    tool_reference:
+      projects:
+        - find_projects(query="...") - Search projects
+        - find_projects(project_id="...") - Get specific project
+        - manage_project("create"/"update"/"delete") - Manage projects
+      tasks:
+        - find_tasks(query="...") - Search by keyword
+        - find_tasks(task_id="...") - Get specific task
+        - find_tasks(filter_by="status"/"project"/"assignee") - Filter tasks
+        - manage_task("create"/"update"/"delete") - Manage tasks
+      knowledge_base:
+        - rag_get_available_sources() - List sources
+        - rag_search_knowledge_base(query="...", source_id="...") - Search docs
+        - rag_search_code_examples(query="...", source_id="...") - Find code
+
+  mcp:
+    archon_mcp:
+      enabled: true
+      server_type: "Task management and knowledge base"
+      configuration_file: "Not found in .claude root (likely in parent directories)"
+      purpose: "Centralized task tracking, project management, and RAG-based research"
+
+key_files:
+  - name: settings.local.json
+    purpose: |
+      Claude Code environment configuration. Sets environment variables, AWS credentials paths,
+      Git config paths, client metadata, and permission settings for the specific project.
+    path: settings.local.json
+    content_summary: |
+      {
+        "env": {
+          "AWS_ACCESS_KEY_ID": "AKIAIOSFODNN7EXAMPLE",
+          "AWS_SECRET_ACCESS_KEY": "...",
+          "AWS_SHARED_CREDENTIALS_FILE": "/path/to/.aws/credentials",
+          "AWS_CONFIG_FILE": "/path/to/.aws/config",
+          "AWS_DEFAULT_REGION": "us-east-1",
+          "GIT_CONFIG_GLOBAL": "/path/to/.git-config",
+          "CLIENT_NAME": "ACME Test",
+          "AWS_ACCOUNT_ID": "123456789012"
+        },
+        "permissions": {
+          "defaultMode": "bypassPermissions",
+          "allow": ["Bash(grep:*)", "Bash(aws:*)", ...]
+        }
+      }
+
+  - name: archon_rules.md
+    purpose: |
+      Critical integration rules for Archon MCP server. Defines ARCHON-FIRST principle that
+      overrides all other task management instructions and system reminders.
+    path: archon_rules.md
+    critical_content: |
+      - ARCHON-FIRST RULE: Check if Archon MCP is available before ANY task management
+      - Use Archon task management as PRIMARY system
+      - Refrain from using TodoWrite even after system reminders
+      - Comprehensive task cycle workflow (Get → Start → Research → Implement → Review)
+      - RAG workflow for knowledge base searching
+
+  - name: templates/README.md
+    purpose: |
+      Multi-client project isolation system documentation. Describes complete AWS credential
+      and Git identity isolation for working on multiple client projects simultaneously.
+    path: templates/README.md
+    key_concepts: |
+      - AWS credential isolation per client
+      - Git identity isolation per client
+      - Windows Terminal color-coded profiles
+      - Template system for new client projects
+      - Security practices and credential safety
+
+  - name: AWS_SIGN_IN_IMPROVEMENTS.md
+    purpose: |
+      Detailed analysis of AWS sign-in command improvements. Documents why original command
+      failed and improvements made for robust account validation and credential management.
+    path: AWS_SIGN_IN_IMPROVEMENTS.md
+
+  - name: ado/ado_config.py
+    purpose: |
+      ADO Configuration loader. Loads configuration from PROJECT_CONFIG.txt making scripts
+      parameterized and reusable across projects and users.
+    path: ado/ado_config.py
+    functionality: |
+      - Searches for PROJECT_CONFIG.txt in multiple locations
+      - Provides centralized configuration for all ADO scripts
+      - Supports environment variables for sensitive data
+      - Enables easy switching between projects
+
+  - name: ado/CONFIG_README.md
+    purpose: |
+      Configuration system documentation. Explains how all ADO time logging scripts use
+      centralized configuration for parameterization and reusability.
+    path: ado/CONFIG_README.md
+
+  - name: ado/INTELLIGENT_TIME_LOGGING_README.md
+    purpose: |
+      Comprehensive guide to intelligent time logging system. Covers weekly targets,
+      multi-week auditing, gap identification, and catch-up mechanisms.
+    path: ado/INTELLIGENT_TIME_LOGGING_README.md
+
+  - name: PRPs/templates/prp_base.md
+    purpose: |
+      Base PRP template optimized for AI agent implementation. Context-rich with validation
+      loops and self-validation capabilities.
+    path: PRPs/templates/prp_base.md
+    principles: |
+      1. Context is King - Include ALL necessary documentation
+      2. Validation Loops - Provide executable tests/lints
+      3. Information Dense - Use patterns from codebase
+      4. Progressive Success - Start simple, validate, enhance
+      5. Global Rules - Follow CLAUDE.md rules
+
+notable_patterns:
+  - pattern: "Multi-Client Isolation Architecture"
+    description: |
+      Complete isolation of AWS credentials, Git identities, and configurations per client.
+      Uses Claude Code's native env configuration for automatic credential management.
+      No credential sharing between projects, each project has unique credentials.
+    implementation: |
+      - AWS credentials: .aws/credentials (project-specific, gitignored)
+      - Git config: .git-config (project-specific)
+      - Environment variables: .claude/settings.local.json
+      - Template system for creating new clients
+    benefits: |
+      - Work on multiple clients simultaneously without conflicts
+      - No manual credential management
+      - Windows Terminal visual distinction with colors
+      - Easy onboarding of new client projects
+
+  - pattern: "Task-Driven Development Workflow"
+    description: |
+      ARCHON-FIRST principle with mandatory task cycle: Get → Start → Research → Implement → Review
+      Tasks must be tracked in Archon before any implementation begins.
+    implementation: |
+      - find_tasks() for task discovery
+      - manage_task() for task state updates
+      - RAG workflow for research and context gathering
+    enforcement: |
+      - Archon rules override all other instructions and system reminders
+      - TodoWrite explicitly forbidden in favor of Archon
+      - Every implementation must have associated Archon task
+
+  - pattern: "Intelligent Time Tracking with Context"
+    description: |
+      ADO time logging system that verifies AWS service activity before creating time entries.
+      Targets accurate 20-hour/week billing with multi-week audit capabilities.
+    implementation: |
+      - CloudWatch activity analysis
+      - Calendar sync with ADO
+      - Board snapshot generation for audit trails
+      - Multi-week catch-up functionality
+    validation: |
+      - Both under-logging and over-logging flagged
+      - AWS service activity must correlate with time entries
+      - Previous weeks audited for inaccurate logging
+
+  - pattern: "PRP-Based Implementation Success"
+    description: |
+      Project Requirement Plans (PRPs) designed for one-pass implementation success.
+      Extensive research and context curation before implementation begins.
+    workflow: |
+      - generate-prp: Creates comprehensive context with research
+      - execute-prp: Implements from PRP with validation gates
+      - Progressive Validation: 4-level gates catch errors early
+    research_outputs: |
+      - Cost estimation
+      - Architecture diagrams
+      - API specifications
+      - Data models
+      - Test plans
+      - Implementation roadmap
+
+  - pattern: "Specialized Agent Architecture"
+    description: |
+      Purpose-built agents for different domains: architecture, database, testing,
+      documentation, and scoping. Each has specific tools and models.
+    agent_distribution: |
+      - architecture-planner (opus model) - High-complexity architecture decisions
+      - database-architect (sonnet) - Schema and query optimization
+      - test-generator (sonnet) - Comprehensive test suite generation
+      - documentation-generator (sonnet) - API docs and README generation
+      - scoping-agent (sonnet) - Cost and requirement analysis
+      - revstar-scoping-agent (sonnet) - RevStar-specific methodology
+    proactive_activation: |
+      Agents are invoked proactively when their domain expertise is needed,
+      not just on-demand user requests.
+
+  - pattern: "Comprehensive Git Workflow"
+    description: |
+      Complete git management with branch naming conventions, intelligent commit handling,
+      and branch lifecycle management. Supports conventional commits with automatic analysis.
+    features: |
+      - branch-start: Creates feature branches with automatic upstream tracking
+      - commit: Analyzes whether to split into logical commits
+      - branch-cleanup: Identifies merged/stale branches for cleanup
+      - git-login: Project-level GitHub credential isolation
+    conventions: |
+      - feature/[ticket-id]-[description]
+      - bugfix/[ticket-id]-[description]
+      - hotfix/[description]
+      - chore/[description]
+      - Conventional commits (feat, fix, docs, style, refactor, test, chore)
+
+  - pattern: "Project Isolation and Containerization"
+    description: |
+      Each client project is completely isolated with its own .claude/ directory copy,
+      credentials, and configuration. New clients can be created with single /new-client command.
+    isolation_components: |
+      - Independent AWS credentials
+      - Separate Git identities
+      - Project-specific environment variables
+      - Windows Terminal profiles with unique colors
+      - No credential sharing between projects
+
+  - pattern: "Validation Gate System"
+    description: |
+      Progressive validation through 4-level gates in PRP execution.
+      Each level must pass before proceeding to next.
+    levels: |
+      1. Syntax & Style - Code formatting and linting
+      2. Unit Tests - Individual component testing
+      3. Integration Tests - Component interaction testing
+      4. Custom Validation - Project-specific validation
+
+  - pattern: "Configuration-Driven Script Parameterization"
+    description: |
+      All ADO Python scripts use centralized PROJECT_CONFIG.txt for configuration,
+      making scripts reusable across projects without hardcoding.
+    implementation: |
+      - ADOConfig class searches for PROJECT_CONFIG.txt
+      - Scripts load configuration dynamically
+      - Environment variables supported for sensitive data
+      - Portable across users and projects
+
+observability:
+  logging_setup:
+    type: "Multi-layer logging system"
+    components:
+      - "Python logging module for scripts"
+      - "AWS CloudWatch Logs Insights for activity verification"
+      - "ADO activity logs via Azure DevOps API"
+      - "Git commit history for workflow tracking"
+      - "Board snapshots (YAML) for audit trails"
+    logging_locations:
+      python_scripts: "Standard Python logging (stdout/stderr)"
+      aws_activity: "CloudWatch Logs with CloudWatch Logs Insights queries"
+      ado_activity: "Azure DevOps work item history"
+      snapshots: "ado/board_snapshot_current.yaml and ado/archive/"
+
+  monitoring:
+    ado_board_status: |
+      - Real-time work item status via ado-status command
+      - Weekly progress tracking towards 20-hour billing target
+      - Multi-week audit detection of inaccurate logging
+      - Board snapshots for historical analysis
+    aws_service_monitoring: |
+      - CloudWatch metrics for AWS resource utilization
+      - CloudWatch Logs for service activity analysis
+      - Activity correlation with ADO time entries
+      - Cost tracking via AWS CloudWatch logs
+    calendar_integration: |
+      - Meeting detection and sync with ADO
+      - Time allocation across tasks
+      - Calendar-based task creation
+    archon_task_tracking: |
+      - Real-time task status monitoring
+      - Task completion rate metrics
+      - Project health dashboard (via Archon)
+
+recommendations:
+  what_works_well:
+    - "Multi-client isolation is well-designed and solves real collaboration problems"
+    - "ARCHON-FIRST principle provides clear task management hierarchy"
+    - "PRP-based implementation reduces rework and improves success rates"
+    - "Specialized agents for different domains improve solution quality"
+    - "ADO integration with CloudWatch provides strong audit trail"
+    - "Configuration-driven parameterization makes scripts highly reusable"
+    - "Progressive validation gates catch errors early in implementation"
+    - "Windows Terminal color-coding provides excellent UX for context switching"
+
+  strengths:
+    - "Comprehensive documentation at every level"
+    - "Security-first approach to credential isolation"
+    - "Clear separation of concerns with specialized agents"
+    - "Extensible template system for new projects"
+    - "Strong integration with Azure DevOps and AWS"
+    - "Intelligent time tracking with context awareness"
+    - "Git workflow automation reduces manual work"
+
+  areas_for_improvement:
+    - "No git hooks configured - could automate more validations pre-commit"
+    - "Limited skill system integration - could benefit from custom domain skills"
+    - "No MCP configuration file found in .claude root - centralize MCP setup"
+    - "convince-me command is empty - could implement persuasion/clarity agent"
+    - "Could add pre-implementation checklist agent for requirements validation"
+    - "Terminal automation could benefit from shell script hooks for context switching"
+
+  potential_enhancements:
+    - "Implement git pre-commit hooks for automated validation and formatting"
+    - "Create a custom MCP skill for RevStar-specific domain logic"
+    - "Add cost estimation validation agent for budget tracking"
+    - "Implement automated incident response workflows"
+    - "Add performance profiling agent for optimization"
+    - "Create client handoff checklist automation"
+    - "Implement automated dependency update agent"
+
+  optimization_opportunities:
+    - "Consolidate ADO Python scripts using ado_config.py parameterization"
+    - "Create template-based agent generation for common patterns"
+    - "Implement caching for frequently accessed ADO boards"
+    - "Automate PRP validation before executing implementation"
+    - "Add performance metrics collection across all agents"
+    - "Create command composition system for complex workflows"
+
+project_metadata:
+  client: "ACME Test (Reference Implementation)"
+  aws_account_id: "123456789012"
+  organization: "RevStarConsulting"
+  team_code: "RVST"
+  activity_type: "AI/ML"
+  default_region: "us-east-1"
+  created_for: "Template and reference implementation for QuickStart projects"
+  primary_purpose: "Multi-client project isolation and workflow automation"
+
+file_statistics:
+  total_commands: 15
+  total_agents: 6
+  total_ado_scripts: 32
+  total_documentation_files: 12
+  total_template_files: 5
+  prp_examples: 2
+  total_size_estimate: "~5-10 MB (including Python dependencies)"
+
+version_information:
+  system_version: "1.0"
+  last_updated: "October 2025"
+  maintainer: "Greg Black (gblack686@gmail.com)"
+  archon_integration: "v1.0"
+  claude_code_version: "Latest Claude Code with MCP support"

@@ -1,0 +1,37 @@
+# TAC Ecosystem Sync Commands
+# ============================
+# Copy each line and run in Claude Code, or use:
+#   cat sync-commands.txt | xargs -I{} claude -p "{}"
+#
+# Generated: 2026-01-20
+# Total: 24 directories
+
+# TAC Course Projects (12)
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/agent-experts/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/agent-sandbox-skill/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/agent-sandboxes/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/agentic-finance-review/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/building-domain-specific-agents/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/claude-code-damage-control/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/claude-code-hooks-mastery/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/fork-repository-skill/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/multi-agent-orchestration-the-o-agent/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/orchestrator-agent-with-adws/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/rd-framework-context-window-mastery/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/seven-levels-agentic-prompt-formats/.claude
+
+# TAC Numbered Projects (7)
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-1/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-2/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-3/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-4/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-5/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-6/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-7/.claude
+
+# TAC-8 Sub-Projects (5)
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app1__agent_layer_primitives/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app2__multi_agent_todone/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app3__out_loop_multi_agent_task_board/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app4__agentic_prototyping/.claude
+/sync-claude-ecosystem C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app5__nlq_to_sql_aea/.claude

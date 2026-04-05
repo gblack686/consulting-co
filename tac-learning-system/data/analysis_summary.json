@@ -1,0 +1,47 @@
+{
+  "metadata": {
+    "repo_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-2",
+    "analyzed_at": "2025-11-19T00:02:13.276688",
+    "analyzer_version": "2.0.0"
+  },
+  "stages": {
+    "document_parsing": {
+      "prompts_extracted": 5,
+      "status": "complete"
+    },
+    "code_parsing": {
+      "modules": 12,
+      "functions": 18,
+      "classes": 16,
+      "status": "complete"
+    },
+    "config_parsing": {
+      "mcp_servers": 0,
+      "env_vars": 2,
+      "status": "complete"
+    },
+    "static_analysis": {
+      "average_complexity": 21.17,
+      "average_maintainability": 76.24,
+      "security_issues": 118,
+      "status": "complete"
+    },
+    "graph_generation": {
+      "total_nodes": 56,
+      "total_edges": 62,
+      "node_types": {
+        "Concept": 5,
+        "Function": 18,
+        "EnvVar": 2,
+        "Prompt": 5,
+        "Module": 10,
+        "Class": 16
+      },
+      "edge_types": {
+        "DEFINES": 34,
+        "CALLS": 28
+      },
+      "status": "complete"
+    }
+  }
+}

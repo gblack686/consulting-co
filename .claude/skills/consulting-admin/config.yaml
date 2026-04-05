@@ -1,0 +1,24 @@
+# Consulting Admin Configuration
+
+company:
+  name: "GBAutomation"
+  email: "greg@gbautomation.xyz"
+  consultant: "Greg Black"
+  website: "https://gbautomation.xyz"
+  payment_link: "https://gbautomation.xyz/pay"
+
+google:
+  aws_secret_id: "gbautomation/google/workspace-god-token"
+  aws_region: "us-east-1"
+  drive_root_folder: "GBAutomation Clients"
+
+pricing:
+  foundation: "$1,500"   # 1-2 domains, up to 4 skills
+  standard:   "$2,500"   # 3-4 domains, up to 8 skills
+  premium:    "$4,000"   # 5+ domains, unlimited skills
+
+delivery:
+  workspace_files: "1 business day"
+  domain_experts:  "3 business days"
+  deployment:      "5 business days"
+  walkthrough:     "5-7 business days"

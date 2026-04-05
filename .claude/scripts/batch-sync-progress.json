@@ -1,0 +1,1645 @@
+{
+  "started": "2026-01-20T22:31:29.539081",
+  "current_index": 24,
+  "completed": [
+    "C:/Users/gblac/OneDrive/Desktop/tac/agent-experts/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/agent-sandbox-skill/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/agent-sandboxes/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/agentic-finance-review/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/building-domain-specific-agents/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/claude-code-damage-control/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/claude-code-hooks-mastery/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/fork-repository-skill/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/multi-agent-orchestration-the-o-agent/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/orchestrator-agent-with-adws/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/rd-framework-context-window-mastery/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/seven-levels-agentic-prompt-formats/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-1/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-2/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-3/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-4/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-5/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-6/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-7/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app1__agent_layer_primitives/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app2__multi_agent_todone/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app3__out_loop_multi_agent_task_board/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app4__agentic_prototyping/.claude",
+    "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app5__nlq_to_sql_aea/.claude"
+  ],
+  "failed": [],
+  "skipped": [],
+  "total": 24,
+  "results": [
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/agent-experts/.claude",
+      "project_name": "agent-experts",
+      "exists": true,
+      "components_found": 41,
+      "components_new": 21,
+      "components_existing": 20,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\meta-skill\\meta-skill.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\start-orchestrator\\start-orchestrator.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\all_tools.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\build.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\build_in_parallel.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\find_and_summarize.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\load_ai_docs.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\load_bundle.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\meta_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\parallel_subagents.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\plan.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\plan_w_scouters.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\prime.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\prime_cc.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\prime_nile.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\question-w-mermaid-diagrams.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\question.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\quick-plan.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\start_nile.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\self-improve.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\plan_build_improve.md"
+      ],
+      "existing_notes": [
+        "build-agent",
+        "docs-scraper",
+        "meta-agent",
+        "planner",
+        "playwright-validator",
+        "scout-report-suggest-fast",
+        "scout-report-suggest",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "send_event",
+        "session_start",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit",
+        "question",
+        "plan",
+        "question",
+        "self-improve"
+      ],
+      "errors": [
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\agent-experts\\.claude\\skills\\meta-skill: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\agent-experts\\\\.claude\\\\skills\\\\meta-skill'",
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\agent-experts\\.claude\\skills\\start-orchestrator: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\agent-experts\\\\.claude\\\\skills\\\\start-orchestrator'"
+      ],
+      "workflow_analysis": [
+        {
+          "name": "all_tools",
+          "type": "expert",
+          "classification": "Command"
+        },
+        {
+          "name": "build",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "build_in_parallel",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "find_and_summarize",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "load_ai_docs",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "load_bundle",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "meta_prompt",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "parallel_subagents",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan_w_scouters",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime",
+          "type": "expert",
+          "classification": "ADW"
+        },
+        {
+          "name": "prime_cc",
+          "type": "expert",
+          "classification": "Command"
+        },
+        {
+          "name": "prime_nile",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "question-w-mermaid-diagrams",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "question",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "quick-plan",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "start_nile",
+          "type": "expert",
+          "classification": "ADW"
+        },
+        {
+          "name": "self-improve",
+          "type": "expert",
+          "classification": "ADW"
+        },
+        {
+          "name": "plan_build_improve",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/agent-sandbox-skill/.claude",
+      "project_name": "agent-sandbox-skill",
+      "exists": true,
+      "components_found": 3,
+      "components_new": 3,
+      "components_existing": 0,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\generic-browser-test.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\agent-sandboxes\\agent-sandboxes.md"
+      ],
+      "existing_notes": [],
+      "errors": [
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\agent-sandbox-skill\\.claude\\skills\\agent-sandboxes: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\agent-sandbox-skill\\\\.claude\\\\skills\\\\agent-sandboxes'"
+      ],
+      "workflow_analysis": [
+        {
+          "name": "generic-browser-test",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime",
+          "type": "command",
+          "classification": "Command"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/agent-sandboxes/.claude",
+      "project_name": "agent-sandboxes",
+      "exists": true,
+      "components_found": 7,
+      "components_new": 5,
+      "components_existing": 2,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\build.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\load_ai_docs.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\plan.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_cli_sandbox.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_obox.md"
+      ],
+      "existing_notes": [
+        "docs-scraper",
+        "prime"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "build",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "load_ai_docs",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime_cli_sandbox",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime_obox",
+          "type": "command",
+          "classification": "ADW"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/agentic-finance-review/.claude",
+      "project_name": "agentic-finance-review",
+      "exists": true,
+      "components_found": 18,
+      "components_new": 15,
+      "components_existing": 3,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\categorize-csv-agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\csv-edit-agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\generative-ui-agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\graph-agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\merge-accounts-agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\normalize-csv-agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\accumulate-csvs.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\categorize-csv.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\csv-edit.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\csv-mock-generator.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\generative-ui.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\graph-insights.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\merge-accounts.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\normalize-csv.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\review-finances.md"
+      ],
+      "existing_notes": [
+        "build",
+        "prime",
+        "view"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "categorize-csv-agent",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "csv-edit-agent",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "generative-ui-agent",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "graph-agent",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "merge-accounts-agent",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "normalize-csv-agent",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "accumulate-csvs",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "categorize-csv",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "csv-edit",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "csv-mock-generator",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "generative-ui",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "graph-insights",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "merge-accounts",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "normalize-csv",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "review-finances",
+          "type": "command",
+          "classification": "ADW"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/building-domain-specific-agents/.claude",
+      "project_name": "building-domain-specific-agents",
+      "exists": true,
+      "components_found": 22,
+      "components_new": 19,
+      "components_existing": 3,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\all_tools.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\background.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\build_w_report.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\load_bundle.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\parallel_subagents.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\plan_vite_vue.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\plan_w_docs.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_cc.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\question.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\quick-plan.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\scout.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\scout_plan_build.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\t_metaprompt_workflow.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Hooks\\context_bundle_builder.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Hooks\\dangerous_command_blocker.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Hooks\\universal_hook_logger.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\cc_hook_expert_build.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\cc_hook_expert_improve.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\07-Experts\\cc_hook_expert_plan.md"
+      ],
+      "existing_notes": [
+        "build",
+        "load_ai_docs",
+        "prime"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "all_tools",
+          "type": "command",
+          "classification": "Command"
+        },
+        {
+          "name": "background",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "build_w_report",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "load_bundle",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "parallel_subagents",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan_vite_vue",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan_w_docs",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime_cc",
+          "type": "command",
+          "classification": "Command"
+        },
+        {
+          "name": "question",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "quick-plan",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "scout",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "scout_plan_build",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "t_metaprompt_workflow",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "context_bundle_builder",
+          "type": "hook",
+          "classification": "Command"
+        },
+        {
+          "name": "dangerous_command_blocker",
+          "type": "hook",
+          "classification": "Command"
+        },
+        {
+          "name": "universal_hook_logger",
+          "type": "hook",
+          "classification": "Command"
+        },
+        {
+          "name": "cc_hook_expert_build",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "cc_hook_expert_improve",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "cc_hook_expert_plan",
+          "type": "expert",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/claude-code-damage-control/.claude",
+      "project_name": "claude-code-damage-control",
+      "exists": true,
+      "components_found": 4,
+      "components_new": 3,
+      "components_existing": 1,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\install.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\sentient.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\damage-control\\damage-control.md"
+      ],
+      "existing_notes": [
+        "prime"
+      ],
+      "errors": [
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\claude-code-damage-control\\.claude\\skills\\damage-control: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\claude-code-damage-control\\\\.claude\\\\skills\\\\damage-control'"
+      ],
+      "workflow_analysis": [
+        {
+          "name": "install",
+          "type": "command",
+          "classification": "Command"
+        },
+        {
+          "name": "sentient",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/claude-code-hooks-mastery/.claude",
+      "project_name": "claude-code-hooks-mastery",
+      "exists": true,
+      "components_found": 30,
+      "components_new": 17,
+      "components_existing": 13,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\hello-world-agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\llm-ai-agents-and-eng-research.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\work-completion-summary.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\cook.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\cook_research_only.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_research.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_research_haiku.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\git_status.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_tts.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\update_status_line.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_coin_analyzer_agent_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_investment_plays_agent_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_market_agent_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_movers_agent_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_news_scanner_agent_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\crypto_price_check_agent_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\macro_crypto_correlation_scanner_agent_prompt.md"
+      ],
+      "existing_notes": [
+        "meta-agent",
+        "all_tools",
+        "prime",
+        "question",
+        "sentient",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "session_start",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "hello-world-agent",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "llm-ai-agents-and-eng-research",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "work-completion-summary",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "cook",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "cook_research_only",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_research",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_research_haiku",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "git_status",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime_tts",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "update_status_line",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_coin_analyzer_agent_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_investment_plays_agent_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_market_agent_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_movers_agent_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_news_scanner_agent_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "crypto_price_check_agent_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "macro_crypto_correlation_scanner_agent_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/fork-repository-skill/.claude",
+      "project_name": "fork-repository-skill",
+      "exists": true,
+      "components_found": 3,
+      "components_new": 2,
+      "components_existing": 1,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\all_skills.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\fork-terminal\\fork-terminal.md"
+      ],
+      "existing_notes": [
+        "prime"
+      ],
+      "errors": [
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\fork-repository-skill\\.claude\\skills\\fork-terminal: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\fork-repository-skill\\\\.claude\\\\skills\\\\fork-terminal'"
+      ],
+      "workflow_analysis": [
+        {
+          "name": "all_skills",
+          "type": "command",
+          "classification": "Command"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/multi-agent-orchestration-the-o-agent/.claude",
+      "project_name": "multi-agent-orchestration-the-o-agent",
+      "exists": true,
+      "components_found": 34,
+      "components_new": 5,
+      "components_existing": 29,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\build_in_parallel.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\find_and_summarize.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\plan_w_scouters.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_3.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\meta-agent\\meta-agent.md"
+      ],
+      "existing_notes": [
+        "build-agent",
+        "docs-scraper",
+        "meta-agent",
+        "playwright-validator",
+        "scout-report-suggest-fast",
+        "scout-report-suggest",
+        "all_tools",
+        "background",
+        "build",
+        "load_ai_docs",
+        "load_bundle",
+        "parallel_subagents",
+        "plan",
+        "plan_w_docs",
+        "prime",
+        "prime_cc",
+        "question",
+        "quick-plan",
+        "scout",
+        "scout_plan_build",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "send_event",
+        "session_start",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit"
+      ],
+      "errors": [
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\multi-agent-orchestration-the-o-agent\\.claude\\skills\\meta-agent: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\multi-agent-orchestration-the-o-agent\\\\.claude\\\\skills\\\\meta-agent'"
+      ],
+      "workflow_analysis": [
+        {
+          "name": "build_in_parallel",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "find_and_summarize",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan_w_scouters",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime_3",
+          "type": "command",
+          "classification": "ADW"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/orchestrator-agent-with-adws/.claude",
+      "project_name": "orchestrator-agent-with-adws",
+      "exists": true,
+      "components_found": 55,
+      "components_new": 16,
+      "components_existing": 39,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\animate-frames.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\fix.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\generate-image.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\meta_prompt.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\orch_one_shot_agent.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\orch_plan_w_scouts_build_review.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\orch_scout_and_build.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\ping.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_nile.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_specific_docs.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\question-w-mermaid-diagrams.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\review.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\start_nile.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Hooks\\obsidian-sync-hook.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\meta-skill\\meta-skill.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\03-Skills\\start-orchestrator\\start-orchestrator.md"
+      ],
+      "existing_notes": [
+        "build-agent",
+        "docs-scraper",
+        "meta-agent",
+        "planner",
+        "playwright-validator",
+        "scout-report-suggest-fast",
+        "scout-report-suggest",
+        "all_tools",
+        "build",
+        "build_in_parallel",
+        "find_and_summarize",
+        "load_ai_docs",
+        "load_bundle",
+        "parallel_subagents",
+        "plan",
+        "plan_w_scouters",
+        "prime",
+        "prime_cc",
+        "question",
+        "quick-plan",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "send_event",
+        "session_start",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit",
+        "plan",
+        "plan_build_improve",
+        "question",
+        "self-improve",
+        "question",
+        "self-improve",
+        "plan",
+        "plan_build_improve",
+        "question",
+        "self-improve"
+      ],
+      "errors": [
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\orchestrator-agent-with-adws\\.claude\\skills\\meta-skill: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\orchestrator-agent-with-adws\\\\.claude\\\\skills\\\\meta-skill'",
+        "Error reading C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\orchestrator-agent-with-adws\\.claude\\skills\\start-orchestrator: [Errno 13] Permission denied: 'C:\\\\Users\\\\gblac\\\\OneDrive\\\\Desktop\\\\tac\\\\orchestrator-agent-with-adws\\\\.claude\\\\skills\\\\start-orchestrator'"
+      ],
+      "workflow_analysis": [
+        {
+          "name": "animate-frames",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "fix",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "generate-image",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "meta_prompt",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "orch_one_shot_agent",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "orch_plan_w_scouts_build_review",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "orch_scout_and_build",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "ping",
+          "type": "command",
+          "classification": "Command"
+        },
+        {
+          "name": "prime_nile",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime_specific_docs",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "question-w-mermaid-diagrams",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "review",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "start_nile",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "obsidian-sync-hook",
+          "type": "hook",
+          "classification": "Command"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/rd-framework-context-window-mastery/.claude",
+      "project_name": "rd-framework-context-window-mastery",
+      "exists": true,
+      "components_found": 15,
+      "components_new": 1,
+      "components_existing": 14,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\research-docs-fetcher.md"
+      ],
+      "existing_notes": [
+        "docs-scraper",
+        "meta-agent",
+        "background",
+        "build",
+        "load_ai_docs",
+        "load_bundle",
+        "prime",
+        "prime_cc",
+        "quick-plan",
+        "context_bundle_builder",
+        "universal_hook_logger",
+        "cc_hook_expert_build",
+        "cc_hook_expert_improve",
+        "cc_hook_expert_plan"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "research-docs-fetcher",
+          "type": "agent",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/seven-levels-agentic-prompt-formats/.claude",
+      "project_name": "seven-levels-agentic-prompt-formats",
+      "exists": true,
+      "components_found": 27,
+      "components_new": 5,
+      "components_existing": 22,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\02-Agents\\crypto-coin-analyzer.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\create_image.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\edit_image.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prime_tier_list.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\start.md"
+      ],
+      "existing_notes": [
+        "docs-scraper",
+        "meta-agent",
+        "all_tools",
+        "background",
+        "build",
+        "build_w_report",
+        "crypto_coin_analyzer_agent_prompt",
+        "crypto_research",
+        "load_ai_docs",
+        "load_bundle",
+        "parallel_subagents",
+        "plan_vite_vue",
+        "prime",
+        "prime_cc",
+        "question",
+        "quick-plan",
+        "t_metaprompt_workflow",
+        "context_bundle_builder",
+        "universal_hook_logger",
+        "cc_hook_expert_build",
+        "cc_hook_expert_improve",
+        "cc_hook_expert_plan"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "crypto-coin-analyzer",
+          "type": "agent",
+          "classification": "Command"
+        },
+        {
+          "name": "create_image",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "edit_image",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prime_tier_list",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "start",
+          "type": "command",
+          "classification": "ADW"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-1/.claude",
+      "project_name": "tac-1",
+      "exists": true,
+      "components_found": 0,
+      "components_new": 0,
+      "components_existing": 0,
+      "created_notes": [],
+      "existing_notes": [],
+      "errors": [],
+      "workflow_analysis": []
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-2/.claude",
+      "project_name": "tac-2",
+      "exists": true,
+      "components_found": 3,
+      "components_new": 1,
+      "components_existing": 2,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\tools.md"
+      ],
+      "existing_notes": [
+        "install",
+        "prime"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "tools",
+          "type": "command",
+          "classification": "Command"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-3/.claude",
+      "project_name": "tac-3",
+      "exists": true,
+      "components_found": 8,
+      "components_new": 4,
+      "components_existing": 4,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\bug.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\chore.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\feature.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\implement.md"
+      ],
+      "existing_notes": [
+        "install",
+        "prime",
+        "start",
+        "tools"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "bug",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "chore",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "feature",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "implement",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-4/.claude",
+      "project_name": "tac-4",
+      "exists": true,
+      "components_found": 18,
+      "components_new": 5,
+      "components_existing": 13,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\classify_issue.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\commit.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\find_plan_file.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\generate_branch_name.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\pull_request.md"
+      ],
+      "existing_notes": [
+        "bug",
+        "chore",
+        "feature",
+        "implement",
+        "install",
+        "prime",
+        "start",
+        "tools",
+        "notification",
+        "post_tool_use",
+        "pre_tool_use",
+        "stop",
+        "subagent_stop"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "classify_issue",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "commit",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "find_plan_file",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "generate_branch_name",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "pull_request",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-5/.claude",
+      "project_name": "tac-5",
+      "exists": true,
+      "components_found": 26,
+      "components_new": 8,
+      "components_existing": 18,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\classify_adw.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\resolve_failed_e2e_test.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\resolve_failed_test.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_e2e.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_basic_query.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_complex_query.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_sql_injection.md"
+      ],
+      "existing_notes": [
+        "bug",
+        "chore",
+        "classify_issue",
+        "commit",
+        "feature",
+        "find_plan_file",
+        "generate_branch_name",
+        "implement",
+        "install",
+        "prime",
+        "pull_request",
+        "start",
+        "tools",
+        "notification",
+        "post_tool_use",
+        "pre_tool_use",
+        "stop",
+        "subagent_stop"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "classify_adw",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "resolve_failed_e2e_test",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "resolve_failed_test",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test_e2e",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "test_basic_query",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test_complex_query",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test_sql_injection",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-6/.claude",
+      "project_name": "tac-6",
+      "exists": true,
+      "components_found": 34,
+      "components_new": 6,
+      "components_existing": 28,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\conditional_docs.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\document.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\patch.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\prepare_app.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_disable_input_debounce.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_random_query_generator.md"
+      ],
+      "existing_notes": [
+        "bug",
+        "chore",
+        "classify_adw",
+        "classify_issue",
+        "commit",
+        "feature",
+        "generate_branch_name",
+        "implement",
+        "install",
+        "prime",
+        "pull_request",
+        "resolve_failed_e2e_test",
+        "resolve_failed_test",
+        "review",
+        "start",
+        "test",
+        "test_e2e",
+        "tools",
+        "test_basic_query",
+        "test_complex_query",
+        "test_sql_injection",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "conditional_docs",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "document",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "patch",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "prepare_app",
+          "type": "command",
+          "classification": "ADW"
+        },
+        {
+          "name": "test_disable_input_debounce",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test_random_query_generator",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-7/.claude",
+      "project_name": "tac-7",
+      "exists": true,
+      "components_found": 40,
+      "components_new": 6,
+      "components_existing": 34,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\cleanup_worktrees.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\health_check.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\install_worktree.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\in_loop_review.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\track_agentic_kpis.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_export_functionality.md"
+      ],
+      "existing_notes": [
+        "bug",
+        "chore",
+        "classify_adw",
+        "classify_issue",
+        "commit",
+        "conditional_docs",
+        "document",
+        "feature",
+        "generate_branch_name",
+        "implement",
+        "install",
+        "patch",
+        "prepare_app",
+        "prime",
+        "pull_request",
+        "resolve_failed_e2e_test",
+        "resolve_failed_test",
+        "review",
+        "start",
+        "test",
+        "test_e2e",
+        "tools",
+        "test_basic_query",
+        "test_complex_query",
+        "test_disable_input_debounce",
+        "test_random_query_generator",
+        "test_sql_injection",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "cleanup_worktrees",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "health_check",
+          "type": "command",
+          "classification": "Command"
+        },
+        {
+          "name": "install_worktree",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "in_loop_review",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "track_agentic_kpis",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test_export_functionality",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app1__agent_layer_primitives/.claude",
+      "project_name": "tac8_app1__agent_layer_primitives",
+      "exists": true,
+      "components_found": 5,
+      "components_new": 0,
+      "components_existing": 5,
+      "created_notes": [],
+      "existing_notes": [
+        "chore",
+        "feature",
+        "implement",
+        "prime",
+        "start"
+      ],
+      "errors": [],
+      "workflow_analysis": []
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app2__multi_agent_todone/.claude",
+      "project_name": "tac8_app2__multi_agent_todone",
+      "exists": true,
+      "components_found": 11,
+      "components_new": 5,
+      "components_existing": 6,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\clean_worktree.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\init_worktree.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\mark_in_progress.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\process_tasks.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\update_task.md"
+      ],
+      "existing_notes": [
+        "build",
+        "chore",
+        "feature",
+        "implement",
+        "plan",
+        "prime"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "clean_worktree",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "init_worktree",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "mark_in_progress",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "process_tasks",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "update_task",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app3__out_loop_multi_agent_task_board/.claude",
+      "project_name": "tac8_app3__out_loop_multi_agent_task_board",
+      "exists": true,
+      "components_found": 16,
+      "components_new": 1,
+      "components_existing": 15,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\convert_paths_absolute.md"
+      ],
+      "existing_notes": [
+        "build",
+        "chore",
+        "clean_worktree",
+        "implement",
+        "init_worktree",
+        "plan",
+        "prime",
+        "start",
+        "notification",
+        "post_tool_use",
+        "pre_tool_use",
+        "send_event",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "convert_paths_absolute",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app4__agentic_prototyping/.claude",
+      "project_name": "tac8_app4__agentic_prototyping",
+      "exists": true,
+      "components_found": 23,
+      "components_new": 8,
+      "components_existing": 15,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\get_notion_tasks.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\hi.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\make_worktree_name.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\plan_bun_scripts.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\plan_uv_mcp.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\plan_uv_script.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\update_notion_task.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\update_notion_task_with_file.md"
+      ],
+      "existing_notes": [
+        "build",
+        "clean_worktree",
+        "init_worktree",
+        "plan",
+        "plan_vite_vue",
+        "prime",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "send_event",
+        "session_start",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "get_notion_tasks",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "hi",
+          "type": "command",
+          "classification": "Command"
+        },
+        {
+          "name": "make_worktree_name",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan_bun_scripts",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan_uv_mcp",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "plan_uv_script",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "update_notion_task",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "update_notion_task_with_file",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    },
+    {
+      "directory": "C:/Users/gblac/OneDrive/Desktop/tac/tac-8/tac8_app5__nlq_to_sql_aea/.claude",
+      "project_name": "tac8_app5__nlq_to_sql_aea",
+      "exists": true,
+      "components_found": 43,
+      "components_new": 3,
+      "components_existing": 40,
+      "created_notes": [
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_data_generation.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_enhanced_drop_zone.md",
+        "C:\\Users\\gblac\\OneDrive\\Desktop\\obsidian\\Gbautomation\\AI-Agent-KB\\08-Commands\\test_json_export_functionality.md"
+      ],
+      "existing_notes": [
+        "bug",
+        "chore",
+        "classify_adw",
+        "classify_issue",
+        "cleanup_worktrees",
+        "commit",
+        "conditional_docs",
+        "document",
+        "feature",
+        "generate_branch_name",
+        "health_check",
+        "implement",
+        "install",
+        "install_worktree",
+        "in_loop_review",
+        "patch",
+        "prepare_app",
+        "prime",
+        "pull_request",
+        "resolve_failed_e2e_test",
+        "resolve_failed_test",
+        "review",
+        "start",
+        "test",
+        "test_e2e",
+        "tools",
+        "track_agentic_kpis",
+        "test_basic_query",
+        "test_complex_query",
+        "test_disable_input_debounce",
+        "test_export_functionality",
+        "test_random_query_generator",
+        "test_sql_injection",
+        "notification",
+        "post_tool_use",
+        "pre_compact",
+        "pre_tool_use",
+        "stop",
+        "subagent_stop",
+        "user_prompt_submit"
+      ],
+      "errors": [],
+      "workflow_analysis": [
+        {
+          "name": "test_data_generation",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test_enhanced_drop_zone",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        },
+        {
+          "name": "test_json_export_functionality",
+          "type": "command",
+          "classification": "Agentic Prompt"
+        }
+      ]
+    }
+  ],
+  "completed_at": "2026-01-20T22:31:31.736024"
+}

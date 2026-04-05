@@ -1,0 +1,143 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Eagle Auto-Destroyer — Lambda + IAM roles for 5-min scheduled teardown.
+  Deploy once with: aws cloudformation deploy --template-file destroyer-stack.yaml
+                    --stack-name eagle-destroyer --capabilities CAPABILITY_NAMED_IAM
+
+Resources:
+
+  # ── IAM role for the Lambda function ─────────────────────────────────────
+  DestroyerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: eagle-destroyer-role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: eagle-destroyer-policy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - cloudformation:DeleteStack
+                  - cloudformation:DescribeStacks
+                  - cloudformation:ListStacks
+                  - ec2:*
+                  - ecs:UpdateService
+                  - ecs:DeleteService
+                  - ecs:ListServices
+                  - ecs:DescribeServices
+                  - lightsail:DeleteContainerService
+                  - lightsail:GetContainerServices
+                  - elasticloadbalancing:DeleteLoadBalancer
+                  - elasticloadbalancing:DescribeLoadBalancers
+                  - iam:PassRole
+                  - iam:DeleteRole
+                  - iam:DetachRolePolicy
+                Resource: "*"
+
+  # ── Lambda function — tears down all Eagle stacks ─────────────────────────
+  DestroyerFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: eagle-auto-destroyer
+      Runtime: python3.12
+      Handler: index.handler
+      Role: !GetAtt DestroyerRole.Arn
+      Timeout: 300
+      Code:
+        ZipFile: |
+          import boto3
+          import json
+          import time
+
+          REGION = 'us-east-1'
+
+          # Stacks to delete — order matters (dependents before providers)
+          STACKS = [
+              'EagleComputeStack',
+              'EagleEvalStack',
+              'EagleCiCdStack',
+              'EagleCoreStack',
+              'EagleStorageStack',
+              'eagle-ec2-dev',
+          ]
+
+          def handler(event, context):
+              cf  = boto3.client('cloudformation', region_name=REGION)
+              ecs = boto3.client('ecs', region_name=REGION)
+              ls  = boto3.client('lightsail', region_name=REGION)
+              results = {}
+
+              # 1. Scale ECS to 0 first so Fargate stops billing immediately
+              try:
+                  services = ecs.list_services(cluster='eagle-dev')['serviceArns']
+                  for svc in services:
+                      name = svc.split('/')[-1]
+                      ecs.update_service(cluster='eagle-dev', service=name, desiredCount=0)
+                      results[f'ecs:{name}'] = 'scaled_to_0'
+                      print(f'Scaled {name} to 0')
+              except Exception as e:
+                  results['ecs'] = f'error: {e}'
+
+              # 2. Delete CloudFormation stacks (fire-and-forget — parallel deletion)
+              for stack in STACKS:
+                  try:
+                      cf.delete_stack(StackName=stack)
+                      results[stack] = 'delete_initiated'
+                      print(f'Deleting stack: {stack}')
+                  except cf.exceptions.ClientError as e:
+                      if 'does not exist' in str(e):
+                          results[stack] = 'already_gone'
+                      else:
+                          results[stack] = f'error: {e}'
+
+              # 3. Delete nci-eagle Lightsail container (if it exists)
+              try:
+                  ls.delete_container_service(serviceName='nci-eagle')
+                  results['nci-eagle'] = 'delete_initiated'
+                  print('Deleting nci-eagle Lightsail container')
+              except Exception as e:
+                  results['nci-eagle'] = f'skipped: {e}'
+
+              print(json.dumps(results, indent=2))
+              return {'statusCode': 200, 'body': results}
+
+  # ── IAM role for EventBridge Scheduler to invoke Lambda ──────────────────
+  SchedulerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: eagle-scheduler-role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: scheduler.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: invoke-destroyer
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource: !GetAtt DestroyerFunction.Arn
+
+Outputs:
+  FunctionArn:
+    Value: !GetAtt DestroyerFunction.Arn
+    Export:
+      Name: eagle-destroyer-function-arn
+  SchedulerRoleArn:
+    Value: !GetAtt SchedulerRole.Arn
+    Export:
+      Name: eagle-scheduler-role-arn

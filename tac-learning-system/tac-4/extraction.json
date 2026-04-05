@@ -1,0 +1,313 @@
+{
+  "commands": [
+    {
+      "name": "bug",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\bug.md",
+      "tac_source": "tac-4",
+      "title": "Bug Planning",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Bug Description",
+        "Problem Statement",
+        "Solution Statement",
+        "Steps to Reproduce",
+        "Root Cause Analysis",
+        "Relevant Files",
+        "Step by Step Tasks"
+      ],
+      "delegations": [
+        "server"
+      ]
+    },
+    {
+      "name": "chore",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\chore.md",
+      "tac_source": "tac-4",
+      "title": "Chore Planning",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Chore Description",
+        "Relevant Files",
+        "Step by Step Tasks",
+        "Validation Commands",
+        "Notes",
+        "Chore",
+        "Report"
+      ],
+      "delegations": [
+        "server"
+      ]
+    },
+    {
+      "name": "classify_issue",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\classify_issue.md",
+      "tac_source": "tac-4",
+      "title": "Github Issue Command Selection",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Command Mapping",
+        "Github Issue"
+      ],
+      "delegations": [
+        "feature",
+        "chore",
+        "bug"
+      ]
+    },
+    {
+      "name": "commit",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\commit.md",
+      "tac_source": "tac-4",
+      "title": "Generate Git Commit",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "feature",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\feature.md",
+      "tac_source": "tac-4",
+      "title": "Feature Planning",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Relevant Files",
+        "Plan Format",
+        "Feature Description",
+        "User Story",
+        "Problem Statement",
+        "Solution Statement",
+        "Relevant Files",
+        "Implementation Plan",
+        "Step by Step Tasks"
+      ],
+      "delegations": [
+        "server",
+        "client",
+        "value",
+        "goal"
+      ]
+    },
+    {
+      "name": "find_plan_file",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\find_plan_file.md",
+      "tac_source": "tac-4",
+      "title": "Find Plan File",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Previous Step Output"
+      ],
+      "delegations": [
+        "main"
+      ]
+    },
+    {
+      "name": "generate_branch_name",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\generate_branch_name.md",
+      "tac_source": "tac-4",
+      "title": "Generate Git Branch Name",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "feature"
+      ]
+    },
+    {
+      "name": "implement",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\implement.md",
+      "tac_source": "tac-4",
+      "title": "Implement the following plan",
+      "description": null,
+      "sections": [
+        "Instructions",
+        "Plan",
+        "Report"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "install",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\install.md",
+      "tac_source": "tac-4",
+      "title": "Install & Prime",
+      "description": null,
+      "sections": [
+        "Read",
+        "Read and Execute",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "copy_dot_env",
+        "commands",
+        "server",
+        "prime",
+        "scripts",
+        "app"
+      ]
+    },
+    {
+      "name": "prime",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\prime.md",
+      "tac_source": "tac-4",
+      "title": "Prime",
+      "description": null,
+      "sections": [
+        "Run",
+        "Read"
+      ],
+      "delegations": []
+    },
+    {
+      "name": "pull_request",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\pull_request.md",
+      "tac_source": "tac-4",
+      "title": "Create Pull Request",
+      "description": null,
+      "sections": [
+        "Variables",
+        "Instructions",
+        "Run",
+        "Report"
+      ],
+      "delegations": [
+        "main"
+      ]
+    },
+    {
+      "name": "start",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\start.md",
+      "tac_source": "tac-4",
+      "title": null,
+      "description": null,
+      "sections": [],
+      "delegations": [
+        "scripts",
+        "start"
+      ]
+    },
+    {
+      "name": "tools",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\.claude\\commands\\tools.md",
+      "tac_source": "tac-4",
+      "title": "List Built-in Tools",
+      "description": null,
+      "sections": [],
+      "delegations": []
+    }
+  ],
+  "agents": [],
+  "adws": [
+    {
+      "name": "adw_plan_build",
+      "file_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\adws\\adw_plan_build.py",
+      "tac_source": "tac-4",
+      "description": "ADW Plan & Build - AI Developer Workflow (ADW)\n\nUsage: uv run adw_plan_build.py <github-issue-number> [adw-id]\n\nWorkflow:\n1. Fetch GitHub issue details\n2. Create feature branch: feature/issue-{number}",
+      "workflow_type": "build",
+      "has_modules": false,
+      "has_triggers": false,
+      "has_tests": false
+    }
+  ],
+  "concepts": [
+    {
+      "name": "Natural Language SQL Interface",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\README.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "repository"
+    },
+    {
+      "name": "Features",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\README.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Prerequisites",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\README.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Setup",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\README.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Quick Start",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\README.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Manual Start (Alternative)",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\README.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "section"
+    },
+    {
+      "name": "Get started with Claude",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\ai_docs\\anthropic_quick_start.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "ai_doc"
+    },
+    {
+      "name": "Run a single prompt and exit (print mode)",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\ai_docs\\claude_code_sdk.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "ai_doc"
+    },
+    {
+      "name": "E2B - Secure Cloud Sandboxes for AI-Generated Code",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\ai_docs\\e2b.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "ai_doc"
+    },
+    {
+      "name": "Developer quickstart",
+      "source_file": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4\\ai_docs\\openai_quick_start.md",
+      "tac_source": "tac-4",
+      "description": null,
+      "category": "ai_doc"
+    }
+  ],
+  "metadata": {
+    "extracted_at": "2025-12-02T22:05:36.817418",
+    "repo_name": "tac-4",
+    "repo_path": "C:\\Users\\gblac\\OneDrive\\Desktop\\tac\\tac-4",
+    "summary": {
+      "total_commands": 13,
+      "total_agents": 0,
+      "total_adws": 1,
+      "total_concepts": 10
+    }
+  }
+}
