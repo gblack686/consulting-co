@@ -162,8 +162,10 @@ def run_claude(prompt_path: str) -> str:
     with open(prompt_path, "r", encoding="utf-8") as f:
         prompt_content = f.read()
 
+    # Pipe prompt via stdin to avoid Windows command-line length limits
     result = subprocess.run(
-        [claude_bin, "-p", prompt_content, "--output-format", "json"],
+        [claude_bin, "-p", "--output-format", "json"],
+        input=prompt_content,
         capture_output=True,
         text=True,
         env=env,
@@ -263,7 +265,7 @@ def parse_claude_output(raw: str) -> tuple[list[dict], dict]:
     found_filenames = {a["filename"] for a in article_blocks}
 
     if not article_blocks and manifest.get("articles"):
-        # Fallback: try splitting on --- boundaries more aggressively
+        # Fallback 1: try splitting on --- boundaries more aggressively
         fm_splits = re.split(r"\n(?=---\ntitle:)", text)
         for chunk in fm_splits:
             chunk = chunk.strip()
@@ -282,6 +284,29 @@ def parse_claude_output(raw: str) -> tuple[list[dict], dict]:
                 slug = re.sub(r"[^a-z0-9\s-]", "", t.lower())
                 fn = re.sub(r"\s+", "-", slug.strip())[:60] + ".md"
             article_blocks.append({"filename": fn, "content": chunk})
+
+    if not article_blocks and manifest.get("articles"):
+        # Fallback 2: Generate articles from manifest metadata when Claude
+        # returned only a summary + manifest without article bodies.
+        today = datetime.now(PT).strftime("%Y-%m-%d")
+        for art in manifest["articles"]:
+            fn = art["filename"]
+            # Strip directory prefix if present (e.g. "concepts/foo.md" -> "foo.md")
+            if "/" in fn:
+                fn = fn.split("/", 1)[1]
+            title = art.get("title", fn.replace(".md", "").replace("-", " ").title())
+            art_type = art.get("type", "concept")
+            summary = art.get("summary", "")
+            content = f"""---
+title: "{title}"
+type: {art_type}
+created: {today}
+updated: {today}
+---
+
+{summary}
+"""
+            article_blocks.append({"filename": fn, "content": content})
 
     return article_blocks, manifest
 
@@ -310,8 +335,8 @@ def update_index(manifest: dict, knowledge_dir: Path, client_name: str) -> None:
     index_path = knowledge_dir / "index.md"
     index_update = manifest.get("index_update", "")
 
-    if index_update:
-        # Preserve original frontmatter, replace body
+    # Only use index_update if it looks like real markdown content (has article links)
+    if index_update and ("[[" in index_update or "- " in index_update) and len(index_update) > 200:
         frontmatter = f"""---
 title: {client_name} Knowledge Index
 type: index

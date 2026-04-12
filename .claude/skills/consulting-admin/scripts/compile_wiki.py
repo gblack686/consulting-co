@@ -199,8 +199,10 @@ def run_claude(prompt_path: str) -> str:
     with open(prompt_path, "r", encoding="utf-8") as f:
         prompt_content = f.read()
 
+    # Pipe prompt via stdin to avoid Windows command-line length limits
     result = subprocess.run(
-        [claude_bin, "-p", prompt_content, "--output-format", "json"],
+        [claude_bin, "-p", "--output-format", "json"],
+        input=prompt_content,
         capture_output=True,
         text=True,
         env=env,
