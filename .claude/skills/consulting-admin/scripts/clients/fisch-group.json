@@ -1,0 +1,42 @@
+{
+  "client_name": "Fisch Group",
+  "client_slug": "fish-group",
+  "output_base": "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence",
+  "gmail_query": "after:2026/02/15 (from:mike@piermontbrands.com OR to:mike@piermontbrands.com OR from:ecaplow@fischgroup.com OR to:ecaplow@fischgroup.com OR subject:\"Fisch Group\" OR subject:\"Fish Group\" OR subject:\"Piermont\" OR \"Fisch Group\" OR \"Fish Group\" OR \"Piermont Brands\" OR \"Chica Cheetah\" OR \"Drop Fitness\" OR \"clientflow\" OR \"Emilfisch\")",
+  "calendar_emails": ["mike@piermontbrands.com", "ecaplow@fischgroup.com"],
+  "calendar_keywords": ["fisch", "fish", "piermont", "michael fisch"],
+  "calendar_range": {
+    "start": "2026-02-15T00:00:00Z",
+    "end": "2026-12-31T00:00:00Z"
+  },
+  "transcript_docs": {
+    "2026-03-05": {
+      "id": "1GOkkbs_cTm896tZwtcVFF6pryj_MGl39YOxZumUHO_E",
+      "title": "60 Minute Agent Build w Greg (Michael Fisch) - 2026/03/05 13:37 PST - Transcript",
+      "slug": "session-1-intake"
+    },
+    "2026-03-12": {
+      "id": "1daFmADKY8J032oAwxRfZ51Js4FOxawoKYXKXlxheZTc",
+      "title": "45 min - AI Session - 2026/03/12 13:44 PDT - Transcript",
+      "slug": "session-2-weekly"
+    },
+    "2026-03-19": {
+      "id": "1BvNzLwAvZ-aj3RoysVGVfPfKViMEaj-c5DM7V6c4Ruc",
+      "title": "AI Session - 2026/03/19 13:44 PDT - Transcript",
+      "slug": "session-3-weekly"
+    },
+    "2026-03-26": {
+      "id": "19ez-Dph-R8lN45Jfbtuorcxm4OIE7Vww5WI_uicbq4M",
+      "title": "AI Session - 2026/03/26 13:44 PDT - Transcript",
+      "slug": "session-4-weekly"
+    },
+    "2026-04-02": {
+      "id": "1HBq1kLWnJPtXh8g9TTW66VEHsrk7asbvU7FZ_CSmySU",
+      "title": "AI Session - 2026/04/02 13:44 PDT - Transcript",
+      "slug": "session-5-weekly"
+    }
+  },
+  "contacts": "Michael Fisch (mike@piermontbrands.com), Emil Caplow (ecaplow@fischgroup.com)",
+  "engagement_start": "2026-03-05",
+  "status": "Active (weekly sessions ongoing)"
+}

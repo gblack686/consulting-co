@@ -1,0 +1,19 @@
+{
+  "client_name": "GBAutomation",
+  "client_slug": "gbautomation",
+  "output_base": "C:/Users/gblac/OneDrive/Desktop/gbauto/gbautomation/second-brain/intelligence",
+  "gmail_query": "after:2026/01/01 (from:mike@piermontbrands.com OR from:ecaplow@fischgroup.com OR from:loren@lorenpiretra.com OR from:garrett@sylvanhills.com OR subject:\"consulting\" OR subject:\"AI agent\" OR subject:\"proposal\" OR subject:\"invoice\" OR subject:\"booking\" OR subject:\"session\")",
+  "calendar_emails": [
+    "mike@piermontbrands.com",
+    "ecaplow@fischgroup.com"
+  ],
+  "calendar_keywords": ["consulting", "agent build", "ai session", "gbautomation"],
+  "calendar_range": {
+    "start": "2026-01-01T00:00:00Z",
+    "end": "2026-12-31T00:00:00Z"
+  },
+  "transcript_docs": {},
+  "contacts": "Greg Black (greg@gbautomation.xyz) — all clients",
+  "engagement_start": "2026-02-21",
+  "status": "Active"
+}
