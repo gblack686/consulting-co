@@ -1,0 +1,29 @@
+{
+  "client_name": "GB Automation",
+  "owner": "Greg Black",
+  "intake_date": "2026-04-14",
+  "timezone": "America/New_York",
+  "working_hours": "flexible",
+  "business_type": "AI Consulting & Automation Services",
+  "revenue_goal": {
+    "target_mrr": 10500,
+    "contracts": 3,
+    "contract_value": 3500,
+    "deadline": "2026-05-12",
+    "timeline_weeks": 4
+  },
+  "services_offered": [
+    "AI Workload Management",
+    "Claude Code Expert Systems",
+    "OpenClaw Installation & Configuration",
+    "Custom Automation Workflows",
+    "AI Agent Development"
+  ],
+  "target_customers": [
+    "Solo entrepreneurs overwhelmed by repetitive tasks",
+    "Small agencies needing AI augmentation",
+    "Consultants wanting to scale their practice",
+    "Tech-savvy founders building AI-first operations"
+  ],
+  "unique_value_proposition": "Turn 90 minutes into a fully autonomous AI assistant that knows your business, tools, and workflows"
+}
