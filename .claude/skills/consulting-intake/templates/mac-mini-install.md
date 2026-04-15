@@ -362,7 +362,7 @@ Message your bot on Telegram:
 "Hey, I've given you access to my GitHub repos via GITHUB_TOKEN.
 Scan these orgs and repos:
 - github.com/gblack686 (personal repos)
-- github.com/gblack686-openclaw (TAC examples org)
+- github.com/gbauto-tac (TAC examples org)
 
 Figure out what I'm working on. Group everything into domains.
 For each domain, tell me:

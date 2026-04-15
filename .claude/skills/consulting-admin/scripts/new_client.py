@@ -45,7 +45,7 @@ def get_template_vars(client_name: str, client_email: str) -> dict:
         "{session_time}":       "TBD",
         "{timezone}":           "your local time",
         "{delivery_window}":    "5 business days",
-        "{video_call_link}":    "https://calendar.app.google/esY5F8R6YUckRGWB9",
+        "{video_call_link}":    "https://calendar.app.google/X4SN26PYLgvVYPRp8",  # 30-min AI session
         "{foundation_price}":   "$1,500",
         "{standard_price}":     "$2,500",
         "{premium_price}":      "$4,000",
@@ -71,7 +71,8 @@ def load_template(filename: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def run(client_name: str, client_email: str, draft_mode: bool = False):
+def run(client_name: str, client_email: str, draft_mode: bool = False,
+        intro_file: str = None, ps_text: str = None):
     from . import drive_manager, gmail_client
 
     print(f"\n{'='*50}")
@@ -119,11 +120,24 @@ def run(client_name: str, client_email: str, draft_mode: bool = False):
 
     # Step 4: Send or draft welcome email
     print(f"\n[4/4] {'Creating draft' if draft_mode else 'Sending'} welcome email...")
-    subject = f"Your GBAutomation Agent Setup — Welcome, {client_name.split()[0]}!"
+    subject = f"Welcome to GBAutomation — Let's Build Your Agent, {client_name.split()[0]}!"
+
+    # Load optional personalized intro HTML from file
+    intro_html = None
+    if intro_file:
+        intro_path = Path(intro_file)
+        if intro_path.exists():
+            intro_html = intro_path.read_text(encoding="utf-8")
+            print(f"      Using custom intro from: {intro_file}")
+        else:
+            print(f"      WARNING: Intro file not found: {intro_file}, using default")
+
     body_html = gmail_client.build_welcome_email_html(
         client_name=client_name.split()[0],
         folder_url=folder_url,
         doc_urls=doc_urls,
+        intro_html=intro_html,
+        ps_text=ps_text,
     )
 
     if draft_mode:
@@ -196,10 +210,13 @@ if __name__ == "__main__":
     parser.add_argument("--name",  required=True, help="Client full name (e.g. 'Jason Diaz')")
     parser.add_argument("--email", required=True, help="Client email address")
     parser.add_argument("--draft", action="store_true", help="Create email draft instead of sending")
+    parser.add_argument("--intro", default=None, help="Path to HTML file with personalized intro (inserted before workspace section)")
+    parser.add_argument("--ps", default=None, help="P.S. text for the email footer")
     args = parser.parse_args()
 
     # Run from skill root so relative paths work
     os.chdir(SKILL_ROOT)
     sys.path.insert(0, str(SKILL_ROOT))
 
-    run(client_name=args.name, client_email=args.email, draft_mode=args.draft)
+    run(client_name=args.name, client_email=args.email, draft_mode=args.draft,
+        intro_file=args.intro, ps_text=args.ps)

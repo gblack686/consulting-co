@@ -1,6 +1,8 @@
 ## Quick Links
 - **Booking link (60-min AI Agent Build with Greg)**: https://calendar.app.google/esY5F8R6YUckRGWB9
 
+## TAC repos can be found in github gbauto-tac https://github.com/gbauto-tac. All coding tasks should first consult and explore the repos in this organization for proven coding patterns. All code we write needs to be grounded in these patterns and principles. 
+
 ## Always save file generated .md files in .claude/context/{group}/*.md unless told otherwise
 
 ## Obsidian Directory - C:\Users\gblac\OneDrive\Desktop\obsidian\Gbautomation

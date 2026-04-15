@@ -234,7 +234,7 @@ secrets_layout:
     "openclaw/claude-code-credentials": "Sub-account 636143319914 IAM user credentials"
     "openclaw/lightsail-ssh-key": "SSH private key for all Lightsail instances"
     "openclaw/github-pat": "GitHub PAT for gblack686-gbauto"
-    "openclaw/github-config": "GitHub org config for gblack686-openclaw"
+    "openclaw/github-config": "GitHub org config for gbauto-tac"
     "openclaw/anthropic-oauth-token": "Anthropic OAuth token for OpenClaw"
   management:
     "gbautomation/aws/cli-default": "Management account CLI credentials (274487662938)"

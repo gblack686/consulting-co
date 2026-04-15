@@ -4,14 +4,42 @@ This is the reference architecture for a fully-featured AI Second Brain built wi
 
 ## Core Components
 
-### Memory Layer (Foundation)
-- Obsidian vault at `Dynamous/Memory/` (or any local folder — Obsidian is just the viewer)
-- **SOUL.md**: Agent personality, behavioral rules, communication style, boundaries
-- **USER.md**: User profile, account IDs, integration config, preferences, team info
-- **MEMORY.md**: Key decisions, lessons learned, active projects, important facts (must stay concise — loaded into every conversation)
-- **daily/YYYY-MM-DD.md**: Append-only timestamped logs — everything goes here first
-- **HEARTBEAT.md**: Checklist of what the heartbeat should monitor
+### Vault Structure (Merged Pattern)
+The vault merges three proven approaches:
+- **Cole Medin's agent-OS** — SOUL/USER/MEMORY/HEARTBEAT/HABITS in an `os/` subfolder
+- **Ben AI's agency vault** — Domain folders (contacts, intelligence, departments, resources, tasks)
+- **Fish Group production pattern** — Dashboard.md MOC + CLAUDE.md routing file
+
+**Recommended folder tree:**
+```
+second-brain/
+├── CLAUDE.md                    # Routing file for agents (project overview, structure, conventions)
+├── Dashboard.md                 # Obsidian MOC (tables: clients, pipeline, blockers, infra)
+├── os/                          # Agent OS (Cole Medin layer)
+│   ├── SOUL.md                  # Agent personality, boundaries, communication style
+│   ├── USER.md                  # User profile, accounts, preferences, timezone
+│   ├── MEMORY.md                # Key decisions, lessons, active context (kept concise)
+│   ├── HEARTBEAT.md             # What to monitor (inbox, pipeline, deadlines)
+│   └── HABITS.md                # Daily pillars (auto-detect + self-report)
+├── agents/                      # Agent definitions
+├── contacts/                    # People (clients/, prospects/, partners/)
+├── intelligence/                # Correspondence, transcripts, decisions, calendar
+├── departments/                 # Functional SOPs (sales/, delivery/, operations/)
+├── projects/                    # Active initiatives
+├── resources/                   # Templates, brand, pricing, tools
+├── capabilities/                # Auto-populated by /skill-discovery
+│   ├── skills-index.md
+│   └── pipeline-map.md
+├── workflows/                   # Runbooks (onboarding, session-prep, weekly-digest)
+├── tasks/                       # Blockers, this-week, backlog
+├── daily/                       # Auto-generated daily logs
+├── drafts/                      # Draft lifecycle (active/, sent/, expired/)
+└── config/                      # openclaw.json, integration configs
+```
+
 - Why local files: zero latency, no API auth, no rate limits, native LLM read/write
+- **CLAUDE.md** is the entry point — agents read it first to understand the vault
+- **Dashboard.md** is the human entry point — Obsidian MOC with wiki-linked tables
 
 ### Hooks (Context Persistence)
 Three lifecycle hooks in `.claude/hooks/`:

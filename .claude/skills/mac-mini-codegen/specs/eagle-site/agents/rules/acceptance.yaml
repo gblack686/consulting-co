@@ -1,0 +1,67 @@
+version: 1
+description: "Per-tree acceptance criteria — validator uses these to check generated components"
+
+global:
+  - All colors must reference brand.yaml palette tokens via CSS custom properties
+  - Typography must use brand.yaml font families and scale
+  - Components must be responsive at all brand breakpoints (640/768/1024/1280px)
+  - WCAG AA contrast ratios on all text
+  - Scoped styles only — no global CSS leaks
+  - Vue 3 Composition API with <script setup lang="ts">
+  - No external dependencies beyond Vue 3 core
+
+per_tree:
+  home:
+    - Hero section with gradient wordmark (teal-to-indigo via brand secondary + accent)
+    - 4 feature cards matching nav sections (Chat, Documents, Packages, Admin)
+    - Each card has distinct color from palette (cyan, emerald, violet, amber)
+    - Footer with organization attribution
+    - dashboard-home variant shows authenticated state (recent packages, pending actions)
+
+  chat:
+    - Message bubbles — user right-aligned (light cyan bg), agent left-aligned (white bordered)
+    - Agent badge pill showing role name (e.g. "OA Intake Agent") with brand accent
+    - Regulation citation tags (small colored pills: "FAR 13.003", "NCI Policy 4.1")
+    - Quick action pills above input bar (Acquisition, Research, Document, Help)
+    - Welcome/empty state with eagle icon, greeting, 4 suggested prompt buttons
+    - Input bar with voice button, text field with / command placeholder, gradient send button
+    - three-panel: session sidebar (256px) + chat center + activity panel (380px, 5 tabs)
+    - two-panel: full-width chat + intake sidebar (450px, 3 tabs)
+    - Sidebar tabs: Package status, Docs, Alerts, Activity, Bedrock / Active Intake, Order History, Agent Logs
+
+  packages:
+    - Package card with ID (PKG-YYYY-XXXX), phase badge, document progress bar
+    - Document checklist with completion states (green check / empty circle)
+    - Compliance alert cards (warning=amber for FAR citations, info=cyan for HHSAR)
+    - Acquisition summary: requirement, estimated value, timeline, acquisition type
+    - Auto-detect acquisition type from value (Simplified < $250K, Negotiated >= $250K)
+    - package-create wizard with step-by-step intake form
+
+  documents:
+    - Template cards with category, preview, and "Use Template" action
+    - Document types from product.yaml domain.document_types
+    - Upload drop zone (drag-and-drop, PDF/DOCX/images up to 10MB)
+    - File list with icon, filename, size, remove button
+    - FAR/DFARS search integration prompt
+
+  workspaces:
+    - Workspace card with member count, package count, last-activity timestamp
+    - Member list with avatar (gradient initials), name, role
+    - Activity feed entries
+
+  admin:
+    - Stats cards: active packages, documents generated, users, agent uptime
+    - User table with role badges and permission indicators
+    - Agent configuration: role list, model selector, health status, log viewer
+
+  shared:
+    - header-simple: two-row centered (branding row + nav row)
+    - header-topnav: single-row spread (left brand, center nav, right status/user/signout)
+    - Nav tabs: icon + label, active state (bg-white/20), hover state (bg-white/10)
+    - Connection indicator: green dot + "Connected" text with glow shadow
+    - User profile pill: gradient initials avatar, name, role, signout button
+    - Compliance alert: warning (amber) and info (cyan) variants with regulation citations
+    - Document checklist item: completed (green) and pending (gray) states
+    - Progress bar: gradient fill (secondary → accent) with fraction label
+    - Agent badge: colored pill with role name
+    - Quick action pill: colored bg with icon + label, hover darkens

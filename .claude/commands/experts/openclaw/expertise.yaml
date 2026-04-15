@@ -1,6 +1,6 @@
 # OpenClaw Expert Knowledge Base
 # AI Agent Platform — Mac Mini Instance
-# Last updated: 2026-03-20
+# Last updated: 2026-04-10
 # Auto-updated via self-improve command
 
 overview:
@@ -23,10 +23,13 @@ infrastructure:
   primary_instance:
     platform: "Mac Mini (Apple Silicon)"
     hostname: "Gregs-Mac-mini.local"
-    ip: "192.168.4.95 (DHCP — use Gregs-Mac-mini.local for stable mDNS)"
+    ip: "192.168.4.95 (LAN DHCP) / 100.88.4.114 (Tailscale — use this from laptop)"
     os: "macOS 26.3.1 (arm64)"
     disk: "228GB (15GB used, 162GB free)"
-    ssh: "ssh greg@Gregs-Mac-mini.local (key auth, no password) — prefer mDNS over IP"
+    ssh: "ssh greg@100.88.4.114 (Tailscale IP, key auth, no password) — use Tailscale IP from laptop, mDNS only works on same LAN"
+    tailscale_ip: "100.88.4.114"
+    tailscale_dns: "gregs-mac-mini.tail4e0ac6.ts.net"
+    mdns: "Gregs-Mac-mini.local (LAN only — does NOT work over Tailscale)"
     ssh_key: "~/.ssh/id_ed25519 (auto, no passphrase)"
     service_manager: "launchd"
     service_name: "ai.openclaw.gateway"
@@ -200,7 +203,7 @@ commands:
     description: "Open the Control UI"
     command: "openclaw dashboard"
     url: "http://localhost:18789/?token=<gateway-token>"
-    tunnel: "ssh -L 18789:127.0.0.1:18789 greg@Gregs-Mac-mini.local"
+    tunnel: "ssh -L 18789:127.0.0.1:18789 greg@100.88.4.114"
 
   security:
     description: "Security audit"
@@ -466,7 +469,7 @@ troubleshooting:
 
     - issue: "SSH connection timed out to Mac Mini"
       cause: "DHCP lease renewed and IP changed"
-      fix: "Use mDNS hostname: ssh greg@Gregs-Mac-mini.local — or set static IP in router"
+      fix: "Use Tailscale IP: ssh greg@100.88.4.114 (or Tailscale DNS: gregs-mac-mini.tail4e0ac6.ts.net). mDNS (Gregs-Mac-mini.local) only works on same LAN."
 
     - issue: "Config validation error: Unrecognized key"
       cause: "Config has keys from older/newer OpenClaw version"
@@ -522,6 +525,172 @@ resources:
     - path: "archive/zeroclaw-deploy/"
       title: "ZeroClaw CDK deployment (archived)"
     - note: "Lightsail instance 18.234.126.236 (decommissioned)"
+
+# Meridian Pipeline (Claude Max via CLI Delegation)
+meridian_pipeline:
+  description: "Chain that routes Pi/third-party agent calls through first-party Claude Code CLI, billing against Claude Max subscription"
+  discovered: "2026-04-09"
+  why: "Anthropic April 4 2026 policy blocks third-party harnesses (Pi, OpenClaw) from Max plan. Fingerprints via anthropic-beta headers + SDK client_id."
+  architecture:
+    chain: "Pi (any anthropic/* model ref) → claude-bridge :8077 → claude -p subprocess → Meridian :3456 → Claude SDK → Anthropic API → Max plan billing"
+    services:
+      meridian:
+        port: 3456
+        binary: "/opt/homebrew/bin/meridian"
+        plist: "~/Library/LaunchAgents/com.gbautomation.meridian.plist"
+        log: "~/.openclaw/logs/meridian.log"
+        description: "Anthropic SDK proxy — bridges Claude Max subscription for programmatic access"
+        health: "curl http://127.0.0.1:3456/health"
+        note: "Uses Claude Code SDK query() internally — first-party auth. Meridian refresh-token command broken post-April-4; use direct auth chain instead."
+      claude_bridge:
+        port: 8077
+        script: "~/bin/claude-bridge.py"
+        plist: "~/Library/LaunchAgents/com.gbautomation.claude-bridge.plist"
+        log: "~/.openclaw/logs/claude-bridge.log"
+        description: "Python HTTP server accepting Anthropic Messages API with SSE streaming, delegates to claude -p subprocess"
+        env:
+          ANTHROPIC_BASE_URL: "http://127.0.0.1:3456"
+          ANTHROPIC_API_KEY: "meridian"
+        note: "Each request spawns a claude -p subprocess (~5-10s latency). Acceptable for deliberation/generation, not for rapid chat."
+  pi_models_json:
+    path: "~/.pi/agent/models.json"
+    description: "Overrides built-in anthropic provider to route through bridge"
+    content: |
+      {
+        "providers": {
+          "anthropic": {
+            "baseUrl": "http://127.0.0.1:8077",
+            "api": "anthropic-messages",
+            "apiKey": "not-needed",
+            "models": [
+              { "id": "claude-sonnet-4-6" },
+              { "id": "claude-opus-4-6" },
+              { "id": "claude-sonnet-4-5-20250929" },
+              { "id": "claude-opus-4-5-20250514" }
+            ]
+          }
+        }
+      }
+  verified_repos:
+    - name: "ceo-agents"
+      path: "~/repos/ceo-agents"
+      test: "CEO deliberation with 4 board members — full memo generated"
+    - name: "lead-agents"
+      path: "~/repos/lead-agents"
+      test: "Orchestrator described Planning/Engineering/Validation teams"
+    - name: "ui-agents"
+      path: "~/repos/ui-agents"
+      test: "Orchestrator described Setup/Brand/UI Gen x3/Validation x3. Eagle brand deployed."
+  pi_lockfile_issue: "Parallel pi -p calls hit session lockfile. Use --no-session for concurrent calls."
+  keychain_issue: "SSH sessions can't read macOS login keychain. claude -p through Meridian bypasses this (Meridian has keychain access via launchd GUI session)."
+
+# Claw Empire (Visual Agent Dashboard)
+claw_empire:
+  description: "Pixel-art office simulator for visualizing AI agent teams — CEO desk, departments, live status"
+  repo: "~/repos/claw-empire"
+  ports:
+    frontend: 8800
+    api: 8790
+    chrome_debug: 18800
+  auth:
+    method: "Bearer token"
+    token: "eagle-empire-2026"
+    header: "Authorization: Bearer eagle-empire-2026"
+  api_endpoints:
+    agents: "GET /api/agents"
+    create_agent: "POST /api/agents {name, name_ko, department_id, role, cli_provider, avatar_emoji, personality}"
+    update_agent: "PATCH /api/agents/{id} {status: working|idle|break|offline}"
+    departments: "GET /api/departments"
+    create_department: "POST /api/departments {id, name, name_ko, icon, color, sort_order}"
+    tasks: "GET /api/tasks"
+  agent_roles: "team_leader | senior | junior | intern"
+  agent_statuses: "idle | working | break | offline"
+  current_departments:
+    - id: "planning"
+    - id: "dev"
+    - id: "design"
+    - id: "qa"
+    - id: "devsecops"
+    - id: "operations"
+    - id: "ceo-board"
+      custom: true
+      agents: ["CEO", "Revenue", "Contrarian", "Compounder", "Product Strategist", "Moonshot", "Technical Architect", "Market Strategist", "Customer Oracle"]
+  access:
+    local: "http://localhost:8800 (SSH tunnel: ssh -f -N -L 8800:127.0.0.1:8800 greg@100.88.4.114)"
+    tailscale_serve: "https://gregs-mac-mini.tail4e0ac6.ts.net:8801 (tailnet only, may be flaky — prefer SSH tunnel)"
+  integration_script: "~/bin/ceo-deliberate.sh — runs CEO board deliberation with real-time Claw Empire status updates"
+
+# Tailscale Configuration
+tailscale:
+  version: "Tailscale macOS app"
+  cli: "/usr/local/bin/tailscale"
+  tailnet_dns: "gregs-mac-mini.tail4e0ac6.ts.net"
+  tailscale_ip: "100.88.4.114"
+  devices:
+    - name: "gregs-mac-mini"
+      ip: "100.88.4.114"
+      os: "macOS"
+    - name: "gregs-laptop"
+      ip: "100.105.211.120"
+      os: "windows"
+    - name: "iphone-15-plus"
+      ip: "100.70.162.8"
+      os: "iOS"
+  serve_routes:
+    - path: "/"
+      port: 443
+      target: "http://127.0.0.1:18789"
+      access: "Funnel (public)"
+      service: "OpenClaw Gateway"
+    - path: "/"
+      port: 8801
+      target: "http://127.0.0.1:8800"
+      access: "Tailnet only"
+      service: "Claw Empire"
+      note: "SPA — must be on root path, not subpath. Earlier /empire broke because Vite expects /"
+    - path: "/tui"
+      port: 8443
+      target: "http://127.0.0.1:7681"
+      access: "Tailnet only"
+      service: "ttyd web terminal (Pi TUI)"
+  commands:
+    status: "/usr/local/bin/tailscale serve status"
+    add_serve: "/usr/local/bin/tailscale serve --bg --https <port> http://127.0.0.1:<target>"
+    add_serve_path: "/usr/local/bin/tailscale serve --bg --https <port> --set-path <path> http://127.0.0.1:<target>"
+    add_funnel: "/usr/local/bin/tailscale funnel --bg --https <port> http://127.0.0.1:<target>"
+    remove_path: "/usr/local/bin/tailscale funnel --set-path <path> off"
+  troubleshooting:
+    - issue: "ERR_EMPTY_RESPONSE on Tailscale Serve HTTPS"
+      cause: "Tailscale Serve TLS termination can be flaky for SPAs with WebSocket connections"
+      fix: "Use SSH tunnel instead: ssh -f -N -L <local>:127.0.0.1:<remote> greg@100.88.4.114"
+    - issue: "SPA shows blank page on subpath (/empire)"
+      cause: "Vite SPA expects root path /. Tailscale subpath sends /empire to the app."
+      fix: "Give SPAs their own Tailscale Serve port (e.g., --https 8801) instead of --set-path"
+
+# ttyd Web Terminal
+ttyd:
+  description: "Web-based terminal — access Pi TUI from any browser on tailnet"
+  port: 7681
+  binary: "/opt/homebrew/bin/ttyd"
+  plist: "~/Library/LaunchAgents/com.gbautomation.tui-server.plist"
+  launcher: "~/bin/start-tui-server.sh"
+  access: "https://gregs-mac-mini.tail4e0ac6.ts.net:8443/tui (tailnet only)"
+  session: "tmux session 'pi-tui' — persistent, reconnectable"
+  usage: "Open browser → cd ~/repos/ceo-agents && just ceo → /ceo-begin"
+
+# Team Runner Skill
+team_runner:
+  description: "End-to-end skill for planning, building, and running agent teams on Mac Mini through Meridian pipeline"
+  skill_path: ".claude/skills/team-runner/SKILL.md"
+  template: ".claude/skills/team-runner/templates/team-spec.yaml"
+  script: ".claude/skills/team-runner/scripts/run-team.sh"
+  phases:
+    - "Phase 1: Spec planning (interactive — team composition, models, token limits)"
+    - "Phase 2: Build agents (Claw Empire dept + agents, archive to AI-Agent-KB)"
+    - "Phase 3: Run team (pi -p → bridge → Meridian → Max plan, with Claw Empire status updates)"
+    - "Phase 4: Commit & report (git commit, optional playground HTML, wiki log)"
+  team_types: "ceo-board | multi-team | ui-gen"
+  invoke: "/team-runner"
 
 # Pi Extensions (in-process runtime extensions)
 pi_extensions:

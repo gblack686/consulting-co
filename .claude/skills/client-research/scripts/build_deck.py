@@ -17,8 +17,9 @@ Writes to:   .claude/context/clients/{slug}/{Name} - Client Research.pptx
 import sys
 import re
 from pathlib import Path
+from PIL import Image
 from pptx import Presentation
-from pptx.util import Inches, Pt
+from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN
 from pptx.enum.shapes import MSO_SHAPE
@@ -41,6 +42,39 @@ def set_slide_bg(slide, color):
     fill.fore_color.rgb = color
 
 
+def _parse_markdown_runs(text):
+    """Parse **bold** markers in text into (text, is_bold) segments."""
+    segments = []
+    parts = re.split(r'(\*\*.*?\*\*)', text)
+    for part in parts:
+        if part.startswith('**') and part.endswith('**'):
+            segments.append((part[2:-2], True))
+        elif part:
+            segments.append((part, False))
+    return segments
+
+
+def _set_paragraph_runs(p, text, font_size, color, font_name="Calibri"):
+    """Set paragraph text with **bold** markdown parsed into real bold runs."""
+    segments = _parse_markdown_runs(text)
+    if len(segments) <= 1 and not any(b for _, b in segments):
+        # No bold markers — use simple text assignment
+        p.text = text
+        p.font.size = Pt(font_size)
+        p.font.color.rgb = color
+        p.font.name = font_name
+        return
+    # Clear default text, add runs
+    p.text = ""
+    for seg_text, is_bold in segments:
+        run = p.add_run()
+        run.text = seg_text
+        run.font.size = Pt(font_size)
+        run.font.color.rgb = color
+        run.font.name = font_name
+        run.font.bold = is_bold
+
+
 def add_text_box(slide, left, top, width, height, text, font_size=18,
                  bold=False, color=DARK_TEXT, alignment=PP_ALIGN.LEFT,
                  font_name="Calibri"):
@@ -48,9 +82,12 @@ def add_text_box(slide, left, top, width, height, text, font_size=18,
     tf = txBox.text_frame
     tf.word_wrap = True
     p = tf.paragraphs[0]
-    p.text = text
+    if bold:
+        p.text = text
+        p.font.bold = True
+    else:
+        _set_paragraph_runs(p, text, font_size, color, font_name)
     p.font.size = Pt(font_size)
-    p.font.bold = bold
     p.font.color.rgb = color
     p.font.name = font_name
     p.alignment = alignment
@@ -67,10 +104,7 @@ def add_bullet_list(slide, left, top, width, height, items, font_size=14,
             p = tf.paragraphs[0]
         else:
             p = tf.add_paragraph()
-        p.text = item
-        p.font.size = Pt(font_size)
-        p.font.color.rgb = color
-        p.font.name = "Calibri"
+        _set_paragraph_runs(p, item, font_size, color)
         p.space_after = Pt(6)
         if bold_first_line and i == 0:
             p.font.bold = True
@@ -113,14 +147,29 @@ def add_slide_header(slide, title, bg=WHITE):
                  title, font_size=32, bold=True, color=DARK_TEXT)
 
 
-def add_screenshot_slide(prs, title, img_path, bg=WHITE):
-    """Add a slide with a title and full-width screenshot."""
+def add_screenshot_slide(prs, title, img_path, bg=WHITE, max_width=Inches(11.5), max_height=Inches(5.8)):
+    """Add a slide with a title and proportionally-scaled screenshot (no stretching)."""
     if not img_path.exists():
         return
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_slide_header(slide, title, bg)
-    slide.shapes.add_picture(str(img_path), Inches(0.9), Inches(1.3),
-                             width=Inches(11.5))
+
+    # Get native image dimensions for proportional scaling
+    with Image.open(str(img_path)) as img:
+        img_w, img_h = img.size
+
+    # Scale to fit within max_width x max_height, preserving aspect ratio
+    aspect = img_w / img_h
+    target_w = max_width
+    target_h = int(target_w / aspect)
+    if target_h > max_height:
+        target_h = max_height
+        target_w = int(target_h * aspect)
+
+    # Center horizontally
+    left = Inches(0.9) + (max_width - target_w) // 2
+    slide.shapes.add_picture(str(img_path), left, Inches(1.3),
+                             width=target_w, height=target_h)
 
 
 def extract_section(text, header, stop_at="## "):
@@ -319,46 +368,60 @@ def build_deck(client_slug):
     add_text_box(slide, Inches(1), Inches(2), Inches(11), Inches(1.5),
                  data["name"], font_size=44, bold=True, color=DARK_TEXT)
     add_text_box(slide, Inches(1), Inches(3.3), Inches(11), Inches(0.8),
-                 "Client Research Dossier", font_size=28, color=TERRACOTTA)
-    add_text_box(slide, Inches(1), Inches(4.2), Inches(11), Inches(0.5),
-                 f"{data.get('date', '')}  |  GBAutomation Consulting",
-                 font_size=16, color=LIGHT_TEXT)
+                 "Deep Personalization Research", font_size=28, color=TERRACOTTA)
+    subtitle_parts = []
+    if data.get("date"):
+        subtitle_parts.append(data["date"])
     if data.get("headline"):
-        add_text_box(slide, Inches(1), Inches(5.0), Inches(11), Inches(0.5),
-                     data["headline"], font_size=18, color=LIGHT_TEXT)
+        subtitle_parts.append(data["headline"])
+    if subtitle_parts:
+        add_text_box(slide, Inches(1), Inches(4.2), Inches(11), Inches(0.5),
+                     "  |  ".join(subtitle_parts), font_size=16, color=LIGHT_TEXT)
     add_terracotta_bar(slide, top=Inches(7.38), height=Inches(0.12))
 
     # =============================================
-    # Slide 2: Profile Overview
+    # Slide 2: Profile Overview + LinkedIn Screenshot
     # =============================================
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_slide_header(slide, "Profile Overview")
     overview = [
-        f"Name: {data['name']}",
-        f"Headline: {data.get('headline', '')}",
-        f"Location: {data.get('location', '')}",
-        f"Current Role: {data.get('current_role', '')}",
-        f"Connection: {data.get('connection', '')}",
-        f"LinkedIn: {data.get('linkedin', '')}",
+        f"**Name**: {data['name']}",
+        f"**Headline**: {data.get('headline', '')}",
+        f"**Location**: {data.get('location', '')}",
+        f"**Current Role**: {data.get('current_role', '')}",
+        f"**Connection**: {data.get('connection', '')}",
+        f"**LinkedIn**: {data.get('linkedin', '')}",
     ]
-    if data.get("session"):
-        overview.append(f"Session: {data['session']}")
-    add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11), Inches(4.8),
-                    overview, font_size=18)
-    add_source_citation(slide, urls_for_section(url_map, ["linkedin.com/in/"]))
+    if data.get("languages"):
+        overview.append(f"**Languages**: {', '.join(data['languages'])}")
+    if data.get("education"):
+        overview.append(f"**Education**: {data['education'][0]}")
+    add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(7), Inches(5.5),
+                    overview, font_size=16)
+
+    # Embed LinkedIn screenshot on right if it exists
+    profile_img = base / "profile-header.png"
+    if profile_img.exists():
+        with Image.open(str(profile_img)) as img:
+            img_w, img_h = img.size
+        max_w = Inches(4.8)
+        max_h = Inches(5.0)
+        aspect = img_w / img_h
+        target_w = max_w
+        target_h = int(target_w / aspect)
+        if target_h > max_h:
+            target_h = max_h
+            target_w = int(target_h * aspect)
+        slide.shapes.add_picture(str(profile_img), Inches(8.2), Inches(1.4),
+                                 width=target_w, height=target_h)
 
     # =============================================
-    # Slide 3: LinkedIn Screenshot
-    # =============================================
-    add_screenshot_slide(prs, "LinkedIn Profile", base / "profile-header.png")
-
-    # =============================================
-    # Slide 4: Career Timeline
+    # Slide 3: Career Timeline + Companies
     # =============================================
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_slide_header(slide, "Career Timeline")
+    add_slide_header(slide, "Career & Companies")
     exp_items = []
-    for exp in data.get("experience", [])[:8]:
+    for exp in data.get("experience", [])[:6]:
         lines = exp.split("\n")
         title = lines[0]
         company = ""
@@ -371,8 +434,8 @@ def build_deck(client_slug):
             elif not dates and re.search(r"\d{4}", l):
                 dates = clean
             elif not desc_preview and len(clean) > 30:
-                desc_preview = clean[:120] + ("..." if len(clean) > 120 else "")
-        entry = title
+                desc_preview = clean[:140] + ("..." if len(clean) > 140 else "")
+        entry = f"**{title}**"
         if company:
             entry += f"  |  {company}"
         if dates:
@@ -381,102 +444,38 @@ def build_deck(client_slug):
         if desc_preview:
             exp_items.append(f"    {desc_preview}")
     if exp_items:
-        add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.0),
-                        exp_items, font_size=13)
-    add_source_citation(slide, urls_for_section(url_map, ["linkedin.com/in/", "zoominfo.com", "rocketreach.co"]))
-
-    # =============================================
-    # Slide 5: Company Deep Dive (Acquisition.com)
-    # =============================================
-    if data.get("companies"):
-        slide = prs.slides.add_slide(prs.slide_layouts[6])
-        add_slide_header(slide, "Company Deep Dive")
-        company_items = []
-        for comp in data["companies"][:5]:
-            lines = comp.split("\n")
-            name = lines[0]
-            details = [l.strip("- *").strip() for l in lines[1:6] if l.strip() and not l.strip().startswith("|")]
-            company_items.append(f"{name}")
-            for d in details[:3]:
-                if len(d) > 5:
-                    company_items.append(f"    {d[:150]}")
-            company_items.append("")  # spacer
-        add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.0),
-                        [i for i in company_items if i is not None], font_size=13)
-        add_source_citation(slide, urls_for_section(url_map, ["acquisition.com", "amherst", "avenoo", "crunchbase", "kgw.com"]))
-
-    # =============================================
-    # Slide 6: Amherst Advisory Screenshot
-    # =============================================
-    add_screenshot_slide(prs, "Amherst Advisory — amherstadvisory.com",
-                         base / "amherst-advisory-home.png")
-
-    # =============================================
-    # Slide 7: Avenoo Screenshot
-    # =============================================
-    add_screenshot_slide(prs, "Avenoo — Vendor Management Platform",
-                         base / "avenoo-home.png")
-
-    # =============================================
-    # Slide 8: Proprietary Systems & Methodologies
-    # =============================================
-    if data.get("proprietary_systems"):
-        slide = prs.slides.add_slide(prs.slide_layouts[6])
-        add_slide_header(slide, "Proprietary Systems & Methodologies")
-        sys_items = []
-        for row in data["proprietary_systems"]:
-            if len(row) >= 3:
-                sys_items.append(f"{row[0].strip('*')}  —  {row[1]}  ({row[2]})")
-            elif len(row) >= 2:
-                sys_items.append(f"{row[0].strip('*')}  —  {row[1]}")
         add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.5),
-                        sys_items, font_size=15)
+                        exp_items, font_size=13)
 
     # =============================================
-    # Slide 9: Services & Skills (two-column)
+    # Slide 4: Proprietary Systems + Key Skills
     # =============================================
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_slide_header(slide, "Services & Skills")
-    add_text_box(slide, Inches(0.8), Inches(1.0), Inches(5.5), Inches(0.5),
-                 "LinkedIn Services", font_size=20, bold=True, color=TERRACOTTA)
-    add_text_box(slide, Inches(7), Inches(1.0), Inches(5.5), Inches(0.5),
+    add_slide_header(slide, "Systems, Skills & Methodologies")
+
+    # Left column: proprietary systems
+    add_text_box(slide, Inches(0.8), Inches(1.0), Inches(6), Inches(0.5),
+                 "Proprietary Systems", font_size=20, bold=True, color=TERRACOTTA)
+    sys_items = []
+    for row in data.get("proprietary_systems", [])[:6]:
+        if len(row) >= 3:
+            sys_items.append(f"**{row[0].strip('*')}** — {row[1]} ({row[2]})")
+        elif len(row) >= 2:
+            sys_items.append(f"**{row[0].strip('*')}** — {row[1]}")
+    if sys_items:
+        add_bullet_list(slide, Inches(0.8), Inches(1.6), Inches(6), Inches(5),
+                        sys_items, font_size=13)
+
+    # Right column: top skills + services
+    add_text_box(slide, Inches(7.2), Inches(1.0), Inches(5.5), Inches(0.5),
                  "Core Skills", font_size=20, bold=True, color=TERRACOTTA)
-    if data.get("services"):
-        add_bullet_list(slide, Inches(0.8), Inches(1.6), Inches(5.5), Inches(5),
-                        data["services"][:10], font_size=14)
-    if data.get("skills"):
-        add_bullet_list(slide, Inches(7), Inches(1.6), Inches(5.5), Inches(5),
-                        data["skills"][:10], font_size=14)
+    combined = (data.get("skills", []) + data.get("services", []))[:8]
+    if combined:
+        add_bullet_list(slide, Inches(7.2), Inches(1.6), Inches(5.5), Inches(5),
+                        combined, font_size=14)
 
     # =============================================
-    # Slide 10: Education & Languages
-    # =============================================
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_slide_header(slide, "Education & Languages")
-    add_text_box(slide, Inches(0.8), Inches(1.0), Inches(5.5), Inches(0.5),
-                 "Education", font_size=20, bold=True, color=TERRACOTTA)
-    add_text_box(slide, Inches(7), Inches(1.0), Inches(5.5), Inches(0.5),
-                 "Languages", font_size=20, bold=True, color=TERRACOTTA)
-    if data.get("education"):
-        add_bullet_list(slide, Inches(0.8), Inches(1.6), Inches(5.5), Inches(5),
-                        data["education"], font_size=16)
-    if data.get("languages"):
-        add_bullet_list(slide, Inches(7), Inches(1.6), Inches(5.5), Inches(5),
-                        data["languages"], font_size=18)
-
-    # =============================================
-    # Slide 11: Video / Media Appearances
-    # =============================================
-    if data.get("media"):
-        slide = prs.slides.add_slide(prs.slide_layouts[6])
-        add_slide_header(slide, "Video & Media Appearances")
-        media_items = [m for m in data["media"] if len(m) > 5]
-        add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.0),
-                        media_items[:10], font_size=14)
-        add_source_citation(slide, urls_for_section(url_map, ["facebook.com", "pipeliner", "youtube.com"]))
-
-    # =============================================
-    # Slide 12: Personal & Digital Footprint
+    # Slide 5: Personal & Digital Footprint
     # =============================================
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     add_slide_header(slide, "Personal & Digital Footprint", bg=CREAM)
@@ -489,44 +488,46 @@ def build_deck(client_slug):
             personal_items.append(stripped.lstrip("- "))
     if not personal_items:
         personal_items = [
-            "Instagram: None (confirmed by client)",
-            "Low digital footprint — operates behind the scenes",
-            "No personal brand content, podcast appearances, or books",
-            "Prefers builder role over influencer role",
+            "**Instagram**: None (confirmed by client)",
+            "**Social media presence**: Very low — no personal Twitter/X, TikTok, or public Facebook",
+            "**Podcast appearances**: None found",
+            "**Digital footprint**: Operates behind the scenes, prefers builder role over influencer role",
         ]
+    # Add media if available
+    if data.get("media"):
+        personal_items.append("")
+        personal_items.append("**Media Appearances**:")
+        for m in data["media"][:3]:
+            if len(m) > 5:
+                personal_items.append(f"  {m}")
     add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.5),
-                    personal_items, font_size=16)
+                    personal_items, font_size=15)
 
     # =============================================
-    # Slide 13: Key Takeaways (2 slides if >5)
+    # Slide 6: Key Takeaways (all on one slide)
     # =============================================
     if data.get("takeaways"):
-        first_half = data["takeaways"][:5]
-        second_half = data["takeaways"][5:]
-
         slide = prs.slides.add_slide(prs.slide_layouts[6])
         add_slide_header(slide, "Key Takeaways", bg=CREAM)
         add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.5),
-                        first_half, font_size=16)
-
-        if second_half:
-            slide = prs.slides.add_slide(prs.slide_layouts[6])
-            add_slide_header(slide, "Key Takeaways (cont.)", bg=CREAM)
-            add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.5),
-                            second_half, font_size=16)
+                        data["takeaways"][:8], font_size=14)
 
     # =============================================
-    # Slide 14: Conversation Starters
+    # Slide 7: Conversation Starters & Personal Insights
     # =============================================
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_slide_header(slide, "Conversation Starters", bg=CREAM)
+    add_slide_header(slide, "Conversation Starters & Personal Insights", bg=CREAM)
 
-    # Try to extract from deep-research.md
     starters = []
     deep_path = base / "deep-research.md"
     if deep_path.exists():
         deep_text = deep_path.read_text(encoding="utf-8")
         starters = extract_numbered(deep_text, "## Key Conversation Starters")
+    if not starters:
+        starters = extract_numbered(raw, "## Key Takeaways")
+        # Convert takeaways to conversation angles
+        starters = [t.split("—")[0].strip() + " — ask about this" if "—" in t else t
+                     for t in starters[:5]]
     if not starters:
         starters = [
             "Penn State connection — 2011-2012 overlap, 105 mutual connections",
@@ -536,45 +537,59 @@ def build_deck(client_slug):
             "Avenoo's Retail Access Code — genuinely novel B2B mechanism",
         ]
     add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.5),
-                    starters[:7], font_size=16)
+                    starters[:7], font_size=15)
 
     # =============================================
-    # Slide 15: Next Steps
+    # Slide 8: Next Steps — Creative Personal Insights
     # =============================================
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_slide_header(slide, "Next Steps", bg=CREAM)
-    next_steps = [
-        f"Session: {data.get('session', 'TBD')}",
-        "Prepare 3 tailored questions from Key Takeaways",
-        "Reference Penn State connection in opening",
-        "Explore AI/automation angles for his sales ops + CRM expertise",
-        "Demo an AI agent use case relevant to CPG brand advisory",
-        "Ask about Acquisition.com's internal tooling needs",
-        "Follow up on mutual connections (Graham, Tom) for context",
-    ]
-    add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.5),
-                    next_steps, font_size=16)
-    add_terracotta_bar(slide, top=Inches(7.38), height=Inches(0.12))
+    set_slide_bg(slide, CREAM)
+    add_terracotta_bar(slide)
+    add_text_box(slide, Inches(0.8), Inches(0.4), Inches(11), Inches(0.7),
+                 "Next Steps", font_size=32, bold=True, color=DARK_TEXT)
 
-    # =============================================
-    # Slide 16: Sources
-    # =============================================
-    if all_urls:
-        slide = prs.slides.add_slide(prs.slide_layouts[6])
-        add_slide_header(slide, "Sources")
-        # Display up to 20 URLs, truncated
-        source_lines = []
-        for u in all_urls[:20]:
-            short = re.sub(r"https?://", "", u)
-            if len(short) > 100:
-                short = short[:97] + "..."
-            source_lines.append(short)
-        add_bullet_list(slide, Inches(0.8), Inches(1.4), Inches(11.5), Inches(5.5),
-                        source_lines, font_size=11, color=LIGHT_TEXT)
-        if len(all_urls) > 20:
-            add_text_box(slide, Inches(0.8), Inches(6.9), Inches(11.5), Inches(0.4),
-                         f"+ {len(all_urls) - 20} additional sources — see research markdown files for full list",
-                         font_size=10, color=SOURCE_GRAY)
+    # Two-column layout: left = action items, right = creative insights
+    add_text_box(slide, Inches(0.8), Inches(1.2), Inches(5.5), Inches(0.5),
+                 "Action Items", font_size=20, bold=True, color=TERRACOTTA)
+
+    next_steps = [
+        f"**Session**: {data.get('session', 'TBD')}",
+        "Prepare 3 tailored questions from Key Takeaways",
+        "Reference shared connections in opening",
+        "Explore AI/automation angles for his domain expertise",
+    ]
+    add_bullet_list(slide, Inches(0.8), Inches(1.8), Inches(5.5), Inches(2.5),
+                    next_steps, font_size=14)
+
+    add_text_box(slide, Inches(7), Inches(1.2), Inches(5.5), Inches(0.5),
+                 "Creative Personalization Angles", font_size=20, bold=True, color=TERRACOTTA)
+
+    # Build creative insights from the data
+    creative = []
+    if data.get("languages"):
+        langs = ", ".join(data["languages"])
+        creative.append(f"**Languages** ({langs}) — cultural bridge, study abroad in Prague")
+    if any("Penn State" in e for e in data.get("education", [])):
+        creative.append("**Penn State** — shared connection, 105 mutual contacts")
+    if any("Cura" in e or "Curaleaf" in e for e in data.get("experience", [])):
+        creative.append("**$1B exit proximity** — was at Cura during Curaleaf acquisition")
+    if any("Hormozi" in c or "Acquisition.com" in c for c in data.get("companies", [])):
+        creative.append("**Hormozi inner circle** — has the scaling playbook, ask about it")
+    if data.get("proprietary_systems"):
+        creative.append("**Systems builder** — multiple proprietary methodologies = loves process")
+    raw_personal = extract_section(raw, "## Personal")
+    if any("low" in l.lower() or "none" in l.lower() for l in raw_personal):
+        creative.append("**Low digital footprint** — approach as a builder, not an influencer")
+    if not creative:
+        creative = [
+            "Research their social presence for personal touchpoints",
+            "Look for shared interests, events, or connections",
+            "Find their communication style from public content",
+        ]
+    add_bullet_list(slide, Inches(7), Inches(1.8), Inches(5.5), Inches(4.5),
+                    creative, font_size=14)
+
+    add_terracotta_bar(slide, top=Inches(7.38), height=Inches(0.12))
 
     # Save
     out_path = base / f"{data['name']} - Client Research.pptx"

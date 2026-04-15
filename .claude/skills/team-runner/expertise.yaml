@@ -1,0 +1,62 @@
+# Team Runner Expertise — Lessons from successful runs
+# Updated: 2026-04-10
+
+execution_pipeline:
+  description: "How agents execute on Mac Mini via SSH"
+  pattern: "claude -p (NOT pi -p) with Meridian env vars"
+  details:
+    - "pi -p --no-tools only produces text output — agents cannot write files"
+    - "claude -p --max-turns 50 --permission-mode acceptEdits gives full Write/Edit/Bash"
+    - "Route through Meridian: ANTHROPIC_BASE_URL=http://127.0.0.1:3456 ANTHROPIC_API_KEY=meridian"
+    - "This bypasses macOS Keychain auth which fails via SSH (loggedIn: false)"
+    - "claude-bridge launchd uses these same env vars — proven pattern"
+    - "Permission modes: acceptEdits for generators (Write/Edit), plan for read-only agents"
+
+message_passing:
+  description: "How to send large briefs/plans to agents"
+  pattern: "Write to temp file on Mac Mini, pipe via stdin"
+  details:
+    - "ssh MAC 'cat > /tmp/eagle-msg-{safe}.txt' with input=message (subprocess stdin)"
+    - "Then: cat /tmp/msg-file | claude -p --max-turns 50 ..."
+    - "System prompts: --append-system-prompt '$(cat /tmp/sp-file)'"
+    - "No size limit — avoids shell escaping issues with inline arguments"
+    - "Always clean up temp files after each agent call"
+
+windows_bash_python_interop:
+  description: "Path handling between Git Bash (MSYS) and Windows Python"
+  gotchas:
+    - "mktemp returns MSYS paths (/tmp/...) — Windows Python can't read them"
+    - "pwd returns /c/Users/... — Windows Python needs C:/Users/..."
+    - "Use pwd -W for Windows-compatible paths in bash scripts that call Python"
+    - "Backslashes in Python strings inside bash heredocs cause unicode escape errors"
+    - "json.dump(data, open(path, 'w')) may not flush — use 'with open() as f' pattern"
+
+idempotent_agents:
+  description: "Avoid creating duplicate agents in Claw Empire"
+  pattern: "Query existing agents by department_id before creating"
+  details:
+    - "GET /api/agents, filter by department_id, build name->id map"
+    - "Skip creation if name already exists, reuse existing ID"
+    - "Previous runs created 4x duplicate agents before this fix"
+
+ui_gen_team_composition:
+  description: "Effective team structure for UI generation"
+  proven_pattern:
+    orchestrator: "Sonnet, plan mode, read-only — produces short coordination plan"
+    setup_lead: "Sonnet, acceptEdits — scaffolds directories and manifests"
+    brand_guardian: "Sonnet, plan mode — compliance brief/validation"
+    generators: "Opus, acceptEdits, max_turns 50 — writes actual TSX components"
+    validators: "Sonnet, plan mode — checks compliance, reports issues"
+  notes:
+    - "Generator output is the TEXT summary (1-2KB), actual files written via Write tool"
+    - "Each generator took 3-5 minutes with Opus via Meridian"
+    - "Total run time ~20-25 minutes for 9 agents sequential"
+    - "98 files changed, 13K insertions in the commit"
+
+spec_requirements:
+  description: "What the team-spec.yaml needs for ui-gen"
+  required_fields:
+    - "tools: [Read, Write, Edit, Bash, Glob, Grep] on generator agents"
+    - "tools: [Read, Glob, Grep] on read-only agents"
+    - "execution.timeout_per_agent: 600 (10 min minimum for Opus generators)"
+    - "system_prompt_inline on each agent (loaded to temp file, passed via --append-system-prompt)"

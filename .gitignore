@@ -37,6 +37,9 @@ nul
 # Claude Code temp files
 tmpclaude-*
 
+# Archive (local only, not tracked)
+archive/
+
 # IDE/editor settings
 .vscode/
 .cursor/

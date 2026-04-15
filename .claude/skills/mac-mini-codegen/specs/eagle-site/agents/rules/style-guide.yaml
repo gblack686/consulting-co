@@ -1,0 +1,89 @@
+version: 1
+description: "Coding conventions for Eagle Vue components"
+
+file_naming:
+  pattern: "{branch-slug}.vue"
+  case: kebab-case
+  example: "three-panel.vue"
+
+component_naming:
+  case: PascalCase
+  prefix: Eagle
+  example: "EagleThreePanel"
+
+directory_structure:
+  tree_dir: "src/brands/eagle/products/site/trees/{tree-slug}/"
+  branch_file: "{branch-slug}.vue"
+  shared_dir: "src/brands/eagle/products/site/trees/shared/"
+  index_file: "index.ts"           # re-exports all branches in a tree
+
+script:
+  api: "Composition API"
+  lang: "TypeScript"
+  setup: true                      # <script setup lang="ts">
+  props:
+    style: "defineProps with TypeScript interface"
+    example: |
+      interface Props {
+        title: string
+        packages?: AcquisitionPackage[]
+      }
+      const props = withDefaults(defineProps<Props>(), {
+        packages: () => []
+      })
+  emits:
+    style: "defineEmits with TypeScript"
+    example: |
+      const emit = defineEmits<{
+        navigate: [path: string]
+        submit: [data: FormData]
+      }>()
+
+template:
+  semantic_html: true              # use nav, main, aside, header, footer, section, article
+  aria_required: true
+  v_for_key: true                  # always :key on v-for
+  self_closing: true               # <Component /> not <Component></Component>
+
+styles:
+  scoped: true                     # always <style scoped>
+  preprocessor: none               # plain CSS, no SCSS/Less
+  custom_properties:
+    prefix: "--eagle-"
+    example: "var(--eagle-primary)"
+  no_important: true
+  no_global_selectors: true
+  tailwind: false                  # do NOT use Tailwind in components — use CSS custom properties
+
+css_custom_properties:
+  description: "Map brand.yaml tokens to CSS custom properties at the component root"
+  pattern: |
+    .eagle-{component} {
+      --eagle-primary: #111827;
+      --eagle-secondary: #0891B2;
+      --eagle-accent: #6366F1;
+      --eagle-warm-accent: #D97706;
+      --eagle-bg: #F5F7FA;
+      --eagle-surface: #FFFFFF;
+      --eagle-text: #111827;
+      --eagle-muted: #8896A6;
+      --eagle-border: #D8DEE6;
+      --eagle-error: #DC2626;
+      --eagle-warning: #D97706;
+      --eagle-success: #16A34A;
+      --eagle-info: #0891B2;
+      --eagle-radius-sm: 0.5rem;
+      --eagle-radius-md: 0.75rem;
+      --eagle-radius-lg: 1rem;
+      --eagle-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --eagle-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --eagle-duration-fast: 150ms;
+      --eagle-duration-normal: 300ms;
+      --eagle-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+comments:
+  when: "Only when business logic is non-obvious"
+  style: "// single-line for brief notes, /* block */ for domain explanations"
+  no_jsdoc: true                   # no JSDoc on component internals
+  no_todo: true                    # no TODO comments — file issues instead

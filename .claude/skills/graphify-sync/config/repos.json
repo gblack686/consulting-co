@@ -1,0 +1,62 @@
+{
+  "mac_mini": {
+    "host": "greg@100.88.4.114",
+    "graphify_bin": "graphify",
+    "python": "python3.11",
+    "claude_env": {
+      "ANTHROPIC_BASE_URL": "http://127.0.0.1:3456",
+      "ANTHROPIC_API_KEY": "meridian"
+    }
+  },
+  "repos": {
+    "gbautomation": {
+      "path": "~/repos/gbautomation",
+      "display_name": "GBAutomation",
+      "graphify_flags": "--wiki",
+      "auto_update": true
+    },
+    "fisch-group": {
+      "path": "~/repos/fisch-group",
+      "display_name": "Fish Group",
+      "graphify_flags": "--wiki",
+      "auto_update": true,
+      "drive_folder_id": "1K6CIz8xFWRA8KkZgkCvZ3kQZa0dQJfPH"
+    },
+    "eagle-app": {
+      "path": "~/repos/eagle-app",
+      "display_name": "Eagle Acquisitions",
+      "graphify_flags": "--wiki",
+      "auto_update": true
+    },
+    "sylvan-hills": {
+      "path": "~/repos/sylvan-hills",
+      "display_name": "Sylvan Hills",
+      "graphify_flags": "",
+      "auto_update": true
+    },
+    "loren-piretra": {
+      "path": "~/repos/loren-piretra",
+      "display_name": "Loren Piretra",
+      "graphify_flags": "",
+      "auto_update": true
+    },
+    "pbauer": {
+      "path": "~/repos/pbauer",
+      "display_name": "Patrick Bauer",
+      "graphify_flags": "",
+      "auto_update": true
+    },
+    "greg-trading": {
+      "path": "~/repos/greg-trading",
+      "display_name": "Greg Trading",
+      "graphify_flags": "",
+      "auto_update": true
+    },
+    "ceo-agents": {
+      "path": "~/repos/ceo-agents",
+      "display_name": "CEO Agents",
+      "graphify_flags": "",
+      "auto_update": false
+    }
+  }
+}

@@ -1,0 +1,800 @@
+{
+  "generated_at": "2026-04-09T14:34:25",
+  "files": {
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/.env.secrets": {
+      "size": 1302,
+      "mtime": 1775168380.2233598,
+      "sha1": "01e69f56beaeb0dcf31724c822012e7b75624dcc"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/1password-scoped-access-setup.md": {
+      "size": 1822,
+      "mtime": 1775165458.8432682,
+      "sha1": "62fb088b76d8a547cc0185725c79a3dacf766e19"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/PACKAGE_SUMMARY.md": {
+      "size": 4142,
+      "mtime": 1772764781.8233478,
+      "sha1": "bb66dff1314ac16c996a795c5783505510682035"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/.claude/settings.json-remove": {
+      "size": 333,
+      "mtime": 1775105052.2323487,
+      "sha1": "8e016c55d67772b67b4bb582f26ac29ad5843169"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/diagrams/fish-group-architecture.excalidraw.md": {
+      "size": 38334,
+      "mtime": 1772764749.1363962,
+      "sha1": "469fb6e1f4e92830fd3ec100c7bca850aa61970e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/diagrams/fish-group-architecture.png": {
+      "size": 262054,
+      "mtime": 1772772038.0404444,
+      "sha1": "895546cefca2022401a1727cb86a05f09a82ae4b"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/claude.md": {
+      "size": 4315,
+      "mtime": 1774589496.3708563,
+      "sha1": "cfd57939d5f2ebb866802af8ca060b7227b21e77"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/Dashboard.md": {
+      "size": 2672,
+      "mtime": 1774589518.1293304,
+      "sha1": "d9267ccd5e5bd40725b58a6790e62cb0b9deb42b"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/client_profile.json": {
+      "size": 1239,
+      "mtime": 1773389681.2596326,
+      "sha1": "9c82979976eac03793f9c579e602f26e9757096f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/fish_group_deployment_report.md": {
+      "size": 9073,
+      "mtime": 1772772366.5439672,
+      "sha1": "c50af54aaa63e09adba15b7f098862d19aa33697"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/fish_group_deployment_report.pdf": {
+      "size": 11835,
+      "mtime": 1772774349.538965,
+      "sha1": "3533ea523056d30e1e4049268cf6ed494d2de6f6"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/my-second-brain-requirements.md": {
+      "size": 5519,
+      "mtime": 1775366911.0677526,
+      "sha1": "d2b69657092b65f29406fdffc1331af03dac1a96"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/onboard-client.skill": {
+      "size": 5921,
+      "mtime": 1774749533.9396856,
+      "sha1": "e383e24a6091d3a3bf4537b5e3eaa9621cd7c59f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/research-2026-03-26.md": {
+      "size": 1602,
+      "mtime": 1774825454.3257105,
+      "sha1": "6aeb6ee1ee6e99e3183c39abd5744e4b758ff58e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/session-2-report-2026-03-12.md": {
+      "size": 13785,
+      "mtime": 1773356405.7287364,
+      "sha1": "3019a35d140435ee32fef259694b2111c519b3bb"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/tool_inventory.json": {
+      "size": 2119,
+      "mtime": 1772764464.8737743,
+      "sha1": "248e049394243243969b300873f510c08bcf9c90"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/transcript-2026-03-26.txt": {
+      "size": 37484,
+      "mtime": 1774750367.3495893,
+      "sha1": "164c66886450775c19b59fba7ae02b22446e1749"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/workflow-catalog.json": {
+      "size": 31020,
+      "mtime": 1773360488.5823958,
+      "sha1": "fb95134e7270fdea99102704d29888e69436fe2e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/workflow-catalog.md": {
+      "size": 23260,
+      "mtime": 1773360246.7374644,
+      "sha1": "44757ae65e9a10a5b435d0961bbc30671b0ab9e3"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/AGENTS.md": {
+      "size": 4550,
+      "mtime": 1772764574.5720124,
+      "sha1": "29d3f640c1b4f3686325009636b1d29a55007b21"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/HEARTBEAT.md": {
+      "size": 1136,
+      "mtime": 1772764594.5683265,
+      "sha1": "1220409df75568684d52c24fa09115cf0a73bc00"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/IDENTITY.md": {
+      "size": 1314,
+      "mtime": 1772764507.7410185,
+      "sha1": "f76803c9dac4c1b770457a2677eca683331f0d2c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/MEMORY.md": {
+      "size": 1685,
+      "mtime": 1772764546.5830548,
+      "sha1": "087ac2d65155bcf98258a9ab0f488d1daab6ba59"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/openclaw.json": {
+      "size": 7852,
+      "mtime": 1775168309.254488,
+      "sha1": "91dd6a7cc67538491f5843e1b639588204331c29"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/SOUL.md": {
+      "size": 1640,
+      "mtime": 1772764520.4538233,
+      "sha1": "19ca7f89f73120e711e6c713799acd26b767a13c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/TOOLS.md": {
+      "size": 3380,
+      "mtime": 1775168331.7182271,
+      "sha1": "5decb5f6eaa9ac7a7c32b392100a99e2a938a047"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/workspace/USER.md": {
+      "size": 1618,
+      "mtime": 1772764532.533797,
+      "sha1": "9adb6220ea62a8d8b85dc8c1e5a8b78e1c23d72a"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/.obsidian/app.json": {
+      "size": 160,
+      "mtime": 1774558245.8494365,
+      "sha1": "cf4249c27734a05d848a53e38810a9195baf3981"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/.obsidian/appearance.json": {
+      "size": 48,
+      "mtime": 1774558252.1684277,
+      "sha1": "549caffdf238d9ed4718c3328ca3262fbd6ff7f9"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/agents/client-ops.md": {
+      "size": 1266,
+      "mtime": 1774590043.769308,
+      "sha1": "c58c4bcbfbfa9c134b4f169d430d3e2f0a3d1ce8"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/agents/data-airtable.md": {
+      "size": 1715,
+      "mtime": 1774590045.4626136,
+      "sha1": "7d4620b468f36d429b6e31d3ed3dfd576a468c35"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/agents/finn.md": {
+      "size": 2103,
+      "mtime": 1774589823.6511128,
+      "sha1": "ae58c916b1ce93a6681ab8aac5b3706514611842"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/agents/garys-cs.md": {
+      "size": 1449,
+      "mtime": 1774590048.0730286,
+      "sha1": "cc1175d5d623a220ab0805e75c3547c810b9df60"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/agents/permissions.md": {
+      "size": 1523,
+      "mtime": 1774590046.7960918,
+      "sha1": "407bf507088cfd0e72fd90b3218df1d7aafa3be5"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/projects/openclaw-deploy.md": {
+      "size": 1245,
+      "mtime": 1774590192.2551565,
+      "sha1": "393ae5ed4cf4b500ca70a57bcb065a30670e58a2"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/projects/supabase-migration.md": {
+      "size": 1189,
+      "mtime": 1774590186.7815826,
+      "sha1": "e5901d090b718ec24f3f8ad3bdf5f75bc6993dca"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/tasks/backlog.md": {
+      "size": 917,
+      "mtime": 1774590231.3032165,
+      "sha1": "4071ae17e393304e0c86494db5db4d7c0eef28bf"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/tasks/blockers.md": {
+      "size": 917,
+      "mtime": 1774590224.35612,
+      "sha1": "358b8d9465886ac3e0b544c6c204fc2367370fba"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/tasks/this-week.md": {
+      "size": 751,
+      "mtime": 1774590229.9628882,
+      "sha1": "ea09d4b3b1227cdb552fd29d0520adb47083ee68"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/workflows/ar-aging-follow-up.md": {
+      "size": 1394,
+      "mtime": 1774590067.7225175,
+      "sha1": "9b3a2ee0c1c0aad25726d95cc85d82d712b1e598"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/workflows/daily-cash-position.md": {
+      "size": 1197,
+      "mtime": 1774590072.3845606,
+      "sha1": "4608c0a8e72ebcba1572673331c85913677d6aef"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/workflows/data-discrepancy-checker.md": {
+      "size": 1601,
+      "mtime": 1774590088.3337371,
+      "sha1": "4455e2293c2dd7edca192ceb1812fda0e343009b"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/workflows/new-client-workspace.md": {
+      "size": 1561,
+      "mtime": 1774590079.4165242,
+      "sha1": "2575a432e2de6eb380b342dda20e6afdc4de9f15"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/workflows/weekly-client-digest.md": {
+      "size": 1291,
+      "mtime": 1774590095.8305867,
+      "sha1": "7a70acd48b461d533704210dac68559c4d689007"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/contacts/clients/drop-fitness.md": {
+      "size": 461,
+      "mtime": 1774589802.669322,
+      "sha1": "db9624f851f895ff06eb69054fb6d809374901bd"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/contacts/clients/garys.md": {
+      "size": 1461,
+      "mtime": 1774589797.577649,
+      "sha1": "01cdfbe51d759846a9b9a5ac136014455f4ba60b"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/contacts/clients/piermont-brands.md": {
+      "size": 1868,
+      "mtime": 1774589791.6525564,
+      "sha1": "67d42265a38e41b07fa618fe470e2a766f8da72e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/contacts/team/emil-caplow.md": {
+      "size": 948,
+      "mtime": 1774589529.8734226,
+      "sha1": "b1210618b27c9cf645536995ed42cc9edeca580d"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/contacts/team/michael-fisch.md": {
+      "size": 1080,
+      "mtime": 1774589526.649559,
+      "sha1": "c28874229f376df01973fa6f1d2a4cf558f87799"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/intelligence/decisions/2026-03-05-architecture.md": {
+      "size": 1842,
+      "mtime": 1774590184.9196818,
+      "sha1": "11b858aeb603d362f07135655ef00bdccb944806"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/intelligence/transcripts/2026-03-05-session-1.md": {
+      "size": 2227,
+      "mtime": 1774590127.4066234,
+      "sha1": "7c19e57de092c19af4ca0e09ad01d3ea5c91968e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/intelligence/transcripts/2026-03-12-session-2.md": {
+      "size": 1751,
+      "mtime": 1774590135.8871648,
+      "sha1": "55750c3eecf28f34b390bb259a0f2f72148d8a2e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/resources/templates/client-note.md": {
+      "size": 539,
+      "mtime": 1774590232.6713316,
+      "sha1": "e87ad757ec6844bd949c336e8b7b46c679843528"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/resources/templates/daily-brief.md": {
+      "size": 489,
+      "mtime": 1774590233.7561707,
+      "sha1": "3001faa5ff66f526d9c179306d75f3c8398a4c06"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/resources/templates/meeting-note.md": {
+      "size": 316,
+      "mtime": 1774590234.829569,
+      "sha1": "e0a5666d455dde3172a53027c06b44012e5553c7"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/resources/templates/workflow.md": {
+      "size": 445,
+      "mtime": 1774590243.1240008,
+      "sha1": "3ba9b8c2ae06ee57bb42f3bd5abb4e4ac9543df7"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/obsidian/resources/tools/tool-inventory.md": {
+      "size": 1361,
+      "mtime": 1774590222.7504563,
+      "sha1": "25d34e8aaee63e690feaec1c71816bd1dadf75c3"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/research/questions-answered.md": {
+      "size": 4591,
+      "mtime": 1772764497.3239355,
+      "sha1": "56bfd33352860175b81977d5f60a490ee6f9019f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/onboard-client-extracted/onboard-client/SKILL.md": {
+      "size": 10178,
+      "mtime": 1775172252.376047,
+      "sha1": "6b4dde5fda419def94e96108d4f51663d1c55aba"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch/session_output/onboard-client-extracted/onboard-client/references/schema.sql": {
+      "size": 4233,
+      "mtime": 1775172252.3793316,
+      "sha1": "42f540c2b5c1d7bad77dc46a82e8790cd482cbe3"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/.gitignore": {
+      "size": 254,
+      "mtime": 1775173548.0029197,
+      "sha1": "32acb11d8a0b8550dc36ad2236772e08841a57a3"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/CLAUDE.md": {
+      "size": 6891,
+      "mtime": 1775172887.4211504,
+      "sha1": "9e2736b26e0605bbd5d100e4395e7ee2acb1a50d"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/PACKAGE_SUMMARY.md": {
+      "size": 4142,
+      "mtime": 1775722559.8074515,
+      "sha1": "bb66dff1314ac16c996a795c5783505510682035"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/SKILL.md": {
+      "size": 2593,
+      "mtime": 1775770287.0700586,
+      "sha1": "9f2ae48cb44c592fce220448464e91be7a9e260c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/Dashboard.md": {
+      "size": 3500,
+      "mtime": 1775770324.077421,
+      "sha1": "6cffe6f93db95a0cd69014bb2e19ab9a9928ca17"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/.obsidian/app.json": {
+      "size": 2,
+      "mtime": 1775721576.3065426,
+      "sha1": "bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/.obsidian/appearance.json": {
+      "size": 2,
+      "mtime": 1775721576.3095434,
+      "sha1": "bf21a9e8fbc5a3846fb05b4fa0859e0917b2202f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/.obsidian/core-plugins.json": {
+      "size": 696,
+      "mtime": 1775721575.9041505,
+      "sha1": "1bfb432d34d450a2d11abdbfed8a986c2dcfa4d6"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/agents/client-ops.md": {
+      "size": 791,
+      "mtime": 1775173072.2117088,
+      "sha1": "39521ff37d7bf62073cc2be37d1e338b691d30a8"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/agents/data-airtable.md": {
+      "size": 891,
+      "mtime": 1775173077.6204197,
+      "sha1": "bd3c7d78b62f0d114f9ae265ca13113efe51e7a7"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/agents/finn.md": {
+      "size": 1434,
+      "mtime": 1775173066.5633445,
+      "sha1": "12ff6d6381ca6b0b7eb3e980d78579b30907b9f2"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/agents/garys-cs.md": {
+      "size": 750,
+      "mtime": 1775173087.354012,
+      "sha1": "9b15bb2203ff6c40df7e3e3ad497853d730be968"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/agents/permissions.md": {
+      "size": 764,
+      "mtime": 1775173082.11647,
+      "sha1": "fcbd1b7b0fc6eef89e23fb8e5adcf7e84812fc2b"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/config/.env.secrets": {
+      "size": 1273,
+      "mtime": 1775173019.617894,
+      "sha1": "299cdc563a09af91235ada84f8d29b32141cf3b2"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/config/1password-setup.md": {
+      "size": 1822,
+      "mtime": 1775722559.8484838,
+      "sha1": "62fb088b76d8a547cc0185725c79a3dacf766e19"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/config/openclaw.json": {
+      "size": 7636,
+      "mtime": 1775173056.6805413,
+      "sha1": "c08a0072eb1696d60f71dfb34d1f1ac9b5932857"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/daily/.gitkeep": {
+      "size": 0,
+      "mtime": 1775722559.93347,
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/diagrams/fish-group-architecture.excalidraw.md": {
+      "size": 38334,
+      "mtime": 1775722559.7417004,
+      "sha1": "469fb6e1f4e92830fd3ec100c7bca850aa61970e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/diagrams/fish-group-architecture.png": {
+      "size": 262054,
+      "mtime": 1775722559.759738,
+      "sha1": "895546cefca2022401a1727cb86a05f09a82ae4b"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/_ENGAGEMENT_TIMELINE.md": {
+      "size": 6691,
+      "mtime": 1775724360.6802845,
+      "sha1": "481b2ee61bddface305f6b3187b7bc00bc08b216"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/projects/openclaw-deploy.md": {
+      "size": 1286,
+      "mtime": 1775770287.082956,
+      "sha1": "28c577c56ea2324fa1a023f40184e204a9622640"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/projects/supabase-migration.md": {
+      "size": 1226,
+      "mtime": 1775770287.0839608,
+      "sha1": "f421bc4085cd80c385e1742c22366bf52e661fe7"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/tasks/backlog.md": {
+      "size": 952,
+      "mtime": 1775770287.090029,
+      "sha1": "872767b99ea5e495cb5514efcf8698ccee0a5f6d"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/tasks/blockers.md": {
+      "size": 2213,
+      "mtime": 1775770342.0999262,
+      "sha1": "04454d39686619aa3c8720713c3bea52dd42b26d"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/tasks/this-week.md": {
+      "size": 780,
+      "mtime": 1775770287.093689,
+      "sha1": "09c0b1aa6bf26a3cf45c227f10094bb11d793d4c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workflows/ar-aging-follow-up.md": {
+      "size": 1461,
+      "mtime": 1775770287.0947182,
+      "sha1": "f3547275d0dc91b638db1715e6022acb4719d63f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workflows/daily-cash-position.md": {
+      "size": 1255,
+      "mtime": 1775770287.0952587,
+      "sha1": "ab75381b811eebd97da3fb696e60ec4e9d549889"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workflows/data-discrepancy-checker.md": {
+      "size": 1667,
+      "mtime": 1775770287.0962539,
+      "sha1": "e2bd6dd465be155e43265e005003ca6e6f38fa38"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workflows/new-client-workspace.md": {
+      "size": 1627,
+      "mtime": 1775770287.0962539,
+      "sha1": "3549af7d8b338ae989200a86c54c5d5198bc6623"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workflows/weekly-client-digest.md": {
+      "size": 1351,
+      "mtime": 1775770287.0972784,
+      "sha1": "c20245fe560e5f45acfae6486b92c0ccc9abdda3"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workflows/workflow-catalog.json": {
+      "size": 30355,
+      "mtime": 1775173518.4485314,
+      "sha1": "02448cb124e433a010d8812210815b2ab6b338a4"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/AGENTS.md": {
+      "size": 4550,
+      "mtime": 1775722559.506516,
+      "sha1": "29d3f640c1b4f3686325009636b1d29a55007b21"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/HEARTBEAT.md": {
+      "size": 1136,
+      "mtime": 1775722559.5242357,
+      "sha1": "1220409df75568684d52c24fa09115cf0a73bc00"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/IDENTITY.md": {
+      "size": 1314,
+      "mtime": 1775722559.5428867,
+      "sha1": "f76803c9dac4c1b770457a2677eca683331f0d2c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/MEMORY.md": {
+      "size": 1685,
+      "mtime": 1775722559.5580125,
+      "sha1": "087ac2d65155bcf98258a9ab0f488d1daab6ba59"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/openclaw.json": {
+      "size": 7852,
+      "mtime": 1775722559.6529443,
+      "sha1": "91dd6a7cc67538491f5843e1b639588204331c29"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/SOUL.md": {
+      "size": 1640,
+      "mtime": 1775722559.577278,
+      "sha1": "19ca7f89f73120e711e6c713799acd26b767a13c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/TOOLS.md": {
+      "size": 3380,
+      "mtime": 1775722559.5944753,
+      "sha1": "5decb5f6eaa9ac7a7c32b392100a99e2a938a047"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/workspace/USER.md": {
+      "size": 1618,
+      "mtime": 1775722559.6104162,
+      "sha1": "9adb6220ea62a8d8b85dc8c1e5a8b78e1c23d72a"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/contacts/clients/drop-fitness.md": {
+      "size": 485,
+      "mtime": 1775770287.0738,
+      "sha1": "98f99a8dd9036ad8b9c8b484cc94a22421d4ddc9"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/contacts/clients/garys.md": {
+      "size": 1516,
+      "mtime": 1775770287.0748217,
+      "sha1": "e45b1ffcb9412d97d60693da3028af22ffdc82ef"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/contacts/clients/piermont-brands.md": {
+      "size": 1926,
+      "mtime": 1775770287.0755405,
+      "sha1": "5360494e404ba977703998dfde2467cdd94f2ae2"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/contacts/team/emil-caplow.md": {
+      "size": 989,
+      "mtime": 1775770287.0760467,
+      "sha1": "2cf027fc011334f5cfcfd1d28eb6c8c898eea173"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/contacts/team/michael-fisch.md": {
+      "size": 1122,
+      "mtime": 1775770287.077054,
+      "sha1": "c2ea1e4aa21621b77515b01807778a07abf1dfa7"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/calendar/fish-group-meetings.md": {
+      "size": 3375,
+      "mtime": 1775724360.6698737,
+      "sha1": "2e5d3ff5066bb939f63f32df40a07152f3b7399d"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-05-appointment-booked-60-minute-agent-build-w-greg-michael-fisc.md": {
+      "size": 9575,
+      "mtime": 1775724352.3585248,
+      "sha1": "a30b4466b0229a1e72890e8a288b53933b593add"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-05-fish-group-architecture-options-agency-chart.md": {
+      "size": 6788,
+      "mtime": 1775724352.3535311,
+      "sha1": "f2f63795eeab7af026d4cc1c6483ded4a1aec661"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-05-no-subject.md": {
+      "size": 1359,
+      "mtime": 1775724352.3565252,
+      "sha1": "623aa19537e3c9ddf0b3a7cf3f5868bd429dfc57"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-05-re-appointment-booked-60-minute-agent-build-w-greg-michael-f.md": {
+      "size": 17209,
+      "mtime": 1775724352.357545,
+      "sha1": "ddbed0467a9e6b465e76b17cead2e259ed2bbdd6"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-05-your-gbautomation-agent-setup-welcome-michael.md": {
+      "size": 3108,
+      "mtime": 1775724352.3555305,
+      "sha1": "59b7fcd2f0d4c28a7823e729bf31b18c63d12390"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-12-fish-group-x-gbautomation-session-2-recap-next-steps-march-1.md": {
+      "size": 9269,
+      "mtime": 1775724352.3505168,
+      "sha1": "6db876cd84270dcd24a92d0b130c1c3e4b18bc01"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-12-github-mikefisch211-has-invited-you-to-join-the-fisch-group-.md": {
+      "size": 3417,
+      "mtime": 1775724352.352526,
+      "sha1": "bc0ec91cf2c58a84f0e053414041cf455e3b4556"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-12-meeting-summary-for-45-min---ai-session.md": {
+      "size": 8887,
+      "mtime": 1775724352.3514287,
+      "sha1": "3d5de9f0a0d98f35911377d57b4f4caeca50072b"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-12-skills-link.md": {
+      "size": 915,
+      "mtime": 1775724352.3514287,
+      "sha1": "260f8d6615f36d0302975a929ab0c9e3c44f7b25"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-13-no-subject.md": {
+      "size": 1799,
+      "mtime": 1775724352.3495011,
+      "sha1": "b00082e2101ae3921861611eac0f0cfa6a74402d"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-16-accepted-ai-session-weekly-from-145pm-to-3pm-on-thursday-fro.md": {
+      "size": 9626,
+      "mtime": 1775724352.3461678,
+      "sha1": "58456d17811031329a0355d14404be2ce8cfb24a"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-16-accepted-ai-session.md": {
+      "size": 774,
+      "mtime": 1775724352.3482265,
+      "sha1": "a9a51c85f2cb395c4fe7b942233573c1f5e23902"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-03-26-skill-for-onboarding.md": {
+      "size": 807,
+      "mtime": 1775724352.3451695,
+      "sha1": "d6428b136ed72779478900b16c6f03e458d0d49f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-04-02-.md": {
+      "size": 879,
+      "mtime": 1775724352.3416348,
+      "sha1": "fb5df09034c6cdc489edd0b67f4971c5ffc8a04f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-04-02-follow-up-fisch-group-session.md": {
+      "size": 8842,
+      "mtime": 1775724352.3383565,
+      "sha1": "976308dc1e6009cf1fab2c6f2e189561bbb9c124"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-04-02-follow-up-thursday-session-onboarding-skill-quickbooks-next-.md": {
+      "size": 3755,
+      "mtime": 1775724352.344164,
+      "sha1": "48086d8d2fb30632b4364ea93d1a102b568e6c6c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-04-02-march-26-session-145-pm-pt-agenda-open-items-resources.md": {
+      "size": 9206,
+      "mtime": 1775724352.3406138,
+      "sha1": "27facf4877f578738fc5b2bd2035e81addb5490a"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-04-02-no-subject.md": {
+      "size": 4331,
+      "mtime": 1775724352.3431664,
+      "sha1": "244e4319c6c20c68e7a24463decdcc5619ffdb75"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/2026-04-07-no-subject.md": {
+      "size": 8776,
+      "mtime": 1775724352.3373656,
+      "sha1": "ca033150b846bac75142490bde3d615a69b611ee"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/correspondence/_INDEX.md": {
+      "size": 3494,
+      "mtime": 1775724352.3585248,
+      "sha1": "dde360b7894f192eee2802545519416bde1302ff"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/decisions/2026-03-05-architecture.md": {
+      "size": 1882,
+      "mtime": 1775770287.078588,
+      "sha1": "8acb9cd9ef233802b5883fbfcf8b6f3093092728"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/research/.gitkeep": {
+      "size": 0,
+      "mtime": 1775722560.0167341,
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/2026-03-05-session-1-intake.md": {
+      "size": 30924,
+      "mtime": 1775724354.065377,
+      "sha1": "3f3654c14628a40450a2fe8ba85ce46205ccf6ad"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/2026-03-05-session-1.md": {
+      "size": 2288,
+      "mtime": 1775770287.0808966,
+      "sha1": "f0e92d5cbdafe095ec81bd037bdb3de61534f98c"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/2026-03-12-session-2-weekly.md": {
+      "size": 54022,
+      "mtime": 1775724355.7278016,
+      "sha1": "6d827a36ee4a2980dc02c939214f8f7f525f2298"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/2026-03-12-session-2.md": {
+      "size": 1812,
+      "mtime": 1775770287.0819504,
+      "sha1": "28d5e55da7d31447ec5f38d1202376eb8a18e596"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/2026-03-19-session-3-weekly.md": {
+      "size": 1053,
+      "mtime": 1775724356.7466607,
+      "sha1": "623dfd424733c00bd3f7bec5fd0a72867f4fd693"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/2026-03-26-session-4-weekly.md": {
+      "size": 38010,
+      "mtime": 1775724358.2954912,
+      "sha1": "f8e6f43ce860b597283dd3b3db91f214ddb7ed0d"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/2026-04-02-session-5-weekly.md": {
+      "size": 36573,
+      "mtime": 1775724359.7601392,
+      "sha1": "2c97b2028ce8bda3cb63a7ce19d5e01595d72997"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/intelligence/transcripts/_INDEX.md": {
+      "size": 1139,
+      "mtime": 1775724359.7610648,
+      "sha1": "114bf5cb084d4c9f8a007c23d2785ed82cf63edd"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/resources/brand/.gitkeep": {
+      "size": 0,
+      "mtime": 1775722560.0952408,
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/resources/templates/client-note.md": {
+      "size": 579,
+      "mtime": 1775770287.0855355,
+      "sha1": "6387c2323061e7843c21aceeab544de5e9b031cc"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/resources/templates/daily-brief.md": {
+      "size": 526,
+      "mtime": 1775770287.086544,
+      "sha1": "e2ca2617cf3acb1b9bf44f9195947ba524222e76"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/resources/templates/meeting-note.md": {
+      "size": 347,
+      "mtime": 1775770287.087525,
+      "sha1": "f846f64c4cd753028dba0aa7b8d20400b10c7f48"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/resources/templates/workflow.md": {
+      "size": 489,
+      "mtime": 1775770287.0885239,
+      "sha1": "80628915418579ff06cba02725a1dcc2153a704f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/resources/tools/tool-inventory.md": {
+      "size": 1397,
+      "mtime": 1775770287.090029,
+      "sha1": "11442901abe25abd32328b5f6144ed064bf09956"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/client_profile.json": {
+      "size": 1239,
+      "mtime": 1775722559.4329684,
+      "sha1": "9c82979976eac03793f9c579e602f26e9757096f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/fish_group_deployment_report.md": {
+      "size": 9073,
+      "mtime": 1775722559.4086702,
+      "sha1": "c50af54aaa63e09adba15b7f098862d19aa33697"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/fish_group_deployment_report.pdf": {
+      "size": 11835,
+      "mtime": 1775722559.4266243,
+      "sha1": "3533ea523056d30e1e4049268cf6ed494d2de6f6"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/my-second-brain-requirements.md": {
+      "size": 5519,
+      "mtime": 1775722559.423144,
+      "sha1": "d2b69657092b65f29406fdffc1331af03dac1a96"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/onboard-client.skill": {
+      "size": 5921,
+      "mtime": 1775722559.4251437,
+      "sha1": "e383e24a6091d3a3bf4537b5e3eaa9621cd7c59f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/research-2026-03-26.md": {
+      "size": 1602,
+      "mtime": 1775722559.4286451,
+      "sha1": "6aeb6ee1ee6e99e3183c39abd5744e4b758ff58e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/session-2-report-2026-03-12.md": {
+      "size": 13785,
+      "mtime": 1775722559.407665,
+      "sha1": "3019a35d140435ee32fef259694b2111c519b3bb"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/tool_inventory.json": {
+      "size": 2119,
+      "mtime": 1775722559.4201417,
+      "sha1": "248e049394243243969b300873f510c08bcf9c90"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/transcript-2026-03-26.txt": {
+      "size": 37484,
+      "mtime": 1775722559.4361937,
+      "sha1": "164c66886450775c19b59fba7ae02b22446e1749"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/workflow-catalog.json": {
+      "size": 31020,
+      "mtime": 1775722559.4117122,
+      "sha1": "fb95134e7270fdea99102704d29888e69436fe2e"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/workflow-catalog.md": {
+      "size": 23260,
+      "mtime": 1775722559.4106956,
+      "sha1": "44757ae65e9a10a5b435d0961bbc30671b0ab9e3"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/research/questions-answered.md": {
+      "size": 4591,
+      "mtime": 1775722559.405643,
+      "sha1": "56bfd33352860175b81977d5f60a490ee6f9019f"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/onboard-client-extracted/onboard-client/SKILL.md": {
+      "size": 10178,
+      "mtime": 1775722559.416142,
+      "sha1": "6b4dde5fda419def94e96108d4f51663d1c55aba"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/sessions/2026-03-05/onboard-client-extracted/onboard-client/references/schema.sql": {
+      "size": 4233,
+      "mtime": 1775722559.4181426,
+      "sha1": "42f540c2b5c1d7bad77dc46a82e8790cd482cbe3"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/skills/access-audit/SKILL.md": {
+      "size": 1282,
+      "mtime": 1775173190.9237106,
+      "sha1": "f52277803954a5c911c502a0997cec82791210e8"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/skills/morning-brief/SKILL.md": {
+      "size": 1248,
+      "mtime": 1775173182.919228,
+      "sha1": "14a9b7e7729a1ea884614aaa12b07c822cc178f9"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/skills/onboard-client/SKILL.md": {
+      "size": 10113,
+      "mtime": 1775173152.1949255,
+      "sha1": "17be6a06ce355fda53ff9a6c11fee87a8cb77af9"
+    },
+    "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain/skills/onboard-client/references/schema.sql": {
+      "size": 4226,
+      "mtime": 1775173169.4325933,
+      "sha1": "45326669b1cf6b0c970a9149b434f34255510d9e"
+    }
+  }
+}

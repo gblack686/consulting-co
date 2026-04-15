@@ -1,0 +1,59 @@
+name: Eagle Acquisition Platform
+tagline: "AI-Powered Acquisition Assistant for NCI"
+
+identity:
+  mission: "Provide a complete acquisition workflow — chat, packages, documents, workspaces, and admin — powered by a multi-agent AI backend with real-time FAR/DFARS/HHSAR compliance"
+  description: |
+    The Eagle platform is a multi-page web application with five core
+    sections: Chat (AI assistant), Packages (acquisition tracking),
+    Documents (template library and generation), Workspaces (team
+    collaboration), and Admin (dashboard and user management). The
+    chat interface is the primary entry point, supporting multi-agent
+    orchestration with specialized agents for intake, document generation,
+    compliance checking, and cost estimation.
+
+navigation:
+  - label: Chat
+    icon: message-square
+    href: /chat
+  - label: Packages
+    icon: package
+    href: /packages
+  - label: Documents
+    icon: file-text
+    href: /documents
+  - label: Workspaces
+    icon: layout-grid
+    href: /workspaces
+  - label: Admin
+    icon: settings
+    href: /admin
+
+domain:
+  document_types:
+    - Statement of Work (SOW)
+    - Independent Government Cost Estimate (IGCE)
+    - Market Research Report
+    - Acquisition Plan
+    - Evaluation Criteria
+    - Justification & Approval (J&A)
+    - Funding Documentation
+    - Urgency Justification
+  compliance_frameworks:
+    - FAR (Federal Acquisition Regulation)
+    - DFARS (Defense Federal Acquisition Regulation Supplement)
+    - HHSAR (Health and Human Services Acquisition Regulation)
+    - NCI Policy
+  acquisition_phases:
+    - intake
+    - analysis
+    - documentation
+    - review
+    - approval
+    - execution
+  agent_roles:
+    - OA Intake Agent
+    - Document Generation Agent
+    - Compliance Checker Agent
+    - Cost Estimation Agent
+    - Research Agent

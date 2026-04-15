@@ -1,0 +1,124 @@
+version: 1
+description: "Eagle UI generation team — 4 agents in sequential pipeline"
+
+# ── Orchestration Strategy ──
+strategy: sequential-per-tree
+# For each tree in spec.yaml generate list:
+#   1. Generator creates all branches (can parallelize across branches)
+#   2. Validator checks each branch against brand + acceptance criteria
+#   3. Fixer patches any failed branches (up to max_retries)
+#   4. Reviewer does final code quality pass on the whole tree
+
+# ── Shared Context ──
+# These files are included in every agent's context
+shared_context:
+  - brand.yaml
+  - product.yaml
+  - trees.yaml
+  - agents/rules/style-guide.yaml
+
+# ── Agent Definitions ──
+agents:
+
+  orchestrator:
+    name: Pipeline Orchestrator
+    prompt: prompts/orchestrator.md
+    role: "Coordinates the generation pipeline — reads spec.yaml, delegates to agents in phase order"
+    tools: [Read, Glob, Grep, Bash, Agent]
+    delegates_to: [generator, validator, fixer, reviewer]
+    domain:
+      - path: "."
+        read: true
+        write: false
+    skills:
+      - skills/high-autonomy.md
+      - skills/active-listener.md
+
+  generator:
+    name: Vue Component Generator
+    prompt: prompts/generator.md
+    role: "Generates Vue 3 SFC components from brand tokens + reference HTML + tree/branch spec"
+    tools: [Read, Write, Edit, Bash, Glob, Grep]
+    model: null                    # inherits from execution config
+    domain:
+      - path: "src/brands/{brand}/products/{product}/trees/"
+        read: true
+        write: true
+      - path: "src/brands/{brand}/"
+        read: true
+        write: false
+      - path: "reference/"
+        read: true
+        write: false
+    skills:
+      - skills/precise-worker.md
+      - skills/mental-model.md
+    expertise:
+      - path: expertise/generator-patterns.yaml
+        description: "Tracks component patterns, reusable snippets, and lessons learned"
+        updatable: true
+        max_lines: 200
+
+  validator:
+    name: Brand Compliance Validator
+    prompt: prompts/validator.md
+    role: "Validates generated components against brand tokens, accessibility standards, and acceptance criteria"
+    tools: [Read, Glob, Grep, Bash]
+    domain:
+      - path: "src/brands/{brand}/"
+        read: true
+        write: false
+      - path: "validation/"
+        read: true
+        write: true
+    skills:
+      - skills/precise-worker.md
+    checks:
+      - id: palette_compliance
+        description: "All colors reference brand.yaml palette — no hardcoded hex values"
+        severity: error
+      - id: typography_compliance
+        description: "Font families, weights, and scale match brand.yaml typography"
+        severity: error
+      - id: accessibility
+        description: "WCAG AA contrast ratios, aria labels, keyboard navigation"
+        severity: error
+      - id: responsive
+        description: "Works at all breakpoints defined in brand.yaml"
+        severity: warning
+      - id: reference_fidelity
+        description: "Component matches the intent/layout of reference HTML"
+        severity: warning
+      - id: component_isolation
+        description: "No global style leaks, scoped CSS only"
+        severity: error
+    pass_threshold: 0.85           # % of checks that must pass
+
+  fixer:
+    name: Component Fixer
+    prompt: prompts/fixer.md
+    role: "Takes validation report, patches failing components to meet criteria"
+    tools: [Read, Edit, Bash, Glob, Grep]
+    domain:
+      - path: "src/brands/{brand}/products/{product}/trees/"
+        read: true
+        write: true
+      - path: "validation/"
+        read: true
+        write: false
+    skills:
+      - skills/precise-worker.md
+    max_retries: 2
+
+  reviewer:
+    name: Code Quality Reviewer
+    prompt: prompts/reviewer.md
+    role: "Final review — DRY, performance, naming conventions, token usage consistency"
+    tools: [Read, Glob, Grep]
+    domain:
+      - path: "src/brands/{brand}/"
+        read: true
+        write: false
+    skills:
+      - skills/active-listener.md
+    output: "review-report.md"

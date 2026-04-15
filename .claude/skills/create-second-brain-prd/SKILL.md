@@ -48,10 +48,15 @@ The output PRD should have:
 - Date generated
 - Summary: 1-2 sentences based on their top tasks
 
-**Phase 1: Foundation (Memory Layer)**
-- Set up Obsidian vault (or their preferred notes app integration)
-- Create SOUL.md, USER.md, MEMORY.md, daily/ structure
+**Phase 1: Foundation (Vault Skeleton)**
+- Set up vault with merged folder structure (os/, contacts/, intelligence/, departments/, resources/, capabilities/, workflows/, tasks/, daily/, drafts/, config/)
+- Create os/SOUL.md, os/USER.md, os/MEMORY.md, os/HEARTBEAT.md, os/HABITS.md
 - Customize each file based on their "About You" and "Memory Categories" answers
+- Key files to create, estimated complexity: Low
+
+**Phase 1.5: Routing Layer (CLAUDE.md + Dashboard.md)**
+- Create CLAUDE.md — agent entry point with project overview, folder tree, client roster, key integrations, conventions
+- Create Dashboard.md — Obsidian MOC with wiki-linked tables (clients, pipeline skills, active projects, blockers, infrastructure)
 - Key files to create, estimated complexity: Low
 
 **Phase 2: Hooks (Context Persistence)**
@@ -73,6 +78,7 @@ The output PRD should have:
 - Key files per integration, estimated complexity: Medium per integration
 
 **Phase 5: Skills (Starter Pack)**
+- **skill-discovery** — Auto-inventory all skills, map to pipeline phases, generate capabilities/ indexes. This is the first skill every vault should have.
 - Vault structure skill (teach agent their file organization)
 - At least one custom skill based on their "Top Tasks"
 - Skill anatomy: SKILL.md + scripts/ + references/

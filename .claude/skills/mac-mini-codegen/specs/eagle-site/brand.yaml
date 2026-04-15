@@ -1,0 +1,88 @@
+name: Eagle
+tagline: "AI-Powered Acquisition Assistant"
+tone: professional, authoritative, clear
+audience: contracting officers, program managers, acquisition professionals
+
+identity:
+  mission: "Streamline federal procurement with intelligent tools that automate document generation, enforce compliance, and provide instant access to acquisition regulations"
+  description: |
+    Eagle is an AI-powered acquisition assistant built for the NCI Office
+    of Acquisitions. It guides users through procurement workflows — from
+    intake and market research to document generation and package assembly —
+    backed by a multi-agent system with real-time compliance checking
+    against FAR, DFARS, and HHSAR regulations.
+  keywords:
+    - "federal acquisition"
+    - "procurement automation"
+    - "compliance checking"
+    - "document generation"
+    - "multi-agent AI"
+  voice: "precise, helpful, regulation-aware"
+  avoid:
+    - "casual or informal tone"
+    - "ambiguous compliance guidance"
+    - "overpromising on legal interpretation"
+
+palette:
+  primary: "#111827"
+  secondary: "#0891B2"
+  accent: "#6366F1"
+  warm-accent: "#D97706"
+  background: "#F5F7FA"
+  bg-secondary: "#FFFFFF"
+  surface: "#FFFFFF"
+  text: "#111827"
+  muted: "#8896A6"
+  border: "#D8DEE6"
+  overlay: "rgba(0, 0, 0, 0.5)"
+  error: "#DC2626"
+  warning: "#D97706"
+  success: "#16A34A"
+  info: "#0891B2"
+
+typography:
+  heading: "Inter"
+  body: "Inter"
+  mono: "JetBrains Mono"
+  scale:
+    h1: { size: "2.5rem", weight: 700, tracking: "-0.02em" }
+    h2: { size: "1.5rem", weight: 600, tracking: "-0.01em" }
+    h3: { size: "1.125rem", weight: 600 }
+    body: { size: "0.875rem", weight: 400, line-height: 1.6 }
+    small: { size: "0.75rem", weight: 400 }
+    caption: { size: "0.625rem", weight: 500, tracking: "0.05em" }
+
+spacing:
+  unit: "0.5rem"
+  radius-sm: "0.5rem"
+  radius-md: "0.75rem"
+  radius-lg: "1rem"
+  radius-xl: "1.25rem"
+  container-max: "1280px"
+
+breakpoints:
+  sm: "640px"
+  md: "768px"
+  lg: "1024px"
+  xl: "1280px"
+
+shadows:
+  sm: "0 1px 2px rgba(0, 0, 0, 0.05)"
+  md: "0 4px 6px rgba(0, 0, 0, 0.07)"
+  lg: "0 10px 30px rgba(0, 0, 0, 0.04)"
+  header: "0 2px 8px rgba(17, 24, 39, 0.4)"
+
+motion:
+  duration-fast: "150ms"
+  duration-normal: "300ms"
+  duration-slow: "500ms"
+  easing: "cubic-bezier(0.4, 0, 0.2, 1)"
+
+assets:
+  logo: "public/assets/logo.svg"
+  favicon: "public/assets/favicon.svg"
+  media:
+    - path: "public/assets/eagle-icon.svg"
+      description: "Eagle icon — used in header branding and welcome states"
+    - path: "public/assets/og-card.png"
+      description: "Open Graph social card for Eagle acquisition assistant"

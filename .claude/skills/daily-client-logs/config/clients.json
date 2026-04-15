@@ -1,0 +1,44 @@
+{
+  "gbautomation": {
+    "display_name": "GBAutomation",
+    "workspaces": [
+      "C:/Users/gblac/OneDrive/Desktop/consulting-co",
+      "C:/Users/gblac/OneDrive/Desktop/gbauto/gbautomation"
+    ],
+    "second_brain": "C:/Users/gblac/OneDrive/Desktop/gbauto/gbautomation/second-brain",
+    "ignore": [
+      ".git",
+      "__pycache__",
+      "node_modules",
+      "*.pyc",
+      "*.log",
+      ".obsidian/workspace.json",
+      ".obsidian/workspace-mobile.json",
+      "daily/*.md",
+      ".DS_Store",
+      "*.tmp",
+      "~$*"
+    ]
+  },
+  "fisch-group": {
+    "display_name": "Fish Group",
+    "workspaces": [
+      "C:/Users/gblac/OneDrive/Desktop/consulting-co/.claude/skills/consulting-intake/client-sessions/20260305-michael-fisch",
+      "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group"
+    ],
+    "second_brain": "C:/Users/gblac/OneDrive/Desktop/gbauto/fisch-group/second-brain",
+    "ignore": [
+      ".git",
+      "__pycache__",
+      "node_modules",
+      "*.pyc",
+      "*.log",
+      ".obsidian/workspace.json",
+      ".obsidian/workspace-mobile.json",
+      "daily/*.md",
+      ".DS_Store",
+      "*.tmp",
+      "~$*"
+    ]
+  }
+}

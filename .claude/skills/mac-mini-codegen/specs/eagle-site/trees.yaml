@@ -1,0 +1,239 @@
+version: 1
+brand: eagle
+product: site
+trees:
+
+  # ──────────────────────────────────────────────
+  # HOME — Landing page / dashboard
+  # ──────────────────────────────────────────────
+  - slug: home
+    name: Home
+    description: Landing page with hero branding, feature card grid, and entry points to Chat, Documents, Packages, and Admin
+    icon: home
+    notes: |
+      Reference: eagle-home.html
+      - Two-column layout: left branding/tagline, right feature cards
+      - 4 feature cards: Chat (cyan), Document Templates (emerald), Acquisition Packages (violet), Admin (amber)
+      - Gradient wordmark (teal-to-indigo)
+      - Footer with org attribution
+    branches:
+      - slug: hero-cards
+        name: Hero + Feature Cards
+        description: Default home layout — hero left, 4 feature cards right
+        created: "2026-04-08"
+        status: reference
+        screenshot: null
+      - slug: dashboard-home
+        name: Dashboard Home
+        description: Authenticated variant — recent packages, pending actions, quick stats replacing the hero
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+
+  # ──────────────────────────────────────────────
+  # CHAT — AI assistant interface (primary page)
+  # ──────────────────────────────────────────────
+  - slug: chat
+    name: Chat
+    description: Multi-panel AI chat interface with session sidebar, message area, and contextual activity panel
+    icon: message-square
+    notes: |
+      Reference: eagle-chat.html (3-panel) + eagle-chat-advanced.html (2-panel)
+      Business logic:
+      - Left sidebar: session list with New Chat button, session history (title, timestamp, msg count)
+      - Center: chat messages with welcome/empty state, quick action pills (New Intake, Generate SOW, Search FAR, Cost Estimate, Small Business)
+      - Right panel (3-panel): 5 tabs — Package status, Docs, Alerts, Activity, Bedrock
+      - Right panel (2-panel): 3 tabs — Active Intake, Order History, Agent Logs
+      - Messages show agent badges (e.g. "OA Intake Agent") and regulation citations (FAR 13.003, NCI Policy)
+      - User messages: light cyan bubble right-aligned
+      - Agent messages: white bordered bubble left-aligned with structured responses (lists, bold, citations)
+      - Input bar: voice button, text input with / command support, send button (teal-to-indigo gradient)
+      - Quick actions above input: Acquisition, Research, Document, Help
+      - Welcome state: eagle icon, greeting, 4 suggested prompt buttons
+    branches:
+      - slug: three-panel
+        name: Three-Panel Chat
+        description: Session sidebar (256px) + chat center + activity panel (380px) with 5 tabs (Package, Docs, Alerts, Activity, Bedrock)
+        created: "2026-04-08"
+        status: reference
+        screenshot: null
+      - slug: two-panel
+        name: Two-Panel Chat
+        description: Full-width chat + intake sidebar (450px) with 3 tabs (Active Intake, Order History, Agent Logs)
+        created: "2026-04-08"
+        status: reference
+        screenshot: null
+      - slug: mobile-chat
+        name: Mobile Chat
+        description: Single-column responsive chat with collapsible sidebar and bottom-sheet panels
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+
+  # ──────────────────────────────────────────────
+  # PACKAGES — Acquisition package management
+  # ──────────────────────────────────────────────
+  - slug: packages
+    name: Packages
+    description: Acquisition package list, detail view, and creation flow with phase tracking and document checklist
+    icon: package
+    notes: |
+      Inferred from chat sidebar panels:
+      - Package has: ID (PKG-2026-XXXX), phase (intake/analysis/documentation/review/approval/execution), document checklist
+      - Document checklist: SOW, IGCE, Market Research, Acquisition Plan, Evaluation Criteria, Justification (+ Funding Docs, Urgency Justification in advanced)
+      - Progress bar shows completion (e.g. 3/6 documents)
+      - Compliance alerts: warning (FAR 6.302 sole-source) and info (HHSAR 352.239 IT security)
+      - Acquisition types: Simplified (under $250K), Negotiated (over $250K)
+      - Summary fields: requirement description, estimated value, timeline, acquisition type
+    branches:
+      - slug: package-list
+        name: Package List
+        description: Table/card view of all acquisition packages with status filters, search, and sort
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+      - slug: package-detail
+        name: Package Detail
+        description: Single package view — summary card, document checklist with progress, compliance alerts, timeline
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+      - slug: package-create
+        name: New Package Wizard
+        description: Step-by-step intake form — requirement, value estimate, timeline, acquisition type auto-detection
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+
+  # ──────────────────────────────────────────────
+  # DOCUMENTS — Template library & generation
+  # ──────────────────────────────────────────────
+  - slug: documents
+    name: Documents
+    description: Document template library, AI-powered generation, and upload/management for acquisition artifacts
+    icon: file-text
+    notes: |
+      Inferred from home feature card + chat quick actions:
+      - Template types: SOW, IGCE, Acquisition Plan, Market Research Report, Evaluation Criteria, J&A
+      - AI generation via chat commands (Generate SOW, etc.)
+      - Upload support: PDF, DOCX, images up to 10MB (from chat-advanced drop zone)
+      - Documents are linked to packages and appear in package checklist
+      - FAR/DFARS search capability ("Search FAR" quick action)
+    branches:
+      - slug: template-gallery
+        name: Template Gallery
+        description: Browse document templates by type — card grid with preview, category filters, and "Use Template" action
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+      - slug: document-editor
+        name: Document Editor
+        description: AI-assisted document editor — template fill-in, inline compliance checking, export to PDF/DOCX
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+      - slug: document-upload
+        name: Document Upload
+        description: Drag-and-drop upload zone with file list, metadata tagging, and package association
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+
+  # ──────────────────────────────────────────────
+  # WORKSPACES — Team collaboration
+  # ──────────────────────────────────────────────
+  - slug: workspaces
+    name: Workspaces
+    description: Team workspaces for collaborative acquisition work — shared packages, permissions, and activity feeds
+    icon: layout-grid
+    notes: |
+      Inferred from nav tab (present in all 3 HTML files):
+      - Workspace likely groups packages, documents, and team members
+      - Supports multi-user collaboration (user profile shown with avatar + name)
+      - Activity feed (5 items badge in chat sidebar Activity tab)
+    branches:
+      - slug: workspace-list
+        name: Workspace List
+        description: Grid of workspaces with member count, package count, and last-activity timestamp
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+      - slug: workspace-detail
+        name: Workspace Detail
+        description: Single workspace — member list, shared packages, activity feed, workspace settings
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+
+  # ──────────────────────────────────────────────
+  # ADMIN — Dashboard, analytics, user management
+  # ──────────────────────────────────────────────
+  - slug: admin
+    name: Admin
+    description: Admin dashboard with analytics, user management, system settings, and agent configuration
+    icon: settings
+    notes: |
+      Inferred from home feature card + nav tab:
+      - "Dashboard, analytics, user management, and system settings"
+      - Bedrock tab in chat sidebar suggests backend/model configuration is admin-accessible
+      - Agent logs tab shows multi-agent system status (3 pending items)
+      - User roles implied: contracting officers, program managers, acquisition professionals
+    branches:
+      - slug: admin-dashboard
+        name: Admin Dashboard
+        description: Overview stats — active packages, documents generated, users, agent uptime, compliance score
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+      - slug: user-management
+        name: User Management
+        description: User table with roles, permissions, workspace assignments, and invite flow
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+      - slug: agent-config
+        name: Agent Configuration
+        description: Multi-agent system settings — agent roles, model selection (Bedrock), logging, and health monitoring
+        created: "2026-04-08"
+        status: planned
+        screenshot: null
+
+  # ──────────────────────────────────────────────
+  # SHARED — Cross-cutting components
+  # ──────────────────────────────────────────────
+  - slug: shared
+    name: Shared Components
+    description: Reusable components used across all pages — header, sidebar, status badges, compliance alerts
+    icon: layers
+    notes: |
+      Extracted from all 3 HTML files:
+      - Header: two variants (SimpleHeader two-row centered, TopNav single-row spread)
+      - Nav tabs: icon + label, active state (bg-white/20), hover state
+      - Status indicator: green dot + "Connected" text
+      - User profile pill: avatar (gradient initials), name, role, sign-out
+      - Compliance alert cards: warning (amber) and info (cyan) with FAR/HHSAR citations
+      - Document checklist item: completed (green check) and pending (empty circle)
+      - Progress bar: gradient fill with fraction label
+      - Agent badge: colored pill with agent role name
+      - Regulation citation tag: small colored pill (FAR 13.003, NCI Policy 4.1)
+      - Quick action pill: colored background with icon + label
+      - File upload card: icon, filename, size, remove button
+    branches:
+      - slug: header-simple
+        name: Simple Header
+        description: Two-row header — centered branding + centered nav tabs (used on home, chat-simple)
+        created: "2026-04-08"
+        status: reference
+        screenshot: null
+      - slug: header-topnav
+        name: Top Nav Header
+        description: Single-row header — left branding, center nav, right status/user/signout (used on chat-advanced)
+        created: "2026-04-08"
+        status: reference
+        screenshot: null
+      - slug: status-badges
+        name: Status Badges
+        description: Connection indicator, phase badges, agent badges, regulation citation tags
+        created: "2026-04-08"
+        status: planned
+        screenshot: null

@@ -1,0 +1,122 @@
+version: 1
+name: eagle-site
+description: "Eagle Acquisition Assistant — full UI generation spec"
+
+# ── Brand Identity ──
+brand:
+  name: eagle
+  file: brand.yaml
+
+# ── Product Definition ──
+product:
+  name: site
+  file: product.yaml
+
+# ── Component Trees ──
+trees:
+  file: trees.yaml
+  generate:                        # which trees to build (or "all")
+    - home
+    - chat
+    - shared
+  priority_order:                  # build shared components first
+    - shared
+    - home
+    - chat
+    - packages
+    - documents
+    - workspaces
+    - admin
+
+# ── Reference Designs ──
+reference:
+  dir: reference/
+  mapping:                         # which reference files inform which trees
+    home: [eagle-home.html]
+    chat: [eagle-chat.html, eagle-chat-advanced.html]
+    shared: [eagle-home.html, eagle-chat.html, eagle-chat-advanced.html]
+
+# ── Agent Team ──
+team:
+  config: agents/team.yaml
+  prompts_dir: agents/prompts/
+  skills_dir: agents/skills/
+  rules_dir: agents/rules/
+  expertise_dir: agents/expertise/
+
+# ── Repositories ──
+repos:
+  # The spec + agent team config repo (pushed to Mac Mini)
+  config:
+    name: eagle-claude-config
+    github: gblack686/eagle-claude-config
+    mac_mini_path: ~/repos/eagle-claude-config
+    purpose: "Agent team config, prompts, rules, brand spec — this spec bundle lives here"
+
+  # The actual Eagle app that gets code generated into it
+  app:
+    name: sample-multi-tenant-agent-core-app
+    github: gblack686/sample-multi-tenant-agent-core-app
+    local_path: "c:/Users/gblac/OneDrive/Desktop/afs/sample-multi-tenant-agent-core-app"
+    mac_mini_path: ~/repos/eagle-app
+    framework: python-server + html-client
+    structure:
+      server: server/                # Python backend
+      client: client/                # Frontend
+      design: docs/design-handoff/   # HTML mockups (our reference files)
+      scripts: scripts/
+      deployment: deployment/
+
+# ── Target Environment ──
+target:
+  host: 100.88.4.114              # Mac Mini (Tailscale IP)
+  user: greg
+  config_repo: eagle-claude-config
+  app_repo: eagle-app
+  claude_path: /opt/homebrew/bin/claude
+  shell_path_export: "export PATH='/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/Users/greg/.local/bin:$PATH'"
+
+# ── Execution ──
+execution:
+  agent: claude                    # claude (on Mac Mini)
+  model: default                   # uses Claude Code's own auth (Max sub)
+  meridian:
+    enabled: false                 # set true to route through Meridian proxy
+    url: http://127.0.0.1:3456
+  max_turns: 50
+  mode: generate                   # generate | validate | fix | full-pipeline
+  phases:                          # sequential phases per tree
+    - name: generate
+      agent: generator
+      per: branch
+    - name: validate
+      agent: validator
+      per: branch
+      depends_on: generate
+    - name: fix
+      agent: fixer
+      per: branch
+      depends_on: validate
+      condition: "validation.passed == false"
+      max_retries: 2
+    - name: review
+      agent: reviewer
+      per: tree
+      depends_on: [generate, fix]
+
+# ── Git ──
+git:
+  commit: true
+  branch_pattern: "feat/{brand}-{tree}-{date}"
+  commit_message_pattern: "feat({brand}): generate {tree}/{branch} components"
+  push: false                      # manual push after review
+
+# ── Notification ──
+notify:
+  channel: telegram
+  target: "6777263736"
+  on_start: true
+  on_tree_complete: true
+  on_failure: true
+  on_pipeline_complete: true
+  include_screenshot: true
