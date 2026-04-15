@@ -1,0 +1,114 @@
+# The Library Expert Knowledge Base
+# Private-First Agentic Distribution System
+# Last updated: 2026-04-14
+
+overview:
+  description: "The Library — a meta-skill for private-first distribution of agentics (skills, agents, prompts) across agents, devices, and teams"
+  repo: "https://github.com/gbauto-tac/the-library"
+  upstream: "https://github.com/disler/the-library"
+  local_clone: "C:/Users/gblac/OneDrive/Desktop/tac/the-library"
+  skill_path: "~/.claude/skills/library/"
+  catalog_file: "library.yaml"
+  obsidian_vault: "C:/Users/gblac/OneDrive/Desktop/obsidian/Gbautomation/AI-Agent-KB"
+
+architecture:
+  principle: "library.yaml is a catalog of pointers, not a manifest — nothing is fetched until requested"
+  source_formats:
+    - "Local path: /absolute/path/to/SKILL.md or ~/relative/path"
+    - "GitHub browser URL: https://github.com/org/repo/blob/branch/path"
+    - "GitHub raw URL: https://raw.githubusercontent.com/org/repo/branch/path"
+  target_dirs:
+    skills:
+      default: ".claude/skills/"
+      global: "~/.claude/skills/"
+    agents:
+      default: ".claude/agents/"
+      global: "~/.claude/agents/"
+    prompts:
+      default: ".claude/commands/"
+      global: "~/.claude/commands/"
+  dependencies: "Typed refs — skill:name, agent:name, prompt:name — resolved recursively before install"
+
+commands:
+  install: "First-time setup: fork, clone, configure LIBRARY_YAML_PATH"
+  add: "Register a new entry in library.yaml catalog"
+  use: "Pull from source (install or refresh) — clones repo, copies parent dir of referenced file"
+  push: "Push local changes back to source repo"
+  remove: "Remove from catalog and optionally delete local copy"
+  list: "Show full catalog with install status"
+  sync: "Re-pull all installed items from source"
+  search: "Find entries by keyword across names and descriptions"
+
+catalog_stats:
+  skills: 63
+  agents: 17
+  expert_prompts: 8
+  total: 88
+
+scripts:
+  generate_obsidian_notes:
+    path: "scripts/generate_obsidian_notes.py"
+    description: "Reads library.yaml, queries Scryfall for MTG cards, generates Obsidian notes with AI-Agent-KB frontmatter"
+    usage: "python scripts/generate_obsidian_notes.py [--dry-run] [--vault-path PATH]"
+    deps: "pyyaml, requests"
+
+obsidian_integration:
+  pattern: "Each library entry gets an Obsidian note with AI-Agent-KB frontmatter"
+  frontmatter_fields:
+    - "type: skill|agent|command"
+    - "name, banner, mtg_card, mtg_color, mtg_set_code"
+    - "cssclasses: [cards, cards-cover]"
+    - "tags: [..., library-synced]"
+  card_assignment:
+    skills: "Instant (one-shot) or Enchantment (persistent/manager)"
+    agents: "Creature — Dragon (expert), Construct (build), Wizard (plan), Knight (validate)"
+    prompts: "Sorcery"
+  color_mapping:
+    Blue: "GitHub, Git, CI/CD, code"
+    Green: "AWS, Cloud, Infrastructure"
+    Red: "Documentation, Obsidian, Knowledge"
+    Black: "Data, Database, Memory"
+    White: "Testing, Validation, Admin"
+    Colorless: "Universal, Meta, Browser, Trading"
+
+hooks:
+  library_diff:
+    path: "~/.claude/hooks/library-diff-hook.py"
+    trigger: "PostToolUse on Write|Edit within the-library directory"
+    action: "Gets git diff, summarizes via Haiku, logs to ~/.claude/logs/library_diffs.log"
+    disable: "HOOK_DISABLE_LIBRARY_DIFF=1"
+
+workflows:
+  add_new_skill:
+    - "1. Create skill in consulting-co/.claude/skills/{name}/"
+    - "2. /library add — registers in library.yaml with GitHub source URL"
+    - "3. python scripts/generate_obsidian_notes.py — creates Obsidian note with MTG card"
+    - "4. Commit and push the-library repo"
+  distribute_to_device:
+    - "1. Clone the-library to new device: ~/.claude/skills/library/"
+    - "2. /library use {name} — pulls skill from source to local .claude/skills/"
+    - "3. /library sync — refresh all installed items"
+  audit_catalog:
+    - "1. /library list — check install status of all entries"
+    - "2. Compare library.yaml entries against actual .claude/skills/ contents"
+    - "3. Flag orphaned skills (local but not in catalog) and missing skills (catalog but not local)"
+
+troubleshooting:
+  - issue: "Scryfall rate limit (429) during Obsidian note generation"
+    fix: "Re-run script — it skips existing notes, only creates missing ones. Or increase sleep to 0.3s"
+  - issue: "GitHub source URL returns 404 on /library use"
+    fix: "Check repo is private and gh auth has access. Use SSH URL for private repos."
+  - issue: "library.yaml out of sync across devices"
+    fix: "git pull in ~/.claude/skills/library/ before any /library command"
+  - issue: "Obsidian notes show broken banner image"
+    fix: "Run generate_obsidian_notes.py to download missing card images to _assets/mtg-cards/"
+
+resources:
+  - path: "C:/Users/gblac/OneDrive/Desktop/tac/the-library/SKILL.md"
+    title: "Library SKILL.md — full command reference and cookbook"
+  - path: "C:/Users/gblac/OneDrive/Desktop/tac/the-library/library.yaml"
+    title: "Library catalog — all skill/agent/prompt entries"
+  - path: "C:/Users/gblac/OneDrive/Desktop/tac/the-library/cookbook/"
+    title: "Cookbook — step-by-step guides for each /library command"
+  - url: "https://github.com/gbauto-tac/the-library"
+    title: "GitHub repo (forked from disler/the-library)"
