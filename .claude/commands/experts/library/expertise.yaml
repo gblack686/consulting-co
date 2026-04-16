@@ -51,6 +51,13 @@ scripts:
     description: "Reads library.yaml, queries Scryfall for MTG cards, generates Obsidian notes with AI-Agent-KB frontmatter"
     usage: "python scripts/generate_obsidian_notes.py [--dry-run] [--vault-path PATH]"
     deps: "pyyaml, requests"
+  sync_viewer:
+    path: ".claude/commands/experts/library/sync_viewer.py"
+    description: "Reads library.yaml, resolves local SKILL.md files, extracts frontmatter + content, assigns business domain categories, writes library-catalog.json for Archon viewer"
+    usage: "python .claude/commands/experts/library/sync_viewer.py [--dry-run] [--output PATH]"
+    deps: "pyyaml"
+    output: "archon/packages/web/public/library-catalog.json"
+    viewer_url: "http://localhost:5173/library"
 
 obsidian_integration:
   pattern: "Each library entry gets an Obsidian note with AI-Agent-KB frontmatter"
