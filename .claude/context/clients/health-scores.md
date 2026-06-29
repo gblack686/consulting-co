@@ -75,3 +75,87 @@
   2. Determine if this engagement proceeds to an agent build session.
   3. Create client_profile.json to standardize tracking.
   4. Document billing and next-step agreement.
+
+---
+
+# Client Health — 2026-06-29
+
+| Client | Deploy | Engage | Items | Billing | Signal | Total | Flag |
+|--------|--------|--------|-------|---------|--------|-------|------|
+| Greg Trading | 5 | 1 | 4 | 6 | 7 | 4.15 | ⚠️ NEEDS_ATTENTION |
+| Cruz Creations (Erica) | 4 | 1 | 3 | 6 | 7 | 3.65 | ⚠️ NEEDS_ATTENTION |
+| Fish Group (Michael Fisch) | 4 | 2 | 3 | 5 | 7 | 3.75 | ⚠️ NEEDS_ATTENTION |
+| Garrett Shuster | 2 | 3 | 5 | 6 | 7 | 3.95 | ⚠️ NEEDS_ATTENTION |
+
+> Weights: Deploy 30% · Engage 25% · Items 20% · Billing 15% · Signal 10%
+> ⚠️ Second consecutive check with all 4 clients flagged. Trend: scores declining across the board vs. 2026-06-15.
+
+---
+
+## Scoring Notes
+
+### Greg Trading
+- **Session**: 2026-02-21 | **Last git touch**: 2026-04-05 (~85 days ago)
+- **Deploy (5)**: Full workspace built + 4-domain expert package (validation 94/100). 3 REQUIRED pre-deploy items still open after 5+ months: Telegram ID, glm47 model verification, all API keys.
+- **Engage (1)**: 128 days since session. No commit activity in 85 days. No contact detected.
+- **Items (4)**: 3 required blockers + 7 recommended still outstanding from original VALIDATION_REPORT.
+- **Billing (6)**: No billing data found. Neutral.
+- **Signal (7)**: Package quality excellent. Positive initial intent, but prolonged silence is a concern.
+
+### Cruz Creations (Erica)
+- **Session**: 2026-03-05 | **Last git touch**: 2026-04-05 (~85 days ago)
+- **Deploy (4)**: Workspace config built (5 agents, 11 skills). All integrations unconnected: Gmail OAuth, Google Drive, Shopify API key, WhatsApp Business API, ClassBento browser automation.
+- **Engage (1)**: 116 days since session. 85 days since last commit. No follow-up activity.
+- **Items (3)**: 12+ open next steps across Greg (Google Workspace, GitHub repo, WhatsApp, OpenClaw deploy) and Erica (Google Photos, ChatGPT migration, Mailchimp cancel). None confirmed complete.
+- **Billing (6)**: No billing data. Neutral.
+- **Signal (7)**: Warm client. Creative project with clear ROI ($50/month Mailchimp to cancel). Score held vs. prior check.
+
+### Fish Group (Michael Fisch)
+- **Session**: 2026-03-05 (S1), 2026-03-12 (S2) | **Last git touch**: 2026-04-05 (~85 days ago)
+- **Deploy (4)**: Workspace + Obsidian vault built; two sessions completed. OpenClaw EC2 unprovisioned. Supabase migration (CRITICAL) still blocks all Piermont data access.
+- **Engage (2)**: 109 days since Session 2. No activity in 85 days. Score dropped from prior check.
+- **Items (3)**: 4 blockers open: CRITICAL — Supabase migration (Emil), QuickBooks API creds (Emil); HIGH — OpenClaw EC2 (Greg), Airtable token (Emil).
+- **Billing (5)**: Invoice sent ($200 to mike@piermontbrands.com, Net 30). Payment status unconfirmed.
+- **Signal (7)**: Strong client vision ("continuous and recursive agents on top of data"). Two productive sessions on record.
+
+### Garrett Shuster
+- **Session**: 2026-04-05 | **Last git touch**: 2026-04-14 (~76 days ago)
+- **Deploy (2)**: No agent workspace built. Only deliverable: Sylvan Hills x GBAutomation engagement roadmap (PPTX). Not an agent build session.
+- **Engage (3)**: 85 days since session; no documented follow-up. Engagement score dropped sharply from prior check (was 9 when recent; now 3 with 85 days elapsed).
+- **Items (5)**: No client_profile.json. No formal next steps recorded. Engagement continuation path undefined.
+- **Billing (6)**: No billing data. Neutral.
+- **Signal (7)**: Roadmap deck delivered — tangible output. Unclear if engagement proceeds.
+
+---
+
+## ⚠️ Action Items — All Clients Below 6.0
+
+### Greg Trading (4.15) — CRITICAL: 128 days since session, agent never deployed
+- **Trend**: Down from 4.45 on 2026-06-15. Stale 5 months with agent never going live.
+- **Action**: Immediate re-engagement required.
+  1. Send check-in via Telegram/email: confirm real Telegram ID + verify OpenRouter model for glm47.
+  2. Schedule 30-min follow-up to complete the 3 REQUIRED pre-deploy items.
+  3. If unresponsive in 7 days, consider archiving as inactive engagement.
+
+### Cruz Creations / Erica (3.65) — CRITICAL: 116 days, lowest score, most open tasks
+- **Trend**: Flat vs. 2026-06-15. Still most items open.
+- **Action**: Priority re-engagement — most pending work, warmest client.
+  1. Send Erica the "Next Steps" email (Google Photos, ChatGPT migration, Shopify API key).
+  2. Complete Greg-side tasks: Google Workspace setup + GitHub repo `gblack686/openclaw-erica-creations`.
+  3. WhatsApp Business API is the critical path blocker for the agent channel.
+  4. Erica paying $50/month for Mailchimp unnecessarily — resolve to retain client goodwill.
+
+### Fish Group / Michael Fisch (3.75) — CRITICAL: Blockers unchanged, billing unclear
+- **Trend**: Down from 3.85 on 2026-06-15. No progress on any blocker.
+- **Action**: Unblock the critical path and confirm billing.
+  1. Ping Emil: Supabase migration status + Airtable token (both Emil-owned blockers).
+  2. Provision OpenClaw EC2 for Finn (Greg's responsibility).
+  3. Confirm invoice payment status with Michael.
+  4. Emil sharing QuickBooks creds unblocks 3 core workflows immediately.
+
+### Garrett Shuster (3.95) — HIGH: Engagement undefined after roadmap delivery
+- **Trend**: Down sharply from 5.45 on 2026-06-15. Engagement score collapsed as time elapsed.
+- **Action**: Clarify continuation and formalize tracking.
+  1. Follow up on the Sylvan Hills roadmap — get feedback and determine if engagement continues.
+  2. If proceeding: schedule an agent build session and create client_profile.json.
+  3. Document billing and next-step agreement before more time passes.
