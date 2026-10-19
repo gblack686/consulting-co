@@ -159,3 +159,88 @@
   1. Follow up on the Sylvan Hills roadmap — get feedback and determine if engagement continues.
   2. If proceeding: schedule an agent build session and create client_profile.json.
   3. Document billing and next-step agreement before more time passes.
+
+---
+
+# Client Health — 2026-10-19
+
+| Client | Deploy | Engage | Items | Billing | Signal | Total | Flag |
+|--------|--------|--------|-------|---------|--------|-------|------|
+| Greg Trading | 5 | 1 | 3 | 6 | 6 | 3.85 | ⚠️ NEEDS_ATTENTION |
+| Cruz Creations (Erica) | 4 | 1 | 3 | 6 | 7 | 3.65 | ⚠️ NEEDS_ATTENTION |
+| Fish Group (Michael Fisch) | 4 | 1 | 3 | 5 | 7 | 3.50 | ⚠️ NEEDS_ATTENTION |
+| Garrett Shuster | 2 | 1 | 4 | 6 | 7 | 3.25 | ⚠️ NEEDS_ATTENTION |
+
+> Weights: Deploy 30% · Engage 25% · Items 20% · Billing 15% · Signal 10%
+> ⚠️ **Third consecutive check with all 4 clients flagged. Trend: scores declining across the board. Greg Trading archive deadline passed 2026-10-14 with no response.**
+
+---
+
+## Scoring Notes
+
+### Greg Trading
+- **Session**: 2026-02-21 | **Last git touch**: 2026-04-05 (~197 days ago) | **Days since session**: ~240
+- **Deploy (5)**: Full workspace + 4-domain expert package (validation 94/100). 3 REQUIRED pre-deploy items still open after 8 months: Telegram ID, glm47 model verification, all API keys. No change.
+- **Engage (1)**: 240 days since session. No commits in 197 days. Archive deadline (2026-10-14) passed with no response from Greg.
+- **Items (3)**: 3 required pre-deploy blockers + 7 recommended still outstanding. Archive decision now overdue (down from 4).
+- **Billing (6)**: No billing data found. Neutral.
+- **Signal (6)**: Package quality excellent but 8 months of silence signals disengagement (down from 7).
+
+### Cruz Creations (Erica)
+- **Session**: 2026-03-05 | **Last git touch**: 2026-04-05 (~197 days ago) | **Days since session**: ~228
+- **Deploy (4)**: Workspace config built (5 agents, 11 skills). Zero integrations connected: Gmail OAuth, Google Drive, Shopify API key, WhatsApp Business API, ClassBento. No change.
+- **Engage (1)**: 228 days since session. No activity in 197 days. No follow-up actioned.
+- **Items (3)**: 12+ open next steps across Greg-side and Erica-side tasks, none confirmed complete. Erica still paying $50/month for Mailchimp.
+- **Billing (6)**: No billing data. Neutral.
+- **Signal (7)**: Warm, energetic client. No negative signals; creative project with clear ROI.
+
+### Fish Group (Michael Fisch)
+- **Session**: 2026-03-05 (S1), 2026-03-12 (S2) | **Last git touch**: 2026-04-05 (~197 days ago) | **Days since S2**: ~221
+- **Deploy (4)**: Workspace + Obsidian vault built; two sessions. OpenClaw EC2 unprovisioned. Supabase CRITICAL blocker unchanged.
+- **Engage (1)**: 221 days since Session 2. No activity. Score dropped from 2 (more stale now).
+- **Items (3)**: 4 open blockers: CRITICAL — Supabase migration (Emil), QuickBooks API creds (Emil); HIGH — OpenClaw EC2 (Greg), Airtable token (Emil). No progress since last check.
+- **Billing (5)**: Invoice ENIDX5M1-0002 ($200, Net 30) to mike@piermontbrands.com — payment status unconfirmed. Overdue.
+- **Signal (7)**: Two productive sessions. "Continuous and recursive agents" vision. Positive but blocked indefinitely.
+
+### Garrett Shuster
+- **Session**: 2026-04-05 | **Last git touch**: 2026-04-14 (~188 days ago) | **Days since session**: ~197
+- **Deploy (2)**: No agent workspace built. Deliverable was Sylvan Hills x GBAutomation PPTX roadmap only. No agent build session ever completed.
+- **Engage (1)**: 197 days since session with no documented follow-up (down from 3 — now fully stale). No workspace folder exists.
+- **Items (4)**: No client_profile.json. No formal next steps. 20260405-garrett-shuster/ session still has no workspace/. Engagement continuation undefined after 6+ months.
+- **Billing (6)**: No billing data. Neutral.
+- **Signal (7)**: Roadmap deck delivered = tangible deliverable. Unclear if engagement ever proceeds.
+
+---
+
+## ⚠️ Action Items — All Clients Below 6.0
+
+### Greg Trading (3.85) — CRITICAL: Archive deadline passed 2026-10-14, no response
+- **Trend**: Down from 4.15 on 2026-06-29. Archive deadline set in 2026-10-07 pipeline passed silently.
+- **Action**: Final decision required.
+  1. Make one final outreach attempt (Telegram + email) with 7-day deadline.
+  2. If still no response: formally archive session → `archived/20260221-greg-trading/` and update status.
+  3. Document in health-scores.md as archived inactive engagement.
+
+### Cruz Creations / Erica (3.65) — CRITICAL: 228 days, zero integrations, $50/month wasted
+- **Trend**: Flat for 4+ months — lowest stable score across all clients.
+- **Action**: Highest priority re-engagement.
+  1. Send the "Next Steps" email immediately: Google Photos, ChatGPT memory migration, Shopify API key.
+  2. Complete Greg-side: set up Google Workspace + create GitHub repo `gblack686/openclaw-erica-creations`.
+  3. Initiate WhatsApp Business API (Meta) — critical path blocker for agent channel.
+  4. Erica is paying $50/month for Mailchimp unused — every week of delay costs client goodwill.
+
+### Fish Group / Michael Fisch (3.50) — CRITICAL: Invoice overdue, all blockers unchanged
+- **Trend**: Down from 3.75 on 2026-06-29. Engagement score dropped to 1. Invoice now likely overdue.
+- **Action**: Unblock and collect.
+  1. Confirm invoice ENIDX5M1-0002 ($200) payment status with Michael — likely overdue on Net 30.
+  2. Ping Emil directly: Supabase migration + Airtable token (both Emil-owned, unchanged for 7 months).
+  3. Provision OpenClaw EC2 for Finn (Greg-owned blocker, long overdue).
+  4. QuickBooks creds from Emil unblock 3 workflows immediately upon receipt.
+
+### Garrett Shuster (3.25) — HIGH: Lowest score this check, engagement undefined after 6 months
+- **Trend**: Down from 3.95 on 2026-06-29. Now lowest-scoring client for the first time.
+- **Action**: Clarify or close engagement.
+  1. Final follow-up on Sylvan Hills roadmap: get feedback and explicit go/no-go on agent build session.
+  2. If proceeding: create client_profile.json, build workspace/, schedule agent build session.
+  3. If declining: close engagement and document outcome.
+  4. No billing agreement exists — clarify before any further work.
