@@ -328,3 +328,93 @@
   1. Final outreach on Sylvan Hills roadmap: explicit go/no-go on agent build session.
   2. If proceeding: create client_profile.json, build workspace/, schedule session.
   3. If no response by 2026-11-09: close engagement and document outcome.
+
+---
+
+# Client Health — 2026-11-09
+
+| Client | Deploy | Engage | Items | Billing | Signal | Total | Flag |
+|--------|--------|--------|-------|---------|--------|-------|------|
+| Greg Trading | 5 | 1 | 2 | 6 | 5 | 3.55 | ⚠️ NEEDS_ATTENTION |
+| Cruz Creations (Erica) | 4 | 1 | 3 | 6 | 7 | 3.65 | ⚠️ NEEDS_ATTENTION |
+| Fish Group (Michael Fisch) | 4 | 1 | 3 | 4 | 6 | 3.25 | ⚠️ NEEDS_ATTENTION |
+| Garrett Shuster | 2 | 1 | 4 | 6 | 7 | 3.25 | ⚠️ NEEDS_ATTENTION |
+
+> Weights: Deploy 30% · Engage 25% · Items 20% · Billing 15% · Signal 10%
+> ⚠️ **FIFTH consecutive check with all 4 clients flagged. No improvement. TODAY (2026-11-09) is the self-imposed archive/close deadline for Greg Trading and Garrett Shuster set in the 2026-11-02 check. No git activity in any client session since 2026-04-14 (209 days ago).**
+
+---
+
+## Scoring Notes
+
+### Greg Trading
+- **Session**: 2026-02-21 | **Last git touch**: 2026-04-14 (~209 days ago) | **Days since session**: ~261
+- **Deploy (5)**: Full workspace + 4-domain expert package (validation 94/100). 3 REQUIRED pre-deploy items still open after 9 months: Telegram ID, glm47 model verification, all API keys. No change since intake.
+- **Engage (1)**: 261 days since session. Final outreach deadline (2026-11-09 = TODAY) set in 2026-11-02 check — no response recorded. 5th consecutive engage score of 1.
+- **Items (2)**: Archive decision deadline arrived today with no action taken. Blockers unchanged. No movement.
+- **Billing (6)**: No billing data found. Neutral.
+- **Signal (5)**: 9 months of silence is now definitive. No recovery path without client contact. Flat vs. last check.
+
+### Cruz Creations (Erica)
+- **Session**: 2026-03-05 | **Last git touch**: 2026-04-14 (~209 days ago) | **Days since session**: ~249
+- **Deploy (4)**: Workspace config built (5 agents, 11 skills). Zero integrations connected: Gmail OAuth, Google Drive, Shopify API key, WhatsApp Business API, ClassBento. No change since intake.
+- **Engage (1)**: 249 days since session. 209 days since last git touch. "Next Steps" email recommended across 4 consecutive checks — still not sent.
+- **Items (3)**: 12+ open next steps across Greg-side and Erica-side tasks; none confirmed complete. Erica now ~$450+ wasted on Mailchimp since session.
+- **Billing (6)**: No billing data. Neutral.
+- **Signal (7)**: Warm, energetic client from session notes. Creative project with clear ROI. No negative signals. Best signal score of the group.
+
+### Fish Group (Michael Fisch)
+- **Session**: 2026-03-05 (S1), 2026-03-12 (S2) | **Last git touch**: 2026-04-14 (~209 days ago) | **Days since S2**: ~242
+- **Deploy (4)**: Workspace + Obsidian vault built; two sessions completed. OpenClaw EC2 unprovisioned; Supabase CRITICAL blocker unchanged. No progress on deployment path.
+- **Engage (1)**: 242 days since Session 2. 209 days since last commit. No activity detected this check.
+- **Items (3)**: 4 open blockers unchanged for 7+ months: CRITICAL — Supabase migration (Emil), QuickBooks API creds (Emil); HIGH — OpenClaw EC2 (Greg), Airtable token (Emil).
+- **Billing (4)**: Invoice ENIDX5M1-0002 ($200, Net 30) to mike@piermontbrands.com — now ~242 days overdue. No confirmation of payment. Likely uncollectable if not followed up urgently.
+- **Signal (6)**: Two productive sessions; strong "continuous and recursive agents" vision. 7+ months silence now a material concern. Flat vs. last check.
+
+### Garrett Shuster
+- **Session**: 2026-04-05 | **Last git touch**: 2026-04-14 (~209 days ago) | **Days since session**: ~218
+- **Deploy (2)**: No agent workspace built. Sole deliverable: Sylvan Hills x GBAutomation engagement roadmap (PPTX). No agent build session ever completed.
+- **Engage (1)**: 218 days since session. No documented follow-up. Close-engagement deadline (2026-11-09 = TODAY) set in 2026-11-02 check arrived with no action.
+- **Items (4)**: No client_profile.json. No formal next steps. Engagement continuation undefined after 7+ months post-roadmap-delivery.
+- **Billing (6)**: No billing data. Neutral.
+- **Signal (7)**: Roadmap deck delivered — tangible deliverable. Referred by Greg (mutual friend). No negative signals.
+
+---
+
+## ⚠️ Action Items — All Clients Below 6.0
+
+> **ESCALATION: Two self-imposed deadlines (Greg Trading archive, Garrett Shuster close) expire TODAY. Immediate decisions required from Greg (the consultant) on both.**
+
+### Greg Trading (3.55) — 🚨 ARCHIVE DEADLINE TODAY (2026-11-09)
+- **Trend**: Flat at 3.55 for 2nd consecutive check. 5th consecutive NEEDS_ATTENTION. 261 days since session.
+- **Previous action set**: "If no response by 2026-11-09, formally archive." That deadline is today.
+- **Decision required NOW**:
+  1. If archiving: move session to `archived/20260221-greg-trading/`, update status in health-scores.md, document as "inactive engagement — agent delivered, never deployed, client unresponsive."
+  2. If extending: document explicit reason and set a hard date no longer than 30 days out.
+  3. No more automated health check scoring without a formal decision — 5 checks have been generated with no action.
+
+### Cruz Creations / Erica (3.65) — CRITICAL: Highest priority, most actionable, 249 days dormant
+- **Trend**: Flat since 2026-06-15 (5 months at 3.65). Warmest client, clearest ROI, most actionable.
+- **Action**: One email can unlock this engagement — still the top re-engagement priority.
+  1. Send the "Next Steps" email: Google Photos batch upload, ChatGPT memory migration, Shopify API key.
+  2. Complete Greg-side blockers: Google Workspace setup + create GitHub repo `gblack686/openclaw-erica-creations`.
+  3. Initiate WhatsApp Business API (Meta) — critical path for the agent channel.
+  4. Erica has paid ~$450+ in unnecessary Mailchimp fees since March — urgency is real and growing.
+
+### Fish Group / Michael Fisch (3.25) — CRITICAL: Invoice 242+ days overdue, all blockers unchanged
+- **Trend**: Flat at 3.25 vs. 2026-11-02. Billing score has not recovered.
+- **Action**: Collect invoice and unblock.
+  1. Contact Michael (mike@piermontbrands.com) about invoice ENIDX5M1-0002 ($200) — approaching uncollectable territory.
+  2. Ping Emil: Supabase migration + Airtable token + QuickBooks creds (all Emil-owned, all unchanged for 7+ months).
+  3. Provision OpenClaw EC2 for Finn (Greg-owned; prerequisite before Emil's work can land).
+  4. If no progress on any blocker in next 30 days, formally close or pause engagement.
+
+### Garrett Shuster (3.25) — 🚨 CLOSE DEADLINE TODAY (2026-11-09)
+- **Trend**: Flat at 3.25 for 2nd consecutive check. 218 days post-session, no next-step defined.
+- **Previous action set**: "If no response by 2026-11-09: close engagement and document outcome." That deadline is today.
+- **Decision required NOW**:
+  1. If closing: document as "roadmap-only engagement — no agent build session, no follow-up. Closed 2026-11-09."
+  2. If proceeding: create client_profile.json in session folder, build workspace/, schedule agent build session within 14 days.
+  3. If still undecided: set a final 14-day extension (2026-11-23) — no further extensions after that.
+
+---
